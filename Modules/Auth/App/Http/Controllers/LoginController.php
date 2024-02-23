@@ -2,10 +2,10 @@
 
 namespace Modules\Auth\App\Http\Controllers;
 
-use Modules\Share\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
-use Modules\Auth\Http\Requests\LoginRequest;
+use Modules\Auth\App\Http\Requests\LoginRequest;
 
 class LoginController extends Controller
 {
