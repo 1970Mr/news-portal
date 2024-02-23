@@ -1,29 +1,46 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="fa" dir="rtl">
 
 <head>
+    <title>{{ !empty($title) ? $title . ' | ' . config('app.name') : config('app.name') }}</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ asset('admin/assets/images/favicon.png') }}">
 
-    <title>Auth Module - {{ config('app.name', 'Laravel') }}</title>
+    @include('sweetalert::alert')
+    @include('auth::partials.styles')
+    @stack('styles')
 
-    <meta name="description" content="{{ $description ?? '' }}">
-    <meta name="keywords" content="{{ $keywords ?? '' }}">
-    <meta name="author" content="{{ $author ?? '' }}">
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-    {{-- Vite CSS --}}
-    {{-- {{ module_vite('build-auth', 'resources/assets/sass/app.scss') }} --}}
 </head>
+<body class="fix-header active-ripple theme-darkpurple">
+<!-- BEGIN LOEADING -->
+<div id="loader">
+    <div class="spinner"></div>
+</div><!-- /loader -->
+<!-- END LOEADING -->
 
-<body>
-    @yield('content')
+<!-- BEGIN WRAPPER -->
+<div class="fixed-modal-bg"></div>
+<a href="#" class="btn btn-primary btn-icon btn-round btn-lg" id="toggle-dark-mode">
+    <i class="icon-bulb"></i>
+</a>
+<div class="modal-page shadow">
+    <div class="container-fluid">
+        <div class="row">
 
-    {{-- Vite JS --}}
-    {{-- {{ module_vite('build-auth', 'resources/assets/js/app.js') }} --}}
+            <div class="col-md-12">
+
+                @yield('content')
+
+            </div><!-- /.col-md-12 -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div><!-- /.modal-page -->
+<!-- END WRAPPER -->
+
+@include('auth::partials.scripts')
+@stack('scripts')
+
 </body>
+
+</html>
