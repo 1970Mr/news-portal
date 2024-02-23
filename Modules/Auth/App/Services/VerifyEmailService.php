@@ -13,7 +13,7 @@ class VerifyEmailService
     {
         return [
             'status' => 'success',
-            'message' => $message ?: 'لینک تایید برای ایمیل شما ارسال شد.'
+            'message' => $message ?: __('لینک تایید برای ایمیل شما ارسال شد.')
         ];
     }
 
@@ -21,7 +21,7 @@ class VerifyEmailService
     {
         return [
             'status' => 'info',
-            'message' => $message ?: 'ایمیل شما قبلا تایید شده است!'
+            'message' => $message ?: __('ایمیل شما قبلا تایید شده است!')
         ];
     }
 }

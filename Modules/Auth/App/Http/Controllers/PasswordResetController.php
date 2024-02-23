@@ -24,10 +24,10 @@ class PasswordResetController extends Controller
         return $reset_link_sent === Password::RESET_LINK_SENT ?
             back()->with([
                 'status' => 'success',
-                'message' => 'لینک بازیابی رمز عبور به ایمیل شما ارسال شد!'
+                'message' => __('لینک بازیابی رمز عبور به ایمیل شما ارسال شد')
             ]) :
             back()->withErrors([
-                'send_email_error' => 'لینک بازیابی رمز عبور با موفقیت ارسال نشد! لطفا دوباره تلاش کنید.'
+                'send_email_error' => __('لینک بازیابی رمز عبور با موفقیت ارسال نشد! لطفا دوباره تلاش کنید.')
             ]);
     }
 
@@ -36,7 +36,7 @@ class PasswordResetController extends Controller
         return $request->has('email') && $token ?
             view('auth::password.reset', ['email' => $request->get('email'), 'token' => $token]) :
             to_route('password.request')->withErrors([
-                'password_reset_link_error' => 'لینک ارسال شده درست نمی‌باشد! لطفا دوباره تلاش کنید.'
+                'password_reset_link_error' => __('لینک ارسال شده درست نمی‌باشد! لطفا دوباره تلاش کنید.')
             ]);
     }
 
@@ -46,10 +46,10 @@ class PasswordResetController extends Controller
         return $status === Password::PASSWORD_RESET ?
             to_route('login')->with([
                 'status' => 'success',
-                'message' => 'رمز عبور با موفقیت تغییر کرد! با رمز عبور جدید به سایت وارد شوید.'
+                'message' => __('رمز عبور با موفقیت تغییر کرد! با رمز عبور جدید به سایت وارد شوید.')
             ]) :
             to_route('password.request')->withErrors([
-                'password_update_error' => 'تغییر رمز عبور با موفقیت انجام نشد! لطفا دوباره تلاش کنید.'
+                'password_update_error' => __('تغییر رمز عبور با موفقیت انجام نشد! لطفا دوباره تلاش کنید.')
             ]);
     }
 }

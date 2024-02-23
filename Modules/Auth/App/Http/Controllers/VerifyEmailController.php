@@ -22,7 +22,7 @@ class VerifyEmailController extends Controller
             return to_route('home.index')->with($verifyEmailService->message('info'));
         }
         $request->fulfill();
-        return to_route('home.index')->with($verifyEmailService->message('success', 'ایمیل شما با موفقیت تایید شد.'));
+        return to_route('home.index')->with($verifyEmailService->message('success', __('ایمیل شما با موفقیت تایید شد.')));
     }
 
     public function send(VerifyEmailService $verifyEmailService): RedirectResponse

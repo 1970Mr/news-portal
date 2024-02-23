@@ -5,6 +5,7 @@ use Modules\Auth\App\Http\Controllers\LoginController;
 use Modules\Auth\App\Http\Controllers\RegisterController;
 use Modules\Auth\App\Http\Controllers\VerifyEmailController;
 use Modules\Auth\App\Http\Controllers\PasswordResetController;
+use Modules\Auth\App\Http\Controllers\LogoutController;
 
 // Login
 Route::get('/login', [LoginController::class, 'view'])->name('login')->middleware('guest');
@@ -30,3 +31,6 @@ Route::controller(PasswordResetController::class)->name('password.')->middleware
         Route::get('/reset-password/{token}', 'showResetForm')->name('reset');
         Route::post('/reset-password', 'update')->name('update')->middleware('throttle:5,1');
     });
+
+// Logout
+Route::post('/logout', LogoutController::class)->name('logout')->middleware('auth');
