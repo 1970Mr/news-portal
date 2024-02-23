@@ -16,7 +16,7 @@
         </div>
     @endif
 
-    <x-auth-error-messages/>
+    <x-auth-error-messages />
     <hr>
 
     <form id="form" class="m-t-30 m-b-30" action="{{ route('login') }}" method="POST" role="form">
