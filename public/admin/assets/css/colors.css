@@ -1,0 +1,398 @@
+/*@import "etc.scss";*/
+/*--------------------- General Color Start ----------------------*/
+body, #page-content {
+  background: #f5f5f5;
+}
+
+#wrapper, #sidebar, .metismenu {
+  background: #212529;
+}
+
+/*---------------------- General Color End -----------------------*/
+/*--------------------- Start blue ----------------------*/
+.theme-blue.sidebar-collapse .metismenu li.conditional-bg > a {
+  background: #14B9D6;
+  color: #fff;
+}
+
+.theme-blue #toggle-setting {
+  color: #14B9D6;
+}
+
+.theme-blue .spinner {
+  border: 1px solid #14B9D6;
+  border-left: 1px solid #000;
+}
+.theme-blue .grid-example {
+  border: 1px solid #14B9D6;
+}
+.theme-blue .double-bounce1, .theme-blue .double-bounce2, .theme-blue .scaleout, .theme-blue .bounces > div, .theme-blue .folding-cube .cube:before,
+.theme-blue .header-right,
+.theme-blue .metismenu a.current, .theme-blue .metismenu a:hover, .theme-blue .metismenu a:focus, .theme-blue .metismenu a:active {
+  background: #14B9D6;
+}
+.theme-blue .pagination > .active > a, .theme-blue .pagination > .active > a:focus, .theme-blue .pagination > .active > a:hover, .theme-blue .pagination > .active > span, .theme-blue .pagination > .active > span:focus, .theme-blue .pagination > .active > span:hover {
+  background-color: #14B9D6;
+  border-color: #14B9D6;
+}
+
+.bg-blue, .btn-blue, .btn-blue.active, .btn-blue:hover, .btn-blue:active, .btn-blue:focus {
+  background: #14B9D6;
+}
+
+/*---------------------- End blue -----------------------*/
+/*--------------------- Start red ----------------------*/
+.theme-red.sidebar-collapse .metismenu li.conditional-bg > a {
+  background: #f55145;
+  color: #fff;
+}
+
+.theme-red #toggle-setting {
+  color: #f55145;
+}
+
+.theme-red .spinner {
+  border: 1px solid #f55145;
+  border-left: 1px solid #000;
+}
+.theme-red .grid-example {
+  border: 1px solid #f55145;
+}
+.theme-red .double-bounce1, .theme-red .double-bounce2, .theme-red .scaleout, .theme-red .bounces > div, .theme-red .folding-cube .cube:before,
+.theme-red .header-right,
+.theme-red .metismenu a.current, .theme-red .metismenu a:hover, .theme-red .metismenu a:focus, .theme-red .metismenu a:active {
+  background: #f55145;
+}
+.theme-red .pagination > .active > a, .theme-red .pagination > .active > a:focus, .theme-red .pagination > .active > a:hover, .theme-red .pagination > .active > span, .theme-red .pagination > .active > span:focus, .theme-red .pagination > .active > span:hover {
+  background-color: #f55145;
+  border-color: #f55145;
+}
+
+.bg-red, .btn-red, .btn-red.active, .btn-red:hover, .btn-red:active, .btn-red:focus {
+  background: #f55145;
+}
+
+/*---------------------- End red -----------------------*/
+/*--------------------- Start green ----------------------*/
+.theme-green.sidebar-collapse .metismenu li.conditional-bg > a {
+  background: #53a96b;
+  color: #fff;
+}
+
+.theme-green #toggle-setting {
+  color: #53a96b;
+}
+
+.theme-green .spinner {
+  border: 1px solid #53a96b;
+  border-left: 1px solid #000;
+}
+.theme-green .grid-example {
+  border: 1px solid #53a96b;
+}
+.theme-green .double-bounce1, .theme-green .double-bounce2, .theme-green .scaleout, .theme-green .bounces > div, .theme-green .folding-cube .cube:before,
+.theme-green .header-right,
+.theme-green .metismenu a.current, .theme-green .metismenu a:hover, .theme-green .metismenu a:focus, .theme-green .metismenu a:active {
+  background: #53a96b;
+}
+.theme-green .pagination > .active > a, .theme-green .pagination > .active > a:focus, .theme-green .pagination > .active > a:hover, .theme-green .pagination > .active > span, .theme-green .pagination > .active > span:focus, .theme-green .pagination > .active > span:hover {
+  background-color: #53a96b;
+  border-color: #53a96b;
+}
+
+.bg-green, .btn-green, .btn-green.active, .btn-green:hover, .btn-green:active, .btn-green:focus {
+  background: #53a96b;
+}
+
+/*---------------------- End green -----------------------*/
+/*--------------------- Start orange ----------------------*/
+.theme-orange.sidebar-collapse .metismenu li.conditional-bg > a {
+  background: #ffbd15;
+  color: #fff;
+}
+
+.theme-orange #toggle-setting {
+  color: #ffbd15;
+}
+
+.theme-orange .spinner {
+  border: 1px solid #ffbd15;
+  border-left: 1px solid #000;
+}
+.theme-orange .grid-example {
+  border: 1px solid #ffbd15;
+}
+.theme-orange .double-bounce1, .theme-orange .double-bounce2, .theme-orange .scaleout, .theme-orange .bounces > div, .theme-orange .folding-cube .cube:before,
+.theme-orange .header-right,
+.theme-orange .metismenu a.current, .theme-orange .metismenu a:hover, .theme-orange .metismenu a:focus, .theme-orange .metismenu a:active {
+  background: #ffbd15;
+}
+.theme-orange .pagination > .active > a, .theme-orange .pagination > .active > a:focus, .theme-orange .pagination > .active > a:hover, .theme-orange .pagination > .active > span, .theme-orange .pagination > .active > span:focus, .theme-orange .pagination > .active > span:hover {
+  background-color: #ffbd15;
+  border-color: #ffbd15;
+}
+
+.bg-orange, .btn-orange, .btn-orange.active, .btn-orange:hover, .btn-orange:active, .btn-orange:focus {
+  background: #ffbd15;
+}
+
+/*---------------------- End orange -----------------------*/
+/*--------------------- Start purple ----------------------*/
+.theme-purple.sidebar-collapse .metismenu li.conditional-bg > a {
+  background: #c450d8;
+  color: #fff;
+}
+
+.theme-purple #toggle-setting {
+  color: #c450d8;
+}
+
+.theme-purple .spinner {
+  border: 1px solid #c450d8;
+  border-left: 1px solid #000;
+}
+.theme-purple .grid-example {
+  border: 1px solid #c450d8;
+}
+.theme-purple .double-bounce1, .theme-purple .double-bounce2, .theme-purple .scaleout, .theme-purple .bounces > div, .theme-purple .folding-cube .cube:before,
+.theme-purple .header-right,
+.theme-purple .metismenu a.current, .theme-purple .metismenu a:hover, .theme-purple .metismenu a:focus, .theme-purple .metismenu a:active {
+  background: #c450d8;
+}
+.theme-purple .pagination > .active > a, .theme-purple .pagination > .active > a:focus, .theme-purple .pagination > .active > a:hover, .theme-purple .pagination > .active > span, .theme-purple .pagination > .active > span:focus, .theme-purple .pagination > .active > span:hover {
+  background-color: #c450d8;
+  border-color: #c450d8;
+}
+
+.bg-purple, .btn-purple, .btn-purple.active, .btn-purple:hover, .btn-purple:active, .btn-purple:focus {
+  background: #c450d8;
+}
+
+/*---------------------- End purple -----------------------*/
+/*--------------------- Start deeporange ----------------------*/
+.theme-deeporange.sidebar-collapse .metismenu li.conditional-bg > a {
+  background: #ff8a65;
+  color: #fff;
+}
+
+.theme-deeporange #toggle-setting {
+  color: #ff8a65;
+}
+
+.theme-deeporange .spinner {
+  border: 1px solid #ff8a65;
+  border-left: 1px solid #000;
+}
+.theme-deeporange .grid-example {
+  border: 1px solid #ff8a65;
+}
+.theme-deeporange .double-bounce1, .theme-deeporange .double-bounce2, .theme-deeporange .scaleout, .theme-deeporange .bounces > div, .theme-deeporange .folding-cube .cube:before,
+.theme-deeporange .header-right,
+.theme-deeporange .metismenu a.current, .theme-deeporange .metismenu a:hover, .theme-deeporange .metismenu a:focus, .theme-deeporange .metismenu a:active {
+  background: #ff8a65;
+}
+.theme-deeporange .pagination > .active > a, .theme-deeporange .pagination > .active > a:focus, .theme-deeporange .pagination > .active > a:hover, .theme-deeporange .pagination > .active > span, .theme-deeporange .pagination > .active > span:focus, .theme-deeporange .pagination > .active > span:hover {
+  background-color: #ff8a65;
+  border-color: #ff8a65;
+}
+
+.bg-deeporange, .btn-deeporange, .btn-deeporange.active, .btn-deeporange:hover, .btn-deeporange:active, .btn-deeporange:focus {
+  background: #ff8a65;
+}
+
+/*---------------------- End deeporange -----------------------*/
+/*--------------------- Start rose ----------------------*/
+.theme-rose.sidebar-collapse .metismenu li.conditional-bg > a {
+  background: #e91e63;
+  color: #fff;
+}
+
+.theme-rose #toggle-setting {
+  color: #e91e63;
+}
+
+.theme-rose .spinner {
+  border: 1px solid #e91e63;
+  border-left: 1px solid #000;
+}
+.theme-rose .grid-example {
+  border: 1px solid #e91e63;
+}
+.theme-rose .double-bounce1, .theme-rose .double-bounce2, .theme-rose .scaleout, .theme-rose .bounces > div, .theme-rose .folding-cube .cube:before,
+.theme-rose .header-right,
+.theme-rose .metismenu a.current, .theme-rose .metismenu a:hover, .theme-rose .metismenu a:focus, .theme-rose .metismenu a:active {
+  background: #e91e63;
+}
+.theme-rose .pagination > .active > a, .theme-rose .pagination > .active > a:focus, .theme-rose .pagination > .active > a:hover, .theme-rose .pagination > .active > span, .theme-rose .pagination > .active > span:focus, .theme-rose .pagination > .active > span:hover {
+  background-color: #e91e63;
+  border-color: #e91e63;
+}
+
+.bg-rose, .btn-rose, .btn-rose.active, .btn-rose:hover, .btn-rose:active, .btn-rose:focus {
+  background: #e91e63;
+}
+
+/*---------------------- End rose -----------------------*/
+/*--------------------- Start cyan ----------------------*/
+.theme-cyan.sidebar-collapse .metismenu li.conditional-bg > a {
+  background: #13a2a6;
+  color: #fff;
+}
+
+.theme-cyan #toggle-setting {
+  color: #13a2a6;
+}
+
+.theme-cyan .spinner {
+  border: 1px solid #13a2a6;
+  border-left: 1px solid #000;
+}
+.theme-cyan .grid-example {
+  border: 1px solid #13a2a6;
+}
+.theme-cyan .double-bounce1, .theme-cyan .double-bounce2, .theme-cyan .scaleout, .theme-cyan .bounces > div, .theme-cyan .folding-cube .cube:before,
+.theme-cyan .header-right,
+.theme-cyan .metismenu a.current, .theme-cyan .metismenu a:hover, .theme-cyan .metismenu a:focus, .theme-cyan .metismenu a:active {
+  background: #13a2a6;
+}
+.theme-cyan .pagination > .active > a, .theme-cyan .pagination > .active > a:focus, .theme-cyan .pagination > .active > a:hover, .theme-cyan .pagination > .active > span, .theme-cyan .pagination > .active > span:focus, .theme-cyan .pagination > .active > span:hover {
+  background-color: #13a2a6;
+  border-color: #13a2a6;
+}
+
+.bg-cyan, .btn-cyan, .btn-cyan.active, .btn-cyan:hover, .btn-cyan:active, .btn-cyan:focus {
+  background: #13a2a6;
+}
+
+/*---------------------- End cyan -----------------------*/
+/*--------------------- Start lime ----------------------*/
+.theme-lime.sidebar-collapse .metismenu li.conditional-bg > a {
+  background: #90ca4b;
+  color: #fff;
+}
+
+.theme-lime #toggle-setting {
+  color: #90ca4b;
+}
+
+.theme-lime .spinner {
+  border: 1px solid #90ca4b;
+  border-left: 1px solid #000;
+}
+.theme-lime .grid-example {
+  border: 1px solid #90ca4b;
+}
+.theme-lime .double-bounce1, .theme-lime .double-bounce2, .theme-lime .scaleout, .theme-lime .bounces > div, .theme-lime .folding-cube .cube:before,
+.theme-lime .header-right,
+.theme-lime .metismenu a.current, .theme-lime .metismenu a:hover, .theme-lime .metismenu a:focus, .theme-lime .metismenu a:active {
+  background: #90ca4b;
+}
+.theme-lime .pagination > .active > a, .theme-lime .pagination > .active > a:focus, .theme-lime .pagination > .active > a:hover, .theme-lime .pagination > .active > span, .theme-lime .pagination > .active > span:focus, .theme-lime .pagination > .active > span:hover {
+  background-color: #90ca4b;
+  border-color: #90ca4b;
+}
+
+.bg-lime, .btn-lime, .btn-lime.active, .btn-lime:hover, .btn-lime:active, .btn-lime:focus {
+  background: #90ca4b;
+}
+
+/*---------------------- End lime -----------------------*/
+/*--------------------- Start darkorange ----------------------*/
+.theme-darkorange.sidebar-collapse .metismenu li.conditional-bg > a {
+  background: #ee7825;
+  color: #fff;
+}
+
+.theme-darkorange #toggle-setting {
+  color: #ee7825;
+}
+
+.theme-darkorange .spinner {
+  border: 1px solid #ee7825;
+  border-left: 1px solid #000;
+}
+.theme-darkorange .grid-example {
+  border: 1px solid #ee7825;
+}
+.theme-darkorange .double-bounce1, .theme-darkorange .double-bounce2, .theme-darkorange .scaleout, .theme-darkorange .bounces > div, .theme-darkorange .folding-cube .cube:before,
+.theme-darkorange .header-right,
+.theme-darkorange .metismenu a.current, .theme-darkorange .metismenu a:hover, .theme-darkorange .metismenu a:focus, .theme-darkorange .metismenu a:active {
+  background: #ee7825;
+}
+.theme-darkorange .pagination > .active > a, .theme-darkorange .pagination > .active > a:focus, .theme-darkorange .pagination > .active > a:hover, .theme-darkorange .pagination > .active > span, .theme-darkorange .pagination > .active > span:focus, .theme-darkorange .pagination > .active > span:hover {
+  background-color: #ee7825;
+  border-color: #ee7825;
+}
+
+.bg-darkorange, .btn-darkorange, .btn-darkorange.active, .btn-darkorange:hover, .btn-darkorange:active, .btn-darkorange:focus {
+  background: #ee7825;
+}
+
+/*---------------------- End darkorange -----------------------*/
+/*--------------------- Start darkpurple ----------------------*/
+.theme-darkpurple.sidebar-collapse .metismenu li.conditional-bg > a {
+  background: #4527a0;
+  color: #fff;
+}
+
+.theme-darkpurple #toggle-setting {
+  color: #4527a0;
+}
+
+.theme-darkpurple .spinner {
+  border: 1px solid #4527a0;
+  border-left: 1px solid #000;
+}
+.theme-darkpurple .grid-example {
+  border: 1px solid #4527a0;
+}
+.theme-darkpurple .double-bounce1, .theme-darkpurple .double-bounce2, .theme-darkpurple .scaleout, .theme-darkpurple .bounces > div, .theme-darkpurple .folding-cube .cube:before,
+.theme-darkpurple .header-right,
+/*.theme-darkpurple .metismenu a.current, .theme-darkpurple .metismenu a:hover, .theme-darkpurple .metismenu a:focus, .theme-darkpurple .metismenu a:active {*/
+.theme-darkpurple .metismenu a.current, .theme-darkpurple .metismenu a:hover, .theme-darkpurple .metismenu a:hover, .theme-darkpurple .metismenu a:active {
+  background: #4527a0;
+}
+.theme-darkpurple .pagination > .active > a, .theme-darkpurple .pagination > .active > a:focus, .theme-darkpurple .pagination > .active > a:hover, .theme-darkpurple .pagination > .active > span, .theme-darkpurple .pagination > .active > span:focus, .theme-darkpurple .pagination > .active > span:hover {
+  background-color: #4527a0;
+  border-color: #4527a0;
+}
+
+.bg-darkpurple, .btn-darkpurple, .btn-darkpurple.active, .btn-darkpurple:hover, .btn-darkpurple:active, .btn-darkpurple:focus {
+  background: #4527a0;
+}
+
+/*---------------------- End darkpurple -----------------------*/
+/*--------------------- Start darkblue ----------------------*/
+.theme-darkblue.sidebar-collapse .metismenu li.conditional-bg > a {
+  background: #071774;
+  color: #fff;
+}
+
+.theme-darkblue #toggle-setting {
+  color: #071774;
+}
+
+.theme-darkblue .spinner {
+  border: 1px solid #071774;
+  border-left: 1px solid #000;
+}
+.theme-darkblue .grid-example {
+  border: 1px solid #071774;
+}
+.theme-darkblue .double-bounce1, .theme-darkblue .double-bounce2, .theme-darkblue .scaleout, .theme-darkblue .bounces > div, .theme-darkblue .folding-cube .cube:before,
+.theme-darkblue .header-right,
+.theme-darkblue .metismenu a.current, .theme-darkblue .metismenu a:hover, .theme-darkblue .metismenu a:focus, .theme-darkblue .metismenu a:active {
+  background: #071774;
+}
+.theme-darkblue .pagination > .active > a, .theme-darkblue .pagination > .active > a:focus, .theme-darkblue .pagination > .active > a:hover, .theme-darkblue .pagination > .active > span, .theme-darkblue .pagination > .active > span:focus, .theme-darkblue .pagination > .active > span:hover {
+  background-color: #071774;
+  border-color: #071774;
+}
+
+.bg-darkblue, .btn-darkblue, .btn-darkblue.active, .btn-darkblue:hover, .btn-darkblue:active, .btn-darkblue:focus {
+  background: #071774;
+}
+
+/*---------------------- End darkblue -----------------------*/
+
+/*# sourceMappingURL=colors.css.map */
