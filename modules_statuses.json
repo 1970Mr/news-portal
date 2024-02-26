@@ -1,5 +1,6 @@
 {
     "Home": true,
     "Auth": true,
-    "User": true
+    "User": true,
+    "Panel": true
 }

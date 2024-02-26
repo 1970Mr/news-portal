@@ -1,0 +1,11 @@
+{
+    "name": "Panel",
+    "alias": "panel",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Panel\\App\\Providers\\PanelServiceProvider"
+    ],
+    "files": []
+}
