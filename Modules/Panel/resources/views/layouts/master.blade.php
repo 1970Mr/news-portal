@@ -1,29 +1,55 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="fa" dir="rtl" class="rtl">
 
 <head>
+    <title>{{ !empty($title) ? $title . ' | ' . config('app.name') : config('app.name') }}</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="fontiran.com:license" content="NE29X">
+    <link rel="shortcut icon" href="{{ asset('admin/assets/images/favicon.png') }}">
 
-    <title>Panel Module - {{ config('app.name', 'Laravel') }}</title>
+    @include('panel::partials.styles')
 
-    <meta name="description" content="{{ $description ?? '' }}">
-    <meta name="keywords" content="{{ $keywords ?? '' }}">
-    <meta name="author" content="{{ $author ?? '' }}">
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-    {{-- Vite CSS --}}
-    {{-- {{ module_vite('build-panel', 'resources/assets/sass/app.scss') }} --}}
+    <!-- BEGIN PAGE CSS -->
+    @stack('styles')
+    <!-- END PAGE CSS -->
 </head>
+<body class="active-ripple theme-darkpurple fix-header sidebar-extra">
+<!-- BEGIN LOEADING -->
+<div id="loader">
+    <div class="spinner"></div>
+</div><!-- /loader -->
+<!-- END LOEADING -->
 
-<body>
-    @yield('content')
+@include('panel::partials.header')
 
-    {{-- Vite JS --}}
-    {{-- {{ module_vite('build-panel', 'resources/assets/js/app.js') }} --}}
+<!-- BEGIN WRAPPER -->
+<div id="wrapper">
+
+    @include('panel::partials.sidebar')
+
+    <!-- BEGIN PAGE CONTENT -->
+    <div id="page-content">
+        <div id="inner-content">
+            <div class="row">
+
+                @yield('content')
+
+            </div><!-- /.row -->
+        </div><!-- /#inner-content -->
+    </div><!-- /#page-content -->
+    <!-- END PAGE CONTENT -->
+
+</div><!-- /#wrapper -->
+<!-- END WRAPPER -->
+
+@include('panel::partials.footer')
+
+@include('panel::partials.scripts')
+
+<!-- BEGIN PAGE JAVASCRIPT -->
+@stack('scripts')
+<!-- END PAGE JAVASCRIPT -->
 </body>
+
+</html>
