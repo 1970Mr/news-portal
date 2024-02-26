@@ -13,6 +13,9 @@
 <script type="text/javascript" src="{{ asset('home/js/waypoints.min.js') }}"></script>
 <!-- Color box -->
 <script type="text/javascript" src="{{ asset('home/js/jquery.colorbox.js') }}"></script>
+<!-- Sweet Alert -->
+<script src="{{ asset('admin/assets/plugins/sweetalert2/dist/sweetalert2.min.js') }}"></script>
+
 
 
 <!-- Template custom -->

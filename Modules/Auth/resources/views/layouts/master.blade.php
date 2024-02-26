@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="{{ asset('admin/assets/images/favicon.png') }}">
 
-    @include('sweetalert::alert')
     @include('auth::partials.styles')
     @stack('styles')
 
@@ -40,6 +39,8 @@
 
 @include('auth::partials.scripts')
 @stack('scripts')
+
+<x-sweetalert />
 
 </body>
 

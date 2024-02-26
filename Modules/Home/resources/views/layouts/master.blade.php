@@ -52,6 +52,8 @@
 
     @stack('scripts')
 
+    <x-sweetalert />
+
 </div><!-- Body inner end -->
 </body>
 
