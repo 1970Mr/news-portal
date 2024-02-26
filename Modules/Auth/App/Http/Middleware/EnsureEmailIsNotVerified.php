@@ -1,6 +1,7 @@
 <?php
 
-namespace Modules\App\Auth\Http\Middleware;
+namespace Modules\Auth\App\Http\Middleware;
+
 use Closure;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Redirect;
