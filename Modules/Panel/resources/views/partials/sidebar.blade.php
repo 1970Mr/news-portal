@@ -16,7 +16,7 @@
         <ul class="metismenu" id="side-menu">
             @foreach(config('panel.sidebar_menus') as $menu)
                 @if(isset($menu['children']))
-                    <li class="{{ hasActiveChild($menu) ? 'active' : '' }}">
+                    <li class="{{ menu_has_active_child($menu) }}">
                         <a class="dropdown-toggle">
                             <i class="{{ $menu['icon'] }}"></i>
                             <span>{{ $menu['title'] }}</span>
