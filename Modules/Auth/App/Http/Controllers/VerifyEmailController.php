@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
-use Modules\Auth\App\Services\VerifyEmailService;
-use Modules\User\Models\User;
 
 class VerifyEmailController extends Controller
 {
@@ -16,21 +14,15 @@ class VerifyEmailController extends Controller
         return view('auth::verify-email');
     }
 
-    public function verify(EmailVerificationRequest $request, VerifyEmailService $verifyEmailService): RedirectResponse
+    public function verify(EmailVerificationRequest $request): RedirectResponse
     {
-        if (auth()->user()->hasVerifiedEmail()) {
-            return to_route('home.index')->with($verifyEmailService->message('info'));
-        }
         $request->fulfill();
-        return to_route('home.index')->with($verifyEmailService->message('success', __('ایمیل شما با موفقیت تایید شد.')));
+        return to_route('home.index')->with('success', __('ایمیل شما با موفقیت تایید شد.'));
     }
 
-    public function send(VerifyEmailService $verifyEmailService): RedirectResponse
+    public function send(): RedirectResponse
     {
-        if (auth()->user()->hasVerifiedEmail()) {
-            return back()->with($verifyEmailService->message('info'));
-        }
         auth()->user()->sendEmailVerificationNotification();
-        return back()->with($verifyEmailService->message('success'));
+        return back()->with('success', __('لینک تایید برای ایمیل شما ارسال شد.'));
     }
 }

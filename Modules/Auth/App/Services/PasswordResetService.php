@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Modules\Auth\App\Http\Requests\PasswordResetRequest;
-use Modules\User\Models\User;
 
 class PasswordResetService
 {

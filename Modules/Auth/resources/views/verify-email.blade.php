@@ -6,11 +6,11 @@
     </p>
     <h2 class="text-center m-b-20">تایید ایمیل</h2>
 
-    @if(session()->has('status'))
-        @php($success = session()->get('status') === 'success')
+    @if(session()->has('success'))
+        @php($success = session()->get('success'))
         <div class="alert alert-{{ $success ? 'success' : 'info'}}">
             <i class="icon-{{ $success ? 'check' : 'info'}}"></i>
-            {{ session()->get('message') }}
+            {{ session()->get('success') }}
         </div>
     @endif
 

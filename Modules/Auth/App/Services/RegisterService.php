@@ -6,7 +6,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
 use Modules\Auth\App\Http\Requests\RegisterRequest;
-use Modules\User\Models\User;
+use Modules\User\App\Models\User;
 
 class RegisterService
 {
