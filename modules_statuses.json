@@ -2,5 +2,6 @@
     "Home": true,
     "Auth": true,
     "User": true,
-    "Panel": true
+    "Panel": true,
+    "Share": true
 }
