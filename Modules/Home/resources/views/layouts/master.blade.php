@@ -52,8 +52,7 @@
 
     @stack('scripts')
 
-    <x-sweetalert />
-
+    @include('sweetalert::alert')
 </div><!-- Body inner end -->
 </body>
 

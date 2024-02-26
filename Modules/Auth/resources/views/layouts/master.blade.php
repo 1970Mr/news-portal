@@ -40,7 +40,7 @@
 @include('auth::partials.scripts')
 @stack('scripts')
 
-<x-sweetalert />
+@include('sweetalert::alert')
 
 </body>
 

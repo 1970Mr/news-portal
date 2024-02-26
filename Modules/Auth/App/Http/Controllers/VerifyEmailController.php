@@ -23,6 +23,6 @@ class VerifyEmailController extends Controller
     public function send(): RedirectResponse
     {
         auth()->user()->sendEmailVerificationNotification();
-        return back()->with('success', __('لینک تایید برای ایمیل شما ارسال شد.'));
+        return back()->with('success', ['', __('لینک تایید برای ایمیل شما ارسال شد.')]);
     }
 }

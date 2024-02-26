@@ -383,12 +383,14 @@
 
         // Initilize sweet alert
         this.initiSwal = function(){
-            if (typeof swal != "undefined"){
-                swal.setDefaults({
-                    confirmButtonText: 'تائید',
-                    cancelButtonText: 'لغو'
-                });
-            }
+            try {
+                if (typeof swal != "undefined"){
+                    swal.setDefaults({
+                        confirmButtonText: 'تائید',
+                        cancelButtonText: 'لغو'
+                    });
+                }
+            } catch (e){}
         };
 
         // Initilize iCkeck

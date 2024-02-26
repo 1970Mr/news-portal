@@ -15,5 +15,5 @@ use Modules\Home\App\Http\Controllers\HomeController;
 */
 
 Route::group([], function () {
-    Route::resource('/', HomeController::class)->names('home');
+    Route::name('home.index')->get('/', HomeController::class);
 });
