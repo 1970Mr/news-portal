@@ -11,13 +11,6 @@ return [
             'title' => 'کاربران',
             'url' => route('login'),
             'icon' => ' icon-people',
-            'children' => [
-                'user' => [
-                    'title' => 'کاربران',
-                    'url' => route('panel.index'),
-                    'icon' => ' icon-people',
-                ],
-            ]
         ],
     ]
 ];
