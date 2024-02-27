@@ -6,11 +6,10 @@
     </p>
     <h2 class="text-center">بازیابی رمز عبور</h2>
 
-    @if(session()->has('status'))
-        @php($success = session()->get('status') === 'success')
-        <div class="alert alert-{{ $success ? 'success' : 'danger'}} m-t-10 m-b-20">
-            <i class="icon-{{ $success ? 'check' : 'close'}}"></i>
-            {{ session()->get('message') }}
+    @if(session()->has('success'))
+        <div class="alert alert-success m-t-10 m-b-20">
+            <i class="icon-check"></i>
+            {{ session()->get('success') }}
         </div>
     @else
         <div class="alert alert-info text-center m-t-10 m-b-20">

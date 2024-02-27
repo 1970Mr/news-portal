@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Modules\Auth\App\Http\Requests\PasswordResetRequest;
+use Modules\User\App\Models\User;
 
 class PasswordResetService
 {
@@ -18,7 +19,6 @@ class PasswordResetService
                 $user->forceFill([
                     'password' => Hash::make($password)
                 ])->setRememberToken(Str::random(60));
-
                 $user->save();
 
                 event(new PasswordReset($user));
