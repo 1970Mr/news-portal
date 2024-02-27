@@ -19,6 +19,6 @@ class LoginController extends Controller
         if (auth()->attempt($request->all(['email', 'password']), !empty($request->get('remember-me'))) ) {
             return to_route('home.index')->with('success', __('ورود با موفقیت انجام شد'));
         }
-        return back()->with('error', __('کاربری با مشخصات وارد شده یافت نشد'));
+        return back()->withErrors(__('کاربری با مشخصات وارد شده یافت نشد'));
     }
 }

@@ -10,8 +10,14 @@
     @include('auth::partials.styles')
     @stack('styles')
 
+    <style>
+        .swal2-title {
+            font-size: 1.4rem !important;
+        }
+    </style>
+
 </head>
-<body class="fix-header active-ripple theme-darkpurple">
+<body class="active-ripple theme-darkpurple">
 <!-- BEGIN LOEADING -->
 <div id="loader">
     <div class="spinner"></div>

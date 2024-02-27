@@ -28,7 +28,6 @@ class LoginFeatureTest extends TestCase
         ]);
 
         $token = $this->csrfToken();
-
         $response = $this->post(route('login'), [
             'email' => 'test@example.com',
             'password' => 'password',
@@ -37,6 +36,25 @@ class LoginFeatureTest extends TestCase
 
         $response->assertRedirect(route('home.index'));
         $this->assertAuthenticatedAs($user);
+    }
+
+    /** @test */
+    public function user_cannot_login_with_invalid_credentials(): void
+    {
+        UserFactory::new()->create([
+            'email' => 'test@example.com',
+            'password' => bcrypt('password'),
+        ]);
+
+        $token = $this->csrfToken();
+        $response = $this->post(route('login'), [
+            'email' => 'test@example.com',
+            'password' => 'password2',
+            '_token' => $token,
+        ]);
+
+        $response->assertSessionHasErrors();
+        $this->assertGuest();
     }
 
     private function csrfToken(): string
