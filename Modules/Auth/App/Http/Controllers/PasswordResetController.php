@@ -10,6 +10,7 @@ use Illuminate\View\View;
 use Modules\Auth\App\Http\Requests\PasswordResetRequest;
 use Modules\Auth\App\Http\Requests\SendEmailRequest;
 use Modules\Auth\App\Services\PasswordResetService;
+use Modules\User\App\Models\User;
 
 class PasswordResetController extends Controller
 {
@@ -26,7 +27,7 @@ class PasswordResetController extends Controller
             back()->withErrors(__('لینک بازیابی رمز عبور با موفقیت ارسال نشد! لطفا دوباره تلاش کنید.'));
     }
 
-    public function showResetForm(Request $request, string  $token): View|RedirectResponse
+    public function showResetForm(Request $request, string $token): View|RedirectResponse
     {
         return $request->has('email') && $token ?
             view('auth::password.reset', ['email' => $request->get('email'), 'token' => $token]) :

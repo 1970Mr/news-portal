@@ -3,6 +3,7 @@
 namespace Modules\Auth\tests\Feature;
 
 use Illuminate\Support\Facades\Password;
+use Modules\User\App\Models\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -35,5 +36,14 @@ class PasswordResetControllerTest extends TestCase
         $token = $this->faker->uuid;
         $response = $this->get(route('password.reset', ['token' => $token, 'email' => 'test@example.com']));
         $response->assertStatus(200);
+    }
+
+    /** @test */
+    public function user_cannot_view_reset_password_form_with_invalid_token_or_email(): void
+    {
+        $token = $this->faker->uuid;
+        $response = $this->get(route('password.reset', ['token' => $token]));
+        $response->assertRedirect(route('password.request'))
+            ->assertSessionHasErrors();
     }
 }
