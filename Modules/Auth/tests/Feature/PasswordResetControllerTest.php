@@ -13,6 +13,15 @@ class PasswordResetControllerTest extends TestCase
     use RefreshDatabase, WithFaker;
 
     /** @test */
+    public function user_can_view_reset_forgot_form(): void
+    {
+        $response = $this->get(route('password.request'));
+        $response->assertStatus(200)
+            ->assertViewIs('auth::password.forgot')
+            ->assertSee('بازیابی');
+    }
+
+    /** @test */
     public function user_can_request_password_reset_link(): void
     {
         $this->createUser();

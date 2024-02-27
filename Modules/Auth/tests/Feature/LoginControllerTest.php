@@ -13,8 +13,9 @@ class LoginControllerTest extends TestCase
     public function user_can_view_login_form(): void
     {
         $response = $this->get(route('login'));
-        $response->assertStatus(200);
-        $response->assertSee('وارد شوید');
+        $response->assertStatus(200)
+            ->assertViewIs('auth::login')
+            ->assertSee('وارد شوید');
     }
 
     /** @test */
