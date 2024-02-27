@@ -27,11 +27,10 @@ class LoginFeatureTest extends TestCase
             'password' => bcrypt('password'),
         ]);
 
-        $token = $this->csrfToken();
         $response = $this->post(route('login'), [
             'email' => 'test@example.com',
             'password' => 'password',
-            '_token' => $token,
+            '_token' => $this->csrfToken(),
         ]);
 
         $response->assertRedirect(route('home.index'));
@@ -46,22 +45,13 @@ class LoginFeatureTest extends TestCase
             'password' => bcrypt('password'),
         ]);
 
-        $token = $this->csrfToken();
         $response = $this->post(route('login'), [
             'email' => 'test@example.com',
             'password' => 'password2',
-            '_token' => $token,
+            '_token' => $this->csrfToken(),
         ]);
 
         $response->assertSessionHasErrors();
         $this->assertGuest();
-    }
-
-    private function csrfToken(): string
-    {
-        Session::start();
-        $token = csrf_token();
-        Session::put('_token', $token);
-        return $token;
     }
 }
