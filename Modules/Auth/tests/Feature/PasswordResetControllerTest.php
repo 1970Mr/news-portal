@@ -28,4 +28,12 @@ class PasswordResetControllerTest extends TestCase
         $response->assertRedirect()
             ->assertSessionHas('success');
     }
+
+    /** @test */
+    public function user_can_view_reset_password_form_with_valid_token_and_email(): void
+    {
+        $token = $this->faker->uuid;
+        $response = $this->get(route('password.reset', ['token' => $token, 'email' => 'test@example.com']));
+        $response->assertStatus(200);
+    }
 }
