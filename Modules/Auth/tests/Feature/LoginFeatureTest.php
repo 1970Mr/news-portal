@@ -12,6 +12,14 @@ class LoginFeatureTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
+    public function user_can_view_login_form(): void
+    {
+        $response = $this->get(route('login'));
+        $response->assertStatus(200);
+        $response->assertSee('وارد شوید');
+    }
+
+    /** @test */
     public function user_can_login_with_valid_credentials(): void
     {
         $user = UserFactory::new()->create([
