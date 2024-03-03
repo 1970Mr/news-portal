@@ -19,13 +19,8 @@ class RegisterController extends Controller
     {
         $success = $registerService->register($request);
         if ($success) {
-            return to_route('home.index')->with([
-                'status' => 'success',
-                'message' => 'کاربر با موفقیت ایجاد شد!'
-            ]);
+            return to_route('home.index')->with('success', __('کاربر با موفقیت ایجاد شد!'));
         }
-        return back()->withErrors([
-            'register_error' => 'کاربر با موفقیت ایجاد نشد! لطفا دوباره تلاش کنید.'
-        ]);
+        return back()->withErrors(__('کاربر با موفقیت ایجاد نشد! لطفا دوباره تلاش کنید.'));
     }
 }
