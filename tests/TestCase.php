@@ -21,12 +21,15 @@ abstract class TestCase extends BaseTestCase
 
     protected function createUser(
         $email = 'test@example.com',
-        $password = 'password'
+        $password = 'password',
+        $email_verified_at = false
     ): User
     {
+        $email_verified_at = $email_verified_at === false ? now() : $email_verified_at;
         return UserFactory::new()->create([
             'email' => $email,
             'password' => bcrypt($password),
+            'email_verified_at' => $email_verified_at,
         ]);
     }
 }
