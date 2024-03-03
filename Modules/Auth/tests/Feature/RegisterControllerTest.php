@@ -42,5 +42,22 @@ class RegisterControllerTest extends TestCase
         $this->post(route('register'), $requestData);
     }
 
+    /** @test */
+    public function user_can_register_with_valid_data(): void
+    {
+        $requestData = [
+            'name' => 'John Doe',
+            'email' => 'john@example.com',
+            'password' => 'password',
+            'password_confirmation' => 'password',
+            'agree' => true,
+        ];
 
+        $response = $this->post(route('register'), $requestData);
+
+        $response->assertRedirect(route('home.index'))
+            ->assertSessionHas('success', __('auth::messages.user_created'));
+
+        $this->assertDatabaseHas('users', ['email' => 'john@example.com']);
+    }
 }
