@@ -10,7 +10,6 @@ use Illuminate\View\View;
 use Modules\Auth\App\Http\Requests\PasswordResetRequest;
 use Modules\Auth\App\Http\Requests\SendEmailRequest;
 use Modules\Auth\App\Services\PasswordResetService;
-use Modules\User\App\Models\User;
 
 class PasswordResetController extends Controller
 {
@@ -37,6 +36,7 @@ class PasswordResetController extends Controller
     public function update(PasswordResetRequest $request, PasswordResetService $passwordResetService): RedirectResponse
     {
         $status = $passwordResetService->passwordReset($request);
+
         return $status === Password::PASSWORD_RESET ?
             to_route('login')->with('success', __('رمز عبور با موفقیت تغییر کرد! با رمز عبور جدید به سایت وارد شوید.')) :
             to_route('password.request')->withErrors(__('تغییر رمز عبور با موفقیت انجام نشد! لطفا دوباره تلاش کنید.'));

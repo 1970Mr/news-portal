@@ -2,8 +2,11 @@
 
 namespace Modules\Auth\tests\Feature;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
-use Modules\User\App\Models\User;
+use Mockery\MockInterface;
+use Modules\Auth\App\Http\Requests\PasswordResetRequest;
+use Modules\Auth\App\Services\PasswordResetService;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -42,9 +45,11 @@ class PasswordResetControllerTest extends TestCase
     /** @test */
     public function user_can_view_reset_password_form_with_valid_token_and_email(): void
     {
-        $token = $this->faker->uuid;
+        $user = $this->createUser();
+        $token = Password::broker()->createToken($user);
         $response = $this->get(route('password.reset', ['token' => $token, 'email' => 'test@example.com']));
-        $response->assertStatus(200);
+        $response->assertStatus(200)
+            ->assertViewIs('auth::password.reset');
     }
 
     /** @test */
@@ -55,4 +60,28 @@ class PasswordResetControllerTest extends TestCase
         $response->assertRedirect(route('password.request'))
             ->assertSessionHasErrors();
     }
+
+    /** @test */
+    public function password_reset_service_works(): void
+    {
+        $this->createUser();
+        $this->instance(
+            PasswordResetService::class,
+            mock(PasswordResetService::class, static function (MockInterface $mock) {
+                $mock->shouldReceive('passwordReset')
+                    ->once()
+                    ->andReturn(Password::PASSWORD_RESET);
+            })
+        );
+
+        $this->post(route('password.update'), [
+            'email' => 'test@example.com',
+            'token' => $this->faker()->uuid(),
+            'password' => 'new_password',
+            'password_confirmation' => 'new_password',
+            '_token' => $this->csrfToken(),
+        ]);
+    }
+
+
 }
