@@ -83,5 +83,23 @@ class PasswordResetControllerTest extends TestCase
         ]);
     }
 
+    /** @test */
+    public function user_can_reset_password(): void
+    {
+        $user = $this->createUser();
+        $token = Password::broker()->createToken($user);
 
+        $response = $this->post(route('password.update'), [
+            'email' => 'test@example.com',
+            'token' => $token,
+            'password' => 'new_password',
+            'password_confirmation' => 'new_password',
+            '_token' => $this->csrfToken(),
+        ]);
+        $user->refresh();
+
+        $response->assertRedirect(route('login'))
+            ->assertSessionHas('success');
+        $this->assertTrue(Hash::check('new_password', $user->password));
+    }
 }
