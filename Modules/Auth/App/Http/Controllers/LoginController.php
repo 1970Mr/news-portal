@@ -17,8 +17,8 @@ class LoginController extends Controller
     public function login(LoginRequest $request): RedirectResponse
     {
         if (auth()->attempt($request->all(['email', 'password']), !empty($request->get('remember-me'))) ) {
-            return to_route('home.index')->with('success', __('ورود با موفقیت انجام شد'));
+            return to_route('home.index')->with('success', __('auth::messages.login_success'));
         }
-        return back()->withErrors(__('کاربری با مشخصات وارد شده یافت نشد'));
+        return back()->withErrors(__('auth::messages.login_failed'));
     }
 }

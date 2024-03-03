@@ -19,8 +19,8 @@ class RegisterController extends Controller
     {
         $success = $registerService->register($request);
         if ($success) {
-            return to_route('home.index')->with('success', __('کاربر با موفقیت ایجاد شد!'));
+            return to_route('home.index')->with('success', __('auth::messages.user_created'));
         }
-        return back()->withErrors(__('کاربر با موفقیت ایجاد نشد! لطفا دوباره تلاش کنید.'));
+        return back()->withErrors(__('auth::messages.user_not_created'));
     }
 }

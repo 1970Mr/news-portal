@@ -29,7 +29,9 @@ class LoginControllerTest extends TestCase
             '_token' => $this->csrfToken(),
         ]);
 
-        $response->assertRedirect(route('home.index'));
+        $response->assertRedirect(route('home.index'))
+            ->assertSessionHas('success',  __('auth::messages.login_success'));
+
         $this->assertAuthenticatedAs($user);
     }
 
@@ -44,7 +46,9 @@ class LoginControllerTest extends TestCase
             '_token' => $this->csrfToken(),
         ]);
 
-        $response->assertSessionHasErrors();
+        $response->assertSessionHasErrors()
+            ->assertSessionHasErrors();
+
         $this->assertGuest();
     }
 }

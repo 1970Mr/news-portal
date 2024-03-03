@@ -5,7 +5,6 @@ namespace Modules\Auth\tests\Feature;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Mockery\MockInterface;
-use Modules\Auth\App\Http\Requests\PasswordResetRequest;
 use Modules\Auth\App\Services\PasswordResetService;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -39,7 +38,7 @@ class PasswordResetControllerTest extends TestCase
         ]);
 
         $response->assertRedirect()
-            ->assertSessionHas('success');
+            ->assertSessionHas('success', __('auth::messages.password_link_sent_success'));
     }
 
     /** @test */
@@ -99,7 +98,8 @@ class PasswordResetControllerTest extends TestCase
         $user->refresh();
 
         $response->assertRedirect(route('login'))
-            ->assertSessionHas('success');
+            ->assertSessionHas('success', __('auth::messages.password_changed_successfully'));
+
         $this->assertTrue(Hash::check('new_password', $user->password));
     }
 }

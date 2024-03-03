@@ -6,7 +6,7 @@ use Modules\User\Database\Factories\UserFactory;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class LogoutTest extends TestCase
+class LogoutControllerTest extends TestCase
 {
     use RefreshDatabase;
 
