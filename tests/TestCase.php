@@ -19,14 +19,6 @@ abstract class TestCase extends BaseTestCase
         $this->withoutMiddleware(ThrottleRequests::class);
     }
 
-    protected function csrfToken(): string
-    {
-        Session::start();
-        $token = csrf_token();
-        Session::put('_token', $token);
-        return $token;
-    }
-
     protected function createUser(
         $email = 'test@example.com',
         $password = 'password'

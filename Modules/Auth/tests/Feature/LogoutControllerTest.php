@@ -18,7 +18,7 @@ class LogoutControllerTest extends TestCase
             'password' => bcrypt('password'),
         ]);
         $this->actingAs($user);
-        $response = $this->post(route('logout'), ['_token' => $this->csrfToken()]);
+        $response = $this->post(route('logout'));
         $response->assertRedirect(route('home.index'));
         $this->assertGuest();
     }

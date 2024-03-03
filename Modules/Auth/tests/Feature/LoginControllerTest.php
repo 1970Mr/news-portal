@@ -26,7 +26,6 @@ class LoginControllerTest extends TestCase
         $response = $this->post(route('login'), [
             'email' => 'test@example.com',
             'password' => 'password',
-            '_token' => $this->csrfToken(),
         ]);
 
         $response->assertRedirect(route('home.index'))
@@ -43,7 +42,6 @@ class LoginControllerTest extends TestCase
         $response = $this->post(route('login'), [
             'email' => 'test@example.com',
             'password' => 'password2',
-            '_token' => $this->csrfToken(),
         ]);
 
         $response->assertSessionHasErrors()

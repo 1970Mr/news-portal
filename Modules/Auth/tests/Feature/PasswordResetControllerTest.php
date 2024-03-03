@@ -34,7 +34,6 @@ class PasswordResetControllerTest extends TestCase
 
         $response = $this->post(route('password.email'), [
             'email' => 'test@example.com',
-            '_token' => $this->csrfToken(),
         ]);
 
         $response->assertRedirect()
@@ -78,7 +77,6 @@ class PasswordResetControllerTest extends TestCase
             'token' => $this->faker()->uuid(),
             'password' => 'new_password',
             'password_confirmation' => 'new_password',
-            '_token' => $this->csrfToken(),
         ]);
     }
 
@@ -93,7 +91,6 @@ class PasswordResetControllerTest extends TestCase
             'token' => $token,
             'password' => 'new_password',
             'password_confirmation' => 'new_password',
-            '_token' => $this->csrfToken(),
         ]);
         $user->refresh();
 
