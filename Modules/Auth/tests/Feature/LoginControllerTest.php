@@ -15,7 +15,7 @@ class LoginControllerTest extends TestCase
         $response = $this->get(route('login'));
         $response->assertStatus(200)
             ->assertViewIs('auth::login')
-            ->assertSee('وارد شوید');
+            ->assertSee('ورود');
     }
 
     /** @test */
