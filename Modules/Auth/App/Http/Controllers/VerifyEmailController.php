@@ -17,12 +17,12 @@ class VerifyEmailController extends Controller
     public function verify(EmailVerificationRequest $request): RedirectResponse
     {
         $request->fulfill();
-        return to_route('home.index')->with('success', __('ایمیل شما با موفقیت تایید شد.'));
+        return to_route('home.index')->with('success', __('auth::messages.email_verification_successfully'));
     }
 
     public function send(): RedirectResponse
     {
         auth()->user()->sendEmailVerificationNotification();
-        return back()->with('success', ['', __('لینک تایید برای ایمیل شما ارسال شد.')]);
+        return back()->with('success', __('auth::messages.email_verification_sent'));
     }
 }

@@ -10,4 +10,6 @@ return [
     'reset_link_invalid' => 'لینک ارسال شده درست نمی‌باشد! لطفا دوباره تلاش کنید.',
     'password_changed_successfully' => 'رمز عبور با موفقیت تغییر کرد! با رمز عبور جدید به سایت وارد شوید.',
     'password_change_failed' => 'تغییر رمز عبور با موفقیت انجام نشد! لطفا دوباره تلاش کنید.',
+    'email_verification_successfully' => 'ایمیل شما با موفقیت تایید شد.',
+    'email_verification_sent' => 'لینک تایید برای ایمیل شما ارسال شد.',
 ];
