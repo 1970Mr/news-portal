@@ -2,6 +2,7 @@
 
 namespace Modules\Auth\tests\Feature;
 
+use Modules\User\Database\Factories\UserFactory;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -21,7 +22,7 @@ class LoginControllerTest extends TestCase
     /** @test */
     public function user_can_login_with_valid_credentials(): void
     {
-        $user = $this->createUser();
+        $user = UserFactory::new()->create();
 
         $response = $this->post(route('login'), [
             'email' => 'test@example.com',
@@ -37,7 +38,7 @@ class LoginControllerTest extends TestCase
     /** @test */
     public function user_cannot_login_with_invalid_credentials(): void
     {
-        $this->createUser();
+        UserFactory::new()->create();
 
         $response = $this->post(route('login'), [
             'email' => 'test@example.com',
