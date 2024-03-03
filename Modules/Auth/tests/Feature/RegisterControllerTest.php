@@ -19,4 +19,28 @@ class RegisterControllerTest extends TestCase
             ->assertViewIs('auth::register')
             ->assertSee('ثبت نام');
     }
+
+    /** @test */
+    public function register_service_works(): void
+    {
+        $this->instance(
+            RegisterService::class,
+            mock(RegisterService::class, static function (MockInterface $mock) {
+                $mock->shouldReceive('register')
+                    ->once()
+                    ->andReturn(true);
+            })
+        );
+
+        $requestData = [
+            'name' => 'John Doe',
+            'email' => 'john@example.com',
+            'password' => 'password',
+            'password_confirmation' => 'password',
+            'agree' => true,
+        ];
+        $this->post(route('register'), $requestData);
+    }
+
+
 }
