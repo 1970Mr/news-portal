@@ -46,8 +46,8 @@ class RegisterControllerTest extends TestCase
     public function user_can_register_with_valid_data(): void
     {
         $requestData = [
-            'name' => 'John Doe',
-            'email' => 'john@example.com',
+            'name' => 'test',
+            'email' => 'test@example.com',
             'password' => 'password',
             'password_confirmation' => 'password',
             'agree' => true,
@@ -58,6 +58,6 @@ class RegisterControllerTest extends TestCase
         $response->assertRedirect(route('home.index'))
             ->assertSessionHas('success', __('auth::messages.user_created'));
 
-        $this->assertDatabaseHas('users', ['email' => 'john@example.com']);
+        $this->assertDatabaseHas('users', ['email' => 'test@example.com']);
     }
 }
