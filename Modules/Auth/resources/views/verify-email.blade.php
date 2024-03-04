@@ -7,9 +7,9 @@
     <h2 class="text-center m-b-20">تایید ایمیل</h2>
 
     @if(session()->has('success'))
-        <div class="alert alert-{{ session()->get('success')[1] ? 'success' : 'info'}}">
-            <i class="icon-{{ session()->get('success')[1] ? 'check' : 'info'}}"></i>
-            {{ session()->get('success')[1] }}
+        <div class="alert alert-success m-t-10 m-b-20">
+            <i class="icon-check"></i>
+            {{ session()->get('success') }}
         </div>
     @endif
 
