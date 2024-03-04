@@ -45,4 +45,14 @@ class VerifyEmailControllerTest extends TestCase
         $this->assertNotNull($user->fresh()->email_verified_at);
     }
 
+    /** @test */
+    public function user_can_resend_email_verification(): void
+    {
+        $user = UserFactory::new()->create(['email_verified_at' => null]);
+
+        $response = $this->actingAs($user)->post(route('verification.send'));
+
+        $response->assertRedirect()
+            ->assertSessionHas('success', __('auth::messages.email_verification_sent'));
+    }
 }
