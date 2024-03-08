@@ -30,9 +30,9 @@ class UserController extends Controller
         return to_route('users.index')->with('success', 'کابر جدید با موفقیت ایجاد شد');
     }
 
-    public function edit($id): View
+    public function edit(User $user): View
     {
-        return view('user::edit');
+        return view('user::edit', compact('user'));
     }
 
     public function update(Request $request, $id): RedirectResponse

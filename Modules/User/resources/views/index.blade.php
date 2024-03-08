@@ -69,10 +69,10 @@
                                         <td class="ltr text-right">{{ jalalian()->forge($user->created_at)->format('Y/m/d H:i:s') }}</td>
                                         <td class="{{ ($user->email_verified_at) ? 'text-success' : 'text-danger' }}">{{ ($user->email_verified_at) ? 'تایید شده' : 'تایید نشده' }}</td>
                                         <td class="d-flex gap-2">
-                                            <button class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                    rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش">
+                                            <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
+                                                    rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('users.edit', $user->id) }}">
                                                 <i class="icon-pencil fa-flip-horizontal"></i>
-                                            </button>
+                                            </a>
                                             <form action="{{ route('users.destroy', $user->id) }}" method="post">
                                                 @csrf
                                                 @method('delete')

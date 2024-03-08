@@ -41,7 +41,6 @@
                 <div class="portlet-body">
                     <form id="user-create-form" role="form" action="{{ route('users.store') }}" method="post">
                         @csrf
-{{--                        @component('auth::components.error-messages') @endcomponent--}}
                         <x-share-error-messages />
 
                         <fieldset class="row justify-content-center">

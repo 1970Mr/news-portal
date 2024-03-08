@@ -1,4 +1,4 @@
-@extends('panel::layouts.master', ['title' => "ویرایش کاربر $user->name"])
+@extends('panel::layouts.master', ['title' => "ویرایش کاربر"])
 
 @section('content')
     <!-- BEGIN BREADCRUMB -->
@@ -39,34 +39,36 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="user-create-form" role="form" action="{{ route('users.update') }}" method="post">
+                    <form id="user-create-form" role="form" action="{{ route('users.update', $user->id) }}" method="post">
                         @csrf
+                        <x-share-error-messages />
+
                         <fieldset class="row justify-content-center">
                             <div class="form-group col-lg-6">
                                 <label for="name">نام <small>(ضروری و حداقل)</small></label>
-                                <input id="name" class="form-control" name="name" type="text" required value="">
+                                <input id="name" class="form-control" name="name" type="text" required value="{{ $user->name }}">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="email">ایمیل <small>(ضروری)</small> </label>
-                                <input id="email" class="form-control" name="email" type="email" required>
+                                <input id="email" class="form-control" name="email" type="email" required value="{{ $user->email }}">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="password">رمز عبور <small>(ضروری، حداقل 8 کاراکتر)</small></label>
-                                <input id="password" class="form-control" name="password" minlength="8" type="password" required>
+                                <input id="password" class="form-control" name="password" minlength="8" type="password">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="password_confirmation">تکرار رمز عبور <small>(ضروری، حداقل 8 کاراکتر)</small></label>
-                                <input id="password_confirmation" class="form-control" name="password_confirmation" minlength="8" type="password" required>
+                                <input id="password_confirmation" class="form-control" name="password_confirmation" minlength="8" type="password">
                             </div>
                             <div class="form-group text-center">
-                                <input id="email_verification" class="form-control" name="email_verification" type="checkbox">
+                                <input id="email_verification" class="form-control" name="email_verification" type="checkbox" {{ $user->email_verified_at ? 'checked' : '' }}>
                                 <label for="email_verification">تایید ایمیل</label>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-6 col-sm-offset-4 mx-auto">
                                     <button class="btn btn-success btn-block">
                                         <i class="icon-check"></i>
-                                        ایجاد کاربر جدید
+                                        ویرایش کاربر
                                     </button>
                                 </div>
                             </div>
