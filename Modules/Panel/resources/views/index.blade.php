@@ -77,7 +77,7 @@
 
     <div class="row">
         <div class="col-md-6 col-12">
-            <div class="portlet box shadow min-height-600">
+            <div class="portlet box shadow min-height-500">
                 <div class="portlet-heading">
                     <div class="portlet-title">
                         <h3 class="title">

@@ -30,7 +30,7 @@
                                     <span class="input-group-addon">
                                         <i class="icon-envelope"></i>
                                     </span>
-                <input type="email" class="form-control round ltr text-left" id="email" name="email" placeholder="مثال:info@site.com" required>
+                <input type="email" class="form-control round ltr text-left" id="email" name="email" placeholder="info@site.com" required>
             </div><!-- /.input-group-->
         </div><!-- /.form-group -->
         <div class="form-group">

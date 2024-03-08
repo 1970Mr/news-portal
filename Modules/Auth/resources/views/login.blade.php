@@ -29,7 +29,7 @@
                                         <i class="icon-envelope"></i>
                                     </span>
                 <input id="email" class="form-control ltr text-left" type="email" name="email"
-                       placeholder="مثال:info@site.com" required value="{{ old('email') }}">
+                       placeholder="info@site.com" required value="{{ old('email') }}">
             </div><!-- /.input-group -->
         </div><!-- /.form-group -->
         <div class="form-group">

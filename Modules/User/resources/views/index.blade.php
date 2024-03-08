@@ -7,7 +7,7 @@
         <div class="breadcrumb-box shadow">
             <ul class="breadcrumb">
                 <li><a href="{{ route('panel.index') }}">پیشخوان</a></li>
-                <li><a href="{{ route('users.index') }}">لیست کاربران</a></li>
+                <li><a>لیست کاربران</a></li>
             </ul>
             <div class="breadcrumb-left">
                 {{ jalalian()->now()->format('l، Y/m/d') }}
@@ -19,7 +19,7 @@
 
     <div class="row pe-0">
         <div class="col-12 pe-0">
-            <div class="portlet box shadow min-height-600">
+            <div class="portlet box shadow min-height-500">
                 <div class="portlet-heading">
                     <div class="portlet-title">
                         <h3 class="title">
@@ -37,7 +37,7 @@
                             </div>
                         </a>
                         <a class="btn btn-sm btn-default btn-round" rel="tooltip"
-                           href="{{ route('users.index') }}"
+                           href="{{ route('users.create') }}"
                            aria-label="ایجاد کاربر جدید" data-bs-original-title="ایجاد کاربر جدید">
                             <i class="icon-user-follow d-flex justify-content-center align-items-center"></i>
                             <div class="paper-ripple">
