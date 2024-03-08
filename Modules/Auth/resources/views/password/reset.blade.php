@@ -10,7 +10,7 @@
         رمز عبور جدید خود را وارد نمایید.
     </div>
 
-    <x-auth-error-messages />
+    <x-share-error-messages />
 
     <hr>
 

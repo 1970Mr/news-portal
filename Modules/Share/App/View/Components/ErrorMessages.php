@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Auth\App\View\Components;
+namespace Modules\Share\App\View\Components;
 
 use Illuminate\View\Component;
 use Illuminate\View\View;
@@ -20,6 +20,6 @@ class ErrorMessages extends Component
      */
     public function render(): View|string
     {
-        return view('auth::components.error-messages');
+        return view('share::components.error-messages');
     }
 }

@@ -18,7 +18,7 @@
         </div>
     @endif
 
-    <x-auth-error-messages />
+    <x-share-error-messages />
 
     <hr>
 

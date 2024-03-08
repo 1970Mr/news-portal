@@ -6,7 +6,7 @@
     </p>
     <h2 class="text-center m-b-20">ثبت نام </h2>
 
-    <x-auth-error-messages />
+    <x-share-error-messages />
 
     <hr>
 

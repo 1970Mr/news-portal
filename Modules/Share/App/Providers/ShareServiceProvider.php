@@ -5,6 +5,7 @@ namespace Modules\Share\App\Providers;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Modules\Share\App\Console\SendTestEmail;
+use Modules\Share\App\View\Components\ErrorMessages;
 use Modules\Share\App\View\Components\SweetAlert;
 
 class ShareServiceProvider extends ServiceProvider
@@ -24,7 +25,7 @@ class ShareServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/migrations'));
-        Blade::component('sweetalert', SweetAlert::class);
+        $this->loadViewComponentsAs($this->moduleNameLower, [SweetAlert::class, ErrorMessages::class]);
     }
 
     /**

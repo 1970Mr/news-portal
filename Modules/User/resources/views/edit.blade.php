@@ -1,4 +1,4 @@
-@extends('panel::layouts.master', ['title' => 'ایجاد کاربر جدید'])
+@extends('panel::layouts.master', ['title' => "ویرایش کاربر $user->name"])
 
 @section('content')
     <!-- BEGIN BREADCRUMB -->
@@ -7,7 +7,7 @@
             <ul class="breadcrumb">
                 <li><a href="{{ route('panel.index') }}">پیشخوان</a></li>
                 <li><a href="{{ route('users.index') }}">لیست کاربران</a></li>
-                <li><a>ایجاد کاربر جدید</a></li>
+                <li><a>ویرایش کاربر</a></li>
             </ul>
             <div class="breadcrumb-left">
                 {{ jalalian()->now()->format('l، Y/m/d') }}
@@ -24,7 +24,7 @@
                     <div class="portlet-title">
                         <h3 class="title">
                             <i class="icon-user-follow"></i>
-                            ایجاد کاربر جدید
+                            ویرایش کاربر {{ $user->name }}
                         </h3>
                     </div><!-- /.portlet-title -->
                     <div class="buttons-box">
@@ -39,15 +39,12 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="user-create-form" role="form" action="{{ route('users.store') }}" method="post">
+                    <form id="user-create-form" role="form" action="{{ route('users.update') }}" method="post">
                         @csrf
-{{--                        @component('auth::components.error-messages') @endcomponent--}}
-                        <x-share-error-messages />
-
                         <fieldset class="row justify-content-center">
                             <div class="form-group col-lg-6">
                                 <label for="name">نام <small>(ضروری و حداقل)</small></label>
-                                <input id="name" class="form-control" name="name" type="text" required>
+                                <input id="name" class="form-control" name="name" type="text" required value="">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="email">ایمیل <small>(ضروری)</small> </label>

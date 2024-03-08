@@ -4,7 +4,7 @@ namespace Modules\Auth\App\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use Modules\Auth\App\View\Components\ErrorMessages;
+use Modules\Share\App\View\Components\ErrorMessages;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -23,7 +23,6 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/migrations'));
-        $this->loadViewComponentsAs('auth', [ErrorMessages::class]);
     }
 
     /**
