@@ -10,8 +10,7 @@
                 <li><a href="{{ route('users.index') }}">لیست کاربران</a></li>
             </ul>
             <div class="breadcrumb-left">
-                {{ \Morilog\Jalali\Jalalian::now()->format('l، Y/m/d') }}
-{{--                {{ jalalian()->now()->format('l، Y/m/d') }}--}}
+                {{ jalalian()->now()->format('l، Y/m/d') }}
                 <i class="icon-calendar"></i>
             </div><!-- /.breadcrumb-left -->
         </div><!-- /.breadcrumb-box -->
