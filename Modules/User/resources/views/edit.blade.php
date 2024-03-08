@@ -41,7 +41,9 @@
                 <div class="portlet-body">
                     <form id="user-create-form" role="form" action="{{ route('users.update', $user->id) }}" method="post">
                         @csrf
+                        @method('put')
                         <x-share-error-messages />
+                        <input type="hidden" name="id" value="{{ $id }}">
 
                         <fieldset class="row justify-content-center">
                             <div class="form-group col-lg-6">
@@ -52,14 +54,31 @@
                                 <label for="email">ایمیل <small>(ضروری)</small> </label>
                                 <input id="email" class="form-control" name="email" type="email" required value="{{ $user->email }}">
                             </div>
-                            <div class="form-group col-lg-6">
-                                <label for="password">رمز عبور <small>(ضروری، حداقل 8 کاراکتر)</small></label>
-                                <input id="password" class="form-control" name="password" minlength="8" type="password">
+
+                            <div class="accordion mb-3" id="accordionEditPassword">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button collapsed h4 p-2 mt-0 mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEditPassword"
+                                                aria-expanded="true"
+                                                aria-controls="collapseOne">
+                                            ویرایش رمزعبور
+                                        </button>
+                                    </h2>
+                                    <div id="collapseEditPassword" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body row">
+                                            <div class="form-group col-lg-6">
+                                                <label for="password">رمز عبور <small>(ضروری، حداقل 8 کاراکتر)</small></label>
+                                                <input id="password" class="form-control" name="password" minlength="8" type="password">
+                                            </div>
+                                            <div class="form-group col-lg-6">
+                                                <label for="password_confirmation">تکرار رمز عبور <small>(ضروری، حداقل 8 کاراکتر)</small></label>
+                                                <input id="password_confirmation" class="form-control" name="password_confirmation" minlength="8" type="password">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group col-lg-6">
-                                <label for="password_confirmation">تکرار رمز عبور <small>(ضروری، حداقل 8 کاراکتر)</small></label>
-                                <input id="password_confirmation" class="form-control" name="password_confirmation" minlength="8" type="password">
-                            </div>
+
                             <div class="form-group text-center">
                                 <input id="email_verification" class="form-control" name="email_verification" type="checkbox" {{ $user->email_verified_at ? 'checked' : '' }}>
                                 <label for="email_verification">تایید ایمیل</label>

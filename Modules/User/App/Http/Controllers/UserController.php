@@ -7,7 +7,8 @@ use Illuminate\Auth\Events\Verified;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Modules\User\App\Http\Requests\UserRequest;
+use Modules\User\App\Http\Requests\UserStoreRequest;
+use Modules\User\App\Http\Requests\UserUpdateRequest;
 use Modules\User\App\Models\User;
 
 class UserController extends Controller
@@ -23,7 +24,7 @@ class UserController extends Controller
         return view('user::create');
     }
 
-    public function store(UserRequest $request): RedirectResponse
+    public function store(UserStoreRequest $request): RedirectResponse
     {
         $user = User::create($request->validated());
         if ($request->email_verification) $user->markEmailAsVerified();
@@ -32,12 +33,16 @@ class UserController extends Controller
 
     public function edit(User $user): View
     {
-        return view('user::edit', compact('user'));
+        $id = encrypt($user->id);
+        return view('user::edit', compact('user', 'id'));
     }
 
-    public function update(Request $request, $id): RedirectResponse
+    public function update(UserUpdateRequest $request, User $user): RedirectResponse
     {
-        return to_route('users.index');
+        $user->update($request->validated());
+        if ($request->email_verification) $user->markEmailAsVerified();
+        else $user->unmarkEmailAsVerified();
+        return to_route('users.index')->with('success', "کاربر $user->name با موفقیت ویرایش شد");
     }
 
     public function destroy(User $user): RedirectResponse

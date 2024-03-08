@@ -42,4 +42,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function unmarkEmailAsVerified(): bool
+    {
+        return $this->forceFill([
+            'email_verified_at' => null,
+        ])->save();
+    }
 }
