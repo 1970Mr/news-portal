@@ -9,8 +9,19 @@ return [
         ],
         'user' => [
             'title' => 'کاربران',
-            'url' => route('users.index'),
             'icon' => ' icon-people',
+            'children' => [
+                'index' => [
+                    'title' => 'لیست کاربران',
+                    'url' => route('users.index'),
+                    'icon' => 'icon-people',
+                ],
+                'create' => [
+                    'title' => 'ایجاد کاربر جدید',
+                    'url' => route('users.create'),
+                    'icon' => 'icon-user-follow',
+                ],
+            ]
         ],
     ]
 ];
