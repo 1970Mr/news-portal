@@ -5,16 +5,14 @@ namespace Modules\User\App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Modules\User\App\Models\User;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        return view('user::index');
+        $users = User::paginate(10);
+        return view('user::index', compact('users'));
     }
 
     /**

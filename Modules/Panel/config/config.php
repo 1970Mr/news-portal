@@ -9,7 +9,7 @@ return [
         ],
         'user' => [
             'title' => 'کاربران',
-            'url' => route('login'),
+            'url' => route('users.index'),
             'icon' => ' icon-people',
         ],
     ]
