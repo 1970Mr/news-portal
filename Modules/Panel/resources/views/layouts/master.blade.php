@@ -50,6 +50,8 @@
 <!-- BEGIN PAGE JAVASCRIPT -->
 @stack('scripts')
 <!-- END PAGE JAVASCRIPT -->
+
+@include('sweetalert::alert')
 </body>
 
 </html>
