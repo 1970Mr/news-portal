@@ -52,7 +52,7 @@
                         <table class="table table-bordered table-striped table-hover">
                             <thead>
                             <tr>
-                                <th><i class="icon-energy"></i></th>
+                                <th>#</th>
                                 <th>نام</th>
                                 <th>ایمیل</th>
                                 <th>تاریخ عضویت</th>

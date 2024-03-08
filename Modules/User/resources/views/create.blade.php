@@ -39,7 +39,7 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form role="form" action="{{ route('users.store') }}" method="post">
+                    <form id="user-create-form" role="form" action="{{ route('users.store') }}" method="post">
                         @csrf
                         <fieldset class="row justify-content-center">
                             <div class="form-group col-lg-6">
@@ -59,8 +59,8 @@
                                 <input id="password_confirmation" class="form-control" name="password_confirmation" minlength="8" type="password" required>
                             </div>
                             <div class="form-group text-center">
-                                <input id="email_confirmation" class="form-control" name="email_confirmation" type="checkbox">
-                                <label for="email_confirmation">تایید ایمیل</label>
+                                <input id="email_verification" class="form-control" name="email_verification" type="checkbox">
+                                <label for="email_verification">تایید ایمیل</label>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-6 col-sm-offset-4 mx-auto">
@@ -97,6 +97,17 @@
                 }
             }
         });
-        $("#validate-form").validate();
+        $("#user-create-form").validate({
+            rules: {
+                password_confirmation: {
+                    equalTo: "#password"
+                }
+            },
+            messages: {
+                password_confirmation: {
+                    equalTo: "رمزهای عبور یکسان نیستند"
+                }
+            }
+        });
     </script>
 @endpush
