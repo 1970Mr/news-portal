@@ -23,5 +23,10 @@ return [
                 ],
             ]
         ],
+        'category' => [
+            'title' => 'دسته بندی',
+            'icon' => 'icon-grid',
+            'url' => route('category.index'),
+        ],
     ]
 ];
