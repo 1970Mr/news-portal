@@ -5,7 +5,8 @@ namespace Modules\Category\App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Modules\Category\App\Http\Requests\CategoryRequest;
+use Modules\Category\App\Http\Requests\CategoryStoreRequest;
+use Modules\Category\App\Http\Requests\CategoryUpdateRequest;
 use Modules\Category\App\Models\Category;
 
 class CategoryController extends Controller
@@ -22,7 +23,7 @@ class CategoryController extends Controller
         return view('category::create', compact('categories'));
     }
 
-    public function store(CategoryRequest $request): RedirectResponse
+    public function store(CategoryStoreRequest $request): RedirectResponse
     {
         Category::create($request->validated());
         return to_route('category.index')->with('success', 'دسته بندی جدید با موفقیت ایجاد شد');
@@ -30,16 +31,17 @@ class CategoryController extends Controller
 
     public function edit(Category $category): View
     {
-        return view('category::edit', compact('category'));
+        $categories = Category::orderBy('created_at', 'desc')->get();
+        return view('category::edit', compact('category', 'categories'));
     }
 
-    public function update(CategoryRequest $request, Category $category): RedirectResponse
+    public function update(CategoryUpdateRequest $request, Category $category): RedirectResponse
     {
         $category->update($request->validated());
         return to_route('category.index')->with('success', "دسته بندی " . $category->title . " با موفقیت ویرایش شد");
     }
 
-    public function destroy(Category $category)
+    public function destroy(Category $category): RedirectResponse
     {
         $category->delete();
         return to_route('category.index')->with('success', 'حذف دسته بندی با موفقیت انجام شد.');
