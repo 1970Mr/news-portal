@@ -13,7 +13,7 @@ class CategoryRequest extends FormRequest
     {
         return [
             'name' => 'required|min:2|max:100|unique:categories',
-            'slug' => 'required',
+            'slug' => 'required|unique:categories',
             'description' => 'nullable|min:10',
             'parent_id' => 'required|numeric',
             'status' => 'required|numeric',

@@ -27,7 +27,7 @@
                             لیست کاربران
                         </h3>
                     </div><!-- /.portlet-title -->
-                    <div class="buttons-box">
+                    <div class="buttons-box ltr">
                         <a class="btn btn-sm btn-default btn-round btn-fullscreen" rel="tooltip"
                            aria-label="تمام صفحه" data-bs-original-title="تمام صفحه">
                             <i class="icon-size-fullscreen d-flex justify-content-center align-items-center"></i>
@@ -36,7 +36,7 @@
                                 <div class="paper-ripple__waves"></div>
                             </div>
                         </a>
-                        <a class="btn btn-sm btn-default btn-round" rel="tooltip"
+                        <a class="btn btn-sm btn-default btn-round bg-green text-white" rel="tooltip"
                            href="{{ route('users.create') }}"
                            aria-label="ایجاد کاربر جدید" data-bs-original-title="ایجاد کاربر جدید">
                             <i class="icon-user-follow d-flex justify-content-center align-items-center"></i>

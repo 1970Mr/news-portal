@@ -24,7 +24,7 @@
                         <ul>
                             @foreach($menu['children'] as $child_menu)
                                 <li class="{{ $child_menu['class'] ?? '' }}">
-                                    <a href="{{ $child_menu['url'] }}" class="{{ url()->current() === $child_menu['url'] ? 'current' : '' }}">
+                                    <a href="{{ $child_menu['url'] }}" class="{{ url()->current() === $child_menu['url'] ? 'current' : '' }} font-sm">
                                         <i class="{{ $child_menu['icon'] }}"></i>
                                         <span>{{ $child_menu['title'] }}</span>
                                     </a>

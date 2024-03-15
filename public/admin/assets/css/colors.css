@@ -69,7 +69,7 @@ body, #page-content {
 }
 
 .bg-red, .btn-red, .btn-red.active, .btn-red:hover, .btn-red:active, .btn-red:focus {
-  background: #f55145;
+  background: #f55145 !important;
 }
 
 /*---------------------- End red -----------------------*/
@@ -101,7 +101,7 @@ body, #page-content {
 }
 
 .bg-green, .btn-green, .btn-green.active, .btn-green:hover, .btn-green:active, .btn-green:focus {
-  background: #53a96b;
+  background: #53a96b !important;
 }
 
 /*---------------------- End green -----------------------*/
