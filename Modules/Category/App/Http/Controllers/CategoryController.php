@@ -5,8 +5,7 @@ namespace Modules\Category\App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Modules\Category\App\Http\Requests\CategoryRequest;
 use Modules\Category\App\Models\Category;
 
 class CategoryController extends Controller
@@ -22,7 +21,7 @@ class CategoryController extends Controller
         return view('category::create');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(CategoryRequest $request): RedirectResponse
     {
         Category::create($request->validated());
         return to_route('category.index')->with('success', 'دسته بندی جدید با موفقیت ایجاد شد');
@@ -33,7 +32,7 @@ class CategoryController extends Controller
         return view('category::edit', compact('category'));
     }
 
-    public function update(Request $request, Category $category): RedirectResponse
+    public function update(CategoryRequest $request, Category $category): RedirectResponse
     {
         $category->update($request->validated());
         return to_route('category.index')->with('success', "دسته بندی " . $category->title . " با موفقیت ویرایش شد");
