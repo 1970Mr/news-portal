@@ -40,7 +40,7 @@ class UserController extends Controller
         $user->update($request->validated());
         if ($request->email_verification) $user->markEmailAsVerified();
         else $user->unmarkEmailAsVerified();
-        return to_route('users.index')->with('success', "کاربر $user->name با موفقیت ویرایش شد");
+        return to_route('users.index')->with('success', "کاربر " . $user->name . " با موفقیت ویرایش شد");
     }
 
     public function destroy(User $user): RedirectResponse

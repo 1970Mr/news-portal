@@ -3,65 +3,45 @@
 namespace Modules\Category\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Category\App\Models\Category;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(): View
     {
-        return view('category::index');
+        $categories = Category::orderBy('created_at', 'desc')->paginate(10);
+        return view('category::index', compact('categories'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function create(): View
     {
         return view('category::create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request): RedirectResponse
     {
-        //
+        Category::create($request->validated());
+        return to_route('category.index')->with('success', 'دسته بندی جدید با موفقیت ایجاد شد');
     }
 
-    /**
-     * Show the specified resource.
-     */
-    public function show($id)
+    public function edit(Category $category): View
     {
-        return view('category::show');
+        return view('category::edit', compact('category'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($id)
+    public function update(Request $request, Category $category): RedirectResponse
     {
-        return view('category::edit');
+        $category->update($request->validated());
+        return to_route('category.index')->with('success', "دسته بندی " . $category->title . " با موفقیت ویرایش شد");
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, $id): RedirectResponse
+    public function destroy(Category $category)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy($id)
-    {
-        //
+        $category->delete();
+        return to_route('category.index')->with('success', 'حذف دسته بندی با موفقیت انجام شد.');
     }
 }
