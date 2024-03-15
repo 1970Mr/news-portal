@@ -15,8 +15,8 @@ class CategoryRequest extends FormRequest
             'name' => 'required|min:2|max:100|unique:categories',
             'slug' => 'required|unique:categories',
             'description' => 'nullable|min:10',
-            'parent_id' => 'required|numeric',
-            'status' => 'required|numeric',
+            'parent_id' => 'nullable|numeric',
+            'status' => 'required|boolean',
         ];
     }
 
@@ -26,5 +26,12 @@ class CategoryRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'status' => (bool) $this->status,
+        ]);
     }
 }

@@ -45,23 +45,23 @@
 
                         <fieldset class="row justify-content-center">
                             <div class="form-group col-lg-6">
-                                <label for="name">نام <small>(ضروری و حداقل)</small></label>
-                                <input id="name" class="form-control" name="name" type="text" required>
+                                <label for="name">نام <small>(ضروری)</small></label>
+                                <input id="name" class="form-control" name="name" type="text" required value="{{ old('name') }}">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="email">ایمیل <small>(ضروری)</small> </label>
-                                <input id="email" class="form-control" name="email" type="email" required>
+                                <input id="email" class="form-control" name="email" type="email" required value="{{ old('email') }}">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="password">رمز عبور <small>(ضروری، حداقل 8 کاراکتر)</small></label>
-                                <input id="password" class="form-control" name="password" minlength="8" type="password" required>
+                                <input id="password" class="form-control" name="password" minlength="8" type="password" required value="{{ old('password') }}">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="password_confirmation">تکرار رمز عبور <small>(ضروری، حداقل 8 کاراکتر)</small></label>
-                                <input id="password_confirmation" class="form-control" name="password_confirmation" minlength="8" type="password" required>
+                                <input id="password_confirmation" class="form-control" name="password_confirmation" minlength="8" type="password" required value="{{ old('password_confirmation') }}">
                             </div>
                             <div class="form-group text-center">
-                                <input id="email_verification" class="form-control" name="email_verification" type="checkbox">
+                                <input id="email_verification" class="form-control" name="email_verification" type="checkbox" @if(old('email_verification')) checked @endif>
                                 <label for="email_verification">تایید ایمیل</label>
                             </div>
                             <div class="form-group">

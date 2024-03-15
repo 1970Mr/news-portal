@@ -18,7 +18,8 @@ class CategoryController extends Controller
 
     public function create(): View
     {
-        return view('category::create');
+        $categories = Category::orderBy('created_at', 'desc')->get();
+        return view('category::create', compact('categories'));
     }
 
     public function store(CategoryRequest $request): RedirectResponse
