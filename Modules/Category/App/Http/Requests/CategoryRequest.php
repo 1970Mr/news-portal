@@ -16,6 +16,7 @@ class CategoryRequest extends FormRequest
             'slug' => 'required',
             'description' => 'nullable|min:10',
             'parent_id' => 'required|numeric',
+            'status' => 'required|numeric',
         ];
     }
 
