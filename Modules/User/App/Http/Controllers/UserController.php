@@ -3,9 +3,7 @@
 namespace Modules\User\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Auth\Events\Verified;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Modules\User\App\Http\Requests\UserStoreRequest;
 use Modules\User\App\Http\Requests\UserUpdateRequest;
