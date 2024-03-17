@@ -13,12 +13,12 @@ return [
             'children' => [
                 'index' => [
                     'title' => 'لیست کاربران',
-                    'url' => route('users.index'),
+                    'url' => route('user.index'),
                     'icon' => 'icon-people',
                 ],
                 'create' => [
                     'title' => 'ایجاد کاربر جدید',
-                    'url' => route('users.create'),
+                    'url' => route('user.create'),
                     'icon' => 'icon-user-follow',
                 ],
             ]

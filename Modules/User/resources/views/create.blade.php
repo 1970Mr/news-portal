@@ -6,7 +6,7 @@
         <div class="breadcrumb-box shadow">
             <ul class="breadcrumb">
                 <li><a href="{{ route('panel.index') }}">پیشخوان</a></li>
-                <li><a href="{{ route('users.index') }}">لیست کاربران</a></li>
+                <li><a href="{{ route('user.index') }}">لیست کاربران</a></li>
                 <li><a>ایجاد کاربر جدید</a></li>
             </ul>
             <div class="breadcrumb-left">
@@ -39,7 +39,7 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="user-create-form" role="form" action="{{ route('users.store') }}" method="post">
+                    <form id="user-create-form" role="form" action="{{ route('user.store') }}" method="post">
                         @csrf
                         <x-share-error-messages />
 

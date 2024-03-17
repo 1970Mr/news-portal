@@ -37,7 +37,7 @@
                             </div>
                         </a>
                         <a class="btn btn-sm btn-default btn-round bg-green text-white" rel="tooltip"
-                           href="{{ route('users.create') }}"
+                           href="{{ route('user.create') }}"
                            aria-label="ایجاد کاربر جدید" data-bs-original-title="ایجاد کاربر جدید">
                             <i class="icon-user-follow d-flex justify-content-center align-items-center"></i>
                             <div class="paper-ripple">
@@ -70,11 +70,11 @@
                                         <td class="{{ status_class($user->email_verified_at) }}">{{ $user->verified_email_status }}</td>
                                         <td class="d-flex gap-2">
                                             <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                    rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('users.edit', $user->id) }}">
+                                                    rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('user.edit', $user->id) }}">
                                                 <i class="icon-pencil fa-flip-horizontal"></i>
                                             </a>
 
-                                            <x-share-delete-button :route="route('users.destroy', $user->id)" />
+                                            <x-share-delete-button :route="route('user.destroy', $user->id)" />
 
                                         </td>
                                     </tr>
