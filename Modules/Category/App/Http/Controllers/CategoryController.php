@@ -26,7 +26,7 @@ class CategoryController extends Controller
     public function store(CategoryStoreRequest $request): RedirectResponse
     {
         Category::create($request->validated());
-        return to_route('category.index')->with('success', 'دسته بندی جدید با موفقیت ایجاد شد');
+        return to_route('category.index')->with('success', __('category::messages.category_created'));
     }
 
     public function edit(Category $category): View
@@ -38,12 +38,12 @@ class CategoryController extends Controller
     public function update(CategoryUpdateRequest $request, Category $category): RedirectResponse
     {
         $category->update($request->validated());
-        return to_route('category.index')->with('success', "دسته بندی " . $category->title . " با موفقیت ویرایش شد");
+        return to_route('category.index')->with('success', __('category::messages.category_edited', ['name' => $request->name]));
     }
 
     public function destroy(Category $category): RedirectResponse
     {
         $category->delete();
-        return to_route('category.index')->with('success', 'حذف دسته بندی با موفقیت انجام شد.');
+        return to_route('category.index')->with('success', __('category::messages.category_deleted'));
     }
 }

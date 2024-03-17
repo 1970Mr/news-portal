@@ -38,8 +38,8 @@ class Category extends Model
     public function parentCategoryTitle(): string
     {
         return ($this->parentCategory() === null)
-            ? 'ندارد'
-            : $this->parentCategory()->first()->name;
+            ? __('category::messages.have_not')
+                : $this->parentCategory()->first()->name;
     }
 
     public function scopeActive(Builder $query): void
