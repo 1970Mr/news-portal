@@ -71,7 +71,7 @@
                                         <td>{{ $category->description }}</td>
                                         <td>{{ $category->parentCategoryTitle() }}</td>
                                         <td class="ltr text-right">{{ jalalian()->forge($category->created_at)->format('Y/m/d H:i:s') }}</td>
-                                        <td>{{ $category->status }}</td>
+                                        <td class="{{ status_class($category->status) }}">{{ status_message($category->status) }}</td>
                                         <td class="d-flex gap-2">
                                             <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
                                                     rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('category.edit', $category->id) }}">

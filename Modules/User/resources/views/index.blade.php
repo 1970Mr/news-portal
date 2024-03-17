@@ -67,7 +67,7 @@
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td class="ltr text-right">{{ jalalian()->forge($user->created_at)->format('Y/m/d H:i:s') }}</td>
-                                        <td class="{{ ($user->email_verified_at) ? 'text-success' : 'text-danger' }}">{{ ($user->email_verified_at) ? 'تایید شده' : 'تایید نشده' }}</td>
+                                        <td class="{{ status_class($user->email_verified_at) }}">{{ $user->verified_email_status }}</td>
                                         <td class="d-flex gap-2">
                                             <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
                                                     rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('users.edit', $user->id) }}">

@@ -14,3 +14,13 @@ function jalalian(): JalalianHelper
 {
     return new JalalianHelper();
 }
+
+function status_class($status): string
+{
+    return ($status) ? 'text-success' : 'text-danger';
+}
+
+function status_message($status): string
+{
+    return ($status) ? 'فعال' : 'غیرفعال';
+}

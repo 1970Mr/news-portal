@@ -3,7 +3,8 @@
 namespace Modules\User\App\Models;
 
  use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+ use Illuminate\Database\Eloquent\Casts\Attribute;
+ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -43,10 +44,21 @@ class User extends Authenticatable implements MustVerifyEmail
         'password' => 'hashed',
     ];
 
+    protected $appends = [
+      'verifiedEmailStatus'
+    ];
+
     public function unmarkEmailAsVerified(): bool
     {
         return $this->forceFill([
             'email_verified_at' => null,
         ])->save();
+    }
+
+    protected function verifiedEmailStatus(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->email_verified_at ? 'تایید شده' : 'تایید نشده',
+        );
     }
 }
