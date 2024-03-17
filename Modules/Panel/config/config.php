@@ -24,7 +24,7 @@ return [
             ]
         ],
         'category' => [
-            'title' => 'دسته بندی',
+            'title' => 'دسته‌بندی',
             'icon' => 'icon-grid',
             'url' => route('category.index'),
         ],

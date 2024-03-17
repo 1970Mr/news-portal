@@ -38,7 +38,7 @@ class Category extends Model
     public function parentCategoryTitle(): string
     {
         return ($this->parentCategory() === null)
-            ? __('category::messages.have_not')
+            ? __('have_not')
                 : $this->parentCategory()->first()->name;
     }
 

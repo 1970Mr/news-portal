@@ -4,7 +4,9 @@
     "entity_created": ":entity با موفقیت ایجاد شد.",
     "entity_deleted": "حذف :entity با موفقیت انجام شد.",
     "entity_edited": ":entity :name با موفقیت ویرایش شد",
-    "user": "کاربر",
     "confirmed": "تایید شده",
-    "not_confirmed": "تایید نشده"
+    "not_confirmed": "تایید نشده",
+    "have_not": "ندارد",
+    "user": "کاربر",
+    "category": "دسته\u200Cبندی"
 }
