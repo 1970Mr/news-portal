@@ -1,0 +1,10 @@
+{
+    "active": "فعال",
+    "inactive": "غیرفعال",
+    "entity_created": ":entity با موفقیت ایجاد شد.",
+    "entity_deleted": "حذف :entity با موفقیت انجام شد.",
+    "entity_edited": ":entity :name با موفقیت ویرایش شد",
+    "user": "کاربر",
+    "confirmed": "تایید شده",
+    "not_confirmed": "تایید نشده"
+}

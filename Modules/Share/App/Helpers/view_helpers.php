@@ -22,5 +22,5 @@ function status_class($status): string
 
 function status_message($status): string
 {
-    return ($status) ? 'فعال' : 'غیرفعال';
+    return ($status) ? __('active') : __('inactive');
 }

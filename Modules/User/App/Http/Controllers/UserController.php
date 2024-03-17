@@ -26,7 +26,7 @@ class UserController extends Controller
     {
         $user = User::create($request->validated());
         if ($request->email_verification) $user->markEmailAsVerified();
-        return to_route('users.index')->with('success', 'کابر جدید با موفقیت ایجاد شد');
+        return to_route('users.index')->with('success', __('entity_created', ['entity' => __('user')]));
     }
 
     public function edit(User $user): View
@@ -40,14 +40,14 @@ class UserController extends Controller
         $user->update($request->validated());
         if ($request->email_verification) $user->markEmailAsVerified();
         else $user->unmarkEmailAsVerified();
-        return to_route('users.index')->with('success', "کاربر " . $user->name . " با موفقیت ویرایش شد");
+        return to_route('users.index')->with('success', __('entity_edited', ['entity' => __('user'), 'name' => $request->name]));
     }
 
     public function destroy(User $user): RedirectResponse
     {
         if ($user->id === auth()->id())
-            return to_route('users.index')->withErrors('شما نمی‌توانید خودتان را حذف کنید!');
+            return to_route('users.index')->withErrors(__('user::messages.cant_delete_yourself'));
         $user->delete();
-        return to_route('users.index')->with('success', 'حذف کاربر با موفقیت انجام شد.');
+        return to_route('users.index')->with('success', __('entity_deleted', ['entity' => __('user')]));
     }
 }

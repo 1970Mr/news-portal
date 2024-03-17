@@ -58,7 +58,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected function verifiedEmailStatus(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->email_verified_at ? 'تایید شده' : 'تایید نشده',
+            get: fn () => $this->email_verified_at ? __('confirmed') : __('not_confirmed'),
         );
     }
 }
