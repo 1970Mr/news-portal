@@ -77,14 +77,9 @@
                                                     rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('category.edit', $category->id) }}">
                                                 <i class="icon-pencil fa-flip-horizontal"></i>
                                             </a>
-                                            <form action="{{ route('category.destroy', $category->id) }}" method="post">
-                                                @csrf
-                                                @method('delete')
-                                                <button class="btn btn-sm btn-danger btn-icon round d-flex justify-content-center align-items-center"
-                                                        rel="tooltip" aria-label="حذف" data-bs-original-title="حذف">
-                                                    <i class="icon-trash fa-flip-horizontal"></i>
-                                                </button>
-                                            </form>
+
+                                            <x-share-delete-button :route="route('category.destroy', $category->id)" />
+
                                         </td>
                                     </tr>
                                 @endforeach

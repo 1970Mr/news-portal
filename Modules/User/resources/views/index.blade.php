@@ -73,14 +73,9 @@
                                                     rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('users.edit', $user->id) }}">
                                                 <i class="icon-pencil fa-flip-horizontal"></i>
                                             </a>
-                                            <form action="{{ route('users.destroy', $user->id) }}" method="post">
-                                                @csrf
-                                                @method('delete')
-                                                <button class="btn btn-sm btn-danger btn-icon round d-flex justify-content-center align-items-center"
-                                                        rel="tooltip" aria-label="حذف" data-bs-original-title="حذف">
-                                                    <i class="icon-trash fa-flip-horizontal"></i>
-                                                </button>
-                                            </form>
+
+                                            <x-share-delete-button :route="route('users.destroy', $user->id)" />
+
                                         </td>
                                     </tr>
                                 @endforeach
