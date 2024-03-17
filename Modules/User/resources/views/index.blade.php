@@ -66,7 +66,7 @@
                                         <td>{{ $user->id }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
-                                        <td class="ltr text-right">{{ jalalian()->forge($user->created_at)->format('Y/m/d H:i:s') }}</td>
+                                        <td class="ltr text-right">{{ jalalian()->forge($user->created_at)->format(config('share.datetime_format')) }}</td>
                                         <td class="{{ status_class($user->email_verified_at) }}">{{ $user->verified_email_status }}</td>
                                         <td class="d-flex gap-2">
                                             <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
