@@ -3,7 +3,11 @@
 namespace Modules\User\App\Providers;
 
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
+use Modules\User\App\Http\Controllers\UserController;
+use Modules\User\App\Models\User;
+use Modules\User\App\Policies\UserPolicy;
 
 class UserServiceProvider extends ServiceProvider
 {
@@ -22,6 +26,7 @@ class UserServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/migrations'));
+        Gate::policy(User::class, UserPolicy::class);
     }
 
     /**

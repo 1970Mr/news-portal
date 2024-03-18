@@ -2,6 +2,7 @@
 
 namespace Modules\User\App\Services;
 
+use Illuminate\Support\Facades\Gate;
 use Modules\User\App\Http\Requests\UserStoreRequest;
 use Modules\User\App\Http\Requests\UserUpdateRequest;
 use Modules\User\App\Models\User;
@@ -22,5 +23,11 @@ class UserService
         ($request->email_verification) ?
             $user->markEmailAsVerified() :
             $user->unmarkEmailAsVerified();
+    }
+
+    public function delete(User $user): void
+    {
+        Gate::authorize('delete', $user);
+        $user->delete();
     }
 }

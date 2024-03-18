@@ -62,7 +62,9 @@
                                                 <i class="icon-pencil fa-flip-horizontal"></i>
                                             </a>
 
-                                            <x-share-delete-button :route="route('user.destroy', $user->id)" />
+                                            @can('delete', $user)
+                                                <x-share-delete-button :route="route('user.destroy', $user->id)" />
+                                            @endcan
 
                                         </td>
                                     </tr>

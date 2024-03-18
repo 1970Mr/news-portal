@@ -45,7 +45,7 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     protected $appends = [
-      'verifiedEmailStatus'
+      'verified_email_status'
     ];
 
     public function unmarkEmailAsVerified(): bool

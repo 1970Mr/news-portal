@@ -47,9 +47,7 @@ class UserController extends Controller
 
     public function destroy(User $user): RedirectResponse
     {
-        if ($user->id === auth()->id())
-            return to_route('user.index')->withErrors(__('user::messages.cant_delete_yourself'));
-        $user->delete();
+        $this->userService->delete($user);
         return to_route('user.index')->with('success', __('entity_deleted', ['entity' => __('user')]));
     }
 }
