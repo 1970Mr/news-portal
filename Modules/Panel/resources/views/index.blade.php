@@ -1,20 +1,9 @@
 @extends('panel::layouts.master', ['title' => 'پنل کاربری'])
 
 @section('content')
-
-    <!-- BEGIN BREADCRUMB -->
-    <div class="col-md-12">
-        <div class="breadcrumb-box shadow">
-            <ul class="breadcrumb">
-                <li><a href="{{ asset('admin/dashboard.html') }}">پیشخوان</a></li>
-            </ul>
-            <div class="breadcrumb-left">
-                شنبه، 1402/05/14
-                <i class="icon-calendar"></i>
-            </div><!-- /.breadcrumb-left -->
-        </div><!-- /.breadcrumb-box -->
-    </div><!-- /.col-md-12 -->
-    <!-- END BREADCRUMB -->
+    <x-share-breadcrumbs :noprefix="true">
+        <li><a>پیشخوان</a></li>
+    </x-share-breadcrumbs>
 
     <div class="col-md-12">
         <div class="row">

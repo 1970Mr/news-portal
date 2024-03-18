@@ -2,20 +2,9 @@
 
 @section('content')
 
-    <!-- BEGIN BREADCRUMB -->
-    <div class="col-md-12">
-        <div class="breadcrumb-box shadow">
-            <ul class="breadcrumb">
-                <li><a href="{{ route('panel.index') }}">پیشخوان</a></li>
-                <li><a>لیست دسته‌بندی‌ها</a></li>
-            </ul>
-            <div class="breadcrumb-left">
-                {{ jalalian()->now()->format('l، Y/m/d') }}
-                <i class="icon-calendar"></i>
-            </div><!-- /.breadcrumb-left -->
-        </div><!-- /.breadcrumb-box -->
-    </div><!-- /.col-md-12 -->
-    <!-- END BREADCRUMB -->
+    <x-share-breadcrumbs>
+        <li><a>لیست دسته‌بندی‌ها</a></li>
+    </x-share-breadcrumbs>
 
     <div class="row pe-0">
         <div class="col-12 pe-0">
