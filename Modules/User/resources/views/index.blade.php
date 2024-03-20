@@ -1,9 +1,9 @@
 @extends('panel::layouts.master', ['title' => 'لیست کاربران'])
 
 @section('content')
-    <x-share-breadcrumbs>
+    <x-common-breadcrumbs>
         <li><a>لیست کاربران</a></li>
-    </x-share-breadcrumbs>
+    </x-common-breadcrumbs>
 
     <div class="row pe-0">
         <div class="col-12 pe-0">
@@ -54,7 +54,7 @@
                                         <td>{{ $user->id }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
-                                        <td class="ltr text-right">{{ jalalian()->forge($user->created_at)->format(config('share.datetime_format')) }}</td>
+                                        <td class="ltr text-right">{{ jalalian()->forge($user->created_at)->format(config('common.datetime_format')) }}</td>
                                         <td class="{{ status_class($user->email_verified_at) }}">{{ $user->verified_email_status }}</td>
                                         <td class="d-flex gap-2">
                                             <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
@@ -63,7 +63,7 @@
                                             </a>
 
                                             @can('delete', $user)
-                                                <x-share-delete-button :route="route('user.destroy', $user->id)" />
+                                                <x-common-delete-button :route="route('user.destroy', $user->id)" />
                                             @endcan
 
                                         </td>

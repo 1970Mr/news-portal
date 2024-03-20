@@ -89,8 +89,8 @@ Version 2, June 1991
 Preamble
 
   The licenses for most software are designed to take away your
-freedom to share and change it.  By contrast, the GNU General Public
-License is intended to guarantee your freedom to share and change free
+freedom to common and change it.  By contrast, the GNU General Public
+License is intended to guarantee your freedom to common and change free
 software-to make sure the software is free for all its users.  This
 General Public License applies to most of the Free Software
 Foundation's software and to any other program whose authors commit to
@@ -379,8 +379,8 @@ Version 2.1, February 1999
 Preamble
 
   The licenses for most software are designed to take away your
-freedom to share and change it.  By contrast, the GNU General Public
-Licenses are intended to guarantee your freedom to share and change
+freedom to common and change it.  By contrast, the GNU General Public
+Licenses are intended to guarantee your freedom to common and change
 free software-to make sure the software is free for all its users.
 
   This license, the Lesser General Public License, applies to some
@@ -437,7 +437,7 @@ this license for certain libraries in order to permit linking those
 libraries into non-free programs.
 
   When a program is linked with a library, whether statically or using
-a shared library, the combination of the two is legally speaking a
+a commond library, the combination of the two is legally speaking a
 combined work, a derivative of the original library.  The ordinary
 General Public License therefore permits such linking only if the
 entire combination fits its criteria of freedom.  The Lesser General
@@ -661,7 +661,7 @@ of these things:
     Library will not necessarily be able to recompile the application
     to use the modified definitions.)
 
-    b) Use a suitable shared library mechanism for linking with the
+    b) Use a suitable commond library mechanism for linking with the
     Library.  A suitable mechanism is one that (1) uses at run time a
     copy of the library already present on the user's computer system,
     rather than copying library functions into the executable, and (2)
@@ -904,7 +904,7 @@ Version 1.1
      this definition, "control" means (a) the power, direct or indirect,
      to cause the direction or management of such entity, whether by
      contract or otherwise, or (b) ownership of more than fifty percent
-     (50%) of the outstanding shares or beneficial ownership of such
+     (50%) of the outstanding commons or beneficial ownership of such
      entity.
 
 2. Source Code License.
@@ -1333,7 +1333,7 @@ PREAMBLE
 The goals of the Open Font License (OFL) are to stimulate worldwide
 development of collaborative font projects, to support the font creation
 efforts of academic and linguistic communities, and to provide a free and
-open framework in which fonts may be shared and improved in partnership
+open framework in which fonts may be commond and improved in partnership
 with others.
 
 The OFL allows the licensed fonts to be used, studied, modified and

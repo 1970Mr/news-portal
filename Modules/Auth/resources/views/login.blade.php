@@ -16,7 +16,7 @@
         </div>
     @endif
 
-    <x-share-error-messages />
+    <x-common-error-messages />
     <hr>
 
     <form id="form" class="m-t-30 m-b-30" action="{{ route('login') }}" method="POST" role="form">

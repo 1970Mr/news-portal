@@ -1,10 +1,10 @@
 @extends('panel::layouts.master', ['title' => 'ویرایش دسته‌بندی'])
 
 @section('content')
-    <x-share-breadcrumbs>
+    <x-common-breadcrumbs>
         <li><a href="{{ route('category.index') }}">لیست دسته‌بندی‌ها</a></li>
         <li><a>ویرایش دسته‌بندی</a></li>
-    </x-share-breadcrumbs>
+    </x-common-breadcrumbs>
 
     <div class="row pe-0">
         <div class="col-12 pe-0">
@@ -31,7 +31,7 @@
                     <form id="user-create-form" role="form" action="{{ route('category.update', $category->id) }}" method="post">
                         @csrf
                         <input type="hidden" name="_method" value="PUT">
-                        <x-share-error-messages />
+                        <x-common-error-messages />
 
                         <fieldset class="row justify-content-center">
                             <div class="form-group col-lg-6">

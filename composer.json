@@ -34,7 +34,7 @@
             "Modules\\": "Modules/"
         },
         "files": [
-            "Modules/Share/App/Helpers/view_helpers.php"
+          "Modules/Common/App/Helpers/view_helpers.php"
         ]
     },
     "autoload-dev": {

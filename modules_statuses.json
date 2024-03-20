@@ -3,6 +3,6 @@
     "Auth": true,
     "User": true,
     "Panel": true,
-    "Share": true,
+    "Common": true,
     "Category": true
 }

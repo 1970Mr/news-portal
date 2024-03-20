@@ -1,10 +1,10 @@
 @extends('panel::layouts.master', ['title' => 'ایجاد دسته‌بندی جدید'])
 
 @section('content')
-    <x-share-breadcrumbs>
+    <x-common-breadcrumbs>
         <li><a href="{{ route('category.index') }}">لیست دسته‌بندی‌ها</a></li>
         <li><a>ایجاد دسته‌بندی جدید</a></li>
-    </x-share-breadcrumbs>
+    </x-common-breadcrumbs>
 
     <div class="row pe-0">
         <div class="col-12 pe-0">
@@ -30,7 +30,7 @@
                 <div class="portlet-body">
                     <form id="user-create-form" role="form" action="{{ route('category.store') }}" method="post">
                         @csrf
-                        <x-share-error-messages />
+                        <x-common-error-messages />
 
                         <fieldset class="row justify-content-center">
                             <div class="form-group col-lg-6">

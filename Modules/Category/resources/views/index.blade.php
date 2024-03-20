@@ -2,9 +2,9 @@
 
 @section('content')
 
-    <x-share-breadcrumbs>
+    <x-common-breadcrumbs>
         <li><a>لیست دسته‌بندی‌ها</a></li>
-    </x-share-breadcrumbs>
+    </x-common-breadcrumbs>
 
     <div class="row pe-0">
         <div class="col-12 pe-0">
@@ -59,7 +59,7 @@
                                         <td>{{ $category->slug }}</td>
                                         <td>{{ $category->description }}</td>
                                         <td>{{ $category->parentCategoryTitle() }}</td>
-                                        <td class="ltr text-right">{{ jalalian()->forge($category->created_at)->format(config('share.datetime_format')) }}</td>
+                                        <td class="ltr text-right">{{ jalalian()->forge($category->created_at)->format(config('common.datetime_format')) }}</td>
                                         <td class="{{ status_class($category->status) }}">{{ status_message($category->status) }}</td>
                                         <td class="d-flex gap-2">
                                             <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
@@ -67,7 +67,7 @@
                                                 <i class="icon-pencil fa-flip-horizontal"></i>
                                             </a>
 
-                                            <x-share-delete-button :route="route('category.destroy', $category->id)" />
+                                            <x-common-delete-button :route="route('category.destroy', $category->id)" />
 
                                         </td>
                                     </tr>

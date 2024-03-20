@@ -18,7 +18,7 @@
         </div>
     @endif
 
-    <x-share-error-messages />
+    <x-common-error-messages />
 
     <hr>
 

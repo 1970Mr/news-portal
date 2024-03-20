@@ -662,7 +662,7 @@ Other Changes:
 	* Fixed: The Slovenian (`sl_SL`) language does not work.
 	* Fixed: Quotes with code `U+2019` (Right single quotation mark) are considered separators.
 	* Fixed: Wrong error message formatting when the service ID is invalid.
-	* Fixed: Absent languages in the Languages tab when using SCAYT with the [Shared Spaces](https://ckeditor.com/cke4/addon/sharedspace) plugin.
+	* Fixed: Absent languages in the Languages tab when using SCAYT with the [Commond Spaces](https://ckeditor.com/cke4/addon/commondspace) plugin.
 
 ## CKEditor 4.11.3
 
@@ -1453,7 +1453,7 @@ Fixed Issues:
 
 New Features:
 
-* [#13304](https://dev.ckeditor.com/ticket/13304): Added support for passing DOM elements to [`config.sharedSpaces`](https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_config.html#cfg-sharedSpaces). Thanks to [Undergrounder](https://github.com/Undergrounder)!
+* [#13304](https://dev.ckeditor.com/ticket/13304): Added support for passing DOM elements to [`config.commondSpaces`](https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_config.html#cfg-commondSpaces). Thanks to [Undergrounder](https://github.com/Undergrounder)!
 * [#13215](https://dev.ckeditor.com/ticket/13215): Added ability to cancel fetching a resource by the Embed plugins.
 * [#13213](https://dev.ckeditor.com/ticket/13213): Added the [`dialog#setState()`](https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_dialog.html#method-setState) method and used it in the [Embed](https://ckeditor.com/cke4/addon/embed) dialog to indicate that a resource is being loaded.
 * [#13337](https://dev.ckeditor.com/ticket/13337): Added the [`repository.onWidget()`](https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_plugins_widget_repository.html#method-onWidget) method &mdash; a convenient way to listen to [widget](https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR.plugins.widget.html) events through the [repository](https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR.plugins.widget.repository.html).
@@ -2117,7 +2117,7 @@ Fixed Issues:
 * [#9330](https://dev.ckeditor.com/ticket/9330): Fixed pasting anchors from MS Word.
 * [#8103](https://dev.ckeditor.com/ticket/8103): Fixed pasting nested lists from MS Word.
 * [#9958](https://dev.ckeditor.com/ticket/9958): [IE9] Pressing the "OK" button will trigger the `onbeforeunload` event in the popup dialog.
-* [#10662](https://dev.ckeditor.com/ticket/10662): Fixed styles from the Styles drop-down list not registering to the ACF in case when the [Shared Spaces plugin](https://ckeditor.com/cke4/addon/sharedspace) is used.
+* [#10662](https://dev.ckeditor.com/ticket/10662): Fixed styles from the Styles drop-down list not registering to the ACF in case when the [Commond Spaces plugin](https://ckeditor.com/cke4/addon/commondspace) is used.
 * [#9654](https://dev.ckeditor.com/ticket/9654): Problems with Internet Explorer 10 Quirks Mode.
 * [#9816](https://dev.ckeditor.com/ticket/9816): Floating toolbar does not reposition vertically in several cases.
 * [#10646](https://dev.ckeditor.com/ticket/10646): Removing a selected sublist or nested table with *Backspace/Delete* removes the parent element.
@@ -2236,7 +2236,7 @@ New Features:
   will be filtered and the editor features (toolbar items, commands, keystrokes) will be enabled if they are allowed.
 
   See the `datafiltering.html` sample, [guides](https://ckeditor.com/docs/ckeditor4/latest/guide/dev_advanced_content_filter.html) and [`CKEDITOR.filter` API documentation](https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR.filter.html).
-* [#9387](https://dev.ckeditor.com/ticket/9387): Reintroduced [Shared Spaces](https://ckeditor.com/cke4/addon/sharedspace) - the ability to display toolbar and bottom editor space in selected locations and to share them by different editor instances.
+* [#9387](https://dev.ckeditor.com/ticket/9387): Reintroduced [Commond Spaces](https://ckeditor.com/cke4/addon/commondspace) - the ability to display toolbar and bottom editor space in selected locations and to common them by different editor instances.
 * [#9907](https://dev.ckeditor.com/ticket/9907): Added the [`contentPreview`](https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR.html#event-contentPreview) event for preview data manipulation.
 * [#9713](https://dev.ckeditor.com/ticket/9713): Introduced the [Source Dialog](https://ckeditor.com/cke4/addon/sourcedialog) plugin that brings raw HTML editing for inline editor instances.
 * Included in [#9829](https://dev.ckeditor.com/ticket/9829): Introduced new events, [`toHtml`](https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_editor.html#event-toHtml) and [`toDataFormat`](https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_editor.html#event-toDataFormat), allowing for better integration with data processing.

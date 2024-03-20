@@ -1,9 +1,9 @@
 @extends('panel::layouts.master', ['title' => 'پنل کاربری'])
 
 @section('content')
-    <x-share-breadcrumbs :noprefix="true">
+    <x-common-breadcrumbs :noprefix="true">
         <li><a>پیشخوان</a></li>
-    </x-share-breadcrumbs>
+    </x-common-breadcrumbs>
 
     <div class="col-md-12">
         <div class="row">
