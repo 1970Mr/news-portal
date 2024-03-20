@@ -1,11 +1,17 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use Modules\Common\App\Helpers\JalalianHelper;
 
-function menu_has_active_child($menu, $class = 'active'): string
+function active_menu($menu, $class = 'current'): string
 {
-    foreach ($menu['children'] as $child_menu) {
-        if (is_array($child_menu) && url()->current() === $child_menu['url']) return $class;
+    if (url()->current() === $menu['url'])
+        return $class;
+    if (! array_key_exists('active_routes', $menu))
+        return '';
+    foreach ($menu['active_routes'] as $url) {
+        if (Route::currentRouteName() === $url)
+            return $class;
     }
     return '';
 }

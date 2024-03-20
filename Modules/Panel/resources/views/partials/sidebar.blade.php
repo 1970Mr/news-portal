@@ -16,7 +16,7 @@
         <ul class="metismenu" id="side-menu">
             @foreach(config('panel.sidebar_menus') as $menu)
                 @if(isset($menu['children']))
-                    <li class="{{ menu_has_active_child($menu) }}">
+                    <li class="{{ active_menu($menu, 'active') }}">
                         <a class="dropdown-toggle">
                             <i class="{{ $menu['icon'] }}"></i>
                             <span>{{ $menu['title'] }}</span>
@@ -24,7 +24,7 @@
                         <ul>
                             @foreach($menu['children'] as $child_menu)
                                 <li class="{{ $child_menu['class'] ?? '' }}">
-                                    <a href="{{ $child_menu['url'] }}" class="{{ url()->current() === $child_menu['url'] ? 'current' : '' }} font-sm">
+                                    <a href="{{ $child_menu['url'] }}" class="{{ active_menu($child_menu) }} font-sm">
                                         <i class="{{ $child_menu['icon'] }}"></i>
                                         <span>{{ $child_menu['title'] }}</span>
                                     </a>
@@ -34,7 +34,7 @@
                     </li>
                 @else
                     <li class="{{ $menu['class'] ?? '' }}">
-                        <a href="{{ $menu['url'] }}" class="{{ url()->current() === $menu['url'] ? 'current' : '' }}">
+                        <a href="{{ $menu['url'] }}" class="{{ active_menu($menu) }}">
                             <i class="{{ $menu['icon'] }}"></i>
                             <span>{{ $menu['title'] }}</span>
                         </a>
