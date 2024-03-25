@@ -1,0 +1,31 @@
+[
+    {
+        "name": "Admin",
+        "permissions": [
+            "super_admin"
+        ]
+    },
+    {
+        "name": "Editor",
+        "permissions": [
+            "user::index",
+            "category::index",
+            "category::store",
+            "category::update",
+            "category::destroy",
+            "role::index"
+        ]
+    },
+    {
+        "name": "Author",
+        "permissions": []
+    },
+    {
+        "name": "Contributor",
+        "permissions": []
+    },
+    {
+        "name": "Subscriber",
+        "permissions": []
+    }
+]

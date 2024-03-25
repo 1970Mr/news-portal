@@ -1,0 +1,18 @@
+[
+    "super_admin",
+
+    "user::index",
+    "user::store",
+    "user::update",
+    "user::destroy",
+
+    "category::index",
+    "category::store",
+    "category::update",
+    "category::destroy",
+
+    "role::index",
+    "role::store",
+    "role::update",
+    "role::destroy"
+]
