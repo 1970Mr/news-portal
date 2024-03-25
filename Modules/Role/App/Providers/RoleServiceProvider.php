@@ -4,6 +4,7 @@ namespace Modules\Role\App\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Spatie\Permission\Models\Permission;
 
 class RoleServiceProvider extends ServiceProvider
 {

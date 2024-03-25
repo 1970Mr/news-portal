@@ -6,13 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Spatie\Permission\Models\Role;
+use Modules\Role\App\Models\Role;
 
 class RoleController extends Controller
 {
     public function index(): View
     {
-        $roles = Role::latest()->paginate(10);
+        $roles = Role::with('permissions')->latest()->paginate(10);
         return view('role::index', compact('roles'));
     }
 

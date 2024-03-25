@@ -54,7 +54,7 @@
                                         <td>{{ $role->id }}</td>
                                         <td>{{ $role->name }}</td>
                                         <td>
-                                            {{ $role->permissions->pluck('name')->implode(', ') }}
+                                            {{ $role->getPermissionLocalNames() }}
                                         </td>
                                         <td class="ltr text-right">{{ jalalian()->forge($role->created_at)->format(config('common.datetime_format')) }}</td>
                                         <td class="d-flex gap-2">

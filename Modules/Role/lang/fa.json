@@ -1,0 +1,18 @@
+{
+    "super_admin": "مدیر ارشد",
+
+    "user::index": "مشاهده کاربران",
+    "user::store": "ایجاد کاربر",
+    "user::update": "ویرایش کاربر",
+    "user::destroy": "حذف کاربر",
+
+    "category::index": "مشاهده دسته‌بندی‌ها",
+    "category::store": "ایجاد دسته‌بندی",
+    "category::update": "ویرایش دسته‌بندی",
+    "category::destroy": "حذف دسته‌بندی",
+
+    "role::index": "مشاهده نقش‌ها",
+    "role::store": "ایجاد نقش",
+    "role::update": "ویرایش نقش",
+    "role::destroy": "حذف نقش"
+}
