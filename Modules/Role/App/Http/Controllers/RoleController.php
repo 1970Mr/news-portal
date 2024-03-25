@@ -5,7 +5,10 @@ namespace Modules\Role\App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use Modules\Role\App\Http\Requests\RoleStoreRequest;
+use Modules\Role\App\Models\Permission;
 use Modules\Role\App\Models\Role;
 
 class RoleController extends Controller
@@ -18,12 +21,23 @@ class RoleController extends Controller
 
     public function create(): View
     {
-        return view('role::create');
+        $permissions = Permission::latest()->get();
+        dd($permissions->toArray());
+        return view('role::create', compact('permissions'));
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(RoleStoreRequest $request): RedirectResponse
     {
-        //
+        try {
+            DB::beginTransaction();
+            $role = Role::create($request->only('name'));
+            $role->syncPermissions($request->permissions);
+            DB::commit();
+            return to_route('role.index')->with('success', 'نقش جدید با موفقیت ایجاد شد');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->with('error', 'مشکلی در ایجاد نقش به وجود آمد. لطفا دوباره تلاش کنید.');
+        }
     }
 
     public function edit(Role $role): View

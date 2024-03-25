@@ -1,9 +1,9 @@
-@extends('panel::layouts.master', ['title' => 'ایجاد دسته‌بندی جدید'])
+@extends('panel::layouts.master', ['title' => 'ایجاد نقش جدید'])
 
 @section('content')
     <x-common-breadcrumbs>
-        <li><a href="{{ route('category.index') }}">لیست دسته‌بندی‌ها</a></li>
-        <li><a>ایجاد دسته‌بندی جدید</a></li>
+        <li><a href="{{ route('role.index') }}">لیست نقش‌ها</a></li>
+        <li><a>ایجاد نقش جدید</a></li>
     </x-common-breadcrumbs>
 
     <div class="row pe-0">
@@ -13,7 +13,7 @@
                     <div class="portlet-title">
                         <h3 class="title">
                             <i class="icon-user-follow"></i>
-                            ایجاد دسته‌بندی جدید
+                            ایجاد نقش جدید
                         </h3>
                     </div><!-- /.portlet-title -->
                     <div class="buttons-box">
@@ -28,41 +28,36 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="user-create-form" role="form" action="{{ route('category.store') }}" method="post">
+                    <form id="user-create-form" role="form" action="{{ route('role.store') }}" method="post">
                         @csrf
                         <x-common-error-messages />
 
                         <fieldset class="row justify-content-center">
-                            <div class="form-group col-lg-6">
-                                <label for="name">نام <small>(ضروری)</small></label>
-                                <input id="name" class="form-control" name="name" type="text" required value="{{ old('name') }}">
+                            <div class="col-12 d-flex justify-content-center">
+                                <div class="form-group col-lg-6">
+                                    <label for="name">نام <small>(ضروری)</small> </label>
+                                    <input id="name" class="form-control" name="name" type="text" required value="{{ old('name') }}">
+                                </div>
                             </div>
-                            <div class="form-group col-lg-6">
-                                <label for="slug">slug <small>(ضروری)</small> </label>
-                                <input id="slug" class="form-control" name="slug" type="text" required value="{{ old('slug') }}">
+
+                            <div class="col-6 d-flex row my-3">
+                                <h3 class="mb-3 px-0">دسترسی‌ها</h3>
+                                @foreach($permissions as $permission)
+                                    <div class="form-group col-lg-6 px-0">
+                                        <label for="{{ $permission->id }}" class="cursor-pointer">
+                                            <input id="{{ $permission->id }}" class="form-control" name="permissions[]" type="checkbox" value="{{ $permission->name }}"
+                                                   @if(is_array(old('permissions')) && in_array($permission->name, old('permissions'))) checked @endif>
+                                            {{ $permission->local_name }}
+                                        </label>
+                                    </div>
+                                @endforeach
                             </div>
-                            <div class="form-group col-lg-6">
-                                <label for="description">توضیحات </label>
-                                <input id="description" class="form-control" name="description" type="text" value="{{ old('description') }}">
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label for="parent_id">دسته‌بندی والد</label>
-                                <select id="parent_id" class="form-control" name="parent_id">
-                                    <option value="">انتخاب دسته‌بندی والد</option>
-                                    @foreach($categories as $category)
-                                        <option value="{{ $category->id }}" @if(old('parent_id') === $category->id) selected @endif>{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group text-center">
-                                <input id="status" class="form-control" name="status" type="checkbox" @if(old('status')) checked @endif>
-                                <label for="status">وضعیت</label>
-                            </div>
+
                             <div class="form-group">
                                 <div class="col-sm-6 col-sm-offset-4 mx-auto">
                                     <button class="btn btn-success btn-block">
                                         <i class="icon-check"></i>
-                                        ایجاد دسته‌بندی جدید
+                                        ایجاد نقش جدید
                                     </button>
                                 </div>
                             </div>
