@@ -4,5 +4,6 @@
     "User": true,
     "Panel": true,
     "Common": true,
-    "Category": true
+    "Category": true,
+    "Role": true
 }

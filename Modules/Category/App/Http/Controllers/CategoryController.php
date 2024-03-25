@@ -13,13 +13,13 @@ class CategoryController extends Controller
 {
     public function index(): View
     {
-        $categories = Category::orderBy('created_at', 'desc')->paginate(10);
+        $categories = Category::latest()->paginate(10);
         return view('category::index', compact('categories'));
     }
 
     public function create(): View
     {
-        $categories = Category::orderBy('created_at', 'desc')->get();
+        $categories = Category::latest()->get();
         return view('category::create', compact('categories'));
     }
 
@@ -31,7 +31,7 @@ class CategoryController extends Controller
 
     public function edit(Category $category): View
     {
-        $categories = Category::orderBy('created_at', 'desc')->get();
+        $categories = Category::latest()->get();
         return view('category::edit', compact('category', 'categories'));
     }
 
