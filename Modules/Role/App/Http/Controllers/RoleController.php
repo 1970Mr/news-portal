@@ -53,6 +53,8 @@ class RoleController extends Controller
 
     public function destroy(Role $role): RedirectResponse
     {
-        //
+        $name = $role->name;
+        $role->delete();
+        return to_route('role.index')->with('success', "حذف $name با موفقیت انجام شد.");
     }
 }
