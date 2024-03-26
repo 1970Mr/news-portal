@@ -4,19 +4,22 @@ namespace Modules\Role\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Modules\Role\App\Http\Requests\RoleRequest;
-use Modules\Role\App\Models\Permission;
 use Modules\Role\App\Models\Role;
 use Modules\Role\App\Services\PermissionService;
 use Modules\Role\App\Services\RoleService;
 
 class RoleController extends Controller
 {
+    private array $groupedPermissions;
+
     public function __construct(
-        public RoleService $roleService
-    ) {}
+        private readonly RoleService $roleService
+    )
+    {
+        $this->groupedPermissions = $this->roleService->groupedPermissions();
+    }
     public function index(): View
     {
         $roles = Role::with('permissions')->orderBy('id', 'desc')->paginate(10);
@@ -25,8 +28,7 @@ class RoleController extends Controller
 
     public function create(): View
     {
-        $groupedPermissions = $this->roleService->groupedPermissions();
-        return view('role::create', compact('groupedPermissions'));
+        return view('role::create', ['groupedPermissions' => $this->groupedPermissions]);
     }
 
     public function store(RoleRequest $request): RedirectResponse
@@ -37,9 +39,7 @@ class RoleController extends Controller
 
     public function edit(Role $role, PermissionService $permissionService): View
     {
-        $permissions = Permission::all();
-        $groupedPermissions = $permissionService->groupedPermissions($permissions);
-        return view('role::edit', compact('role', 'groupedPermissions', 'permissionService'));
+        return view('role::edit', compact('role', 'permissionService') + ['groupedPermissions' => $this->groupedPermissions]);
     }
 
     public function update(RoleRequest $request, Role $role): RedirectResponse
