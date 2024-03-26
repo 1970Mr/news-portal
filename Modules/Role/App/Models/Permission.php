@@ -15,23 +15,4 @@ class Permission extends SpatiePermission
             get: fn () => __($this->name),
         );
     }
-
-    public function getPermissionGroupName(): string
-    {
-        $parts = explode('::', $this->name);
-        if (count($parts) >= 2) {
-            return strtolower($parts[0]);
-        }
-        return 'default_group';
-    }
-
-    public static function groupedPermissions($permissions): array
-    {
-        $groupedPermissions = [];
-        foreach ($permissions as $permission) {
-            $groupName = $permission->getPermissionGroupName();
-            $groupedPermissions[$groupName][] = $permission;
-        }
-        return $groupedPermissions;
-    }
 }

@@ -10,6 +10,7 @@ use Illuminate\View\View;
 use Modules\Role\App\Http\Requests\RoleStoreRequest;
 use Modules\Role\App\Models\Permission;
 use Modules\Role\App\Models\Role;
+use Modules\Role\App\Services\PermissionService;
 
 class RoleController extends Controller
 {
@@ -19,10 +20,10 @@ class RoleController extends Controller
         return view('role::index', compact('roles'));
     }
 
-    public function create(): View
+    public function create(PermissionService $permissionService): View
     {
         $permissions = Permission::all();
-        $groupedPermissions = Permission::groupedPermissions($permissions);
+        $groupedPermissions = $permissionService->groupedPermissions($permissions);
         return view('role::create', compact('groupedPermissions'));
     }
 
