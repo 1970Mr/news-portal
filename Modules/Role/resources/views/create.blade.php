@@ -41,9 +41,9 @@
                             </div>
 
                             <div class="col-lg-10 d-flex row my-3">
-                                <h2 class="mb-2 px-0">دسترسی‌ها</h2>
+                                <h2 class="mb-3 px-0">تعیین دسترسی‌های نقش</h2>
                                 @foreach($groupedPermissions as $key => $permissions)
-                                    <h3 class="mb-2 px-0">@lang($key)</h3>
+                                    <h3 class="mb-2 px-0">@lang('role::permissions.' . $key)</h3>
                                     @foreach($permissions as $permission)
                                         <div class="form-group col-lg-3 px-0">
                                             <label for="{{ $permission->id }}" class="cursor-pointer">
