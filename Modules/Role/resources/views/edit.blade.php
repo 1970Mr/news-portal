@@ -1,9 +1,9 @@
-@extends('panel::layouts.master', ['title' => 'ویرایش دسته‌بندی'])
+@extends('panel::layouts.master', ['title' => 'ویرایش نقش'])
 
 @section('content')
     <x-common-breadcrumbs>
-        <li><a href="{{ route('category.index') }}">لیست دسته‌بندی‌ها</a></li>
-        <li><a>ویرایش دسته‌بندی</a></li>
+        <li><a href="{{ route('role.index') }}">لیست نقش‌ها</a></li>
+        <li><a>ویرایش نقش</a></li>
     </x-common-breadcrumbs>
 
     <div class="row pe-0">
@@ -13,7 +13,7 @@
                     <div class="portlet-title">
                         <h3 class="title">
                             <i class="icon-user-follow"></i>
-                            ویرایش دسته‌بندی
+                            ویرایش نقش
                         </h3>
                     </div><!-- /.portlet-title -->
                     <div class="buttons-box">
@@ -28,42 +28,44 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="user-create-form" role="form" action="{{ route('category.update', $category->id) }}" method="post">
+                    <form id="role-edit-form" role="form" action="{{ route('role.update', $role->id) }}" method="post">
                         @csrf
-                        <input type="hidden" name="_method" value="PUT">
+                        @method('put')
                         <x-common-error-messages />
 
                         <fieldset class="row justify-content-center">
-                            <div class="form-group col-lg-6">
-                                <label for="name">نام <small>(ضروری)</small></label>
-                                <input id="name" class="form-control" name="name" type="text" required value="{{ $category->name }}">
+                            <div class="col-12 d-flex justify-content-center">
+                                <div class="form-group col-lg-6">
+                                    <label for="name">نام <small>(ضروری)</small> </label>
+                                    <input id="name" class="form-control" name="name" type="text" required value="{{ old('name') ?? $role->name }}">
+                                </div>
                             </div>
-                            <div class="form-group col-lg-6">
-                                <label for="slug">slug <small>(ضروری)</small> </label>
-                                <input id="slug" class="form-control" name="slug" type="text" required value="{{ $category->slug }}">
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label for="description">توضیحات </label>
-                                <input id="description" class="form-control" name="description" type="text" value="{{ $category->description }}">
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label for="parent_id">دسته‌بندی والد</label>
-                                <select id="parent_id" class="form-control" name="parent_id">
-                                    <option value="">انتخاب دسته‌بندی والد</option>
-                                    @foreach($categories as $category)
-                                        <option value="{{ $category->id }}" @if($category->id == $category->parent_id) selected @endif>{{ $category->name }}</option>
+
+                            <div class="col-lg-10 d-flex row my-3">
+                                <h2 class="mb-3 px-0">تعیین دسترسی‌های نقش</h2>
+                                @foreach($groupedPermissions as $key => $permissions)
+                                    <h3 class="mb-2 px-0">@lang('role::permissions.' . $key)</h3>
+                                    @foreach($permissions as $permission)
+                                        <div class="form-group col-lg-3 px-0">
+                                            <label for="{{ $permission->id }}" class="cursor-pointer">
+                                                <input id="{{ $permission->id }}" class="form-control" name="permissions[]" type="checkbox" value="{{ $permission->name }}"
+                                                       @if( (is_array(old('permissions')) && in_array($permission->name, old('permissions'))) || (!old('permissions') &&
+                                                       $role->permissions->pluck('name')
+                                                       ->contains($permission->name)) )
+                                                           checked
+                                                    @endif>
+                                                {{ $permission->local_name }}
+                                            </label>
+                                        </div>
                                     @endforeach
-                                </select>
+                                @endforeach
                             </div>
-                            <div class="form-group text-center">
-                                <input id="status" class="form-control" name="status" type="checkbox" @if($category->status) checked @endif>
-                                <label for="status">وضعیت</label>
-                            </div>
+
                             <div class="form-group">
                                 <div class="col-sm-6 col-sm-offset-4 mx-auto">
                                     <button class="btn btn-success btn-block">
                                         <i class="icon-check"></i>
-                                        ویرایش دسته‌بندی
+                                        ویرایش نقش
                                     </button>
                                 </div>
                             </div>
@@ -94,6 +96,6 @@
                 }
             }
         });
-        $("#user-create-form").validate();
+        $("#role-edit-form").validate();
     </script>
 @endpush

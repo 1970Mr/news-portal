@@ -4,18 +4,22 @@ namespace Modules\Role\App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RoleStoreRequest extends FormRequest
+class RoleRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
      */
     public function rules(): array
     {
-        return [
+        $rules = [
             'name' => 'required|unique:roles,name',
             'permissions' => 'nullable|array',
             'permissions.*' => 'exists:permissions,name',
         ];
+        if ($this->method() === 'PUT') {
+            $rules['name'] .= ',' . $this->route('role')->id;
+        }
+        return $rules;
     }
 
     /**

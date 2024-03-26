@@ -7,7 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
-use Modules\Role\App\Http\Requests\RoleStoreRequest;
+use Modules\Role\App\Http\Requests\RoleRequest;
 use Modules\Role\App\Models\Permission;
 use Modules\Role\App\Models\Role;
 use Modules\Role\App\Services\PermissionService;
@@ -16,7 +16,7 @@ class RoleController extends Controller
 {
     public function index(): View
     {
-        $roles = Role::with('permissions')->latest()->paginate(10);
+        $roles = Role::with('permissions')->orderBy('id', 'desc')->paginate(10);
         return view('role::index', compact('roles'));
     }
 
@@ -27,7 +27,7 @@ class RoleController extends Controller
         return view('role::create', compact('groupedPermissions'));
     }
 
-    public function store(RoleStoreRequest $request): RedirectResponse
+    public function store(RoleRequest $request): RedirectResponse
     {
         try {
             DB::beginTransaction();
@@ -41,14 +41,25 @@ class RoleController extends Controller
         }
     }
 
-    public function edit(Role $role): View
+    public function edit(Role $role, PermissionService $permissionService): View
     {
-        return view('role::edit');
+        $permissions = Permission::all();
+        $groupedPermissions = $permissionService->groupedPermissions($permissions);
+        return view('role::edit', compact('role', 'groupedPermissions'));
     }
 
-    public function update(Request $request, Role $role): RedirectResponse
+    public function update(RoleRequest $request, Role $role): RedirectResponse
     {
-        //
+        try {
+            DB::beginTransaction();
+            $role->update($request->only('name'));
+            $role->syncPermissions($request->permissions);
+            DB::commit();
+            return to_route('role.index')->with('success', "نقش {$role->name} با موفقیت ویرایش شد");
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->with('error', 'مشکلی در ایجاد نقش به وجود آمد. لطفا دوباره تلاش کنید.');
+        }
     }
 
     public function destroy(Role $role): RedirectResponse

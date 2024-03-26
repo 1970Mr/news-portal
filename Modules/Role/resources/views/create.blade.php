@@ -28,7 +28,7 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="user-create-form" role="form" action="{{ route('role.store') }}" method="post">
+                    <form id="role-create-form" role="form" action="{{ route('role.store') }}" method="post">
                         @csrf
                         <x-common-error-messages />
 
@@ -91,6 +91,6 @@
                 }
             }
         });
-        $("#user-create-form").validate();
+        $("#role-create-form").validate();
     </script>
 @endpush
