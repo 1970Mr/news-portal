@@ -45,7 +45,7 @@ class RoleController extends Controller
     {
         $permissions = Permission::all();
         $groupedPermissions = $permissionService->groupedPermissions($permissions);
-        return view('role::edit', compact('role', 'groupedPermissions'));
+        return view('role::edit', compact('role', 'groupedPermissions', 'permissionService'));
     }
 
     public function update(RoleRequest $request, Role $role): RedirectResponse

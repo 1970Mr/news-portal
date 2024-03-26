@@ -49,11 +49,7 @@
                                         <div class="form-group col-lg-3 px-0">
                                             <label for="{{ $permission->id }}" class="cursor-pointer">
                                                 <input id="{{ $permission->id }}" class="form-control" name="permissions[]" type="checkbox" value="{{ $permission->name }}"
-                                                       @if( (is_array(old('permissions')) && in_array($permission->name, old('permissions'))) || (!old('permissions') &&
-                                                       $role->permissions->pluck('name')
-                                                       ->contains($permission->name)) )
-                                                           checked
-                                                    @endif>
+                                                       {{ $permissionService->selectedPermissions($role->permissions, $permission->name, old('permissions')) }}>
                                                 {{ $permission->local_name }}
                                             </label>
                                         </div>

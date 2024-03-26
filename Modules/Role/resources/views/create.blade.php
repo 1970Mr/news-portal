@@ -48,7 +48,7 @@
                                         <div class="form-group col-lg-3 px-0">
                                             <label for="{{ $permission->id }}" class="cursor-pointer">
                                                 <input id="{{ $permission->id }}" class="form-control" name="permissions[]" type="checkbox" value="{{ $permission->name }}"
-                                                       @if(is_array(old('permissions')) && in_array($permission->name, old('permissions'))) checked @endif>
+                                                       @if(old('permissions') && in_array($permission->name, old('permissions'))) checked @endif>
                                                 {{ $permission->local_name }}
                                             </label>
                                         </div>
