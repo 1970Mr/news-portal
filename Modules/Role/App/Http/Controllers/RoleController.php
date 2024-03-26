@@ -21,9 +21,9 @@ class RoleController extends Controller
 
     public function create(): View
     {
-        $permissions = Permission::latest()->get();
-        dd($permissions->toArray());
-        return view('role::create', compact('permissions'));
+        $permissions = Permission::all();
+        $groupedPermissions = Permission::groupedPermissions($permissions);
+        return view('role::create', compact('groupedPermissions'));
     }
 
     public function store(RoleStoreRequest $request): RedirectResponse

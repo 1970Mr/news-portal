@@ -40,16 +40,19 @@
                                 </div>
                             </div>
 
-                            <div class="col-6 d-flex row my-3">
-                                <h3 class="mb-3 px-0">دسترسی‌ها</h3>
-                                @foreach($permissions as $permission)
-                                    <div class="form-group col-lg-6 px-0">
-                                        <label for="{{ $permission->id }}" class="cursor-pointer">
-                                            <input id="{{ $permission->id }}" class="form-control" name="permissions[]" type="checkbox" value="{{ $permission->name }}"
-                                                   @if(is_array(old('permissions')) && in_array($permission->name, old('permissions'))) checked @endif>
-                                            {{ $permission->local_name }}
-                                        </label>
-                                    </div>
+                            <div class="col-lg-10 d-flex row my-3">
+                                <h2 class="mb-2 px-0">دسترسی‌ها</h2>
+                                @foreach($groupedPermissions as $key => $permissions)
+                                    <h3 class="mb-2 px-0">@lang($key)</h3>
+                                    @foreach($permissions as $permission)
+                                        <div class="form-group col-lg-3 px-0">
+                                            <label for="{{ $permission->id }}" class="cursor-pointer">
+                                                <input id="{{ $permission->id }}" class="form-control" name="permissions[]" type="checkbox" value="{{ $permission->name }}"
+                                                       @if(is_array(old('permissions')) && in_array($permission->name, old('permissions'))) checked @endif>
+                                                {{ $permission->local_name }}
+                                            </label>
+                                        </div>
+                                    @endforeach
                                 @endforeach
                             </div>
 
