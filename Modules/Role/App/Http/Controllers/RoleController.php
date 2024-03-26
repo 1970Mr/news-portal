@@ -10,6 +10,7 @@ use Modules\Role\App\Http\Requests\RoleRequest;
 use Modules\Role\App\Models\Permission;
 use Modules\Role\App\Models\Role;
 use Modules\Role\App\Services\PermissionService;
+use Modules\Role\App\Services\RoleService;
 
 class RoleController extends Controller
 {
@@ -19,10 +20,9 @@ class RoleController extends Controller
         return view('role::index', compact('roles'));
     }
 
-    public function create(PermissionService $permissionService): View
+    public function create(RoleService $roleService): View
     {
-        $permissions = Permission::all();
-        $groupedPermissions = $permissionService->groupedPermissions($permissions);
+        $groupedPermissions = $roleService->groupedPermissions();
         return view('role::create', compact('groupedPermissions'));
     }
 
