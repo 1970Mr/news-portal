@@ -22,4 +22,10 @@ class Role extends SpatieRole
     {
         return $this->permissions()->orderBy('name', 'desc')->get()->pluck('local_name')->implode(', ');
     }
+
+    public function update(array $attributes = [], array $options = []): bool
+    {
+        $this->touch();
+        return parent::update($attributes, $options);
+    }
 }

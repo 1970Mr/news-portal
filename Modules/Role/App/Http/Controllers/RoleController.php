@@ -44,17 +44,8 @@ class RoleController extends Controller
 
     public function update(RoleRequest $request, Role $role): RedirectResponse
     {
-        try {
-            DB::beginTransaction();
-            $role->update($request->only('name'));
-            $role->syncPermissions($request->permissions);
-            DB::commit();
-            return to_route('role.index')->with('success', __('entity_edited', ['entity' => __('role'), 'name' => $role->name]));
-        } catch (\Exception $e) {
-            DB::rollBack();
-            logger($e->getMessage());
-            return back()->with('error',  __('operation_failed'));
-        }
+        $role->update($request->only('name'));
+        return to_route('role.index')->with('success', __('entity_edited', ['entity' => __('role'), 'name' => $role->name]));
     }
 
     public function destroy(Role $role): RedirectResponse

@@ -4,6 +4,8 @@ namespace Modules\Role\App\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Modules\Role\App\Models\Role;
+use Modules\Role\App\Observers\RoleObserver;
 use Spatie\Permission\Models\Permission;
 
 class RoleServiceProvider extends ServiceProvider
@@ -23,6 +25,8 @@ class RoleServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/migrations'));
+
+        Role::observe(RoleObserver::class);
     }
 
     /**
