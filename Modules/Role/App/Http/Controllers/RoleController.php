@@ -4,7 +4,6 @@ namespace Modules\Role\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Modules\Role\App\Http\Requests\RoleRequest;
@@ -34,10 +33,10 @@ class RoleController extends Controller
             $role = Role::create($request->only('name'));
             $role->syncPermissions($request->permissions);
             DB::commit();
-            return to_route('role.index')->with('success', 'نقش جدید با موفقیت ایجاد شد');
+            return to_route('role.index')->with('success', __('entity_created', ['entity' => __('role')]));
         } catch (\Exception $e) {
             DB::rollBack();
-            return back()->with('error', 'مشکلی در ایجاد نقش به وجود آمد. لطفا دوباره تلاش کنید.');
+            return back()->with('error', __('operation_failed'));
         }
     }
 
@@ -55,17 +54,17 @@ class RoleController extends Controller
             $role->update($request->only('name'));
             $role->syncPermissions($request->permissions);
             DB::commit();
-            return to_route('role.index')->with('success', "نقش {$role->name} با موفقیت ویرایش شد");
+            return to_route('role.index')->with('success', __('entity_edited', ['entity' => __('role'), 'name' => $role->name]));
         } catch (\Exception $e) {
             DB::rollBack();
-            return back()->with('error', 'مشکلی در ایجاد نقش به وجود آمد. لطفا دوباره تلاش کنید.');
+            logger($e->getMessage());
+            return back()->with('error',  __('operation_failed'));
         }
     }
 
     public function destroy(Role $role): RedirectResponse
     {
-        $name = $role->name;
         $role->delete();
-        return to_route('role.index')->with('success', "حذف $name با موفقیت انجام شد.");
+        return to_route('role.index')->with('success', __('entity_deleted', ['entity' => __('role')]));
     }
 }
