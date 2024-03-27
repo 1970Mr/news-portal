@@ -8,6 +8,11 @@ use Spatie\Permission\PermissionRegistrar;
 
 class Role extends SpatieRole
 {
+    public const ADMIN = 'Admin';
+    public const EDITOR = 'Editor';
+    public const AUTHOR = 'Author';
+    public const CONTRIBUTOR = 'Contributor';
+    public const SUBSCRIBER = 'Subscriber';
     public function permissions(): BelongsToMany
     {
         return $this->belongsToMany(

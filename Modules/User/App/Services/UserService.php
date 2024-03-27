@@ -3,6 +3,7 @@
 namespace Modules\User\App\Services;
 
 use Illuminate\Support\Facades\Gate;
+use Modules\Role\App\Models\Role;
 use Modules\User\App\Http\Requests\UserStoreRequest;
 use Modules\User\App\Http\Requests\UserUpdateRequest;
 use Modules\User\App\Models\User;
