@@ -16,6 +16,15 @@ return [
                 'user.edit',
             ],
         ],
+        'role' => [
+            'title' => 'نقش‌ها',
+            'icon' => 'fas fa-arrow-down-up-lock',
+            'url' => route('role.index'),
+            'active_routes' => [
+                'role.create',
+                'role.edit',
+            ],
+        ],
         'category' => [
             'title' => 'دسته‌بندی',
             'icon' => 'icon-grid',
