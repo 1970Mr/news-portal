@@ -25,7 +25,9 @@ class Role extends SpatieRole
 
     public function update(array $attributes = [], array $options = []): bool
     {
-        $this->touch();
+        // Touch method can be used instead of the following, but an additional request is sent to the database
+        $updatedAtName = $this->getUpdatedAtColumn();
+        $attributes[$updatedAtName] = $this->updateTimestamps()->{$updatedAtName};
         return parent::update($attributes, $options);
     }
 }
