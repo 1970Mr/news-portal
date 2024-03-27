@@ -1,9 +1,9 @@
-@extends('panel::layouts.master', ['title' => 'ویرایش نقش'])
+@extends('panel::layouts.master', ['title' => 'اختصاص نقش به کاربر'])
 
 @section('content')
     <x-common-breadcrumbs>
-        <li><a href="{{ route('role.index') }}">لیست نقش‌ها</a></li>
-        <li><a>ویرایش نقش</a></li>
+        <li><a href="{{ route('user.index') }}">لیست کاربران</a></li>
+        <li><a>اختصاص نقش به کاربر</a></li>
     </x-common-breadcrumbs>
 
     <div class="row pe-0">
@@ -13,7 +13,7 @@
                     <div class="portlet-title">
                         <h3 class="title">
                             <i class="icon-user-follow"></i>
-                            ویرایش نقش
+                            اختصاص نقش به {{ $user->name }}
                         </h3>
                     </div><!-- /.portlet-title -->
                     <div class="buttons-box">
@@ -28,40 +28,31 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="role-edit-form" role="form" action="{{ route('role.update', $role->id) }}" method="post">
+                    <form id="user-create-form" role="form" action="{{ route('role.assignment', $user->id) }}" method="post">
                         @csrf
-                        @method('put')
+                        @method('PUT')
                         <x-common-error-messages />
 
                         <fieldset class="row justify-content-center">
-                            <div class="col-12 d-flex justify-content-center">
-                                <div class="form-group col-lg-6">
-                                    <label for="name">نام <small>(ضروری)</small> </label>
-                                    <input id="name" class="form-control" name="name" type="text" required value="{{ old('name') ?? $role->name }}">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-10 d-flex row my-3">
-                                <h2 class="mb-3 px-0">تعیین دسترسی‌های نقش</h2>
-                                @foreach($groupedPermissions as $key => $permissions)
-                                    <h3 class="mb-2 px-0">@lang('role::permissions.' . $key)</h3>
-                                    @foreach($permissions as $permission)
-                                        <div class="form-group col-lg-3 px-0">
-                                            <label for="{{ $permission->id }}" class="cursor-pointer">
-                                                <input id="{{ $permission->id }}" class="form-control" name="permissions[]" type="checkbox" value="{{ $permission->name }}"
-                                                       {{ $permissionService->selectedItems($role->permissions, $permission->name, old('permissions')) }}>
-                                                {{ $permission->local_name }}
+                            <div class="col-lg-6 my-3">
+                                <div class="roles-layout">
+                                    @foreach($roles as $role)
+                                        <div class="roles-item">
+                                            <label for="name" class="cursor-pointer">
+                                                <input id="{{ $role->name }}" class="form-control" name="roles[]" type="checkbox" value="{{ $role->name }}"
+                                                    {{ $roleService->selectedItems($user->roles, $role->name, old('roles')) }}>
+                                                {{ $role->name }}
                                             </label>
                                         </div>
                                     @endforeach
-                                @endforeach
+                                </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="col-sm-6 col-sm-offset-4 mx-auto">
                                     <button class="btn btn-success btn-block">
                                         <i class="icon-check"></i>
-                                        ویرایش نقش
+                                        اختصاص نقش به کاربر
                                     </button>
                                 </div>
                             </div>
@@ -92,6 +83,32 @@
                 }
             }
         });
-        $("#role-edit-form").validate();
+        $("#user-create-form").validate({
+            rules: {
+                password_confirmation: {
+                    equalTo: "#password"
+                }
+            },
+            messages: {
+                password_confirmation: {
+                    equalTo: "رمزهای عبور یکسان نیستند"
+                }
+            }
+        });
     </script>
+@endpush
+
+@push('styles')
+    <style>
+        .roles-layout {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            justify-content: space-between;
+        }
+        .roles-item {
+            width: auto;
+            word-break: break-all;
+            margin-bottom: .5rem;
+        }
+    </style>
 @endpush

@@ -66,6 +66,10 @@
                                                 <x-common-delete-button :route="route('user.destroy', $user->id)" />
                                             @endcan
 
+                                            <a class="btn btn-sm btn-warning btn-icon round d-flex justify-content-center align-items-center"
+                                               rel="tooltip" aria-label="اختصاص نقش" data-bs-original-title="اختصاص نقش" href="{{ route('role.assignment', $user->id) }}">
+                                                <i class="fas fa-arrow-down-up-lock"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach

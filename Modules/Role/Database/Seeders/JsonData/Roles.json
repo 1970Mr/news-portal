@@ -21,10 +21,6 @@
         "permissions": []
     },
     {
-        "name": "Contributor",
-        "permissions": []
-    },
-    {
         "name": "Subscriber",
         "permissions": []
     }

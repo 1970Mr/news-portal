@@ -8,11 +8,12 @@ use Spatie\Permission\PermissionRegistrar;
 
 class Role extends SpatieRole
 {
+    // Default roles
     public const ADMIN = 'Admin';
     public const EDITOR = 'Editor';
     public const AUTHOR = 'Author';
-    public const CONTRIBUTOR = 'Contributor';
     public const SUBSCRIBER = 'Subscriber';
+
     public function permissions(): BelongsToMany
     {
         return $this->belongsToMany(
@@ -34,5 +35,15 @@ class Role extends SpatieRole
         $updatedAtName = $this->getUpdatedAtColumn();
         $attributes[$updatedAtName] = $this->updateTimestamps()->{$updatedAtName};
         return parent::update($attributes, $options);
+    }
+
+    public function getDefaultRoles(): array
+    {
+        return [
+            self::ADMIN,
+            self::EDITOR,
+            self::AUTHOR,
+            self::SUBSCRIBER,
+        ];
     }
 }
