@@ -34,14 +34,14 @@
                         <x-common-error-messages />
 
                         <fieldset class="row justify-content-center">
-                            <div class="col-lg-6 my-3">
+                            <div class="col-lg-8 my-3">
                                 <div class="roles-layout">
                                     @foreach($roles as $role)
                                         <div class="roles-item">
                                             <label for="name" class="cursor-pointer">
-                                                <input id="{{ $role->name }}" class="form-control" name="roles[]" type="checkbox" value="{{ $role->name }}"
+                                                <input id="{{ $role->name }}" class="form-control" name="roles" type="radio" value="{{ $role->name }}"
                                                     {{ $roleService->selectedItems($user->roles, $role->name, old('roles')) }}>
-                                                {{ $role->name }}
+                                                {{ $role->local_name }}
                                             </label>
                                         </div>
                                     @endforeach
@@ -102,13 +102,19 @@
     <style>
         .roles-layout {
             display: grid;
-            grid-template-columns: auto auto auto;
+            grid-template-columns: repeat(4, auto);
             justify-content: space-between;
         }
         .roles-item {
             width: auto;
             word-break: break-all;
             margin-bottom: .5rem;
+        }
+
+        @media screen and (max-width: 575px) {
+            .roles-layout {
+                grid-template-columns: repeat(2, auto);
+            }
         }
     </style>
 @endpush

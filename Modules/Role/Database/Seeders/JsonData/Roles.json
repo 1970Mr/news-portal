@@ -1,12 +1,14 @@
 [
     {
         "name": "Admin",
+        "local_name": "مدیر",
         "permissions": [
             "super_admin"
         ]
     },
     {
         "name": "Editor",
+        "local_name": "ویرایشگر",
         "permissions": [
             "user::index",
             "category::index",
@@ -18,10 +20,12 @@
     },
     {
         "name": "Author",
+        "local_name": "نویسنده",
         "permissions": []
     },
     {
         "name": "Subscriber",
+        "local_name": "عضو ساده",
         "permissions": []
     }
 ]

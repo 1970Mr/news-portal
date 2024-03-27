@@ -7,7 +7,7 @@
                      class="img-circle img-responsive">
             </a>
             <div class="user-details">
-                <h4>حمید آفرینش فر</h4>
+                <h4>رسول مرشدی</h4>
                 <p class="role">مدیر فنی</p>
             </div><!-- /.user-details -->
         </div><!-- /.user-box -->

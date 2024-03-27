@@ -33,7 +33,7 @@ class RoleController extends Controller
 
     public function store(RoleRequest $request): RedirectResponse
     {
-        Role::create($request->only('name'));
+        Role::create($request->only('name', 'local_name'));
         return to_route('role.index')->with('success', __('entity_created', ['entity' => __('role')]));
     }
 
@@ -44,8 +44,8 @@ class RoleController extends Controller
 
     public function update(RoleRequest $request, Role $role): RedirectResponse
     {
-        $role->update($request->only('name'));
-        return to_route('role.index')->with('success', __('entity_edited', ['entity' => __('role'), 'name' => $role->name]));
+        $role->update($request->only('name', 'local_name'));
+        return to_route('role.index')->with('success', __('entity_edited', ['entity' => __('role'), 'name' => $role->local_name]));
     }
 
     public function destroy(Role $role): RedirectResponse

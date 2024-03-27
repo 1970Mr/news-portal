@@ -43,6 +43,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>نام</th>
+                                <th>نام نمایشی</th>
                                 <th>دسترسی‌های نقش</th>
                                 <th>تاریخ ایجاد</th>
                                 <th>عملیات</th>
@@ -53,8 +54,9 @@
                                     <tr>
                                         <td>{{ $role->id }}</td>
                                         <td>{{ $role->name }}</td>
+                                        <td>{{ $role->local_name }}</td>
                                         <td>
-                                            {{ $role->getPermissionLocalNames() }}
+                                            {{ $role->getPermissionLocalNames()->implode(', ') }}
                                         </td>
                                         <td class="ltr text-right">{{ jalalian()->forge($role->created_at)->format(config('common.datetime_format')) }}</td>
                                         <td class="d-flex gap-2">

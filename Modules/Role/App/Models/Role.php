@@ -3,6 +3,8 @@
 namespace Modules\Role\App\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Collection;
+use Spatie\Permission\Contracts\Role as RoleContract;
 use \Spatie\Permission\Models\Role as SpatieRole;
 use Spatie\Permission\PermissionRegistrar;
 
@@ -14,6 +16,12 @@ class Role extends SpatieRole
     public const AUTHOR = 'Author';
     public const SUBSCRIBER = 'Subscriber';
 
+    protected $fillable = [
+        'name',
+        'local_name',
+        'guard_name',
+    ];
+
     public function permissions(): BelongsToMany
     {
         return $this->belongsToMany(
@@ -24,9 +32,9 @@ class Role extends SpatieRole
         );
     }
 
-    public function getPermissionLocalNames(): string
+    public function getPermissionLocalNames(): Collection
     {
-        return $this->permissions()->orderBy('name', 'desc')->get()->pluck('local_name')->implode(', ');
+        return $this->permissions()->latest()->get()->pluck('local_name');
     }
 
     public function update(array $attributes = [], array $options = []): bool
@@ -45,5 +53,14 @@ class Role extends SpatieRole
             self::AUTHOR,
             self::SUBSCRIBER,
         ];
+    }
+
+    public static function customFindOrCreate(string $name, ?string $guardName = 'web'): \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model
+    {
+        $role = static::findByParam(['name' => $name, 'guard_name' => $guardName]);
+        if (! $role) {
+            return static::query()->create(['name' => $name, 'local_name' => $name, 'guard_name' => $guardName]);
+        }
+        return $role;
     }
 }

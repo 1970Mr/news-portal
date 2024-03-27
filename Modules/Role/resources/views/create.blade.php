@@ -33,10 +33,17 @@
                         <x-common-error-messages />
 
                         <fieldset class="row justify-content-center">
-                            <div class="col-12 d-flex justify-content-center">
-                                <div class="form-group col-lg-6">
+                            <div class="col-lg-6">
+                                <div class="form-group">
                                     <label for="name">نام <small>(ضروری)</small> </label>
                                     <input id="name" class="form-control" name="name" type="text" required value="{{ old('name') }}">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="localName">نام نمایشی</label>
+                                    <input id="localName" class="form-control" name="localName" type="text" value="{{ old('localName') }}">
                                 </div>
                             </div>
 

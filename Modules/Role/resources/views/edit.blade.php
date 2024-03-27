@@ -34,27 +34,38 @@
                         <x-common-error-messages />
 
                         <fieldset class="row justify-content-center">
-                            <div class="col-12 d-flex justify-content-center">
-                                <div class="form-group col-lg-6">
+                            <div class="col-lg-6">
+                                <div class="form-group">
                                     <label for="name">نام <small>(ضروری)</small> </label>
                                     <input id="name" class="form-control" name="name" type="text" required value="{{ old('name') ?? $role->name }}">
                                 </div>
                             </div>
 
-                            <div class="col-lg-10 d-flex row my-3">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="localName">نام نمایشی</label>
+                                    <input id="localName" class="form-control" name="localName" type="text" value="{{ old('localName') ?? $role->local_name }}">
+                                </div>
+                            </div>
+
+                            <div class="m-3">
                                 <h2 class="mb-3 px-0">تعیین دسترسی‌های نقش</h2>
-                                @foreach($groupedPermissions as $key => $permissions)
-                                    <h3 class="mb-2 px-0">@lang('role::permissions.' . $key)</h3>
-                                    @foreach($permissions as $permission)
-                                        <div class="form-group col-lg-3 px-0">
-                                            <label for="{{ $permission->id }}" class="cursor-pointer">
-                                                <input id="{{ $permission->id }}" class="form-control" name="permissions[]" type="checkbox" value="{{ $permission->name }}"
-                                                       {{ $permissionService->selectedItems($role->permissions, $permission->name, old('permissions')) }}>
-                                                {{ $permission->local_name }}
-                                            </label>
+                                <div class="row mx-4">
+                                    @foreach($groupedPermissions as $key => $permissions)
+                                        <h3 class="mb-2 px-0">@lang('role::permissions.' . $key)</h3>
+                                        <div class="permissions-layout">
+                                            @foreach($permissions as $permission)
+                                                <div class="form-group px-0 w-auto">
+                                                    <label for="{{ $permission->id }}" class="cursor-pointer">
+                                                        <input id="{{ $permission->id }}" class="form-control" name="permissions[]" type="checkbox" value="{{ $permission->name }}"
+                                                            {{ $permissionService->selectedItems($role->permissions, $permission->name, old('permissions')) }}>
+                                                        {{ $permission->local_name }}
+                                                    </label>
+                                                </div>
+                                            @endforeach
                                         </div>
                                     @endforeach
-                                @endforeach
+                                </div>
                             </div>
 
                             <div class="form-group">
@@ -94,4 +105,26 @@
         });
         $("#role-edit-form").validate();
     </script>
+@endpush
+
+@push('styles')
+    <style>
+        .permissions-layout {
+            display: grid;
+            grid-template-columns: repeat(4, auto);
+            justify-content: space-between;
+        }
+
+        @media screen and (max-width: 767px) {
+            .permissions-layout {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+
+        @media screen and (max-width: 575px) {
+            .permissions-layout {
+                grid-template-columns: repeat(2, auto);
+            }
+        }
+    </style>
 @endpush

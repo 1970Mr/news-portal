@@ -13,11 +13,12 @@ class RoleRequest extends FormRequest
     {
         $rules = [
             'name' => 'required|unique:roles,name',
-            'permissions' => 'nullable|array',
-            'permissions.*' => 'exists:permissions,name',
+            'local_name' => 'nullable|unique:roles,local_name',
+            'permissions' => 'nullable',
         ];
         if ($this->method() === 'PUT') {
             $rules['name'] .= ',' . $this->route('role')->id;
+            $rules['local_name'] .= ',' . $this->route('role')->id;
         }
         return $rules;
     }
@@ -28,5 +29,13 @@ class RoleRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $localName = $this->input('localName') ?? __($this->input('name'));
+        $this->merge([
+            'local_name' => $localName,
+        ]);
     }
 }

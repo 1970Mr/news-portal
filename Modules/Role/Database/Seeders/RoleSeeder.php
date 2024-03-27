@@ -13,7 +13,8 @@ class RoleSeeder extends Seeder
         $rolesData = json_decode($rolesData, true, 512, JSON_THROW_ON_ERROR);
 
         foreach ($rolesData as $roleData) {
-            $role = Role::findOrCreate($roleData['name']);
+            $roleData = collect($roleData);
+            $role = Role::query()->firstOrCreate($roleData->except('permissions')->toArray());
             $role->syncPermissions($roleData['permissions']);
         }
     }
