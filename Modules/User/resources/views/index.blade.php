@@ -43,6 +43,7 @@
                                 <th>#</th>
                                 <th>نام</th>
                                 <th>ایمیل</th>
+                                <th>نقش(ها)</th>
                                 <th>تاریخ عضویت</th>
                                 <th>وضعیت</th>
                                 <th>عملیات</th>
@@ -54,6 +55,7 @@
                                         <td>{{ $user->id }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
+                                        <td>{{ $user->getRolenames()->implode(', ') }}</td>
                                         <td class="ltr text-right">{{ jalalian()->forge($user->created_at)->format(config('common.datetime_format')) }}</td>
                                         <td class="{{ status_class($user->email_verified_at) }}">{{ $user->verified_email_status }}</td>
                                         <td class="d-flex gap-2">
