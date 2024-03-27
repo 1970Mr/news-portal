@@ -9,6 +9,8 @@ class Permission extends SpatiePermission
 {
     protected $appends = ['local_name'];
 
+    public const SUPER_ADMIN = 'super_admin';
+
     protected function localName(): Attribute
     {
         return Attribute::make(

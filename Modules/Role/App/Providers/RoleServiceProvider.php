@@ -3,9 +3,11 @@
 namespace Modules\Role\App\Providers;
 
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Modules\Role\App\Models\Role;
 use Modules\Role\App\Observers\RoleObserver;
+use Modules\User\App\Models\User;
 use Spatie\Permission\Models\Permission;
 
 class RoleServiceProvider extends ServiceProvider
@@ -27,6 +29,8 @@ class RoleServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/migrations'));
 
         Role::observe(RoleObserver::class);
+        // Use null to continue checking other policies
+        Gate::before(static fn (User $user) => $user->isAdmin() ? true : null);
     }
 
     /**

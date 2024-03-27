@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Modules\Role\App\Http\Requests\RoleRequest;
+use Modules\Role\App\Models\Permission;
 use Modules\Role\App\Models\Role;
 use Modules\Role\App\Services\PermissionService;
 use Modules\Role\App\Services\RoleService;
@@ -22,7 +23,7 @@ class RoleController extends Controller
     }
     public function index(): View
     {
-        $roles = Role::with('permissions')->orderBy('id', 'desc')->paginate(10);
+        $roles = Role::with('permissions')->latest('id')->paginate(10);
         return view('role::index', compact('roles'));
     }
 
