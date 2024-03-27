@@ -4,8 +4,7 @@ namespace Modules\Role\App\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Collection;
-use Spatie\Permission\Contracts\Role as RoleContract;
-use \Spatie\Permission\Models\Role as SpatieRole;
+use Spatie\Permission\Models\Role as SpatieRole;
 use Spatie\Permission\PermissionRegistrar;
 
 class Role extends SpatieRole

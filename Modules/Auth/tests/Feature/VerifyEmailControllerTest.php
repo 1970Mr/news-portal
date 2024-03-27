@@ -2,10 +2,10 @@
 
 namespace Modules\Auth\tests\Feature;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\URL;
 use Modules\User\Database\Factories\UserFactory;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class VerifyEmailControllerTest extends TestCase
 {

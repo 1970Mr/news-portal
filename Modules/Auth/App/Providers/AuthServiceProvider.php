@@ -4,7 +4,6 @@ namespace Modules\Auth\App\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use Modules\Common\App\View\Components\ErrorMessages;
 
 class AuthServiceProvider extends ServiceProvider
 {

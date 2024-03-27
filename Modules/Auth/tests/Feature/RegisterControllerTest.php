@@ -2,10 +2,10 @@
 
 namespace Modules\Auth\tests\Feature;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Mockery\MockInterface;
 use Modules\Auth\App\Services\RegisterService;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class RegisterControllerTest extends TestCase
 {

@@ -5,7 +5,6 @@ namespace Modules\User\App\Providers;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
-use Modules\User\App\Http\Controllers\UserController;
 use Modules\User\App\Models\User;
 use Modules\User\App\Observers\UserObserver;
 use Modules\User\App\Policies\UserPolicy;

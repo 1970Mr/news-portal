@@ -2,14 +2,14 @@
 
 namespace Modules\Auth\tests\Feature;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Mockery\MockInterface;
 use Modules\Auth\App\Services\PasswordResetService;
 use Modules\User\Database\Factories\UserFactory;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class PasswordResetControllerTest extends TestCase
 {

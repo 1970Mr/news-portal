@@ -2,10 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use Modules\Auth\App\Http\Controllers\LoginController;
+use Modules\Auth\App\Http\Controllers\LogoutController;
+use Modules\Auth\App\Http\Controllers\PasswordResetController;
 use Modules\Auth\App\Http\Controllers\RegisterController;
 use Modules\Auth\App\Http\Controllers\VerifyEmailController;
-use Modules\Auth\App\Http\Controllers\PasswordResetController;
-use Modules\Auth\App\Http\Controllers\LogoutController;
 
 // Login
 Route::get('/login', [LoginController::class, 'view'])->name('login')->middleware('guest');

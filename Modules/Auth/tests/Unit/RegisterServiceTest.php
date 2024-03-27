@@ -3,13 +3,13 @@
 namespace Modules\Auth\tests\Unit;
 
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Hash;
 use Modules\Auth\App\Http\Requests\RegisterRequest;
 use Modules\Auth\App\Services\RegisterService;
 use Modules\User\App\Models\User;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class RegisterServiceTest extends TestCase
 {

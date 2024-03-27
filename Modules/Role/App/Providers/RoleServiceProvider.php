@@ -8,7 +8,6 @@ use Illuminate\Support\ServiceProvider;
 use Modules\Role\App\Models\Role;
 use Modules\Role\App\Observers\RoleObserver;
 use Modules\User\App\Models\User;
-use Spatie\Permission\Models\Permission;
 
 class RoleServiceProvider extends ServiceProvider
 {

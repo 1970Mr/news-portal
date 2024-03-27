@@ -3,6 +3,7 @@
 namespace Modules\Auth\tests\Unit;
 
 use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
@@ -10,7 +11,6 @@ use Modules\Auth\App\Http\Requests\PasswordResetRequest;
 use Modules\Auth\App\Services\PasswordResetService;
 use Modules\User\Database\Factories\UserFactory;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class PasswordResetServiceTest extends TestCase
 {
