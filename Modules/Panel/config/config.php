@@ -14,6 +14,7 @@ return [
             'active_routes' => [
                 'user.create',
                 'user.edit',
+                'user.role-assignment',
             ],
         ],
         'role' => [

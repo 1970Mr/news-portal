@@ -28,7 +28,7 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="user-create-form" role="form" action="{{ route('role.assignment', $user->id) }}" method="post">
+                    <form id="user-create-form" role="form" action="{{ route('user.role-assignment', $user->id) }}" method="post">
                         @csrf
                         @method('PUT')
                         <x-common-error-messages />
