@@ -14693,3 +14693,39 @@ Stack level 1.\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-path\">F:\\save
 #46 F:\\saves\\my_projects\\Develop\\news-site\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
 #47 {main}
 "} 
+[2024-03-29 19:50:43] local.ERROR: The "--table" option does not exist. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\RuntimeException(code: 0): The \"--table\" option does not exist. at F:\\saves\\my_projects\\Develop\\news-site\\vendor\\symfony\\console\\Input\\ArgvInput.php:223)
+[stacktrace]
+#0 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\symfony\\console\\Input\\ArgvInput.php(150): Symfony\\Component\\Console\\Input\\ArgvInput->addLongOption('table', 'articles')
+#1 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\symfony\\console\\Input\\ArgvInput.php(85): Symfony\\Component\\Console\\Input\\ArgvInput->parseLongOption('--table=article...')
+#2 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\symfony\\console\\Input\\ArgvInput.php(74): Symfony\\Component\\Console\\Input\\ArgvInput->parseToken('--table=article...', true)
+#3 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\symfony\\console\\Input\\Input.php(56): Symfony\\Component\\Console\\Input\\ArgvInput->parse()
+#4 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\symfony\\console\\Command\\Command.php(285): Symfony\\Component\\Console\\Input\\Input->bind(Object(Symfony\\Component\\Console\\Input\\InputDefinition))
+#5 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(181): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#6 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\symfony\\console\\Application.php(1096): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#7 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\symfony\\console\\Application.php(324): Symfony\\Component\\Console\\Application->doRunCommand(Object(Nwidart\\Modules\\Commands\\MigrationMakeCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#8 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\symfony\\console\\Application.php(175): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#9 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(201): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#10 F:\\saves\\my_projects\\Develop\\news-site\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#11 {main}
+"} 
+[2024-03-29 20:32:04] local.ERROR: Module [Article] does not exist! {"exception":"[object] (Nwidart\\Modules\\Exceptions\\ModuleNotFoundException(code: 0): Module [Article] does not exist! at F:\\saves\\my_projects\\Develop\\news-site\\vendor\\nwidart\\laravel-modules\\src\\FileRepository.php:366)
+[stacktrace]
+#0 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\nwidart\\laravel-modules\\src\\Traits\\ModuleCommandTrait.php(16): Nwidart\\Modules\\FileRepository->findOrFail('Article')
+#1 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\nwidart\\laravel-modules\\src\\Commands\\MigrationMakeCommand.php(115): Nwidart\\Modules\\Commands\\MigrationMakeCommand->getModuleName()
+#2 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\nwidart\\laravel-modules\\src\\Commands\\GeneratorCommand.php(37): Nwidart\\Modules\\Commands\\MigrationMakeCommand->getDestinationFilePath()
+#3 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\nwidart\\laravel-modules\\src\\Commands\\MigrationMakeCommand.php(159): Nwidart\\Modules\\Commands\\GeneratorCommand->handle()
+#4 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Nwidart\\Modules\\Commands\\MigrationMakeCommand->handle()
+#5 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#6 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#7 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#8 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(662): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#9 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(211): Illuminate\\Container\\Container->call(Array)
+#10 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\symfony\\console\\Command\\Command.php(326): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#11 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(181): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#12 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\symfony\\console\\Application.php(1096): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#13 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\symfony\\console\\Application.php(324): Symfony\\Component\\Console\\Application->doRunCommand(Object(Nwidart\\Modules\\Commands\\MigrationMakeCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#14 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\symfony\\console\\Application.php(175): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#15 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(201): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#16 F:\\saves\\my_projects\\Develop\\news-site\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#17 {main}
+"} 
