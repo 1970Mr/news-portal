@@ -7,13 +7,18 @@
     "user::destroy": "حذف کاربر",
     "user::role_assignment": "اختصاص نقش",
 
+    "role::index": "مشاهده نقش‌ها",
+    "role::store": "ایجاد نقش",
+    "role::update": "ویرایش نقش",
+    "role::destroy": "حذف نقش",
+
     "category::index": "مشاهده دسته‌بندی‌ها",
     "category::store": "ایجاد دسته‌بندی",
     "category::update": "ویرایش دسته‌بندی",
     "category::destroy": "حذف دسته‌بندی",
 
-    "role::index": "مشاهده نقش‌ها",
-    "role::store": "ایجاد نقش",
-    "role::update": "ویرایش نقش",
-    "role::destroy": "حذف نقش"
+    "tag::index": "مشاهده تگ‌ها",
+    "tag::store": "ایجاد تگ",
+    "tag::update": "ویرایش تگ",
+    "tag::destroy": "حذف تگ"
 }
