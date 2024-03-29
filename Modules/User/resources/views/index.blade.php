@@ -48,7 +48,9 @@
                                 <th>نقش</th>
                                 <th>تاریخ عضویت</th>
                                 <th>وضعیت</th>
-                                <th>عملیات</th>
+                                @canany([config('permissions_list.USER_UPDATE'), config('permissions_list.USER_DESTROY')])
+                                    <th>عملیات</th>
+                                @endcanany
                             </tr>
                             </thead>
                             <tbody>
@@ -60,25 +62,27 @@
                                         <td>{{ $user->getRoleLocalNames()->implode(', ') }}</td>
                                         <td class="ltr text-right">{{ jalalian()->forge($user->created_at)->format(config('common.datetime_format')) }}</td>
                                         <td class="{{ status_class($user->email_verified_at) }}">{{ $user->verified_email_status }}</td>
-                                        <td class="d-flex gap-2">
-                                            @can(config('permissions_list.USER_UPDATE'))
-                                                <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                   rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('user.edit', $user->id) }}">
-                                                    <i class="icon-pencil fa-flip-horizontal"></i>
-                                                </a>
-                                            @endcan
+                                        @canany([config('permissions_list.USER_UPDATE'), config('permissions_list.USER_DESTROY')])
+                                            <td class="d-flex gap-2">
+                                                @can(config('permissions_list.USER_UPDATE'))
+                                                    <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
+                                                       rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('user.edit', $user->id) }}">
+                                                        <i class="icon-pencil fa-flip-horizontal"></i>
+                                                    </a>
+                                                @endcan
 
-                                            @can('delete', $user)
-                                                <x-common-delete-button :route="route('user.destroy', $user->id)" />
-                                            @endcan
+                                                @can('delete', $user)
+                                                    <x-common-delete-button :route="route('user.destroy', $user->id)" />
+                                                @endcan
 
-                                            @can(config('permissions_list.USER_ROLE_ASSIGNMENT'))
+                                                @can(config('permissions_list.USER_ROLE_ASSIGNMENT'))
                                                     <a class="btn btn-sm btn-warning btn-icon round d-flex justify-content-center align-items-center"
                                                        rel="tooltip" aria-label="اختصاص نقش" data-bs-original-title="اختصاص نقش" href="{{ route('user.role-assignment', $user->id) }}">
                                                         <i class="fas fa-arrow-down-up-lock"></i>
                                                     </a>
-                                            @endcan
-                                        </td>
+                                                @endcan
+                                            </td>
+                                        @endcanany
                                     </tr>
                                 @endforeach
                             </tbody>

@@ -50,7 +50,9 @@
                                 <th>دسته‌بندی والد</th>
                                 <th>تاریخ ایجاد</th>
                                 <th>وضعیت</th>
-                                <th>عملیات</th>
+                                @canany([config('permissions_list.CATEGORY_UPDATE'), config('permissions_list.CATEGORY_DESTROY')])
+                                    <th>عملیات</th>
+                                @endcanany
                             </tr>
                             </thead>
                             <tbody>
@@ -63,19 +65,21 @@
                                         <td>{{ $category->parentCategoryTitle() }}</td>
                                         <td class="ltr text-right">{{ jalalian()->forge($category->created_at)->format(config('common.datetime_format')) }}</td>
                                         <td class="{{ status_class($category->status) }}">{{ status_message($category->status) }}</td>
-                                        <td class="d-flex gap-2">
-                                            @can(config('permissions_list.CATEGORY_UPDATE'))
-                                                <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                   rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('category.edit', $category->id) }}">
-                                                    <i class="icon-pencil fa-flip-horizontal"></i>
-                                                </a>
-                                            @endcan
+                                        @canany([config('permissions_list.CATEGORY_UPDATE'), config('permissions_list.CATEGORY_DESTROY')])
+                                            <td class="d-flex gap-2">
+                                                @can(config('permissions_list.CATEGORY_UPDATE'))
+                                                    <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
+                                                       rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('category.edit', $category->id) }}">
+                                                        <i class="icon-pencil fa-flip-horizontal"></i>
+                                                    </a>
+                                                @endcan
 
-                                            @can(config('permissions_list.CATEGORY_DESTROY'))
-                                                <x-common-delete-button :route="route('category.destroy', $category->id)" />
-                                            @endcan
+                                                @can(config('permissions_list.CATEGORY_DESTROY'))
+                                                    <x-common-delete-button :route="route('category.destroy', $category->id)" />
+                                                @endcan
 
-                                        </td>
+                                            </td>
+                                        @endcanany
                                     </tr>
                                 @endforeach
                             </tbody>

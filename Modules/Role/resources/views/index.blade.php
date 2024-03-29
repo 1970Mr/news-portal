@@ -48,7 +48,9 @@
                                 <th>نام نمایشی</th>
                                 <th>دسترسی‌های نقش</th>
                                 <th>تاریخ ایجاد</th>
-                                <th>عملیات</th>
+                                @canany([config('permissions_list.ROLE_UPDATE'), config('permissions_list.ROLE_DESTROY')])
+                                    <th>عملیات</th>
+                                @endcanany
                             </tr>
                             </thead>
                             <tbody>
@@ -61,20 +63,22 @@
                                             {{ $role->getPermissionLocalNames()->implode(', ') }}
                                         </td>
                                         <td class="ltr text-right">{{ jalalian()->forge($role->created_at)->format(config('common.datetime_format')) }}</td>
-                                        <td>
-                                            <div class="d-flex gap-2">
-                                                @can(config('permissions_list.ROLE_UPDATE'))
-                                                    <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                       rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('role.edit', $role->id) }}">
-                                                        <i class="icon-pencil fa-flip-horizontal"></i>
-                                                    </a>
-                                                @endcan
+                                        @canany([config('permissions_list.ROLE_UPDATE'), config('permissions_list.ROLE_DESTROY')])
+                                            <td>
+                                                <div class="d-flex gap-2">
+                                                    @can(config('permissions_list.ROLE_UPDATE'))
+                                                        <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
+                                                           rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('role.edit', $role->id) }}">
+                                                            <i class="icon-pencil fa-flip-horizontal"></i>
+                                                        </a>
+                                                    @endcan
 
-                                                @can(config('permissions_list.ROLE_DESTROY'))
-                                                    <x-common-delete-button :route="route('role.destroy', $role->id)" />
-                                                @endcan
-                                            </div>
-                                        </td>
+                                                    @can(config('permissions_list.ROLE_DESTROY'))
+                                                        <x-common-delete-button :route="route('role.destroy', $role->id)" />
+                                                    @endcan
+                                                </div>
+                                            </td>
+                                        @endcanany
                                     </tr>
                                 @endforeach
                             </tbody>
