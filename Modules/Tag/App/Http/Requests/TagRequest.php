@@ -19,8 +19,8 @@ class TagRequest extends FormRequest
         ];
 
         if (strtolower($this->method()) === 'put') {
-            $rules['name'] .= $this->route('tag')->id;
-            $rules['slug'] .= $this->route('tag')->id;
+            $rules['name'] .= ',' . $this->route('tag')->id;
+            $rules['slug'] .= ',' . $this->route('tag')->id;
         }
 
         return $rules;

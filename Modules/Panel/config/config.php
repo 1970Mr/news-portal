@@ -35,5 +35,14 @@ return [
                 'category.edit',
             ]
         ],
+        'tag' => [
+            'title' => 'تگ',
+            'icon' => 'icon-tag',
+            'url' => route('tag.index'),
+            'active_routes' => [
+                'tag.create',
+                'tag.edit',
+            ]
+        ],
     ]
 ];

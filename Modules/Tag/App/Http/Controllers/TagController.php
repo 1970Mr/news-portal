@@ -12,10 +12,10 @@ class TagController extends Controller
 {
     public function __construct()
     {
-//        $this->middleware('can:' . config('permissions_list.TAG_INDEX'))->only('index');
-//        $this->middleware('can:' . config('permissions_list.TAG_STORE'))->only('store');
-//        $this->middleware('can:' . config('permissions_list.TAG_UPDATE'))->only('update');
-//        $this->middleware('can:' . config('permissions_list.TAG_DESTROY'))->only('destroy');
+        $this->middleware('can:' . config('permissions_list.TAG_INDEX'))->only('index');
+        $this->middleware('can:' . config('permissions_list.TAG_STORE'))->only('store');
+        $this->middleware('can:' . config('permissions_list.TAG_UPDATE'))->only('update');
+        $this->middleware('can:' . config('permissions_list.TAG_DESTROY'))->only('destroy');
     }
 
     public function index(): View

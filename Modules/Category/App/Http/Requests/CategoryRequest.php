@@ -12,16 +12,16 @@ class CategoryRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            'name' => 'required|min:2|max:100|unique:categories',
-            'slug' => 'required|unique:categories',
+            'name' => 'required|min:2|max:100|unique:categories,name',
+            'slug' => 'required|unique:categories,slug',
             'description' => 'nullable|min:10',
             'parent_id' => 'nullable|numeric',
             'status' => 'required|boolean',
         ];
 
         if (strtolower($this->method()) === 'put') {
-            $rules['name'] .= $this->route('tag')->id;
-            $rules['slug'] .= $this->route('tag')->id;
+            $rules['name'] .= ',' .  $this->route('category')->id;
+            $rules['slug'] .= ',' .  $this->route('category')->id;
         }
 
         return $rules;

@@ -1,9 +1,9 @@
-@extends('panel::layouts.master', ['title' => 'لیست دسته‌بندی‌ها'])
+@extends('panel::layouts.master', ['title' => 'لیست تگ‌ها'])
 
 @section('content')
 
     <x-common-breadcrumbs>
-        <li><a>لیست دسته‌بندی‌ها</a></li>
+        <li><a>لیست تگ‌ها</a></li>
     </x-common-breadcrumbs>
 
     <div class="row pe-0">
@@ -13,7 +13,7 @@
                     <div class="portlet-title">
                         <h3 class="title">
                             <i class="icon-people"></i>
-                            لیست دسته‌بندی‌ها
+                            لیست تگ‌ها
                         </h3>
                     </div><!-- /.portlet-title -->
                     <div class="buttons-box ltr">
@@ -28,7 +28,7 @@
                         @can(config('permissions_list.TAG_STORE'))
                             <a class="btn btn-sm btn-default btn-round bg-green text-white" rel="tooltip"
                                href="{{ route('tag.create') }}"
-                               aria-label="ایجاد دسته‌بندی‌ جدید" data-bs-original-title="ایجاد دسته‌بندی‌ جدید">
+                               aria-label="ایجاد تگ‌ جدید" data-bs-original-title="ایجاد تگ‌ جدید">
                                 <i class="icon-plus d-flex justify-content-center align-items-center"></i>
                                 <div class="paper-ripple">
                                     <div class="paper-ripple__background"></div>
@@ -47,7 +47,6 @@
                                 <th>نام</th>
                                 <th>slug</th>
                                 <th>توضیحات</th>
-                                <th>دسته‌بندی والد</th>
                                 <th>تاریخ ایجاد</th>
                                 <th>وضعیت</th>
                                 @canany([config('permissions_list.TAG_UPDATE'), config('permissions_list.TAG_DESTROY')])
