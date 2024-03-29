@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'ADMIN_FULL_ACCESS' => 'admin::full_access',
+    'SUPER_ADMIN' => 'admin::full_access',
     'USER_INDEX' => 'user::index',
     'USER_STORE' => 'user::store',
     'USER_UPDATE' => 'user::update',

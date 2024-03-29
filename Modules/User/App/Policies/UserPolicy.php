@@ -15,6 +15,6 @@ class UserPolicy
         if ($loggedInUser->id === $userToDelete->id) {
                 throw new AuthorizationException(__('user::messages.cant_delete_yourself'));
         }
-        return $loggedInUser->can('user::destroy');
+        return $loggedInUser->can(config('permissions_list.USER_DESTROY'));
     }
 }

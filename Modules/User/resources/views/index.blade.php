@@ -24,7 +24,7 @@
                                 <div class="paper-ripple__waves"></div>
                             </div>
                         </a>
-                        @can('user::store')
+                        @can(config('permissions_list.USER_INDEX'))
                             <a class="btn btn-sm btn-default btn-round bg-green text-white" rel="tooltip"
                                href="{{ route('user.create') }}"
                                aria-label="ایجاد کاربر جدید" data-bs-original-title="ایجاد کاربر جدید">
@@ -61,7 +61,7 @@
                                         <td class="ltr text-right">{{ jalalian()->forge($user->created_at)->format(config('common.datetime_format')) }}</td>
                                         <td class="{{ status_class($user->email_verified_at) }}">{{ $user->verified_email_status }}</td>
                                         <td class="d-flex gap-2">
-                                            @can('user::update')
+                                            @can(config('permissions_list.USER_UPDATE'))
                                                 <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
                                                    rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('user.edit', $user->id) }}">
                                                     <i class="icon-pencil fa-flip-horizontal"></i>
@@ -72,7 +72,7 @@
                                                 <x-common-delete-button :route="route('user.destroy', $user->id)" />
                                             @endcan
 
-                                            @can('user::role_assignment')
+                                            @can(config('permissions_list.USER_ROLE_ASSIGNMENT'))
                                                     <a class="btn btn-sm btn-warning btn-icon round d-flex justify-content-center align-items-center"
                                                        rel="tooltip" aria-label="اختصاص نقش" data-bs-original-title="اختصاص نقش" href="{{ route('user.role-assignment', $user->id) }}">
                                                         <i class="fas fa-arrow-down-up-lock"></i>
