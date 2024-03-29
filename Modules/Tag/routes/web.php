@@ -15,5 +15,5 @@ use Modules\Tag\App\Http\Controllers\TagController;
 */
 
 Route::group([], function () {
-    Route::resource('tag', TagController::class)->names('tag');
+    Route::resource('tag', TagController::class)->names('tag')->except(['show']);
 });

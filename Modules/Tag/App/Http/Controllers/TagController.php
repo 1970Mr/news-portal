@@ -4,64 +4,53 @@ namespace Modules\Tag\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Illuminate\View\View;
+use Modules\Tag\App\Http\Requests\TagRequest;
+use Modules\Tag\App\Models\Tag;
 
 class TagController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function __construct()
     {
-        return view('tag::index');
+//        $this->middleware('can:' . config('permissions_list.TAG_INDEX'))->only('index');
+//        $this->middleware('can:' . config('permissions_list.TAG_STORE'))->only('store');
+//        $this->middleware('can:' . config('permissions_list.TAG_UPDATE'))->only('update');
+//        $this->middleware('can:' . config('permissions_list.TAG_DESTROY'))->only('destroy');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function index(): View
     {
-        return view('tag::create');
+        $tags = Tag::latest()->paginate(10);
+        return view('tag::index', compact('tags'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request): RedirectResponse
+    public function create(): View
     {
-        //
+        $tags = Tag::latest()->get();
+        return view('tag::create', compact('tags'));
     }
 
-    /**
-     * Show the specified resource.
-     */
-    public function show($id)
+    public function store(TagRequest $request): RedirectResponse
     {
-        return view('tag::show');
+        Tag::create($request->validated());
+        return to_route('tag.index')->with('success', __('entity_created', ['entity' => __('tag')]));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($id)
+    public function edit(Tag $tag): View
     {
-        return view('tag::edit');
+        $tags = Tag::latest()->get();
+        return view('tag::edit', compact('tag', 'tags'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, $id): RedirectResponse
+    public function update(TagRequest $request, Tag $tag): RedirectResponse
     {
-        //
+        $tag->update($request->validated());
+        return to_route('tag.index')->with('success', __('entity_edited', ['entity' => __('tag'), 'name' => $request->name]));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy($id)
+    public function destroy(Tag $tag): RedirectResponse
     {
-        //
+        $tag->delete();
+        return to_route('tag.index')->with('success', __('entity_deleted', ['entity' => __('tag')]));
     }
 }
