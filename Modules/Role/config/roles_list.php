@@ -13,11 +13,15 @@ return [
         "local_name" => "ویرایشگر",
         "permissions" => [
             config('permissions_list.USER_INDEX'),
+            config('permissions_list.ROLE_INDEX'),
             config('permissions_list.CATEGORY_INDEX'),
             config('permissions_list.CATEGORY_STORE'),
             config('permissions_list.CATEGORY_UPDATE'),
             config('permissions_list.CATEGORY_DESTROY'),
-            config('permissions_list.ROLE_INDEX'),
+            config('permissions_list.TAG_INDEX'),
+            config('permissions_list.TAG_STORE'),
+            config('permissions_list.TAG_UPDATE'),
+            config('permissions_list.TAG_DESTROY'),
         ]
     ],
     [
