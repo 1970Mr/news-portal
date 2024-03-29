@@ -11,9 +11,26 @@ class TagRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
+        $rules = [
+            'name' => 'required|min:2|max:100|unique:tags,name',
+            'slug' => 'required|unique:tags,slug',
+            'description' => 'nullable|min:10',
+            'status' => 'required|boolean',
         ];
+
+        if (strtolower($this->method()) === 'put') {
+            $rules['name'] .= $this->route('tag')->id;
+            $rules['slug'] .= $this->route('tag')->id;
+        }
+
+        return $rules;
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'status' => (bool) $this->status,
+        ]);
     }
 
     /**

@@ -5,8 +5,7 @@ namespace Modules\Category\App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Modules\Category\App\Http\Requests\CategoryStoreRequest;
-use Modules\Category\App\Http\Requests\CategoryUpdateRequest;
+use Modules\Category\App\Http\Requests\CategoryRequest;
 use Modules\Category\App\Models\Category;
 
 class CategoryController extends Controller
@@ -31,7 +30,7 @@ class CategoryController extends Controller
         return view('category::create', compact('categories'));
     }
 
-    public function store(CategoryStoreRequest $request): RedirectResponse
+    public function store(CategoryRequest $request): RedirectResponse
     {
         Category::create($request->validated());
         return to_route('category.index')->with('success', __('entity_created', ['entity' => __('category')]));
@@ -43,7 +42,7 @@ class CategoryController extends Controller
         return view('category::edit', compact('category', 'categories'));
     }
 
-    public function update(CategoryUpdateRequest $request, Category $category): RedirectResponse
+    public function update(CategoryRequest $request, Category $category): RedirectResponse
     {
         $category->update($request->validated());
         return to_route('category.index')->with('success', __('entity_edited', ['entity' => __('category'), 'name' => $request->name]));
