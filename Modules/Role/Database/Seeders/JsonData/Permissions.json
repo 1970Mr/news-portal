@@ -5,6 +5,7 @@
     "user::store",
     "user::update",
     "user::destroy",
+    "user::role_assignment",
 
     "role::index",
     "role::store",

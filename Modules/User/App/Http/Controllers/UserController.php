@@ -14,7 +14,13 @@ class UserController extends Controller
 {
     public function __construct(
         public UserService $userService
-    ) {}
+    )
+    {
+        $this->middleware('can:user::index')->only('index');
+        $this->middleware('can:user::store')->only('store');
+        $this->middleware('can:user::update')->only('update');
+        $this->middleware('can:user::destroy')->only('destroy');
+    }
 
     public function index(): View
     {

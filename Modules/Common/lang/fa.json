@@ -10,5 +10,6 @@
     "have_not": "ندارد",
     "user": "کاربر",
     "role": "نقش",
-    "category": "دسته\u200Cبندی"
+    "category": "دسته\u200Cبندی",
+    "This action is unauthorized.": "این اقدام برای شما غیر مجاز است"
 }

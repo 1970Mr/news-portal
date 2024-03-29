@@ -5,6 +5,7 @@
     "user::store": "ایجاد کاربر",
     "user::update": "ویرایش کاربر",
     "user::destroy": "حذف کاربر",
+    "user::role_assignment": "اختصاص نقش",
 
     "category::index": "مشاهده دسته‌بندی‌ها",
     "category::store": "ایجاد دسته‌بندی",

@@ -12,6 +12,10 @@ use Modules\User\App\Models\User;
 
 class RoleAssignmentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:user::role_assignment')->only('update');
+    }
 
     public function edit(User $user, RoleService $roleService): View
     {
