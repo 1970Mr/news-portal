@@ -53,13 +53,4 @@ class Role extends SpatieRole
             self::SUBSCRIBER,
         ];
     }
-
-    public static function customFindOrCreate(string $name, ?string $guardName = 'web'): \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model
-    {
-        $role = static::findByParam(['name' => $name, 'guard_name' => $guardName]);
-        if (! $role) {
-            return static::query()->create(['name' => $name, 'local_name' => $name, 'guard_name' => $guardName]);
-        }
-        return $role;
-    }
 }

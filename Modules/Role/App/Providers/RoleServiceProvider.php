@@ -85,6 +85,12 @@ class RoleServiceProvider extends ServiceProvider
 
         $this->publishes([module_path($this->moduleName, 'config/permission.php') => config_path('permission.php')], 'config');
         $this->mergeConfigFrom(module_path($this->moduleName, 'config/permission.php'), 'permission');
+
+        $this->publishes([module_path($this->moduleName, 'config/permissions_list.php') => config_path('permissions_list.php')], 'config');
+        $this->mergeConfigFrom(module_path($this->moduleName, 'config/permissions_list.php'), 'permissions_list');
+
+        $this->publishes([module_path($this->moduleName, 'config/roles_list.php') => config_path('roles_list.php')], 'config');
+        $this->mergeConfigFrom(module_path($this->moduleName, 'config/roles_list.php'), 'roles_list');
     }
 
     /**

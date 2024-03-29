@@ -9,10 +9,7 @@ class PermissionSeeder extends Seeder
 {
     public function run(): void
     {
-        $permissionsData = file_get_contents(module_path('Role', 'Database/Seeders/JsonData/Permissions.json'));
-        $permissionsData = json_decode($permissionsData, true, 512, JSON_THROW_ON_ERROR);
-
-        foreach ($permissionsData as $permission) {
+        foreach (config('permissions_list') as $permission) {
             Permission::findOrCreate($permission);
         }
     }
