@@ -25,7 +25,7 @@
                                 <div class="paper-ripple__waves"></div>
                             </div>
                         </a>
-                        @can('category::store')
+                        @can(config('permissions_list.CATEGORY_STORE'))
                             <a class="btn btn-sm btn-default btn-round bg-green text-white" rel="tooltip"
                                href="{{ route('category.create') }}"
                                aria-label="ایجاد دسته‌بندی‌ جدید" data-bs-original-title="ایجاد دسته‌بندی‌ جدید">
@@ -64,14 +64,14 @@
                                         <td class="ltr text-right">{{ jalalian()->forge($category->created_at)->format(config('common.datetime_format')) }}</td>
                                         <td class="{{ status_class($category->status) }}">{{ status_message($category->status) }}</td>
                                         <td class="d-flex gap-2">
-                                            @can('category::update')
+                                            @can(config('permissions_list.CATEGORY_UPDATE'))
                                                 <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
                                                    rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('category.edit', $category->id) }}">
                                                     <i class="icon-pencil fa-flip-horizontal"></i>
                                                 </a>
                                             @endcan
 
-                                            @can('category::destroy')
+                                            @can(config('permissions_list.CATEGORY_DESTROY'))
                                                 <x-common-delete-button :route="route('category.destroy', $category->id)" />
                                             @endcan
 
