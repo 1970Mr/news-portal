@@ -19,7 +19,12 @@ class RoleController extends Controller
     )
     {
         $this->groupedPermissions = $this->roleService->groupedPermissions();
+        $this->middleware('can:role::index')->only('index');
+        $this->middleware('can:role::store')->only('store');
+        $this->middleware('can:role::update')->only('update');
+        $this->middleware('can:role::destroy')->only('destroy');
     }
+
     public function index(): View
     {
         $roles = Role::with('permissions')->latest('id')->paginate(10);
