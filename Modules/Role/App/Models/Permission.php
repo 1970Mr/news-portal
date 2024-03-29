@@ -9,7 +9,7 @@ class Permission extends SpatiePermission
 {
     protected $appends = ['local_name'];
 
-    public const SUPER_ADMIN = 'super_admin';
+    public const SUPER_ADMIN = 'admin::all';
 
     protected function localName(): Attribute
     {

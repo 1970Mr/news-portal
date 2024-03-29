@@ -11,6 +11,14 @@ use Modules\Category\App\Models\Category;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:category::index')->only('index');
+        $this->middleware('can:category::index')->only('store');
+        $this->middleware('can:category::index')->only('update');
+        $this->middleware('can:category::index')->only('destroy');
+    }
+
     public function index(): View
     {
         $categories = Category::latest()->paginate(10);

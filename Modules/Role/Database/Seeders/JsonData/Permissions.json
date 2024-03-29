@@ -1,5 +1,5 @@
 [
-    "super_admin",
+    "admin::all",
 
     "user::index",
     "user::store",

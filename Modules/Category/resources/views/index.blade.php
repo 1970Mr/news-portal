@@ -25,15 +25,17 @@
                                 <div class="paper-ripple__waves"></div>
                             </div>
                         </a>
-                        <a class="btn btn-sm btn-default btn-round bg-green text-white" rel="tooltip"
-                           href="{{ route('category.create') }}"
-                           aria-label="ایجاد دسته‌بندی‌ جدید" data-bs-original-title="ایجاد دسته‌بندی‌ جدید">
-                            <i class="icon-plus d-flex justify-content-center align-items-center"></i>
-                            <div class="paper-ripple">
-                                <div class="paper-ripple__background"></div>
-                                <div class="paper-ripple__waves"></div>
-                            </div>
-                        </a>
+                        @can('category::store')
+                            <a class="btn btn-sm btn-default btn-round bg-green text-white" rel="tooltip"
+                               href="{{ route('category.create') }}"
+                               aria-label="ایجاد دسته‌بندی‌ جدید" data-bs-original-title="ایجاد دسته‌بندی‌ جدید">
+                                <i class="icon-plus d-flex justify-content-center align-items-center"></i>
+                                <div class="paper-ripple">
+                                    <div class="paper-ripple__background"></div>
+                                    <div class="paper-ripple__waves"></div>
+                                </div>
+                            </a>
+                        @endcan
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
@@ -62,12 +64,16 @@
                                         <td class="ltr text-right">{{ jalalian()->forge($category->created_at)->format(config('common.datetime_format')) }}</td>
                                         <td class="{{ status_class($category->status) }}">{{ status_message($category->status) }}</td>
                                         <td class="d-flex gap-2">
-                                            <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                    rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('category.edit', $category->id) }}">
-                                                <i class="icon-pencil fa-flip-horizontal"></i>
-                                            </a>
+                                            @can('category::update')
+                                                <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
+                                                   rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('category.edit', $category->id) }}">
+                                                    <i class="icon-pencil fa-flip-horizontal"></i>
+                                                </a>
+                                            @endcan
 
-                                            <x-common-delete-button :route="route('category.destroy', $category->id)" />
+                                            @can('category::destroy')
+                                                <x-common-delete-button :route="route('category.destroy', $category->id)" />
+                                            @endcan
 
                                         </td>
                                     </tr>

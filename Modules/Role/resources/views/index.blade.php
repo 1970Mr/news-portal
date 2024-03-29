@@ -59,14 +59,15 @@
                                             {{ $role->getPermissionLocalNames()->implode(', ') }}
                                         </td>
                                         <td class="ltr text-right">{{ jalalian()->forge($role->created_at)->format(config('common.datetime_format')) }}</td>
-                                        <td class="d-flex gap-2">
-                                            <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                    rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('role.edit', $role->id) }}">
-                                                <i class="icon-pencil fa-flip-horizontal"></i>
-                                            </a>
+                                        <td>
+                                            <div class="d-flex gap-2">
+                                                <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
+                                                   rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('role.edit', $role->id) }}">
+                                                    <i class="icon-pencil fa-flip-horizontal"></i>
+                                                </a>
 
-                                            <x-common-delete-button :route="route('role.destroy', $role->id)" />
-
+                                                <x-common-delete-button :route="route('role.destroy', $role->id)" />
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
