@@ -25,7 +25,7 @@
                                 <div class="paper-ripple__waves"></div>
                             </div>
                         </a>
-                        @can('role::store')
+                        @can(config('permissions_list.ROLE_STORE'))
                             <a class="btn btn-sm btn-default btn-round bg-green text-white" rel="tooltip"
                                href="{{ route('role.create') }}"
                                aria-label="ایجاد نقش جدید" data-bs-original-title="ایجاد نقش جدید">
@@ -63,14 +63,14 @@
                                         <td class="ltr text-right">{{ jalalian()->forge($role->created_at)->format(config('common.datetime_format')) }}</td>
                                         <td>
                                             <div class="d-flex gap-2">
-                                                @can('role::update')
+                                                @can(config('permissions_list.ROLE_UPDATE'))
                                                     <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
                                                        rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('role.edit', $role->id) }}">
                                                         <i class="icon-pencil fa-flip-horizontal"></i>
                                                     </a>
                                                 @endcan
 
-                                                @can('role::destroy')
+                                                @can(config('permissions_list.ROLE_DESTROY'))
                                                     <x-common-delete-button :route="route('role.destroy', $role->id)" />
                                                 @endcan
                                             </div>

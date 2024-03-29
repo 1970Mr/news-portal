@@ -24,7 +24,7 @@
                                 <div class="paper-ripple__waves"></div>
                             </div>
                         </a>
-                        @can(config('permissions_list.USER_INDEX'))
+                        @can(config('permissions_list.USER_STORE'))
                             <a class="btn btn-sm btn-default btn-round bg-green text-white" rel="tooltip"
                                href="{{ route('user.create') }}"
                                aria-label="ایجاد کاربر جدید" data-bs-original-title="ایجاد کاربر جدید">
