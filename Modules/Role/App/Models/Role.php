@@ -44,13 +44,13 @@ class Role extends SpatieRole
         return parent::update($attributes, $options);
     }
 
-    public function getDefaultRoles(): array
+    public static function getDefaultRoles(): Collection
     {
-        return [
+        return collect([
             self::ADMIN,
             self::EDITOR,
             self::AUTHOR,
             self::SUBSCRIBER,
-        ];
+        ]);
     }
 }

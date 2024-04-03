@@ -49,8 +49,7 @@ class RoleController extends Controller
 
     public function update(RoleRequest $request, Role $role): RedirectResponse
     {
-        $role->update($request->only('name', 'local_name'));
-        return to_route('role.index')->with('success', __('entity_edited', ['entity' => __('role'), 'name' => $role->local_name]));
+        return $this->roleService->update($request, $role);
     }
 
     public function destroy(Role $role): RedirectResponse
