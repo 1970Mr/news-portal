@@ -34,6 +34,12 @@
                         <x-common-error-messages />
 
                         <fieldset class="row justify-content-center">
+                            <div class="form-group col-12 text-center">
+                                <img class="mb-2" src="{{ asset('storage/' . $image->file_path) }}" alt="{{ $image->alt_text }}" style="max-width: 300px; max-height: 300px">
+                                <div>
+                                    {{ asset('storage/' . $image->file_path) }}
+                                </div>
+                            </div>
                             <div class="form-group relative col-lg-6">
                                 <input type="file" class="form-control" name="image">
                                 <label>تصویر <small>(ضروری)</small></label>
