@@ -6,5 +6,6 @@
     "Common": true,
     "Category": true,
     "Role": true,
-    "Tag": true
+    "Tag": true,
+    "FileManager": true
 }
