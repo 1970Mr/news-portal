@@ -11,14 +11,15 @@ class ImageRequest extends FormRequest
      */
     public function rules(): array
     {
+        $image_rule = 'image|max:5000';
         $rules = [
-            'image' => 'required|image|max:5000',
+            'image' => "required|$image_rule",
             'alt_text' => 'required|string|max:255',
             'title' => 'nullable|string|max:255',
             'description' => 'nullable|string',
         ];
         if (strtolower($this->method()) === 'put') {
-            $rules['image'] = 'nullable|image|max:5000';
+            $rules['image'] = "nullable|$image_rule";
         }
         return $rules;
     }
