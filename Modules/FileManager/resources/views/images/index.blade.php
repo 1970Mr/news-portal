@@ -27,7 +27,7 @@
                         </a>
                         @can(config('permissions_list.TAG_STORE'))
                             <a class="btn btn-sm btn-default btn-round bg-green text-white" rel="tooltip"
-                               href="{{ route('tag.create') }}"
+                               href="{{ route('image.create') }}"
                                aria-label="ایجاد تصویر‌ جدید" data-bs-original-title="ایجاد تصویر‌ جدید">
                                 <i class="icon-plus d-flex justify-content-center align-items-center"></i>
                                 <div class="paper-ripple">
@@ -39,7 +39,7 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <div class="table-responsive">
+                    <div class="table-responsive" style="overflow-x: auto !important;">
                         <table class="table table-bordered table-striped table-hover">
                             <thead>
                             <tr>
@@ -62,7 +62,7 @@
                                     <tr>
                                         <td>{{ $image->id }}</td>
                                         <td>
-                                            <img src="{{ $image->file_path }}" alt="{{ $image->alt_text }}" width="100px" height="100px">
+                                            <img src="{{ asset('storage/' . $image->file_path) }}" alt="{{ $image->alt_text }}" width="100px" style="max-height: 100px">
                                         </td>
                                         <td>{{ $image->file_name }}</td>
                                         <td>{{ $image->file_path }}</td>
@@ -72,18 +72,19 @@
                                         <td class="ltr text-right">{{ jalalian()->forge($image->created_at)->format(config('common.datetime_format')) }}</td>
                                         <td class="{{ status_class($image->status) }}">{{ status_message($image->status) }}</td>
                                         @canany([config('permissions_list.TAG_UPDATE'), config('permissions_list.TAG_DESTROY')])
-                                            <td class="d-flex gap-2">
-                                                @can(config('permissions_list.TAG_UPDATE'))
-                                                    <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                       rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('tag.edit', $image->id) }}">
-                                                        <i class="icon-pencil fa-flip-horizontal"></i>
-                                                    </a>
-                                                @endcan
+                                            <td>
+                                                <div class="d-flex gap-2">
+                                                    @can(config('permissions_list.TAG_UPDATE'))
+                                                        <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
+                                                           rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('image.edit', $image->id) }}">
+                                                            <i class="icon-pencil fa-flip-horizontal"></i>
+                                                        </a>
+                                                    @endcan
 
-                                                @can(config('permissions_list.TAG_DESTROY'))
-                                                    <x-common-delete-button :route="route('tag.destroy', $image->id)" />
-                                                @endcan
-
+                                                    @can(config('permissions_list.TAG_DESTROY'))
+                                                        <x-common-delete-button :route="route('image.destroy', $image->id)" />
+                                                    @endcan
+                                                </div>
                                             </td>
                                         @endcanany
                                     </tr>

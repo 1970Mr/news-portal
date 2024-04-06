@@ -4,6 +4,7 @@ namespace Modules\FileManager\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 use Modules\FileManager\App\Http\Requests\ImageRequest;
 use Modules\FileManager\App\Models\Image;
@@ -23,6 +24,14 @@ class ImageController extends Controller
 
     public function store(ImageRequest $request): RedirectResponse
     {
+        $data = $request->validated();
+        $file = $request->file('image');
+        $file_name = $file->getClientOriginalName();
+        $hash_name = pathinfo($file->hashName(), PATHINFO_FILENAME);;
+        $data['file_name'] = "{$hash_name}_{$file_name}";
+        $path = 'images/' . now()->format('Y/m/d');
+        $data['file_path'] = Storage::disk('public')->putFileAs($path, $file, $file_name);
+        Image::query()->create($data);
         return to_route('image.index')->with('success', 'تصویر با موفقیت ایجاد شد');
     }
 

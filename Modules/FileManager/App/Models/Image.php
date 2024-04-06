@@ -15,5 +15,6 @@ class Image extends Model
         'alt_text',
         'title',
         'description',
+        'status',
     ];
 }

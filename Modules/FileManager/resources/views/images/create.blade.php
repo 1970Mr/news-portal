@@ -1,9 +1,9 @@
-@extends('panel::layouts.master', ['title' => 'ایجاد تگ جدید'])
+@extends('panel::layouts.master', ['title' => 'ایجاد تصویر جدید'])
 
 @section('content')
     <x-common-breadcrumbs>
-        <li><a href="{{ route('tag.index') }}">لیست تگ‌ها</a></li>
-        <li><a>ایجاد تگ جدید</a></li>
+        <li><a href="{{ route('image.index') }}">لیست تصویر‌ها</a></li>
+        <li><a>ایجاد تصویر جدید</a></li>
     </x-common-breadcrumbs>
 
     <div class="row pe-0">
@@ -13,7 +13,7 @@
                     <div class="portlet-title">
                         <h3 class="title">
                             <i class="icon-user-follow"></i>
-                            ایجاد تگ جدید
+                            ایجاد تصویر جدید
                         </h3>
                     </div><!-- /.portlet-title -->
                     <div class="buttons-box">
@@ -28,18 +28,31 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="tag-create-form" role="form" action="{{ route('tag.store') }}" method="post">
+                    <form id="image-create-form" role="form" action="{{ route('image.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <x-common-error-messages />
 
                         <fieldset class="row justify-content-center">
-                            <div class="form-group col-lg-6">
-                                <label for="name">نام <small>(ضروری)</small></label>
-                                <input id="name" class="form-control" name="name" type="text" required value="{{ old('name') }}">
+                            <div class="form-group relative col-lg-6">
+                                <input type="file" class="form-control" name="image">
+                                <label>تصویر <small>(ضروری)</small></label>
+                                <div class="input-group round">
+                                    <input type="text" class="form-control file-input" placeholder="برای آپلود کلیک کنید">
+                                    <span class="input-group-btn">
+                                                        <button type="button" class="btn btn-success">
+                                                            <i class="icon-picture"></i>
+                                                            آپلود عکس</button>
+                                                    </span>
+                                </div><!-- /.input-group -->
+                                <div class="help-block"></div>
                             </div>
                             <div class="form-group col-lg-6">
-                                <label for="slug">slug <small>(ضروری)</small> </label>
-                                <input id="slug" class="form-control" name="slug" type="text" required value="{{ old('slug') }}">
+                                <label for="altText">متن جاگزین <small>(ضروری)</small></label>
+                                <input id="altText" class="form-control" name="altText" type="text" required value="{{ old('altText') }}">
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label for="title">عنوان </label>
+                                <input id="title" class="form-control" name="title" type="text" value="{{ old('title') }}">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="description">توضیحات </label>
@@ -53,7 +66,7 @@
                                 <div class="col-sm-6 col-sm-offset-4 mx-auto">
                                     <button class="btn btn-success btn-block">
                                         <i class="icon-check"></i>
-                                        ایجاد تگ جدید
+                                        ایجاد تصویر جدید
                                     </button>
                                 </div>
                             </div>
@@ -84,6 +97,6 @@
                 }
             }
         });
-        $("#tag-create-form").validate();
+        $("#image-create-form").validate();
     </script>
 @endpush

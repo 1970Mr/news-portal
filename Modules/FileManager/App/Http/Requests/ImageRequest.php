@@ -12,8 +12,23 @@ class ImageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'image' => 'required|image|max:5000',
+            'alt_text' => 'required|string|max:255',
+            'title' => 'nullable|string|max:255',
+            'description' => 'nullable|string',
+            'status' => 'nullable|boolean',
         ];
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $this->replace([
+            'alt_text' => 'altText',
+        ]);
+
+        $this->merge([
+            'status' => (bool) $this->status,
+        ]);
     }
 
     /**
