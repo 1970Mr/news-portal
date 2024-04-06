@@ -8,9 +8,14 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 use Modules\FileManager\App\Http\Requests\ImageRequest;
 use Modules\FileManager\App\Models\Image;
+use Modules\FileManager\App\Services\ImageService;
 
 class ImageController extends Controller
 {
+    public function __construct(
+        public ImageService $imageService
+    ) {}
+
     public function index(): View
     {
         $images = Image::query()->latest()->paginate(10);
@@ -24,14 +29,7 @@ class ImageController extends Controller
 
     public function store(ImageRequest $request): RedirectResponse
     {
-        $data = $request->validated();
-        $file = $request->file('image');
-        $file_name = $file->getClientOriginalName();
-        $hash_name = pathinfo($file->hashName(), PATHINFO_FILENAME);;
-        $file_name = "{$hash_name}_{$file_name}";
-        $path = 'images/' . now()->format('Y/m/d');
-        $data['file_path'] = Storage::disk('public')->putFileAs($path, $file, $file_name);
-        Image::query()->create($data);
+        $this->imageService->store($request);
         return to_route('image.index')->with('success', 'تصویر با موفقیت ایجاد شد');
     }
 
