@@ -58,10 +58,6 @@
                                 <label for="description">توضیحات </label>
                                 <input id="description" class="form-control" name="description" type="text" value="{{ old('description') }}">
                             </div>
-                            <div class="form-group text-center">
-                                <input id="status" class="form-control" name="status" type="checkbox" @if(old('status')) checked @endif>
-                                <label for="status">وضعیت</label>
-                            </div>
                             <div class="form-group">
                                 <div class="col-sm-6 col-sm-offset-4 mx-auto">
                                     <button class="btn btn-success btn-block">

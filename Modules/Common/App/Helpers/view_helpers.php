@@ -30,3 +30,8 @@ function status_message($status): string
 {
     return ($status) ? __('active') : __('inactive');
 }
+
+function nullable_value($value): string
+{
+    return $value ?: __('have_not');
+}

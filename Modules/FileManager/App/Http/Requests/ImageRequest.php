@@ -16,18 +16,13 @@ class ImageRequest extends FormRequest
             'alt_text' => 'required|string|max:255',
             'title' => 'nullable|string|max:255',
             'description' => 'nullable|string',
-            'status' => 'nullable|boolean',
         ];
     }
 
     protected function prepareForValidation(): void
     {
-        $this->replace([
-            'alt_text' => 'altText',
-        ]);
-
         $this->merge([
-            'status' => (bool) $this->status,
+            'alt_text' => $this->altText,
         ]);
     }
 

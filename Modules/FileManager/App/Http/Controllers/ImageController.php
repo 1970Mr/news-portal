@@ -13,7 +13,7 @@ class ImageController extends Controller
 {
     public function index(): View
     {
-        $images = Image::query()->paginate(10);
+        $images = Image::query()->latest()->paginate(10);
         return view('file-manager::images.index', compact('images'));
     }
 
@@ -28,7 +28,7 @@ class ImageController extends Controller
         $file = $request->file('image');
         $file_name = $file->getClientOriginalName();
         $hash_name = pathinfo($file->hashName(), PATHINFO_FILENAME);;
-        $data['file_name'] = "{$hash_name}_{$file_name}";
+        $file_name = "{$hash_name}_{$file_name}";
         $path = 'images/' . now()->format('Y/m/d');
         $data['file_path'] = Storage::disk('public')->putFileAs($path, $file, $file_name);
         Image::query()->create($data);
@@ -47,6 +47,7 @@ class ImageController extends Controller
 
     public function destroy(Image $image): RedirectResponse
     {
+        $image->delete();
         return back()->with('success', 'تصویر با موفقیت حذف شد');
     }
 }
