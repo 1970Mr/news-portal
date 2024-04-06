@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Modules\FileManager\App\Services\FileManagerService;
 
 class Image extends Model
 {
@@ -21,10 +22,7 @@ class Image extends Model
     public function delete(): bool|null
     {
         // TODO: Added a check that the file is not used anywhere by checking that there is no data in the relations
-        $file_path = storage_path('app/public/' . $this->file_path);
-        if (File::exists($file_path))
-            File::delete($file_path);
-
+        FileManagerService::delete($this->file_path);
         return parent::delete();
     }
 }
