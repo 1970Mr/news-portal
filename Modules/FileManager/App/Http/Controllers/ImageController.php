@@ -35,11 +35,12 @@ class ImageController extends Controller
 
     public function edit(Image $image): View
     {
-        return view('file-manager::images.edit');
+        return view('file-manager::images.edit', compact('image'));
     }
 
     public function update(ImageRequest $request, image $image): RedirectResponse
     {
+        $this->imageService->update($request, $image);
         return to_route('image.index')->with('success', 'تصویر با موفقیت به روز شد');
     }
 
