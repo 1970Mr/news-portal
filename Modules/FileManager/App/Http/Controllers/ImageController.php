@@ -12,12 +12,13 @@ class ImageController extends Controller
 {
     public function index(): View
     {
-        return view('image::index');
+        $images = Image::query()->paginate(10);
+        return view('file-manager::images.index', compact('images'));
     }
 
     public function create(): View
     {
-        return view('image::create');
+        return view('file-manager::images.create');
     }
 
     public function store(ImageRequest $request): RedirectResponse
@@ -27,7 +28,7 @@ class ImageController extends Controller
 
     public function edit(Image $image): View
     {
-        return view('image::edit');
+        return view('file-manager::images.edit');
     }
 
     public function update(ImageRequest $request, image $image): RedirectResponse

@@ -2,6 +2,7 @@
 
 namespace Modules\FileManager\App\Providers;
 
+use DragonCode\Support\Facades\Helpers\Str;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
@@ -81,15 +82,16 @@ class FileManagerServiceProvider extends ServiceProvider
      */
     public function registerViews(): void
     {
-        $viewPath = resource_path('views/modules/'.$this->moduleNameLower);
+        $moduleNameLower = Str::snake($this->moduleName, '-');
+        $viewPath = resource_path('views/modules/'.$moduleNameLower);
         $sourcePath = module_path($this->moduleName, 'resources/views');
 
         $this->publishes([$sourcePath => $viewPath], ['views', $this->moduleNameLower.'-module-views']);
 
-        $this->loadViewsFrom(array_merge($this->getPublishableViewPaths(), [$sourcePath]), $this->moduleNameLower);
+        $this->loadViewsFrom(array_merge($this->getPublishableViewPaths(), [$sourcePath]), $moduleNameLower);
 
         $componentNamespace = str_replace('/', '\\', config('modules.namespace').'\\'.$this->moduleName.'\\'.config('modules.paths.generator.component-class.path'));
-        Blade::componentNamespace($componentNamespace, $this->moduleNameLower);
+        Blade::componentNamespace($componentNamespace, $moduleNameLower);
     }
 
     /**

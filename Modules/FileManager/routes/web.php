@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\FileManager\App\Http\Controllers\FileManagerController;
+use Modules\FileManager\App\Http\Controllers\ImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +15,5 @@ use Modules\FileManager\App\Http\Controllers\FileManagerController;
 */
 
 Route::group([], function () {
-    Route::resource('filemanager', FileManagerController::class)->names('filemanager');
+    Route::resource('image', ImageController::class)->names('image');
 });
