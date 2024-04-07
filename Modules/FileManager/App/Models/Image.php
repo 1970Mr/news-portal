@@ -23,12 +23,16 @@ class Image extends Model
 
     protected $appends = ['user_name'];
 
+    public const ALL = 'all';
+    public const MY_IMAGE = 'my_images';
+    public const OTHER_USERS_IMAGE = 'other_users_images';
+
     public static function filters(): array
     {
         return [
-            'all' => __('file-manager::filters.all'),
-            'my_images' => __('file-manager::filters.my_images'),
-            'other_users_images' => __('file-manager::filters.other_users_images'),
+            self::ALL => __('file-manager::filters.all'),
+            self::MY_IMAGE => __('file-manager::filters.my_images'),
+            self::OTHER_USERS_IMAGE => __('file-manager::filters.other_users_images'),
         ];
     }
 

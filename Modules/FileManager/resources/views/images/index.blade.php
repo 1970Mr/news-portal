@@ -51,10 +51,6 @@
                                 @foreach($filters as $key => $value)
                                     <li><a class="dropdown-item" href="{{ route('image.index', ['filter' => $key]) }}">{{ $value }}</a></li>
                                 @endforeach
-
-{{--                                <li><a class="dropdown-item" href="{{ route('image.index') }}">همه تصاویر</a></li>--}}
-{{--                                <li><a class="dropdown-item" href="{{ route('image.index') }}">تصاویر من</a></li>--}}
-{{--                                <li><a class="dropdown-item" href="{{ route('image.index') }}">تصاویر سایر کاربران</a></li>--}}
                             </ul>
                         </div>
                     </div><!-- /.buttons-box -->

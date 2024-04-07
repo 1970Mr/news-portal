@@ -19,21 +19,9 @@ class ImageController extends Controller
     public function index(Request $request): View
     {
         $filters = Image::filters();
-        $query = Image::query()->latest();
-
-        if ($request->has('filter')) {
-            $filter = $request->filter;
-            if ($filter === 'my_images') {
-                $query->where('user_id', auth()->id());
-            } elseif ($filter === 'other_users_images') {
-                $query->where('user_id', '!=', auth()->id());
-            }
-        }
-
-        $images = $query->paginate(10);
+        $images = $this->imageService->index($request);
         return view('file-manager::images.index', compact('images', 'filters'));
     }
-
 
     public function create(): View
     {

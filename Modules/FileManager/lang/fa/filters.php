@@ -1,7 +1,9 @@
 <?php
 
+use Modules\FileManager\App\Models\Image;
+
 return [
-    'all' => 'همه تصاویر',
-    'my_images' => 'تصاویر من',
-    'other_users_images' => 'تصاویر سایر کاربران',
+    Image::ALL => 'همه تصاویر',
+    Image::MY_IMAGE => 'تصاویر من',
+    Image::OTHER_USERS_IMAGE => 'تصاویر سایر کاربران',
 ];
