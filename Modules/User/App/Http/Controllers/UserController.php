@@ -48,7 +48,7 @@ class UserController extends Controller
     public function update(UserUpdateRequest $request, User $user): RedirectResponse
     {
         $this->userService->update($request, $user);
-        return to_route('user.index')->with('success', __('entity_edited', ['entity' => __('user'), 'name' => $request->name]));
+        return to_route('user.index')->with('success', __('entity_edited', ['entity' => __('user')]));
     }
 
     public function destroy(User $user): RedirectResponse

@@ -45,7 +45,7 @@ class CategoryController extends Controller
     public function update(CategoryRequest $request, Category $category): RedirectResponse
     {
         $category->update($request->validated());
-        return to_route('category.index')->with('success', __('entity_edited', ['entity' => __('category'), 'name' => $request->name]));
+        return to_route('category.index')->with('success', __('entity_edited', ['entity' => __('category')]));
     }
 
     public function destroy(Category $category): RedirectResponse

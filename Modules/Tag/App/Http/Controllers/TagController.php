@@ -45,7 +45,7 @@ class TagController extends Controller
     public function update(TagRequest $request, Tag $tag): RedirectResponse
     {
         $tag->update($request->validated());
-        return to_route('tag.index')->with('success', __('entity_edited', ['entity' => __('tag'), 'name' => $request->name]));
+        return to_route('tag.index')->with('success', __('entity_edited', ['entity' => __('tag')]));
     }
 
     public function destroy(Tag $tag): RedirectResponse

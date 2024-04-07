@@ -40,7 +40,7 @@ class ImageController extends Controller
     public function update(ImageRequest $request, image $image): RedirectResponse
     {
         $this->imageService->update($request, $image);
-        return to_route('image.index')->with('success', __('entity_updated', ['entity' => __('image'), 'name']));
+        return to_route('image.index')->with('success', __('entity_edited', ['entity' => __('image')]));
     }
 
     public function destroy(Image $image): RedirectResponse

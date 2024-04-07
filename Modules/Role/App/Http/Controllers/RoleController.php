@@ -5,6 +5,7 @@ namespace Modules\Role\App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Modules\Role\App\Exceptions\UnableToRenameDefaultRoleException;
 use Modules\Role\App\Http\Requests\RoleRequest;
 use Modules\Role\App\Models\Role;
 use Modules\Role\App\Services\PermissionService;
@@ -49,7 +50,12 @@ class RoleController extends Controller
 
     public function update(RoleRequest $request, Role $role): RedirectResponse
     {
-        return $this->roleService->update($request, $role);
+        try {
+            $this->roleService->update($request, $role);
+            return to_route('role.index')->with('success', __('entity_edited', ['entity' => __('role')]));
+        } catch (UnableToRenameDefaultRoleException $e) {
+            return back()->with('error', $e->getMessage());
+        }
     }
 
     public function destroy(Role $role): RedirectResponse
