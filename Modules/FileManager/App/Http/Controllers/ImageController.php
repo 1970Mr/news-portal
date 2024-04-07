@@ -9,11 +9,12 @@ use Illuminate\View\View;
 use Modules\FileManager\App\Http\Requests\ImageRequest;
 use Modules\FileManager\App\Models\Image;
 use Modules\FileManager\App\Services\ImageService;
+use Modules\User\App\Models\User;
 
 class ImageController extends Controller
 {
     public function __construct(
-        public ImageService $imageService
+        public ImageService $imageService,
     ) {}
 
     public function index(Request $request): View
@@ -47,7 +48,7 @@ class ImageController extends Controller
 
     public function destroy(Image $image): RedirectResponse
     {
-        $image->delete();
+        $this->imageService->destroy($image);
         return back()->with('success', __('entity_deleted', ['entity' => __('image')]));
     }
 }

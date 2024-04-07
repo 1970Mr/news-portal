@@ -13,7 +13,11 @@ class ImageService
 {
     public function index(Request $request): Paginator
     {
+        if (!$this->canAccessAnyImage()) {
+            abort(403);
+        }
         $query = Image::query()->latest();
+        $query = $this->setPermissionsFilter($query);
         $query = $this->setFilters($request, $query);
         return $query->paginate(10);
     }
@@ -37,9 +41,14 @@ class ImageService
         return $image->update($data);
     }
 
+    public function destroy(Image $image): bool|null
+    {
+        return $image->delete();
+    }
+
     private function setFilters(Request $request, Builder $query): Builder
     {
-        if ($request->has('filter')) {
+        if ($request->has('filter') && $this->canAccessAllImages()) {
             $filter = $request->filter;
             if ($filter === Image::MY_IMAGE) {
                 $query->where('user_id', auth()->id());
@@ -48,5 +57,26 @@ class ImageService
             }
         }
         return $query;
+    }
+
+    private function setPermissionsFilter(Builder $query): Builder
+    {
+        if ( !$this->canAccessAllImages() ) {
+            $query->where('user_id', auth()->id());
+        }
+        return $query;
+    }
+
+    public function canAccessAllImages(): bool
+    {
+        return auth()->user()?->can(config('permissions_list.IMAGE_INDEX_ALL'));
+    }
+
+    public function canAccessAnyImage(): mixed
+    {
+        return auth()->user()?->canAny([
+            config('permissions_list.IMAGE_INDEX_ALL'),
+            config('permissions_list.IMAGE_INDEX_OWN')
+        ]);
     }
 }
