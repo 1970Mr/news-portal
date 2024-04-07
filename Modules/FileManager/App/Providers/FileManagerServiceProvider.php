@@ -2,9 +2,11 @@
 
 namespace Modules\FileManager\App\Providers;
 
-use DragonCode\Support\Facades\Helpers\Str;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
+use Modules\FileManager\App\Models\Image;
+use Modules\FileManager\App\Policies\ImagePolicy;
 
 class FileManagerServiceProvider extends ServiceProvider
 {
@@ -23,6 +25,8 @@ class FileManagerServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/migrations'));
+
+       Gate::policy(Image::class, ImagePolicy::class);
     }
 
     /**

@@ -6,6 +6,7 @@ use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Modules\FileManager\App\Http\Requests\ImageRequest;
 use Modules\FileManager\App\Models\Image;
 
@@ -13,9 +14,7 @@ class ImageService
 {
     public function index(Request $request): Paginator
     {
-        if (!$this->canAccessAnyImage()) {
-            abort(403);
-        }
+        Gate::authorize('index', Image::class);
         $query = Image::query()->latest();
         $query = $this->setPermissionsFilter($query);
         $query = $this->setFilters($request, $query);
@@ -70,13 +69,5 @@ class ImageService
     public function canAccessAllImages(): bool
     {
         return auth()->user()?->can(config('permissions_list.IMAGE_INDEX_ALL'));
-    }
-
-    public function canAccessAnyImage(): mixed
-    {
-        return auth()->user()?->canAny([
-            config('permissions_list.IMAGE_INDEX_ALL'),
-            config('permissions_list.IMAGE_INDEX_OWN')
-        ]);
     }
 }
