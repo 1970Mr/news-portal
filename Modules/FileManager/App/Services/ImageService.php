@@ -11,8 +11,8 @@ class ImageService
     public function store(ImageRequest $request): Model
     {
         $data = $request->validated();
-        $file = $request->file('image');
-        $data['file_path'] = FileManagerService::upload($file);
+        $data['file_path'] = FileManagerService::upload( $request->file('image') );
+        $data['user_id'] = auth()->id();
         return Image::query()->create($data);
     }
 

@@ -4,6 +4,7 @@ namespace Modules\FileManager\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Modules\FileManager\App\Http\Requests\ImageRequest;
 use Modules\FileManager\App\Models\Image;
@@ -15,11 +16,24 @@ class ImageController extends Controller
         public ImageService $imageService
     ) {}
 
-    public function index(): View
+    public function index(Request $request): View
     {
-        $images = Image::query()->latest()->paginate(10);
-        return view('file-manager::images.index', compact('images'));
+        $filters = Image::filters();
+        $query = Image::query()->latest();
+
+        if ($request->has('filter')) {
+            $filter = $request->filter;
+            if ($filter === 'my_images') {
+                $query->where('user_id', auth()->id());
+            } elseif ($filter === 'other_users_images') {
+                $query->where('user_id', '!=', auth()->id());
+            }
+        }
+
+        $images = $query->paginate(10);
+        return view('file-manager::images.index', compact('images', 'filters'));
     }
+
 
     public function create(): View
     {
