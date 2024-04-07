@@ -10,9 +10,8 @@ namespace Modules\User\App\Models;
  use Illuminate\Notifications\Notifiable;
  use Illuminate\Support\Collection;
  use Laravel\Sanctum\HasApiTokens;
- use Modules\Role\App\Constants\PermissionData;
- use Modules\Role\App\Models\Permission;
  use Modules\Role\App\Models\Role;
+ use Modules\User\Database\Factories\UserFactory;
  use Spatie\Permission\Traits\HasRoles;
 
  class User extends Authenticatable implements MustVerifyEmail
@@ -78,4 +77,9 @@ namespace Modules\User\App\Models;
          return $this->roles()->first()->name === Role::ADMIN ||
              $this->hasPermissionTo(config('permissions_list.SUPER_ADMIN'));
      }
+
+     protected static function newFactory(): UserFactory
+    {
+        return UserFactory::new();
+    }
 }

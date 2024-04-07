@@ -4,7 +4,6 @@ namespace Modules\FileManager\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 use Modules\FileManager\App\Http\Requests\ImageRequest;
 use Modules\FileManager\App\Models\Image;
@@ -30,7 +29,7 @@ class ImageController extends Controller
     public function store(ImageRequest $request): RedirectResponse
     {
         $this->imageService->store($request);
-        return to_route('image.index')->with('success', 'تصویر با موفقیت ایجاد شد');
+        return to_route('image.index')->with('success', __('entity_created', ['entity' => __('image')]));
     }
 
     public function edit(Image $image): View
@@ -41,12 +40,12 @@ class ImageController extends Controller
     public function update(ImageRequest $request, image $image): RedirectResponse
     {
         $this->imageService->update($request, $image);
-        return to_route('image.index')->with('success', 'تصویر با موفقیت به روز شد');
+        return to_route('image.index')->with('success', __('entity_updated', ['entity' => __('image'), 'name']));
     }
 
     public function destroy(Image $image): RedirectResponse
     {
         $image->delete();
-        return back()->with('success', 'تصویر با موفقیت حذف شد');
+        return back()->with('success', __('entity_deleted', ['entity' => __('image')]));
     }
 }
