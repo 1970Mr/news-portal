@@ -17,4 +17,9 @@ class ImagePolicy
             config('permissions_list.IMAGE_INDEX_OWN')
         ]);
     }
+
+    public function store(User $user): bool
+    {
+        return $user->can(config('permissions_list.IMAGE_STORE'));
+    }
 }

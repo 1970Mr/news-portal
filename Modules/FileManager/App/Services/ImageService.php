@@ -23,6 +23,7 @@ class ImageService
 
     public function store(ImageRequest $request): Model
     {
+        Gate::authorize('store', Image::class);
         $data = $request->validated();
         $data['file_path'] = FileManagerService::upload( $request->file('image') );
         $data['user_id'] = auth()->id();
