@@ -75,34 +75,36 @@
                             </thead>
                             <tbody>
                             @foreach($images as $image)
-                                <tr>
-                                    <td>{{ $image->id }}</td>
-                                    <td>
-                                        <img src="{{ asset('storage/' . $image->file_path) }}" alt="{{ $image->alt_text }}" width="100px" style="max-height: 90px">
-                                    </td>
-                                    <td>{{ $image->file_path }}</td>
-                                    <td>{{ $image->alt_text }}</td>
-                                    <td>{{ $image->user_name }}</td>
-                                    <td>{{ nullable_value($image->title) }}</td>
-                                    <td>{{ nullable_value($image->description) }}</td>
-                                    <td class="ltr text-right">{{ jalalian()->forge($image->created_at)->format(config('common.datetime_format')) }}</td>
-                                    @canany([config('permissions_list.TAG_UPDATE'), config('permissions_list.TAG_DESTROY')])
+                                @can('show', $image)
+                                    <tr>
+                                        <td>{{ $image->id }}</td>
                                         <td>
-                                            <div class="d-flex gap-2">
-                                                @can(config('permissions_list.TAG_UPDATE'))
-                                                    <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                       rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('image.edit', $image->id) }}">
-                                                        <i class="icon-pencil fa-flip-horizontal"></i>
-                                                    </a>
-                                                @endcan
-
-                                                @can(config('permissions_list.TAG_DESTROY'))
-                                                    <x-common-delete-button :route="route('image.destroy', $image->id)"/>
-                                                @endcan
-                                            </div>
+                                            <img src="{{ asset('storage/' . $image->file_path) }}" alt="{{ $image->alt_text }}" width="100px" style="max-height: 90px">
                                         </td>
-                                    @endcanany
-                                </tr>
+                                        <td>{{ $image->file_path }}</td>
+                                        <td>{{ $image->alt_text }}</td>
+                                        <td>{{ $image->user_name }}</td>
+                                        <td>{{ nullable_value($image->title) }}</td>
+                                        <td>{{ nullable_value($image->description) }}</td>
+                                        <td class="ltr text-right">{{ jalalian()->forge($image->created_at)->format(config('common.datetime_format')) }}</td>
+                                        @canany([config('permissions_list.TAG_UPDATE'), config('permissions_list.TAG_DESTROY')])
+                                            <td>
+                                                <div class="d-flex gap-2">
+                                                    @can(config('permissions_list.TAG_UPDATE'))
+                                                        <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
+                                                           rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('image.edit', $image->id) }}">
+                                                            <i class="icon-pencil fa-flip-horizontal"></i>
+                                                        </a>
+                                                    @endcan
+
+                                                    @can(config('permissions_list.TAG_DESTROY'))
+                                                        <x-common-delete-button :route="route('image.destroy', $image->id)"/>
+                                                    @endcan
+                                                </div>
+                                            </td>
+                                        @endcanany
+                                    </tr>
+                                @endcan
                             @endforeach
                             </tbody>
                         </table>

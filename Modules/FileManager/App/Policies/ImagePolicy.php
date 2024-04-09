@@ -18,6 +18,19 @@ class ImagePolicy
         ]);
     }
 
+    public function show(User $user, Image $image): bool
+    {
+        $canShowAll = $user->can(config('permissions_list.IMAGE_INDEX_ALL'));
+        $canShowOwn = $user->can(config('permissions_list.IMAGE_INDEX_OWN'));
+
+        // If the user can't see any image but can see own image and the image being showed is not their own, return false
+        if ((!$canShowAll && $canShowOwn) && $image->user_id !== $user->id) {
+            return false;
+        }
+
+        return $canShowOwn || $canShowAll;
+    }
+
     public function store(User $user): bool
     {
         return $user->can(config('permissions_list.IMAGE_STORE'));
