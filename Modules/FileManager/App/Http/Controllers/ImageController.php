@@ -20,8 +20,9 @@ class ImageController extends Controller
     public function index(Request $request): View
     {
         $filters = Image::filters();
+        $imageClassName = Image::Class; // Use for policy
         $images = $this->imageService->index($request);
-        return view('file-manager::images.index', compact('images', 'filters'));
+        return view('file-manager::images.index', compact('images', 'filters', 'imageClassName'));
     }
 
     public function create(): View

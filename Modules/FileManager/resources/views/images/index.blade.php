@@ -25,7 +25,7 @@
                                 <div class="paper-ripple__waves"></div>
                             </div>
                         </a>
-                        @can(config('permissions_list.TAG_STORE'))
+                        @can('store', $imageClassName)
                             <a class="btn btn-sm btn-default btn-round bg-green text-white" rel="tooltip"
                                href="{{ route('image.create') }}"
                                aria-label="ایجاد تصویر‌ جدید" data-bs-original-title="ایجاد تصویر‌ جدید">
@@ -68,9 +68,9 @@
                                 <th>عنوان</th>
                                 <th>توضیحات</th>
                                 <th>تاریخ ایجاد</th>
-                                @canany([config('permissions_list.TAG_UPDATE'), config('permissions_list.TAG_DESTROY')])
+                                @can('operations', $imageClassName)
                                     <th>عملیات</th>
-                                @endcanany
+                                @endcan
                             </tr>
                             </thead>
                             <tbody>
@@ -87,22 +87,22 @@
                                         <td>{{ nullable_value($image->title) }}</td>
                                         <td>{{ nullable_value($image->description) }}</td>
                                         <td class="ltr text-right">{{ jalalian()->forge($image->created_at)->format(config('common.datetime_format')) }}</td>
-                                        @canany([config('permissions_list.TAG_UPDATE'), config('permissions_list.TAG_DESTROY')])
+                                        @can('operations', $imageClassName)
                                             <td>
                                                 <div class="d-flex gap-2">
-                                                    @can(config('permissions_list.TAG_UPDATE'))
+                                                    @can('update', $image)
                                                         <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
                                                            rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('image.edit', $image->id) }}">
                                                             <i class="icon-pencil fa-flip-horizontal"></i>
                                                         </a>
                                                     @endcan
 
-                                                    @can(config('permissions_list.TAG_DESTROY'))
+                                                    @can('destroy', $image)
                                                         <x-common-delete-button :route="route('image.destroy', $image->id)"/>
                                                     @endcan
                                                 </div>
                                             </td>
-                                        @endcanany
+                                        @endcan
                                     </tr>
                                 @endcan
                             @endforeach

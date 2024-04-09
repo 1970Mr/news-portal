@@ -61,4 +61,18 @@ class ImagePolicy
 
         return $canDestroyOwn || $canDestroyAll;
     }
+
+    public function operations(User $user): bool
+    {
+        $canAnyUpdate = $user->canAny([
+            config('permissions_list.IMAGE_UPDATE_ALL'),
+            config('permissions_list.IMAGE_UPDATE_OWN')
+        ]);
+        $canAnyDestroy = $user->canAny([
+            config('permissions_list.IMAGE_DESTROY_ALL'),
+            config('permissions_list.IMAGE_DESTROY_OWN')
+        ]);
+
+        return $canAnyUpdate || $canAnyDestroy;
+    }
 }
