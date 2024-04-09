@@ -44,7 +44,7 @@ class ImageService
 
     public function destroy(Image $image): bool|null
     {
-//        Gate::authorize('destroy', $image);
+        Gate::authorize('destroy', $image);
         return $image->delete();
     }
 

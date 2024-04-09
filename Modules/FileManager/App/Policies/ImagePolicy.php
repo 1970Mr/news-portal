@@ -48,4 +48,17 @@ class ImagePolicy
 
         return $canUpdateOwn || $canUpdateAll;
     }
+
+    public function destroy(User $user, Image $image): bool
+    {
+        $canDestroyAll = $user->can(config('permissions_list.IMAGE_DESTROY_ALL'));
+        $canDestroyOwn = $user->can(config('permissions_list.IMAGE_DESTROY_OWN'));
+
+        // If the user can't destroy any image but can destroy own image and the image being destroyed is not their own, return false
+        if ((!$canDestroyAll && $canDestroyOwn) && $image->user_id !== $user->id) {
+            return false;
+        }
+
+        return $canDestroyOwn || $canDestroyAll;
+    }
 }

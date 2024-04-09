@@ -100,5 +100,9 @@
         .page-link{
             text-align: center;
         }
+
+        th {
+            white-space: nowrap;
+        }
     </style>
 @endpush
