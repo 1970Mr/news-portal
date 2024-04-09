@@ -22,4 +22,17 @@ class ImagePolicy
     {
         return $user->can(config('permissions_list.IMAGE_STORE'));
     }
+
+    public function update(User $user, Image $image): bool
+    {
+        $canUpdateAll = $user->can(config('permissions_list.IMAGE_UPDATE_ALL'));
+        $canUpdateOwn = $user->can(config('permissions_list.IMAGE_UPDATE_OWN'));
+
+        // If the user can't update any image but can update own image and the image being updated is not their own, return false
+        if ((!$canUpdateAll && $canUpdateOwn) && $image->user_id !== $user->id) {
+            return false;
+        }
+
+        return $canUpdateOwn || $canUpdateAll;
+    }
 }

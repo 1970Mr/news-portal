@@ -32,6 +32,7 @@ class ImageService
 
     public function update(ImageRequest $request, image $image): bool
     {
+        Gate::authorize('update', $image);
         $data = $request->validated();
         if ($request->hasFile('image')) {
             $file = $request->file('image');
