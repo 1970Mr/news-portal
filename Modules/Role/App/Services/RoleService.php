@@ -2,7 +2,7 @@
 
 namespace Modules\Role\App\Services;
 
-use Illuminate\Http\RedirectResponse;
+use Modules\Role\App\Exceptions\UnableToDeleteDefaultRoleException;
 use Modules\Role\App\Exceptions\UnableToRenameDefaultRoleException;
 use Modules\Role\App\Http\Requests\RoleRequest;
 use Modules\Role\App\Http\Traits\SelectedItems;
@@ -19,6 +19,9 @@ class RoleService
         return (new PermissionService)->groupedPermissions($permissions);
     }
 
+    /**
+     * @throws UnableToRenameDefaultRoleException
+     */
     public function update(RoleRequest $request, Role $role): bool
     {
         $defaultRoles = Role::getDefaultRoles();
@@ -26,5 +29,17 @@ class RoleService
             throw new UnableToRenameDefaultRoleException(__('role::messages.unable_to_rename'));
         }
         return $role->update($request->only('name', 'local_name'));
+    }
+
+    /**
+     * @throws UnableToDeleteDefaultRoleException
+     */
+    public function destroy(Role $role): bool|null
+    {
+        $defaultRoles = Role::getDefaultRoles();
+        if ($defaultRoles->contains($role->name)) {
+            throw new UnableToDeleteDefaultRoleException(__('role::messages.unable_to_delete'));
+        }
+        return $role->delete();
     }
 }

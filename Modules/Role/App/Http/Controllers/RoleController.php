@@ -5,6 +5,7 @@ namespace Modules\Role\App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Modules\Role\App\Exceptions\UnableToDeleteDefaultRoleException;
 use Modules\Role\App\Exceptions\UnableToRenameDefaultRoleException;
 use Modules\Role\App\Http\Requests\RoleRequest;
 use Modules\Role\App\Models\Role;
@@ -60,7 +61,11 @@ class RoleController extends Controller
 
     public function destroy(Role $role): RedirectResponse
     {
-        $role->delete();
-        return to_route('role.index')->with('success', __('entity_deleted', ['entity' => __('role')]));
+        try {
+            $this->roleService->destroy($role);
+            return to_route('role.index')->with('success', __('entity_deleted', ['entity' => __('role')]));
+        } catch (UnableToDeleteDefaultRoleException $e) {
+            return back()->with('error', $e->getMessage());
+        }
     }
 }
