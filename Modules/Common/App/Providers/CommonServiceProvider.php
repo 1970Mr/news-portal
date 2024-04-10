@@ -27,6 +27,7 @@ class CommonServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/migrations'));
+
         $this->loadViewComponentsAs($this->moduleNameLower, [SweetAlert::class, ErrorMessages::class, DeleteButton::class, Breadcrumbs::class]);
     }
 
