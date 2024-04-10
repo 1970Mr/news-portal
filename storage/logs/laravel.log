@@ -20925,3 +20925,905 @@ error:0A000086:SSL routines::certificate verify failed at F:\\saves\\my_projects
 #66 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('F:\\\\saves\\\\my_pro...')
 #67 {main}
 "} 
+[2024-04-10 19:13:45] local.ERROR: Unresolvable dependency resolving [Parameter #0 [ <required> $images ]] in class Modules\FileManager\App\View\Components\ImageSelector {"view":{"view":"F:\\saves\\my_projects\\Develop\\news-site\\Modules\\FileManager\\resources\\views\\images\\index.blade.php","data":{"errors":"<pre class=sf-dump id=sf-dump-2006902285 data-indent-pad=\"  \"><span class=sf-dump-note>Illuminate\\Support\\ViewErrorBag</span> {<a class=sf-dump-ref>#1740</a><samp data-depth=1 class=sf-dump-expanded>
+  #<span class=sf-dump-protected title=\"Protected property\">bags</span>: []
+</samp>}
+</pre><script>Sfdump(\"sf-dump-2006902285\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+","images":"<pre class=sf-dump id=sf-dump-1523711347 data-indent-pad=\"  \"><span class=sf-dump-note>Illuminate\\Pagination\\LengthAwarePaginator</span> {<a class=sf-dump-ref>#1904</a><samp data-depth=1 class=sf-dump-expanded>
+  #<span class=sf-dump-protected title=\"Protected property\">items</span>: <span class=sf-dump-note title=\"Illuminate\\Database\\Eloquent\\Collection
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Database\\Eloquent</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>Collection</span> {<a class=sf-dump-ref>#1901</a><samp data-depth=2 class=sf-dump-compact>
+    #<span class=sf-dump-protected title=\"Protected property\">items</span>: <span class=sf-dump-note>array:3</span> [<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-index>0</span> => <span class=sf-dump-note title=\"Modules\\FileManager\\App\\Models\\Image
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Modules\\FileManager\\App\\Models</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>Image</span> {<a class=sf-dump-ref>#1873</a> &#8230;30}
+      <span class=sf-dump-index>1</span> => <span class=sf-dump-note title=\"Modules\\FileManager\\App\\Models\\Image
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Modules\\FileManager\\App\\Models</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>Image</span> {<a class=sf-dump-ref>#1925</a> &#8230;30}
+      <span class=sf-dump-index>2</span> => <span class=sf-dump-note title=\"Modules\\FileManager\\App\\Models\\Image
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Modules\\FileManager\\App\\Models</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>Image</span> {<a class=sf-dump-ref>#1924</a> &#8230;30}
+    </samp>]
+    #<span class=sf-dump-protected title=\"Protected property\">escapeWhenCastingToString</span>: <span class=sf-dump-const>false</span>
+  </samp>}
+  #<span class=sf-dump-protected title=\"Protected property\">perPage</span>: <span class=sf-dump-num>10</span>
+  #<span class=sf-dump-protected title=\"Protected property\">currentPage</span>: <span class=sf-dump-num>1</span>
+  #<span class=sf-dump-protected title=\"Protected property\">path</span>: \"<span class=sf-dump-str title=\"27 characters\">http://localhost:8000/image</span>\"
+  #<span class=sf-dump-protected title=\"Protected property\">query</span>: []
+  #<span class=sf-dump-protected title=\"Protected property\">fragment</span>: <span class=sf-dump-const>null</span>
+  #<span class=sf-dump-protected title=\"Protected property\">pageName</span>: \"<span class=sf-dump-str title=\"4 characters\">page</span>\"
+  +<span class=sf-dump-public title=\"Public property\">onEachSide</span>: <span class=sf-dump-num>3</span>
+  #<span class=sf-dump-protected title=\"Protected property\">options</span>: <span class=sf-dump-note>array:2</span> [<samp data-depth=2 class=sf-dump-compact>
+    \"<span class=sf-dump-key>path</span>\" => \"<span class=sf-dump-str title=\"27 characters\">http://localhost:8000/image</span>\"
+    \"<span class=sf-dump-key>pageName</span>\" => \"<span class=sf-dump-str title=\"4 characters\">page</span>\"
+  </samp>]
+  #<span class=sf-dump-protected title=\"Protected property\">total</span>: <span class=sf-dump-num>3</span>
+  #<span class=sf-dump-protected title=\"Protected property\">lastPage</span>: <span class=sf-dump-num>1</span>
+</samp>}
+</pre><script>Sfdump(\"sf-dump-1523711347\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+","filters":"<pre class=sf-dump id=sf-dump-1401457669 data-indent-pad=\"  \"><span class=sf-dump-note>array:3</span> [<samp data-depth=1 class=sf-dump-expanded>
+  \"<span class=sf-dump-key>all</span>\" => \"<span class=sf-dump-str title=\"10 characters\">&#1607;&#1605;&#1607; &#1578;&#1589;&#1575;&#1608;&#1740;&#1585;</span>\"
+  \"<span class=sf-dump-key>my_images</span>\" => \"<span class=sf-dump-str title=\"9 characters\">&#1578;&#1589;&#1575;&#1608;&#1740;&#1585; &#1605;&#1606;</span>\"
+  \"<span class=sf-dump-key>other_users_images</span>\" => \"<span class=sf-dump-str title=\"19 characters\">&#1578;&#1589;&#1575;&#1608;&#1740;&#1585; &#1587;&#1575;&#1740;&#1585; &#1705;&#1575;&#1585;&#1576;&#1585;&#1575;&#1606;</span>\"
+</samp>]
+</pre><script>Sfdump(\"sf-dump-1401457669\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+","imageClassName":"<pre class=sf-dump id=sf-dump-1161129222 data-indent-pad=\"  \">\"<span class=sf-dump-str title=\"36 characters\">Modules\\FileManager\\App\\Models\\Image</span>\"
+</pre><script>Sfdump(\"sf-dump-1161129222\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+"}},"userId":1,"exception":"[object] (Spatie\\LaravelIgnition\\Exceptions\\ViewException(code: 0): Unresolvable dependency resolving [Parameter #0 [ <required> $images ]] in class Modules\\FileManager\\App\\View\\Components\\ImageSelector at F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:1141)
+[stacktrace]
+#0 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(1050): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(981): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(943): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Modules\\\\FileMan...')
+#4 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(957): Illuminate\\Container\\Container->resolve('Modules\\\\FileMan...', Array, true)
+#5 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Modules\\\\FileMan...', Array)
+#6 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(942): Illuminate\\Container\\Container->make('Modules\\\\FileMan...', Array)
+#7 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Component.php(105): Illuminate\\Foundation\\Application->make('Modules\\\\FileMan...', Array)
+#8 F:\\saves\\my_projects\\Develop\\news-site\\Modules\\FileManager\\resources\\views\\images\\index.blade.php(121): Illuminate\\View\\Component::resolve(Array)
+#9 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(124): require('F:\\\\saves\\\\my_pro...')
+#10 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(125): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#11 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire('F:\\\\saves\\\\my_pro...', Array)
+#12 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(72): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('F:\\\\saves\\\\my_pro...', Array)
+#13 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(207): Illuminate\\View\\Engines\\CompilerEngine->get('F:\\\\saves\\\\my_pro...', Array)
+#14 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(190): Illuminate\\View\\View->getContents()
+#15 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(159): Illuminate\\View\\View->renderContents()
+#16 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Response.php(69): Illuminate\\View\\View->render()
+#17 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Response.php(35): Illuminate\\Http\\Response->setContent(Object(Illuminate\\View\\View))
+#18 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(918): Illuminate\\Http\\Response->__construct(Object(Illuminate\\View\\View), 200, Array)
+#19 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(885): Illuminate\\Routing\\Router::toResponse(Object(Illuminate\\Http\\Request), Object(Illuminate\\View\\View))
+#20 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(805): Illuminate\\Routing\\Router->prepareResponse(Object(Illuminate\\Http\\Request), Object(Illuminate\\View\\View))
+#21 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#22 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\realrashid\\sweet-alert\\src\\ToSweetAlert.php(71): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#23 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): RealRashid\\SweetAlert\\ToSweetAlert->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#24 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#25 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#26 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Auth\\Middleware\\Authenticate.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#27 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Auth\\Middleware\\Authenticate->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#28 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken.php(78): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#29 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Middleware\\ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#32 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(121): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#33 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(64): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest(Object(Illuminate\\Http\\Request), Object(Illuminate\\Session\\Store), Object(Closure))
+#34 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#35 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#36 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#37 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\EncryptCookies.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#38 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#39 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#40 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(805): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#41 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(784): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#42 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(748): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#43 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(737): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#44 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(200): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#45 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#46 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\barryvdh\\laravel-debugbar\\src\\Middleware\\InjectDebugbar.php(66): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#47 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Barryvdh\\Debugbar\\Middleware\\InjectDebugbar->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#48 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#49 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#50 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#51 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#52 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#53 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#54 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#55 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#56 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(99): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#57 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#58 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#59 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#60 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#61 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#62 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#63 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#64 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#65 F:\\saves\\my_projects\\Develop\\news-site\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#66 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('F:\\\\saves\\\\my_pro...')
+#67 {main}
+
+[previous exception] [object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Unresolvable dependency resolving [Parameter #0 [ <required> $images ]] in class Modules\\FileManager\\App\\View\\Components\\ImageSelector at F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:1141)
+[stacktrace]
+#0 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(1050): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(981): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(943): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Modules\\\\FileMan...')
+#4 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(957): Illuminate\\Container\\Container->resolve('Modules\\\\FileMan...', Array, true)
+#5 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Modules\\\\FileMan...', Array)
+#6 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(942): Illuminate\\Container\\Container->make('Modules\\\\FileMan...', Array)
+#7 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Component.php(105): Illuminate\\Foundation\\Application->make('Modules\\\\FileMan...', Array)
+#8 F:\\saves\\my_projects\\Develop\\news-site\\storage\\framework\\views\\ba30cb0f2731582bcb94bbbba32071fe.php(159): Illuminate\\View\\Component::resolve(Array)
+#9 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(124): require('F:\\\\saves\\\\my_pro...')
+#10 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(125): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#11 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire('F:\\\\saves\\\\my_pro...', Array)
+#12 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(72): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('F:\\\\saves\\\\my_pro...', Array)
+#13 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(207): Illuminate\\View\\Engines\\CompilerEngine->get('F:\\\\saves\\\\my_pro...', Array)
+#14 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(190): Illuminate\\View\\View->getContents()
+#15 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(159): Illuminate\\View\\View->renderContents()
+#16 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Response.php(69): Illuminate\\View\\View->render()
+#17 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Response.php(35): Illuminate\\Http\\Response->setContent(Object(Illuminate\\View\\View))
+#18 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(918): Illuminate\\Http\\Response->__construct(Object(Illuminate\\View\\View), 200, Array)
+#19 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(885): Illuminate\\Routing\\Router::toResponse(Object(Illuminate\\Http\\Request), Object(Illuminate\\View\\View))
+#20 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(805): Illuminate\\Routing\\Router->prepareResponse(Object(Illuminate\\Http\\Request), Object(Illuminate\\View\\View))
+#21 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#22 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\realrashid\\sweet-alert\\src\\ToSweetAlert.php(71): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#23 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): RealRashid\\SweetAlert\\ToSweetAlert->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#24 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#25 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#26 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Auth\\Middleware\\Authenticate.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#27 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Auth\\Middleware\\Authenticate->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#28 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken.php(78): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#29 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Middleware\\ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#32 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(121): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#33 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(64): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest(Object(Illuminate\\Http\\Request), Object(Illuminate\\Session\\Store), Object(Closure))
+#34 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#35 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#36 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#37 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\EncryptCookies.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#38 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#39 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#40 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(805): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#41 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(784): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#42 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(748): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#43 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(737): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#44 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(200): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#45 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#46 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\barryvdh\\laravel-debugbar\\src\\Middleware\\InjectDebugbar.php(66): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#47 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Barryvdh\\Debugbar\\Middleware\\InjectDebugbar->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#48 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#49 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#50 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#51 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#52 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#53 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#54 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#55 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#56 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(99): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#57 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#58 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#59 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#60 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#61 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#62 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#63 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#64 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#65 F:\\saves\\my_projects\\Develop\\news-site\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#66 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('F:\\\\saves\\\\my_pro...')
+#67 {main}
+"} 
+[2024-04-10 19:24:59] local.ERROR: Undefined variable $filters {"view":{"view":"F:\\saves\\my_projects\\Develop\\news-site\\Modules\\FileManager\\resources\\views\\components\\image-selector.blade.php","data":{"errors":"<pre class=sf-dump id=sf-dump-1445928974 data-indent-pad=\"  \"><span class=sf-dump-note>Illuminate\\Support\\ViewErrorBag</span> {<a class=sf-dump-ref>#1740</a><samp data-depth=1 class=sf-dump-expanded>
+  #<span class=sf-dump-protected title=\"Protected property\">bags</span>: []
+</samp>}
+</pre><script>Sfdump(\"sf-dump-1445928974\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+","componentName":"<pre class=sf-dump id=sf-dump-419642155 data-indent-pad=\"  \">\"<span class=sf-dump-str title=\"27 characters\">file-manager-image-selector</span>\"
+</pre><script>Sfdump(\"sf-dump-419642155\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+","attributes":"<pre class=sf-dump id=sf-dump-1788172869 data-indent-pad=\"  \"><span class=sf-dump-note>Illuminate\\View\\ComponentAttributeBag</span> {<a class=sf-dump-ref>#1954</a><samp data-depth=1 class=sf-dump-expanded>
+  #<span class=sf-dump-protected title=\"Protected property\">attributes</span>: []
+</samp>}
+</pre><script>Sfdump(\"sf-dump-1788172869\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+","slot":"<pre class=sf-dump id=sf-dump-1669484867 data-indent-pad=\"  \"><span class=sf-dump-note>Illuminate\\View\\ComponentSlot</span> {<a class=sf-dump-ref>#2028</a><samp data-depth=1 class=sf-dump-expanded>
+  +<span class=sf-dump-public title=\"Public property\">attributes</span>: <span class=sf-dump-note title=\"Illuminate\\View\\ComponentAttributeBag
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\View</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>ComponentAttributeBag</span> {<a class=sf-dump-ref>#1913</a><samp data-depth=2 class=sf-dump-compact>
+    #<span class=sf-dump-protected title=\"Protected property\">attributes</span>: []
+  </samp>}
+  #<span class=sf-dump-protected title=\"Protected property\">contents</span>: \"\"
+</samp>}
+</pre><script>Sfdump(\"sf-dump-1669484867\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+","__laravel_slots":"<pre class=sf-dump id=sf-dump-712942987 data-indent-pad=\"  \"><span class=sf-dump-note>array:1</span> [<samp data-depth=1 class=sf-dump-expanded>
+  \"<span class=sf-dump-key>__default</span>\" => <span class=sf-dump-note title=\"Illuminate\\View\\ComponentSlot
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\View</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>ComponentSlot</span> {<a class=sf-dump-ref>#2028</a><samp data-depth=2 class=sf-dump-compact>
+    +<span class=sf-dump-public title=\"Public property\">attributes</span>: <span class=sf-dump-note title=\"Illuminate\\View\\ComponentAttributeBag
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\View</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>ComponentAttributeBag</span> {<a class=sf-dump-ref>#1913</a><samp data-depth=3 class=sf-dump-compact>
+      #<span class=sf-dump-protected title=\"Protected property\">attributes</span>: []
+    </samp>}
+    #<span class=sf-dump-protected title=\"Protected property\">contents</span>: \"\"
+  </samp>}
+</samp>]
+</pre><script>Sfdump(\"sf-dump-712942987\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+"}},"userId":1,"exception":"[object] (Spatie\\LaravelIgnition\\Exceptions\\ViewException(code: 0): Undefined variable $filters at F:\\saves\\my_projects\\Develop\\news-site\\Modules\\FileManager\\resources\\views\\components\\image-selector.blade.php:82)
+[stacktrace]
+#0 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\HandleExceptions.php(255): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'Undefined varia...', 'F:\\\\saves\\\\my_pro...', 82)
+#1 F:\\saves\\my_projects\\Develop\\news-site\\Modules\\FileManager\\resources\\views\\components\\image-selector.blade.php(82): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->Illuminate\\Foundation\\Bootstrap\\{closure}(2, 'Undefined varia...', 'F:\\\\saves\\\\my_pro...', 82)
+#2 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(124): require('F:\\\\saves\\\\my_pro...')
+#3 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(125): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#4 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire('F:\\\\saves\\\\my_pro...', Array)
+#5 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(72): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('F:\\\\saves\\\\my_pro...', Array)
+#6 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(207): Illuminate\\View\\Engines\\CompilerEngine->get('F:\\\\saves\\\\my_pro...', Array)
+#7 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(190): Illuminate\\View\\View->getContents()
+#8 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(159): Illuminate\\View\\View->renderContents()
+#9 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Concerns\\ManagesComponents.php(99): Illuminate\\View\\View->render()
+#10 F:\\saves\\my_projects\\Develop\\news-site\\Modules\\FileManager\\resources\\views\\images\\index.blade.php(121): Illuminate\\View\\Factory->renderComponent()
+#11 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(124): require('F:\\\\saves\\\\my_pro...')
+#12 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(125): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#13 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire('F:\\\\saves\\\\my_pro...', Array)
+#14 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(72): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('F:\\\\saves\\\\my_pro...', Array)
+#15 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(207): Illuminate\\View\\Engines\\CompilerEngine->get('F:\\\\saves\\\\my_pro...', Array)
+#16 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(190): Illuminate\\View\\View->getContents()
+#17 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(159): Illuminate\\View\\View->renderContents()
+#18 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Response.php(69): Illuminate\\View\\View->render()
+#19 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Response.php(35): Illuminate\\Http\\Response->setContent(Object(Illuminate\\View\\View))
+#20 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(918): Illuminate\\Http\\Response->__construct(Object(Illuminate\\View\\View), 200, Array)
+#21 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(885): Illuminate\\Routing\\Router::toResponse(Object(Illuminate\\Http\\Request), Object(Illuminate\\View\\View))
+#22 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(805): Illuminate\\Routing\\Router->prepareResponse(Object(Illuminate\\Http\\Request), Object(Illuminate\\View\\View))
+#23 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#24 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\realrashid\\sweet-alert\\src\\ToSweetAlert.php(71): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#25 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): RealRashid\\SweetAlert\\ToSweetAlert->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#26 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#27 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#28 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Auth\\Middleware\\Authenticate.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#29 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Auth\\Middleware\\Authenticate->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken.php(78): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#32 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Middleware\\ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#33 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#34 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(121): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#35 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(64): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest(Object(Illuminate\\Http\\Request), Object(Illuminate\\Session\\Store), Object(Closure))
+#36 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#37 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#38 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#39 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\EncryptCookies.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#40 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#41 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#42 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(805): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#43 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(784): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#44 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(748): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#45 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(737): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#46 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(200): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#47 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#48 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\barryvdh\\laravel-debugbar\\src\\Middleware\\InjectDebugbar.php(66): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#49 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Barryvdh\\Debugbar\\Middleware\\InjectDebugbar->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#50 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#51 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#52 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#53 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#54 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#55 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#56 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#57 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#58 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(99): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#59 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#60 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#61 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#62 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#63 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#64 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#65 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#66 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#67 F:\\saves\\my_projects\\Develop\\news-site\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#68 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('F:\\\\saves\\\\my_pro...')
+#69 {main}
+
+[previous exception] [object] (ErrorException(code: 0): Undefined variable $filters at F:\\saves\\my_projects\\Develop\\news-site\\storage\\framework\\views\\52bb3fd2f7ac00380052c8c154cf0eeb.php:82)
+[stacktrace]
+#0 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\HandleExceptions.php(255): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'Undefined varia...', 'F:\\\\saves\\\\my_pro...', 82)
+#1 F:\\saves\\my_projects\\Develop\\news-site\\storage\\framework\\views\\52bb3fd2f7ac00380052c8c154cf0eeb.php(82): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->Illuminate\\Foundation\\Bootstrap\\{closure}(2, 'Undefined varia...', 'F:\\\\saves\\\\my_pro...', 82)
+#2 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(124): require('F:\\\\saves\\\\my_pro...')
+#3 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(125): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#4 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire('F:\\\\saves\\\\my_pro...', Array)
+#5 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(72): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('F:\\\\saves\\\\my_pro...', Array)
+#6 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(207): Illuminate\\View\\Engines\\CompilerEngine->get('F:\\\\saves\\\\my_pro...', Array)
+#7 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(190): Illuminate\\View\\View->getContents()
+#8 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(159): Illuminate\\View\\View->renderContents()
+#9 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Concerns\\ManagesComponents.php(99): Illuminate\\View\\View->render()
+#10 F:\\saves\\my_projects\\Develop\\news-site\\storage\\framework\\views\\ba30cb0f2731582bcb94bbbba32071fe.php(167): Illuminate\\View\\Factory->renderComponent()
+#11 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(124): require('F:\\\\saves\\\\my_pro...')
+#12 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(125): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#13 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire('F:\\\\saves\\\\my_pro...', Array)
+#14 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(72): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('F:\\\\saves\\\\my_pro...', Array)
+#15 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(207): Illuminate\\View\\Engines\\CompilerEngine->get('F:\\\\saves\\\\my_pro...', Array)
+#16 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(190): Illuminate\\View\\View->getContents()
+#17 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(159): Illuminate\\View\\View->renderContents()
+#18 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Response.php(69): Illuminate\\View\\View->render()
+#19 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Response.php(35): Illuminate\\Http\\Response->setContent(Object(Illuminate\\View\\View))
+#20 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(918): Illuminate\\Http\\Response->__construct(Object(Illuminate\\View\\View), 200, Array)
+#21 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(885): Illuminate\\Routing\\Router::toResponse(Object(Illuminate\\Http\\Request), Object(Illuminate\\View\\View))
+#22 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(805): Illuminate\\Routing\\Router->prepareResponse(Object(Illuminate\\Http\\Request), Object(Illuminate\\View\\View))
+#23 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#24 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\realrashid\\sweet-alert\\src\\ToSweetAlert.php(71): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#25 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): RealRashid\\SweetAlert\\ToSweetAlert->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#26 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#27 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#28 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Auth\\Middleware\\Authenticate.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#29 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Auth\\Middleware\\Authenticate->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken.php(78): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#32 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Middleware\\ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#33 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#34 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(121): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#35 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(64): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest(Object(Illuminate\\Http\\Request), Object(Illuminate\\Session\\Store), Object(Closure))
+#36 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#37 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#38 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#39 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\EncryptCookies.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#40 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#41 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#42 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(805): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#43 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(784): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#44 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(748): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#45 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(737): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#46 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(200): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#47 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#48 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\barryvdh\\laravel-debugbar\\src\\Middleware\\InjectDebugbar.php(66): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#49 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Barryvdh\\Debugbar\\Middleware\\InjectDebugbar->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#50 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#51 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#52 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#53 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#54 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#55 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#56 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#57 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#58 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(99): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#59 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#60 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#61 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#62 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#63 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#64 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#65 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#66 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#67 F:\\saves\\my_projects\\Develop\\news-site\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#68 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('F:\\\\saves\\\\my_pro...')
+#69 {main}
+"} 
+[2024-04-10 19:26:54] local.ERROR: Unresolvable dependency resolving [Parameter #0 [ <required> $filters ]] in class Modules\FileManager\App\View\Components\ImageSelector {"view":{"view":"F:\\saves\\my_projects\\Develop\\news-site\\Modules\\FileManager\\resources\\views\\images\\index.blade.php","data":{"errors":"<pre class=sf-dump id=sf-dump-2114880423 data-indent-pad=\"  \"><span class=sf-dump-note>Illuminate\\Support\\ViewErrorBag</span> {<a class=sf-dump-ref>#1740</a><samp data-depth=1 class=sf-dump-expanded>
+  #<span class=sf-dump-protected title=\"Protected property\">bags</span>: []
+</samp>}
+</pre><script>Sfdump(\"sf-dump-2114880423\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+","images":"<pre class=sf-dump id=sf-dump-1958743971 data-indent-pad=\"  \"><span class=sf-dump-note>Illuminate\\Pagination\\LengthAwarePaginator</span> {<a class=sf-dump-ref>#1904</a><samp data-depth=1 class=sf-dump-expanded>
+  #<span class=sf-dump-protected title=\"Protected property\">items</span>: <span class=sf-dump-note title=\"Illuminate\\Database\\Eloquent\\Collection
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Database\\Eloquent</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>Collection</span> {<a class=sf-dump-ref>#1901</a><samp data-depth=2 class=sf-dump-compact>
+    #<span class=sf-dump-protected title=\"Protected property\">items</span>: <span class=sf-dump-note>array:3</span> [<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-index>0</span> => <span class=sf-dump-note title=\"Modules\\FileManager\\App\\Models\\Image
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Modules\\FileManager\\App\\Models</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>Image</span> {<a class=sf-dump-ref>#1873</a> &#8230;30}
+      <span class=sf-dump-index>1</span> => <span class=sf-dump-note title=\"Modules\\FileManager\\App\\Models\\Image
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Modules\\FileManager\\App\\Models</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>Image</span> {<a class=sf-dump-ref>#1925</a> &#8230;30}
+      <span class=sf-dump-index>2</span> => <span class=sf-dump-note title=\"Modules\\FileManager\\App\\Models\\Image
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Modules\\FileManager\\App\\Models</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>Image</span> {<a class=sf-dump-ref>#1924</a> &#8230;30}
+    </samp>]
+    #<span class=sf-dump-protected title=\"Protected property\">escapeWhenCastingToString</span>: <span class=sf-dump-const>false</span>
+  </samp>}
+  #<span class=sf-dump-protected title=\"Protected property\">perPage</span>: <span class=sf-dump-num>10</span>
+  #<span class=sf-dump-protected title=\"Protected property\">currentPage</span>: <span class=sf-dump-num>1</span>
+  #<span class=sf-dump-protected title=\"Protected property\">path</span>: \"<span class=sf-dump-str title=\"27 characters\">http://localhost:8000/image</span>\"
+  #<span class=sf-dump-protected title=\"Protected property\">query</span>: []
+  #<span class=sf-dump-protected title=\"Protected property\">fragment</span>: <span class=sf-dump-const>null</span>
+  #<span class=sf-dump-protected title=\"Protected property\">pageName</span>: \"<span class=sf-dump-str title=\"4 characters\">page</span>\"
+  +<span class=sf-dump-public title=\"Public property\">onEachSide</span>: <span class=sf-dump-num>3</span>
+  #<span class=sf-dump-protected title=\"Protected property\">options</span>: <span class=sf-dump-note>array:2</span> [<samp data-depth=2 class=sf-dump-compact>
+    \"<span class=sf-dump-key>path</span>\" => \"<span class=sf-dump-str title=\"27 characters\">http://localhost:8000/image</span>\"
+    \"<span class=sf-dump-key>pageName</span>\" => \"<span class=sf-dump-str title=\"4 characters\">page</span>\"
+  </samp>]
+  #<span class=sf-dump-protected title=\"Protected property\">total</span>: <span class=sf-dump-num>3</span>
+  #<span class=sf-dump-protected title=\"Protected property\">lastPage</span>: <span class=sf-dump-num>1</span>
+</samp>}
+</pre><script>Sfdump(\"sf-dump-1958743971\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+","filters":"<pre class=sf-dump id=sf-dump-367829049 data-indent-pad=\"  \"><span class=sf-dump-note>array:3</span> [<samp data-depth=1 class=sf-dump-expanded>
+  \"<span class=sf-dump-key>all</span>\" => \"<span class=sf-dump-str title=\"10 characters\">&#1607;&#1605;&#1607; &#1578;&#1589;&#1575;&#1608;&#1740;&#1585;</span>\"
+  \"<span class=sf-dump-key>my_images</span>\" => \"<span class=sf-dump-str title=\"9 characters\">&#1578;&#1589;&#1575;&#1608;&#1740;&#1585; &#1605;&#1606;</span>\"
+  \"<span class=sf-dump-key>other_users_images</span>\" => \"<span class=sf-dump-str title=\"19 characters\">&#1578;&#1589;&#1575;&#1608;&#1740;&#1585; &#1587;&#1575;&#1740;&#1585; &#1705;&#1575;&#1585;&#1576;&#1585;&#1575;&#1606;</span>\"
+</samp>]
+</pre><script>Sfdump(\"sf-dump-367829049\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+","imageClassName":"<pre class=sf-dump id=sf-dump-1012057624 data-indent-pad=\"  \">\"<span class=sf-dump-str title=\"36 characters\">Modules\\FileManager\\App\\Models\\Image</span>\"
+</pre><script>Sfdump(\"sf-dump-1012057624\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+"}},"userId":1,"exception":"[object] (Spatie\\LaravelIgnition\\Exceptions\\ViewException(code: 0): Unresolvable dependency resolving [Parameter #0 [ <required> $filters ]] in class Modules\\FileManager\\App\\View\\Components\\ImageSelector at F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:1141)
+[stacktrace]
+#0 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(1050): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(981): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(943): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Modules\\\\FileMan...')
+#4 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(957): Illuminate\\Container\\Container->resolve('Modules\\\\FileMan...', Array, true)
+#5 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Modules\\\\FileMan...', Array)
+#6 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(942): Illuminate\\Container\\Container->make('Modules\\\\FileMan...', Array)
+#7 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Component.php(105): Illuminate\\Foundation\\Application->make('Modules\\\\FileMan...', Array)
+#8 F:\\saves\\my_projects\\Develop\\news-site\\Modules\\FileManager\\resources\\views\\images\\index.blade.php(121): Illuminate\\View\\Component::resolve(Array)
+#9 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(124): require('F:\\\\saves\\\\my_pro...')
+#10 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(125): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#11 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire('F:\\\\saves\\\\my_pro...', Array)
+#12 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(72): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('F:\\\\saves\\\\my_pro...', Array)
+#13 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(207): Illuminate\\View\\Engines\\CompilerEngine->get('F:\\\\saves\\\\my_pro...', Array)
+#14 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(190): Illuminate\\View\\View->getContents()
+#15 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(159): Illuminate\\View\\View->renderContents()
+#16 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Response.php(69): Illuminate\\View\\View->render()
+#17 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Response.php(35): Illuminate\\Http\\Response->setContent(Object(Illuminate\\View\\View))
+#18 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(918): Illuminate\\Http\\Response->__construct(Object(Illuminate\\View\\View), 200, Array)
+#19 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(885): Illuminate\\Routing\\Router::toResponse(Object(Illuminate\\Http\\Request), Object(Illuminate\\View\\View))
+#20 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(805): Illuminate\\Routing\\Router->prepareResponse(Object(Illuminate\\Http\\Request), Object(Illuminate\\View\\View))
+#21 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#22 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\realrashid\\sweet-alert\\src\\ToSweetAlert.php(71): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#23 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): RealRashid\\SweetAlert\\ToSweetAlert->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#24 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#25 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#26 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Auth\\Middleware\\Authenticate.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#27 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Auth\\Middleware\\Authenticate->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#28 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken.php(78): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#29 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Middleware\\ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#32 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(121): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#33 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(64): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest(Object(Illuminate\\Http\\Request), Object(Illuminate\\Session\\Store), Object(Closure))
+#34 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#35 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#36 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#37 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\EncryptCookies.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#38 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#39 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#40 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(805): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#41 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(784): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#42 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(748): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#43 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(737): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#44 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(200): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#45 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#46 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\barryvdh\\laravel-debugbar\\src\\Middleware\\InjectDebugbar.php(66): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#47 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Barryvdh\\Debugbar\\Middleware\\InjectDebugbar->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#48 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#49 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#50 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#51 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#52 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#53 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#54 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#55 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#56 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(99): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#57 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#58 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#59 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#60 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#61 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#62 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#63 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#64 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#65 F:\\saves\\my_projects\\Develop\\news-site\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#66 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('F:\\\\saves\\\\my_pro...')
+#67 {main}
+
+[previous exception] [object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Unresolvable dependency resolving [Parameter #0 [ <required> $filters ]] in class Modules\\FileManager\\App\\View\\Components\\ImageSelector at F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:1141)
+[stacktrace]
+#0 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(1050): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(981): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(943): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Modules\\\\FileMan...')
+#4 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(957): Illuminate\\Container\\Container->resolve('Modules\\\\FileMan...', Array, true)
+#5 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Modules\\\\FileMan...', Array)
+#6 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(942): Illuminate\\Container\\Container->make('Modules\\\\FileMan...', Array)
+#7 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Component.php(105): Illuminate\\Foundation\\Application->make('Modules\\\\FileMan...', Array)
+#8 F:\\saves\\my_projects\\Develop\\news-site\\storage\\framework\\views\\ba30cb0f2731582bcb94bbbba32071fe.php(159): Illuminate\\View\\Component::resolve(Array)
+#9 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(124): require('F:\\\\saves\\\\my_pro...')
+#10 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(125): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#11 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire('F:\\\\saves\\\\my_pro...', Array)
+#12 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(72): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('F:\\\\saves\\\\my_pro...', Array)
+#13 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(207): Illuminate\\View\\Engines\\CompilerEngine->get('F:\\\\saves\\\\my_pro...', Array)
+#14 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(190): Illuminate\\View\\View->getContents()
+#15 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(159): Illuminate\\View\\View->renderContents()
+#16 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Response.php(69): Illuminate\\View\\View->render()
+#17 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Response.php(35): Illuminate\\Http\\Response->setContent(Object(Illuminate\\View\\View))
+#18 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(918): Illuminate\\Http\\Response->__construct(Object(Illuminate\\View\\View), 200, Array)
+#19 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(885): Illuminate\\Routing\\Router::toResponse(Object(Illuminate\\Http\\Request), Object(Illuminate\\View\\View))
+#20 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(805): Illuminate\\Routing\\Router->prepareResponse(Object(Illuminate\\Http\\Request), Object(Illuminate\\View\\View))
+#21 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#22 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\realrashid\\sweet-alert\\src\\ToSweetAlert.php(71): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#23 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): RealRashid\\SweetAlert\\ToSweetAlert->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#24 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#25 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#26 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Auth\\Middleware\\Authenticate.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#27 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Auth\\Middleware\\Authenticate->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#28 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken.php(78): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#29 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Middleware\\ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#32 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(121): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#33 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(64): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest(Object(Illuminate\\Http\\Request), Object(Illuminate\\Session\\Store), Object(Closure))
+#34 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#35 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#36 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#37 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\EncryptCookies.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#38 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#39 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#40 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(805): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#41 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(784): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#42 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(748): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#43 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(737): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#44 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(200): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#45 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#46 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\barryvdh\\laravel-debugbar\\src\\Middleware\\InjectDebugbar.php(66): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#47 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Barryvdh\\Debugbar\\Middleware\\InjectDebugbar->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#48 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#49 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#50 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#51 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#52 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#53 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#54 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#55 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#56 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(99): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#57 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#58 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#59 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#60 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#61 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#62 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#63 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#64 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#65 F:\\saves\\my_projects\\Develop\\news-site\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#66 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('F:\\\\saves\\\\my_pro...')
+#67 {main}
+"} 
+[2024-04-10 19:28:09] local.ERROR: Unresolvable dependency resolving [Parameter #0 [ <required> $images ]] in class Modules\FileManager\App\View\Components\ImageSelector {"view":{"view":"F:\\saves\\my_projects\\Develop\\news-site\\Modules\\FileManager\\resources\\views\\images\\index.blade.php","data":{"errors":"<pre class=sf-dump id=sf-dump-1910665001 data-indent-pad=\"  \"><span class=sf-dump-note>Illuminate\\Support\\ViewErrorBag</span> {<a class=sf-dump-ref>#1740</a><samp data-depth=1 class=sf-dump-expanded>
+  #<span class=sf-dump-protected title=\"Protected property\">bags</span>: []
+</samp>}
+</pre><script>Sfdump(\"sf-dump-1910665001\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+","images":"<pre class=sf-dump id=sf-dump-1063400011 data-indent-pad=\"  \"><span class=sf-dump-note>Illuminate\\Pagination\\LengthAwarePaginator</span> {<a class=sf-dump-ref>#1904</a><samp data-depth=1 class=sf-dump-expanded>
+  #<span class=sf-dump-protected title=\"Protected property\">items</span>: <span class=sf-dump-note title=\"Illuminate\\Database\\Eloquent\\Collection
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\Database\\Eloquent</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>Collection</span> {<a class=sf-dump-ref>#1901</a><samp data-depth=2 class=sf-dump-compact>
+    #<span class=sf-dump-protected title=\"Protected property\">items</span>: <span class=sf-dump-note>array:3</span> [<samp data-depth=3 class=sf-dump-compact>
+      <span class=sf-dump-index>0</span> => <span class=sf-dump-note title=\"Modules\\FileManager\\App\\Models\\Image
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Modules\\FileManager\\App\\Models</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>Image</span> {<a class=sf-dump-ref>#1873</a> &#8230;30}
+      <span class=sf-dump-index>1</span> => <span class=sf-dump-note title=\"Modules\\FileManager\\App\\Models\\Image
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Modules\\FileManager\\App\\Models</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>Image</span> {<a class=sf-dump-ref>#1925</a> &#8230;30}
+      <span class=sf-dump-index>2</span> => <span class=sf-dump-note title=\"Modules\\FileManager\\App\\Models\\Image
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Modules\\FileManager\\App\\Models</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>Image</span> {<a class=sf-dump-ref>#1924</a> &#8230;30}
+    </samp>]
+    #<span class=sf-dump-protected title=\"Protected property\">escapeWhenCastingToString</span>: <span class=sf-dump-const>false</span>
+  </samp>}
+  #<span class=sf-dump-protected title=\"Protected property\">perPage</span>: <span class=sf-dump-num>10</span>
+  #<span class=sf-dump-protected title=\"Protected property\">currentPage</span>: <span class=sf-dump-num>1</span>
+  #<span class=sf-dump-protected title=\"Protected property\">path</span>: \"<span class=sf-dump-str title=\"27 characters\">http://localhost:8000/image</span>\"
+  #<span class=sf-dump-protected title=\"Protected property\">query</span>: []
+  #<span class=sf-dump-protected title=\"Protected property\">fragment</span>: <span class=sf-dump-const>null</span>
+  #<span class=sf-dump-protected title=\"Protected property\">pageName</span>: \"<span class=sf-dump-str title=\"4 characters\">page</span>\"
+  +<span class=sf-dump-public title=\"Public property\">onEachSide</span>: <span class=sf-dump-num>3</span>
+  #<span class=sf-dump-protected title=\"Protected property\">options</span>: <span class=sf-dump-note>array:2</span> [<samp data-depth=2 class=sf-dump-compact>
+    \"<span class=sf-dump-key>path</span>\" => \"<span class=sf-dump-str title=\"27 characters\">http://localhost:8000/image</span>\"
+    \"<span class=sf-dump-key>pageName</span>\" => \"<span class=sf-dump-str title=\"4 characters\">page</span>\"
+  </samp>]
+  #<span class=sf-dump-protected title=\"Protected property\">total</span>: <span class=sf-dump-num>3</span>
+  #<span class=sf-dump-protected title=\"Protected property\">lastPage</span>: <span class=sf-dump-num>1</span>
+</samp>}
+</pre><script>Sfdump(\"sf-dump-1063400011\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+","filters":"<pre class=sf-dump id=sf-dump-1913454889 data-indent-pad=\"  \"><span class=sf-dump-note>array:3</span> [<samp data-depth=1 class=sf-dump-expanded>
+  \"<span class=sf-dump-key>all</span>\" => \"<span class=sf-dump-str title=\"10 characters\">&#1607;&#1605;&#1607; &#1578;&#1589;&#1575;&#1608;&#1740;&#1585;</span>\"
+  \"<span class=sf-dump-key>my_images</span>\" => \"<span class=sf-dump-str title=\"9 characters\">&#1578;&#1589;&#1575;&#1608;&#1740;&#1585; &#1605;&#1606;</span>\"
+  \"<span class=sf-dump-key>other_users_images</span>\" => \"<span class=sf-dump-str title=\"19 characters\">&#1578;&#1589;&#1575;&#1608;&#1740;&#1585; &#1587;&#1575;&#1740;&#1585; &#1705;&#1575;&#1585;&#1576;&#1585;&#1575;&#1606;</span>\"
+</samp>]
+</pre><script>Sfdump(\"sf-dump-1913454889\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+","imageClassName":"<pre class=sf-dump id=sf-dump-390404623 data-indent-pad=\"  \">\"<span class=sf-dump-str title=\"36 characters\">Modules\\FileManager\\App\\Models\\Image</span>\"
+</pre><script>Sfdump(\"sf-dump-390404623\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+"}},"userId":1,"exception":"[object] (Spatie\\LaravelIgnition\\Exceptions\\ViewException(code: 0): Unresolvable dependency resolving [Parameter #0 [ <required> $images ]] in class Modules\\FileManager\\App\\View\\Components\\ImageSelector at F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:1141)
+[stacktrace]
+#0 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(1050): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(981): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(943): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Modules\\\\FileMan...')
+#4 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(957): Illuminate\\Container\\Container->resolve('Modules\\\\FileMan...', Array, true)
+#5 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Modules\\\\FileMan...', Array)
+#6 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(942): Illuminate\\Container\\Container->make('Modules\\\\FileMan...', Array)
+#7 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Component.php(105): Illuminate\\Foundation\\Application->make('Modules\\\\FileMan...', Array)
+#8 F:\\saves\\my_projects\\Develop\\news-site\\Modules\\FileManager\\resources\\views\\images\\index.blade.php(121): Illuminate\\View\\Component::resolve(Array)
+#9 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(124): require('F:\\\\saves\\\\my_pro...')
+#10 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(125): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#11 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire('F:\\\\saves\\\\my_pro...', Array)
+#12 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(72): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('F:\\\\saves\\\\my_pro...', Array)
+#13 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(207): Illuminate\\View\\Engines\\CompilerEngine->get('F:\\\\saves\\\\my_pro...', Array)
+#14 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(190): Illuminate\\View\\View->getContents()
+#15 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(159): Illuminate\\View\\View->renderContents()
+#16 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Response.php(69): Illuminate\\View\\View->render()
+#17 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Response.php(35): Illuminate\\Http\\Response->setContent(Object(Illuminate\\View\\View))
+#18 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(918): Illuminate\\Http\\Response->__construct(Object(Illuminate\\View\\View), 200, Array)
+#19 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(885): Illuminate\\Routing\\Router::toResponse(Object(Illuminate\\Http\\Request), Object(Illuminate\\View\\View))
+#20 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(805): Illuminate\\Routing\\Router->prepareResponse(Object(Illuminate\\Http\\Request), Object(Illuminate\\View\\View))
+#21 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#22 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\realrashid\\sweet-alert\\src\\ToSweetAlert.php(71): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#23 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): RealRashid\\SweetAlert\\ToSweetAlert->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#24 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#25 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#26 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Auth\\Middleware\\Authenticate.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#27 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Auth\\Middleware\\Authenticate->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#28 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken.php(78): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#29 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Middleware\\ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#32 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(121): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#33 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(64): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest(Object(Illuminate\\Http\\Request), Object(Illuminate\\Session\\Store), Object(Closure))
+#34 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#35 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#36 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#37 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\EncryptCookies.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#38 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#39 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#40 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(805): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#41 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(784): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#42 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(748): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#43 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(737): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#44 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(200): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#45 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#46 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\barryvdh\\laravel-debugbar\\src\\Middleware\\InjectDebugbar.php(66): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#47 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Barryvdh\\Debugbar\\Middleware\\InjectDebugbar->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#48 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#49 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#50 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#51 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#52 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#53 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#54 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#55 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#56 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(99): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#57 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#58 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#59 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#60 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#61 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#62 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#63 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#64 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#65 F:\\saves\\my_projects\\Develop\\news-site\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#66 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('F:\\\\saves\\\\my_pro...')
+#67 {main}
+
+[previous exception] [object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Unresolvable dependency resolving [Parameter #0 [ <required> $images ]] in class Modules\\FileManager\\App\\View\\Components\\ImageSelector at F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:1141)
+[stacktrace]
+#0 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(1050): Illuminate\\Container\\Container->unresolvablePrimitive(Object(ReflectionParameter))
+#1 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(981): Illuminate\\Container\\Container->resolvePrimitive(Object(ReflectionParameter))
+#2 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(943): Illuminate\\Container\\Container->resolveDependencies(Array)
+#3 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(795): Illuminate\\Container\\Container->build('Modules\\\\FileMan...')
+#4 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(957): Illuminate\\Container\\Container->resolve('Modules\\\\FileMan...', Array, true)
+#5 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(731): Illuminate\\Foundation\\Application->resolve('Modules\\\\FileMan...', Array)
+#6 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(942): Illuminate\\Container\\Container->make('Modules\\\\FileMan...', Array)
+#7 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Component.php(105): Illuminate\\Foundation\\Application->make('Modules\\\\FileMan...', Array)
+#8 F:\\saves\\my_projects\\Develop\\news-site\\storage\\framework\\views\\ba30cb0f2731582bcb94bbbba32071fe.php(159): Illuminate\\View\\Component::resolve(Array)
+#9 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(124): require('F:\\\\saves\\\\my_pro...')
+#10 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(125): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#11 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire('F:\\\\saves\\\\my_pro...', Array)
+#12 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(72): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('F:\\\\saves\\\\my_pro...', Array)
+#13 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(207): Illuminate\\View\\Engines\\CompilerEngine->get('F:\\\\saves\\\\my_pro...', Array)
+#14 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(190): Illuminate\\View\\View->getContents()
+#15 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(159): Illuminate\\View\\View->renderContents()
+#16 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Response.php(69): Illuminate\\View\\View->render()
+#17 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Response.php(35): Illuminate\\Http\\Response->setContent(Object(Illuminate\\View\\View))
+#18 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(918): Illuminate\\Http\\Response->__construct(Object(Illuminate\\View\\View), 200, Array)
+#19 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(885): Illuminate\\Routing\\Router::toResponse(Object(Illuminate\\Http\\Request), Object(Illuminate\\View\\View))
+#20 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(805): Illuminate\\Routing\\Router->prepareResponse(Object(Illuminate\\Http\\Request), Object(Illuminate\\View\\View))
+#21 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#22 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\realrashid\\sweet-alert\\src\\ToSweetAlert.php(71): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#23 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): RealRashid\\SweetAlert\\ToSweetAlert->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#24 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#25 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#26 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Auth\\Middleware\\Authenticate.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#27 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Auth\\Middleware\\Authenticate->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#28 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken.php(78): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#29 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Middleware\\ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#32 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(121): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#33 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(64): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest(Object(Illuminate\\Http\\Request), Object(Illuminate\\Session\\Store), Object(Closure))
+#34 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#35 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#36 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#37 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\EncryptCookies.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#38 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#39 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#40 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(805): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#41 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(784): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#42 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(748): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#43 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(737): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#44 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(200): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#45 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#46 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\barryvdh\\laravel-debugbar\\src\\Middleware\\InjectDebugbar.php(66): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#47 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Barryvdh\\Debugbar\\Middleware\\InjectDebugbar->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#48 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#49 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#50 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#51 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#52 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#53 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#54 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#55 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#56 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(99): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#57 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#58 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#59 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#60 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#61 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#62 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#63 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#64 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#65 F:\\saves\\my_projects\\Develop\\news-site\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#66 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('F:\\\\saves\\\\my_pro...')
+#67 {main}
+"} 
+[2024-04-10 20:08:56] local.ERROR: Route [image.selector.filters] not defined. {"view":{"view":"F:\\saves\\my_projects\\Develop\\news-site\\Modules\\FileManager\\resources\\views\\components\\image-selector.blade.php","data":{"errors":"<pre class=sf-dump id=sf-dump-186702055 data-indent-pad=\"  \"><span class=sf-dump-note>Illuminate\\Support\\ViewErrorBag</span> {<a class=sf-dump-ref>#1740</a><samp data-depth=1 class=sf-dump-expanded>
+  #<span class=sf-dump-protected title=\"Protected property\">bags</span>: []
+</samp>}
+</pre><script>Sfdump(\"sf-dump-186702055\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+","filters":"<pre class=sf-dump id=sf-dump-431410343 data-indent-pad=\"  \"><span class=sf-dump-note>array:3</span> [<samp data-depth=1 class=sf-dump-expanded>
+  \"<span class=sf-dump-key>all</span>\" => \"<span class=sf-dump-str title=\"10 characters\">&#1607;&#1605;&#1607; &#1578;&#1589;&#1575;&#1608;&#1740;&#1585;</span>\"
+  \"<span class=sf-dump-key>my_images</span>\" => \"<span class=sf-dump-str title=\"9 characters\">&#1578;&#1589;&#1575;&#1608;&#1740;&#1585; &#1605;&#1606;</span>\"
+  \"<span class=sf-dump-key>other_users_images</span>\" => \"<span class=sf-dump-str title=\"19 characters\">&#1578;&#1589;&#1575;&#1608;&#1740;&#1585; &#1587;&#1575;&#1740;&#1585; &#1705;&#1575;&#1585;&#1576;&#1585;&#1575;&#1606;</span>\"
+</samp>]
+</pre><script>Sfdump(\"sf-dump-431410343\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+","componentName":"<pre class=sf-dump id=sf-dump-1450064896 data-indent-pad=\"  \">\"<span class=sf-dump-str title=\"27 characters\">file-manager-image-selector</span>\"
+</pre><script>Sfdump(\"sf-dump-1450064896\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+","attributes":"<pre class=sf-dump id=sf-dump-1086556595 data-indent-pad=\"  \"><span class=sf-dump-note>Illuminate\\View\\ComponentAttributeBag</span> {<a class=sf-dump-ref>#1954</a><samp data-depth=1 class=sf-dump-expanded>
+  #<span class=sf-dump-protected title=\"Protected property\">attributes</span>: []
+</samp>}
+</pre><script>Sfdump(\"sf-dump-1086556595\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+","slot":"<pre class=sf-dump id=sf-dump-1428815668 data-indent-pad=\"  \"><span class=sf-dump-note>Illuminate\\View\\ComponentSlot</span> {<a class=sf-dump-ref>#2028</a><samp data-depth=1 class=sf-dump-expanded>
+  +<span class=sf-dump-public title=\"Public property\">attributes</span>: <span class=sf-dump-note title=\"Illuminate\\View\\ComponentAttributeBag
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\View</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>ComponentAttributeBag</span> {<a class=sf-dump-ref>#1913</a><samp data-depth=2 class=sf-dump-compact>
+    #<span class=sf-dump-protected title=\"Protected property\">attributes</span>: []
+  </samp>}
+  #<span class=sf-dump-protected title=\"Protected property\">contents</span>: \"\"
+</samp>}
+</pre><script>Sfdump(\"sf-dump-1428815668\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+","__laravel_slots":"<pre class=sf-dump id=sf-dump-1217236507 data-indent-pad=\"  \"><span class=sf-dump-note>array:1</span> [<samp data-depth=1 class=sf-dump-expanded>
+  \"<span class=sf-dump-key>__default</span>\" => <span class=sf-dump-note title=\"Illuminate\\View\\ComponentSlot
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\View</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>ComponentSlot</span> {<a class=sf-dump-ref>#2028</a><samp data-depth=2 class=sf-dump-compact>
+    +<span class=sf-dump-public title=\"Public property\">attributes</span>: <span class=sf-dump-note title=\"Illuminate\\View\\ComponentAttributeBag
+\"><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">Illuminate\\View</span><span class=\"sf-dump-ellipsis sf-dump-ellipsis-note\">\\</span>ComponentAttributeBag</span> {<a class=sf-dump-ref>#1913</a><samp data-depth=3 class=sf-dump-compact>
+      #<span class=sf-dump-protected title=\"Protected property\">attributes</span>: []
+    </samp>}
+    #<span class=sf-dump-protected title=\"Protected property\">contents</span>: \"\"
+  </samp>}
+</samp>]
+</pre><script>Sfdump(\"sf-dump-1217236507\", {\"maxDepth\":3,\"maxStringLength\":160})</script>
+"}},"userId":1,"exception":"[object] (Spatie\\LaravelIgnition\\Exceptions\\ViewException(code: 0): Route [image.selector.filters] not defined. at F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\UrlGenerator.php:477)
+[stacktrace]
+#0 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\helpers.php(811): Illuminate\\Routing\\UrlGenerator->route('image.selector....', Array, true)
+#1 F:\\saves\\my_projects\\Develop\\news-site\\Modules\\FileManager\\resources\\views\\components\\image-selector.blade.php(70): route('image.selector....')
+#2 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(124): require('F:\\\\saves\\\\my_pro...')
+#3 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(125): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#4 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire('F:\\\\saves\\\\my_pro...', Array)
+#5 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(72): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('F:\\\\saves\\\\my_pro...', Array)
+#6 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(207): Illuminate\\View\\Engines\\CompilerEngine->get('F:\\\\saves\\\\my_pro...', Array)
+#7 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(190): Illuminate\\View\\View->getContents()
+#8 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(159): Illuminate\\View\\View->renderContents()
+#9 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Concerns\\ManagesComponents.php(99): Illuminate\\View\\View->render()
+#10 F:\\saves\\my_projects\\Develop\\news-site\\Modules\\FileManager\\resources\\views\\images\\index.blade.php(121): Illuminate\\View\\Factory->renderComponent()
+#11 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(124): require('F:\\\\saves\\\\my_pro...')
+#12 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(125): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#13 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire('F:\\\\saves\\\\my_pro...', Array)
+#14 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(72): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('F:\\\\saves\\\\my_pro...', Array)
+#15 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(207): Illuminate\\View\\Engines\\CompilerEngine->get('F:\\\\saves\\\\my_pro...', Array)
+#16 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(190): Illuminate\\View\\View->getContents()
+#17 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(159): Illuminate\\View\\View->renderContents()
+#18 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Response.php(69): Illuminate\\View\\View->render()
+#19 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Response.php(35): Illuminate\\Http\\Response->setContent(Object(Illuminate\\View\\View))
+#20 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(918): Illuminate\\Http\\Response->__construct(Object(Illuminate\\View\\View), 200, Array)
+#21 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(885): Illuminate\\Routing\\Router::toResponse(Object(Illuminate\\Http\\Request), Object(Illuminate\\View\\View))
+#22 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(805): Illuminate\\Routing\\Router->prepareResponse(Object(Illuminate\\Http\\Request), Object(Illuminate\\View\\View))
+#23 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#24 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\realrashid\\sweet-alert\\src\\ToSweetAlert.php(71): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#25 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): RealRashid\\SweetAlert\\ToSweetAlert->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#26 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#27 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#28 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Auth\\Middleware\\Authenticate.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#29 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Auth\\Middleware\\Authenticate->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken.php(78): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#32 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Middleware\\ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#33 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#34 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(121): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#35 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(64): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest(Object(Illuminate\\Http\\Request), Object(Illuminate\\Session\\Store), Object(Closure))
+#36 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#37 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#38 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#39 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\EncryptCookies.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#40 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#41 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#42 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(805): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#43 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(784): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#44 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(748): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#45 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(737): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#46 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(200): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#47 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#48 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\barryvdh\\laravel-debugbar\\src\\Middleware\\InjectDebugbar.php(66): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#49 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Barryvdh\\Debugbar\\Middleware\\InjectDebugbar->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#50 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#51 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#52 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#53 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#54 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#55 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#56 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#57 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#58 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(99): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#59 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#60 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#61 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#62 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#63 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#64 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#65 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#66 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#67 F:\\saves\\my_projects\\Develop\\news-site\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#68 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('F:\\\\saves\\\\my_pro...')
+#69 {main}
+
+[previous exception] [object] (Symfony\\Component\\Routing\\Exception\\RouteNotFoundException(code: 0): Route [image.selector.filters] not defined. at F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\UrlGenerator.php:477)
+[stacktrace]
+#0 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\helpers.php(811): Illuminate\\Routing\\UrlGenerator->route('image.selector....', Array, true)
+#1 F:\\saves\\my_projects\\Develop\\news-site\\storage\\framework\\views\\52bb3fd2f7ac00380052c8c154cf0eeb.php(70): route('image.selector....')
+#2 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(124): require('F:\\\\saves\\\\my_pro...')
+#3 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(125): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#4 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire('F:\\\\saves\\\\my_pro...', Array)
+#5 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(72): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('F:\\\\saves\\\\my_pro...', Array)
+#6 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(207): Illuminate\\View\\Engines\\CompilerEngine->get('F:\\\\saves\\\\my_pro...', Array)
+#7 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(190): Illuminate\\View\\View->getContents()
+#8 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(159): Illuminate\\View\\View->renderContents()
+#9 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Concerns\\ManagesComponents.php(99): Illuminate\\View\\View->render()
+#10 F:\\saves\\my_projects\\Develop\\news-site\\storage\\framework\\views\\ba30cb0f2731582bcb94bbbba32071fe.php(167): Illuminate\\View\\Factory->renderComponent()
+#11 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(124): require('F:\\\\saves\\\\my_pro...')
+#12 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(125): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#13 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(58): Illuminate\\Filesystem\\Filesystem->getRequire('F:\\\\saves\\\\my_pro...', Array)
+#14 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(72): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('F:\\\\saves\\\\my_pro...', Array)
+#15 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(207): Illuminate\\View\\Engines\\CompilerEngine->get('F:\\\\saves\\\\my_pro...', Array)
+#16 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(190): Illuminate\\View\\View->getContents()
+#17 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\View.php(159): Illuminate\\View\\View->renderContents()
+#18 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Response.php(69): Illuminate\\View\\View->render()
+#19 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Response.php(35): Illuminate\\Http\\Response->setContent(Object(Illuminate\\View\\View))
+#20 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(918): Illuminate\\Http\\Response->__construct(Object(Illuminate\\View\\View), 200, Array)
+#21 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(885): Illuminate\\Routing\\Router::toResponse(Object(Illuminate\\Http\\Request), Object(Illuminate\\View\\View))
+#22 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(805): Illuminate\\Routing\\Router->prepareResponse(Object(Illuminate\\Http\\Request), Object(Illuminate\\View\\View))
+#23 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#24 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\realrashid\\sweet-alert\\src\\ToSweetAlert.php(71): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#25 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): RealRashid\\SweetAlert\\ToSweetAlert->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#26 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Middleware\\SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#27 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#28 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Auth\\Middleware\\Authenticate.php(57): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#29 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Auth\\Middleware\\Authenticate->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken.php(78): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#32 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Middleware\\ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#33 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#34 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(121): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#35 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(64): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest(Object(Illuminate\\Http\\Request), Object(Illuminate\\Session\\Store), Object(Closure))
+#36 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#37 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#38 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#39 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\EncryptCookies.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#40 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#41 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#42 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(805): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#43 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(784): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#44 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(748): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#45 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(737): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#46 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(200): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#47 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#48 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\barryvdh\\laravel-debugbar\\src\\Middleware\\InjectDebugbar.php(66): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#49 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Barryvdh\\Debugbar\\Middleware\\InjectDebugbar->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#50 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#51 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#52 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#53 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#54 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(40): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#55 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#56 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#57 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#58 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(99): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#59 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#60 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#61 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#62 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#63 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#64 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#65 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#66 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#67 F:\\saves\\my_projects\\Develop\\news-site\\public\\index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#68 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('F:\\\\saves\\\\my_pro...')
+#69 {main}
+"} 

@@ -1,3 +1,5 @@
+{{--<x-file-manager-image-selector/>--}}
+
 <div>
     <div class="container mt-5">
         <div class="row">
@@ -17,23 +19,11 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="row justify-content-center gap-3">
-                        @foreach($images as $image)
-                            <img src="{{ asset('storage/' . $image->file_path) }}" alt="{{ $image->alt_text }}" class="img-thumbnail img-fluid custom-img"
-                                 onclick="selectImage('{{ asset('storage/' . $image->file_path) }}', '{{ $image->id }}')">
-                            <img src="{{ asset('storage/' . $image->file_path) }}" alt="{{ $image->alt_text }}" class="img-thumbnail img-fluid custom-img"
-                                 onclick="selectImage('{{ asset('storage/' . $image->file_path) }}', '{{ $image->id }}')">
-                            <img src="{{ asset('storage/' . $image->file_path) }}" alt="{{ $image->alt_text }}" class="img-thumbnail img-fluid custom-img"
-                                 onclick="selectImage('{{ asset('storage/' . $image->file_path) }}', '{{ $image->id }}')">
-                            <img src="{{ asset('storage/' . $image->file_path) }}" alt="{{ $image->alt_text }}" class="img-thumbnail img-fluid custom-img"
-                                 onclick="selectImage('{{ asset('storage/' . $image->file_path) }}', '{{ $image->id }}')">
-                            <img src="{{ asset('storage/' . $image->file_path) }}" alt="{{ $image->alt_text }}" class="img-thumbnail img-fluid custom-img"
-                                 onclick="selectImage('{{ asset('storage/' . $image->file_path) }}', '{{ $image->id }}')">
-                            <img src="{{ asset('storage/' . $image->file_path) }}" alt="{{ $image->alt_text }}" class="img-thumbnail img-fluid custom-img"
-                                 onclick="selectImage('{{ asset('storage/' . $image->file_path) }}', '{{ $image->id }}')">
-                            <img src="{{ asset('storage/' . $image->file_path) }}" alt="{{ $image->alt_text }}" class="img-thumbnail img-fluid custom-img"
-                                 onclick="selectImage('{{ asset('storage/' . $image->file_path) }}', '{{ $image->id }}')">
-                        @endforeach
+                    <ul class="nav nav-tabs mb-3" id="filterTabs">
+                        <!-- Filter tabs will be loaded here -->
+                    </ul>
+                    <div class="row justify-content-center gap-3" id="imageContainer">
+                        <!-- Images will be loaded here -->
                     </div>
                 </div>
             </div>
@@ -50,10 +40,94 @@
             $('#imageModal').modal('hide');
         }
 
-        // Function to show modal
-        function showModal() {
+        // Function to show modal and fetch images based on selected filter
+        function showModal(filter = null) {
             $('#imageModal').modal('show');
+            removeActivateTabClass()
+            activateFirstTab()
+            fetchImages(filter);
         }
+
+        // Function to fetch images via API based on selected filter
+        function fetchImages(filter = null) {
+            const url = filter ? "{{ route('image.selector') }}?filter=" + filter : "{{ route('image.selector') }}";
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const imagesContainer = document.getElementById('imageContainer');
+                    imagesContainer.innerHTML = ''; // Clear previous images
+
+                    data.images.forEach(image => {
+                        const img = document.createElement('img');
+                        img.src = "{{ asset('storage') }}/" + image.file_path;
+                        img.alt = image.alt_text;
+                        img.classList.add('img-thumbnail', 'img-fluid', 'custom-img', 'cursor-pointer');
+                        img.addEventListener('click', () => selectImage("{{ asset('storage') }}/" + image.file_path, image.id));
+                        imagesContainer.appendChild(img);
+                    });
+                })
+                .catch(error => console.error('Error fetching images:', error));
+        }
+
+        // Function to fetch filters via API
+        function fetchFilters() {
+            const url = "{{ route('image.selector.filters') }}";
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    populateFilterTabs(data.filters);
+                })
+                .catch(error => console.error('Error fetching images:', error));
+        }
+
+        // Function to populate filter tabs
+        function populateFilterTabs(filters) {
+            const filterTabs = document.getElementById('filterTabs');
+            if (!filters) {
+                filterTabs.style.display = 'none'; // Hide filter tabs if filters are null
+                return;
+            }
+
+            for (const [key, value] of Object.entries(filters)) {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.classList.add('nav-link');
+                // if(filters.all === value) {
+                //     a.classList.add('active');
+                // }
+                a.classList.add('nav-link');
+                a.href = "javascript:void(0)";
+                a.textContent = value;
+                a.addEventListener('click', () => showModal(key));
+                a.addEventListener('click', (event) => activateTab(event.target));
+                li.classList.add('nav-item');
+                li.appendChild(a);
+                filterTabs.appendChild(li);
+            }
+        }
+
+        function activateTab(clickedTab) {
+            removeActivateTabClass()
+            clickedTab.classList.add('active');
+        }
+
+        function removeActivateTabClass() {
+            const tabs = getAllTabs()
+            tabs.forEach(tab => tab.classList.remove('active'));
+        }
+
+        function activateFirstTab() {
+            const tabs = getAllTabs()
+            tabs[0].classList.add('active');
+        }
+
+        function getAllTabs() {
+            const filterTabs = document.getElementById('filterTabs');
+            return filterTabs.querySelectorAll('.nav-link');
+        }
+
+        // Populate filter tabs on load
+        window.onload = fetchFilters;
     </script>
 @endpush
 

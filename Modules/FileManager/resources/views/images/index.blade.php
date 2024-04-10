@@ -118,8 +118,6 @@
         </div>
     </div>
 
-    <x-file-manager-image-selector :images="$images" />
-
 @endsection
 
 @push('styles')

@@ -16,4 +16,6 @@ use Modules\FileManager\App\Http\Controllers\ImageController;
 
 Route::group([], function () {
     Route::resource('image', ImageController::class)->names('image');
+    Route::get('image-selector', [ImageController::class, 'imageSelectorData'])->name('image.selector');
+    Route::get('image-selector-filters', [ImageController::class, 'imageSelectorFilters'])->name('image.selector.filters');
 });

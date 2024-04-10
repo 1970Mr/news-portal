@@ -3,13 +3,13 @@
 namespace Modules\FileManager\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Modules\FileManager\App\Http\Requests\ImageRequest;
 use Modules\FileManager\App\Models\Image;
 use Modules\FileManager\App\Services\ImageService;
-use Modules\User\App\Models\User;
 
 class ImageController extends Controller
 {
@@ -51,5 +51,19 @@ class ImageController extends Controller
     {
         $this->imageService->destroy($image);
         return back()->with('success', __('entity_deleted', ['entity' => __('image')]));
+    }
+
+    public function imageSelectorData(Request $request): JsonResponse
+    {
+        $images = $this->imageService->imageSelectorData($request);
+        return response()->json(compact('images'), 200);
+    }
+
+    public function imageSelectorFilters(): JsonResponse
+    {
+        $filters = $this->imageService->canAccessAllImages() ?
+            Image::filters() :
+            null;
+        return response()->json(compact('filters'), 200);
     }
 }
