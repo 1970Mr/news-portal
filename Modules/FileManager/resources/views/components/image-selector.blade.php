@@ -15,9 +15,11 @@
         <div class="modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="imageModalLabel">انتخاب تصویر</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="imageUploadModalLabel">آپلود تصویر</h5>
+                    <x-file-manager-image-upload-btn />
+                    <button type="button" class="btn-close ms-2" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+
                 <div class="modal-body">
                     <ul class="nav nav-tabs mb-3" id="filterTabs">
                         <!-- Filter tabs will be loaded here -->
@@ -30,6 +32,8 @@
         </div>
     </div>
 </div>
+
+<x-file-manager-image-upload :hideBtn="true"/>
 
 @push('scripts')
     <script>
@@ -125,6 +129,19 @@
             const filterTabs = document.getElementById('filterTabs');
             return filterTabs.querySelectorAll('.nav-link');
         }
+
+        function showModalNextComponent() {
+            $('#testtest').click();
+        }
+
+        $('#nextModalButton').on('click', function() {
+            // $('#imageModal').modal('hide');
+            // $('#imageModal').on('hidden.bs.modal', function (e) {
+            //     $(this).removeData('bs.modal');
+            // });
+            $('button[data-bs-target="#imageUploadModal"]').click();
+        });
+
 
         // Populate filter tabs on load
         window.onload = fetchFilters;

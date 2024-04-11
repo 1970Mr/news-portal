@@ -2,6 +2,7 @@
 
 namespace Modules\Common\App\Providers;
 
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Modules\Common\App\Console\SendTestEmail;
@@ -29,6 +30,7 @@ class CommonServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/migrations'));
 
         $this->loadViewComponentsAs($this->moduleNameLower, [SweetAlert::class, ErrorMessages::class, DeleteButton::class, Breadcrumbs::class]);
+        Paginator::useBootstrapFive();
     }
 
     /**

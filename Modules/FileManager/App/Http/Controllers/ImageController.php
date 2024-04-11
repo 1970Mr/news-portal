@@ -66,4 +66,13 @@ class ImageController extends Controller
             null;
         return response()->json(compact('filters'), 200);
     }
+
+    public function imageUpload(ImageRequest $request): JsonResponse
+    {
+        $this->imageService->store($request);
+        $response = [
+            'message' => __('entity_created', ['entity' => __('image')])
+        ];
+        return response()->json($response, 200);
+    }
 }

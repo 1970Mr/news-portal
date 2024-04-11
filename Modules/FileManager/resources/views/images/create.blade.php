@@ -39,10 +39,10 @@
                                 <div class="input-group round">
                                     <input type="text" class="form-control file-input" placeholder="برای آپلود کلیک کنید">
                                     <span class="input-group-btn">
-                                                        <button type="button" class="btn btn-success">
-                                                            <i class="icon-picture"></i>
-                                                            آپلود عکس</button>
-                                                    </span>
+                                        <button type="button" class="btn btn-success">
+                                            <i class="icon-picture"></i>
+                                            آپلود تصویر</button>
+                                    </span>
                                 </div><!-- /.input-group -->
                                 <div class="help-block"></div>
                             </div>

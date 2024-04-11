@@ -31,6 +31,13 @@ class ImageRequest extends FormRequest
         ]);
     }
 
+    public function messages(): array
+    {
+        return [
+            'alt_text.required' => __('The alt text field is required.')
+        ];
+    }
+
     /**
      * Determine if the user is authorized to make this request.
      */
