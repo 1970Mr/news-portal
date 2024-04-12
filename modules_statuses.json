@@ -7,5 +7,6 @@
     "Category": true,
     "Role": true,
     "Tag": true,
-    "FileManager": true
+    "FileManager": true,
+    "Article": true
 }
