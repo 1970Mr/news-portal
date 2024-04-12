@@ -47,7 +47,7 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="parent_id">دسته‌بندی والد</label>
-                                <select id="parent_id" class="form-control" name="parent_id">
+                                <select id="parent_id" class="form-control select2" name="parent_id">
                                     <option value="">انتخاب دسته‌بندی والد</option>
                                     @foreach($categories as $category)
                                         <option value="{{ $category->id }}" @if(old('parent_id') === $category->id) selected @endif>{{ $category->name }}</option>
@@ -75,6 +75,13 @@
 @endsection
 
 @push('scripts')
+
+    <!-- BEGIN PAGE JAVASCRIPT -->
+    <script src="{{ asset('admin/assets/plugins/select2/dist/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/plugins/select2/dist/js/i18n/fa.js') }}"></script>
+    <script src="{{ asset('admin/assets/js/pages/select2.js') }}"></script>
+    <!-- END PAGE JAVASCRIPT -->
+
     <script>
         $.validator.setDefaults({
             highlight: function(element) {
@@ -94,5 +101,16 @@
             }
         });
         $("#user-create-form").validate();
+
+        $(".select2.curve").select2({
+            rtl: true,
+            containerCssClass: "curve"
+        });
     </script>
+@endpush
+
+@push('styles')
+    <!-- BEGIN PAGE CSS -->
+    <link rel="stylesheet" href="{{ asset('admin/assets/plugins/select2/dist/css/select2.min.css') }}">
+    <!-- END PAGE CSS -->
 @endpush
