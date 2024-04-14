@@ -26,7 +26,7 @@ class CategoryController extends Controller
 
     public function create(): View
     {
-        $categories = Category::latest()->get();
+        $categories = Category::active()->latest()->get();
         return view('category::create', compact('categories'));
     }
 
@@ -38,7 +38,7 @@ class CategoryController extends Controller
 
     public function edit(Category $category): View
     {
-        $categories = Category::latest()->get();
+        $categories = Category::whereNot('id', $category->id)->latest()->get();
         return view('category::edit', compact('category', 'categories'));
     }
 

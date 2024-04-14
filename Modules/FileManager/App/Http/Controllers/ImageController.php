@@ -69,9 +69,10 @@ class ImageController extends Controller
 
     public function imageUpload(ImageRequest $request): JsonResponse
     {
-        $this->imageService->store($request);
+        $image = $this->imageService->store($request);
         $response = [
-            'message' => __('entity_created', ['entity' => __('image')])
+            'message' => __('entity_created', ['entity' => __('image')]),
+            'url' => $image->getUri(),
         ];
         return response()->json($response, 200);
     }

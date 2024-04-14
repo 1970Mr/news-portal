@@ -14,9 +14,7 @@ return new class extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->id();
             $table->text('file_path');
-            $table->string('alt_text');
-            $table->string('title')->nullable();
-            $table->text('description')->nullable();
+            $table->string('alt_text')->nullable();
             $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });

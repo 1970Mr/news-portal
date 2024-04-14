@@ -5,32 +5,35 @@ namespace Modules\Article\App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Illuminate\View\View;
+use Modules\Article\App\Models\Article;
+use Modules\Category\App\Models\Category;
+use Modules\Tag\App\Models\Tag;
 
 class ArticleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(): View
     {
-        return view('article::index');
+        $articles = Article::query()->paginate(10);
+        return view('article::index', compact('articles'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
-        return view('article::create');
+        $categories = Category::query()->active()->latest()->get();
+        $tags = Tag::query()->active()->latest()->get();
+        return view('article::create', compact('categories', 'tags'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)//: RedirectResponse
     {
-        //
+        dd($request->all());
     }
 
     /**

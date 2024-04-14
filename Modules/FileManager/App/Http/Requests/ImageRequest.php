@@ -14,7 +14,7 @@ class ImageRequest extends FormRequest
         $image_rule = 'image|max:5000';
         $rules = [
             'image' => "required|$image_rule",
-            'alt_text' => 'required|string|max:255',
+            'alt_text' => 'nullable|string|max:255',
             'title' => 'nullable|string|max:255',
             'description' => 'nullable|string',
         ];

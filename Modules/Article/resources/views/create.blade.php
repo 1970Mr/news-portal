@@ -54,17 +54,29 @@
                                 <input name="published_at" type="hidden" data-name="dtp1-date">
                             </div>
                             <div class="form-group col-lg-6">
-                                <label for="category_id">دسته‌بندی <small>(ضروری)</small></label>
-                                <select id="category_id" class="form-control select2" name="category_id">
+                                <label for="category">دسته‌بندی <small>(ضروری)</small></label>
+                                <select id="category" class="form-control select2" name="category">
                                     <option value="">انتخاب دسته‌بندی</option>
                                     @foreach($categories as $category)
-                                        <option value="{{ $category->id }}" @if(old('category_id') === $category->id) selected @endif>{{ $category->name }}</option>
+                                        <option value="{{ $category->id }}" @if(old('category') === $category->id) selected @endif>{{ $category->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="form-group col-12 d-flex justify-content-center">
+                                <div class="col-6">
+                                    <label for="tag">تگ</label>
+                                    <select id="tag" class="form-control select2" name="tags[]" multiple>
+                                        @foreach($tags as $tag)
+                                            <option value="{{ $tag->id }}" @if(in_array($tag->id, old('tags'))) selected @endif>{{ $tag->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                             <div class="form-group col-12">
-                                <label for="body">متن خبر <small>(ضروری)</small></label>
-                                <textarea id="body" class="form-control" name="body" rows="6">{{ old('body') }}</textarea>
+                                <label>متن خبر <small>(ضروری)</small></label>
+                                <div id="toolbar-container"></div>
+                                <div id="editor"></div>
+                                <input type="hidden" id="body" name="body" value="{{ old('body') }}">
                             </div>
                             <div class="form-group text-center">
                                 <input id="status" class="form-control" name="status" type="checkbox" @if(old('status')) checked @endif>
@@ -92,10 +104,46 @@
     <script src="{{ asset('admin/assets/js/pages/select2.js') }}"></script>
 
     <script src="{{ asset('admin/assets/plugins/mdsPersianDatetimepicker/dist/js/mds.bs.datetimepicker.js') }}"></script>
-    <link href="https://raw.githubusercontent.com/Mds92/MD.BootstrapPersianDateTimePicker/master-bs5/dist/mds.bs.datetimepicker.style.css" rel="stylesheet"/>
-    <script src="https://raw.githubusercontent.com/Mds92/MD.BootstrapPersianDateTimePicker/master-bs5/dist/mds.bs.datetimepicker.js"></script>
 
+    <script src="{{ asset('admin/assets/plugins/ckeditor5-document-editor/ckeditor.js') }}"></script>
+    <script src="{{ asset('admin/assets/plugins/ckeditor5-document-editor/translations/fa.js') }}"></script>
+    <script src="{{ asset('admin/assets/js/pages/UploadAdapter.js') }}"></script>
     <script>
+        function CustomUploadAdapterPlugin( editor ) {
+            editor.plugins.get( 'FileRepository' ).createUploadAdapter = ( loader ) => {
+                return new UploadAdapter( loader, '{{ route('image.upload') }}', '{{ csrf_token() }}' );
+            };
+        }
+
+        $(document).ready(function () {
+            DecoupledEditor
+                .create( document.querySelector( '#editor' ), {
+                    extraPlugins: [ CustomUploadAdapterPlugin ],
+                    language: 'fa',
+                    direction: 'rtl',
+                    fontFamily: {
+                        'default': 'IranSans, Arial, sans-serif',
+                    },
+                })
+                .then( editor => {
+                    editor.setData('{!! old('body') !!}');
+                    editor.model.document.on('change:data', () => {
+                        document.querySelector('input[name="body"]').value = editor.getData();
+                    });
+                    const toolbarContainer = document.querySelector( '#toolbar-container' );
+                    toolbarContainer.appendChild( editor.ui.view.toolbar.element );
+                } )
+                .catch( error => {
+                    console.error( error );
+                } );
+        });
+
+        const dtp1Instance = new mds.MdsPersianDateTimePicker(document.getElementById('dtp1'), {
+            targetTextSelector: '[data-name="dtp1-text"]',
+            targetDateSelector: '[data-name="dtp1-date"]',
+            enableTimePicker: true,
+        });
+
         $.validator.setDefaults({
             highlight: function(element) {
                 $(element).closest('.form-group').addClass('has-error').removeClass("has-success");
@@ -114,16 +162,33 @@
             }
         });
         $("#article-create-form").validate();
-
-        const dtp1Instance = new mds.MdsPersianDateTimePicker(document.getElementById('dtp1'), {
-            targetTextSelector: '[data-name="dtp1-text"]',
-            targetDateSelector: '[data-name="dtp1-date"]',
-            enableTimePicker: true,
-        });
     </script>
 @endpush
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('admin/assets/plugins/select2/dist/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/plugins/mdsPersianDatetimepicker/dist/css/mds.bs.datetimepicker.style.css') }}">
+
+    <style>
+        .ck-powered-by-balloon {
+            display: none !important;
+        }
+
+        #toolbar-container * {
+            font-family: 'IranSans';
+        }
+
+        #editor {
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            border: #dee2e6 solid 1px;
+            border-top: none;
+        }
+
+        #editor:focus {
+            border-radius: 5px;
+            border: gray solid 1px;
+            box-shadow: 1px 1px #dee2e6;
+        }
+    </style>
 @endpush

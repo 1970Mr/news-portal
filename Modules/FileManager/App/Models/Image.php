@@ -54,4 +54,9 @@ class Image extends Model
             get: fn () => $this->user?->name,
         );
     }
+
+    public function getUri(): string
+    {
+        return '/storage/' . $this->file_path;
+    }
 }
