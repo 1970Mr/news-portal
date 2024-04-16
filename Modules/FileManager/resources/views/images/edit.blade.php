@@ -46,24 +46,16 @@
                                 <div class="input-group round">
                                     <input type="text" class="form-control file-input" placeholder="برای آپلود کلیک کنید">
                                     <span class="input-group-btn">
-                                                        <button type="button" class="btn btn-success">
-                                                            <i class="icon-picture"></i>
-                                                            آپلود عکس</button>
-                                                    </span>
+                                        <button type="button" class="btn btn-success">
+                                            <i class="icon-picture"></i>
+                                            آپلود عکس</button>
+                                    </span>
                                 </div><!-- /.input-group -->
                                 <div class="help-block"></div>
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="altText">متن جاگزین <small>(ضروری)</small></label>
                                 <input id="altText" class="form-control" name="altText" type="text" required value="{{ old('altText') ?? $image->alt_text }}">
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label for="title">عنوان </label>
-                                <input id="title" class="form-control" name="title" type="text" value="{{ old('title') ?? $image->title }}">
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label for="description">توضیحات </label>
-                                <input id="description" class="form-control" name="description" type="text" value="{{ old('description') ?? $image->description }}">
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-6 col-sm-offset-4 mx-auto">

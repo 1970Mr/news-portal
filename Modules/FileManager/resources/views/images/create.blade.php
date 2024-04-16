@@ -50,14 +50,6 @@
                                 <label for="altText">متن جاگزین <small>(ضروری)</small></label>
                                 <input id="altText" class="form-control" name="altText" type="text" required value="{{ old('altText') }}">
                             </div>
-                            <div class="form-group col-lg-6">
-                                <label for="title">عنوان </label>
-                                <input id="title" class="form-control" name="title" type="text" value="{{ old('title') }}">
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label for="description">توضیحات </label>
-                                <input id="description" class="form-control" name="description" type="text" value="{{ old('description') }}">
-                            </div>
                             <div class="form-group">
                                 <div class="col-sm-6 col-sm-offset-4 mx-auto">
                                     <button class="btn btn-success btn-block">

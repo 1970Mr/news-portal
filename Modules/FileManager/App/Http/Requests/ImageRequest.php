@@ -6,17 +6,12 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ImageRequest extends FormRequest
 {
-    /**
-     * Get the validation rules that apply to the request.
-     */
     public function rules(): array
     {
         $image_rule = 'image|max:5000';
         $rules = [
             'image' => "required|$image_rule",
             'alt_text' => 'nullable|string|max:255',
-            'title' => 'nullable|string|max:255',
-            'description' => 'nullable|string',
         ];
         if (strtolower($this->method()) === 'put') {
             $rules['image'] = "nullable|$image_rule";
@@ -38,9 +33,6 @@ class ImageRequest extends FormRequest
         ];
     }
 
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
         return true;

@@ -67,7 +67,7 @@
                                     <label for="tag">تگ</label>
                                     <select id="tag" class="form-control select2" name="tags[]" multiple>
                                         @foreach($tags as $tag)
-                                            <option value="{{ $tag->id }}" @if(in_array($tag->id, old('tags'))) selected @endif>{{ $tag->name }}</option>
+                                            <option value="{{ $tag->id }}" @if(in_array($tag->id, old('tags') ?? [])) selected @endif>{{ $tag->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

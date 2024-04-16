@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Str;
 use Modules\FileManager\App\Services\FileManagerService;
 use Modules\User\App\Models\User;
 
@@ -16,8 +17,6 @@ class Image extends Model
     protected $fillable = [
         'file_path',
         'alt_text',
-        'title',
-        'description',
         'user_id',
     ];
 
@@ -54,6 +53,15 @@ class Image extends Model
             get: fn () => $this->user?->name,
         );
     }
+
+//    public function altText(): Attribute
+//    {
+//        $fileName = pathinfo($this->file_path, PATHINFO_FILENAME);
+//        $fileName = Str::replace(['_', '-'], ' ', $fileName);
+//        return Attribute::make(
+//            set: fn () => $this->alt_text ?? $fileName,
+//        );
+//    }
 
     public function getUri(): string
     {
