@@ -53,6 +53,23 @@
                                 </div>
                                 <input name="published_at" type="hidden" data-name="dtp1-date">
                             </div>
+{{--                            <div class="form-group col-lg-6">--}}
+{{--                                <label for="slug">تصویر شاخص <small>(ضروری)</small> </label>--}}
+{{--                                <input id="slug" class="form-control" name="slug" type="file" required value="{{ old('slug') }}">--}}
+{{--                            </div>--}}
+                            <div class="form-group relative col-lg-6">
+                                <label>تصویر شاخص <small>(ضروری)</small></label>
+                                <div class="input-group round">
+                                    <input type="text" class="form-control file-input" placeholder="برای آپلود کلیک کنید">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-success">
+                                            <i class="icon-picture"></i>
+                                            آپلود تصویر</button>
+                                    </span>
+                                </div><!-- /.input-group -->
+                                <input type="file" class="form-control" name="featured_image" required>
+                                <div class="help-block"></div>
+                            </div>
                             <div class="form-group col-lg-6">
                                 <label for="category">دسته‌بندی <small>(ضروری)</small></label>
                                 <select id="category" class="form-control select2" name="category">
