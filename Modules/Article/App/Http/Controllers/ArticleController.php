@@ -6,15 +6,17 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Modules\Article\App\Http\Requests\ArticleRequest;
 use Modules\Article\App\Models\Article;
 use Modules\Category\App\Models\Category;
+use Modules\FileManager\App\Services\ImageService;
 use Modules\Tag\App\Models\Tag;
 
 class ArticleController extends Controller
 {
     public function index(): View
     {
-        $articles = Article::query()->paginate(10);
+        $articles = Article::query()->latest()->paginate(10);
         return view('article::index', compact('articles'));
     }
 
@@ -31,9 +33,14 @@ class ArticleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)//: RedirectResponse
+    public function store(ArticleRequest $request, ImageService $imageService): RedirectResponse
     {
-        dd($request->all());
+        $data = $request->validated();
+        $data['user_id'] = auth()->id();
+        $data['featured_image_id'] = $imageService->store($request, 'featured_image')->id;
+        $articles = Article::query()->create($data);
+        $articles->tags()->sync($request->tag_ids);
+        dd($articles);
     }
 
     /**

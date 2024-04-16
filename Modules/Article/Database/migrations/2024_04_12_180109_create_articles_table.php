@@ -20,7 +20,7 @@ return new class extends Migration
             $table->longText('body');
             $table->timestamp('published_at');
             $table->boolean('status');
-            $table->foreignId('image_id')->constrained('images');
+            $table->foreignId('featured_image_id')->constrained('images');
             $table->foreignId('category_id')->constrained('categories');
             $table->foreignId('user_id')->constrained('users');
             $table->softDeletes();

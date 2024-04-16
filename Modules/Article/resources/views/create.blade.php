@@ -28,7 +28,7 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="article-create-form" role="form" action="{{ route('article.store') }}" method="post">
+                    <form id="article-create-form" role="form" action="{{ route('article.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <x-common-error-messages />
 
@@ -43,20 +43,20 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="description">توضیحات <small>(ضروری)</small></label>
-                                <input id="description" class="form-control" name="description" type="text" value="{{ old('description') }}">
+                                <input id="description" class="form-control" name="description" required type="text" value="{{ old('description') }}">
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label for="keywords">کلمات کلیدی <small>(ضروری)</small></label>
+                                <input id="keywords" class="form-control" name="keywords" required type="text" value="{{ old('keywords') }}">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="published_at">تاریخ انتشار <small>(ضروری)</small></label>
                                 <div class="input-group" id="dtp1">
-                                    <input id="published_at" type="text" class="form-control cursor-pointer" data-name="dtp1-text" value="{{ old('published_at') }}" dir="ltr" readonly>
+                                    <input id="published_at" type="text" class="form-control cursor-pointer" required readonly data-name="dtp1-text" value="{{ old('published_at') }}" dir="ltr">
                                     <i class="icon-clock fs-5 input-group-text cursor-pointer"></i>
                                 </div>
-                                <input name="published_at" type="hidden" data-name="dtp1-date">
+                                <input name="published_at" type="hidden" data-name="dtp1-date" value="{{ old('published_at') }}">
                             </div>
-{{--                            <div class="form-group col-lg-6">--}}
-{{--                                <label for="slug">تصویر شاخص <small>(ضروری)</small> </label>--}}
-{{--                                <input id="slug" class="form-control" name="slug" type="file" required value="{{ old('slug') }}">--}}
-{{--                            </div>--}}
                             <div class="form-group relative col-lg-6">
                                 <label>تصویر شاخص <small>(ضروری)</small></label>
                                 <div class="input-group round">
@@ -71,20 +71,21 @@
                                 <div class="help-block"></div>
                             </div>
                             <div class="form-group col-lg-6">
-                                <label for="category">دسته‌بندی <small>(ضروری)</small></label>
-                                <select id="category" class="form-control select2" name="category">
+                                <label for="category_id">دسته‌بندی <small>(ضروری)</small></label>
+                                <select id="category_id" class="form-control select2" name="category_id">
                                     <option value="">انتخاب دسته‌بندی</option>
                                     @foreach($categories as $category)
-                                        <option value="{{ $category->id }}" @if(old('category') === $category->id) selected @endif>{{ $category->name }}</option>
+                                        <option value="{{ $category->id }}" @if((int) old('category_id') === $category->id) selected @endif>{{ $category->name
+                                        }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="form-group col-12 d-flex justify-content-center">
                                 <div class="col-6">
-                                    <label for="tag">تگ</label>
-                                    <select id="tag" class="form-control select2" name="tags[]" multiple>
+                                    <label for="tag_ids">تگ</label>
+                                    <select id="tag_ids" class="form-control select2" name="tag_ids[]" multiple>
                                         @foreach($tags as $tag)
-                                            <option value="{{ $tag->id }}" @if(in_array($tag->id, old('tags') ?? [])) selected @endif>{{ $tag->name }}</option>
+                                            <option value="{{ $tag->id }}" @if(in_array($tag->id, old('tag_ids', []))) selected @endif>{{ $tag->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

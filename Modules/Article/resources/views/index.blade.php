@@ -51,6 +51,7 @@
                                 <th>کلمات کلیدی</th>
                                 <th>کاربر</th>
                                 <th>دسته‌بندی</th>
+                                <th>تگ(ها)</th>
                                 <th>تاریخ انتشار</th>
                                 <th>وضعیت</th>
                                 @canany([config('permissions_list.ARTICLE_UPDATE'), config('permissions_list.ARTICLE_DESTROY')])
@@ -63,29 +64,31 @@
                                 <tr>
                                     <td>{{ $article->id }}</td>
                                     <td>
-                                        <img src="{{ asset('storage/' . $article->image->file_path) }}" alt="{{ $article->image->alt_text }}" width="100px" style="max-height: 90px">
+                                        <img src="{{ asset('storage/' . $article->featured_image->file_path) }}" alt="{{ $article->featured_image->alt_text }}" width="100px" style="max-height: 90px">
                                     </td>
                                     <td>{{ $article->title }}</td>
                                     <td>{{ $article->slug }}</td>
                                     <td>{{ $article->description }}</td>
                                     <td>{{ $article->keywords }}</td>
                                     <td>{{ $article->user->name }}</td>
-                                    <td>{{ $article->category->title }}</td>
+                                    <td>{{ $article->category->name }}</td>
+                                    <td>{{ $article->tagNames() }}</td>
                                     <td>{{ $article->published_at }}</td>
                                     <td class="{{ status_class($article->status) }}">{{ status_message($article->status) }}</td>
                                     @canany([config('permissions_list.ARTICLE_UPDATE'), config('permissions_list.ARTICLE_DESTROY')])
-                                        <td class="d-flex gap-2">
-                                            @can(config('permissions_list.ARTICLE_UPDATE'))
-                                                <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                   rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('article.edit', $article->id) }}">
-                                                    <i class="icon-pencil fa-flip-horizontal"></i>
-                                                </a>
-                                            @endcan
+                                        <td>
+                                            <div class="d-flex gap-2">
+                                                @can(config('permissions_list.ARTICLE_UPDATE'))
+                                                    <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
+                                                       rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('article.edit', $article->id) }}">
+                                                        <i class="icon-pencil fa-flip-horizontal"></i>
+                                                    </a>
+                                                @endcan
 
-                                            @can(config('permissions_list.ARTICLE_DESTROY'))
-                                                <x-common-delete-button :route="route('article.destroy', $article->id)" />
-                                            @endcan
-
+                                                @can(config('permissions_list.ARTICLE_DESTROY'))
+                                                    <x-common-delete-button :route="route('article.destroy', $article->id)" />
+                                                @endcan
+                                            </div>
                                         </td>
                                     @endcanany
                                 </tr>

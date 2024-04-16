@@ -24,10 +24,10 @@ class ImageService
         return $this->getAllImages($request)->get();
     }
 
-    public function store(Request $request): Model
+    public function store(Request $request, $fileName = 'image'): Model
     {
 //        Gate::authorize('store', Image::class);
-        $data['file_path'] = FileManagerService::upload( $request->file('image') );
+        $data['file_path'] = FileManagerService::upload( $request->file($fileName) );
         $data['user_id'] = auth()->id();
         $data['alt_text'] = $request->alt_text;
         return Image::query()->create($data);
