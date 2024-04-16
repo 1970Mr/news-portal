@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Str;
 use Modules\FileManager\App\Http\Requests\ImageRequest;
 use Modules\FileManager\App\Models\Image;
 
@@ -23,9 +24,9 @@ class ImageService
         return $this->getAllImages($request)->get();
     }
 
-    public function store(ImageRequest $request): Model
+    public function store(Request $request): Model
     {
-        Gate::authorize('store', Image::class);
+//        Gate::authorize('store', Image::class);
         $data['file_path'] = FileManagerService::upload( $request->file('image') );
         $data['user_id'] = auth()->id();
         $data['alt_text'] = $request->alt_text;
@@ -35,12 +36,12 @@ class ImageService
     public function update(ImageRequest $request, image $image): bool
     {
         Gate::authorize('update', $image);
-        $data = $request->validated();
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $data['file_path'] = FileManagerService::upload($file);
-            FileManagerService::delete($image->file_path);
+//            FileManagerService::delete($image->file_path);
+            $data['file_path'] = FileManagerService::replaceFile($file, $image->file_path);
         }
+        $data['alt_text'] = $request->alt_text;
         return $image->update($data);
     }
 

@@ -55,7 +55,7 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="altText">متن جاگزین <small>(ضروری)</small></label>
-                                <input id="altText" class="form-control" name="altText" type="text" required value="{{ old('altText') ?? $image->alt_text }}">
+                                <input id="altText" class="form-control" name="altText" type="text" value="{{ old('altText') ?? $image->alt_text }}">
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-6 col-sm-offset-4 mx-auto">

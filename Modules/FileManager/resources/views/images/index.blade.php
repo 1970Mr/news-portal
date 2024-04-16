@@ -25,17 +25,17 @@
                                 <div class="paper-ripple__waves"></div>
                             </div>
                         </a>
-                        @can('store', $imageClassName)
-                            <a class="btn btn-sm btn-default btn-round bg-green text-white" rel="tooltip"
-                               href="{{ route('image.create') }}"
-                               aria-label="ایجاد تصویر‌ جدید" data-bs-original-title="ایجاد تصویر‌ جدید">
-                                <i class="icon-plus d-flex justify-content-center align-items-center"></i>
-                                <div class="paper-ripple">
-                                    <div class="paper-ripple__background"></div>
-                                    <div class="paper-ripple__waves"></div>
-                                </div>
-                            </a>
-                        @endcan
+{{--                        @can('store', $imageClassName)--}}
+{{--                            <a class="btn btn-sm btn-default btn-round bg-green text-white" rel="tooltip"--}}
+{{--                               href="{{ route('image.create') }}"--}}
+{{--                               aria-label="ایجاد تصویر‌ جدید" data-bs-original-title="ایجاد تصویر‌ جدید">--}}
+{{--                                <i class="icon-plus d-flex justify-content-center align-items-center"></i>--}}
+{{--                                <div class="paper-ripple">--}}
+{{--                                    <div class="paper-ripple__background"></div>--}}
+{{--                                    <div class="paper-ripple__waves"></div>--}}
+{{--                                </div>--}}
+{{--                            </a>--}}
+{{--                        @endcan--}}
 
                         <!-- Filter box -->
                         <div class="btn-group" rel="tooltip"

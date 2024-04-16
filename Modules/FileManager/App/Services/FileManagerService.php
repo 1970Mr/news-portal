@@ -25,4 +25,15 @@ class FileManagerService
             return Storage::disk('public')->delete($filePath);
         return false;
     }
+
+    public static function replaceFile(UploadedFile $newFile, $filePath): false|string
+    {
+        $filePathWithoutName = pathinfo($filePath, PATHINFO_DIRNAME);
+        $fileBaseName = pathinfo($filePath, PATHINFO_BASENAME);
+        return Storage::disk('public')->putFileAs(
+            $filePathWithoutName,
+            $newFile,
+            $fileBaseName
+        );
+    }
 }

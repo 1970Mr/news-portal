@@ -26,7 +26,7 @@ return [
 
     'IMAGE_INDEX_ALL' => 'image::index_all',
     'IMAGE_INDEX_OWN' => 'image::index_own',
-    'IMAGE_STORE' => 'image::store',
+//    'IMAGE_STORE' => 'image::store',
     'IMAGE_UPDATE_ALL' => 'image::update_all',
     'IMAGE_UPDATE_OWN' => 'image::update_own',
     'IMAGE_DESTROY_ALL' => 'image::destroy_all',
