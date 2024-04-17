@@ -53,6 +53,7 @@
                                 <th>دسته‌بندی</th>
                                 <th>تگ(ها)</th>
                                 <th>تاریخ انتشار</th>
+                                <th>تاریخ ایجاد</th>
                                 <th>وضعیت</th>
                                 @canany([config('permissions_list.ARTICLE_UPDATE'), config('permissions_list.ARTICLE_DESTROY')])
                                     <th>عملیات</th>
@@ -73,7 +74,8 @@
                                     <td>{{ $article->user->name }}</td>
                                     <td>{{ $article->category->name }}</td>
                                     <td>{{ nullable_value($article->tagNames()) }}</td>
-                                    <td>{{ $article->published_at }}</td>
+                                    <td class="ltr text-right">{{ jalalian()->forge($article->published_at)->format(config('common.datetime_format')) }}</td>
+                                    <td class="ltr text-right">{{ jalalian()->forge($article->created_at)->format(config('common.datetime_format')) }}</td>
                                     <td class="{{ status_class($article->status) }}">{{ status_message($article->status) }}</td>
                                     @canany([config('permissions_list.ARTICLE_UPDATE'), config('permissions_list.ARTICLE_DESTROY')])
                                         <td>
