@@ -7,6 +7,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Modules\FileManager\App\Exceptions\ImageDeleteException;
 use Modules\FileManager\App\Http\Requests\ImageRequest;
 use Modules\FileManager\App\Models\Image;
 use Modules\FileManager\App\Services\ImageService;
@@ -49,8 +50,12 @@ class ImageController extends Controller
 
     public function destroy(Image $image): RedirectResponse
     {
-        $this->imageService->destroy($image);
-        return back()->with('success', __('entity_deleted', ['entity' => __('image')]));
+        try {
+            $this->imageService->destroy($image);
+            return back()->with('success', __('entity_deleted', ['entity' => __('image')]));
+        } catch (ImageDeleteException $e) {
+            return back()->with('error', $e->getMessage());
+        }
     }
 
     public function imageSelectorData(Request $request): JsonResponse

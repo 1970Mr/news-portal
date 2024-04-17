@@ -4,7 +4,6 @@ namespace Modules\Article\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Modules\Article\App\Http\Requests\ArticleRequest;
 use Modules\Article\App\Models\Article;
@@ -45,15 +44,22 @@ class ArticleController extends Controller
         return view('article::edit', compact('categories', 'tags', 'article'));
     }
 
-    public function update(Request $request, Article $article): RedirectResponse
+    public function update(ArticleRequest $request, Article $article): RedirectResponse
     {
-        $request->validate(['test'=>'required']);
-        dd($request->all());
+        $data = $request->validated();
+        $data['user_id'] = auth()->id();
+        if ($request->hasFile('featured_image')) {
+            $data['featured_image_id'] = $this->imageService->store($request, 'featured_image')->id;
+            $this->imageService->destroyWithoutKeyConstraints($article->featured_image);
+        }
+        $article->update($data);
+        $article->tags()->sync($request->get('tag_ids', []));
+        return to_route('article.index')->with('success', __('entity_edited', ['entity' => __('article')]));
     }
 
     public function destroy(Article $article): RedirectResponse
     {
-        $this->articleService->destroy($article);
+        $this->articleService->destroy($article, $this->imageService);
         return to_route('article.index')->with('success', __('entity_deleted', ['entity' => __('article')]));
     }
 }

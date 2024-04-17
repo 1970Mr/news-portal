@@ -8,19 +8,27 @@ class ArticleRequest extends FormRequest
 {
     public function rules(): array
     {
-        return [
+        $imageRules = '|image|max:5000';
+        $rules = [
             'title' => 'required|string|max:255',
-            'slug' => 'required|string|unique:articles,slug|max:255',
+            'slug' => 'required|string|max:255|unique:articles,slug',
             'description' => 'required|string',
             'keywords' => 'required|string',
             'body' => 'required|string',
             'published_at' => 'required|date',
             'status' => 'required|boolean',
-            'featured_image' => 'required|image|max:5000',
+            'featured_image' => 'required' . $imageRules,
             'category_id' => 'required|exists:categories,id',
             'tag_ids' => 'nullable|array',
             'tag_ids.*' => 'nullable|exists:tags,id',
         ];
+
+        if (strtolower($this->method()) === 'put') {
+            $rules['featured_image'] = 'nullable' . $imageRules;
+            $rules['slug'] .= ',' . $this->route('article')->id;
+        }
+
+        return $rules;
     }
 
     protected function prepareForValidation(): void

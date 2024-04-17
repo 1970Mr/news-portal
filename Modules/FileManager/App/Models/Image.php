@@ -38,8 +38,10 @@ class Image extends Model
     public function delete(): bool|null
     {
         // TODO: Added a check that the file is not used anywhere by checking that there is no data in the relations
+        // TODO: set observer
+        $result = parent::delete();
         FileManagerService::delete($this->file_path);
-        return parent::delete();
+        return $result;
     }
 
     public function user(): BelongsTo
