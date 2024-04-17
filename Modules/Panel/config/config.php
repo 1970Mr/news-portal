@@ -11,6 +11,7 @@ return [
             'title' => 'کاربران',
             'icon' => ' icon-people',
             'url' => route('user.index'),
+            'permissions' => config('permissions_list.USER_INDEX'),
             'active_routes' => [
                 'user.create',
                 'user.edit',
@@ -21,6 +22,7 @@ return [
             'title' => 'نقش‌ها',
             'icon' => 'fas fa-arrow-down-up-lock',
             'url' => route('role.index'),
+            'permissions' => config('permissions_list.ROLE_INDEX'),
             'active_routes' => [
                 'role.create',
                 'role.edit',
@@ -30,6 +32,7 @@ return [
             'title' => 'دسته‌بندی',
             'icon' => 'icon-grid',
             'url' => route('category.index'),
+            'permissions' => config('permissions_list.CATEGORY_INDEX'),
             'active_routes' => [
                 'category.create',
                 'category.edit',
@@ -39,6 +42,7 @@ return [
             'title' => 'تگ',
             'icon' => 'icon-tag',
             'url' => route('tag.index'),
+            'permissions' => config('permissions_list.TAG_INDEX'),
             'active_routes' => [
                 'tag.create',
                 'tag.edit',
@@ -48,6 +52,10 @@ return [
             'title' => 'تصاویر',
             'icon' => 'icon-picture',
             'url' => route('image.index'),
+            'permissions' => [
+                config('permissions_list.IMAGE_INDEX_ALL', false),
+                config('permissions_list.IMAGE_INDEX_OWN', false)
+            ],
             'active_routes' => [
                 'image.create',
                 'image.edit',
@@ -57,6 +65,7 @@ return [
             'title' => 'اخبار',
             'icon' => 'icon-globe',
             'url' => route('article.index'),
+            'permissions' => config('permissions_list.ARTICLE_INDEX'),
             'active_routes' => [
                 'article.create',
                 'article.edit',

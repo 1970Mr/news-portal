@@ -1,7 +1,6 @@
 @extends('panel::layouts.master', ['title' => 'لیست اخبار'])
 
 @section('content')
-
     <x-common-breadcrumbs>
         <li><a>لیست اخبار</a></li>
     </x-common-breadcrumbs>

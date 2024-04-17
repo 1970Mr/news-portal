@@ -48,43 +48,51 @@
                                 <th>نقش</th>
                                 <th>تاریخ عضویت</th>
                                 <th>وضعیت</th>
-                                @canany([config('permissions_list.USER_UPDATE'), config('permissions_list.USER_DESTROY')])
+                                @canany([
+                                                    config('permissions_list.USER_UPDATE'),
+                                                    config('permissions_list.USER_DESTROY'),
+                                                    config('permissions_list.USER_ROLE_ASSIGNMENT'),
+                                                ])
                                     <th>عملیات</th>
                                 @endcanany
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach($users as $user)
-                                    <tr>
-                                        <td>{{ $user->id }}</td>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>{{ $user->getRoleLocalNames()->implode(', ') }}</td>
-                                        <td class="ltr text-right">{{ jalalian()->forge($user->created_at)->format(config('common.datetime_format')) }}</td>
-                                        <td class="{{ status_class($user->email_verified_at) }}">{{ $user->verified_email_status }}</td>
-                                        @canany([config('permissions_list.USER_UPDATE'), config('permissions_list.USER_DESTROY')])
-                                            <td class="d-flex gap-2">
-                                                @can(config('permissions_list.USER_UPDATE'))
-                                                    <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                       rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('user.edit', $user->id) }}">
-                                                        <i class="icon-pencil fa-flip-horizontal"></i>
-                                                    </a>
-                                                @endcan
+                            @foreach($users as $user)
+                                <tr>
+                                    <td>{{ $user->id }}</td>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->getRoleLocalNames()->implode(', ') }}</td>
+                                    <td class="ltr text-right">{{ jalalian()->forge($user->created_at)->format(config('common.datetime_format')) }}</td>
+                                    <td class="{{ status_class($user->email_verified_at) }}">{{ $user->verified_email_status }}</td>
+                                    @canany([
+                                                    config('permissions_list.USER_UPDATE'),
+                                                    config('permissions_list.USER_DESTROY'),
+                                                    config('permissions_list.USER_ROLE_ASSIGNMENT'),
+                                                ])
+                                        <td class="d-flex gap-2">
+                                            @can(config('permissions_list.USER_UPDATE'))
+                                                <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
+                                                   rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('user.edit', $user->id) }}">
+                                                    <i class="icon-pencil fa-flip-horizontal"></i>
+                                                </a>
+                                            @endcan
 
-                                                @can('delete', $user)
-                                                    <x-common-delete-button :route="route('user.destroy', $user->id)" />
-                                                @endcan
+                                            @can('delete', $user)
+                                                <x-common-delete-button :route="route('user.destroy', $user->id)"/>
+                                            @endcan
 
-                                                @can(config('permissions_list.USER_ROLE_ASSIGNMENT'))
-                                                    <a class="btn btn-sm btn-warning btn-icon round d-flex justify-content-center align-items-center"
-                                                       rel="tooltip" aria-label="اختصاص نقش" data-bs-original-title="اختصاص نقش" href="{{ route('user.role-assignment', $user->id) }}">
-                                                        <i class="fas fa-arrow-down-up-lock"></i>
-                                                    </a>
-                                                @endcan
-                                            </td>
-                                        @endcanany
-                                    </tr>
-                                @endforeach
+                                            @can(config('permissions_list.USER_ROLE_ASSIGNMENT'))
+                                                <a class="btn btn-sm btn-warning btn-icon round d-flex justify-content-center align-items-center"
+                                                   rel="tooltip" aria-label="اختصاص نقش" data-bs-original-title="اختصاص نقش" href="{{ route('user.role-assignment', $user->id) }}">
+                                                    <i class="fas fa-arrow-down-up-lock"></i>
+                                                </a>
+                                            @endcan
+                                        </td>
+                                    @endcanany
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
