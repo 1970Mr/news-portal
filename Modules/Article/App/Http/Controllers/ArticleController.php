@@ -9,14 +9,12 @@ use Modules\Article\App\Http\Requests\ArticleRequest;
 use Modules\Article\App\Models\Article;
 use Modules\Article\App\Services\ArticleService;
 use Modules\Category\App\Models\Category;
-use Modules\FileManager\App\Services\ImageService;
 use Modules\Tag\App\Models\Tag;
 
 class ArticleController extends Controller
 {
     public function __construct(
         public ArticleService $articleService,
-        public ImageService $imageService
     ) {}
     public function index(): View
     {
@@ -33,7 +31,7 @@ class ArticleController extends Controller
 
     public function store(ArticleRequest $request): RedirectResponse
     {
-        $this->articleService->store($request, $this->imageService);
+        $this->articleService->store($request);
         return to_route('article.index')->with('success', __('entity_created', ['entity' => __('article')]));
     }
 
@@ -46,20 +44,13 @@ class ArticleController extends Controller
 
     public function update(ArticleRequest $request, Article $article): RedirectResponse
     {
-        $data = $request->validated();
-        $data['user_id'] = auth()->id();
-        if ($request->hasFile('featured_image')) {
-            $data['featured_image_id'] = $this->imageService->store($request, 'featured_image')->id;
-            $this->imageService->destroyWithoutKeyConstraints($article->featured_image);
-        }
-        $article->update($data);
-        $article->tags()->sync($request->get('tag_ids', []));
+        $this->articleService->update($request, $article);
         return to_route('article.index')->with('success', __('entity_edited', ['entity' => __('article')]));
     }
 
     public function destroy(Article $article): RedirectResponse
     {
-        $this->articleService->destroy($article, $this->imageService);
+        $this->articleService->destroy($article);
         return to_route('article.index')->with('success', __('entity_deleted', ['entity' => __('article')]));
     }
 }

@@ -9,19 +9,42 @@ use Modules\FileManager\App\Services\ImageService;
 
 class ArticleService
 {
-    public function store(ArticleRequest $request, ImageService $imageService): Model
+    public function __construct(
+        public ImageService $imageService
+    ) {}
+    public function store(ArticleRequest $request): Model
     {
         $data = $request->validated();
         $data['user_id'] = auth()->id();
-        $data['featured_image_id'] = $imageService->store($request, 'featured_image')->id;
+        $data['featured_image_id'] = $this->imageService->store($request, 'featured_image')->id;
         $article = Article::query()->create($data);
         $article->tags()->sync($request->get('tag_ids', []));
         return $article;
     }
 
-    public function destroy(Article $article, ImageService $imageService): bool|null
+    public function update(ArticleRequest $request, Article $article): bool
     {
-        $imageService->destroyWithoutKeyConstraints($article->featured_image);
+        $data = $request->validated();
+        $data['user_id'] = auth()->id();
+        $data = $this->uploadImageDuringUpdate($request, $article, $data);
+        $result = $article->update($data);
+        $article->tags()->sync($request->get('tag_ids', []));
+        return $result;
+    }
+
+    public function destroy(Article $article): bool|null
+    {
+        $this->imageService->destroyWithoutKeyConstraints($article->featured_image);
+        $article->tags()->detach();
         return $article->delete();
+    }
+
+    private function uploadImageDuringUpdate(ArticleRequest $request, Article $article, array $data): array
+    {
+        if ($request->hasFile('featured_image')) {
+            $data['featured_image_id'] = $this->imageService->store($request, 'featured_image')->id;
+            $this->imageService->destroyWithoutKeyConstraints($article->featured_image);
+        }
+        return $data;
     }
 }
