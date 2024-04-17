@@ -3,6 +3,7 @@
 namespace Modules\Article\App\Services;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Schema;
 use Modules\Article\App\Http\Requests\ArticleRequest;
 use Modules\Article\App\Models\Article;
 use Modules\FileManager\App\Services\ImageService;
@@ -17,5 +18,14 @@ class ArticleService
         $article = Article::query()->create($data);
         $article->tags()->sync($request->tag_ids);
         return $article;
+    }
+
+    public function destroy(Article $article): bool|null
+    {
+        Schema::disableForeignKeyConstraints();
+        $article->featured_image()->delete();
+        $result = $article->delete();
+        Schema::enableForeignKeyConstraints();
+        return $result;
     }
 }

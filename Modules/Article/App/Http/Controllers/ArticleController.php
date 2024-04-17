@@ -15,16 +15,16 @@ use Modules\Tag\App\Models\Tag;
 
 class ArticleController extends Controller
 {
-    public function __construct(public ArticleService $articleService) {}
+    public function __construct(
+        public ArticleService $articleService,
+        public ImageService $imageService
+    ) {}
     public function index(): View
     {
         $articles = Article::query()->latest()->paginate(10);
         return view('article::index', compact('articles'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create(): View
     {
         $categories = Category::query()->active()->latest()->get();
@@ -32,44 +32,30 @@ class ArticleController extends Controller
         return view('article::create', compact('categories', 'tags'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(ArticleRequest $request, ImageService $imageService): RedirectResponse
+    public function store(ArticleRequest $request): RedirectResponse
     {
-        $this->articleService->store($request, $imageService);
+        $this->articleService->store($request, $this->imageService);
         return to_route('article.index')->with('success', __('entity_created', ['entity' => __('article')]));
     }
 
-    /**
-     * Show the specified resource.
-     */
     public function show($id)
     {
         return view('article::show');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit($id)
     {
         return view('article::edit');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, $id): RedirectResponse
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy($id)
+    public function destroy(Article $article): RedirectResponse
     {
-        //
+        $this->articleService->destroy($article);
+        return to_route('article.index')->with('success', __('entity_deleted', ['entity' => __('article')]));
     }
 }
