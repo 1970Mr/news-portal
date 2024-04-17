@@ -53,5 +53,14 @@ return [
                 'image.edit',
             ]
         ],
+        'article' => [
+            'title' => 'اخبار',
+            'icon' => 'icon-globe',
+            'url' => route('article.index'),
+            'active_routes' => [
+                'article.create',
+                'article.edit',
+            ]
+        ],
     ]
 ];

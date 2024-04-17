@@ -31,4 +31,9 @@ return [
     'IMAGE_UPDATE_OWN' => 'image::update_own',
     'IMAGE_DESTROY_ALL' => 'image::destroy_all',
     'IMAGE_DESTROY_OWN' => 'image::destroy_own',
+
+    'ARTICLE_INDEX' => 'article::index',
+    'ARTICLE_STORE' => 'article::store',
+    'ARTICLE_UPDATE' => 'article::update',
+    'ARTICLE_DESTROY' => 'article::destroy',
 ];

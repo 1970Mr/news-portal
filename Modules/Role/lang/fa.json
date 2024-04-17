@@ -28,5 +28,10 @@
     "image::update_all": "ویرایش تمام تصویر",
     "image::update_own": "ویرایش تصاویر خود",
     "image::destroy_all": "حذف تمام تصاویر",
-    "image::destroy_own": "حذف تصاویر خود"
+    "image::destroy_own": "حذف تصاویر خود",
+
+    "article::index": "مشاهده اخبار",
+    "article::store": "ایجاد خبر",
+    "article::update": "ویرایش خبر",
+    "article::destroy": "حذف خبر"
 }

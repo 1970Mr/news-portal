@@ -8,4 +8,5 @@ return [
     'category' => 'دسته‌بندی',
     'tag' => 'تگ',
     'image' => 'تصاویر',
+    'article' => 'اخبار',
 ];

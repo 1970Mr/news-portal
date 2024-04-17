@@ -15,7 +15,13 @@ class ArticleController extends Controller
 {
     public function __construct(
         public ArticleService $articleService,
-    ) {}
+    )
+    {
+        $this->middleware('can:' . config('permissions_list.ARTICLE_INDEX'))->only('index');
+        $this->middleware('can:' . config('permissions_list.ARTICLE_STORE'))->only('store');
+        $this->middleware('can:' . config('permissions_list.ARTICLE_UPDATE'))->only('update');
+        $this->middleware('can:' . config('permissions_list.ARTICLE_DESTROY'))->only('destroy');
+    }
     public function index(): View
     {
         $articles = Article::query()->latest()->paginate(10);
