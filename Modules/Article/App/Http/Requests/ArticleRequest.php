@@ -18,8 +18,8 @@ class ArticleRequest extends FormRequest
             'status' => 'required|boolean',
             'featured_image' => 'required|image|max:5000',
             'category_id' => 'required|exists:categories,id',
-            'tag_ids' => 'required|array',
-            'tag_ids.*' => 'required|exists:tags,id',
+            'tag_ids' => 'nullable|array',
+            'tag_ids.*' => 'nullable|exists:tags,id',
         ];
     }
 

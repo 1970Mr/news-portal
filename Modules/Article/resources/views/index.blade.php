@@ -72,7 +72,7 @@
                                     <td>{{ $article->keywords }}</td>
                                     <td>{{ $article->user->name }}</td>
                                     <td>{{ $article->category->name }}</td>
-                                    <td>{{ $article->tagNames() }}</td>
+                                    <td>{{ nullable_value($article->tagNames()) }}</td>
                                     <td>{{ $article->published_at }}</td>
                                     <td class="{{ status_class($article->status) }}">{{ status_message($article->status) }}</td>
                                     @canany([config('permissions_list.ARTICLE_UPDATE'), config('permissions_list.ARTICLE_DESTROY')])

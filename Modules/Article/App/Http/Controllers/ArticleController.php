@@ -40,7 +40,7 @@ class ArticleController extends Controller
         $data['featured_image_id'] = $imageService->store($request, 'featured_image')->id;
         $articles = Article::query()->create($data);
         $articles->tags()->sync($request->tag_ids);
-        dd($articles);
+        return to_route('article.index')->with('success', __('entity_created', ['entity' => __('article')]));
     }
 
     /**

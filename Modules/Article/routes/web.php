@@ -15,5 +15,5 @@ use Modules\Article\App\Http\Controllers\ArticleController;
 */
 
 Route::group([], function () {
-    Route::resource('article', ArticleController::class)->names('article');
-})->middleware('auth');
+    Route::resource('article', ArticleController::class)->names('article')->middleware('auth');
+});
