@@ -15,5 +15,7 @@
     "image": "تصویر",
     "article": "مقاله",
     "This action is unauthorized.": "این اقدام برای شما غیر مجاز است",
-    "The alt text field is required.": "فیلد متن جایگزین الزامی است."
+    "entity_required": "فیلد :entity الزامی است.",
+    "alt_text": "متن جایگزین",
+    "news_text": "متن خبر"
 }

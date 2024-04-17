@@ -30,6 +30,13 @@ class ArticleRequest extends FormRequest
         ]);
     }
 
+    public function messages(): array
+    {
+        return [
+            'body.required' => __('entity_required', ['entity' => __('news_text')])
+        ];
+    }
+
     public function authorize(): bool
     {
         return true;

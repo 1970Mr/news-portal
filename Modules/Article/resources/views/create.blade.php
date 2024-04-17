@@ -52,10 +52,10 @@
                             <div class="form-group col-lg-6">
                                 <label for="published_at">تاریخ انتشار <small>(ضروری)</small></label>
                                 <div class="input-group" id="dtp1">
-                                    <input id="published_at" type="text" class="form-control cursor-pointer" required readonly data-name="dtp1-text" value="{{ old('published_at') }}" dir="ltr">
+                                    <input id="published_at" type="text" class="form-control cursor-pointer" required readonly data-name="dtp1-text" dir="ltr">
                                     <i class="icon-clock fs-5 input-group-text cursor-pointer"></i>
                                 </div>
-                                <input name="published_at" type="hidden" data-name="dtp1-date" value="{{ old('published_at') }}">
+                                <input name="published_at" type="hidden" data-name="dtp1-date">
                             </div>
                             <div class="form-group relative col-lg-6">
                                 <label>تصویر شاخص <small>(ضروری)</small></label>
@@ -161,6 +161,9 @@
             targetDateSelector: '[data-name="dtp1-date"]',
             enableTimePicker: true,
         });
+        @if(old('published_at'))
+            dtp1Instance.setDate(new Date('{{ old('published_at') }}'));
+        @endif
 
         $.validator.setDefaults({
             highlight: function(element) {

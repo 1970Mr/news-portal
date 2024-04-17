@@ -29,7 +29,7 @@ class ImageRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'alt_text.required' => __('The alt text field is required.')
+            'alt_text.required' => __('entity_required', ['entity' => __('alt_text')])
         ];
     }
 

@@ -38,19 +38,16 @@ class ArticleController extends Controller
         return to_route('article.index')->with('success', __('entity_created', ['entity' => __('article')]));
     }
 
-    public function show($id)
+    public function edit(Article $article): View
     {
-        return view('article::show');
+        $categories = Category::query()->active()->latest()->get();
+        $tags = Tag::query()->active()->latest()->get();
+        return view('article::edit', compact('categories', 'tags', 'article'));
     }
 
-    public function edit($id)
+    public function update(Request $request, Article $article): RedirectResponse
     {
-        return view('article::edit');
-    }
-
-    public function update(Request $request, $id): RedirectResponse
-    {
-        //
+        dd($request->all());
     }
 
     public function destroy(Article $article): RedirectResponse
