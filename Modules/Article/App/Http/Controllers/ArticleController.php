@@ -8,12 +8,14 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Modules\Article\App\Http\Requests\ArticleRequest;
 use Modules\Article\App\Models\Article;
+use Modules\Article\App\Services\ArticleService;
 use Modules\Category\App\Models\Category;
 use Modules\FileManager\App\Services\ImageService;
 use Modules\Tag\App\Models\Tag;
 
 class ArticleController extends Controller
 {
+    public function __construct(public ArticleService $articleService) {}
     public function index(): View
     {
         $articles = Article::query()->latest()->paginate(10);
@@ -35,11 +37,7 @@ class ArticleController extends Controller
      */
     public function store(ArticleRequest $request, ImageService $imageService): RedirectResponse
     {
-        $data = $request->validated();
-        $data['user_id'] = auth()->id();
-        $data['featured_image_id'] = $imageService->store($request, 'featured_image')->id;
-        $articles = Article::query()->create($data);
-        $articles->tags()->sync($request->tag_ids);
+        $this->articleService->store($request, $imageService);
         return to_route('article.index')->with('success', __('entity_created', ['entity' => __('article')]));
     }
 
