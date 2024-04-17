@@ -6,9 +6,12 @@ use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
+use Modules\FileManager\App\Exceptions\ImageDeleteException;
 use Modules\FileManager\App\Http\Requests\ImageRequest;
 use Modules\FileManager\App\Models\Image;
 
@@ -45,10 +48,26 @@ class ImageService
         return $image->update($data);
     }
 
+    /**
+     * @throws ImageDeleteException
+     */
     public function destroy(Image $image): bool|null
     {
-        Gate::authorize('destroy', $image);
-        return $image->delete();
+        try {
+            Gate::authorize('destroy', $image);
+            return $image->delete();
+        } catch (QueryException $e) {
+            logger($e->getMessage());
+            throw new ImageDeleteException(__('This image cannot be deleted! Because it has been used elsewhere.'));
+        }
+    }
+
+    public function destroyWithoutKeyConstraints(Image $image): bool|null
+    {
+        Schema::disableForeignKeyConstraints();
+        $result = $image->delete();
+        Schema::enableForeignKeyConstraints();
+        return $result;
     }
 
     private function setFilters(Request $request, Builder $query): Builder
