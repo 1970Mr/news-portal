@@ -58,19 +58,6 @@
                                 </div>
                                 <input name="published_at" type="hidden" data-name="dtp1-date">
                             </div>
-                            <div class="form-group relative col-lg-6">
-                                <label>تصویر شاخص <small>(ضروری)</small></label>
-                                <div class="input-group round">
-                                    <input type="text" class="form-control file-input" placeholder="برای آپلود کلیک کنید">
-                                    <span class="input-group-btn">
-                                        <button type="button" class="btn btn-success">
-                                            <i class="icon-picture"></i>
-                                            آپلود تصویر</button>
-                                    </span>
-                                </div><!-- /.input-group -->
-                                <input type="file" class="form-control" name="featured_image">
-                                <div class="help-block"></div>
-                            </div>
                             <div class="form-group col-lg-6">
                                 <label for="category_id">دسته‌بندی <small>(ضروری)</small></label>
                                 <select id="category_id" class="form-control select2" name="category_id">
@@ -84,6 +71,7 @@
                                     @endforeach
                                 </select>
                             </div>
+
                             <div class="form-group col-12 d-flex justify-content-center">
                                 <div class="col-6">
                                     <label for="tag_ids">تگ</label>
@@ -93,6 +81,28 @@
                                             }}</option>
                                         @endforeach
                                     </select>
+                                </div>
+                            </div>
+                            <div class="col-12 d-flex flex-column align-items-center">
+                                <div class="form-group relative col-lg-6">
+                                    <label>تصویر شاخص <small>(ضروری)</small></label>
+                                    <div class="input-group round">
+                                        <input type="text" class="form-control file-input" placeholder="برای آپلود کلیک کنید">
+                                        <span class="input-group-btn">
+                                        <button type="button" class="btn btn-success">
+                                            <i class="icon-picture"></i>
+                                            آپلود تصویر</button>
+                                    </span>
+                                    </div>
+                                    <input type="file" class="form-control" name="featured_image">
+                                    <div class="help-block"></div>
+                                </div>
+                                <div class="form-group col-12 text-center">
+                                    <img class="mb-2" src="{{ asset('storage/' . $article->featured_image->file_path) }}" alt="{{ $article->featured_image->alt_text }}" style="max-width: 300px; max-height:
+                                    300px">
+                                    <div>
+                                        {{ asset('storage/' . $article->featured_image->file_path) }}
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group col-12">
