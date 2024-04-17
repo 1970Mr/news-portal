@@ -47,6 +47,7 @@ class ArticleController extends Controller
 
     public function update(Request $request, Article $article): RedirectResponse
     {
+        $request->validate(['test'=>'required']);
         dd($request->all());
     }
 

@@ -38,7 +38,7 @@ class CategoryController extends Controller
 
     public function edit(Category $category): View
     {
-        $categories = Category::whereNot('id', $category->id)->latest()->get();
+        $categories = Category::whereNot('id', $category->id)->active()->latest()->get();
         return view('category::edit', compact('category', 'categories'));
     }
 

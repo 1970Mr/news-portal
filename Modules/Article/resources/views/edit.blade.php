@@ -36,19 +36,19 @@
                         <fieldset class="row justify-content-center">
                             <div class="form-group col-lg-6">
                                 <label for="title">عنوان <small>(ضروری)</small></label>
-                                <input id="title" class="form-control" name="title" type="text" required value="{{ old('title') ?? $article->title }}">
+                                <input id="title" class="form-control" name="title" type="text" required value="{{ old('title', $article->title) }}">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="slug">slug <small>(ضروری)</small> </label>
-                                <input id="slug" class="form-control" name="slug" type="text" required value="{{ old('slug') ?? $article->slug }}">
+                                <input id="slug" class="form-control" name="slug" type="text" required value="{{ old('slug', $article->slug) }}">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="description">توضیحات <small>(ضروری)</small></label>
-                                <input id="description" class="form-control" name="description" required type="text" value="{{ old('description') ?? $article->description }}">
+                                <input id="description" class="form-control" name="description" required type="text" value="{{ old('description', $article->description) }}">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="keywords">کلمات کلیدی <small>(ضروری)</small></label>
-                                <input id="keywords" class="form-control" name="keywords" required type="text" value="{{ old('keywords') ?? $article->keywords }}">
+                                <input id="keywords" class="form-control" name="keywords" required type="text" value="{{ old('keywords', $article->keywords) }}">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="published_at">تاریخ انتشار <small>(ضروری)</small></label>
@@ -76,7 +76,10 @@
                                 <select id="category_id" class="form-control select2" name="category_id">
                                     <option value="">انتخاب دسته‌بندی</option>
                                     @foreach($categories as $category)
-                                        <option value="{{ $category->id }}" @if((int) old('category_id') === $category->id) selected @endif>{{ $category->name
+                                        <option value="{{ $category->id }}" @if( (int)old('category_id', $article->category_id) === $category->id )
+                                            selected
+                                            @endif>{{
+                                        $category->name
                                         }}</option>
                                     @endforeach
                                 </select>
@@ -86,7 +89,8 @@
                                     <label for="tag_ids">تگ</label>
                                     <select id="tag_ids" class="form-control select2" name="tag_ids[]" multiple>
                                         @foreach($tags as $tag)
-                                            <option value="{{ $tag->id }}" @if(in_array($tag->id, old('tag_ids', []))) selected @endif>{{ $tag->name }}</option>
+                                            <option value="{{ $tag->id }}" @if(in_array($tag->id, old('tag_ids', $article->tags->pluck('id')->toArray()))) selected @endif>{{ $tag->name
+                                            }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -95,10 +99,11 @@
                                 <label>متن خبر <small>(ضروری)</small></label>
                                 <div id="toolbar-container"></div>
                                 <div id="editor"></div>
-                                <input type="hidden" id="body" name="body" value="{{ old('body') ?? $article->body }}">
+                                <input type="hidden" id="body" name="body" value="{{ old('body', $article->body) }}">
                             </div>
                             <div class="form-group text-center">
-                                <input id="status" class="form-control" name="status" type="checkbox" @if($article->status) checked @endif>
+                                {{-- Using title because status is not always --}}
+                                <input id="status" class="form-control" name="status" type="checkbox" @if(old('status') || (!old('title') && $article->status) ) checked @endif>
                                 <label for="status">وضعیت</label>
                             </div>
                             <div class="form-group">
@@ -145,7 +150,7 @@
                     },
                 })
                 .then( editor => {
-                    editor.setData('{!! old('body') ?? $article->body !!}');
+                    editor.setData('{!! old('body', $article->body) !!}');
                     editor.model.document.on('change:data', () => {
                         document.querySelector('input[name="body"]').value = editor.getData();
                     });
@@ -162,7 +167,7 @@
             targetDateSelector: '[data-name="dtp1-date"]',
             enableTimePicker: true,
         });
-        dtp1Instance.setDate(new Date('{{ old('published_at') ?? $article->published_at }}'));
+        dtp1Instance.setDate(new Date('{{ old('published_at', $article->published_at) }}'));
 
         $.validator.setDefaults({
             highlight: function(element) {
