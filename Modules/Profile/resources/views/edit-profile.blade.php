@@ -37,10 +37,6 @@
                                 <label for="name">نام کاربری</label>
                                 <input id="name" class="form-control" name="name" type="text" required value="{{ $user->name }}">
                             </div>
-                            <div class="form-group col-lg-6">
-                                <label for="email">ایمیل</label>
-                                <input id="email" class="form-control" name="email" type="email" required value="{{ $user->email }}">
-                            </div>
                             <div class="form-group">
                                 <div class="col-sm-6 col-sm-offset-4 mx-auto">
                                     <button class="btn btn-success btn-block">
