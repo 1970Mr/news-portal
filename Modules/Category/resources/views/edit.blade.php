@@ -30,7 +30,7 @@
                 <div class="portlet-body">
                     <form id="user-create-form" role="form" action="{{ route('category.update', $category->id) }}" method="post">
                         @csrf
-                        <input type="hidden" name="_method" value="PUT">
+                        @method('PUT')
                         <x-common-error-messages />
 
                         <fieldset class="row justify-content-center">
