@@ -13,7 +13,10 @@ use Modules\User\App\Models\User;
 
 class ChangeEmailController extends Controller
 {
-    public function __construct(private readonly ChangeEmailService $changeEmailService) {}
+    public function __construct(private readonly ChangeEmailService $changeEmailService)
+    {
+        $this->middleware('can:' . config('permissions_list.PROFILE_CHANGE_EMAIL', false));
+    }
 
     public function changeEmailView(): View
     {

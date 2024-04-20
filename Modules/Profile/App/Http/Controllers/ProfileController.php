@@ -9,6 +9,11 @@ use Modules\Profile\App\Http\Requests\ProfileRequest;
 
 class ProfileController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:' . config('permissions_list.PROFILE_EDIT', false));
+    }
+
     public function edit(): View
     {
         $user = auth()->user();

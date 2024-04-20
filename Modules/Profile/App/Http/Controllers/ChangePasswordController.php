@@ -11,7 +11,10 @@ use Modules\Profile\App\Services\ChangePasswordService;
 
 class ChangePasswordController extends Controller
 {
-    public function __construct(private readonly ChangePasswordService $changePasswordService) {}
+    public function __construct(private readonly ChangePasswordService $changePasswordService)
+    {
+        $this->middleware('can:' . config('permissions_list.PROFILE_CHANGE_PASSWORD', false));
+    }
 
     public function changePasswordView(): View
     {
