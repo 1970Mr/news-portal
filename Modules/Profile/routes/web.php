@@ -6,8 +6,10 @@ use Modules\Profile\App\Http\Controllers\ChangePasswordController;
 use Modules\Profile\App\Http\Controllers\ProfileController;
 
 Route::prefix('profile')->name('profile.')->group(function () {
-    Route::get('edit', [ProfileController::class, 'edit'])->name('edit');
-    Route::patch('edit', [ProfileController::class, 'update']);
+    Route::prefix('edit')->name('edit')->controller(ProfileController::class)->group(function () {
+        Route::get('/', 'edit');
+        Route::patch('/', 'update');
+    })->middleware('can:' . config('permissions_list.PROFILE_EDIT'));
 
     Route::get('email/change', [ChangeEmailController::class, 'changeEmailView'])->name('email.change');
     Route::patch('email/change', [ChangeEmailController::class, 'sendChangeEmailVerification']);

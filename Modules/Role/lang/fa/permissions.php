@@ -9,4 +9,5 @@ return [
     'tag' => 'تگ',
     'image' => 'تصاویر',
     'article' => 'اخبار',
+    'profile' => 'پروفایل',
 ];

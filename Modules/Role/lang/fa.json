@@ -33,5 +33,9 @@
     "article::index": "مشاهده اخبار",
     "article::store": "ایجاد خبر",
     "article::update": "ویرایش خبر",
-    "article::destroy": "حذف خبر"
+    "article::destroy": "حذف خبر",
+
+    "profile::edit": "ویرایش پروفایل",
+    "profile::change_password": "تغییر رمزعبور",
+    "profile::change_email": "تغییر ایمیل"
 }

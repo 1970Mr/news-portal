@@ -87,15 +87,15 @@ return [
     //            'permissions' => config('permissions_list.ARTICLE_INDEX'),
                 ],
                 [
-                    'title' => 'ویرایش ایمیل',
-                    'icon' => 'icon-envelope-letter',
-                    'url' => route('profile.email.change'),
-                    //            'permissions' => config('permissions_list.ARTICLE_INDEX'),
-                ],
-                [
                     'title' => 'ویرایش رمزعبور',
                     'icon' => 'icon-key',
                     'url' => route('profile.password.change'),
+                    //            'permissions' => config('permissions_list.ARTICLE_INDEX'),
+                ],
+                [
+                    'title' => 'ویرایش ایمیل',
+                    'icon' => 'icon-envelope-letter',
+                    'url' => route('profile.email.change'),
                     //            'permissions' => config('permissions_list.ARTICLE_INDEX'),
                 ],
             ]
