@@ -1,8 +1,8 @@
-@extends('panel::layouts.master', ['title' => 'ویرایش پروفایل'])
+@extends('panel::layouts.master', ['title' => 'تغییر ایمیل'])
 
 @section('content')
     <x-common-breadcrumbs>
-        <li><a>ویرایش پروفایل</a></li>
+        <li><a>تغییر ایمیل</a></li>
     </x-common-breadcrumbs>
 
     <div class="row pe-0">
@@ -12,7 +12,7 @@
                     <div class="portlet-title">
                         <h3 class="title">
                             <i class="far fa-pen-to-square"></i>
-                            ویرایش پروفایل
+                            تغییر ایمیل
                         </h3>
                     </div><!-- /.portlet-title -->
                     <div class="buttons-box">
@@ -27,21 +27,28 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="user-create-form" role="form" action="{{ route('profile.edit') }}" method="post">
+                    @if(session()->has('success'))
+                        <div class="alert alert-success m-t-10 m-b-20">
+                            <i class="icon-check"></i>
+                            {{ session()->get('success') }}
+                        </div>
+                    @endif
+
+                    <form id="user-create-form" role="form" action="{{ route('profile.email.change') }}" method="post">
                         @csrf
                         @method('PATCH')
                         <x-common-error-messages />
 
                         <fieldset class="row justify-content-center">
                             <div class="form-group col-lg-6">
-                                <label for="name">نام کاربری</label>
-                                <input id="name" class="form-control" name="name" type="text" required value="{{ $user->name }}">
+                                <label for="email">ایمیل</label>
+                                <input id="email" class="form-control" name="email" type="email" required value="{{ old('email', $user->email) }}">
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-6 col-sm-offset-4 mx-auto">
                                     <button class="btn btn-success btn-block">
                                         <i class="icon-check"></i>
-                                        ویرایش پروفایل
+                                        تغییر ایمیل
                                     </button>
                                 </div>
                             </div>
