@@ -71,5 +71,34 @@ return [
                 'article.edit',
             ]
         ],
+        'profile' => [
+            'title' => 'پروفایل',
+            'icon' => 'icon-user',
+            'active_routes' => [
+                'profile.edit',
+                'profile.email.change',
+                'profile.password.change',
+            ],
+            'children' => [
+                [
+                    'title' => 'ویرایش پروفایل',
+                    'icon' => 'icon-note',
+                    'url' => route('profile.edit'),
+    //            'permissions' => config('permissions_list.ARTICLE_INDEX'),
+                ],
+                [
+                    'title' => 'ویرایش ایمیل',
+                    'icon' => 'icon-envelope-letter',
+                    'url' => route('profile.email.change'),
+                    //            'permissions' => config('permissions_list.ARTICLE_INDEX'),
+                ],
+                [
+                    'title' => 'ویرایش رمزعبور',
+                    'icon' => 'icon-key',
+                    'url' => route('profile.password.change'),
+                    //            'permissions' => config('permissions_list.ARTICLE_INDEX'),
+                ],
+            ]
+        ]
     ]
 ];

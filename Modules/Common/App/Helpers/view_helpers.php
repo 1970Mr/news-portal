@@ -5,7 +5,7 @@ use Modules\Common\App\Helpers\JalalianHelper;
 
 function active_menu($menu, $class = 'current'): string
 {
-    if (url()->current() === $menu['url'])
+    if (isset($menu['url']) && url()->current() === $menu['url'])
         return $class;
     if (! array_key_exists('active_routes', $menu))
         return '';
