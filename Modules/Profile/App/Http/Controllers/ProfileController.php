@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Illuminate\View\View;
 use Modules\Profile\App\Http\Requests\ChangeEmailRequest;
+use Modules\Profile\App\Http\Requests\ChangePasswordRequest;
 use Modules\Profile\App\Http\Requests\ProfileRequest;
 use Modules\Profile\App\Notifications\ChangeEmailVerification;
 
@@ -31,12 +32,6 @@ class ProfileController extends Controller
         return view('profile::change-email', compact('user'));
     }
 
-    public function changeEmail(ChangeEmailRequest $request): RedirectResponse
-    {
-        auth()->user()?->update($request->validated());
-        return to_route('profile.change-email')->with('success', __('entity_edited', ['entity' => __('profile')]));
-    }
-
     public function sendChangeEmailVerification(ChangeEmailRequest $request): RedirectResponse
     {
         $user = auth()->user();
@@ -58,5 +53,17 @@ class ProfileController extends Controller
     {
         auth()->user()->update(['email' => $request->new_email]);
         return to_route('profile.email.change')->with('success', __('entity_edited', ['entity' => __('email')]));
+    }
+
+    public function changePasswordView(): View
+    {
+        $user = auth()->user();
+        return view('profile::change-password', compact('user'));
+    }
+
+    public function changePassword(ChangePasswordRequest $request): RedirectResponse
+    {
+        auth()->user()?->update($request->validated());
+        return to_route('profile.password.change')->with('success', __('entity_edited', ['entity' => __('password')]));
     }
 }
