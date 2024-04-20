@@ -11,7 +11,7 @@ return [
             'title' => 'کاربران',
             'icon' => ' icon-people',
             'url' => route('user.index'),
-            'permissions' => config('permissions_list.USER_INDEX'),
+            'permissions' => config('permissions_list.USER_INDEX', false),
             'active_routes' => [
                 'user.create',
                 'user.edit',
@@ -22,7 +22,7 @@ return [
             'title' => 'نقش‌ها',
             'icon' => 'fas fa-arrow-down-up-lock',
             'url' => route('role.index'),
-            'permissions' => config('permissions_list.ROLE_INDEX'),
+            'permissions' => config('permissions_list.ROLE_INDEX', false),
             'active_routes' => [
                 'role.create',
                 'role.edit',
@@ -32,7 +32,7 @@ return [
             'title' => 'دسته‌بندی',
             'icon' => 'icon-grid',
             'url' => route('category.index'),
-            'permissions' => config('permissions_list.CATEGORY_INDEX'),
+            'permissions' => config('permissions_list.CATEGORY_INDEX', false),
             'active_routes' => [
                 'category.create',
                 'category.edit',
@@ -42,7 +42,7 @@ return [
             'title' => 'تگ',
             'icon' => 'icon-tag',
             'url' => route('tag.index'),
-            'permissions' => config('permissions_list.TAG_INDEX'),
+            'permissions' => config('permissions_list.TAG_INDEX', false),
             'active_routes' => [
                 'tag.create',
                 'tag.edit',
@@ -65,7 +65,7 @@ return [
             'title' => 'اخبار',
             'icon' => 'icon-globe',
             'url' => route('article.index'),
-            'permissions' => config('permissions_list.ARTICLE_INDEX'),
+            'permissions' => config('permissions_list.ARTICLE_INDEX', false),
             'active_routes' => [
                 'article.create',
                 'article.edit',
@@ -79,24 +79,29 @@ return [
                 'profile.email.change',
                 'profile.password.change',
             ],
+            'permissions' => [
+                config('permissions_list.PROFILE_EDIT', false),
+                config('permissions_list.PROFILE_CHANGE_PASSWORD', false),
+                config('permissions_list.PROFILE_CHANGE_EMAIL', false),
+            ],
             'children' => [
                 [
                     'title' => 'ویرایش پروفایل',
                     'icon' => 'icon-note',
                     'url' => route('profile.edit'),
-    //            'permissions' => config('permissions_list.ARTICLE_INDEX'),
+                    'permissions' => config('permissions_list.PROFILE_EDIT', false),
                 ],
                 [
                     'title' => 'ویرایش رمزعبور',
                     'icon' => 'icon-key',
                     'url' => route('profile.password.change'),
-                    //            'permissions' => config('permissions_list.ARTICLE_INDEX'),
+                    'permissions' => config('permissions_list.PROFILE_CHANGE_PASSWORD', false),
                 ],
                 [
                     'title' => 'ویرایش ایمیل',
                     'icon' => 'icon-envelope-letter',
                     'url' => route('profile.email.change'),
-                    //            'permissions' => config('permissions_list.ARTICLE_INDEX'),
+                    'permissions' => config('permissions_list.PROFILE_CHANGE_EMAIL', false),
                 ],
             ]
         ]

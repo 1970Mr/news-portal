@@ -24,12 +24,14 @@
                             </a>
                             <ul>
                                 @foreach($menu['children'] as $child_menu)
-                                    <li class="{{ $child_menu['class'] ?? '' }}">
-                                        <a href="{{ $child_menu['url'] }}" class="{{ active_menu($child_menu) }} font-sm">
-                                            <i class="{{ $child_menu['icon'] }}"></i>
-                                            <span>{{ $child_menu['title'] }}</span>
-                                        </a>
-                                    </li>
+                                    @if( !array_key_exists('permissions', $child_menu) || auth()->user()->canany($child_menu['permissions']) )
+                                        <li class="{{ $child_menu['class'] ?? '' }}">
+                                            <a href="{{ $child_menu['url'] }}" class="{{ active_menu($child_menu) }} font-sm">
+                                                <i class="{{ $child_menu['icon'] }}"></i>
+                                                <span>{{ $child_menu['title'] }}</span>
+                                            </a>
+                                        </li>
+                                    @endif
                                 @endforeach
                             </ul>
                         </li>
