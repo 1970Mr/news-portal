@@ -25,7 +25,7 @@
                                 <div class="paper-ripple__waves"></div>
                             </div>
                         </a>
-                        @can(config('permissions_list.TAG_STORE'))
+                        @can(config('permissions_list.TAG_STORE', false))
                             <a class="btn btn-sm btn-default btn-round bg-green text-white" rel="tooltip"
                                href="{{ route('tag.create') }}"
                                aria-label="ایجاد تگ‌ جدید" data-bs-original-title="ایجاد تگ‌ جدید">
@@ -65,14 +65,14 @@
                                         <td class="{{ status_class($tag->status) }}">{{ status_message($tag->status) }}</td>
                                         @canany([config('permissions_list.TAG_UPDATE'), config('permissions_list.TAG_DESTROY')])
                                             <td class="d-flex gap-2">
-                                                @can(config('permissions_list.TAG_UPDATE'))
+                                                @can(config('permissions_list.TAG_UPDATE', false))
                                                     <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
                                                        rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('tag.edit', $tag->id) }}">
                                                         <i class="icon-pencil fa-flip-horizontal"></i>
                                                     </a>
                                                 @endcan
 
-                                                @can(config('permissions_list.TAG_DESTROY'))
+                                                @can(config('permissions_list.TAG_DESTROY', false))
                                                     <x-common-delete-button :route="route('tag.destroy', $tag->id)" />
                                                 @endcan
 

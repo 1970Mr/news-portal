@@ -25,7 +25,7 @@
                                 <div class="paper-ripple__waves"></div>
                             </div>
                         </a>
-                        @can(config('permissions_list.ROLE_STORE'))
+                        @can(config('permissions_list.ROLE_STORE', false))
                             <a class="btn btn-sm btn-default btn-round bg-green text-white" rel="tooltip"
                                href="{{ route('role.create') }}"
                                aria-label="ایجاد نقش جدید" data-bs-original-title="ایجاد نقش جدید">
@@ -66,14 +66,14 @@
                                         @canany([config('permissions_list.ROLE_UPDATE'), config('permissions_list.ROLE_DESTROY')])
                                             <td>
                                                 <div class="d-flex gap-2">
-                                                    @can(config('permissions_list.ROLE_UPDATE'))
+                                                    @can(config('permissions_list.ROLE_UPDATE', false))
                                                         <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
                                                            rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('role.edit', $role->id) }}">
                                                             <i class="icon-pencil fa-flip-horizontal"></i>
                                                         </a>
                                                     @endcan
 
-                                                    @can(config('permissions_list.ROLE_DESTROY'))
+                                                    @can(config('permissions_list.ROLE_DESTROY', false))
                                                         <x-common-delete-button :route="route('role.destroy', $role->id)" />
                                                     @endcan
                                                 </div>

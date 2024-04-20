@@ -14,7 +14,7 @@ class RoleAssignmentController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('can:' . config('permissions_list.USER_ROLE_ASSIGNMENT'))->only('update');
+        $this->middleware('can:' . config('permissions_list.USER_ROLE_ASSIGNMENT', false))->only('update');
     }
 
     public function edit(User $user, RoleService $roleService): View

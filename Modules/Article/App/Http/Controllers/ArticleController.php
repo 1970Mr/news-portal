@@ -17,10 +17,10 @@ class ArticleController extends Controller
         private readonly ArticleService $articleService,
     )
     {
-        $this->middleware('can:' . config('permissions_list.ARTICLE_INDEX'))->only('index');
-        $this->middleware('can:' . config('permissions_list.ARTICLE_STORE'))->only('store');
-        $this->middleware('can:' . config('permissions_list.ARTICLE_UPDATE'))->only('update');
-        $this->middleware('can:' . config('permissions_list.ARTICLE_DESTROY'))->only('destroy');
+        $this->middleware('can:' . config('permissions_list.ARTICLE_INDEX', false))->only('index');
+        $this->middleware('can:' . config('permissions_list.ARTICLE_STORE', false))->only('store');
+        $this->middleware('can:' . config('permissions_list.ARTICLE_UPDATE', false))->only('update');
+        $this->middleware('can:' . config('permissions_list.ARTICLE_DESTROY', false))->only('destroy');
     }
     public function index(): View
     {

@@ -92,7 +92,7 @@ class ImageService
 
     public function canAccessAllImages(): bool
     {
-        return auth()->user()?->can(config('permissions_list.IMAGE_INDEX_ALL'));
+        return auth()->user()?->can(config('permissions_list.IMAGE_INDEX_ALL', false));
     }
 
     private function getAllImages(Request $request): Builder

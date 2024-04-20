@@ -16,10 +16,10 @@ class UserController extends Controller
         public UserService $userService
     )
     {
-        $this->middleware('can:' . config('permissions_list.USER_INDEX'))->only('index');
-        $this->middleware('can:' . config('permissions_list.USER_STORE'))->only('store');
-        $this->middleware('can:' . config('permissions_list.USER_UPDATE'))->only('update');
-        $this->middleware('can:' . config('permissions_list.USER_DESTROY'))->only('destroy');
+        $this->middleware('can:' . config('permissions_list.USER_INDEX', false))->only('index');
+        $this->middleware('can:' . config('permissions_list.USER_STORE', false))->only('store');
+        $this->middleware('can:' . config('permissions_list.USER_UPDATE', false))->only('update');
+        $this->middleware('can:' . config('permissions_list.USER_DESTROY', false))->only('destroy');
     }
 
     public function index(): View

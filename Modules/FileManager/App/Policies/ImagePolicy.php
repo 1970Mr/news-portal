@@ -20,8 +20,8 @@ class ImagePolicy
 
     public function show(User $user, Image $image): bool
     {
-        $canShowAll = $user->can(config('permissions_list.IMAGE_INDEX_ALL'));
-        $canShowOwn = $user->can(config('permissions_list.IMAGE_INDEX_OWN'));
+        $canShowAll = $user->can(config('permissions_list.IMAGE_INDEX_ALL', false));
+        $canShowOwn = $user->can(config('permissions_list.IMAGE_INDEX_OWN', false));
 
         // If the user can't see any image but can see own image and the image being showed is not their own, return false
         if ((!$canShowAll && $canShowOwn) && $image->user_id !== $user->id) {
@@ -33,13 +33,13 @@ class ImagePolicy
 
     public function store(User $user): bool
     {
-        return $user->can(config('permissions_list.IMAGE_STORE'));
+        return $user->can(config('permissions_list.IMAGE_STORE', false));
     }
 
     public function update(User $user, Image $image): bool
     {
-        $canUpdateAll = $user->can(config('permissions_list.IMAGE_UPDATE_ALL'));
-        $canUpdateOwn = $user->can(config('permissions_list.IMAGE_UPDATE_OWN'));
+        $canUpdateAll = $user->can(config('permissions_list.IMAGE_UPDATE_ALL', false));
+        $canUpdateOwn = $user->can(config('permissions_list.IMAGE_UPDATE_OWN', false));
 
         // If the user can't update any image but can update own image and the image being updated is not their own, return false
         if ((!$canUpdateAll && $canUpdateOwn) && $image->user_id !== $user->id) {
@@ -51,8 +51,8 @@ class ImagePolicy
 
     public function destroy(User $user, Image $image): bool
     {
-        $canDestroyAll = $user->can(config('permissions_list.IMAGE_DESTROY_ALL'));
-        $canDestroyOwn = $user->can(config('permissions_list.IMAGE_DESTROY_OWN'));
+        $canDestroyAll = $user->can(config('permissions_list.IMAGE_DESTROY_ALL', false));
+        $canDestroyOwn = $user->can(config('permissions_list.IMAGE_DESTROY_OWN', false));
 
         // If the user can't destroy any image but can destroy own image and the image being destroyed is not their own, return false
         if ((!$canDestroyAll && $canDestroyOwn) && $image->user_id !== $user->id) {

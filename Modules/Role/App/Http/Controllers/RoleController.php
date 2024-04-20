@@ -21,10 +21,10 @@ class RoleController extends Controller
     )
     {
         $this->groupedPermissions = $this->roleService->groupedPermissions();
-        $this->middleware('can:' . config('permissions_list.ROLE_INDEX'))->only('index');
-        $this->middleware('can:' . config('permissions_list.ROLE_STORE'))->only('store');
-        $this->middleware('can:' . config('permissions_list.ROLE_UPDATE'))->only('update');
-        $this->middleware('can:' . config('permissions_list.ROLE_DESTROY'))->only('destroy');
+        $this->middleware('can:' . config('permissions_list.ROLE_INDEX', false))->only('index');
+        $this->middleware('can:' . config('permissions_list.ROLE_STORE', false))->only('store');
+        $this->middleware('can:' . config('permissions_list.ROLE_UPDATE', false))->only('update');
+        $this->middleware('can:' . config('permissions_list.ROLE_DESTROY', false))->only('destroy');
     }
 
     public function index(): View

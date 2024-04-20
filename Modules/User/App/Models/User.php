@@ -75,7 +75,7 @@ namespace Modules\User\App\Models;
      public function isAdmin(): bool
      {
          return $this->roles()->first()->name === Role::ADMIN ||
-             $this->hasPermissionTo(config('permissions_list.SUPER_ADMIN'));
+             $this->hasPermissionTo(config('permissions_list.SUPER_ADMIN', false));
      }
 
      protected static function newFactory(): UserFactory

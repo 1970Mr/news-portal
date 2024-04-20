@@ -24,7 +24,7 @@
                                 <div class="paper-ripple__waves"></div>
                             </div>
                         </a>
-                        @can(config('permissions_list.ARTICLE_STORE'))
+                        @can(config('permissions_list.ARTICLE_STORE', false))
                             <a class="btn btn-sm btn-default btn-round bg-green text-white" rel="tooltip"
                                href="{{ route('article.create') }}"
                                aria-label="ایجاد خبر‌ جدید" data-bs-original-title="ایجاد خبر‌ جدید">
@@ -79,14 +79,14 @@
                                     @canany([config('permissions_list.ARTICLE_UPDATE'), config('permissions_list.ARTICLE_DESTROY')])
                                         <td>
                                             <div class="d-flex gap-2">
-                                                @can(config('permissions_list.ARTICLE_UPDATE'))
+                                                @can(config('permissions_list.ARTICLE_UPDATE', false))
                                                     <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
                                                        rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('article.edit', $article->id) }}">
                                                         <i class="icon-pencil fa-flip-horizontal"></i>
                                                     </a>
                                                 @endcan
 
-                                                @can(config('permissions_list.ARTICLE_DESTROY'))
+                                                @can(config('permissions_list.ARTICLE_DESTROY', false))
                                                     <x-common-delete-button :route="route('article.destroy', $article->id)" />
                                                 @endcan
                                             </div>

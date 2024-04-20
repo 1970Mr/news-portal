@@ -12,10 +12,10 @@ class CategoryController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('can:' . config('permissions_list.CATEGORY_INDEX'))->only('index');
-        $this->middleware('can:' . config('permissions_list.CATEGORY_STORE'))->only('store');
-        $this->middleware('can:' . config('permissions_list.CATEGORY_UPDATE'))->only('update');
-        $this->middleware('can:' . config('permissions_list.CATEGORY_DESTROY'))->only('destroy');
+        $this->middleware('can:' . config('permissions_list.CATEGORY_INDEX', false))->only('index');
+        $this->middleware('can:' . config('permissions_list.CATEGORY_STORE', false))->only('store');
+        $this->middleware('can:' . config('permissions_list.CATEGORY_UPDATE', false))->only('update');
+        $this->middleware('can:' . config('permissions_list.CATEGORY_DESTROY', false))->only('destroy');
     }
 
     public function index(): View
