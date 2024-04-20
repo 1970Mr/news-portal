@@ -5,63 +5,39 @@ namespace Modules\Profile\App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Illuminate\Support\Facades\URL;
+use Illuminate\View\View;
+use Modules\Profile\App\Http\Requests\ChangeEmailRequest;
+use Modules\Profile\App\Notifications\ChangeEmailVerification;
 
 class ChangeEmailController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function changeEmailView(): View
     {
-        return view('profile::index');
+        $user = auth()->user();
+        return view('profile::change-email', compact('user'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function sendChangeEmailVerification(ChangeEmailRequest $request): RedirectResponse
     {
-        return view('profile::create');
+        $user = auth()->user();
+        $url = URL::temporarySignedRoute(
+            'profile.email.change.verify',
+            now()->addMinutes(60),
+            [
+                'email' => $user->email,
+                'new_email' => $request->email,
+            ]
+        );
+
+        $user->notify(new ChangeEmailVerification($url));
+        return to_route('profile.email.change')
+            ->with('success', __('Check your email for a verification link to complete the email change.'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request): RedirectResponse
+    public function verifyChangeEmail(Request $request): RedirectResponse
     {
-        //
-    }
-
-    /**
-     * Show the specified resource.
-     */
-    public function show($id)
-    {
-        return view('profile::show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($id)
-    {
-        return view('profile::edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, $id): RedirectResponse
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy($id)
-    {
-        //
+        auth()->user()->update(['email' => $request->new_email]);
+        return to_route('profile.email.change')->with('success', __('entity_edited', ['entity' => __('email')]));
     }
 }
