@@ -3,25 +3,20 @@
 namespace Modules\Profile\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Modules\Profile\App\Exceptions\IncorrectPasswordException;
 use Modules\Profile\App\Http\Requests\ChangePasswordRequest;
 use Modules\Profile\App\Services\ChangePasswordService;
-use Modules\User\App\Models\User;
 
 class ChangePasswordController extends Controller
 {
-    private Model $user;
-
-    public function __construct(private readonly ChangePasswordService $changePasswordService) {
-        $this->user = User::query()->find(auth()->id());
-    }
+    public function __construct(private readonly ChangePasswordService $changePasswordService) {}
 
     public function changePasswordView(): View
     {
-        return view('profile::change-password', ['user' => $this->user]);
+        $user = auth()->user();
+        return view('profile::change-password', compact('user'));
     }
 
     public function changePassword(ChangePasswordRequest $request): RedirectResponse

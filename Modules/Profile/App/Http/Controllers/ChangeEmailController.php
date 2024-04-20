@@ -13,15 +13,12 @@ use Modules\User\App\Models\User;
 
 class ChangeEmailController extends Controller
 {
-    private Model $user;
-
-    public function __construct(private readonly ChangeEmailService $changeEmailService) {
-        $this->user = User::query()->find(auth()->id());
-    }
+    public function __construct(private readonly ChangeEmailService $changeEmailService) {}
 
     public function changeEmailView(): View
     {
-        return view('profile::change-email', ['user' => $this->user]);
+        $user = auth()->user();
+        return view('profile::change-email', compact('user'));
     }
 
     public function sendChangeEmailVerification(ChangeEmailRequest $request): RedirectResponse
@@ -33,7 +30,7 @@ class ChangeEmailController extends Controller
 
     public function verifyChangeEmail(Request $request): RedirectResponse
     {
-        $this->user->update(['email' => $request->new_email]);
+        auth()->user()->update(['email' => $request->new_email]);
         return to_route('profile.email.change')->with('success', __('entity_edited', ['entity' => __('email')]));
     }
 }
