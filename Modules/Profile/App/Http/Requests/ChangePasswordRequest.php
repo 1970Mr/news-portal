@@ -18,6 +18,7 @@ class ChangePasswordRequest extends FormRequest
     {
         return [
             'new_password.required' => __('entity_required', ['entity' => __('new_password')]),
+            'new_password.min' => __('The :attribute must be at least :min characters.', ['attribute' => __('new_password'), 'min' => 8]),
             'new_password.confirmed' => __('The new password confirmation does not match.'),
         ];
     }
