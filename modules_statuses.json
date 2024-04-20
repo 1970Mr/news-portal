@@ -8,5 +8,6 @@
     "Role": true,
     "Tag": true,
     "FileManager": true,
-    "Article": true
+    "Article": true,
+    "Profile": true
 }

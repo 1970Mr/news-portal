@@ -10,7 +10,7 @@ use Modules\FileManager\App\Services\ImageService;
 class ArticleService
 {
     public function __construct(
-        public ImageService $imageService
+        private readonly ImageService $imageService
     ) {}
     public function store(ArticleRequest $request): Model
     {

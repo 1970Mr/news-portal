@@ -14,7 +14,7 @@ use Modules\Tag\App\Models\Tag;
 class ArticleController extends Controller
 {
     public function __construct(
-        public ArticleService $articleService,
+        private readonly ArticleService $articleService,
     )
     {
         $this->middleware('can:' . config('permissions_list.ARTICLE_INDEX'))->only('index');
