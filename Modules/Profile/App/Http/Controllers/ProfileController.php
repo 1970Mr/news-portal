@@ -5,6 +5,7 @@ namespace Modules\Profile\App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\URL;
 use Illuminate\View\View;
 use Modules\Profile\App\Http\Requests\ChangeEmailRequest;
@@ -63,7 +64,13 @@ class ProfileController extends Controller
 
     public function changePassword(ChangePasswordRequest $request): RedirectResponse
     {
-        auth()->user()?->update($request->validated());
-        return to_route('profile.password.change')->with('success', __('entity_edited', ['entity' => __('password')]));
+        $user = auth()->user();
+        if (password_verify($request->password, $user->password)) {
+            $user->update([
+                'password' => $request->new_password
+            ]);
+            return to_route('profile.password.change')->with('success', __('entity_edited', ['entity' => __('password')]));
+        }
+        return to_route('profile.password.change')->with('error', __('Password incorrect.'));
     }
 }

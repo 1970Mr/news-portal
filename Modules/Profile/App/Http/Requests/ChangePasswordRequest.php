@@ -14,11 +14,12 @@ class ChangePasswordRequest extends FormRequest
         ];
     }
 
-    protected function prepareForValidation(): void
+    public function messages(): array
     {
-        $this->merge([
-            'new_password' => $this->newPassword
-        ]);
+        return [
+            'new_password.required' => __('entity_required', ['entity' => __('new_password')]),
+            'new_password.confirmed' => __('The new password confirmation does not match.'),
+        ];
     }
 
     public function authorize(): bool
