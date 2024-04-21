@@ -28,7 +28,7 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="user-create-form" role="form" action="{{ route('user.store') }}" method="post">
+                    <form id="user-create-form" role="form" action="{{ route('user.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <x-common-error-messages />
 
@@ -48,6 +48,19 @@
                             <div class="form-group col-lg-6">
                                 <label for="password_confirmation">تکرار رمز عبور <small>(ضروری، حداقل 8 کاراکتر)</small></label>
                                 <input id="password_confirmation" class="form-control" name="password_confirmation" minlength="8" type="password" required value="{{ old('password_confirmation') }}">
+                            </div>
+                            <div class="form-group relative col-lg-6">
+                                <label>تصویر کاربر <small>(ضروری)</small></label>
+                                <div class="input-group round">
+                                    <input type="text" class="form-control file-input" placeholder="برای آپلود کلیک کنید">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-success">
+                                            <i class="icon-picture"></i>
+                                            آپلود تصویر</button>
+                                    </span>
+                                </div><!-- /.input-group -->
+                                <input type="file" class="form-control" name="picture" required>
+                                <div class="help-block"></div>
                             </div>
                             <div class="form-group text-center">
                                 <input id="email_verification" class="form-control" name="email_verification" type="checkbox" @if(old('email_verification')) checked @endif>

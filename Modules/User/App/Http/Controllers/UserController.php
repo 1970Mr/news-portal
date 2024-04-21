@@ -35,7 +35,7 @@ class UserController extends Controller
 
     public function store(UserStoreRequest $request): RedirectResponse
     {
-        $this->userService->create($request);
+        $this->userService->store($request);
         return to_route('user.index')->with('success', __('entity_created', ['entity' => __('user')]));
     }
 

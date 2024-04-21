@@ -64,7 +64,7 @@
                                     <td>{{ $user->id }}</td>
                                     <td>
                                         <img class="rounded-circle" src="{{ asset('storage/' . $user?->picture->file_path) }}" alt="{{ $user?->picture->alt_text }}"
-                                             width="70px" style="max-height: 70px">
+                                             width="70px" height="70px">
                                     </td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>

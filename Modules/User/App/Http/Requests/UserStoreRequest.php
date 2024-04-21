@@ -15,7 +15,8 @@ class UserStoreRequest extends FormRequest
             'name' => 'required|min:2',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8|confirmed',
-            'email_verification' => 'nullable'
+            'picture' => 'required|image|max:5000',
+            'email_verification' => 'nullable',
         ];
     }
 

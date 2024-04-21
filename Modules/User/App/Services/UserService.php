@@ -3,15 +3,23 @@
 namespace Modules\User\App\Services;
 
 use Illuminate\Support\Facades\Gate;
+use Modules\FileManager\App\Services\ImageService;
 use Modules\User\App\Http\Requests\UserStoreRequest;
 use Modules\User\App\Http\Requests\UserUpdateRequest;
 use Modules\User\App\Models\User;
 
 class UserService
 {
-    public function create(UserStoreRequest $request): void
+    public function __construct(
+        private readonly ImageService $imageService
+    ) {}
+
+    public function store(UserStoreRequest $request): void
     {
-        $user = User::create($request->validated());
+        $data = $request->validated();
+        $request->merge(['alt_text' => 'User profile picture']);
+        $data['picture_id'] = $this->imageService->store($request, 'picture')->id;
+        $user = User::create($data);
         if ($request->email_verification) {
             $user->markEmailAsVerified();
         }
