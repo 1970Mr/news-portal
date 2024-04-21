@@ -10,6 +10,7 @@ class ProfileRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
+            'picture' => 'nullable|image|max:5000',
         ];
     }
 
