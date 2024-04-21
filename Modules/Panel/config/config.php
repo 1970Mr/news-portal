@@ -92,7 +92,7 @@ return [
                     'permissions' => config('permissions_list.PROFILE_EDIT', false),
                 ],
                 [
-                    'title' => 'ویرایش رمزعبور',
+                    'title' => 'ویرایش رمز عبور',
                     'icon' => 'icon-key',
                     'url' => route('profile.password.change'),
                     'permissions' => config('permissions_list.PROFILE_CHANGE_PASSWORD', false),

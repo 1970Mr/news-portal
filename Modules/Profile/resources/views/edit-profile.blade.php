@@ -27,7 +27,7 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="user-create-form" role="form" action="{{ route('profile.edit') }}" method="post">
+                    <form id="main-form" role="form" action="{{ route('profile.edit') }}" method="post">
                         @csrf
                         @method('PATCH')
                         <x-common-error-messages />
@@ -76,7 +76,7 @@
                 }
             }
         });
-        $("#user-create-form").validate();
+        $("#main-form").validate();
 
         $(".select2.curve").select2({
             rtl: true,

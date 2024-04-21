@@ -36,6 +36,6 @@
     "article::destroy": "حذف خبر",
 
     "profile::edit": "ویرایش پروفایل",
-    "profile::change_password": "تغییر رمزعبور",
+    "profile::change_password": "تغییر رمز عبور",
     "profile::change_email": "تغییر ایمیل"
 }

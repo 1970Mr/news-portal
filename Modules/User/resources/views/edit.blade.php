@@ -28,7 +28,7 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="user-create-form" role="form" action="{{ route('user.update', $user->id) }}" method="post" enctype="multipart/form-data">
+                    <form id="main-form" role="form" action="{{ route('user.update', $user->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('put')
                         <x-common-error-messages />
@@ -48,7 +48,7 @@
                                         <button class="accordion-button collapsed h4 p-2 mt-0 mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEditPassword"
                                                 aria-expanded="true"
                                                 aria-controls="collapseOne">
-                                            ویرایش رمزعبور
+                                            ویرایش رمز عبور
                                         </button>
                                     </h2>
                                     <div id="collapseEditPassword" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -126,7 +126,7 @@
                 }
             }
         });
-        $("#user-create-form").validate({
+        $("#main-form").validate({
             rules: {
                 password_confirmation: {
                     equalTo: "#password"

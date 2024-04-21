@@ -1,4 +1,4 @@
-@extends('auth::layouts.master', ['title' => 'بروزرسانی رمزعبور'])
+@extends('auth::layouts.master', ['title' => 'بروزرسانی رمز عبور'])
 
 @section('content')
     <p class="text-center m-t-30 m-b-40">

@@ -29,7 +29,7 @@ $("#advanced-form").validate({
             // minlength: "رمز عبور دست کم باید 5 کاراکتر باشد"
         },
         password_confirmation: {
-            required: "تائید رمزعبور را وارد نمائید",
+            required: "تائید رمز عبور را وارد نمائید",
             // minlength: "تائید رمز عبور دست کم باید 5 کاراکتر باشد",
             equalTo: "رمزهای عبور یکسان نیستند"
         },
