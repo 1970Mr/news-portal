@@ -78,7 +78,7 @@ namespace Modules\User\App\Models;
      public function isAdmin(): bool
      {
          return $this->roles()->first()->name === Role::ADMIN ||
-             $this->hasPermissionTo(config('permissions_list.SUPER_ADMIN', false));
+             $this->hasAllPermissions(config('permissions_list.SUPER_ADMIN', false));
      }
 
      public function picture(): BelongsTo
