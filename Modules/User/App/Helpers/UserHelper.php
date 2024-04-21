@@ -3,8 +3,11 @@
 namespace Modules\User\App\Helpers;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Modules\FileManager\App\Models\Image;
+use Modules\FileManager\App\Services\FileManagerService;
 use Modules\Role\App\Models\Role;
 use Modules\User\App\Exceptions\UserCreationFailedException;
 use Modules\User\App\Models\User;
@@ -33,9 +36,26 @@ class UserHelper
             'password' => Hash::make(config('user.admin_password')),
             'email_verified_at' => now(),
         ]);
-        return User::query()->firstOrCreate(
+        $user = User::query()->firstOrCreate(
             $attributes->only('email')->toArray(),
             $attributes->toArray(),
         );
+        $profile_picture = self::createDefaultProfilePicture($user->id);
+        $user->picture_id = $profile_picture->id;
+        $user->save();
+        return $user;
+    }
+
+    public static function createDefaultProfilePicture(int $user_id = null): Model
+    {
+        $defaultImagePath = module_path('User', 'Database/Seeders/data/images/profile_picture.jpg');
+        $uploadedFile = new UploadedFile($defaultImagePath, basename($defaultImagePath));
+        $defaultAltText = 'Default profile picture';
+        $uploadedFilePath = FileManagerService::uploadFromFile($uploadedFile);
+        return Image::query()->create([
+            'file_path' => $uploadedFilePath,
+            'alt_text' => $defaultAltText,
+            'user_id' => $user_id,
+        ]);
     }
 }

@@ -19,6 +19,20 @@ class FileManagerService
         );
     }
 
+    public static function uploadFromFile(string $filePath): false|string
+    {
+        if (!file_exists($filePath)) {
+            return false;
+        }
+        $filename = pathinfo($filePath, PATHINFO_BASENAME);
+        $destinationPath = self::generateFilePath();
+        return Storage::disk('public')->putFileAs(
+            $destinationPath,
+            $filePath,
+            $filename
+        );
+    }
+
     public static function delete($filePath): bool
     {
         if (Storage::disk('public')->exists($filePath))
