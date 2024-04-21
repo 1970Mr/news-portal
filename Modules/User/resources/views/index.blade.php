@@ -43,6 +43,7 @@
                             <thead>
                             <tr>
                                 <th>#</th>
+                                <th>تصویر کاربر</th>
                                 <th>نام</th>
                                 <th>ایمیل</th>
                                 <th>نقش</th>
@@ -61,6 +62,10 @@
                             @foreach($users as $user)
                                 <tr>
                                     <td>{{ $user->id }}</td>
+                                    <td>
+                                        <img class="rounded-circle" src="{{ asset('storage/' . $user?->picture->file_path) }}" alt="{{ $user?->picture->alt_text }}"
+                                             width="70px" style="max-height: 70px">
+                                    </td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->getRoleLocalNames()->implode(', ') }}</td>
@@ -71,24 +76,26 @@
                                                     config('permissions_list.USER_DESTROY'),
                                                     config('permissions_list.USER_ROLE_ASSIGNMENT'),
                                                 ])
-                                        <td class="d-flex gap-2">
-                                            @can(config('permissions_list.USER_UPDATE', false))
-                                                <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                   rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('user.edit', $user->id) }}">
-                                                    <i class="icon-pencil fa-flip-horizontal"></i>
-                                                </a>
-                                            @endcan
+                                        <td>
+                                            <div class="d-flex gap-2">
+                                                @can(config('permissions_list.USER_UPDATE', false))
+                                                    <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
+                                                       rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('user.edit', $user->id) }}">
+                                                        <i class="icon-pencil fa-flip-horizontal"></i>
+                                                    </a>
+                                                @endcan
 
-                                            @can('delete', $user)
-                                                <x-common-delete-button :route="route('user.destroy', $user->id)"/>
-                                            @endcan
+                                                @can('delete', $user)
+                                                    <x-common-delete-button :route="route('user.destroy', $user->id)"/>
+                                                @endcan
 
-                                            @can(config('permissions_list.USER_ROLE_ASSIGNMENT', false))
-                                                <a class="btn btn-sm btn-warning btn-icon round d-flex justify-content-center align-items-center"
-                                                   rel="tooltip" aria-label="اختصاص نقش" data-bs-original-title="اختصاص نقش" href="{{ route('user.role-assignment', $user->id) }}">
-                                                    <i class="fas fa-arrow-down-up-lock"></i>
-                                                </a>
-                                            @endcan
+                                                @can(config('permissions_list.USER_ROLE_ASSIGNMENT', false))
+                                                    <a class="btn btn-sm btn-warning btn-icon round d-flex justify-content-center align-items-center"
+                                                       rel="tooltip" aria-label="اختصاص نقش" data-bs-original-title="اختصاص نقش" href="{{ route('user.role-assignment', $user->id) }}">
+                                                        <i class="fas fa-arrow-down-up-lock"></i>
+                                                    </a>
+                                                @endcan
+                                            </div>
                                         </td>
                                     @endcanany
                                 </tr>
