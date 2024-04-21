@@ -21412,3 +21412,4 @@ Did you mean one of these?
 #63 F:\\saves\\my_projects\\Develop\\news-site\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('F:\\\\saves\\\\my_pro...')
 #64 {main}
 "} 
+[2024-04-21 20:54:36] local.DEBUG: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`news_site`.`users`, CONSTRAINT `users_picture_id_foreign` FOREIGN KEY (`picture_id`) REFERENCES `images` (`id`)) (Connection: mysql, SQL: delete from `images` where `id` = 2)  

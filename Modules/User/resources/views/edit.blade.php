@@ -28,11 +28,10 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="user-create-form" role="form" action="{{ route('user.update', $user->id) }}" method="post">
+                    <form id="user-create-form" role="form" action="{{ route('user.update', $user->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('put')
                         <x-common-error-messages />
-                        <input type="hidden" name="id" value="{{ $id }}">
 
                         <fieldset class="row justify-content-center">
                             <div class="form-group col-lg-6">
@@ -43,7 +42,6 @@
                                 <label for="email">ایمیل <small>(ضروری)</small> </label>
                                 <input id="email" class="form-control" name="email" type="email" required value="{{ $user->email }}">
                             </div>
-
                             <div class="accordion mb-3" id="accordionEditPassword">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
@@ -67,7 +65,28 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="col-12 d-flex flex-column align-items-center">
+                                <div class="form-group relative col-lg-6">
+                                    <label>تصویر کاربر <small>(ضروری)</small></label>
+                                    <div class="input-group round">
+                                        <input type="text" class="form-control file-input" placeholder="برای آپلود کلیک کنید">
+                                        <span class="input-group-btn">
+                                        <button type="button" class="btn btn-success">
+                                            <i class="icon-picture"></i>
+                                            آپلود تصویر</button>
+                                    </span>
+                                    </div>
+                                    <input type="file" class="form-control" name="picture">
+                                    <div class="help-block"></div>
+                                </div>
+                                <div class="form-group col-12 text-center">
+                                    <img class="mb-2" src="{{ asset('storage/' . $user?->picture->file_path) }}" alt="{{ $user?->picture->alt_text }}" style="max-width: 300px; max-height:
+                                    300px">
+                                    <div>
+                                        {{ asset('storage/' . $user?->picture->file_path) }}
+                                    </div>
+                                </div>
+                            </div>
                             <div class="form-group text-center">
                                 <input id="email_verification" class="form-control" name="email_verification" type="checkbox" {{ $user->email_verified_at ? 'checked' : '' }}>
                                 <label for="email_verification">تایید ایمیل</label>

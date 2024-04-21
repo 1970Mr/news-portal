@@ -27,15 +27,32 @@ class UserService
 
     public function update(UserUpdateRequest $request, User $user): void
     {
-        $user->update($request->validated());
-        ($request->email_verification) ?
-            $user->markEmailAsVerified() :
-            $user->unmarkEmailAsVerified();
+        $data = $request->validated();
+        $data = $this->uploadImageDuringUpdate($request, $user, $data);
+        $user->update($data);
+        $this->checkEmailAsVerified($request, $user);
     }
 
     public function delete(User $user): void
     {
         Gate::authorize('delete', $user);
         $user->delete();
+    }
+
+    private function uploadImageDuringUpdate(UserUpdateRequest $request, User $user, array $data): array
+    {
+        if ($request->hasFile('picture')) {
+            $request->merge(['alt_text' => 'User profile picture']);
+            $data['picture_id'] = $this->imageService->store($request, 'picture')->id;
+            $this->imageService->destroyWithoutKeyConstraints($user->picture);
+        }
+        return $data;
+    }
+
+    private function checkEmailAsVerified(UserUpdateRequest $request, User $user): void
+    {
+        ($request->email_verification) ?
+            $user->markEmailAsVerified() :
+            $user->unmarkEmailAsVerified();
     }
 }

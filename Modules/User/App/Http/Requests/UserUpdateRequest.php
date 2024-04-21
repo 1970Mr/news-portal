@@ -13,14 +13,12 @@ class UserUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
-        $id = decrypt($this->request->get('id'));
-        $this->user = User::find($id);
         return [
             'name' => 'required|min:2',
-            'email' => 'required|email|unique:users,email,' . $this->user->id,
+            'email' => 'required|email|unique:users,email,' . $this->route('user')->id,
             'password' => 'exclude_if:password,null|min:8|confirmed',
+            'picture' => 'nullable|image|max:5000',
             'email_verification' => 'nullable',
-            'id' => 'required'
         ];
     }
 

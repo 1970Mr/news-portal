@@ -19,7 +19,8 @@ class UserController extends Controller
         $this->middleware('can:' . config('permissions_list.USER_INDEX', false))->only('index');
         $this->middleware('can:' . config('permissions_list.USER_STORE', false))->only('store');
         $this->middleware('can:' . config('permissions_list.USER_UPDATE', false))->only('update');
-        $this->middleware('can:' . config('permissions_list.USER_DESTROY', false))->only('destroy');
+        // Policy is used in destroy method
+        // $this->middleware('can:' . config('permissions_list.USER_DESTROY', false))->only('destroy');
     }
 
     public function index(): View
