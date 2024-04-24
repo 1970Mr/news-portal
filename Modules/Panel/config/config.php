@@ -104,6 +104,6 @@ return [
                     'permissions' => config('permissions_list.PROFILE_CHANGE_EMAIL', false),
                 ],
             ]
-        ]
+        ],
     ]
 ];

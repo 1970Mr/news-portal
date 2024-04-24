@@ -45,6 +45,13 @@
                     @endif
                 @endif
             @endforeach
+                <li>
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); $('#sideBarLogout').submit()">
+                        <i class="icon-power"></i>
+                        <span>خروج</span>
+                        <form id="sideBarLogout" action="{{ route('logout') }}" method="post">@csrf</form>
+                    </a>
+                </li>
         </ul><!-- /#side-menu -->
     </div><!-- /.side-menu-container -->
 </div><!-- /#sidebar -->
