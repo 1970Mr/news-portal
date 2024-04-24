@@ -2,8 +2,13 @@
 
 namespace Modules\Panel\App\Providers;
 
+use App\Http\Kernel;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Modules\Panel\App\Http\Middleware\ShareData;
+use Modules\User\App\Models\User;
 
 class PanelServiceProvider extends ServiceProvider
 {
@@ -22,6 +27,8 @@ class PanelServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/migrations'));
+
+        $this->registerMiddlewares();
     }
 
     /**
@@ -112,5 +119,10 @@ class PanelServiceProvider extends ServiceProvider
         }
 
         return $paths;
+    }
+
+    protected function registerMiddlewares(): void
+    {
+        $this->app->make(Kernel::class)->appendMiddlewareToGroup('web', ShareData::class);
     }
 }

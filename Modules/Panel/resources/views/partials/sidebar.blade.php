@@ -7,8 +7,8 @@
                      class="img-circle img-responsive">
             </a>
             <div class="user-details">
-                <h4>رسول مرشدی</h4>
-                <p class="role">مدیر فنی</p>
+                <h4>{{ $currentUser->name }}</h4>
+                <p class="role">{{ __($currentUser->role()->name) }}</p>
             </div><!-- /.user-details -->
         </div><!-- /.user-box -->
     </div><!-- /.sidebar-top -->

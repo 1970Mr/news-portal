@@ -86,6 +86,11 @@ namespace Modules\User\App\Models;
          return $this->belongsTo(Image::class, 'picture_id');
      }
 
+     public function role(): \Spatie\Permission\Models\Role
+     {
+         return $this->roles()->first();
+     }
+
      protected static function newFactory(): UserFactory
     {
         return UserFactory::new();
