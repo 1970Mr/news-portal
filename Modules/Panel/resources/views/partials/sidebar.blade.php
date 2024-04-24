@@ -2,9 +2,9 @@
 <div id="sidebar">
     <div class="sidebar-top">
         <div class="user-box">
-            <a href="{{ asset('admin/#') }}">
-                <img src="{{ asset('admin/assets/images/user/128.png') }}" alt="عکس پروفایل"
-                     class="img-circle img-responsive">
+            <a href="{{ route('profile.edit') }}">
+                <img src="{{ asset('storage/' . $currentUser->picture->file_path) }}" alt="{{ $currentUser->picture->alt_text }}"
+                      class="object-fit-cover img-circle" style="width: 70px; height: 70px">
             </a>
             <div class="user-details">
                 <h4>{{ $currentUser->name }}</h4>
