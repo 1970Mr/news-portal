@@ -29,7 +29,7 @@ return [
             ],
         ],
         'category' => [
-            'title' => 'دسته‌بندی',
+            'title' => 'دسته‌بندی‌ها',
             'icon' => 'icon-grid',
             'url' => route('category.index'),
             'permissions' => config('permissions_list.CATEGORY_INDEX', false),
@@ -39,7 +39,7 @@ return [
             ]
         ],
         'tag' => [
-            'title' => 'تگ',
+            'title' => 'تگ‌ها',
             'icon' => 'icon-tag',
             'url' => route('tag.index'),
             'permissions' => config('permissions_list.TAG_INDEX', false),
