@@ -9,10 +9,10 @@
         <div class="row">
             <div class="col-lg-3 col-6">
                 <div class="stat-box use-cyan shadow">
-                    <a href="{{ asset('admin/#') }}">
+                    <a href="{{ route('user.index') }}">
                         <div class="stat">
-                            <div class="counter-down" data-value="2048"></div>
-                            <div class="h3">کاربر</div>
+                            <div class="counter-down" data-value="{{ $users_count }}"></div>
+                            <div class="h3">کاربران</div>
                         </div><!-- /.stat -->
                         <div class="visual">
                             <i class="icon-people"></i>
@@ -22,26 +22,26 @@
             </div><!-- /.col-lg-3 -->
             <div class="col-lg-3 col-6">
                 <div class="stat-box use-blue shadow">
-                    <a href="{{ asset('admin/#') }}">
+                    <a href="{{ route('article.index') }}">
                         <div class="stat">
-                            <div class="counter-down" data-value="1024"></div>
-                            <div class="h3">محصول</div>
+                            <div class="counter-down" data-value="{{ $articles_count }}"></div>
+                            <div class="h3">اخبار</div>
                         </div><!-- /.stat -->
                         <div class="visual">
-                            <i class="icon-present"></i>
+                            <i class="icon-globe"></i>
                         </div><!-- /.visual -->
                     </a>
                 </div><!-- /.stat-box -->
             </div><!-- /.col-lg-3 -->
             <div class="col-lg-3 col-6">
                 <div class="stat-box use-green shadow">
-                    <a href="{{ asset('admin/#') }}">
+                    <a href="{{ route('category.index') }}">
                         <div class="stat">
-                            <div class="counter-down" data-value="512"></div>
-                            <div class="h3">سفارش ثبت شده</div>
+                            <div class="counter-down" data-value="{{ $categories_count }}"></div>
+                            <div class="h3">دسته‌بندی‌ها</div>
                         </div><!-- /.stat -->
                         <div class="visual">
-                            <i class="icon-diamond"></i>
+                            <i class="icon-grid"></i>
                         </div><!-- /.visual -->
                     </a>
                 </div><!-- /.stat-box -->

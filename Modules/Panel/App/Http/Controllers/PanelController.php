@@ -4,11 +4,17 @@ namespace Modules\Panel\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\View;
+use Modules\Article\App\Models\Article;
+use Modules\Category\App\Models\Category;
+use Modules\User\App\Models\User;
 
 class PanelController extends Controller
 {
     public function __invoke(): View
     {
-        return view('panel::index');
+        $users_count = User::query()->count();
+        $articles_count = Article::query()->count();
+        $categories_count = Category::query()->count();
+        return view('panel::index', compact('users_count', 'articles_count', 'categories_count'));
     }
 }
