@@ -1,7 +1,7 @@
 <!-- BEGIN HEADER -->
 <div class="navbar navbar-fixed-top" id="main-navbar">
     <div class="header-right">
-        <a href="{{ asset('admin/dashboard.html') }}" class="logo-con">
+        <a href="{{ route('panel.index') }}" class="logo-con">
             <img src="{{ asset('admin/assets/images/logo.png') }}" class="img-responsive center-block"
                  alt="لوگو قالب مدیران">
         </a>
@@ -27,7 +27,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-left">
                 <li class="dropdown">
-                    <a href="{{ asset('admin/#') }}" class="btn" id="toggle-fullscreen">
+                    <a class="btn" id="toggle-fullscreen">
                         <i class="icon-size-fullscreen"></i>
                     </a>
                 </li>
@@ -129,7 +129,7 @@
                         <i class="icon-bell"></i>
                         <span class="badge badge-success">
                                     5
-                                </span>
+                        </span>
                     </a>
                     <ul class="dropdown-menu custom-dropdown-menu has-scrollbar">
                         <li class="dropdown-header clearfix">
@@ -218,23 +218,29 @@
                 </li>
 
                 <li class="dropdown dropdown-user">
-                    <a href="{{ asset('admin/#') }}" class="dropdown-toggle dropdown-hover" data-bs-toggle="dropdown">
-                        <img src="{{ asset('admin/assets/images/user/48.png') }}" alt="عکس پرفایل"
-                             class="img-circle img-responsive">
-                        <span>حمید آفرینش فر</span>
+                    <a class="dropdown-toggle dropdown-hove cursor-pointer d-flex align-items-center gap-2" data-bs-toggle="dropdown">
+                        <img src="{{ asset('storage/' . $currentUser->picture->file_path) }}" alt="{{ $currentUser->picture->alt_text }}"
+                             class="object-fit-cover img-circle" style="width: 45px; height: 45px">
+                        <span>{{ $currentUser->name }}</span>
                         <i class="icon-arrow-down"></i>
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="{{ asset('admin/edit_profile.html') }}">
+                            <a href="{{ route('profile.edit') }}">
                                 <i class="icon-note"></i>
                                 ویرایش پروفایل
                             </a>
                         </li>
                         <li>
-                            <a href="{{ asset('admin/change_password.html') }}">
+                            <a href="{{ route('profile.password.change') }}">
                                 <i class="icon-key"></i>
                                 تغییر رمز عبور
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('profile.email.change') }}">
+                                <i class="icon-envelope-letter"></i>
+                                تغییر ایمیل
                             </a>
                         </li>
                         <li class="divider"></li>
@@ -245,15 +251,9 @@
                                 تیکت های جدید
                             </a>
                         </li>
-                        <li>
-                            <a href="{{ asset('admin/#') }}">
-                                <i class="icon-wallet"></i>
-                                کیف پول
-                            </a>
-                        </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="{{ asset('admin/login.html') }}">
+                            <a href="{{ route('logout') }}">
                                 <i class="icon-power"></i>
                                 خروج
                             </a>

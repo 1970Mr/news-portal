@@ -48,7 +48,7 @@ return [
                 'tag.edit',
             ]
         ],
-        'image' => [ // TODO: FileManager instead of Image
+        'image' => [
             'title' => 'تصاویر',
             'icon' => 'icon-picture',
             'url' => route('image.index'),
