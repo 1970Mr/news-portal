@@ -11,6 +11,11 @@
     @include('panel::partials.styles')
 
     <!-- BEGIN PAGE CSS -->
+    <style>
+        #page-content {
+            min-height: 87vh;
+        }
+    </style>
     @stack('styles')
     <!-- END PAGE CSS -->
 </head>

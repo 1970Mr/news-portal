@@ -18,7 +18,7 @@
                 @if( !array_key_exists('permissions', $menu) || auth()->user()->canany($menu['permissions']) )
                     @if(isset($menu['children']))
                         <li class="{{ active_menu($menu, 'active') }}">
-                            <a class="dropdown-toggle">
+                            <a class="dropdown-toggle cursor-pointer">
                                 <i class="{{ $menu['icon'] }}"></i>
                                 <span>{{ $menu['title'] }}</span>
                             </a>

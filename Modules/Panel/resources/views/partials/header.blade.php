@@ -253,9 +253,10 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="{{ route('logout') }}">
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); $('#headerLogout').submit()">
                                 <i class="icon-power"></i>
-                                خروج
+                                <span>خروج</span>
+                                <form id="headerLogout" action="{{ route('logout') }}" method="post">@csrf</form>
                             </a>
                         </li>
                     </ul>
