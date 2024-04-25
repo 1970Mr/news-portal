@@ -64,8 +64,213 @@
 
     </div><!-- /.col-md-12 -->
 
-    <div class="row">
-        <div class="col-md-6 col-12">
+    <div class="row justify-content-center m-0 p-0">
+        <div class="col-12">
+            <div class="portlet box shadow min-height-500">
+                <div class="portlet-heading">
+                    <div class="portlet-title">
+                        <h3 class="title">
+                            <i class="icon-globe"></i>
+                            اخبار
+                        </h3>
+                    </div><!-- /.portlet-title -->
+                    <div class="buttons-box">
+                        <a class="btn btn-sm btn-default btn-round btn-fullscreen" rel="tooltip"
+                           aria-label="تمام صفحه" data-bs-original-title="تمام صفحه">
+                            <i class="icon-size-fullscreen"></i>
+                            <div class="paper-ripple">
+                                <div class="paper-ripple__background"></div>
+                                <div class="paper-ripple__waves"></div>
+                            </div>
+                        </a>
+                        <a class="btn btn-sm btn-default btn-round btn-close" rel="tooltip"
+                           aria-label="بستن" data-bs-original-title="بستن">
+                            <i class="icon-trash"></i>
+                            <div class="paper-ripple">
+                                <div class="paper-ripple__background"></div>
+                                <div class="paper-ripple__waves"></div>
+                            </div>
+                        </a>
+                    </div><!-- /.buttons-box -->
+                </div><!-- /.portlet-heading -->
+                <div class="portlet-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>تصویر شاخص</th>
+                                <th>عنوان</th>
+                                <th>slug</th>
+                                <th>توضیحات</th>
+                                <th>کلمات کلیدی</th>
+                                <th>کاربر</th>
+                                <th>دسته‌بندی</th>
+                                <th>تگ(ها)</th>
+                                <th>تاریخ انتشار</th>
+                                <th>تاریخ ایجاد</th>
+                                <th>وضعیت</th>
+                                @canany([config('permissions_list.ARTICLE_UPDATE'), config('permissions_list.ARTICLE_DESTROY')])
+                                    <th>عملیات</th>
+                                @endcanany
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($articles as $article)
+                                <tr>
+                                    <td>{{ $article->id }}</td>
+                                    <td>
+                                        <img src="{{ asset('storage/' . $article->featured_image->file_path) }}" alt="{{ $article->featured_image->alt_text }}" width="100px" style="max-height: 90px">
+                                    </td>
+                                    <td>{{ $article->title }}</td>
+                                    <td>{{ $article->slug }}</td>
+                                    <td>{{ $article->description }}</td>
+                                    <td>{{ $article->keywords }}</td>
+                                    <td>{{ $article->user->name }}</td>
+                                    <td>{{ $article->category->name }}</td>
+                                    <td>{{ nullable_value($article->tagNames()) }}</td>
+                                    <td class="ltr text-right">{{ jalalian()->forge($article->published_at)->format(config('common.datetime_format')) }}</td>
+                                    <td class="ltr text-right">{{ jalalian()->forge($article->created_at)->format(config('common.datetime_format')) }}</td>
+                                    <td class="{{ status_class($article->status) }}">{{ status_message($article->status) }}</td>
+                                    @canany([config('permissions_list.ARTICLE_UPDATE'), config('permissions_list.ARTICLE_DESTROY')])
+                                        <td>
+                                            <div class="d-flex gap-2">
+                                                @can(config('permissions_list.ARTICLE_UPDATE', false))
+                                                    <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
+                                                       rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('article.edit', $article->id) }}">
+                                                        <i class="icon-pencil fa-flip-horizontal"></i>
+                                                    </a>
+                                                @endcan
+
+                                                @can(config('permissions_list.ARTICLE_DESTROY', false))
+                                                    <x-common-delete-button :route="route('article.destroy', $article->id)" />
+                                                @endcan
+                                            </div>
+                                        </td>
+                                    @endcanany
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div><!-- /.portlet-body -->
+            </div><!-- /.portlet -->
+        </div>
+
+        <div class="col-12">
+            <div class="portlet box shadow min-height-500">
+                <div class="portlet-heading">
+                    <div class="portlet-title">
+                        <h3 class="title">
+                            <i class="icon-grid"></i>
+                            دسته‌بندی‌ها
+                        </h3>
+                    </div><!-- /.portlet-title -->
+                    <div class="buttons-box">
+                        <a class="btn btn-sm btn-default btn-round btn-fullscreen" rel="tooltip"
+                           aria-label="تمام صفحه" data-bs-original-title="تمام صفحه">
+                            <i class="icon-size-fullscreen"></i>
+                            <div class="paper-ripple">
+                                <div class="paper-ripple__background"></div>
+                                <div class="paper-ripple__waves"></div>
+                            </div>
+                        </a>
+                        <a class="btn btn-sm btn-default btn-round btn-close" rel="tooltip"
+                           aria-label="بستن" data-bs-original-title="بستن">
+                            <i class="icon-trash"></i>
+                            <div class="paper-ripple">
+                                <div class="paper-ripple__background"></div>
+                                <div class="paper-ripple__waves"></div>
+                            </div>
+                        </a>
+                    </div><!-- /.buttons-box -->
+                </div><!-- /.portlet-heading -->
+                <div class="portlet-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>نام</th>
+                                <th>slug</th>
+                                <th>توضیحات</th>
+                                <th>دسته‌بندی والد</th>
+                                <th>تاریخ ایجاد</th>
+                                <th>وضعیت</th>
+                                @canany([config('permissions_list.CATEGORY_UPDATE'), config('permissions_list.CATEGORY_DESTROY')])
+                                    <th>عملیات</th>
+                                @endcanany
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($categories as $category)
+                                <tr>
+                                    <td>{{ $category->id }}</td>
+                                    <td>{{ $category->name }}</td>
+                                    <td>{{ $category->slug }}</td>
+                                    <td>{{ $category->description }}</td>
+                                    <td>{{ $category->parentCategoryTitle() }}</td>
+                                    <td class="ltr text-right">{{ jalalian()->forge($category->created_at)->format(config('common.datetime_format')) }}</td>
+                                    <td class="{{ status_class($category->status) }}">{{ status_message($category->status) }}</td>
+                                    @canany([config('permissions_list.CATEGORY_UPDATE'), config('permissions_list.CATEGORY_DESTROY')])
+                                        <td class="d-flex gap-2">
+                                            @can(config('permissions_list.CATEGORY_UPDATE', false))
+                                                <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
+                                                   rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('category.edit', $category->id) }}">
+                                                    <i class="icon-pencil fa-flip-horizontal"></i>
+                                                </a>
+                                            @endcan
+
+                                            @can(config('permissions_list.CATEGORY_DESTROY', false))
+                                                <x-common-delete-button :route="route('category.destroy', $category->id)" />
+                                            @endcan
+
+                                        </td>
+                                    @endcanany
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div><!-- /.portlet-body -->
+            </div><!-- /.portlet -->
+        </div>
+
+        <div class="col-12">
+            <div class="portlet box shadow min-height-500">
+                <div class="portlet-heading">
+                    <div class="portlet-title">
+                        <h3 class="title">
+                            <i class="icon-tag"></i>
+                            تگ‌ها
+                        </h3>
+                    </div><!-- /.portlet-title -->
+                    <div class="buttons-box">
+                        <a class="btn btn-sm btn-default btn-round btn-fullscreen" rel="tooltip"
+                           aria-label="تمام صفحه" data-bs-original-title="تمام صفحه">
+                            <i class="icon-size-fullscreen"></i>
+                            <div class="paper-ripple">
+                                <div class="paper-ripple__background"></div>
+                                <div class="paper-ripple__waves"></div>
+                            </div>
+                        </a>
+                        <a class="btn btn-sm btn-default btn-round btn-close" rel="tooltip"
+                           aria-label="بستن" data-bs-original-title="بستن">
+                            <i class="icon-trash"></i>
+                            <div class="paper-ripple">
+                                <div class="paper-ripple__background"></div>
+                                <div class="paper-ripple__waves"></div>
+                            </div>
+                        </a>
+                    </div><!-- /.buttons-box -->
+                </div><!-- /.portlet-heading -->
+                <div class="portlet-body">
+
+                </div><!-- /.portlet-body -->
+            </div><!-- /.portlet -->
+        </div>
+
+        <div class="col-12 col-md-6">
             <div class="portlet box shadow min-height-500">
                 <div class="portlet-heading">
                     <div class="portlet-title">
@@ -76,7 +281,6 @@
                     </div><!-- /.portlet-title -->
                     <div class="buttons-box">
                         <a class="btn btn-sm btn-default btn-round btn-fullscreen" rel="tooltip"
-                           href="{{ asset('admin/#') }}"
                            aria-label="تمام صفحه" data-bs-original-title="تمام صفحه">
                             <i class="icon-size-fullscreen"></i>
                             <div class="paper-ripple">
@@ -85,7 +289,6 @@
                             </div>
                         </a>
                         <a class="btn btn-sm btn-default btn-round btn-close" rel="tooltip"
-                           href="{{ asset('admin/#') }}"
                            aria-label="بستن" data-bs-original-title="بستن">
                             <i class="icon-trash"></i>
                             <div class="paper-ripple">

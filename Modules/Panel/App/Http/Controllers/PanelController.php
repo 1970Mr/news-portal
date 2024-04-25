@@ -15,6 +15,15 @@ class PanelController extends Controller
         $users_count = User::query()->count();
         $articles_count = Article::query()->count();
         $categories_count = Category::query()->count();
-        return view('panel::index', compact('users_count', 'articles_count', 'categories_count'));
+
+        $articles = Article::query()->latest()->limit(5)->get();
+        $categories = Category::query()->latest()->limit(5)->get();
+        return view('panel::index', compact([
+            'users_count',
+            'articles_count',
+            'categories_count',
+            'articles',
+            'categories',
+        ]));
     }
 }
