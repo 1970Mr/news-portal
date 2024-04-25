@@ -63,7 +63,7 @@
                                         <td>{{ $category->slug }}</td>
                                         <td>{{ $category->description }}</td>
                                         <td>{{ $category->parentCategoryTitle() }}</td>
-                                        <td class="ltr text-right">{{ jalalian()->forge($category->created_at)->format(config('common.datetime_format')) }}</td>
+                                        <td class="ltr text-right created-at">{{ jalalian()->forge($category->created_at)->format(config('common.datetime_format')) }}</td>
                                         <td class="{{ status_class($category->status) }}">{{ status_message($category->status) }}</td>
                                         @canany([config('permissions_list.CATEGORY_UPDATE'), config('permissions_list.CATEGORY_DESTROY')])
                                             <td class="d-flex gap-2">
@@ -98,11 +98,11 @@
 
 @push('styles')
     <style>
-        .page-link{
+        .page-link {
             text-align: center;
         }
 
-        th {
+        th, .created-at {
             white-space: nowrap;
         }
     </style>

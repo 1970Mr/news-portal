@@ -61,7 +61,7 @@
                                         <td>{{ $tag->name }}</td>
                                         <td>{{ $tag->slug }}</td>
                                         <td>{{ $tag->description }}</td>
-                                        <td class="ltr text-right">{{ jalalian()->forge($tag->created_at)->format(config('common.datetime_format')) }}</td>
+                                        <td class="ltr text-right created-at">{{ jalalian()->forge($tag->created_at)->format(config('common.datetime_format')) }}</td>
                                         <td class="{{ status_class($tag->status) }}">{{ status_message($tag->status) }}</td>
                                         @canany([config('permissions_list.TAG_UPDATE'), config('permissions_list.TAG_DESTROY')])
                                             <td class="d-flex gap-2">

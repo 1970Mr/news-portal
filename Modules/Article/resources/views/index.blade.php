@@ -73,8 +73,8 @@
                                     <td>{{ $article->user->name }}</td>
                                     <td>{{ $article->category->name }}</td>
                                     <td>{{ nullable_value($article->tagNames()) }}</td>
-                                    <td class="ltr text-right">{{ jalalian()->forge($article->published_at)->format(config('common.datetime_format')) }}</td>
-                                    <td class="ltr text-right">{{ jalalian()->forge($article->created_at)->format(config('common.datetime_format')) }}</td>
+                                    <td class="ltr text-right created-at">{{ jalalian()->forge($article->published_at)->format(config('common.datetime_format')) }}</td>
+                                    <td class="ltr text-right created-at">{{ jalalian()->forge($article->created_at)->format(config('common.datetime_format')) }}</td>
                                     <td class="{{ status_class($article->status) }}">{{ status_message($article->status) }}</td>
                                     @canany([config('permissions_list.ARTICLE_UPDATE'), config('permissions_list.ARTICLE_DESTROY')])
                                         <td>
@@ -110,11 +110,11 @@
 
 @push('styles')
     <style>
-        .page-link{
+        .page-link {
             text-align: center;
         }
 
-        th {
+        th, .created-at {
             white-space: nowrap;
         }
     </style>

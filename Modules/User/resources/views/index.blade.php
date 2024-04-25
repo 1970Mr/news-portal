@@ -69,7 +69,7 @@
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->getRoleLocalNames()->implode(', ') }}</td>
-                                    <td class="ltr text-right">{{ jalalian()->forge($user->created_at)->format(config('common.datetime_format')) }}</td>
+                                    <td class="ltr text-right created-at">{{ jalalian()->forge($user->created_at)->format(config('common.datetime_format')) }}</td>
                                     <td class="{{ status_class($user->email_verified_at) }}">{{ $user->verified_email_status }}</td>
                                     @canany([
                                                     config('permissions_list.USER_UPDATE'),

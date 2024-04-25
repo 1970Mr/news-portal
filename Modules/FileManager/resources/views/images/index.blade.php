@@ -121,9 +121,11 @@
         .page-link {
             text-align: center;
         }
+
         .btn-info {
             background-color: #03a9f4 !important;
         }
+
         th, .created-at {
             white-space: nowrap;
         }
