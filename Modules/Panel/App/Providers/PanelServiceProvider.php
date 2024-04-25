@@ -4,11 +4,8 @@ namespace Modules\Panel\App\Providers;
 
 use App\Http\Kernel;
 use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Modules\Panel\App\Http\Middleware\ShareData;
-use Modules\User\App\Models\User;
 
 class PanelServiceProvider extends ServiceProvider
 {

@@ -11,7 +11,7 @@
                 <div class="stat-box use-cyan shadow">
                     <a href="{{ route('user.index') }}">
                         <div class="stat">
-                            <div class="counter-down" data-value="{{ $users_count }}"></div>
+                            <div class="counter-down" data-value="{{ $dataCounts['users_count'] }}"></div>
                             <div class="h3">کاربران</div>
                         </div><!-- /.stat -->
                         <div class="visual">
@@ -24,7 +24,7 @@
                 <div class="stat-box use-blue shadow">
                     <a href="{{ route('article.index') }}">
                         <div class="stat">
-                            <div class="counter-down" data-value="{{ $articles_count }}"></div>
+                            <div class="counter-down" data-value="{{ $dataCounts['articles_count'] }}"></div>
                             <div class="h3">اخبار</div>
                         </div><!-- /.stat -->
                         <div class="visual">
@@ -37,7 +37,7 @@
                 <div class="stat-box use-green shadow">
                     <a href="{{ route('category.index') }}">
                         <div class="stat">
-                            <div class="counter-down" data-value="{{ $categories_count }}"></div>
+                            <div class="counter-down" data-value="{{ $dataCounts['categories_count'] }}"></div>
                             <div class="h3">دسته‌بندی‌ها</div>
                         </div><!-- /.stat -->
                         <div class="visual">

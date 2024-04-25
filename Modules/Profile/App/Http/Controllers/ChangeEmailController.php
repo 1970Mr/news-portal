@@ -3,13 +3,11 @@
 namespace Modules\Profile\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Modules\Profile\App\Http\Requests\ChangeEmailRequest;
 use Modules\Profile\App\Services\ChangeEmailService;
-use Modules\User\App\Models\User;
 
 class ChangeEmailController extends Controller
 {
