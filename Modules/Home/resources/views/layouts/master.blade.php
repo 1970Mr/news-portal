@@ -20,6 +20,10 @@
 
     @include('home::partials.styles')
 
+    @include('home::partials.custom-footer-style')
+
+    @stack('styles')
+
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
     <!--[if lt IE 9]>
     <script src="{{ asset('home/js/html5shiv.js') }}"></script>
@@ -50,9 +54,9 @@
 
     @include('home::partials.scripts')
 
-    @stack('scripts')
-
     @include('sweetalert::alert')
+
+    @stack('scripts')
 </div><!-- Body inner end -->
 </body>
 

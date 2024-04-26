@@ -1311,7 +1311,7 @@ span.post-comment span {
 }
 
 .logo img{
-    width: 270px;
+    max-width: 270px;
 }
 
 /* header right */
