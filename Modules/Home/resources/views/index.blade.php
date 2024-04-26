@@ -1930,14 +1930,5 @@
         </div><!-- Container end -->
     </section><!-- 3rd block end -->
 
-    <section class="ad-content-area text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <img class="img-responsive" src="{{ asset('home/images/banner-ads/ad-content-two.png') }}" alt="">
-                </div><!-- Col end -->
-            </div><!-- Row end -->
-        </div><!-- Container end -->
-    </section><!-- Ad content two end -->
 
 @endsection

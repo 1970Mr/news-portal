@@ -3,8 +3,7 @@
         <div class="row">
             <nav class="site-navigation navigation">
                 <div class="site-nav-inner pull-left">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse"
-                            data-target=".navbar-collapse">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">تغییر وضعیت ناوبری</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -13,21 +12,13 @@
 
                     <div class="collapse navbar-collapse navbar-responsive-collapse">
                         <ul class="nav navbar-nav">
-                            <li class="dropdown active">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">خانه <i
-                                        class="fa fa-angle-down"></i></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li class="active"><a href="index.html">خانه 1</a></li>
-                                    <li><a href="index-2.html">خانه 2</a></li>
-                                    <li><a href="index-3.html">خانه 3</a></li>
-                                    <li><a href="index-4.html">خانه 4</a></li>
-                                    <li><a href="index-5.html">خانه 5</a></li>
-                                </ul>
+                            <li class="active">
+                                <a href="category-style2.html">خانه</a>
                             </li>
 
+                            <!-- All Parent Categories -->
                             <li class="dropdown mega-dropdown">
-                                <a href="category-style1.html" class="dropdown-toggle">سبک زندگی <i
-                                        class="fa fa-angle-down"></i></a>
+                                <a href="category-style1.html" class="dropdown-toggle">سبک زندگی <i class="fa fa-angle-down"></i></a>
                                 <div class="dropdown-menu mega-menu-content hidden-xs hidden-sm clearfix">
                                     <div class="menu-tab">
                                         <ul class="nav nav-tabs nav-stacked col-md-2" data-toggle="tab-hover">
@@ -67,16 +58,12 @@
                                                     <div class="col-md-3">
                                                         <div class="post-block-style clearfix">
                                                             <div class="post-thumb">
-                                                                <a href="single-post1.html"><img
-                                                                        class="img-responsive"
-                                                                        src="{{ asset('home/images/news/lifestyle/health1.jpg') }}"
-                                                                        alt=""></a>
+                                                                <a href="single-post1.html"><img class="img-responsive" src="{{ asset('home/images/news/lifestyle/health1.jpg') }}" alt=""></a>
                                                             </div>
                                                             <a class="post-cat" href="#">سلامتی</a>
                                                             <div class="post-content">
                                                                 <h2 class="post-title title-small">
-                                                                    <a href="single-post1.html">لورم ایپسوم متن
-                                                                        ساختگی با تولید سادگی نامفهوم از صنعت</a>
+                                                                    <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت</a>
                                                                 </h2>
                                                             </div><!-- Post content end -->
                                                         </div><!-- Post Block style end -->
@@ -84,16 +71,12 @@
                                                     <div class="col-md-3">
                                                         <div class="post-block-style clearfix">
                                                             <div class="post-thumb">
-                                                                <a href="single-post1.html"><img
-                                                                        class="img-responsive"
-                                                                        src="{{ asset('home/images/news/lifestyle/health2.jpg') }}"
-                                                                        alt=""></a>
+                                                                <a href="single-post1.html"><img class="img-responsive" src="{{ asset('home/images/news/lifestyle/health2.jpg') }}" alt=""></a>
                                                             </div>
                                                             <a class="post-cat" href="#">سلامتی</a>
                                                             <div class="post-content">
                                                                 <h2 class="post-title title-small">
-                                                                    <a href="single-post1.html">لورم ایپسوم متن
-                                                                        ساختگی با تولید سادگی نامفهوم از صنعت</a>
+                                                                    <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت</a>
                                                                 </h2>
                                                             </div><!-- Post content end -->
                                                         </div><!-- Post Block style end -->
@@ -101,16 +84,12 @@
                                                     <div class="col-md-3">
                                                         <div class="post-block-style clearfix">
                                                             <div class="post-thumb">
-                                                                <a href="single-post1.html"><img
-                                                                        class="img-responsive"
-                                                                        src="{{ asset('home/images/news/lifestyle/health3.jpg') }}"
-                                                                        alt=""></a>
+                                                                <a href="single-post1.html"><img class="img-responsive" src="{{ asset('home/images/news/lifestyle/health3.jpg') }}" alt=""></a>
                                                             </div>
                                                             <a class="post-cat" href="#">سلامتی</a>
                                                             <div class="post-content">
                                                                 <h2 class="post-title title-small">
-                                                                    <a href="single-post1.html">لورم ایپسوم متن
-                                                                        ساختگی با تولید سادگی نامفهوم از صنعت</a>
+                                                                    <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت</a>
                                                                 </h2>
                                                             </div><!-- Post content end -->
                                                         </div><!-- Post Block style end -->
@@ -118,16 +97,12 @@
                                                     <div class="col-md-3">
                                                         <div class="post-block-style clearfix">
                                                             <div class="post-thumb">
-                                                                <a href="single-post1.html"><img
-                                                                        class="img-responsive"
-                                                                        src="{{ asset('home/images/news/lifestyle/health4.jpg') }}"
-                                                                        alt=""></a>
+                                                                <a href="single-post1.html"><img class="img-responsive" src="{{ asset('home/images/news/lifestyle/health4.jpg') }}" alt=""></a>
                                                             </div>
                                                             <a class="post-cat" href="#">سلامتی</a>
                                                             <div class="post-content">
                                                                 <h2 class="post-title title-small">
-                                                                    <a href="single-post1.html">لورم ایپسوم متن
-                                                                        ساختگی با تولید سادگی نامفهوم از صنعت</a>
+                                                                    <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت</a>
                                                                 </h2>
                                                             </div><!-- Post content end -->
                                                         </div><!-- Post Block style end -->
@@ -140,16 +115,12 @@
                                                     <div class="col-md-3">
                                                         <div class="post-block-style clearfix">
                                                             <div class="post-thumb">
-                                                                <a href="single-post1.html"><img
-                                                                        class="img-responsive"
-                                                                        src="{{ asset('home/images/news/lifestyle/travel1.jpg') }}"
-                                                                        alt=""></a>
+                                                                <a href="single-post1.html"><img class="img-responsive" src="{{ asset('home/images/news/lifestyle/travel1.jpg') }}" alt=""></a>
                                                             </div>
                                                             <a class="post-cat" href="#">مسافرت</a>
                                                             <div class="post-content">
                                                                 <h2 class="post-title title-small">
-                                                                    <a href="single-post1.html">لورم ایپسوم متن
-                                                                        ساختگی با تولید سادگی نامفهوم از صنعت</a>
+                                                                    <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت</a>
                                                                 </h2>
                                                             </div><!-- Post content end -->
                                                         </div><!-- Post Block style end -->
@@ -157,16 +128,12 @@
                                                     <div class="col-md-3">
                                                         <div class="post-block-style clearfix">
                                                             <div class="post-thumb">
-                                                                <a href="single-post1.html"><img
-                                                                        class="img-responsive"
-                                                                        src="{{ asset('home/images/news/lifestyle/travel2.jpg') }}"
-                                                                        alt=""></a>
+                                                                <a href="single-post1.html"><img class="img-responsive" src="{{ asset('home/images/news/lifestyle/travel2.jpg') }}" alt=""></a>
                                                             </div>
                                                             <a class="post-cat" href="#">مسافرت</a>
                                                             <div class="post-content">
                                                                 <h2 class="post-title title-small">
-                                                                    <a href="single-post1.html">لورم ایپسوم متن
-                                                                        ساختگی با تولید سادگی نامفهوم از صنعت</a>
+                                                                    <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت</a>
                                                                 </h2>
                                                             </div><!-- Post content end -->
                                                         </div><!-- Post Block style end -->
@@ -174,16 +141,12 @@
                                                     <div class="col-md-3">
                                                         <div class="post-block-style clearfix">
                                                             <div class="post-thumb">
-                                                                <a href="single-post1.html"><img
-                                                                        class="img-responsive"
-                                                                        src="{{ asset('home/images/news/lifestyle/travel3.jpg') }}"
-                                                                        alt=""></a>
+                                                                <a href="single-post1.html"><img class="img-responsive" src="{{ asset('home/images/news/lifestyle/travel3.jpg') }}" alt=""></a>
                                                             </div>
                                                             <a class="post-cat" href="#">مسافرت</a>
                                                             <div class="post-content">
                                                                 <h2 class="post-title title-small">
-                                                                    <a href="single-post1.html">لورم ایپسوم متن
-                                                                        ساختگی با تولید سادگی نامفهوم از صنعت</a>
+                                                                    <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت</a>
                                                                 </h2>
                                                             </div><!-- Post content end -->
                                                         </div><!-- Post Block style end -->
@@ -191,16 +154,12 @@
                                                     <div class="col-md-3">
                                                         <div class="post-block-style clearfix">
                                                             <div class="post-thumb">
-                                                                <a href="single-post1.html"><img
-                                                                        class="img-responsive"
-                                                                        src="{{ asset('home/images/news/lifestyle/travel4.jpg') }}"
-                                                                        alt=""></a>
+                                                                <a href="single-post1.html"><img class="img-responsive" src="{{ asset('home/images/news/lifestyle/travel4.jpg') }}" alt=""></a>
                                                             </div>
                                                             <a class="post-cat" href="#">مسافرت</a>
                                                             <div class="post-content">
                                                                 <h2 class="post-title title-small">
-                                                                    <a href="single-post1.html">لورم ایپسوم متن
-                                                                        ساختگی با تولید سادگی نامفهوم از صنعت</a>
+                                                                    <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت</a>
                                                                 </h2>
                                                             </div><!-- Post content end -->
                                                         </div><!-- Post Block style end -->
@@ -214,16 +173,12 @@
                                                     <div class="col-md-3">
                                                         <div class="post-block-style clearfix">
                                                             <div class="post-thumb">
-                                                                <a href="single-post1.html"><img
-                                                                        class="img-responsive"
-                                                                        src="{{ asset('home/images/news/lifestyle/food1.jpg') }}"
-                                                                        alt=""></a>
+                                                                <a href="single-post1.html"><img class="img-responsive" src="{{ asset('home/images/news/lifestyle/food1.jpg') }}" alt=""></a>
                                                             </div>
                                                             <a class="post-cat" href="#">غذا</a>
                                                             <div class="post-content">
                                                                 <h2 class="post-title title-small">
-                                                                    <a href="single-post1.html">لورم ایپسوم متن
-                                                                        ساختگی با تولید سادگی نامفهوم از صنعت</a>
+                                                                    <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت</a>
                                                                 </h2>
                                                             </div><!-- Post content end -->
                                                         </div><!-- Post Block style end -->
@@ -231,16 +186,12 @@
                                                     <div class="col-md-3">
                                                         <div class="post-block-style clearfix">
                                                             <div class="post-thumb">
-                                                                <a href="single-post1.html"><img
-                                                                        class="img-responsive"
-                                                                        src="{{ asset('home/images/news/lifestyle/food2.jpg') }}"
-                                                                        alt=""></a>
+                                                                <a href="single-post1.html"><img class="img-responsive" src="{{ asset('home/images/news/lifestyle/food2.jpg') }}" alt=""></a>
                                                             </div>
                                                             <a class="post-cat" href="#">غذا</a>
                                                             <div class="post-content">
                                                                 <h2 class="post-title title-small">
-                                                                    <a href="single-post1.html">لورم ایپسوم متن
-                                                                        ساختگی با تولید سادگی نامفهوم از صنعت</a>
+                                                                    <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت</a>
                                                                 </h2>
                                                             </div><!-- Post content end -->
                                                         </div><!-- Post Block style end -->
@@ -248,16 +199,12 @@
                                                     <div class="col-md-3">
                                                         <div class="post-block-style clearfix">
                                                             <div class="post-thumb">
-                                                                <a href="single-post1.html"><img
-                                                                        class="img-responsive"
-                                                                        src="{{ asset('home/images/news/lifestyle/food3.jpg') }}"
-                                                                        alt=""></a>
+                                                                <a href="single-post1.html"><img class="img-responsive" src="{{ asset('home/images/news/lifestyle/food3.jpg') }}" alt=""></a>
                                                             </div>
                                                             <a class="post-cat" href="#">غذا</a>
                                                             <div class="post-content">
                                                                 <h2 class="post-title title-small">
-                                                                    <a href="single-post1.html">لورم ایپسوم متن
-                                                                        ساختگی با تولید سادگی نامفهوم از صنعت</a>
+                                                                    <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت</a>
                                                                 </h2>
                                                             </div><!-- Post content end -->
                                                         </div><!-- Post Block style end -->
@@ -265,16 +212,12 @@
                                                     <div class="col-md-3">
                                                         <div class="post-block-style clearfix">
                                                             <div class="post-thumb">
-                                                                <a href="single-post1.html"><img
-                                                                        class="img-responsive"
-                                                                        src="{{ asset('home/images/news/lifestyle/food4.jpg') }}"
-                                                                        alt=""></a>
+                                                                <a href="single-post1.html"><img class="img-responsive" src="{{ asset('home/images/news/lifestyle/food4.jpg') }}" alt=""></a>
                                                             </div>
                                                             <a class="post-cat" href="#">غذا</a>
                                                             <div class="post-content">
                                                                 <h2 class="post-title title-small">
-                                                                    <a href="single-post1.html">لورم ایپسوم متن
-                                                                        ساختگی با تولید سادگی نامفهوم از صنعت</a>
+                                                                    <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت</a>
                                                                 </h2>
                                                             </div><!-- Post content end -->
                                                         </div><!-- Post Block style end -->
@@ -287,24 +230,17 @@
                                 </div><!-- Mega menu end -->
                             </li><!-- Tab menu end -->
 
-                            <li>
-                                <a href="category-style2.html">تکنولوژی</a>
-                            </li>
-
+                            <!-- All Categories Without Parent -->
                             <li class="dropdown mega-dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">ویدئو <i
-                                        class="fa fa-angle-down"></i></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">ویدئو <i class="fa fa-angle-down"></i></a>
                                 <div class="dropdown-menu mega-menu-content hidden-xs hidden-sm clearfix">
                                     <div class="mega-menu-content-inner">
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <div class="post-block-style clearfix">
                                                     <div class="post-thumb">
-                                                        <img class="img-responsive"
-                                                             src="{{ asset('home/images/news/video/video4.jpg') }}"
-                                                             alt="">
-                                                        <a class="popup"
-                                                           href="https://www.youtube.com/embed/XhveHKJWnOQ?autoplay=1&amp;loop=1">
+                                                        <img class="img-responsive" src="{{ asset('home/images/news/video/video4.jpg') }}" alt="">
+                                                        <a class="popup" href="https://www.youtube.com/embed/XhveHKJWnOQ?autoplay=1&amp;loop=1">
                                                             <div class="video-icon">
                                                                 <i class="fa fa-play"></i>
                                                             </div>
@@ -312,8 +248,7 @@
                                                     </div><!-- Post thumb end -->
                                                     <div class="post-content">
                                                         <h2 class="post-title title-small">
-                                                            <a href="single-post1.html">لورم ایپسوم متن ساختگی با
-                                                                تولید سادگی نامفهوم از</a>
+                                                            <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از</a>
                                                         </h2>
                                                     </div><!-- Post content end -->
                                                 </div><!-- Post Block style end -->
@@ -322,11 +257,8 @@
                                             <div class="col-md-3">
                                                 <div class="post-block-style clearfix">
                                                     <div class="post-thumb">
-                                                        <img class="img-responsive"
-                                                             src="{{ asset('home/images/news/video/video3.jpg') }}"
-                                                             alt="">
-                                                        <a class="popup"
-                                                           href="https://www.youtube.com/embed/wJF5NXygL4k?autoplay=1&amp;loop=1">
+                                                        <img class="img-responsive" src="{{ asset('home/images/news/video/video3.jpg') }}" alt="">
+                                                        <a class="popup" href="https://www.youtube.com/embed/wJF5NXygL4k?autoplay=1&amp;loop=1">
                                                             <div class="video-icon">
                                                                 <i class="fa fa-play"></i>
                                                             </div>
@@ -334,8 +266,7 @@
                                                     </div><!-- Post thumb end -->
                                                     <div class="post-content">
                                                         <h2 class="post-title title-small">
-                                                            <a href="single-post1.html">لورم ایپسوم متن ساختگی با
-                                                                تولید سادگی نامفهوم از</a>
+                                                            <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از</a>
                                                         </h2>
                                                     </div><!-- Post content end -->
                                                 </div><!-- Post Block style end -->
@@ -344,11 +275,8 @@
                                             <div class="col-md-3">
                                                 <div class="post-block-style clearfix">
                                                     <div class="post-thumb">
-                                                        <img class="img-responsive"
-                                                             src="{{ asset('home/images/news/video/video2.jpg') }}"
-                                                             alt="">
-                                                        <a class="popup"
-                                                           href="https://www.youtube.com/embed/DQNDcxRo-2M?autoplay=1&amp;loop=1">
+                                                        <img class="img-responsive" src="{{ asset('home/images/news/video/video2.jpg') }}" alt="">
+                                                        <a class="popup" href="https://www.youtube.com/embed/DQNDcxRo-2M?autoplay=1&amp;loop=1">
                                                             <div class="video-icon">
                                                                 <i class="fa fa-play"></i>
                                                             </div>
@@ -356,8 +284,7 @@
                                                     </div><!-- Post thumb end -->
                                                     <div class="post-content">
                                                         <h2 class="post-title title-small">
-                                                            <a href="single-post1.html">لورم ایپسوم متن ساختگی با
-                                                                تولید سادگی نامفهوم</a>
+                                                            <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</a>
                                                         </h2>
                                                     </div><!-- Post content end -->
                                                 </div><!-- Post Block style end -->
@@ -365,11 +292,8 @@
                                             <div class="col-md-3">
                                                 <div class="post-block-style clearfix">
                                                     <div class="post-thumb">
-                                                        <img class="img-responsive"
-                                                             src="{{ asset('home/images/news/video/video1.jpg') }}"
-                                                             alt="">
-                                                        <a class="popup"
-                                                           href="https://www.youtube.com/embed/DQNDcxRo-2M?autoplay=1&amp;loop=1">
+                                                        <img class="img-responsive" src="{{ asset('home/images/news/video/video1.jpg') }}" alt="">
+                                                        <a class="popup" href="https://www.youtube.com/embed/DQNDcxRo-2M?autoplay=1&amp;loop=1">
                                                             <div class="video-icon">
                                                                 <i class="fa fa-play"></i>
                                                             </div>
@@ -377,8 +301,7 @@
                                                     </div><!-- Post thumb end -->
                                                     <div class="post-content">
                                                         <h2 class="post-title title-small">
-                                                            <a href="single-post1.html">لورم ایپسوم متن ساختگی با
-                                                                تولید سادگی نامفهوم از</a>
+                                                            <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از</a>
                                                         </h2>
                                                     </div><!-- Post content end -->
                                                 </div><!-- Post Block style end -->
@@ -389,14 +312,10 @@
                                 </div><!-- Mega menu content end -->
                             </li><!-- Video menu end -->
 
-                            <li>
-                                <a href="category-style4.html">مسافرت</a>
-                            </li>
-
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">ویژگی ها <i
-                                        class="fa fa-angle-down"></i></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">سایر دسته‌بندی‌ها <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu" role="menu">
+                                    <!-- All Categories Without Parent -->
                                     <li class="dropdown-submenu">
                                         <a href="#.">طرح های دسته ها</a>
                                         <ul class="dropdown-menu">
@@ -439,7 +358,20 @@
                                             <li><a href="contact.html">تماس</a></li>
                                         </ul>
                                     </li>
+
+                                    <!-- All Categories Without Parent -->
+                                    <li class="dropdown-submenu">
+                                        <a href="#">مشاهده بیشتر</a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li class="active"><a href="index.html">خانه 1</a></li>
+                                            <li><a href="index-2.html">خانه 2</a></li>
+                                            <li><a href="index-3.html">خانه 3</a></li>
+                                            <li><a href="index-4.html">خانه 4</a></li>
+                                            <li><a href="index-5.html">خانه 5</a></li>
+                                        </ul>
+                                    </li>
                                 </ul><!-- End dropdown -->
+
                             </li><!-- Features menu end -->
 
 
