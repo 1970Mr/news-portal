@@ -1307,11 +1307,11 @@ span.post-comment span {
 
 .logo {
 	/*padding: 28px 0;*/
-	padding: 7px 0 0;
+	padding: 13px;
 }
 
 .logo img{
-    width: 230px;
+    width: 270px;
 }
 
 /* header right */
@@ -2483,7 +2483,7 @@ ul.navbar-nav > li.mega-dropdown {
 }
 
 .footer ul li {
-	margin-bottom: 18px;
+	margin-bottom: 16px;
 }
 
 .footer ul li a {

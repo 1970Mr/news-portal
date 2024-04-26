@@ -48,13 +48,13 @@
             </div><!-- /.col-lg-3 -->
             <div class="col-lg-3 col-6">
                 <div class="stat-box use-purple shadow">
-                    <a href="{{ asset('admin/#') }}">
+                    <a>
                         <div class="stat">
                             <div class="counter-down" data-value="256"></div>
-                            <div class="h3">پیام</div>
+                            <div class="h3">بازدیدکنندگان</div>
                         </div><!-- /.stat -->
                         <div class="visual">
-                            <i class="icon-bubbles"></i>
+                            <i class="icon-eye"></i>
                         </div><!-- /.visual -->
                     </a>
                 </div><!-- /.stat-box -->
