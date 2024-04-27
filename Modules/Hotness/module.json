@@ -1,0 +1,11 @@
+{
+    "name": "Hotness",
+    "alias": "hotness",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Hotness\\App\\Providers\\HotnessServiceProvider"
+    ],
+    "files": []
+}

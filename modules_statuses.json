@@ -9,5 +9,6 @@
     "Tag": true,
     "FileManager": true,
     "Article": true,
-    "Profile": true
+    "Profile": true,
+    "Hotness": true
 }
