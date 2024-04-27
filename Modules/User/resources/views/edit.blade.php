@@ -80,10 +80,10 @@
                                     <div class="help-block"></div>
                                 </div>
                                 <div class="form-group col-12 text-center">
-                                    <img class="mb-2" src="{{ asset('storage/' . $user->picture->file_path) }}" alt="{{ $user->picture->alt_text }}" style="max-width: 300px; max-height:
+                                    <img class="mb-2" src="{{ asset('storage/' . $user->image->file_path) }}" alt="{{ $user->image->alt_text }}" style="max-width: 300px; max-height:
                                     300px">
                                     <div>
-                                        {{ asset('storage/' . $user->picture->file_path) }}
+                                        {{ asset('storage/' . $user->image->file_path) }}
                                     </div>
                                 </div>
                             </div>

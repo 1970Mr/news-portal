@@ -15,11 +15,11 @@ class ProfileService
     {
         $user = User::query()->find(auth()->id());
         $data = $request->validated();
-        $this->uploadImageDuringUpdate($request, $user, $data);
+        $this->uploadImageDuringUpdate($request, $user);
         return $user->update($data);
     }
 
-    private function uploadImageDuringUpdate(ProfileRequest $request, Model $user, array $data): void
+    private function uploadImageDuringUpdate(ProfileRequest $request, Model $user): void
     {
         if ($request->hasFile('picture')) {
             $this->imageService->destroyWithoutKeyConstraints($user->image);

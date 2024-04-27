@@ -60,9 +60,6 @@ class ImageService
         return $image->delete();
     }
 
-    /**
-     * @throws ImageDeleteException
-     */
     public function destroyWithoutKeyConstraints(Image $image): bool|null
     {
         Schema::disableForeignKeyConstraints();

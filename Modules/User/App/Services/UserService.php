@@ -18,8 +18,9 @@ class UserService
     {
         $data = $request->validated();
         $request->merge(['alt_text' => 'User profile picture']);
-        $data['picture_id'] = $this->imageService->store($request, 'picture')->id;
         $user = User::create($data);
+        $profile_picture = $this->imageService->store($request, 'picture');
+        $user->image()->save($profile_picture);
         if ($request->email_verification) {
             $user->markEmailAsVerified();
         }
@@ -28,7 +29,7 @@ class UserService
     public function update(UserUpdateRequest $request, User $user): void
     {
         $data = $request->validated();
-        $data = $this->uploadImageDuringUpdate($request, $user, $data);
+        $this->uploadImageDuringUpdate($request, $user);
         $user->update($data);
         $this->checkEmailAsVerified($request, $user);
     }
@@ -39,14 +40,14 @@ class UserService
         $user->delete();
     }
 
-    private function uploadImageDuringUpdate(UserUpdateRequest $request, User $user, array $data): array
+    private function uploadImageDuringUpdate(UserUpdateRequest $request, User $user): void
     {
         if ($request->hasFile('picture')) {
+            $this->imageService->destroyWithoutKeyConstraints($user->image);
             $request->merge(['alt_text' => 'User profile picture']);
-            $data['picture_id'] = $this->imageService->store($request, 'picture')->id;
-            $this->imageService->destroyWithoutKeyConstraints($user->picture);
+            $profile_picture = $this->imageService->store($request, 'picture');
+            $user->image()->save($profile_picture);
         }
-        return $data;
     }
 
     private function checkEmailAsVerified(UserUpdateRequest $request, User $user): void
