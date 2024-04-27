@@ -28,7 +28,7 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="main-form" role="form" action="{{ route('category.update', $category->id) }}" method="post">
+                    <form id="main-form" role="form" action="{{ route('category.update', $category->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <x-common-error-messages />
@@ -54,6 +54,29 @@
                                         <option value="{{ $parentCategory->id }}" @if($parentCategory->id === $category->parent_id) selected @endif>{{ $parentCategory->name }}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                            <div class="col-12 d-flex flex-column align-items-center">
+                                <div class="form-group relative col-lg-6">
+                                    <label>تصویر شاخص <small>(ضروری)</small></label>
+                                    <div class="input-group round">
+                                        <input type="text" class="form-control file-input" placeholder="برای آپلود کلیک کنید">
+                                        <span class="input-group-btn">
+                                        <button type="button" class="btn btn-success">
+                                            <i class="icon-picture"></i>
+                                            آپلود تصویر</button>
+                                    </span>
+                                    </div>
+                                    <input type="file" class="form-control" name="image">
+                                    <div class="help-block"></div>
+                                </div>
+                                <div class="form-group col-12 text-center">
+                                    <img class="mb-2" src="{{ asset('storage/' . $category->image->file_path) }}" alt="{{ $category->image->alt_text }}" style="max-width: 300px;
+                                    max-height:
+                                    300px">
+                                    <div>
+                                        {{ asset('storage/' . $category->image->file_path) }}
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group text-center">
                                 <input id="status" class="form-control" name="status" type="checkbox" @if($category->status) checked @endif>

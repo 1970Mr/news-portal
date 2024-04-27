@@ -48,6 +48,7 @@ class CategoryController extends Controller
     public function update(CategoryRequest $request, Category $category): RedirectResponse
     {
         $category->update($request->validated());
+        $this->uploadImageDuringUpdate($request, $category);
         return to_route('category.index')->with('success', __('entity_edited', ['entity' => __('category')]));
     }
 
@@ -56,4 +57,13 @@ class CategoryController extends Controller
         $category->delete();
         return to_route('category.index')->with('success', __('entity_deleted', ['entity' => __('category')]));
     }
+    private function uploadImageDuringUpdate(CategoryRequest $request, Category $article): void
+    {
+        if ($request->hasFile('image')) {
+            $this->imageService->destroyWithoutKeyConstraints($article->image);
+            $image = $this->imageService->store($request);
+            $article->image()->save($image);
+        }
+    }
+
 }
