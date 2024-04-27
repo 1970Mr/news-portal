@@ -3,7 +3,7 @@
     <div class="header-right">
         <a href="{{ route('panel.index') }}" class="logo-con">
             <img src="{{ asset('admin/assets/images/logo.png') }}" class="img-responsive center-block"
-                 alt="لوگو قالب مدیران">
+                 alt="لوگو سایت خبری">
         </a>
     </div><!-- /.header-right -->
     <div class="header-left">
@@ -127,7 +127,7 @@
 
                 <li class="dropdown dropdown-user">
                     <a class="dropdown-toggle dropdown-hove cursor-pointer d-flex align-items-center gap-2" data-bs-toggle="dropdown">
-                        <img src="{{ asset('storage/' . $currentUser->picture->file_path) }}" alt="{{ $currentUser->picture->alt_text }}"
+                        <img src="{{ asset('storage/' . $currentUser->image->file_path) }}" alt="{{ $currentUser->image->alt_text }}"
                              class="object-fit-cover img-circle" style="width: 45px; height: 45px">
                         <span>{{ $currentUser->name }}</span>
                         <i class="icon-arrow-down"></i>

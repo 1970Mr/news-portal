@@ -53,15 +53,16 @@ class ImageService
      */
     public function destroy(Image $image): bool|null
     {
-        try {
-            Gate::authorize('destroy', $image);
-            return $image->delete();
-        } catch (QueryException $e) {
-            logger($e->getMessage());
+        Gate::authorize('destroy', $image);
+        if ($image->imageable()->exists()) {
             throw new ImageDeleteException(__('This image cannot be deleted! Because it has been used elsewhere.'));
         }
+        return $image->delete();
     }
 
+    /**
+     * @throws ImageDeleteException
+     */
     public function destroyWithoutKeyConstraints(Image $image): bool|null
     {
         Schema::disableForeignKeyConstraints();

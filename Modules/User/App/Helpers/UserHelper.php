@@ -41,8 +41,7 @@ class UserHelper
             $attributes->toArray(),
         );
         $profile_picture = self::createDefaultProfilePicture($user->id);
-        $user->picture_id = $profile_picture->id;
-        $user->save();
+        $user->image()->save($profile_picture);
         return $user;
     }
 

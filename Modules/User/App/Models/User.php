@@ -5,20 +5,19 @@ namespace Modules\User\App\Models;
  use Illuminate\Contracts\Auth\MustVerifyEmail;
  use Illuminate\Database\Eloquent\Casts\Attribute;
  use Illuminate\Database\Eloquent\Factories\HasFactory;
- use Illuminate\Database\Eloquent\Relations\BelongsTo;
  use Illuminate\Database\Eloquent\SoftDeletes;
  use Illuminate\Foundation\Auth\User as Authenticatable;
  use Illuminate\Notifications\Notifiable;
  use Illuminate\Support\Collection;
  use Laravel\Sanctum\HasApiTokens;
- use Modules\FileManager\App\Models\Image;
+ use Modules\FileManager\App\Traits\HasImage;
  use Modules\Role\App\Models\Role;
  use Modules\User\Database\Factories\UserFactory;
  use Spatie\Permission\Traits\HasRoles;
 
  class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles, SoftDeletes;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, SoftDeletes, HasImage;
 
     /**
      * The attributes that are mass assignable.
@@ -29,7 +28,6 @@ namespace Modules\User\App\Models;
         'name',
         'email',
         'password',
-        'picture_id',
     ];
 
     /**
@@ -79,11 +77,6 @@ namespace Modules\User\App\Models;
      {
          return $this->roles()->first()->name === Role::ADMIN ||
              $this->hasAllPermissions(config('permissions_list.SUPER_ADMIN', false));
-     }
-
-     public function picture(): BelongsTo
-     {
-         return $this->belongsTo(Image::class, 'picture_id');
      }
 
      public function role(): \Spatie\Permission\Models\Role

@@ -19,8 +19,7 @@ class RegisterService
             'password' => Hash::make($request->get('password')),
         ]);
         $profile_picture = UserHelper::createDefaultProfilePicture($user->id);
-        $user->picture_id = $profile_picture->id;
-        $user->save();
+        $user->image()->save($profile_picture);
         return $user;
     }
 

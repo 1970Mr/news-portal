@@ -11,21 +11,21 @@ class ProfileService
 {
     public function __construct(private readonly ImageService $imageService) {}
 
-    public function update(ProfileRequest $request)
+    public function update(ProfileRequest $request): bool
     {
         $user = User::query()->find(auth()->id());
         $data = $request->validated();
-        $data = $this->uploadImageDuringUpdate($request, $user, $data);
-        $user->update($data);
+        $this->uploadImageDuringUpdate($request, $user, $data);
+        return $user->update($data);
     }
 
-    private function uploadImageDuringUpdate(ProfileRequest $request, Model $user, array $data): array
+    private function uploadImageDuringUpdate(ProfileRequest $request, Model $user, array $data): void
     {
         if ($request->hasFile('picture')) {
+            $this->imageService->destroyWithoutKeyConstraints($user->image);
             $request->merge(['alt_text' => 'User profile picture']);
-            $data['picture_id'] = $this->imageService->store($request, 'picture')->id;
-            $this->imageService->destroyWithoutKeyConstraints($user->picture);
+            $profile_picture = $this->imageService->store($request, 'picture');
+            $user->image()->save($profile_picture);
         }
-        return $data;
     }
 }

@@ -43,9 +43,9 @@ class ArticleService
     private function uploadImageDuringUpdate(ArticleRequest $request, Article $article): void
     {
         if ($request->hasFile('featured_image')) {
+            $this->imageService->destroyWithoutKeyConstraints($article->image);
             $image = $this->imageService->store($request, 'featured_image');
             $article->image()->save($image);
-            $this->imageService->destroyWithoutKeyConstraints($article->image);
         }
     }
 }
