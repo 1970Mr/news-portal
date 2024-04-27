@@ -7,10 +7,11 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Modules\Category\App\Http\Requests\CategoryRequest;
 use Modules\Category\App\Models\Category;
+use Modules\FileManager\App\Services\ImageService;
 
 class CategoryController extends Controller
 {
-    public function __construct()
+    public function __construct(private readonly ImageService $imageService)
     {
         $this->middleware('can:' . config('permissions_list.CATEGORY_INDEX', false))->only('index');
         $this->middleware('can:' . config('permissions_list.CATEGORY_STORE', false))->only('store');
@@ -20,7 +21,7 @@ class CategoryController extends Controller
 
     public function index(): View
     {
-        $categories = Category::latest()->paginate(10);
+        $categories = Category::with('image')->has('image')->latest()->paginate(10);
         return view('category::index', compact('categories'));
     }
 
@@ -32,7 +33,9 @@ class CategoryController extends Controller
 
     public function store(CategoryRequest $request): RedirectResponse
     {
-        Category::create($request->validated());
+        $category = Category::create($request->validated());
+        $image = $this->imageService->store($request, altText: $category->name);
+        $category->image()->save($image);
         return to_route('category.index')->with('success', __('entity_created', ['entity' => __('category')]));
     }
 

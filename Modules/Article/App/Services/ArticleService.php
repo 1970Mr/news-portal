@@ -16,9 +16,9 @@ class ArticleService
     {
         $data = $request->validated();
         $data['user_id'] = auth()->id();
-        $image = $this->imageService->store($request, 'featured_image');
         $article = Article::query()->create($data);
         $article->tags()->sync($request->get('tag_ids', []));
+        $image = $this->imageService->store($request, altText: $article->title);
         $article->image()->save($image);
         return $article;
     }
@@ -42,9 +42,9 @@ class ArticleService
 
     private function uploadImageDuringUpdate(ArticleRequest $request, Article $article): void
     {
-        if ($request->hasFile('featured_image')) {
+        if ($request->hasFile('image')) {
             $this->imageService->destroyWithoutKeyConstraints($article->image);
-            $image = $this->imageService->store($request, 'featured_image');
+            $image = $this->imageService->store($request);
             $article->image()->save($image);
         }
     }

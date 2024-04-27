@@ -28,7 +28,7 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="main-form" role="form" action="{{ route('category.store') }}" method="post">
+                    <form id="main-form" role="form" action="{{ route('category.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <x-common-error-messages />
 
@@ -42,8 +42,8 @@
                                 <input id="slug" class="form-control" name="slug" type="text" required value="{{ old('slug') }}">
                             </div>
                             <div class="form-group col-lg-6">
-                                <label for="description">توضیحات </label>
-                                <input id="description" class="form-control" name="description" type="text" value="{{ old('description') }}">
+                                <label for="description">توضیحات <small>(ضروری)</small></label>
+                                <input id="description" class="form-control" name="description" type="text" required value="{{ old('description') }}">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="parent_id">دسته‌بندی والد</label>
@@ -53,6 +53,19 @@
                                         <option value="{{ $category->id }}" @if(old('parent_id') === $category->id) selected @endif>{{ $category->name }}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                            <div class="form-group relative col-lg-6">
+                                <label>تصویر شاخص <small>(ضروری)</small></label>
+                                <div class="input-group round">
+                                    <input type="text" class="form-control file-input" placeholder="برای آپلود کلیک کنید">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-success">
+                                            <i class="icon-picture"></i>
+                                            آپلود تصویر</button>
+                                    </span>
+                                </div><!-- /.input-group -->
+                                <input type="file" class="form-control" name="image" required>
+                                <div class="help-block"></div>
                             </div>
                             <div class="form-group text-center">
                                 <input id="status" class="form-control" name="status" type="checkbox" @if(old('status')) checked @endif>

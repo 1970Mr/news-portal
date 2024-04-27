@@ -120,7 +120,7 @@
                                 <tr>
                                     <td>{{ $article->id }}</td>
                                     <td>
-                                        <img src="{{ asset('storage/' . $article->featured_image->file_path) }}" alt="{{ $article->featured_image->alt_text }}" width="100px"
+                                        <img src="{{ asset('storage/' . $article->image->file_path) }}" alt="{{ $article->image->alt_text }}" width="100px"
                                              style="max-height: 90px">
                                     </td>
                                     <td>{{ $article->title }}</td>

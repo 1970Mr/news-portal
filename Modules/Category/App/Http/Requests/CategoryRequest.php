@@ -11,17 +11,20 @@ class CategoryRequest extends FormRequest
      */
     public function rules(): array
     {
+        $imageRules = '|image|max:5000';
         $rules = [
             'name' => 'required|min:2|max:100|unique:categories,name',
             'slug' => 'required|unique:categories,slug',
-            'description' => 'nullable|min:10',
+            'description' => 'required|min:10',
             'parent_id' => 'nullable|numeric',
+            'image' => 'required' . $imageRules,
             'status' => 'required|boolean',
         ];
 
         if (strtolower($this->method()) === 'put') {
             $rules['name'] .= ',' .  $this->route('category')->id;
             $rules['slug'] .= ',' .  $this->route('category')->id;
+            $rules['image'] = 'nullable' . $imageRules;
         }
 
         return $rules;

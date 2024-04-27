@@ -94,7 +94,7 @@
                                             آپلود تصویر</button>
                                     </span>
                                     </div>
-                                    <input type="file" class="form-control" name="featured_image">
+                                    <input type="file" class="form-control" name="image">
                                     <div class="help-block"></div>
                                 </div>
                                 <div class="form-group col-12 text-center">

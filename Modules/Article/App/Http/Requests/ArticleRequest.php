@@ -18,14 +18,14 @@ class ArticleRequest extends FormRequest
             'published_at' => 'required|date',
             'editor_choice' => 'required|boolean',
             'status' => 'required|boolean',
-            'featured_image' => 'required' . $imageRules,
+            'image' => 'required' . $imageRules,
             'category_id' => 'required|exists:categories,id',
             'tag_ids' => 'nullable|array',
             'tag_ids.*' => 'nullable|exists:tags,id',
         ];
 
         if (strtolower($this->method()) === 'put') {
-            $rules['featured_image'] = 'nullable' . $imageRules;
+            $rules['image'] = 'nullable' . $imageRules;
             $rules['slug'] .= ',' . $this->route('article')->id;
         }
 

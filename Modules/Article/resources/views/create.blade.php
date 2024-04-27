@@ -67,7 +67,7 @@
                                             آپلود تصویر</button>
                                     </span>
                                 </div><!-- /.input-group -->
-                                <input type="file" class="form-control" name="featured_image" required>
+                                <input type="file" class="form-control" name="image" required>
                                 <div class="help-block"></div>
                             </div>
                             <div class="form-group col-lg-6">
