@@ -63,7 +63,7 @@
                                 <select id="category_id" class="form-control select2" name="category_id">
                                     <option value="">انتخاب دسته‌بندی</option>
                                     @foreach($categories as $category)
-                                        <option value="{{ $category->id }}" @if( (int)old('category_id', $article->category_id) === $category->id )
+                                        <option value="{{ $category->id }}" @if( (int) old('category_id', $article->category_id) === $category->id )
                                             selected
                                             @endif>{{
                                         $category->name
@@ -73,7 +73,7 @@
                             </div>
 
                             <div class="form-group col-12 d-flex justify-content-center">
-                                <div class="col-6">
+                                <div class="col-12 col-md-6">
                                     <label for="tag_ids">تگ</label>
                                     <select id="tag_ids" class="form-control select2" name="tag_ids[]" multiple>
                                         @foreach($tags as $tag)
@@ -112,13 +112,17 @@
                                 <div id="editor"></div>
                                 <input type="hidden" id="body" name="body" value="{{ old('body', $article->body) }}">
                             </div>
-                            <div class="col-6 row form-group">
-                                <div class="text-center col-6">
+                            <div class="col-12 col-md-6 row form-group">
+                                <div class="text-center col-4">
                                     {{-- Using title because status is not always --}}
                                     <input id="editor_choice" class="form-control" name="editor_choice" type="checkbox" @if(old('editor_choice') || (!old('title') && $article->editor_choice) ) checked @endif>
                                     <label for="editor_choice">انتخاب سردبیر</label>
                                 </div>
-                                <div class="text-center col-6">
+                                <div class="text-center col-4">
+                                    <input id="hotness" class="form-control" name="hotness" type="checkbox" @if(old('hotness') || (!old('title') && $article->isHot()) ) checked @endif>
+                                    <label for="hotness">خبر داغ</label>
+                                </div>
+                                <div class="text-center col-4">
                                     <input id="status" class="form-control" name="status" type="checkbox" @if(old('status') || (!old('title') && $article->status) ) checked @endif>
                                     <label for="status">وضعیت</label>
                                 </div>

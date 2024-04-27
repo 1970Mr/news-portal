@@ -31,6 +31,7 @@ class ArticleService
         $result = $article->update($data);
         $this->imageService->uploadImageDuringUpdate($request, $article, $article->title);
         $article->tags()->sync($request->get('tag_ids', []));
+        $article->hotness()->update(['is_hot' => $request->hotness]);
         return $result;
     }
 
@@ -38,6 +39,7 @@ class ArticleService
     {
         $this->imageService->destroyWithoutKeyConstraints($article->image);
         $article->tags()->detach();
+        $article->hotness()->delete();
         return $article->delete();
     }
 }
