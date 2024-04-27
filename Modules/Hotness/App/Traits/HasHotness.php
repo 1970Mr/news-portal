@@ -13,13 +13,8 @@ trait HasHotness
         return $this->morphOne(Hotness::class, 'hotnessable');
     }
 
-    public function hotnesses(): MorphMany
-    {
-        return $this->morphMany(Hotness::class, 'hotnessable');
-    }
-
     public function isHot(): bool
     {
-        return $this->
+        return (bool) $this->hotness()->is_hot;
     }
 }
