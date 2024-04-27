@@ -98,10 +98,11 @@
                                     <div class="help-block"></div>
                                 </div>
                                 <div class="form-group col-12 text-center">
-                                    <img class="mb-2" src="{{ asset('storage/' . $article->featured_image->file_path) }}" alt="{{ $article->featured_image->alt_text }}" style="max-width: 300px; max-height:
+                                    <img class="mb-2" src="{{ asset('storage/' . $article->image->file_path) }}" alt="{{ $article->image->alt_text }}" style="max-width: 300px;
+                                    max-height:
                                     300px">
                                     <div>
-                                        {{ asset('storage/' . $article->featured_image->file_path) }}
+                                        {{ asset('storage/' . $article->image->file_path) }}
                                     </div>
                                 </div>
                             </div>
@@ -111,10 +112,16 @@
                                 <div id="editor"></div>
                                 <input type="hidden" id="body" name="body" value="{{ old('body', $article->body) }}">
                             </div>
-                            <div class="form-group text-center">
-                                {{-- Using title because status is not always --}}
-                                <input id="status" class="form-control" name="status" type="checkbox" @if(old('status') || (!old('title') && $article->status) ) checked @endif>
-                                <label for="status">وضعیت</label>
+                            <div class="col-6 row form-group">
+                                <div class="text-center col-6">
+                                    {{-- Using title because status is not always --}}
+                                    <input id="editor_choice" class="form-control" name="editor_choice" type="checkbox" @if(old('editor_choice') || (!old('title') && $article->editor_choice) ) checked @endif>
+                                    <label for="editor_choice">انتخاب سردبیر</label>
+                                </div>
+                                <div class="text-center col-6">
+                                    <input id="status" class="form-control" name="status" type="checkbox" @if(old('status') || (!old('title') && $article->status) ) checked @endif>
+                                    <label for="status">وضعیت</label>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-6 col-sm-offset-4 mx-auto">
