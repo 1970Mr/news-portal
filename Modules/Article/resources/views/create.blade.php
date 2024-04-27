@@ -81,7 +81,7 @@
                                 </select>
                             </div>
                             <div class="form-group col-12 d-flex justify-content-center">
-                                <div class="col-6">
+                                <div class="col-12 col-md-6">
                                     <label for="tag_ids">تگ</label>
                                     <select id="tag_ids" class="form-control select2" name="tag_ids[]" multiple>
                                         @foreach($tags as $tag)
@@ -96,14 +96,18 @@
                                 <div id="editor"></div>
                                 <input type="hidden" id="body" name="body" value="{{ old('body') }}">
                             </div>
-                            <div class="col-6 row form-group">
-                                <div class="text-center col-6">
+                            <div class="col-12 col-md-6 row form-group">
+                                <div class="text-center col-4">
                                     <input id="editor_choice" class="form-control" name="editor_choice" type="checkbox" @if(old('editor_choice')) checked @endif>
                                     <label for="editor_choice">انتخاب سردبیر</label>
                                 </div>
-                                <div class="text-center col-6">
+                                <div class="text-center col-4">
+                                    <input id="hotness" class="form-control" name="hotness" type="checkbox" @if(old('hotness')) checked @endif>
+                                    <label for="hotness">خبر داغ</label>
+                                </div>
+                                <div class="text-center col-4">
                                     <input id="status" class="form-control" name="status" type="checkbox" @if(old('status')) checked @endif>
-                                    <label for="status">وضعیت</label>
+                                    <label for="status">وضعیت انتشار</label>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -216,6 +220,10 @@
             border-radius: 5px;
             border: gray solid 1px;
             box-shadow: 1px 1px #dee2e6;
+        }
+
+        label {
+            white-space: nowrap;
         }
     </style>
 @endpush

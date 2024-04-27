@@ -18,12 +18,6 @@
     "email": "ایمیل",
     "password": "رمز عبور",
     "This action is unauthorized.": "این اقدام برای شما غیر مجاز است",
-    "entity_required": "فیلد :entity الزامی است.",
-    "alt_text": "متن جایگزین",
-    "news_text": "متن خبر",
     "This image cannot be deleted! Because it has been used elsewhere.": "این تصویر قابل حذف نیست! زیرا در جایی از آن استفاده شده است.",
-    "new_password": "تکرار رمز عبور",
-    "Password incorrect.": "رمز عبور اشتباه است.",
-    "The new password confirmation does not match.": "رمز عبور جدید با فیلد تکرار مطابقت ندارد.",
-    "The :attribute must be at least :min characters.": ":attribute نباید کمتر از :min کاراکتر داشته باشد."
+    "Password incorrect.": "رمز عبور اشتباه است."
 }

@@ -26,10 +26,10 @@ class ImageRequest extends FormRequest
         ]);
     }
 
-    public function messages(): array
+    public function attributes(): array
     {
         return [
-            'alt_text.required' => __('entity_required', ['entity' => __('alt_text')])
+            'alt_text' => __('common::attributes.alt_text'),
         ];
     }
 

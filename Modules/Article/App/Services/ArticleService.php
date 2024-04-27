@@ -20,6 +20,7 @@ class ArticleService
         $article->tags()->sync($request->get('tag_ids', []));
         $image = $this->imageService->store($request, altText: $article->title);
         $article->image()->save($image);
+        $article->hotness()->create(['is_hot' => $request->hotness]);
         return $article;
     }
 

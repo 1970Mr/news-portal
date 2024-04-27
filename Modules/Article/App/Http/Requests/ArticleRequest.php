@@ -16,12 +16,13 @@ class ArticleRequest extends FormRequest
             'keywords' => 'required|string',
             'body' => 'required|string',
             'published_at' => 'required|date',
-            'editor_choice' => 'required|boolean',
-            'status' => 'required|boolean',
             'image' => 'required' . $imageRules,
             'category_id' => 'required|exists:categories,id',
             'tag_ids' => 'nullable|array',
             'tag_ids.*' => 'nullable|exists:tags,id',
+            'editor_choice' => 'required|boolean',
+            'status' => 'required|boolean',
+            'hotness' => 'required|bool',
         ];
 
         if (strtolower($this->method()) === 'put') {
@@ -37,13 +38,16 @@ class ArticleRequest extends FormRequest
         $this->merge([
             'editor_choice' => (bool) $this->editor_choice,
             'status' => (bool) $this->status,
+            'hotness' => (bool) $this->hotness,
         ]);
     }
 
-    public function messages(): array
+    public function attributes(): array
     {
         return [
-            'body.required' => __('entity_required', ['entity' => __('news_text')])
+            'category_id' => __('category'),
+            'hotness' => __('common::attributes.hotness'),
+            'body' => __('common::attributes.news_text'),
         ];
     }
 

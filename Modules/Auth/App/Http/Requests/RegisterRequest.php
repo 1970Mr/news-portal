@@ -29,12 +29,10 @@ class RegisterRequest extends FormRequest
         ];
     }
 
-    public function messages(): array
+    public function attributes(): array
     {
         return [
-            'agree' => [
-                'required' => __('فیلد موافقت با قوانین و مقررات سایت الزامی است')
-            ],
+            'agree' => __('common::attributes.agree'),
         ];
     }
 }

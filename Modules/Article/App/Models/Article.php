@@ -13,12 +13,13 @@ use Illuminate\Support\Str;
 use Modules\Category\App\Models\Category;
 use Modules\FileManager\App\Models\Image;
 use Modules\FileManager\App\Traits\HasImage;
+use Modules\Hotness\App\Traits\HasHotness;
 use Modules\Tag\App\Models\Tag;
 use Modules\User\App\Models\User;
 
 class Article extends Model
 {
-    use HasFactory, HasImage;
+    use HasFactory, HasImage, HasHotness;
 
     protected $fillable = [
         'title',

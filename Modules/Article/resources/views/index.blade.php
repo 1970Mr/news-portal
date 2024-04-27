@@ -54,6 +54,7 @@
                                 <th>تاریخ انتشار</th>
                                 <th>تاریخ ایجاد</th>
                                 <th>انتخاب سردبیر</th>
+                                <th>خبر داغ</th>
                                 <th>وضعیت</th>
                                 @canany([config('permissions_list.ARTICLE_UPDATE'), config('permissions_list.ARTICLE_DESTROY')])
                                     <th>عملیات</th>
@@ -77,6 +78,7 @@
                                     <td class="ltr text-right created-at">{{ jalalian()->forge($article->published_at)->format(config('common.datetime_format')) }}</td>
                                     <td class="ltr text-right created-at">{{ jalalian()->forge($article->created_at)->format(config('common.datetime_format')) }}</td>
                                     <td class="{{ status_class($article->editor_choice) }}">{{ status_message($article->editor_choice) }}</td>
+                                    <td class="{{ status_class($article->isHot()) }}">{{ status_message($article->isHot()) }}</td>
                                     <td class="{{ status_class($article->status) }}">{{ status_message($article->status) }}</td>
                                     @canany([config('permissions_list.ARTICLE_UPDATE'), config('permissions_list.ARTICLE_DESTROY')])
                                         <td>
