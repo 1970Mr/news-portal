@@ -19,7 +19,7 @@ class UserService
         $data = $request->validated();
         $request->merge(['alt_text' => 'User profile picture']);
         $user = User::create($data);
-        $profile_picture = $this->imageService->store($request, 'picture');
+        $profile_picture = $this->imageService->store($request, 'picture', $user->name);
         $user->image()->save($profile_picture);
         if ($request->email_verification) {
             $user->markEmailAsVerified();
@@ -29,7 +29,7 @@ class UserService
     public function update(UserUpdateRequest $request, User $user): void
     {
         $data = $request->validated();
-        $this->uploadImageDuringUpdate($request, $user);
+        $this->imageService->uploadImageDuringUpdate($request, $user, $user->name);
         $user->update($data);
         $this->checkEmailAsVerified($request, $user);
     }
@@ -38,16 +38,6 @@ class UserService
     {
         Gate::authorize('delete', $user);
         $user->delete();
-    }
-
-    private function uploadImageDuringUpdate(UserUpdateRequest $request, User $user): void
-    {
-        if ($request->hasFile('picture')) {
-            $this->imageService->destroyWithoutKeyConstraints($user->image);
-            $request->merge(['alt_text' => 'User profile picture']);
-            $profile_picture = $this->imageService->store($request, 'picture');
-            $user->image()->save($profile_picture);
-        }
     }
 
     private function checkEmailAsVerified(UserUpdateRequest $request, User $user): void

@@ -30,9 +30,8 @@ class ImageService
     {
 //        Gate::authorize('store', Image::class);
         $data['file_path'] = FileManagerService::upload( $request->file($fileName) );
+        $data['alt_text'] = $request->get('alt_text', $altText);
         $data['user_id'] = auth()->id();
-        $altText = $request->get('alt_text', $altText);
-        $data['alt_text'] = $altText;
         return Image::query()->create($data);
     }
 
@@ -100,5 +99,14 @@ class ImageService
         $query = Image::query()->latest();
         $query = $this->setPermissionsFilter($query);
         return $this->setFilters($request, $query);
+    }
+
+    public function uploadImageDuringUpdate(Request $request, Model $model, $altText = 'Default alt text'): void
+    {
+        if ($request->hasFile('image')) {
+            $this->destroyWithoutKeyConstraints($model->image);
+            $image = $this->store($request, altText: $altText);
+            $model->image()->save($image);
+        }
     }
 }

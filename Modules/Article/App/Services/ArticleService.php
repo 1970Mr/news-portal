@@ -28,7 +28,7 @@ class ArticleService
         $data = $request->validated();
         $data['user_id'] = auth()->id();
         $result = $article->update($data);
-        $this->uploadImageDuringUpdate($request, $article);
+        $this->imageService->uploadImageDuringUpdate($request, $article, $article->title);
         $article->tags()->sync($request->get('tag_ids', []));
         return $result;
     }
@@ -38,14 +38,5 @@ class ArticleService
         $this->imageService->destroyWithoutKeyConstraints($article->image);
         $article->tags()->detach();
         return $article->delete();
-    }
-
-    private function uploadImageDuringUpdate(ArticleRequest $request, Article $article): void
-    {
-        if ($request->hasFile('image')) {
-            $this->imageService->destroyWithoutKeyConstraints($article->image);
-            $image = $this->imageService->store($request);
-            $article->image()->save($image);
-        }
     }
 }

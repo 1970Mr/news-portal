@@ -15,17 +15,7 @@ class ProfileService
     {
         $user = User::query()->find(auth()->id());
         $data = $request->validated();
-        $this->uploadImageDuringUpdate($request, $user);
+        $this->imageService->uploadImageDuringUpdate($request, $user, $user->name);
         return $user->update($data);
-    }
-
-    private function uploadImageDuringUpdate(ProfileRequest $request, Model $user): void
-    {
-        if ($request->hasFile('picture')) {
-            $this->imageService->destroyWithoutKeyConstraints($user->image);
-            $request->merge(['alt_text' => 'User profile picture']);
-            $profile_picture = $this->imageService->store($request, 'picture');
-            $user->image()->save($profile_picture);
-        }
     }
 }
