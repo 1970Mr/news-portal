@@ -16,6 +16,7 @@ class ArticleRequest extends FormRequest
             'keywords' => 'required|string',
             'body' => 'required|string',
             'published_at' => 'required|date',
+            'editor_choice' => 'required|boolean',
             'status' => 'required|boolean',
             'featured_image' => 'required' . $imageRules,
             'category_id' => 'required|exists:categories,id',
@@ -34,6 +35,7 @@ class ArticleRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge([
+            'editor_choice' => (bool) $this->editor_choice,
             'status' => (bool) $this->status,
         ]);
     }

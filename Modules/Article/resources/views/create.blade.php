@@ -96,9 +96,15 @@
                                 <div id="editor"></div>
                                 <input type="hidden" id="body" name="body" value="{{ old('body') }}">
                             </div>
-                            <div class="form-group text-center">
-                                <input id="status" class="form-control" name="status" type="checkbox" @if(old('status')) checked @endif>
-                                <label for="status">وضعیت</label>
+                            <div class="col-6 row form-group">
+                                <div class="text-center col-6">
+                                    <input id="editor_choice" class="form-control" name="editor_choice" type="checkbox" @if(old('editor_choice')) checked @endif>
+                                    <label for="editor_choice">انتخاب سردبیر</label>
+                                </div>
+                                <div class="text-center col-6">
+                                    <input id="status" class="form-control" name="status" type="checkbox" @if(old('status')) checked @endif>
+                                    <label for="status">وضعیت</label>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-6 col-sm-offset-4 mx-auto">

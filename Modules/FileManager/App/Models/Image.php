@@ -6,17 +6,21 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Modules\FileManager\App\Traits\HasImage;
 use Modules\User\App\Models\User;
 
 class Image extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
         'file_path',
         'alt_text',
         'user_id',
+        'imageable_id',
+        'imageable_type',
     ];
+
+    use HasFactory;
 
     protected $appends = ['user_name'];
 
@@ -57,5 +61,10 @@ class Image extends Model
     public function getUri(): string
     {
         return '/storage/' . $this->file_path;
+    }
+
+    public function imageable(): MorphTo
+    {
+        return $this->morphTo();
     }
 }

@@ -7,16 +7,18 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Str;
 use Modules\Category\App\Models\Category;
 use Modules\FileManager\App\Models\Image;
+use Modules\FileManager\App\Traits\HasImage;
 use Modules\Tag\App\Models\Tag;
 use Modules\User\App\Models\User;
 
 class Article extends Model
 {
-    use HasFactory;
+    use HasFactory, HasImage;
 
     protected $fillable = [
         'title',
@@ -25,8 +27,8 @@ class Article extends Model
         'keywords',
         'body',
         'published_at',
+        'editor_choice',
         'status',
-        'featured_image_id',
         'category_id',
         'user_id',
     ];
@@ -46,11 +48,6 @@ class Article extends Model
     public function scopePublished(Builder $query): void
     {
         $query->where('published_at', '<=', now());
-    }
-
-    public function featured_image(): BelongsTo
-    {
-        return $this->belongsTo(Image::class, 'featured_image_id');
     }
 
     public function category(): BelongsTo

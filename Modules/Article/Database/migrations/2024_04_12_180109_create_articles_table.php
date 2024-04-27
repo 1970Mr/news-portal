@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('keywords');
             $table->longText('body');
             $table->timestamp('published_at');
-            $table->boolean('status');
-            $table->foreignId('featured_image_id')->constrained('images');
+            $table->boolean('editor_choice')->default(false);
+            $table->boolean('status')->default(false);
             $table->foreignId('category_id')->constrained('categories');
             $table->foreignId('user_id')->constrained('users');
             $table->softDeletes();

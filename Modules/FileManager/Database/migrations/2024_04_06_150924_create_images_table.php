@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('file_path')->unique();
             $table->string('alt_text')->nullable();
             $table->foreignId('user_id')->nullable()->constrained('users');
+            $table->nullableMorphs('imageable');
             $table->timestamps();
         });
     }

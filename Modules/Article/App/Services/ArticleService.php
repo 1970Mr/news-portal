@@ -16,9 +16,10 @@ class ArticleService
     {
         $data = $request->validated();
         $data['user_id'] = auth()->id();
-        $data['featured_image_id'] = $this->imageService->store($request, 'featured_image')->id;
+        $image = $this->imageService->store($request, 'featured_image');
         $article = Article::query()->create($data);
         $article->tags()->sync($request->get('tag_ids', []));
+        $article->image()->save($image);
         return $article;
     }
 
@@ -34,7 +35,7 @@ class ArticleService
 
     public function destroy(Article $article): bool|null
     {
-        $this->imageService->destroyWithoutKeyConstraints($article->featured_image);
+        $this->imageService->destroyWithoutKeyConstraints($article->image);
         $article->tags()->detach();
         return $article->delete();
     }

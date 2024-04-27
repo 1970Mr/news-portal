@@ -38,7 +38,7 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <div class="table-responsive">
+                    <div class="table-responsive overflow-x-auto">
                         <table class="table table-bordered table-striped table-hover">
                             <thead>
                             <tr>
@@ -53,6 +53,7 @@
                                 <th>تگ(ها)</th>
                                 <th>تاریخ انتشار</th>
                                 <th>تاریخ ایجاد</th>
+                                <th>انتخاب سردبیر</th>
                                 <th>وضعیت</th>
                                 @canany([config('permissions_list.ARTICLE_UPDATE'), config('permissions_list.ARTICLE_DESTROY')])
                                     <th>عملیات</th>
@@ -64,7 +65,7 @@
                                 <tr>
                                     <td>{{ $article->id }}</td>
                                     <td>
-                                        <img src="{{ asset('storage/' . $article->featured_image->file_path) }}" alt="{{ $article->featured_image->alt_text }}" width="100px" style="max-height: 90px">
+                                        <img src="{{ asset('storage/' . $article->image?->file_path) }}" alt="{{ $article->image?->alt_text }}" width="100px" style="max-height: 90px">
                                     </td>
                                     <td>{{ $article->title }}</td>
                                     <td>{{ $article->slug }}</td>
@@ -75,6 +76,7 @@
                                     <td>{{ nullable_value($article->tagNames()) }}</td>
                                     <td class="ltr text-right created-at">{{ jalalian()->forge($article->published_at)->format(config('common.datetime_format')) }}</td>
                                     <td class="ltr text-right created-at">{{ jalalian()->forge($article->created_at)->format(config('common.datetime_format')) }}</td>
+                                    <td class="{{ status_class($article->editor_choice) }}">{{ status_message($article->editor_choice) }}</td>
                                     <td class="{{ status_class($article->status) }}">{{ status_message($article->status) }}</td>
                                     @canany([config('permissions_list.ARTICLE_UPDATE'), config('permissions_list.ARTICLE_DESTROY')])
                                         <td>

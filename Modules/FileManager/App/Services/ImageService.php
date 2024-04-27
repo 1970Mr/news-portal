@@ -26,12 +26,13 @@ class ImageService
         return $this->getAllImages($request)->get();
     }
 
-    public function store(Request $request, $fileName = 'image'): Model
+    public function store(Request $request, $fileName = 'image', $altText = 'Default alt text'): Model
     {
 //        Gate::authorize('store', Image::class);
         $data['file_path'] = FileManagerService::upload( $request->file($fileName) );
         $data['user_id'] = auth()->id();
-        $data['alt_text'] = $request->alt_text;
+        $altText = $request->get('alt_text', $altText);
+        $data['alt_text'] = $altText;
         return Image::query()->create($data);
     }
 
