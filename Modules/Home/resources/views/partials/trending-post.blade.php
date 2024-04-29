@@ -5,7 +5,7 @@
             <div class="col-md-7 col-xs-12 pad-r">
                 <div id="featured-slider" class="owl-carousel owl-theme featured-slider">
 
-                    @foreach($trending_posts['five_latest_articles'] as $trending_post)
+                    @foreach($trending_posts['latest_articles'] as $trending_post)
                         <div class="item">
                             <img src="{{ asset('storage/' . $trending_post->image->file_path) }}" alt="{{ $trending_post->image->alt_text }}">
                             <div class="featured-post">
