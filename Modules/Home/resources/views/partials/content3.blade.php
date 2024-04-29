@@ -5,7 +5,7 @@
             <div class="col-md-4">
                 <div class="block color-red">
                     <h3 class="block-title"><span>مسافرت</span></h3>
-                    <div class="post-overaly-style clearfix">
+                    <div class="post-overlay-style clearfix">
                         <div class="post-thumb">
                             <a href="single-post1.html">
                                 <img class="img-responsive" src="{{ asset('home/images/news/lifestyle/travel1.jpg') }}" alt="">
@@ -20,7 +20,7 @@
                                 <span class="post-date">3 فروردین 1396</span>
                             </div>
                         </div><!-- Post content end -->
-                    </div><!-- Post Overaly Article end -->
+                    </div><!-- Post overlay Article end -->
 
                     <div class="list-post-block">
                         <ul class="list-post">
@@ -88,7 +88,7 @@
             <div class="col-md-4">
                 <div class="block color-red">
                     <h3 class="block-title"><span>گجت ها</span></h3>
-                    <div class="post-overaly-style clearfix">
+                    <div class="post-overlay-style clearfix">
                         <div class="post-thumb">
                             <a href="single-post1.html">
                                 <img class="img-responsive" src="{{ asset('home/images/news/tech/gadget1.jpg') }}" alt="">
@@ -103,7 +103,7 @@
                                 <span class="post-date">3 فروردین 1396</span>
                             </div>
                         </div><!-- Post content end -->
-                    </div><!-- Post Overaly Article end -->
+                    </div><!-- Post overlay Article end -->
 
                     <div class="list-post-block">
                         <ul class="list-post">
@@ -171,7 +171,7 @@
             <div class="col-md-4">
                 <div class="block color-red">
                     <h3 class="block-title"><span>سلامتی</span></h3>
-                    <div class="post-overaly-style clearfix">
+                    <div class="post-overlay-style clearfix">
                         <div class="post-thumb">
                             <a href="single-post1.html">
                                 <img class="img-responsive" src="{{ asset('home/images/news/lifestyle/health1.jpg') }}" alt="">
@@ -186,7 +186,7 @@
                                 <span class="post-date">3 فروردین 1396</span>
                             </div>
                         </div><!-- Post content end -->
-                    </div><!-- Post Overaly Article end -->
+                    </div><!-- Post overlay Article end -->
 
                     <div class="list-post-block">
                         <ul class="list-post">

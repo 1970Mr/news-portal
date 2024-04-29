@@ -70,4 +70,16 @@ class Article extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function scopeHotness(Builder $query): void
+    {
+        $query->whereHas('hotness', function ($query) {
+            $query->where('is_hot', true);
+        });
+    }
+
+    public function scopeEditorChoice(Builder $query): void
+    {
+        $query->where('editor_choice', true);
+    }
 }

@@ -680,14 +680,14 @@ span.post-comment span {
 	margin-left: 5px;
 }
 
-/*-- Post Overaly --*/
+/*-- Post overlay --*/
 
-.post-overaly-style {
+.post-overlay-style {
 	position: relative;
 	overflow: hidden;
 }
 
-.post-overaly-style:before {
+.post-overlay-style:before {
 	content: " ";
 	position: absolute;
 	display: block;
@@ -707,17 +707,17 @@ span.post-comment span {
 	background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.85) 100%);
 }
 
-.post-overaly-style .post-content {
+.post-overlay-style .post-content {
 	position: absolute;
 	bottom: 0;
 	padding: 25px;
 }
 
-.post-overaly-style .post-title a {
+.post-overlay-style .post-title a {
 	color: #fff;
 }
 
-.post-overaly-style .post-date {
+.post-overlay-style .post-date {
 	color: #fff;
 }
 
@@ -737,7 +737,7 @@ span.post-comment span {
 }
 
 .post-block-style:hover .post-thumb img,
-.post-overaly-style:hover .post-thumb img {
+.post-overlay-style:hover .post-thumb img {
 	-webkit-transform: scale(1.15);
 	-moz-transform: scale(1.15);
 	-ms-transform: scale(1.15);
@@ -760,14 +760,14 @@ span.post-comment span {
 	z-index: 1;
 }
 
-/* Post overaly Top Content */
+/* Post overlay Top Content */
 
-.post-overaly-style.contentTop .post-content {
+.post-overlay-style.contentTop .post-content {
 	top: 0;
 	bottom: auto;
 }
 
-.post-overaly-style.contentTop:before {
+.post-overlay-style.contentTop:before {
 	top: 0;
 	right: 0;
 	background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.85) 100%);
@@ -781,30 +781,30 @@ span.post-comment span {
 	background: linear-gradient(to top, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.85) 100%);
 }
 
-/*-- Post Overaly Textcenter --*/
+/*-- Post overlay Textcenter --*/
 
-.post-overaly-style.text-center .post-content {
+.post-overlay-style.text-center .post-content {
 	padding: 30px 30px 60px;
 }
 
-.post-overaly-style.text-center {
+.post-overlay-style.text-center {
 	margin-bottom: 30px;
 }
 
-.post-overaly-style.text-center:last-child {
+.post-overlay-style.text-center:last-child {
 	margin-bottom: 0;
 }
 
-.post-overaly-style.text-center .post-thumb img {
+.post-overlay-style.text-center .post-thumb img {
 	min-height: 260px;
 }
 
-.post-overaly-style.text-center .post-meta span {
+.post-overlay-style.text-center .post-meta span {
 	padding: 0;
 	margin: 0;
 }
 
-.post-overaly-style.text-center:before {
+.post-overlay-style.text-center:before {
 	background: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.85) 100%);
 	background: -webkit-gradient(linear, right bottom, right bottom, color-stop(60%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.85)));
 	background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.85) 100%);
@@ -2122,7 +2122,7 @@ ul.navbar-nav > li.mega-dropdown {
 	margin-bottom: 4px;
 }
 
-/* Post overaly text center on Featured area */
+/* Post overlay text center on Featured area */
 
 .featured-slider.twoNewsBox-style .item {
 	padding-bottom: 61.15%;
@@ -2362,11 +2362,11 @@ ul.navbar-nav > li.mega-dropdown {
 	margin: 0 15px 30px 0;
 }
 
-.video-tab .post-overaly-style {
+.video-tab .post-overlay-style {
 	height: 445px;
 }
 
-.video-tab .post-overaly-style .post-content {
+.video-tab .post-overlay-style .post-content {
 	padding: 35px;
 }
 
