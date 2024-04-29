@@ -6,16 +6,14 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class TagRequest extends FormRequest
 {
-    /**
-     * Get the validation rules that apply to the request.
-     */
     public function rules(): array
     {
         $rules = [
             'name' => 'required|min:2|max:100|unique:tags,name',
             'slug' => 'required|unique:tags,slug',
-            'description' => 'nullable|min:10',
+            'description' => 'required|min:10',
             'status' => 'required|boolean',
+            'hotness' => 'required|bool',
         ];
 
         if (strtolower($this->method()) === 'put') {
@@ -30,12 +28,17 @@ class TagRequest extends FormRequest
     {
         $this->merge([
             'status' => (bool) $this->status,
+            'hotness' => (bool) $this->hotness,
         ]);
     }
 
-    /**
-     * Determine if the user is authorized to make this request.
-     */
+    public function attributes(): array
+    {
+        return [
+            'hotness' => __('common::attributes.hotness'),
+        ];
+    }
+
     public function authorize(): bool
     {
         return true;

@@ -48,6 +48,7 @@
                                 <th>slug</th>
                                 <th>توضیحات</th>
                                 <th>تاریخ ایجاد</th>
+                                <th>موضوع داغ</th>
                                 <th>وضعیت</th>
                                 @canany([config('permissions_list.TAG_UPDATE'), config('permissions_list.TAG_DESTROY')])
                                     <th>عملیات</th>
@@ -62,20 +63,22 @@
                                         <td>{{ $tag->slug }}</td>
                                         <td>{{ $tag->description }}</td>
                                         <td class="ltr text-right created-at">{{ jalalian()->forge($tag->created_at)->format(config('common.datetime_format')) }}</td>
+                                        <td class="{{ status_class($tag->isHot()) }}">{{ status_message($tag->isHot()) }}</td>
                                         <td class="{{ status_class($tag->status) }}">{{ status_message($tag->status) }}</td>
                                         @canany([config('permissions_list.TAG_UPDATE'), config('permissions_list.TAG_DESTROY')])
-                                            <td class="d-flex gap-2">
-                                                @can(config('permissions_list.TAG_UPDATE', false))
-                                                    <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                       rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('tag.edit', $tag->id) }}">
-                                                        <i class="icon-pencil fa-flip-horizontal"></i>
-                                                    </a>
-                                                @endcan
+                                            <td>
+                                                <div class="d-flex gap-2">
+                                                    @can(config('permissions_list.TAG_UPDATE', false))
+                                                        <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
+                                                           rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('tag.edit', $tag->id) }}">
+                                                            <i class="icon-pencil fa-flip-horizontal"></i>
+                                                        </a>
+                                                    @endcan
 
-                                                @can(config('permissions_list.TAG_DESTROY', false))
-                                                    <x-common-delete-button :route="route('tag.destroy', $tag->id)" />
-                                                @endcan
-
+                                                    @can(config('permissions_list.TAG_DESTROY', false))
+                                                        <x-common-delete-button :route="route('tag.destroy', $tag->id)" />
+                                                    @endcan
+                                                </div>
                                             </td>
                                         @endcanany
                                     </tr>

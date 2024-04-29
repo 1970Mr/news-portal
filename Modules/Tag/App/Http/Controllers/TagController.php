@@ -7,10 +7,11 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Modules\Tag\App\Http\Requests\TagRequest;
 use Modules\Tag\App\Models\Tag;
+use Modules\Tag\App\Services\TagService;
 
 class TagController extends Controller
 {
-    public function __construct()
+    public function __construct(private readonly TagService $tagService)
     {
         $this->middleware('can:' . config('permissions_list.TAG_INDEX', false))->only('index');
         $this->middleware('can:' . config('permissions_list.TAG_STORE', false))->only('store');
@@ -20,7 +21,7 @@ class TagController extends Controller
 
     public function index(): View
     {
-        $tags = Tag::latest()->paginate(10);
+        $tags = Tag::with('hotness')->latest()->paginate(10);
         return view('tag::index', compact('tags'));
     }
 
@@ -32,25 +33,25 @@ class TagController extends Controller
 
     public function store(TagRequest $request): RedirectResponse
     {
-        Tag::create($request->validated());
+        $this->tagService->store($request);
         return to_route('tag.index')->with('success', __('entity_created', ['entity' => __('tag')]));
     }
 
     public function edit(Tag $tag): View
     {
-        $tags = Tag::latest()->get();
+        $tags = Tag::with('hotness')->latest()->get();
         return view('tag::edit', compact('tag', 'tags'));
     }
 
     public function update(TagRequest $request, Tag $tag): RedirectResponse
     {
-        $tag->update($request->validated());
+        $this->tagService->update($request, $tag);
         return to_route('tag.index')->with('success', __('entity_edited', ['entity' => __('tag')]));
     }
 
     public function destroy(Tag $tag): RedirectResponse
     {
-        $tag->delete();
+        $this->tagService->destroy($tag);
         return to_route('tag.index')->with('success', __('entity_deleted', ['entity' => __('tag')]));
     }
 }

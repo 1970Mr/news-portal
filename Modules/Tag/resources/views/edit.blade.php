@@ -46,9 +46,17 @@
                                 <label for="description">توضیحات </label>
                                 <input id="description" class="form-control" name="description" type="text" value="{{ old('description') ?? $tag->description }}">
                             </div>
-                            <div class="form-group text-center">
-                                <input id="status" class="form-control" name="status" type="checkbox" @if(old('status') || (!old('status') && $tag->status)) checked @endif>
-                                <label for="status">وضعیت</label>
+                            <div class="col-12 row form-group justify-content-center">
+                                <div class="col-md-6 row">
+                                    <div class="text-center col-6">
+                                        <input id="hotness" class="form-control" name="hotness" type="checkbox" @if(old('hotness') || (!old('name') && $tag->isHot()) ) checked @endif>
+                                        <label for="hotness">موضوع داغ</label>
+                                    </div>
+                                    <div class="text-center col-6">
+                                        <input id="status" class="form-control" name="status" type="checkbox" @if(old('status') || (!old('name') && $tag->status) ) checked @endif>
+                                        <label for="status">وضعیت</label>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-6 col-sm-offset-4 mx-auto">

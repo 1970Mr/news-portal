@@ -42,12 +42,20 @@
                                 <input id="slug" class="form-control" name="slug" type="text" required value="{{ old('slug') }}">
                             </div>
                             <div class="form-group col-lg-6">
-                                <label for="description">توضیحات </label>
+                                <label for="description">توضیحات <small>(ضروری)</small></label>
                                 <input id="description" class="form-control" name="description" type="text" value="{{ old('description') }}">
                             </div>
-                            <div class="form-group text-center">
-                                <input id="status" class="form-control" name="status" type="checkbox" @if(old('status')) checked @endif>
-                                <label for="status">وضعیت</label>
+                            <div class="col-12 row form-group justify-content-center">
+                                <div class="col-md-6 row">
+                                    <div class="text-center col-6">
+                                        <input id="hotness" class="form-control" name="hotness" type="checkbox" @if(old('hotness')) checked @endif>
+                                        <label for="hotness">موضوع داغ</label>
+                                    </div>
+                                    <div class="text-center col-6">
+                                        <input id="status" class="form-control" name="status" type="checkbox" @if(old('status')) checked @endif>
+                                        <label for="status">وضعیت</label>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-6 col-sm-offset-4 mx-auto">
