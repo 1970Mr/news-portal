@@ -65,6 +65,7 @@
     </div><!-- /.col-md-12 -->
 
     <div class="row m-0 p-0">
+        {{-- Articles --}}
         <div class="col-12">
             <div class="portlet box shadow min-height-500">
                 <div class="portlet-heading">
@@ -94,7 +95,7 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <div class="table-responsive">
+                    <div class="table-responsive overflow-x-auto">
                         <table class="table table-bordered table-striped table-hover">
                             <thead>
                             <tr>
@@ -109,6 +110,8 @@
                                 <th>تگ(ها)</th>
                                 <th>تاریخ انتشار</th>
                                 <th>تاریخ ایجاد</th>
+                                <th>انتخاب سردبیر</th>
+                                <th>خبر داغ</th>
                                 <th>وضعیت</th>
                                 @canany([config('permissions_list.ARTICLE_UPDATE'), config('permissions_list.ARTICLE_DESTROY')])
                                     <th>عملیات</th>
@@ -120,8 +123,7 @@
                                 <tr>
                                     <td>{{ $article->id }}</td>
                                     <td>
-                                        <img src="{{ asset('storage/' . $article->image->file_path) }}" alt="{{ $article->image->alt_text }}" width="100px"
-                                             style="max-height: 90px">
+                                        <img src="{{ asset('storage/' . $article->image->file_path) }}" alt="{{ $article->image->alt_text }}" width="100px" style="max-height: 90px">
                                     </td>
                                     <td>{{ $article->title }}</td>
                                     <td>{{ $article->slug }}</td>
@@ -132,6 +134,8 @@
                                     <td>{{ nullable_value($article->tagNames()) }}</td>
                                     <td class="ltr text-right created-at">{{ jalalian()->forge($article->published_at)->format(config('common.datetime_format')) }}</td>
                                     <td class="ltr text-right created-at">{{ jalalian()->forge($article->created_at)->format(config('common.datetime_format')) }}</td>
+                                    <td class="{{ status_class($article->editor_choice) }}">{{ status_message($article->editor_choice) }}</td>
+                                    <td class="{{ status_class($article->isHot()) }}">{{ status_message($article->isHot()) }}</td>
                                     <td class="{{ status_class($article->status) }}">{{ status_message($article->status) }}</td>
                                     @canany([config('permissions_list.ARTICLE_UPDATE'), config('permissions_list.ARTICLE_DESTROY')])
                                         <td>
@@ -144,7 +148,7 @@
                                                 @endcan
 
                                                 @can(config('permissions_list.ARTICLE_DESTROY', false))
-                                                    <x-common-delete-button :route="route('article.destroy', $article->id)"/>
+                                                    <x-common-delete-button :route="route('article.destroy', $article->id)" />
                                                 @endcan
                                             </div>
                                         </td>
@@ -158,6 +162,7 @@
             </div><!-- /.portlet -->
         </div>
 
+        {{-- Categories --}}
         <div class="col-12">
             <div class="portlet box shadow min-height-500">
                 <div class="portlet-heading">
@@ -192,6 +197,7 @@
                             <thead>
                             <tr>
                                 <th>#</th>
+                                <th>تصویر شاخص</th>
                                 <th>نام</th>
                                 <th>slug</th>
                                 <th>توضیحات</th>
@@ -207,6 +213,9 @@
                             @foreach($categories as $category)
                                 <tr>
                                     <td>{{ $category->id }}</td>
+                                    <td>
+                                        <img src="{{ asset('storage/' . $category->image->file_path) }}" alt="{{ $category->image->alt_text }}" width="100px" style="max-height: 90px">
+                                    </td>
                                     <td>{{ $category->name }}</td>
                                     <td>{{ $category->slug }}</td>
                                     <td>{{ $category->description }}</td>
@@ -214,18 +223,19 @@
                                     <td class="ltr text-right created-at">{{ jalalian()->forge($category->created_at)->format(config('common.datetime_format')) }}</td>
                                     <td class="{{ status_class($category->status) }}">{{ status_message($category->status) }}</td>
                                     @canany([config('permissions_list.CATEGORY_UPDATE'), config('permissions_list.CATEGORY_DESTROY')])
-                                        <td class="d-flex gap-2">
-                                            @can(config('permissions_list.CATEGORY_UPDATE', false))
-                                                <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                   rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('category.edit', $category->id) }}">
-                                                    <i class="icon-pencil fa-flip-horizontal"></i>
-                                                </a>
-                                            @endcan
+                                        <td>
+                                            <div class="d-flex gap-2">
+                                                @can(config('permissions_list.CATEGORY_UPDATE', false))
+                                                    <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
+                                                       rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('category.edit', $category->id) }}">
+                                                        <i class="icon-pencil fa-flip-horizontal"></i>
+                                                    </a>
+                                                @endcan
 
-                                            @can(config('permissions_list.CATEGORY_DESTROY', false))
-                                                <x-common-delete-button :route="route('category.destroy', $category->id)"/>
-                                            @endcan
-
+                                                @can(config('permissions_list.CATEGORY_DESTROY', false))
+                                                    <x-common-delete-button :route="route('category.destroy', $category->id)" />
+                                                @endcan
+                                            </div>
                                         </td>
                                     @endcanany
                                 </tr>
@@ -237,6 +247,7 @@
             </div><!-- /.portlet -->
         </div>
 
+        {{-- Tags --}}
         <div class="col-12">
             <div class="portlet box shadow min-height-500">
                 <div class="portlet-heading">
@@ -275,6 +286,7 @@
                                 <th>slug</th>
                                 <th>توضیحات</th>
                                 <th>تاریخ ایجاد</th>
+                                <th>موضوع داغ</th>
                                 <th>وضعیت</th>
                                 @canany([config('permissions_list.TAG_UPDATE'), config('permissions_list.TAG_DESTROY')])
                                     <th>عملیات</th>
@@ -289,20 +301,22 @@
                                     <td>{{ $tag->slug }}</td>
                                     <td>{{ $tag->description }}</td>
                                     <td class="ltr text-right created-at">{{ jalalian()->forge($tag->created_at)->format(config('common.datetime_format')) }}</td>
+                                    <td class="{{ status_class($tag->isHot()) }}">{{ status_message($tag->isHot()) }}</td>
                                     <td class="{{ status_class($tag->status) }}">{{ status_message($tag->status) }}</td>
                                     @canany([config('permissions_list.TAG_UPDATE'), config('permissions_list.TAG_DESTROY')])
-                                        <td class="d-flex gap-2">
-                                            @can(config('permissions_list.TAG_UPDATE', false))
-                                                <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                   rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('tag.edit', $tag->id) }}">
-                                                    <i class="icon-pencil fa-flip-horizontal"></i>
-                                                </a>
-                                            @endcan
+                                        <td>
+                                            <div class="d-flex gap-2">
+                                                @can(config('permissions_list.TAG_UPDATE', false))
+                                                    <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
+                                                       rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('tag.edit', $tag->id) }}">
+                                                        <i class="icon-pencil fa-flip-horizontal"></i>
+                                                    </a>
+                                                @endcan
 
-                                            @can(config('permissions_list.TAG_DESTROY', false))
-                                                <x-common-delete-button :route="route('tag.destroy', $tag->id)"/>
-                                            @endcan
-
+                                                @can(config('permissions_list.TAG_DESTROY', false))
+                                                    <x-common-delete-button :route="route('tag.destroy', $tag->id)" />
+                                                @endcan
+                                            </div>
                                         </td>
                                     @endcanany
                                 </tr>
@@ -314,6 +328,7 @@
             </div><!-- /.portlet -->
         </div>
 
+        {{-- Images --}}
         <div class="col-12">
             <div class="portlet box shadow min-height-500">
                 <div class="portlet-heading">
@@ -396,6 +411,7 @@
             </div><!-- /.portlet -->
         </div>
 
+        {{-- Comments --}}
         <div class="col-12 col-md-6">
             <div class="portlet box shadow min-height-500">
                 <div class="portlet-heading">

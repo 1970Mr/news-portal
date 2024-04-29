@@ -17,9 +17,9 @@ class PanelController extends Controller
     public function __invoke(): View
     {
         $dataCounts = $this->panelService->getDataCounts();
-        $articles = $this->panelService->getLimitedData(Article::class);
-        $categories = $this->panelService->getLimitedData(Category::class);
-        $tags = $this->panelService->getLimitedData(Tag::class);
+        $articles = $this->panelService->getLimitedData(Article::class, relations: ['hotness', 'image', 'category', 'tags']);
+        $categories = $this->panelService->getLimitedData(Category::class, relations: ['image', 'category']);
+        $tags = $this->panelService->getLimitedData(Tag::class, relations: ['hotness']);
         $images = $this->panelService->getLimitedData(Image::class);
         $imageClassName = Image::class;
 

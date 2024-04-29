@@ -30,11 +30,16 @@ class Category extends Model
         );
     }
 
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(__CLASS__, 'parent_id');
+    }
+
     public function parentCategory(): BelongsTo|null
     {
         return ($this->parent_id === null)
             ? null
-            : $this->belongsTo(__CLASS__, 'parent_id');
+            : $this->category();
     }
 
     public function parentCategoryTitle(): string

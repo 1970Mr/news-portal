@@ -9,9 +9,9 @@ use Modules\User\App\Models\User;
 
 class PanelService
 {
-    public function getLimitedData(string $model, int $limit = 5): Collection
+    public function getLimitedData(string $model, int $limit = 5, array $relations = []): Collection
     {
-        return $model::query()->latest()->limit($limit)->get();
+        return $model::with($relations)->latest()->limit($limit)->get();
     }
 
     public function getDataCounts(): array
