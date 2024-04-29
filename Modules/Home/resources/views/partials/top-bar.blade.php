@@ -4,7 +4,7 @@
             <div class="col-md-8 col-sm-8 col-xs-12">
                 <div class="ts-date">
                     <i class="fa fa-calendar-check-o"></i>
-                    {{ jalalian()->now()->format('d F Y') }}
+                    {{ jalalian()->now()->format(config('common.front_date_format')) }}
                 </div>
                 <ul class="unstyled top-nav">
                     <li><a href="#">درباره ما</a></li>

@@ -5,44 +5,20 @@
             <div class="col-md-7 col-xs-12 pad-r">
                 <div id="featured-slider" class="owl-carousel owl-theme featured-slider">
 
-                    <div class="item">
-                        <img src="{{ asset('home/images/news/lifestyle/health5.jpg') }}" alt="">
-                        <div class="featured-post">
-                            <div class="post-content">
-                                <a class="post-cat" href="#">سلامتی</a>
-                                <h2 class="post-title title-extra-large">
-                                    <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از</a>
-                                </h2>
-                                <span class="post-date">16 دی 1396</span>
-                            </div>
-                        </div><!--/ Featured post end -->
-                    </div><!-- Item 1 end -->
-
-                    <div class="item">
-                        <img src="{{ asset('home/images/news/tech/gadget2.jpg') }}" alt="">
-                        <div class="featured-post">
-                            <div class="post-content">
-                                <a class="post-cat" href="#">ابزار</a>
-                                <h2 class="post-title title-extra-large">
-                                    <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده</a>
-                                </h2>
-                                <span class="post-date">16 دی 1396</span>
-                            </div>
-                        </div><!--/ Featured post end -->
-                    </div><!-- Item 2 end -->
-
-                    <div class="item">
-                        <img src="{{ asset('home/images/news/lifestyle/travel5.jpg') }}" alt="">
-                        <div class="featured-post">
-                            <div class="post-content">
-                                <a class="post-cat" href="#">مسافرت</a>
-                                <h2 class="post-title title-extra-large">
-                                    <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با</a>
-                                </h2>
-                                <span class="post-date">16 دی 1396</span>
-                            </div>
-                        </div><!--/ Featured post end -->
-                    </div><!-- Item 3 end -->
+                    @foreach($trending_posts['five_latest_article'] as $trending_post)
+                        <div class="item">
+                            <img src="{{ asset('storage/' . $trending_post->image->file_path) }}" alt="{{ $trending_post->image->alt_text }}">
+                            <div class="featured-post">
+                                <div class="post-content">
+                                    <a class="post-cat" href="#">{{ $trending_post->category->name }}</a>
+                                    <h2 class="post-title title-extra-large">
+                                        <a href="single-post1.html">{{ $trending_post->title }}</a>
+                                    </h2>
+                                    <span class="post-date">{{ jalalian()->forge($trending_post->created_at)->format(config('common.front_date_format')) }}</span>
+                                </div>
+                            </div><!--/ Featured post end -->
+                        </div>
+                    @endforeach
 
                 </div><!-- Featured owl carousel end-->
             </div><!-- Col 7 end -->
