@@ -1,6 +1,6 @@
     <section class="block-wrapper">
         <div class="container">
-            <div class="row" style="display: flex; gap: 3rem;">
+            <div class="row" style="display: flex; gap: 3rem; justify-content: center">
                 @foreach($second_content['parent_categories'] as $parent_category)
 
                 <!--- Featured Tab starter -->

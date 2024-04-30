@@ -27,3 +27,20 @@
         </div><!-- Container end -->
     </section><!-- Fourth block end -->
 @endsection
+
+@push('styles')
+    <style>
+        .third-img-category {
+            height: 25rem;
+            object-fit: cover;
+        }
+
+        img {
+            object-fit: cover;
+        }
+
+        .post-thumb img {
+            max-height: 30rem;
+        }
+    </style>
+@endpush

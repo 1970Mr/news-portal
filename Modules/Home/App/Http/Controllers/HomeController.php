@@ -30,13 +30,17 @@ class HomeController extends Controller
             $first_content['latest_articles'] = $this->baseQuery()->limit(5)->get()->shuffle();
         }
 
-        $second_content['parent_categories'] = Category::query()->with(['categories' => function ($query) {
+        $second_content['parent_categories'] = Category::with(['categories' => function ($query) {
             $query->whereHas('articles')->limit(6);
         }])->whereHas('categories.articles', function ($query) {
             $query->limit(5)->published();
         })->latest()->limit(5)->get();
 
-        return view('home::index', compact('trending_posts', 'first_content', 'second_content'));
+        $third_content['categories'] = Category::with(['articles' => function ($query) {
+            $query->limit(5)->published();
+        }])->whereHas('articles')->where('parent_id', null)->latest()->limit(5)->get();
+
+        return view('home::index', compact('trending_posts', 'first_content', 'second_content', 'third_content'));
     }
 
     private function baseQuery(): Builder
