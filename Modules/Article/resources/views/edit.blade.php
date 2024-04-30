@@ -63,11 +63,9 @@
                                 <select id="category_id" class="form-control select2" name="category_id">
                                     <option value="">انتخاب دسته‌بندی</option>
                                     @foreach($categories as $category)
-                                        <option value="{{ $category->id }}" @if( (int) old('category_id', $article->category_id) === $category->id )
-                                            selected
-                                            @endif>{{
-                                        $category->name
-                                        }}</option>
+                                        <option value="{{ $category->id }}" @if( (int) old('category_id', $article->category_id) === $category->id ) selected @endif>
+                                            {{ $category->name }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>

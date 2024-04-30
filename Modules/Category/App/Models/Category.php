@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+use Modules\Article\App\Models\Article;
 use Modules\FileManager\App\Traits\HasImage;
 
 class Category extends Model
@@ -42,11 +44,21 @@ class Category extends Model
             : $this->category();
     }
 
+    public function categories(): HasMany
+    {
+        return $this->hasMany(__CLASS__, 'parent_id');
+    }
+
     public function parentCategoryTitle(): string
     {
         return ($this->parentCategory() === null)
             ? __('have_not')
                 : $this->parentCategory()->first()->name;
+    }
+
+    public function articles(): HasMany
+    {
+        return $this->hasMany(Article::class, 'category_id');
     }
 
     public function scopeActive(Builder $query): void

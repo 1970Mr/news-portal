@@ -12,7 +12,7 @@ class ArticleRequest extends FormRequest
         $rules = [
             'title' => 'required|string|max:255',
             'slug' => 'required|string|max:255|unique:articles,slug',
-            'description' => 'required|string',
+            'description' => 'required|string|min:10',
             'keywords' => 'required|string',
             'body' => 'required|string',
             'published_at' => 'required|date',

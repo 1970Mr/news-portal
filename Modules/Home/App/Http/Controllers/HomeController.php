@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\View\View;
 use Modules\Article\App\Models\Article;
+use Modules\Category\App\Models\Category;
 
 class HomeController extends Controller
 {
@@ -28,7 +29,14 @@ class HomeController extends Controller
         if ($first_content['latest_articles']->count() < 3) {
             $first_content['latest_articles'] = $this->baseQuery()->limit(5)->get()->shuffle();
         }
-        return view('home::index', compact('trending_posts', 'first_content'));
+
+        $second_content['parent_categories'] = Category::query()->with(['categories' => function ($query) {
+            $query->whereHas('articles')->limit(6);
+        }])->whereHas('categories.articles', function ($query) {
+            $query->limit(5)->published();
+        })->latest()->limit(5)->get();
+
+        return view('home::index', compact('trending_posts', 'first_content', 'second_content'));
     }
 
     private function baseQuery(): Builder

@@ -28,7 +28,7 @@
                                 </div><!-- Post Block style end -->
                             </li><!-- Li end -->
 
-                            @if($key === 0)
+                            @if($key % 2 === 0)
                                 <div class="gap-30"></div>
                             @endif
                         @endforeach

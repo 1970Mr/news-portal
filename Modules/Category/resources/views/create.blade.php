@@ -50,7 +50,7 @@
                                 <select id="parent_id" class="form-control select2" name="parent_id">
                                     <option value="">انتخاب دسته‌بندی والد</option>
                                     @foreach($categories as $category)
-                                        <option value="{{ $category->id }}" @if(old('parent_id') === $category->id) selected @endif>{{ $category->name }}</option>
+                                        <option value="{{ $category->id }}" @if((int) old('parent_id') === $category->id) selected @endif>{{ $category->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
