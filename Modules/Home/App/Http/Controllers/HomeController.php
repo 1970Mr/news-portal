@@ -65,7 +65,12 @@ class HomeController extends Controller
         }])->whereHas('articles')->where('parent_id', null)->latest()->limit(5)->get();
         $categories_ids_ignore = $categories_ids_ignore->merge($main_nav['categories_without_parent']->pluck('id'));
 
+        $main_nav['other_categories']['parent_categories'] = Category::with(['categories' => function ($query) {
+            $query->whereHas('articles');
+        }])->whereHas('categories.articles')->whereNotIn('id', $categories_ids_ignore)->latest()->get();
 
+        $main_nav['other_categories']['categories_without_parent'] =
+            Category::query()->whereHas('articles')->where('parent_id', null)->whereNotIn('id', $categories_ids_ignore)->latest()->get();
 
         return view('home::index', compact([
             'main_nav',

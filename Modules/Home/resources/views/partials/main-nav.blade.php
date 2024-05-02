@@ -93,67 +93,32 @@
                                 </li>
                             @endforeach
 
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">سایر دسته‌بندی‌ها <i class="fa fa-angle-down"></i></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <!-- All Categories Without Parent -->
-                                    <li class="dropdown-submenu">
-                                        <a href="#.">طرح های دسته ها</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="category-style1.html">طرح دسته 1</a></li>
-                                            <li><a href="category-style2.html">طرح دسته 2</a></li>
-                                            <li><a href="category-style3.html">طرح دسته 3</a></li>
-                                            <li><a href="category-style4.html">طرح دسته 4</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown-submenu">
-                                        <a href="#.">طرح های مطالب</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="single-post1.html">طرح مطلب 1</a></li>
-                                            <li><a href="single-post2.html">طرح مطلب 2</a></li>
-                                            <li><a href="single-post3.html">طرح مطلب 3</a></li>
-                                            <li><a href="single-post4.html">طرح مطلب 4</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown-submenu">
-                                        <a href="#.">نوار کناری</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="right-sidebar.html">نوار کناری سمت راست</a></li>
-                                            <li><a href="single-post1.html">نوار کناری سمت چپ</a></li>
-                                            <li><a href="no-sidebar.html">بدون نوار کناری</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown-submenu">
-                                        <a href="#.">کدهای کوتاه</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="typography.html">تایپوگرافی</a></li>
-                                            <li><a href="blockquote.html">نقل قول ها</a></li>
-                                            <li><a href="tabs.html">تب ها</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown-submenu">
-                                        <a href="#.">صفحات</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="author.html">نویسنده</a></li>
-                                            <li><a href="404.html">404</a></li>
-                                            <li><a href="contact.html">تماس</a></li>
-                                        </ul>
-                                    </li>
+                            @if($main_nav['other_categories']['categories_without_parent']->count() >= 1 || $main_nav['other_categories']['parent_categories']->count() >= 1)
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">سایر دسته‌بندی‌ها <i class="fa fa-angle-down"></i></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <!-- All Categories Without Parent -->
+                                        @foreach($main_nav['other_categories']['parent_categories'] as $parent_category)
+                                            <li class="dropdown-submenu">
+                                                <a href="#.">{{ $parent_category->name }}</a>
+                                                <ul class="dropdown-menu">
+                                                    @foreach($parent_category->categories as $category)
+                                                        <li><a href="category-style1.html">{{ $category->name }}</a></li>
+                                                    @endforeach
+                                                </ul>
+                                            </li>
+                                        @endforeach
 
-                                    <!-- All Categories Without Parent -->
-                                    <li class="dropdown-submenu">
-                                        <a href="#">مشاهده بیشتر</a>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li class="active"><a href="index.html">خانه 1</a></li>
-                                            <li><a href="index-2.html">خانه 2</a></li>
-                                            <li><a href="index-3.html">خانه 3</a></li>
-                                            <li><a href="index-4.html">خانه 4</a></li>
-                                            <li><a href="index-5.html">خانه 5</a></li>
-                                        </ul>
-                                    </li>
-                                </ul><!-- End dropdown -->
+                                        <!-- All Categories Without Parent -->
+                                        @foreach($main_nav['other_categories']['categories_without_parent'] as $category)
+                                            <li>
+                                                <a href="#">{{ $category->name }}</a>
+                                            </li>
+                                        @endforeach
+                                    </ul><!-- End dropdown -->
 
-                            </li><!-- Features menu end -->
+                                </li><!-- Features menu end -->
+                            @endif
 
 
                         </ul><!--/ Nav ul end -->
