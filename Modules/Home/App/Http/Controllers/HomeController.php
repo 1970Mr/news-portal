@@ -46,6 +46,11 @@ class HomeController extends Controller
 
         $second_sidebar['latest_tags'] = Tag::query()->latest()->limit(30)->get();
 
+        $footer['editor_choices'] = $this->baseQuery()->editorChoice()->limit(3)->get();
+        $footer['hot_topics'] = Tag::with('hotness')->whereHas('hotness', function($query) {
+            $query->where('is_hot', true);
+        })->withCount('articles')->whereHas('articles')->latest()->limit(7)->get();
+
         return view('home::index', compact([
             'trending_posts',
             'first_content',
@@ -53,6 +58,7 @@ class HomeController extends Controller
             'third_content',
             'fourth_content',
             'second_sidebar',
+            'footer',
         ]));
     }
 

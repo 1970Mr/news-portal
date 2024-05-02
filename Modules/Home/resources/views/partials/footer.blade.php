@@ -2,66 +2,30 @@
     <div class="footer-main">
         <div class="container">
             <div class="footer-row">
-                <div class="footer-widget">
+                <div class="footer-widget widget-editor-choices">
                     <h3 class="widget-title">انتخاب سردبیر</h3>
                     <div class="list-post-block">
                         <ul class="list-post">
-                            <li class="clearfix">
-                                <div class="post-block-style post-float clearfix">
-                                    <div class="post-thumb">
-                                        <a href="single-post1.html">
-                                            <img class="img-responsive" src="{{ asset('home/images/news/lifestyle/health2.jpg') }}" alt="">
-                                        </a>
-                                    </div><!-- Post thumb end -->
+                            @foreach($footer['editor_choices'] as $editor_choice)
+                                <li class="clearfix">
+                                    <div class="post-block-style post-float clearfix">
+                                        <div class="post-thumb">
+                                            <a href="single-post1.html">
+                                                <img class="img-responsive" src="{{ asset('storage/' . $editor_choice->image->file_path) }}" alt="{{ $editor_choice->image->alt_text }}">
+                                            </a>
+                                        </div><!-- Post thumb end -->
 
-                                    <div class="post-content">
-                                        <h2 class="post-title title-small">
-                                            <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</a>
-                                        </h2>
-                                        <div class="post-meta">
-                                            <span class="post-date">15 آذر 1396</span>
-                                        </div>
-                                    </div><!-- Post content end -->
-                                </div><!-- Post block style end -->
-                            </li><!-- Li 1 end -->
-
-                            <li class="clearfix">
-                                <div class="post-block-style post-float clearfix">
-                                    <div class="post-thumb">
-                                        <a href="single-post1.html">
-                                            <img class="img-responsive" src="{{ asset('home/images/news/lifestyle/health3.jpg') }}" alt="">
-                                        </a>
-                                    </div><!-- Post thumb end -->
-
-                                    <div class="post-content">
-                                        <h2 class="post-title title-small">
-                                            <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</a>
-                                        </h2>
-                                        <div class="post-meta">
-                                            <span class="post-date">18 بهمن 1396</span>
-                                        </div>
-                                    </div><!-- Post content end -->
-                                </div><!-- Post block style end -->
-                            </li><!-- Li 2 end -->
-
-                            <li class="clearfix">
-                                <div class="post-block-style post-float clearfix">
-                                    <div class="post-thumb">
-                                        <a href="single-post1.html">
-                                            <img class="img-responsive" src="{{ asset('home/images/news/lifestyle/health4.jpg') }}" alt="">
-                                        </a>
-                                    </div><!-- Post thumb end -->
-
-                                    <div class="post-content">
-                                        <h2 class="post-title title-small">
-                                            <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی</a>
-                                        </h2>
-                                        <div class="post-meta">
-                                            <span class="post-date">30 فروردین 1396</span>
-                                        </div>
-                                    </div><!-- Post content end -->
-                                </div><!-- Post block style end -->
-                            </li><!-- Li 3 end -->
+                                        <div class="post-content">
+                                            <h2 class="post-title title-small">
+                                                <a href="single-post1.html">{{ $editor_choice->title }}</a>
+                                            </h2>
+                                            <div class="post-meta">
+                                                <span class="post-date">{{ jalalian()->forge($editor_choice->created_at)->format(config('common.front_date_format')) }}</span>
+                                            </div>
+                                        </div><!-- Post content end -->
+                                    </div><!-- Post block style end -->
+                                </li><!-- Li 1 end -->
+                            @endforeach
                         </ul><!-- List post end -->
                     </div><!-- List post block end -->
                 </div><!-- Col end -->
@@ -70,30 +34,14 @@
                     <div class="footer-widget widget-categories">
                         <h3 class="widget-title">موضوعات داغ</h3>
                         <ul>
-                            <li>
-                                <a href="#">
-                                    <span class="catTitle">رباتیک</span>
-                                    <span class="catCounter"> (5)</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#"><span class="catTitle">بازی ها</span><span class="catCounter"> (6)</span></a>
-                            </li>
-                            <li>
-                                <a href="#"><span class="catTitle">گجت ها</span><span class="catCounter"> (5)</span></a>
-                            </li>
-                            <li>
-                                <a href="#"><span class="catTitle">مسافرت</span><span class="catCounter"> (5)</span></a>
-                            </li>
-                            <li>
-                                <a href="#"><span class="catTitle">سلامتی</span><span class="catCounter"> (5)</span></a>
-                            </li>
-                            <li>
-                                <a href="#"><span class="catTitle">معماری</span><span class="catCounter"> (5)</span></a>
-                            </li>
-                            <li>
-                                <a href="#"><span class="catTitle">غذا</span><span class="catCounter"> (5)</span></a>
-                            </li>
+                            @foreach($footer['hot_topics'] as $tag)
+                                <li>
+                                    <a href="#">
+                                        <span class="catTitle">{{ $tag->name }}</span>
+                                        <span class="catCounter">{{ $tag->articles_count }}</span>
+                                    </a>
+                                </li>
+                            @endforeach
                         </ul>
 
                     </div>

@@ -35,6 +35,19 @@
         white-space: nowrap;
     }
 
+    .footer .post-thumb img {
+        height: 75px;
+    }
+
+    .footer .list-post-block {
+        width: 100%;
+    }
+
+    .footer .list-post-block .list-post {
+        display: flex;
+        flex-direction: column;
+    }
+
     @media screen and (max-width: 768px) {
         .footer-row {
             flex-wrap: wrap;
@@ -66,6 +79,15 @@
 
         .footer-row > div:nth-child(2) h3 {
             font-size: 14px !important;
+        }
+
+        .widget-editor-choices {
+            width: 80%;
+            margin: 0 auto 3rem;
+        }
+
+        .widget-categories {
+            order: 2;
         }
     }
 </style>

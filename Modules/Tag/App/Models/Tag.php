@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+use Modules\Article\App\Models\Article;
 use Modules\Hotness\App\Traits\HasHotness;
 
 class Tag extends Model
@@ -31,5 +33,10 @@ class Tag extends Model
     public function scopeActive(Builder $query): void
     {
         $query->where('status', 1);
+    }
+
+    public function articles(): MorphToMany
+    {
+        return $this->morphedByMany(Article::class, 'taggable');
     }
 }
