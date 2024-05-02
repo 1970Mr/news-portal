@@ -30,6 +30,10 @@
 
 @push('styles')
     <style>
+        .nav-post {
+            height: 14rem;
+        }
+
         .third-img-category {
             height: 25rem;
             object-fit: cover;
