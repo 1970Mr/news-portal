@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\View\View;
 use Modules\Article\App\Models\Article;
 use Modules\Category\App\Models\Category;
+use Modules\Tag\App\Models\Tag;
 
 class HomeController extends Controller
 {
@@ -43,12 +44,15 @@ class HomeController extends Controller
 
         $fourth_content['latest_articles'] = $this->baseQuery()->whereNotIn('id', $ids_ignore)->limit(24)->get();
 
+        $second_sidebar['latest_tags'] = Tag::query()->latest()->limit(30)->get();
+
         return view('home::index', compact([
             'trending_posts',
             'first_content',
             'second_content',
             'third_content',
             'fourth_content',
+            'second_sidebar',
         ]));
     }
 
