@@ -40,7 +40,7 @@
                                                     <span class="post-author"><a href="#">{{ $first_article->user->name }}</a></span>
                                                     <span class="post-date">{{ jalalian()->forge($first_article->created_at)->format(config('common.front_date_format')) }}</span>
                                                 </div>
-                                                <p>{{ str(strip_tags($first_article->body))->limit(120) }}</p>
+                                                <p>{{ $first_article->bodyText() }}</p>
                                             </div>
                                         </div><!-- Post Block style end -->
                                     </div><!-- Col end -->

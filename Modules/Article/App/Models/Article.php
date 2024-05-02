@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Str;
+use Illuminate\Support\Stringable;
 use Modules\Category\App\Models\Category;
 use Modules\FileManager\App\Models\Image;
 use Modules\FileManager\App\Traits\HasImage;
@@ -81,5 +82,10 @@ class Article extends Model
     public function scopeEditorChoice(Builder $query): void
     {
         $query->where('editor_choice', true);
+    }
+
+    public function bodyText(int $limit = 120): Stringable
+    {
+        return str(strip_tags($this->body))->limit($limit);
     }
 }
