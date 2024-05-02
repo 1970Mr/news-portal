@@ -43,7 +43,7 @@
                                                                     <div class="post-block-style clearfix">
                                                                         <div class="post-thumb">
                                                                             <a href="single-post1.html">
-                                                                                <img class="img-responsive nav-post" src="{{ asset('storage/' . $article->image->file_path) }}"
+                                                                                <img class="img-responsive nav-parent-cat-post-img" src="{{ asset('storage/' . $article->image->file_path) }}"
                                                                                      alt="{{ $article->image->alt_text }}">
                                                                             </a>
                                                                         </div>
@@ -66,86 +66,32 @@
                             @endforeach
 
                             <!-- All Categories Without Parent -->
-                            <li class="dropdown mega-dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">ویدئو <i class="fa fa-angle-down"></i></a>
-                                <div class="dropdown-menu mega-menu-content hidden-xs hidden-sm clearfix">
-                                    <div class="mega-menu-content-inner">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <div class="post-block-style clearfix">
-                                                    <div class="post-thumb">
-                                                        <img class="img-responsive" src="{{ asset('home/images/news/video/video4.jpg') }}" alt="">
-                                                        <a class="popup" href="https://www.youtube.com/embed/XhveHKJWnOQ?autoplay=1&amp;loop=1">
-                                                            <div class="video-icon">
-                                                                <i class="fa fa-play"></i>
-                                                            </div>
-                                                        </a>
-                                                    </div><!-- Post thumb end -->
-                                                    <div class="post-content">
-                                                        <h2 class="post-title title-small">
-                                                            <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از</a>
-                                                        </h2>
-                                                    </div><!-- Post content end -->
-                                                </div><!-- Post Block style end -->
-                                            </div><!-- Col 1 end -->
+                            @foreach($main_nav['categories_without_parent'] as $category)
+                                <li class="dropdown mega-dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ $category->name }} <i class="fa fa-angle-down"></i></a>
+                                    <div class="dropdown-menu mega-menu-content hidden-xs hidden-sm clearfix">
+                                        <div class="mega-menu-content-inner">
+                                            <div class="row">
+                                                @foreach($category->articles as $article)
+                                                    <div class="col-md-3">
+                                                        <div class="post-block-style clearfix">
+                                                            <div class="post-thumb">
+                                                                <img class="img-responsive nav-cat-post-img" src="{{ asset('storage/' . $article->image->file_path) }}" alt="{{ $article->image->alt_text }}">
+                                                            </div><!-- Post thumb end -->
+                                                            <div class="post-content">
+                                                                <h2 class="post-title title-small">
+                                                                    <a href="single-post1.html">{{ $article->title }}</a>
+                                                                </h2>
+                                                            </div><!-- Post content end -->
+                                                        </div><!-- Post Block style end -->
+                                                    </div><!-- Col 1 end -->
+                                                @endforeach
+                                            </div><!-- Post block row end -->
+                                        </div>
 
-                                            <div class="col-md-3">
-                                                <div class="post-block-style clearfix">
-                                                    <div class="post-thumb">
-                                                        <img class="img-responsive" src="{{ asset('home/images/news/video/video3.jpg') }}" alt="">
-                                                        <a class="popup" href="https://www.youtube.com/embed/wJF5NXygL4k?autoplay=1&amp;loop=1">
-                                                            <div class="video-icon">
-                                                                <i class="fa fa-play"></i>
-                                                            </div>
-                                                        </a>
-                                                    </div><!-- Post thumb end -->
-                                                    <div class="post-content">
-                                                        <h2 class="post-title title-small">
-                                                            <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از</a>
-                                                        </h2>
-                                                    </div><!-- Post content end -->
-                                                </div><!-- Post Block style end -->
-                                            </div><!-- Col 2 end -->
-
-                                            <div class="col-md-3">
-                                                <div class="post-block-style clearfix">
-                                                    <div class="post-thumb">
-                                                        <img class="img-responsive" src="{{ asset('home/images/news/video/video2.jpg') }}" alt="">
-                                                        <a class="popup" href="https://www.youtube.com/embed/DQNDcxRo-2M?autoplay=1&amp;loop=1">
-                                                            <div class="video-icon">
-                                                                <i class="fa fa-play"></i>
-                                                            </div>
-                                                        </a>
-                                                    </div><!-- Post thumb end -->
-                                                    <div class="post-content">
-                                                        <h2 class="post-title title-small">
-                                                            <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</a>
-                                                        </h2>
-                                                    </div><!-- Post content end -->
-                                                </div><!-- Post Block style end -->
-                                            </div><!-- Col 3 end -->
-                                            <div class="col-md-3">
-                                                <div class="post-block-style clearfix">
-                                                    <div class="post-thumb">
-                                                        <img class="img-responsive" src="{{ asset('home/images/news/video/video1.jpg') }}" alt="">
-                                                        <a class="popup" href="https://www.youtube.com/embed/DQNDcxRo-2M?autoplay=1&amp;loop=1">
-                                                            <div class="video-icon">
-                                                                <i class="fa fa-play"></i>
-                                                            </div>
-                                                        </a>
-                                                    </div><!-- Post thumb end -->
-                                                    <div class="post-content">
-                                                        <h2 class="post-title title-small">
-                                                            <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از</a>
-                                                        </h2>
-                                                    </div><!-- Post content end -->
-                                                </div><!-- Post Block style end -->
-                                            </div><!-- Col 4 end -->
-                                        </div><!-- Post block row end -->
-                                    </div>
-
-                                </div><!-- Mega menu content end -->
-                            </li><!-- Video menu end -->
+                                    </div><!-- Mega menu content end -->
+                                </li>
+                            @endforeach
 
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">سایر دسته‌بندی‌ها <i class="fa fa-angle-down"></i></a>
@@ -228,7 +174,7 @@
             @auth
                 <form action="{{ route('logout') }}" method="post" id="logout-form">@csrf</form>
                 <div class="nav-logout">
-                    <a  onclick="document.getElementById('logout-form').submit()" title="خروج از حساب کاربری"><i
+                    <a onclick="document.getElementById('logout-form').submit()" title="خروج از حساب کاربری"><i
                             class="fa
                     fa-sign-out"></i></a>
                 </div>

@@ -17,20 +17,20 @@ class HomeController extends Controller
         if ($trending_posts['editor_choices']->count() < 3) {
             $trending_posts['editor_choices'] = $this->baseQuery()->limit(3)->get()->shuffle();
         }
-        $ids_ignore = $trending_posts['editor_choices']->pluck('id');
+        $articles_ids_ignore = $trending_posts['editor_choices']->pluck('id');
         $trending_posts['first_editor_choice'] = $trending_posts['editor_choices']->pop();
 
-        $trending_posts['latest_articles'] = $this->baseQuery()->whereNotIn('id', $ids_ignore)->limit(5)->get();
+        $trending_posts['latest_articles'] = $this->baseQuery()->whereNotIn('id', $articles_ids_ignore)->limit(5)->get();
         if ($trending_posts['latest_articles']->count() < 1) {
             $trending_posts['latest_articles'] = $this->baseQuery()->limit(5)->get();
         }
-        $ids_ignore = $trending_posts['latest_articles']->pluck('id');
+        $articles_ids_ignore = $trending_posts['latest_articles']->pluck('id');
 
-        $first_content['latest_articles'] = $this->baseQuery()->whereNotIn('id', $ids_ignore)->limit(20)->get();
+        $first_content['latest_articles'] = $this->baseQuery()->whereNotIn('id', $articles_ids_ignore)->limit(20)->get();
         if ($first_content['latest_articles']->count() < 3) {
             $first_content['latest_articles'] = $this->baseQuery()->limit(5)->get()->shuffle();
         }
-        $ids_ignore = $ids_ignore->merge($first_content['latest_articles']->pluck('id'));
+        $articles_ids_ignore = $articles_ids_ignore->merge($first_content['latest_articles']->pluck('id'));
 
         $second_content['parent_categories'] = Category::with(['categories' => function ($query) {
             $query->whereHas('articles')->limit(6);
@@ -42,7 +42,7 @@ class HomeController extends Controller
             $query->limit(5)->published();
         }])->whereHas('articles')->where('parent_id', null)->latest()->limit(5)->get();
 
-        $fourth_content['latest_articles'] = $this->baseQuery()->whereNotIn('id', $ids_ignore)->limit(24)->get();
+        $fourth_content['latest_articles'] = $this->baseQuery()->whereNotIn('id', $articles_ids_ignore)->limit(24)->get();
 
         $second_sidebar['latest_tags'] = Tag::query()->latest()->limit(30)->get();
 
@@ -51,11 +51,19 @@ class HomeController extends Controller
             $query->where('is_hot', true);
         })->withCount('articles')->whereHas('articles')->latest()->limit(7)->get();
 
+
+
         $main_nav['parent_categories'] = Category::with(['categories' => function ($query) {
             $query->whereHas('articles')->limit(4);
         }])->whereHas('categories.articles', function ($query) {
             $query->limit(4)->published();
         })->latest()->limit(5)->get();
+        $categories_ids_ignore = $main_nav['parent_categories']->pluck('id');
+
+        $main_nav['categories_without_parent'] = Category::with(['articles' => function ($query) {
+            $query->limit(4)->published();
+        }])->whereHas('articles')->where('parent_id', null)->latest()->limit(5)->get();
+        $categories_ids_ignore = $categories_ids_ignore->merge($main_nav['categories_without_parent']->pluck('id'));
 
 
 

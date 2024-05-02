@@ -30,8 +30,12 @@
 
 @push('styles')
     <style>
-        .nav-post {
+        .nav-parent-cat-post-img {
             height: 14rem;
+        }
+
+        .nav-cat-post-img {
+            height: 17rem;
         }
 
         .third-img-category {
