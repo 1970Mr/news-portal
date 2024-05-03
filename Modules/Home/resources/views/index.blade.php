@@ -1,4 +1,4 @@
-@extends('home::layouts.master', ['title' => 'News Site | سایت خبری'])
+@extends('front::layouts.master', ['title' => 'News Site | سایت خبری'])
 
 @section('content')
     @include('home::partials.trending-post')
@@ -8,7 +8,7 @@
             <div class="row">
                 @include('home::partials.content1')
 
-                @include('home::partials.sidebar1')
+                @include('front::partials.sidebar1')
             </div><!-- Row end -->
         </div><!-- Container end -->
     </section><!-- First block end -->
@@ -22,7 +22,7 @@
             <div class="row">
                 @include('home::partials.content4')
 
-                @include('home::partials.sidebar2')
+                @include('front::partials.sidebar2')
             </div><!-- Row end -->
         </div><!-- Container end -->
     </section><!-- Fourth block end -->
@@ -30,20 +30,8 @@
 
 @push('styles')
     <style>
-        .nav-parent-cat-post-img {
-            height: 14rem;
-        }
-
-        .nav-cat-post-img {
-            height: 17rem;
-        }
-
         .third-img-category {
             height: 25rem;
-            object-fit: cover;
-        }
-
-        img {
             object-fit: cover;
         }
 

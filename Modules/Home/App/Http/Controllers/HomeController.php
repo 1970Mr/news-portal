@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\View\View;
 use Modules\Article\App\Models\Article;
 use Modules\Category\App\Models\Category;
-use Modules\Tag\App\Models\Tag;
 
 class HomeController extends Controller
 {
@@ -44,41 +43,12 @@ class HomeController extends Controller
 
         $fourth_content['latest_articles'] = $this->baseQuery()->whereNotIn('id', $articles_ids_ignore)->limit(24)->get();
 
-        $second_sidebar['latest_tags'] = Tag::query()->latest()->limit(30)->get();
-
-        $footer['editor_choices'] = $this->baseQuery()->editorChoice()->limit(3)->get();
-        $footer['hot_topics'] = Tag::with('hotness')->whereHas('hotness', function($query) {
-            $query->where('is_hot', true);
-        })->withCount('articles')->whereHas('articles')->latest()->limit(7)->get();
-
-        $main_nav['parent_categories'] = Category::with(['categories' => function ($query) {
-            $query->whereHas('articles')->limit(4);
-        }])->whereHas('categories.articles', function ($query) {
-            $query->limit(4)->published();
-        })->latest()->limit(5)->get();
-        $categories_ids_ignore = $main_nav['parent_categories']->pluck('id');
-
-        $main_nav['categories_without_parent'] = Category::with(['articles' => function ($query) {
-            $query->limit(4)->published();
-        }])->whereHas('articles')->where('parent_id', null)->latest()->limit(5)->get();
-        $categories_ids_ignore = $categories_ids_ignore->merge($main_nav['categories_without_parent']->pluck('id'));
-
-        $main_nav['other_categories']['parent_categories'] = Category::with(['categories' => function ($query) {
-            $query->whereHas('articles');
-        }])->whereHas('categories.articles')->whereNotIn('id', $categories_ids_ignore)->latest()->get();
-
-        $main_nav['other_categories']['categories_without_parent'] =
-            Category::query()->whereHas('articles')->where('parent_id', null)->whereNotIn('id', $categories_ids_ignore)->latest()->get();
-
         return view('home::index', compact([
-            'main_nav',
             'trending_posts',
             'first_content',
             'second_content',
             'third_content',
             'fourth_content',
-            'second_sidebar',
-            'footer',
         ]));
     }
 

@@ -1,0 +1,11 @@
+{
+    "name": "Front",
+    "alias": "front",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Front\\App\\Providers\\FrontServiceProvider"
+    ],
+    "files": []
+}
