@@ -14,7 +14,7 @@ class ArticleService
 
     public function getLatestTags(): Collection
     {
-        return Tag::latest()->limit(30)->get();
+        return Tag::query()->latest()->limit(30)->get();
     }
 
     public function getEditorChoices(): Collection

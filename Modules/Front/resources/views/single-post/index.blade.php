@@ -1,19 +1,7 @@
 @extends('front::layouts.master', ['title' => "{$article->category->name}: {$article->title}"])
 
 @section('content')
-    <div class="page-title">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <ol class="breadcrumb">
-                        <li><a href="{{ route('home.index') }}">home</a></li>
-                        <li><a href="#">{{ $category->name }}</a></li>
-                        <li>{{ $article->title }}</li>
-                    </ol>
-                </div><!-- Col end -->
-            </div><!-- Row end -->
-        </div><!-- Container end -->
-    </div><!-- Page title end -->
+    @include('front::single-post.partials.breadcrumb')
 
     <section class="block-wrapper">
         <div class="container">
@@ -22,21 +10,7 @@
 
                     <div class="single-post">
 
-                        <div class="post-title-area">
-                            <a class="post-cat" href="#">سلامتی</a>
-                            <h2 class="post-title">
-                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                            </h2>
-                            <div class="post-meta">
-									<span class="post-author">
-										لورم <a href="#">جان اسنو</a>
-									</span>
-                                <span class="post-date"><i class="fa fa-clock-o"></i> لورم ایپسوم متن</span>
-                                <span class="post-hits"><i class="fa fa-eye"></i> 21</span>
-                                <span class="post-comment"><i class="fa fa-comments-o"></i>
-										<a href="#" class="comments-link"><span>01</span></a></span>
-                            </div>
-                        </div><!-- Post title end -->
+                        @include('front::single-post.partials.page-title-area')
 
                         <div class="post-content-area">
                             <div class="post-media post-featured-image">
