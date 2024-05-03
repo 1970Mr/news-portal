@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "89fc78093f819ca525342476615d09c6",
+    "content-hash": "abbb5d3701bb160b6f63bb608d683728",
     "packages": [
         {
             "name": "archtechx/enums",
@@ -1324,6 +1324,69 @@
                 }
             ],
             "time": "2023-12-03T19:50:20+00:00"
+        },
+        {
+            "name": "jorenvanhocht/laravel-share",
+            "version": "4.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jorenvh/laravel-share.git",
+                "reference": "86af334068038a840567ed62f2082fe3ac981476"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jorenvh/laravel-share/zipball/86af334068038a840567ed62f2082fe3ac981476",
+                "reference": "86af334068038a840567ed62f2082fe3ac981476",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.13|^7.0",
+                "phpunit/phpunit": "^9.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Jorenvh\\Share\\Providers\\ShareServiceProvider"
+                    ],
+                    "aliases": {
+                        "Share": "Jorenvh\\Share\\ShareFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jorenvh\\Share\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Joren Van Hocht",
+                    "email": "joren@codeswitch.be",
+                    "homepage": "https://codeswitch.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Optional package for Laravel to generate social share links.",
+            "homepage": "https://github.com/jorenvh/laravel-share",
+            "keywords": [
+                "laravel",
+                "share",
+                "social links",
+                "social share links"
+            ],
+            "support": {
+                "issues": "https://github.com/jorenvh/laravel-share/issues",
+                "source": "https://github.com/jorenvh/laravel-share/tree/4.2.0"
+            },
+            "time": "2022-02-11T17:20:09+00:00"
         },
         {
             "name": "laravel-lang/locale-list",
@@ -9939,5 +10002,5 @@
         "php": "^8.1"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
