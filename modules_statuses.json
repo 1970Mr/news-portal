@@ -10,5 +10,6 @@
     "FileManager": true,
     "Article": true,
     "Profile": true,
-    "Hotness": true
+    "Hotness": true,
+    "Comment": true
 }

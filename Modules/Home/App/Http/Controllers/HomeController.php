@@ -51,8 +51,6 @@ class HomeController extends Controller
             $query->where('is_hot', true);
         })->withCount('articles')->whereHas('articles')->latest()->limit(7)->get();
 
-
-
         $main_nav['parent_categories'] = Category::with(['categories' => function ($query) {
             $query->whereHas('articles')->limit(4);
         }])->whereHas('categories.articles', function ($query) {
