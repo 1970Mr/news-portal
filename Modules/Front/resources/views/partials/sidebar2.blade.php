@@ -1,5 +1,5 @@
 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-    <div class="sidebar sidebar-right">
+    <div class="sidebar sidebar-right second-sidebar">
         <div class="widget widget-tags">
             <h3 class="block-title"><span>آخرین برچسب‌ها</span></h3>
             <ul class="unstyled clearfix">

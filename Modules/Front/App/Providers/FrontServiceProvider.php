@@ -27,8 +27,8 @@ class FrontServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/migrations'));
 
         View::composer([
-            'front::layouts.master',
-            'home::index'
+            'home::index',
+            'front::single-post.index',
         ], static function ($view) {
             $view->with(resolve(ArticleService::class)->composeViewData());
         });

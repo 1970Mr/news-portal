@@ -109,7 +109,7 @@ class ArticleService
             'latest_tags' => $this->getLatestTags(),
         ];
 
-        return compact('main_nav', 'footer', 'second_sidebar');
+        return compact(['main_nav', 'footer', 'second_sidebar']);
     }
 
     private function baseQuery(): Builder

@@ -1,5 +1,5 @@
 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-    <div class="sidebar sidebar-right">
+    <div class="sidebar sidebar-right first-sidebar">
         <div class="widget color-default m-bottom-0">
             <h3 class="block-title"><span>اخبار پربازدید</span></h3>
 
