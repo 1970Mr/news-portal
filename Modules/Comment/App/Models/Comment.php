@@ -3,20 +3,50 @@
 namespace Modules\Comment\App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Modules\Comment\Database\factories\CommentFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Comment extends Model
 {
-    use HasFactory;
+    use SoftDeletes;
+
+    protected $with = [
+        'commenter'
+    ];
+
+    protected $fillable = [
+        'comment', 'approved', 'guest_name', 'guest_email'
+    ];
+
+    protected $casts = [
+        'approved' => 'boolean'
+    ];
 
     /**
-     * The attributes that are mass assignable.
+     * A model who comments
      */
-    protected $fillable = [];
-    
-    protected static function newFactory(): CommentFactory
+    public function commenter(): MorphTo
     {
-        //return CommentFactory::new();
+        return $this->morphTo();
+    }
+
+    /**
+     * The model that is commented on
+     */
+    public function commentable(): MorphTo
+    {
+        return $this->morphTo();
+    }
+
+    public function parent(): BelongsTo
+    {
+        return $this->belongsTo(__CLASS__, 'parent_id');
+    }
+
+    public function children(): HasMany
+    {
+        return $this->hasMany(__CLASS__, 'parent_id');
     }
 }
