@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Comment\App\Http\Controllers\Front\CommentController;
+use Modules\Comment\App\Http\Controllers\CommentController;
+use Modules\Comment\App\Http\Controllers\Front\CommentController as FrontCommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,14 @@ use Modules\Comment\App\Http\Controllers\Front\CommentController;
 |
 */
 
-Route::group([], function () {
-    Route::post('comments', [CommentController::class, 'store'])->name('comments.store');
-    Route::delete('comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
-    Route::put('comments/{comment}', [CommentController::class, 'update'])->name('comments.update');
-    Route::post('comments/{comment}', [CommentController::class, 'reply'])->name('comments.reply');
+Route::prefix('comments')->name('comments.')->controller(FrontCommentController::class)->group(function () {
+    Route::post('/', 'store')->name('store');
+    Route::put('/{comment}', 'update')->name('update');
+    Route::delete('/{comment}', 'destroy')->name('destroy');
+    Route::post('/{comment}', 'reply')->name('reply');
+});
+
+Route::prefix('admin/comments')->name('admin.comments.')->controller(CommentController::class)->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::put('/{comment}', 'approved')->name('approved');
 });

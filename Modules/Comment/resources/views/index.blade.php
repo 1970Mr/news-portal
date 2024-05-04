@@ -37,9 +37,9 @@
                                 </div>
                             </button>
                             <ul class="dropdown-menu">
-                                @foreach($filters as $key => $value)
-                                    <li><a class="dropdown-item" href="{{ route('image.index', ['filter' => $key]) }}">{{ $value }}</a></li>
-                                @endforeach
+{{--                                @foreach($filters as $key => $value)--}}
+{{--                                    <li><a class="dropdown-item" href="{{ route('admin.comments.index', ['filter' => $key]) }}">{{ $value }}</a></li>--}}
+{{--                                @endforeach--}}
                             </ul>
                         </div>
                     </div><!-- /.buttons-box -->
@@ -50,44 +50,37 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>تصویر</th>
-                                <th>مسیر تصویر</th>
-                                <th>متن جایگزین</th>
-                                <th>کاربر آپلود کننده</th>
+                                <th>متن کامنت</th>
+                                <th>کامنت دهنده</th>
+                                <th>مهمان</th>
+                                <th>تایید شده</th>
+                                <th>مدل</th>
                                 <th>تاریخ ایجاد</th>
-                                @can('operations', $imageClassName)
+                                @canany([config('permissions_list.ARTICLE_UPDATE'), config('permissions_list.ARTICLE_DESTROY')])
                                     <th>عملیات</th>
-                                @endcan
+                                @endcanany
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($images as $image)
-                                @can('show', $image)
+                            @foreach($comments as $comment)
+                                @can('show', $comment)
                                     <tr>
-                                        <td>{{ $image->id }}</td>
-                                        <td>
-                                            <img src="{{ asset('storage/' . $image->file_path) }}" alt="{{ $image->alt_text }}" width="100px" style="max-height: 90px">
-                                        </td>
-                                        <td>{{ $image->file_path }}</td>
-                                        <td>{{ nullable_value($image->alt_text) }}</td>
-                                        <td>{{ $image->user_name }}</td>
-                                        <td class="ltr text-right created-at">{{ jalalian()->forge($image->created_at)->format(config('common.datetime_format')) }}</td>
-                                        @can('operations', $imageClassName)
+                                        <td>{{ $comment->id }}</td>
+                                        <td>{{ $comment->comment }}</td>
+                                        <td>{{ $comment->commenterName() }}</td>
+                                        <td>{{ $comment->isGuest() }}</td>
+                                        <td>{{ $comment->approved }}</td>
+                                        <td>{{ $comment->commentable_type }}</td>
+                                        <td class="ltr text-right created-at">{{ jalalian()->forge($comment->created_at)->format(config('common.datetime_format')) }}</td>
+                                        @canany([config('permissions_list.ARTICLE_UPDATE'), config('permissions_list.ARTICLE_DESTROY')])
                                             <td>
                                                 <div class="d-flex gap-2">
-                                                    @can('update', $image)
-                                                        <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                           rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('image.edit', $image->id) }}">
-                                                            <i class="icon-pencil fa-flip-horizontal"></i>
-                                                        </a>
-                                                    @endcan
-
-                                                    @can('destroy', $image)
-                                                        <x-common-delete-button :route="route('image.destroy', $image->id)"/>
+                                                    @can(config('permissions_list.ARTICLE_DESTROY'))
+                                                        <x-common-delete-button :route="route('comments.destroy', $comment->id)"/>
                                                     @endcan
                                                 </div>
                                             </td>
-                                        @endcan
+                                        @endcanany
                                     </tr>
                                 @endcan
                             @endforeach
@@ -96,7 +89,7 @@
                     </div>
 
                     <!-- Display pagination links -->
-                    {{ $images->links() }}
+                    {{ $comments->links() }}
 
                 </div><!-- /.portlet-body -->
             </div><!-- /.portlet -->

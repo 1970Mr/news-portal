@@ -49,4 +49,14 @@ class Comment extends Model
     {
         return $this->hasMany(__CLASS__, 'parent_id');
     }
+
+    public function commenterName(): string
+    {
+        return $this->guest_name ?? $this->commenter->name;
+    }
+
+    public function isGuest(): bool
+    {
+        return (bool) $this->guest_name;
+    }
 }
