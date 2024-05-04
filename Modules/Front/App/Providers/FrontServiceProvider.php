@@ -28,7 +28,7 @@ class FrontServiceProvider extends ServiceProvider
 
         View::composer([
             'home::index',
-            'front::single-post.index',
+            'front::single-post.show',
         ], static function ($view) {
             $view->with(resolve(ArticleService::class)->composeViewData());
         });
