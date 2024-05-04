@@ -2,20 +2,24 @@
     <h3 class="title-normal">دیدگاه خود را بیان کنید</h3>
 
     <form role="form" action="{{ route('comments.store') }}" method="POST">
-        <div class="alert alert-danger">
-            <strong>خطا!</strong>
-            @foreach($errors->all() as $error)
-                <p>{{ $error }}</p>
-            @endforeach
-        </div>
+        @if(session()->has('errors'))
+            <div class="alert alert-danger">
+                <strong>خطا!</strong>
+                @foreach($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                @endforeach
+            </div>
+        @endif
+
         @csrf
+        @honeypot
         <input type="hidden" name="commentable_type" value="{{ get_class($article) }}" />
         <input type="hidden" name="commentable_id" value="{{ $article->getKey() }}" />
 
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <textarea class="form-control required-field" name="comment" id="comment" placeholder="دیدگاه شما">{{ old('comment') }}</textarea>
+                    <textarea class="form-control required-field" name="comment" id="comment" placeholder="دیدگاه شما" required>{{ old('comment') }}</textarea>
                 </div>
             </div><!-- Col end -->
 

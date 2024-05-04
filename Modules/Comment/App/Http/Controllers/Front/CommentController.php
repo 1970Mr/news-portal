@@ -7,17 +7,16 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Facades\Validator;
-use Modules\Article\App\Models\Article;
 use Modules\Comment\App\Http\Requests\Front\CommentRequest;
 use Modules\Comment\App\Models\Comment;
+use Spatie\Honeypot\ProtectAgainstSpam;
 
 class CommentController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth')->except('store');
-//        $this->middleware(ProtectAgainstSpam::class)->only('store');
+        $this->middleware(ProtectAgainstSpam::class)->only('store');
     }
 
     public function store(CommentRequest $request): RedirectResponse
@@ -34,7 +33,7 @@ class CommentController extends Controller
         }
         $comment->commentable()->associate($model);
         $comment->save();
-        return redirect(URL::previous() . '/#comments')->with(['success' => 'نظر شما با موفقیت ثبت شد. پس تایید توسط پشتیبان، نمایش داده خواهد شد.']);
+        return redirect(URL::previous() . '#comments')->with(['success' => 'نظر شما با موفقیت ثبت شد. پس از تایید توسط پشتیبان، نمایش داده خواهد شد.']);
     }
 
     public function update(Request $request, $id): RedirectResponse
