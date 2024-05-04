@@ -23,6 +23,14 @@ class ArticleController extends Controller
             ->pinterest()
             ->getRawLinks();
 
-        return view('front::single-post.index', compact(['article', 'category', 'shared_links']));
+        $previous_article = Article::with('category')->where('created_at', '<', $article->created_at)
+            ->orderBy('created_at', 'desc')
+            ->first();
+
+        $next_article = Article::with('category')->where('created_at', '>', $article->created_at)
+            ->orderBy('created_at', 'asc')
+            ->first();
+
+        return view('front::single-post.index', compact(['article', 'category', 'shared_links', 'previous_article', 'next_article']));
     }
 }
