@@ -13,11 +13,21 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->text('message');
+            $table->text('comment');
             $table->boolean('approved')->default(0);
-            $table->foreignId('parent_id')->constrained('comments')->onDelete('cascade');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('parent_id')->nullable()->constrained('comments')->onDelete('cascade');
+
+            $table->string('guest_name')->nullable();
+            $table->string('guest_email')->nullable();
+
+            // A model who comments
+            $table->string('commenter_id')->nullable();
+            $table->string('commenter_type')->nullable();
+            $table->index(["commenter_id", "commenter_type"]);
+
+            // The model that is commented on
             $table->morphs('commentable');
+
             $table->softDeletes();
             $table->timestamps();
         });
