@@ -114,6 +114,6 @@ class ArticleService
 
     private function baseQuery(): Builder
     {
-        return Article::with(['hotness', 'image', 'category', 'tags'])->latest()->active()->published();
+        return Article::with(['hotness', 'image', 'category', 'tags', 'user'])->latest()->active()->published();
     }
 }

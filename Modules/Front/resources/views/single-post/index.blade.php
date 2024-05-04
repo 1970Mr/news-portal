@@ -18,84 +18,7 @@
 
                     @include('front::single-post.partials.author-box')
 
-                    <div class="related-posts block">
-                        <h3 class="block-title"><span>مطالب مرتبط</span></h3>
-
-                        <div id="latest-news-slide" class="owl-carousel owl-theme latest-news-slide">
-                            <div class="item">
-                                <div class="post-block-style clearfix">
-                                    <div class="post-thumb">
-                                        <a href="single-post1.html"><img class="img-responsive" src="{{ asset('home/images/news/lifestyle/travel5.jpg') }}" alt=""></a>
-                                    </div>
-                                    <a class="post-cat" href="#">سلامتی</a>
-                                    <div class="post-content">
-                                        <h2 class="post-title title-medium">
-                                            <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با</a>
-                                        </h2>
-                                        <div class="post-meta">
-                                            <span class="post-author"><a href="#">جان اسنو</a></span>
-                                            <span class="post-date">30 فروردین 1396</span>
-                                        </div>
-                                    </div><!-- Post content end -->
-                                </div><!-- Post Block style end -->
-                            </div><!-- Item 1 end -->
-
-                            <div class="item">
-                                <div class="post-block-style clearfix">
-                                    <div class="post-thumb">
-                                        <a href="single-post1.html"><img class="img-responsive" src="{{ asset('home/images/news/lifestyle/health5.jpg') }}" alt=""></a>
-                                    </div>
-                                    <a class="post-cat" href="#">سلامتی</a>
-                                    <div class="post-content">
-                                        <h2 class="post-title title-medium">
-                                            <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از</a>
-                                        </h2>
-                                        <div class="post-meta">
-                                            <span class="post-author"><a href="#">جان اسنو</a></span>
-                                            <span class="post-date">30 فروردین 1396</span>
-                                        </div>
-                                    </div><!-- Post content end -->
-                                </div><!-- Post Block style end -->
-                            </div><!-- Item 2 end -->
-
-                            <div class="item">
-                                <div class="post-block-style clearfix">
-                                    <div class="post-thumb">
-                                        <a href="single-post1.html"><img class="img-responsive" src="{{ asset('home/images/news/lifestyle/travel3.jpg') }}" alt=""></a>
-                                    </div>
-                                    <a class="post-cat" href="#">مسافرت</a>
-                                    <div class="post-content">
-                                        <h2 class="post-title title-medium">
-                                            <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان</a>
-                                        </h2>
-                                        <div class="post-meta">
-                                            <span class="post-author"><a href="#">جان اسنو</a></span>
-                                            <span class="post-date">30 فروردین 1396</span>
-                                        </div>
-                                    </div><!-- Post content end -->
-                                </div><!-- Post Block style end -->
-                            </div><!-- Item 3 end -->
-
-                            <div class="item">
-                                <div class="post-block-style clearfix">
-                                    <div class="post-thumb">
-                                        <a href="single-post1.html"><img class="img-responsive" src="{{ asset('home/images/news/lifestyle/travel4.jpg') }}" alt=""></a>
-                                    </div>
-                                    <a class="post-cat" href="#">مسافرت</a>
-                                    <div class="post-content">
-                                        <h2 class="post-title title-medium">
-                                            <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با</a>
-                                        </h2>
-                                        <div class="post-meta">
-                                            <span class="post-author"><a href="#">جان اسنو</a></span>
-                                            <span class="post-date">30 فروردین 1396</span>
-                                        </div>
-                                    </div><!-- Post content end -->
-                                </div><!-- Post Block style end -->
-                            </div><!-- Item 4 end -->
-                        </div><!-- Carousel end -->
-
-                    </div><!-- Related posts end -->
+                    @include('front::single-post.partials.related-posts')
 
                     <!-- Post comment start -->
                     <div id="comments" class="comments-area block">
@@ -223,6 +146,10 @@
 
         .post-navigation {
             width: 100%;
+        }
+
+        .related-posts img {
+            height: 16rem;
         }
     </style>
 @endpush

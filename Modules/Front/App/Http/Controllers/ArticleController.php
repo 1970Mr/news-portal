@@ -28,9 +28,15 @@ class ArticleController extends Controller
             ->first();
 
         $next_article = Article::with('category')->where('created_at', '>', $article->created_at)
-            ->orderBy('created_at', 'asc')
+            ->orderBy('created_at')
             ->first();
 
-        return view('front::single-post.index', compact(['article', 'category', 'shared_links', 'previous_article', 'next_article']));
+        $related_articles = $article->category->articles()->with(['image', 'category', 'user'])->where('id', '!=', $article->id)->latest()->limit(6)->get();
+
+        if ($related_articles->count() < 3) {
+            $related_articles = Article::with(['image', 'category', 'user'])->where('id', '!=', $article->id)->latest()->limit(6)->get()->shuffle();
+        }
+
+        return view('front::single-post.index', compact(['article', 'category', 'shared_links', 'previous_article', 'next_article', 'related_articles']));
     }
 }
