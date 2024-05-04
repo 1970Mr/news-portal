@@ -68,8 +68,8 @@
                                         <td>{{ $comment->id }}</td>
                                         <td>{{ $comment->comment }}</td>
                                         <td>{{ $comment->commenterName() }}</td>
-                                        <td>{{ $comment->isGuest() }}</td>
-                                        <td>{{ $comment->approved }}</td>
+                                        <td class="{{ status_class(!$comment->isGuest()) }}">{{ $comment->isGuest() ? 'هست' : 'نیست' }}</td>
+                                        <td class="{{ status_class($comment->approved) }}">{{ $comment->approved ? 'تایید شده' : 'تایید نشده' }}</td>
                                         <td>{{ $comment->commentable_type }}</td>
                                         <td class="ltr text-right created-at">{{ jalalian()->forge($comment->created_at)->format(config('common.datetime_format')) }}</td>
                                         @canany([config('permissions_list.ARTICLE_UPDATE'), config('permissions_list.ARTICLE_DESTROY')])
