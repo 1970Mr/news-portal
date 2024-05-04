@@ -5,9 +5,18 @@ namespace Modules\Comment\App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Modules\Article\App\Models\Article;
+use Modules\Comment\App\Models\Comment;
 
 class CommentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('store');
+//        $this->middleware(ProtectAgainstSpam::class)->only('store');
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -60,6 +69,11 @@ class CommentController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy($id)
+    {
+        //
+    }
+
+    public function reply(Request $request, $id): RedirectResponse
     {
         //
     }

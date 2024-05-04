@@ -1,25 +1,37 @@
 <div class="comments-form">
     <h3 class="title-normal">دیدگاه خود را بیان کنید</h3>
 
-    <form role="form">
+    <form role="form" action="{{ route('comments.store') }}" method="POST">
+        <div class="alert alert-danger">
+            <strong>خطا!</strong>
+            @foreach($errors->all() as $error)
+                <p>{{ $error }}</p>
+            @endforeach
+        </div>
+        @csrf
+        <input type="hidden" name="commentable_type" value="{{ get_class($article) }}" />
+        <input type="hidden" name="commentable_id" value="{{ $article->getKey() }}" />
+
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <textarea class="form-control required-field" id="message" placeholder="دیدگاه شما" required></textarea>
+                    <textarea class="form-control required-field" name="comment" id="comment" placeholder="دیدگاه شما">{{ old('comment') }}</textarea>
                 </div>
             </div><!-- Col end -->
 
-            <div class="col-md-12">
-                <div class="form-group">
-                    <input class="form-control" name="name" id="name" placeholder="نام" type="text" required>
-                </div>
-            </div><!-- Col end -->
+            @guest
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <input class="form-control" name="guest_name" id="guest_name" placeholder="نام" type="text" required value="{{ old('guest_name') }}">
+                    </div>
+                </div><!-- Col end -->
 
-            <div class="col-md-12">
-                <div class="form-group">
-                    <input class="form-control" name="email" id="email" placeholder="ایمیل" type="email" required>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <input class="form-control" name="guest_email" id="guest_email" placeholder="ایمیل" type="email" required value="{{ old('guest_email') }}">
+                    </div>
                 </div>
-            </div>
+            @endguest
         </div><!-- Form row end -->
         <div class="clearfix">
             <button class="comments-btn btn btn-primary" type="submit">ارسال دیدگاه</button>

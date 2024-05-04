@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Comment\App\Http\Controllers\CommentController;
+use Modules\Comment\App\Http\Controllers\Front\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +15,8 @@ use Modules\Comment\App\Http\Controllers\CommentController;
 */
 
 Route::group([], function () {
-    Route::resource('comment', CommentController::class)->names('comment');
+    Route::post('comments', [CommentController::class, 'store'])->name('comments.store');
+    Route::delete('comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+    Route::put('comments/{comment}', [CommentController::class, 'update'])->name('comments.update');
+    Route::post('comments/{comment}', [CommentController::class, 'reply'])->name('comments.reply');
 });
