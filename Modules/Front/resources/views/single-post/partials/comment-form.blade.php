@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <textarea class="form-control required-field" name="comment" id="comment" placeholder="دیدگاه شما" required>{{ old('comment') }}</textarea>
+                    <textarea class="form-control required-field" name="comment" id="comment" placeholder="دیدگاه شما">{{ old('comment') }}</textarea>
                 </div>
             </div><!-- Col end -->
 

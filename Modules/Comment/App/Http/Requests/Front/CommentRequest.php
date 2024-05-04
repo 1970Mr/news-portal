@@ -31,11 +31,11 @@ class CommentRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'guest_name' => 'نام کاربر',
-            'guest_email' => 'ایمیل کاربر',
-            'commentable_type' => 'مدل',
-            'commentable_id' => 'id مدل',
-            'comment' => 'دیدگاه کاربر',
+            'guest_name' => __('comment::attributes.guest_name'),
+            'guest_email' => __('comment::attributes.guest_email'),
+            'commentable_type' => __('comment::attributes.commentable_type'),
+            'commentable_id' => __('comment::attributes.commentable_id'),
+            'comment' => __('comment::attributes.comment'),
         ];
     }
 
