@@ -76,12 +76,28 @@
                                             <td>
                                                 <div class="d-flex gap-2">
                                                     @can(config('permissions_list.ARTICLE_UPDATE', false))
-                                                        <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                           rel="tooltip" aria-label="تغییر وضعیت" data-bs-original-title="تغییر وضعیت" href="{{ route('admin.comments.change-status',
-                                                           $comment->id)
-                                                           }}">
-                                                            <i class="icon-pencil fa-flip-horizontal"></i>
-                                                        </a>
+                                                        @if ($comment->status !== get_class($comment)::APPROVED)
+                                                            <form action="{{ route('admin.comments.approve', $comment->id) }}" method="post">
+                                                                @csrf
+                                                                @method('patch')
+                                                                <button class="btn btn-sm btn-success btn-icon round d-flex justify-content-center align-items-center"
+                                                                        rel="tooltip" aria-label="تایید نظر" data-bs-original-title="تایید نظر">
+                                                                    <i class="icon-check"></i>
+                                                                </button>
+                                                            </form>
+                                                        @endif
+                                                    @endcan
+                                                    @can(config('permissions_list.ARTICLE_UPDATE', false))
+                                                        @if ($comment->status !== get_class($comment)::REJECTED)
+                                                                <form action="{{ route('admin.comments.reject', $comment->id) }}" method="post">
+                                                                    @csrf
+                                                                    @method('patch')
+                                                                    <button class="btn btn-sm btn-warning btn-icon round d-flex justify-content-center align-items-center"
+                                                                            rel="tooltip" aria-label="رد نظر" data-bs-original-title="رد نظر">
+                                                                        <i class="icon-close"></i>
+                                                                    </button>
+                                                                </form>
+                                                        @endif
                                                     @endcan
                                                     @can(config('permissions_list.ARTICLE_DESTROY', false))
                                                         <x-common-delete-button :route="route('admin.comments.destroy', $comment->id)"/>

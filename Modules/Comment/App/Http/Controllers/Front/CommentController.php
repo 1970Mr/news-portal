@@ -22,7 +22,7 @@ class CommentController extends Controller
     public function store(CommentRequest $request): RedirectResponse
     {
         $this->commentService->store($request);
-        return redirect(URL::previous() . '#comments')->with(['success' => __('comment::messages.success-store')]);
+        return redirect(URL::previous() . '#comments')->with(['success' => __('comment::messages.comment_saved_successfully')]);
     }
 
     public function update(Request $request, $id): RedirectResponse

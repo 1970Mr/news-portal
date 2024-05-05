@@ -19,8 +19,15 @@ class CommentController extends Controller
         return view('comment::index', compact(['comments']) + ['commentService' => $this->commentService]);
     }
 
-    public function changeStatus(Request $request, $id): RedirectResponse
+    public function approve(Comment $comment): RedirectResponse
     {
-        //
+        $comment->setStatus(Comment::APPROVED);
+        return back()->with(['success' => __('comment::messages.comment_approved')]);
+    }
+
+    public function reject(Comment $comment): RedirectResponse
+    {
+        $comment->setStatus(Comment::REJECTED);
+        return back()->with(['success' => __('comment::messages.comment_rejected')]);
     }
 }

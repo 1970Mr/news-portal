@@ -80,4 +80,10 @@ class Comment extends Model
     {
         return __($this->status);
     }
+
+    public function setStatus($status): void
+    {
+        $this->status = $status;
+        $this->save();
+    }
 }
