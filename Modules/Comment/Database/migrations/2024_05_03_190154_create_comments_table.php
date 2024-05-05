@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Modules\Comment\App\Models\Comment;
 
 return new class extends Migration
 {
@@ -14,11 +15,10 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->text('comment');
-            $table->boolean('approved')->default(0);
+            $table->enum('status', Comment::COMMENT_STATUS)->default('pending');
             $table->foreignId('parent_id')->nullable()->constrained('comments')->onDelete('cascade');
 
-            $table->string('guest_name')->nullable();
-            $table->string('guest_email')->nullable();
+            $table->json('guest_data')->nullable();
 
             // A model who comments
             $table->string('commenter_id')->nullable();

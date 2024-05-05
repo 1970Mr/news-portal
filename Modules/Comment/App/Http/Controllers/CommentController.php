@@ -7,16 +7,19 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Modules\Comment\App\Models\Comment;
+use Modules\Comment\App\Services\CommentService;
 
 class CommentController extends Controller
 {
+    public function __construct(private readonly CommentService $commentService) {}
+
     public function index(): View
     {
-        $comments = Comment::with('commentable')->paginate(10);
-        return view('comment::index', compact('comments'));
+        $comments = Comment::with('commentable')->latest()->paginate(10);
+        return view('comment::index', compact(['comments']) + ['commentService' => $this->commentService]);
     }
 
-    public function approved(Request $request, $id): RedirectResponse
+    public function changeStatus(Request $request, $id): RedirectResponse
     {
         //
     }

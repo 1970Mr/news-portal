@@ -24,5 +24,6 @@ Route::prefix('comments')->name('comments.')->controller(FrontCommentController:
 
 Route::prefix('admin/comments')->name('admin.comments.')->controller(CommentController::class)->group(function () {
     Route::get('/', 'index')->name('index');
-    Route::put('/{comment}', 'approved')->name('approved');
+    Route::put('/change-status/{comment}', 'changeStatus')->name('change-status');
+    Route::delete('/{comment}', 'destroy')->name('destroy');
 });

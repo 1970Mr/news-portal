@@ -53,10 +53,10 @@
                                 <th>متن کامنت</th>
                                 <th>کامنت دهنده</th>
                                 <th>مهمان</th>
-                                <th>تایید شده</th>
+                                <th>وضعیت کامنت</th>
                                 <th>مدل</th>
                                 <th>تاریخ ایجاد</th>
-                                @canany([config('permissions_list.ARTICLE_UPDATE'), config('permissions_list.ARTICLE_DESTROY')])
+                                @canany([config('permissions_list.ARTICLE_UPDATE', false), config('permissions_list.ARTICLE_DESTROY', false)])
                                     <th>عملیات</th>
                                 @endcanany
                             </tr>
@@ -66,17 +66,25 @@
                                 @can('show', $comment)
                                     <tr>
                                         <td>{{ $comment->id }}</td>
-                                        <td>{{ $comment->comment }}</td>
+                                        <td>{{ str($comment->comment)->limit(20) }}</td>
                                         <td>{{ $comment->commenterName() }}</td>
                                         <td class="{{ status_class(!$comment->isGuest()) }}">{{ $comment->isGuest() ? 'هست' : 'نیست' }}</td>
-                                        <td class="{{ status_class($comment->approved) }}">{{ $comment->approved ? 'تایید شده' : 'تایید نشده' }}</td>
+                                        <td class="{{ $commentService->setStatusClass($comment->status) }}">{{ $comment->getStatus() }}</td>
                                         <td>{{ $comment->commentable_type }}</td>
                                         <td class="ltr text-right created-at">{{ jalalian()->forge($comment->created_at)->format(config('common.datetime_format')) }}</td>
-                                        @canany([config('permissions_list.ARTICLE_UPDATE'), config('permissions_list.ARTICLE_DESTROY')])
+                                        @canany([config('permissions_list.ARTICLE_UPDATE', false), config('permissions_list.ARTICLE_DESTROY', false)])
                                             <td>
                                                 <div class="d-flex gap-2">
-                                                    @can(config('permissions_list.ARTICLE_DESTROY'))
-                                                        <x-common-delete-button :route="route('comments.destroy', $comment->id)"/>
+                                                    @can(config('permissions_list.ARTICLE_UPDATE', false))
+                                                        <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
+                                                           rel="tooltip" aria-label="تغییر وضعیت" data-bs-original-title="تغییر وضعیت" href="{{ route('admin.comments.change-status',
+                                                           $comment->id)
+                                                           }}">
+                                                            <i class="icon-pencil fa-flip-horizontal"></i>
+                                                        </a>
+                                                    @endcan
+                                                    @can(config('permissions_list.ARTICLE_DESTROY', false))
+                                                        <x-common-delete-button :route="route('admin.comments.destroy', $comment->id)"/>
                                                     @endcan
                                                 </div>
                                             </td>

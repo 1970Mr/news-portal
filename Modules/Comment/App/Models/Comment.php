@@ -12,16 +12,27 @@ class Comment extends Model
 {
     use SoftDeletes;
 
+    public const PENDING = 'pending';
+    public const APPROVED = 'approved';
+    public const REJECTED = 'rejected';
+
+    public const COMMENT_STATUS = [
+        self::PENDING,
+        self::APPROVED,
+        self::REJECTED,
+    ];
+
     protected $with = [
         'commenter'
     ];
 
     protected $fillable = [
-        'comment', 'approved', 'guest_name', 'guest_email'
+        'comment', 'approved', 'guest_data'
     ];
 
     protected $casts = [
-        'approved' => 'boolean'
+        'approved' => 'boolean',
+        'guest_data' => 'array',
     ];
 
     /**
@@ -52,11 +63,21 @@ class Comment extends Model
 
     public function commenterName(): string
     {
-        return $this->guest_name ?? $this->commenter->name;
+        return $this->isGuest() ? $this->getGuestName() : $this->commenter->name;
     }
 
     public function isGuest(): bool
     {
-        return (bool) $this->guest_name;
+        return (bool) $this->guest_data;
+    }
+
+    public function getGuestName(): string
+    {
+        return $this->guest_data['name'];
+    }
+
+    public function getStatus(): string
+    {
+        return __($this->status);
     }
 }

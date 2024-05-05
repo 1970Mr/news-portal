@@ -13,20 +13,37 @@ class CommentService
     {
         $model = $request->commentable_type::findOrFail($request->commentable_id);
         $comment = Comment::make([ 'comment' => $request->comment ]);
-        $comment = $this->setCommenter($request, $comment);
+        $this->setCommenter($request, $comment);
         $comment->commentable()->associate($model);
         $comment->save();
         return $comment;
     }
 
-    public function setCommenter(CommentRequest $request, $comment): Model
+    public function setCommenter(CommentRequest $request, Comment $comment): void
     {
         if (!Auth::check()) {
-            $comment->guest_name = $request->guest_name;
-            $comment->guest_email = $request->guest_email;
+            $this->setGuestData($request, $comment);
         } else {
             $comment->commenter()->associate(Auth::user());
         }
+    }
+
+    public function setStatusClass(string $status): string
+    {
+        return match ($status) {
+            Comment::PENDING => 'text-warning',
+            Comment::APPROVED => 'text-success',
+            Comment::REJECTED => 'text-danger',
+            default => 'text-muted',
+        };
+    }
+
+    public function setGuestData(CommentRequest $request, $comment): Model
+    {
+        $comment->guest_data = [
+            'name' => $request->guest_name,
+            'email' => $request->guest_email,
+        ];
         return $comment;
     }
 }
