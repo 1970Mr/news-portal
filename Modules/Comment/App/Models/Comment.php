@@ -2,6 +2,7 @@
 
 namespace Modules\Comment\App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -85,5 +86,29 @@ class Comment extends Model
     {
         $this->status = $status;
         $this->save();
+    }
+
+    public function setGuestData(string $name, string $email): Model
+    {
+        $this->guest_data = [
+            'name' => $name,
+            'email' => $email,
+        ];
+        return $this;
+    }
+
+    public function scopePending(Builder $query): void
+    {
+        $query->where('status', self::PENDING);
+    }
+
+    public function scopeApproved(Builder $query): void
+    {
+        $query->where('status', self::APPROVED);
+    }
+
+    public function scopeRejected(Builder $query): void
+    {
+        $query->where('status', self::REJECTED);
     }
 }

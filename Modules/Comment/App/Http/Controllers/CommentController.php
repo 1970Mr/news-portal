@@ -13,10 +13,12 @@ class CommentController extends Controller
 {
     public function __construct(private readonly CommentService $commentService) {}
 
-    public function index(): View
+    public function index(Request $request): View
     {
-        $comments = Comment::with('commentable')->latest()->paginate(10);
-        return view('comment::index', compact(['comments']) + ['commentService' => $this->commentService]);
+        $comments = $this->commentService->getComments($request);
+        $filters = Comment::COMMENT_STATUS;
+        $filters[] = 'all';
+        return view('comment::index', compact(['comments', 'filters']) + ['commentService' => $this->commentService]);
     }
 
     public function approve(Comment $comment): RedirectResponse

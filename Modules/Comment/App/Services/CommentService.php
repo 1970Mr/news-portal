@@ -2,30 +2,18 @@
 
 namespace Modules\Comment\App\Services;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
-use Modules\Comment\App\Http\Requests\Front\CommentRequest;
+use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
 use Modules\Comment\App\Models\Comment;
 
 class CommentService
 {
-    public function store(CommentRequest $request): Model
+    public function getComments(Request $request): Paginator
     {
-        $model = $request->commentable_type::findOrFail($request->commentable_id);
-        $comment = Comment::make([ 'comment' => $request->comment ]);
-        $this->setCommenter($request, $comment);
-        $comment->commentable()->associate($model);
-        $comment->save();
-        return $comment;
-    }
-
-    public function setCommenter(CommentRequest $request, Comment $comment): void
-    {
-        if (!Auth::check()) {
-            $this->setGuestData($request, $comment);
-        } else {
-            $comment->commenter()->associate(Auth::user());
-        }
+        $query = Comment::with('commentable')->latest();
+        $this->setFilters($request, $query);
+        return $query->paginate(10);
     }
 
     public function setStatusClass(string $status): string
@@ -38,12 +26,14 @@ class CommentService
         };
     }
 
-    public function setGuestData(CommentRequest $request, $comment): Model
+    private function setFilters(Request $request, Builder $query): Builder
     {
-        $comment->guest_data = [
-            'name' => $request->guest_name,
-            'email' => $request->guest_email,
-        ];
-        return $comment;
+        $filter = $request->filter;
+        return match ($filter) {
+            Comment::PENDING => $query->pending(),
+            Comment::APPROVED => $query->approved(),
+            Comment::REJECTED => $query->rejected(),
+            default => $query,
+        };
     }
 }

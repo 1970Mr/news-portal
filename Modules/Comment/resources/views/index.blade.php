@@ -37,9 +37,9 @@
                                 </div>
                             </button>
                             <ul class="dropdown-menu">
-{{--                                @foreach($filters as $key => $value)--}}
-{{--                                    <li><a class="dropdown-item" href="{{ route('admin.comments.index', ['filter' => $key]) }}">{{ $value }}</a></li>--}}
-{{--                                @endforeach--}}
+                                @foreach($filters as $value)
+                                    <li><a class="dropdown-item" href="{{ route('admin.comments.index', ['filter' => $value]) }}">{{ __($value) }}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                     </div><!-- /.buttons-box -->
@@ -53,7 +53,7 @@
                                 <th>متن کامنت</th>
                                 <th>کامنت دهنده</th>
                                 <th>مهمان</th>
-                                <th>وضعیت کامنت</th>
+                                <th>وضعیت نظر</th>
                                 <th>مدل</th>
                                 <th>تاریخ ایجاد</th>
                                 @canany([config('permissions_list.ARTICLE_UPDATE', false), config('permissions_list.ARTICLE_DESTROY', false)])

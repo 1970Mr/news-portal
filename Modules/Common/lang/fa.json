@@ -20,5 +20,6 @@
     "password": "رمز عبور",
     "This action is unauthorized.": "این اقدام برای شما غیر مجاز است",
     "This image cannot be deleted! Because it has been used elsewhere.": "این تصویر قابل حذف نیست! زیرا در جایی از آن استفاده شده است.",
-    "Password incorrect.": "رمز عبور اشتباه است."
+    "Password incorrect.": "رمز عبور اشتباه است.",
+    "all": "همه"
 }

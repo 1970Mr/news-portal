@@ -5,10 +5,9 @@ namespace Modules\Comment\App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 use Modules\Comment\App\Http\Requests\Front\CommentRequest;
-use Modules\Comment\App\Services\CommentService;
+use Modules\Comment\App\Services\Front\CommentService;
 use Spatie\Honeypot\ProtectAgainstSpam;
 
 class CommentController extends Controller
