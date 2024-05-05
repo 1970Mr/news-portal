@@ -30,4 +30,10 @@ class CommentController extends Controller
         $comment->setStatus(Comment::REJECTED);
         return back()->with(['success' => __('comment::messages.comment_rejected')]);
     }
+
+    public function destroy(Comment $comment): RedirectResponse
+    {
+        $comment->delete();
+        return back()->with('success', __('entity_deleted', ['entity' => __('comment')]));
+    }
 }
