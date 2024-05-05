@@ -22,7 +22,7 @@ class CommentRequest extends FormRequest
         $rules = [
             'commentable_type' => 'required|string',
             'commentable_id' => 'required|string|min:1',
-            'comment' => 'required|string'
+            'comment' => 'required|string|max:700'
         ];
 
         return array_merge($guest_rules ?? [], $rules);

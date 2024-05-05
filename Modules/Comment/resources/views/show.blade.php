@@ -41,8 +41,10 @@
                                 <span class="ltr" style="display: inline-block">{{ jalalian()->forge($comment->created_at)->format(config('common.datetime_format')) }}</span>
                                 <i class="icon-clock"></i>
                             </span>
-                            <p class="my-2">
-                                {{ $comment->comment }}
+                            <p class="my-3 mx-5">
+                                <x-markdown class="my-2 mx-5">
+                                    {{ $comment->comment }}
+                                </x-markdown>
                             </p>
                         </div>
                         <div class="actions d-flex justify-content-end gap-1">
