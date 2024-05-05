@@ -21,6 +21,11 @@ class CommentController extends Controller
         return view('comment::index', compact(['comments', 'filters']) + ['commentService' => $this->commentService]);
     }
 
+    public function show(Comment $comment): View
+    {
+        return view('comment::show', compact('comment') + ['commentService' => $this->commentService]);
+    }
+
     public function approve(Comment $comment): RedirectResponse
     {
         $comment->setStatus(Comment::APPROVED);
@@ -36,6 +41,6 @@ class CommentController extends Controller
     public function destroy(Comment $comment): RedirectResponse
     {
         $comment->delete();
-        return back()->with('success', __('entity_deleted', ['entity' => __('comment')]));
+        return to_route('admin.comments.index')->with('success', __('entity_deleted', ['entity' => __('comment')]));
     }
 }

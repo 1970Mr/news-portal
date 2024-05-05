@@ -26,5 +26,6 @@ Route::prefix('admin/comments')->name('admin.comments.')->controller(CommentCont
     Route::get('/', 'index')->name('index');
     Route::patch('/approve/{comment}', 'approve')->name('approve');
     Route::patch('/reject/{comment}', 'reject')->name('reject');
+    Route::get('/{comment}', 'show')->name('show');
     Route::delete('/{comment}', 'destroy')->name('destroy');
 });

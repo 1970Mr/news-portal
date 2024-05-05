@@ -99,6 +99,12 @@
                                                                 </form>
                                                         @endif
                                                     @endcan
+                                                    @can(config('permissions_list.ARTICLE_UPDATE', false))
+                                                        <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
+                                                           rel="tooltip" aria-label="مشاهده نظر" data-bs-original-title="مشاهده نظر" href="{{ route('admin.comments.show', $comment->id) }}">
+                                                            <i class="icon-eye"></i>
+                                                        </a>
+                                                    @endcan
                                                     @can(config('permissions_list.ARTICLE_DESTROY', false))
                                                         <x-common-delete-button :route="route('admin.comments.destroy', $comment->id)"/>
                                                     @endcan
