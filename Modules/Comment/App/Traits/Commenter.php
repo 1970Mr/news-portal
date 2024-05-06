@@ -9,7 +9,7 @@ trait Commenter
 {
     public function comments(): MorphMany
     {
-        return $this->morphMany(Comment::class, 'commenter');
+        return $this->morphMany(Comment::class, 'commenter')->latest();
     }
 
     public function approvedComments(): MorphMany

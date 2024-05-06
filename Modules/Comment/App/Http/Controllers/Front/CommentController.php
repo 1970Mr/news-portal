@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Modules\Comment\App\Http\Requests\Front\CommentRequest;
+use Modules\Comment\App\Models\Comment;
 use Modules\Comment\App\Services\Front\CommentService;
 use Spatie\Honeypot\ProtectAgainstSpam;
 
@@ -14,7 +15,7 @@ class CommentController extends Controller
 {
     public function __construct(private readonly CommentService $commentService)
     {
-        $this->middleware('auth')->except('store');
+        $this->middleware('auth')->except(['store', 'reply']);
         $this->middleware(ProtectAgainstSpam::class)->only('store');
     }
 
@@ -34,8 +35,9 @@ class CommentController extends Controller
         //
     }
 
-    public function reply(Request $request, $id): RedirectResponse
+    public function reply(CommentRequest $request, Comment $comment): RedirectResponse
     {
-        //
+        $this->commentService->reply($request, $comment);
+        return redirect(URL::previous() . '#comments')->with(['success' => __('comment::messages.comment_saved_successfully')]);
     }
 }

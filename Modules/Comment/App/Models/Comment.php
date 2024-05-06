@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Collection;
 
 class Comment extends Model
 {
@@ -61,6 +62,29 @@ class Comment extends Model
     {
         return $this->hasMany(__CLASS__, 'parent_id');
     }
+
+    public function approvedParent(): BelongsTo
+    {
+        return $this->belongsTo(__CLASS__, 'parent_id')->approved();
+    }
+
+    public function approvedChildren(): HasMany
+    {
+        return $this->hasMany(__CLASS__, 'parent_id')->approved();
+    }
+
+    public static function getAllDescendants(Comment $comment): Collection
+    {
+        $descendants = collect();
+
+        foreach ($comment->approvedChildren as $child) {
+            $descendants->push($child);
+            $descendants = $descendants->merge(self::getAllDescendants($child));
+        }
+
+        return $descendants->sortBy('created_at');
+    }
+
 
     public function commenterName(): string
     {
