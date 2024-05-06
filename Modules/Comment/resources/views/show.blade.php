@@ -32,9 +32,9 @@
                     <div class="comment-box">
                         <div class="comment">
                             <a href="#">
-                                <img src="" class="img-circle" alt="">
+                                <img src="{{ $comment->commenterImageLink() }}" class="img-circle" alt="{{ $comment->commenterName() }}">
                                 <span class="user">
-                                    {{ $comment->commenterName() }}
+                                    {{ ($comment->isGuest() ? 'کاربر مهمان: ' : '') . $comment->commenterName() }}
                                 </span>
                             </a>
                             <span class="float-end text-muted">

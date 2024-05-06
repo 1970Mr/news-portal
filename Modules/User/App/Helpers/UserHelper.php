@@ -47,7 +47,7 @@ class UserHelper
 
     public static function createDefaultProfilePicture(int $user_id = null): Model
     {
-        $defaultImagePath = module_path('User', 'Database/Seeders/data/images/profile_picture.jpg');
+        $defaultImagePath = config('user.default_profile_picture.file_path');
         $uploadedFile = new UploadedFile($defaultImagePath, basename($defaultImagePath));
         $defaultAltText = 'Default profile picture';
         $uploadedFilePath = FileManagerService::uploadFromFile($uploadedFile);
