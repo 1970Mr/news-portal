@@ -20,7 +20,7 @@
                             </div>
                             <div class="text-left">
                                 <a class="comment-reply" href="#" data-toggle="modal" data-target="#commentReplyModal{{ $comment->id }}">پاسخ</a>
-                                @auth
+                                @if(auth()->check() && auth()->id() === $comment->commenter?->id)
                                     <a class="comment-edit" href="#" data-toggle="modal" data-target="#commentEditModal{{ $comment->id }}" style="margin-right: 1rem ">ویرایش</a>
 
                                     <form id="deleteForm{{ $comment->id }}" action="{{ route('comments.destroy', $comment->id) }}" method="POST" style="display: inline">
@@ -28,9 +28,8 @@
                                         @csrf
                                     </form>
                                     <a onclick="event.preventDefault(); document.querySelector('#deleteForm{{ $comment->id }}').submit()" class="comment-delete" style="margin-right: 1rem;
-                                    cursor:
-                                        pointer">حذف</a>
-                                @endauth
+                                    cursor: pointer">حذف</a>
+                                @endif
                             </div>
 
                             <div class="text-left">
@@ -53,7 +52,7 @@
                                 </div>
                             </div>
 
-                            @auth
+                            @if(auth()->check() && auth()->id() === $comment->commenter?->id)
                                 <div class="modal fade" id="commentEditModal{{ $comment->id }}" tabindex="-1" role="dialog" aria-labelledby="commentModalLabel">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -88,7 +87,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endauth
+                            @endif
                         </div>
                     </div>
 
