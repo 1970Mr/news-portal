@@ -26,4 +26,13 @@
     .related-posts img {
         height: 16rem;
     }
+
+    .comments-list .comment-edit, .comments-list .comment-delete {
+        color: #303030;
+        font-weight: 400;
+    }
+
+    .comments-list .comment-edit:hover, .comments-list .comment-delete:hover {
+        color: #ec0000;
+    }
 </style>

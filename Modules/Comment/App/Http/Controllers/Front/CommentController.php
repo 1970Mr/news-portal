@@ -32,9 +32,10 @@ class CommentController extends Controller
         return redirect(URL::previous() . '#comments')->with(['success' => __('comment::messages.comment_saved_successfully')]);
     }
 
-    public function destroy($id)
+    public function destroy(Comment $comment): RedirectResponse
     {
-        //
+        $comment->delete();
+        return redirect(URL::previous() . '#comments')->with(['success' => __('comment::messages.comment_deleted_successfully')]);
     }
 
     public function reply(CommentRequest $request, Comment $comment): RedirectResponse

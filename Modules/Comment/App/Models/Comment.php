@@ -53,6 +53,14 @@ class Comment extends Model
         return $this->morphTo();
     }
 
+    public function delete(): bool|null
+    {
+        foreach ($this->children as $comment) {
+            $comment->delete();
+        }
+        return parent::delete();
+    }
+
     public function parent(): BelongsTo
     {
         return $this->belongsTo(__CLASS__, 'parent_id');
