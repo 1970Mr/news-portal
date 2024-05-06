@@ -118,4 +118,9 @@ class Comment extends Model
     {
         $query->where('status', self::REJECTED);
     }
+
+    public function isApproved(): bool
+    {
+        return $this->status === self::APPROVED;
+    }
 }

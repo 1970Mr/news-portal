@@ -10,6 +10,7 @@ namespace Modules\User\App\Models;
  use Illuminate\Notifications\Notifiable;
  use Illuminate\Support\Collection;
  use Laravel\Sanctum\HasApiTokens;
+ use Modules\Comment\App\Traits\Commenter;
  use Modules\FileManager\App\Traits\HasImage;
  use Modules\Role\App\Models\Role;
  use Modules\User\Database\Factories\UserFactory;
@@ -17,7 +18,7 @@ namespace Modules\User\App\Models;
 
  class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles, SoftDeletes, HasImage;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, SoftDeletes, HasImage, Commenter;
 
     /**
      * The attributes that are mass assignable.

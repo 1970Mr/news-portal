@@ -7,12 +7,11 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
 use Modules\Category\App\Models\Category;
-use Modules\FileManager\App\Models\Image;
+use Modules\Comment\App\Traits\HasComments;
 use Modules\FileManager\App\Traits\HasImage;
 use Modules\Hotness\App\Traits\HasHotness;
 use Modules\Tag\App\Models\Tag;
@@ -20,7 +19,7 @@ use Modules\User\App\Models\User;
 
 class Article extends Model
 {
-    use HasFactory, HasImage, HasHotness;
+    use HasFactory, HasImage, HasHotness, HasComments;
 
     protected $fillable = [
         'title',
