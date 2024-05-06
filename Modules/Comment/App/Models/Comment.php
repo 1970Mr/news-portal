@@ -29,7 +29,7 @@ class Comment extends Model
     ];
 
     protected $fillable = [
-        'comment', 'approved', 'guest_data'
+        'comment', 'status', 'guest_data'
     ];
 
     protected $casts = [
@@ -84,7 +84,6 @@ class Comment extends Model
 
         return $descendants->sortBy('created_at');
     }
-
 
     public function commenterName(): string
     {

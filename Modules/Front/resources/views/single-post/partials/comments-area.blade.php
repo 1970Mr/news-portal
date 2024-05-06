@@ -19,10 +19,14 @@
                                 </x-markdown>
                             </div>
                             <div class="text-left">
-                                <a class="comment-reply" href="#" data-toggle="modal" data-target="#commentModal{{ $comment->id }}">پاسخ</a>
+                                <a class="comment-reply" href="#" data-toggle="modal" data-target="#commentReplyModal{{ $comment->id }}">پاسخ</a>
+                                <a class="comment-reply" href="#" data-toggle="modal" data-target="#commentEditModal{{ $comment->id }}" style="margin-right: 1rem ">ویرایش</a>
                             </div>
 
-                            <div class="modal fade" id="commentModal{{ $comment->id }}" tabindex="-1" role="dialog" aria-labelledby="commentModalLabel">
+                            <div class="text-left">
+                            </div>
+
+                            <div class="modal fade" id="commentReplyModal{{ $comment->id }}" tabindex="-1" role="dialog" aria-labelledby="commentModalLabel">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header" style="display: flex; justify-content: space-between; align-items: center;">
@@ -39,6 +43,40 @@
                                 </div>
                             </div>
 
+                            <div class="modal fade" id="commentEditModal{{ $comment->id }}" tabindex="-1" role="dialog" aria-labelledby="commentModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header" style="display: flex; justify-content: space-between; align-items: center;">
+                                            <h4 class="modal-title" id="commentModalLabel" style="flex: 1;">ویرایش دیدگاه</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="flex-shrink: 0;"><span aria-hidden="true">&times;</span></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <!-- Your form here -->
+                                            <form id="commentForm" role="form" action="{{ route('comments.update', $comment->id) }}" method="POST">
+                                                @method('PUT')
+                                                @csrf
+                                                @honeypot
+                                                <input type="hidden" name="commentable_type" value="{{ get_class($article) }}" />
+                                                <input type="hidden" name="commentable_id" value="{{ $article->getKey() }}" />
+
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <textarea class="form-control required-field" name="comment" id="comment" placeholder="دیدگاه شما">{{ old('comment',
+                                                            $comment->comment)
+                                                            }}</textarea>
+                                                        </div>
+                                                    </div><!-- Col end -->
+                                                </div>
+
+                                                <div class="clearfix">
+                                                    <button class="comments-btn btn btn-primary" type="submit">ارسال دیدگاه</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 

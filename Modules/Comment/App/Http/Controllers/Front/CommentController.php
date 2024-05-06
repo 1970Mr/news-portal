@@ -25,9 +25,11 @@ class CommentController extends Controller
         return redirect(URL::previous() . '#comments')->with(['success' => __('comment::messages.comment_saved_successfully')]);
     }
 
-    public function update(Request $request, $id): RedirectResponse
+    public function update(CommentRequest $request, Comment $comment): RedirectResponse
     {
-        //
+//        $comment->update(['comment' => $request->comment, 'status' => Comment::PENDING]);
+        $comment->update(['comment' => $request->comment]);
+        return redirect(URL::previous() . '#comments')->with(['success' => __('comment::messages.comment_saved_successfully')]);
     }
 
     public function destroy($id)
