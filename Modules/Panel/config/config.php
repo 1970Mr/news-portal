@@ -73,7 +73,7 @@ return [
         ],
         'comment' => [
             'title' => 'نظرات',
-            'icon' => 'icon-bubble',
+            'icon' => 'icon-bubbles',
             'url' => route('admin.comments.index'),
             'permissions' => config('permissions_list.COMMENT_INDEX', false),
             'active_routes' => [

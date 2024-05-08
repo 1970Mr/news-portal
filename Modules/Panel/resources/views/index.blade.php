@@ -66,796 +66,476 @@
 
     <div class="row m-0 p-0">
         {{-- Articles --}}
-        <div class="col-12">
-            <div class="portlet box shadow min-height-500">
-                <div class="portlet-heading">
-                    <div class="portlet-title">
-                        <h3 class="title">
-                            <i class="icon-globe"></i>
-                            اخبار
-                        </h3>
-                    </div><!-- /.portlet-title -->
-                    <div class="buttons-box">
-                        <a class="btn btn-sm btn-default btn-round btn-fullscreen" rel="tooltip"
-                           aria-label="تمام صفحه" data-bs-original-title="تمام صفحه">
-                            <i class="icon-size-fullscreen"></i>
-                            <div class="paper-ripple">
-                                <div class="paper-ripple__background"></div>
-                                <div class="paper-ripple__waves"></div>
-                            </div>
-                        </a>
-                        <a class="btn btn-sm btn-default btn-round btn-close" rel="tooltip"
-                           aria-label="بستن" data-bs-original-title="بستن">
-                            <i class="icon-trash"></i>
-                            <div class="paper-ripple">
-                                <div class="paper-ripple__background"></div>
-                                <div class="paper-ripple__waves"></div>
-                            </div>
-                        </a>
-                    </div><!-- /.buttons-box -->
-                </div><!-- /.portlet-heading -->
-                <div class="portlet-body">
-                    <div class="table-responsive overflow-x-auto">
-                        <table class="table table-bordered table-striped table-hover">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>تصویر شاخص</th>
-                                <th>عنوان</th>
-                                <th>slug</th>
-                                <th>توضیحات</th>
-                                <th>کلمات کلیدی</th>
-                                <th>کاربر</th>
-                                <th>دسته‌بندی</th>
-                                <th>تگ(ها)</th>
-                                <th>تاریخ انتشار</th>
-                                <th>تاریخ ایجاد</th>
-                                <th>انتخاب سردبیر</th>
-                                <th>خبر داغ</th>
-                                <th>وضعیت</th>
-                                @canany([config('permissions_list.ARTICLE_UPDATE'), config('permissions_list.ARTICLE_DESTROY')])
-                                    <th>عملیات</th>
-                                @endcanany
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($articles as $article)
+        @can(config('permissions_list.ARTICLE_INDEX', false))
+            <div class="col-12">
+                <div class="portlet box shadow min-height-500">
+                    <div class="portlet-heading">
+                        <div class="portlet-title">
+                            <h3 class="title">
+                                <i class="icon-globe"></i>
+                                اخبار
+                            </h3>
+                        </div><!-- /.portlet-title -->
+                        <div class="buttons-box">
+                            <a class="btn btn-sm btn-default btn-round btn-fullscreen" rel="tooltip"
+                               aria-label="تمام صفحه" data-bs-original-title="تمام صفحه">
+                                <i class="icon-size-fullscreen"></i>
+                                <div class="paper-ripple">
+                                    <div class="paper-ripple__background"></div>
+                                    <div class="paper-ripple__waves"></div>
+                                </div>
+                            </a>
+                            <a class="btn btn-sm btn-default btn-round btn-close" rel="tooltip"
+                               aria-label="بستن" data-bs-original-title="بستن">
+                                <i class="icon-trash"></i>
+                                <div class="paper-ripple">
+                                    <div class="paper-ripple__background"></div>
+                                    <div class="paper-ripple__waves"></div>
+                                </div>
+                            </a>
+                        </div><!-- /.buttons-box -->
+                    </div><!-- /.portlet-heading -->
+                    <div class="portlet-body">
+                        <div class="table-responsive overflow-x-auto">
+                            <table class="table table-bordered table-striped table-hover">
+                                <thead>
                                 <tr>
-                                    <td>{{ $article->id }}</td>
-                                    <td>
-                                        <img src="{{ asset('storage/' . $article->image->file_path) }}" alt="{{ $article->image->alt_text }}" width="100px" style="max-height: 90px">
-                                    </td>
-                                    <td>{{ $article->title }}</td>
-                                    <td>{{ $article->slug }}</td>
-                                    <td>{{ $article->description }}</td>
-                                    <td>{{ $article->keywords }}</td>
-                                    <td>{{ $article->user->name }}</td>
-                                    <td>{{ $article->category->name }}</td>
-                                    <td>{{ nullable_value($article->tagNames()) }}</td>
-                                    <td class="ltr text-right created-at">{{ jalalian()->forge($article->published_at)->format(config('common.datetime_format')) }}</td>
-                                    <td class="ltr text-right created-at">{{ jalalian()->forge($article->created_at)->format(config('common.datetime_format')) }}</td>
-                                    <td class="{{ status_class($article->editor_choice) }}">{{ status_message($article->editor_choice) }}</td>
-                                    <td class="{{ status_class($article->isHot()) }}">{{ status_message($article->isHot()) }}</td>
-                                    <td class="{{ status_class($article->status) }}">{{ status_message($article->status) }}</td>
+                                    <th>#</th>
+                                    <th>تصویر شاخص</th>
+                                    <th>عنوان</th>
+                                    <th>slug</th>
+                                    <th>توضیحات</th>
+                                    <th>کلمات کلیدی</th>
+                                    <th>کاربر</th>
+                                    <th>دسته‌بندی</th>
+                                    <th>تگ(ها)</th>
+                                    <th>تاریخ انتشار</th>
+                                    <th>تاریخ ایجاد</th>
+                                    <th>انتخاب سردبیر</th>
+                                    <th>خبر داغ</th>
+                                    <th>وضعیت</th>
                                     @canany([config('permissions_list.ARTICLE_UPDATE'), config('permissions_list.ARTICLE_DESTROY')])
-                                        <td>
-                                            <div class="d-flex gap-2">
-                                                @can(config('permissions_list.ARTICLE_UPDATE', false))
-                                                    <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                       rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('article.edit', $article->id) }}">
-                                                        <i class="icon-pencil fa-flip-horizontal"></i>
-                                                    </a>
-                                                @endcan
-
-                                                @can(config('permissions_list.ARTICLE_DESTROY', false))
-                                                    <x-common-delete-button :route="route('article.destroy', $article->id)" />
-                                                @endcan
-                                            </div>
-                                        </td>
+                                        <th>عملیات</th>
                                     @endcanany
                                 </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div><!-- /.portlet-body -->
-            </div><!-- /.portlet -->
-        </div>
-
-        {{-- Categories --}}
-        <div class="col-12">
-            <div class="portlet box shadow min-height-500">
-                <div class="portlet-heading">
-                    <div class="portlet-title">
-                        <h3 class="title">
-                            <i class="icon-grid"></i>
-                            دسته‌بندی‌ها
-                        </h3>
-                    </div><!-- /.portlet-title -->
-                    <div class="buttons-box">
-                        <a class="btn btn-sm btn-default btn-round btn-fullscreen" rel="tooltip"
-                           aria-label="تمام صفحه" data-bs-original-title="تمام صفحه">
-                            <i class="icon-size-fullscreen"></i>
-                            <div class="paper-ripple">
-                                <div class="paper-ripple__background"></div>
-                                <div class="paper-ripple__waves"></div>
-                            </div>
-                        </a>
-                        <a class="btn btn-sm btn-default btn-round btn-close" rel="tooltip"
-                           aria-label="بستن" data-bs-original-title="بستن">
-                            <i class="icon-trash"></i>
-                            <div class="paper-ripple">
-                                <div class="paper-ripple__background"></div>
-                                <div class="paper-ripple__waves"></div>
-                            </div>
-                        </a>
-                    </div><!-- /.buttons-box -->
-                </div><!-- /.portlet-heading -->
-                <div class="portlet-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped table-hover">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>تصویر شاخص</th>
-                                <th>نام</th>
-                                <th>slug</th>
-                                <th>توضیحات</th>
-                                <th>دسته‌بندی والد</th>
-                                <th>تاریخ ایجاد</th>
-                                <th>وضعیت</th>
-                                @canany([config('permissions_list.CATEGORY_UPDATE'), config('permissions_list.CATEGORY_DESTROY')])
-                                    <th>عملیات</th>
-                                @endcanany
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($categories as $category)
-                                <tr>
-                                    <td>{{ $category->id }}</td>
-                                    <td>
-                                        <img src="{{ asset('storage/' . $category->image->file_path) }}" alt="{{ $category->image->alt_text }}" width="100px" style="max-height: 90px">
-                                    </td>
-                                    <td>{{ $category->name }}</td>
-                                    <td>{{ $category->slug }}</td>
-                                    <td>{{ $category->description }}</td>
-                                    <td>{{ $category->parentCategoryTitle() }}</td>
-                                    <td class="ltr text-right created-at">{{ jalalian()->forge($category->created_at)->format(config('common.datetime_format')) }}</td>
-                                    <td class="{{ status_class($category->status) }}">{{ status_message($category->status) }}</td>
-                                    @canany([config('permissions_list.CATEGORY_UPDATE'), config('permissions_list.CATEGORY_DESTROY')])
-                                        <td>
-                                            <div class="d-flex gap-2">
-                                                @can(config('permissions_list.CATEGORY_UPDATE', false))
-                                                    <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                       rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('category.edit', $category->id) }}">
-                                                        <i class="icon-pencil fa-flip-horizontal"></i>
-                                                    </a>
-                                                @endcan
-
-                                                @can(config('permissions_list.CATEGORY_DESTROY', false))
-                                                    <x-common-delete-button :route="route('category.destroy', $category->id)" />
-                                                @endcan
-                                            </div>
-                                        </td>
-                                    @endcanany
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div><!-- /.portlet-body -->
-            </div><!-- /.portlet -->
-        </div>
-
-        {{-- Tags --}}
-        <div class="col-12">
-            <div class="portlet box shadow min-height-500">
-                <div class="portlet-heading">
-                    <div class="portlet-title">
-                        <h3 class="title">
-                            <i class="icon-tag"></i>
-                            تگ‌ها
-                        </h3>
-                    </div><!-- /.portlet-title -->
-                    <div class="buttons-box">
-                        <a class="btn btn-sm btn-default btn-round btn-fullscreen" rel="tooltip"
-                           aria-label="تمام صفحه" data-bs-original-title="تمام صفحه">
-                            <i class="icon-size-fullscreen"></i>
-                            <div class="paper-ripple">
-                                <div class="paper-ripple__background"></div>
-                                <div class="paper-ripple__waves"></div>
-                            </div>
-                        </a>
-                        <a class="btn btn-sm btn-default btn-round btn-close" rel="tooltip"
-                           aria-label="بستن" data-bs-original-title="بستن">
-                            <i class="icon-trash"></i>
-                            <div class="paper-ripple">
-                                <div class="paper-ripple__background"></div>
-                                <div class="paper-ripple__waves"></div>
-                            </div>
-                        </a>
-                    </div><!-- /.buttons-box -->
-                </div><!-- /.portlet-heading -->
-                <div class="portlet-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped table-hover">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>نام</th>
-                                <th>slug</th>
-                                <th>توضیحات</th>
-                                <th>تاریخ ایجاد</th>
-                                <th>موضوع داغ</th>
-                                <th>وضعیت</th>
-                                @canany([config('permissions_list.TAG_UPDATE'), config('permissions_list.TAG_DESTROY')])
-                                    <th>عملیات</th>
-                                @endcanany
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($tags as $tag)
-                                <tr>
-                                    <td>{{ $tag->id }}</td>
-                                    <td>{{ $tag->name }}</td>
-                                    <td>{{ $tag->slug }}</td>
-                                    <td>{{ $tag->description }}</td>
-                                    <td class="ltr text-right created-at">{{ jalalian()->forge($tag->created_at)->format(config('common.datetime_format')) }}</td>
-                                    <td class="{{ status_class($tag->isHot()) }}">{{ status_message($tag->isHot()) }}</td>
-                                    <td class="{{ status_class($tag->status) }}">{{ status_message($tag->status) }}</td>
-                                    @canany([config('permissions_list.TAG_UPDATE'), config('permissions_list.TAG_DESTROY')])
-                                        <td>
-                                            <div class="d-flex gap-2">
-                                                @can(config('permissions_list.TAG_UPDATE', false))
-                                                    <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                       rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('tag.edit', $tag->id) }}">
-                                                        <i class="icon-pencil fa-flip-horizontal"></i>
-                                                    </a>
-                                                @endcan
-
-                                                @can(config('permissions_list.TAG_DESTROY', false))
-                                                    <x-common-delete-button :route="route('tag.destroy', $tag->id)" />
-                                                @endcan
-                                            </div>
-                                        </td>
-                                    @endcanany
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div><!-- /.portlet-body -->
-            </div><!-- /.portlet -->
-        </div>
-
-        {{-- Images --}}
-        <div class="col-12">
-            <div class="portlet box shadow min-height-500">
-                <div class="portlet-heading">
-                    <div class="portlet-title">
-                        <h3 class="title">
-                            <i class="icon-picture"></i>
-                            تصاویر
-                        </h3>
-                    </div><!-- /.portlet-title -->
-                    <div class="buttons-box">
-                        <a class="btn btn-sm btn-default btn-round btn-fullscreen" rel="tooltip"
-                           aria-label="تمام صفحه" data-bs-original-title="تمام صفحه">
-                            <i class="icon-size-fullscreen"></i>
-                            <div class="paper-ripple">
-                                <div class="paper-ripple__background"></div>
-                                <div class="paper-ripple__waves"></div>
-                            </div>
-                        </a>
-                        <a class="btn btn-sm btn-default btn-round btn-close" rel="tooltip"
-                           aria-label="بستن" data-bs-original-title="بستن">
-                            <i class="icon-trash"></i>
-                            <div class="paper-ripple">
-                                <div class="paper-ripple__background"></div>
-                                <div class="paper-ripple__waves"></div>
-                            </div>
-                        </a>
-                    </div><!-- /.buttons-box -->
-                </div><!-- /.portlet-heading -->
-                <div class="portlet-body">
-                    <div class="table-responsive" style="overflow-x: auto !important;">
-                        <table class="table table-bordered table-striped table-hover">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>تصویر</th>
-                                <th>مسیر تصویر</th>
-                                <th>متن جایگزین</th>
-                                <th>کاربر آپلود کننده</th>
-                                <th>تاریخ ایجاد</th>
-                                @can('operations', $imageClassName)
-                                    <th>عملیات</th>
-                                @endcan
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($images as $image)
-                                @can('show', $image)
+                                </thead>
+                                <tbody>
+                                @foreach($articles as $article)
                                     <tr>
-                                        <td>{{ $image->id }}</td>
+                                        <td>{{ $article->id }}</td>
                                         <td>
-                                            <img src="{{ asset('storage/' . $image->file_path) }}" alt="{{ $image->alt_text }}" width="100px" style="max-height: 90px">
+                                            <img src="{{ asset('storage/' . $article->image->file_path) }}" alt="{{ $article->image->alt_text }}" width="100px" style="max-height: 90px">
                                         </td>
-                                        <td>{{ $image->file_path }}</td>
-                                        <td>{{ nullable_value($image->alt_text) }}</td>
-                                        <td>{{ $image->user_name }}</td>
-                                        <td class="ltr text-right created-at">{{ jalalian()->forge($image->created_at)->format(config('common.datetime_format')) }}</td>
-                                        @can('operations', $imageClassName)
+                                        <td>{{ $article->title }}</td>
+                                        <td>{{ $article->slug }}</td>
+                                        <td>{{ $article->description }}</td>
+                                        <td>{{ $article->keywords }}</td>
+                                        <td>{{ $article->user->name }}</td>
+                                        <td>{{ $article->category->name }}</td>
+                                        <td>{{ nullable_value($article->tagNames()) }}</td>
+                                        <td class="ltr text-right created-at">{{ jalalian()->forge($article->published_at)->format(config('common.datetime_format')) }}</td>
+                                        <td class="ltr text-right created-at">{{ jalalian()->forge($article->created_at)->format(config('common.datetime_format')) }}</td>
+                                        <td class="{{ status_class($article->editor_choice) }}">{{ status_message($article->editor_choice) }}</td>
+                                        <td class="{{ status_class($article->isHot()) }}">{{ status_message($article->isHot()) }}</td>
+                                        <td class="{{ status_class($article->status) }}">{{ status_message($article->status) }}</td>
+                                        @canany([config('permissions_list.ARTICLE_UPDATE'), config('permissions_list.ARTICLE_DESTROY')])
                                             <td>
                                                 <div class="d-flex gap-2">
-                                                    @can('update', $image)
+                                                    @can(config('permissions_list.ARTICLE_UPDATE', false))
                                                         <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                           rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('image.edit', $image->id) }}">
+                                                           rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('article.edit', $article->id) }}">
                                                             <i class="icon-pencil fa-flip-horizontal"></i>
                                                         </a>
                                                     @endcan
 
-                                                    @can('destroy', $image)
-                                                        <x-common-delete-button :route="route('image.destroy', $image->id)"/>
+                                                    @can(config('permissions_list.ARTICLE_DESTROY', false))
+                                                        <x-common-delete-button :route="route('article.destroy', $article->id)" />
                                                     @endcan
                                                 </div>
                                             </td>
-                                        @endcan
+                                        @endcanany
                                     </tr>
-                                @endcan
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div><!-- /.portlet-body -->
-            </div><!-- /.portlet -->
-        </div>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div><!-- /.portlet-body -->
+                </div><!-- /.portlet -->
+            </div>
+        @endcan
+
+        {{-- Categories --}}
+        @can(config('permissions_list.CATEGORY_INDEX', false))
+            <div class="col-12">
+                <div class="portlet box shadow min-height-500">
+                    <div class="portlet-heading">
+                        <div class="portlet-title">
+                            <h3 class="title">
+                                <i class="icon-grid"></i>
+                                دسته‌بندی‌ها
+                            </h3>
+                        </div><!-- /.portlet-title -->
+                        <div class="buttons-box">
+                            <a class="btn btn-sm btn-default btn-round btn-fullscreen" rel="tooltip"
+                               aria-label="تمام صفحه" data-bs-original-title="تمام صفحه">
+                                <i class="icon-size-fullscreen"></i>
+                                <div class="paper-ripple">
+                                    <div class="paper-ripple__background"></div>
+                                    <div class="paper-ripple__waves"></div>
+                                </div>
+                            </a>
+                            <a class="btn btn-sm btn-default btn-round btn-close" rel="tooltip"
+                               aria-label="بستن" data-bs-original-title="بستن">
+                                <i class="icon-trash"></i>
+                                <div class="paper-ripple">
+                                    <div class="paper-ripple__background"></div>
+                                    <div class="paper-ripple__waves"></div>
+                                </div>
+                            </a>
+                        </div><!-- /.buttons-box -->
+                    </div><!-- /.portlet-heading -->
+                    <div class="portlet-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>تصویر شاخص</th>
+                                    <th>نام</th>
+                                    <th>slug</th>
+                                    <th>توضیحات</th>
+                                    <th>دسته‌بندی والد</th>
+                                    <th>تاریخ ایجاد</th>
+                                    <th>وضعیت</th>
+                                    @canany([config('permissions_list.CATEGORY_UPDATE'), config('permissions_list.CATEGORY_DESTROY')])
+                                        <th>عملیات</th>
+                                    @endcanany
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($categories as $category)
+                                    <tr>
+                                        <td>{{ $category->id }}</td>
+                                        <td>
+                                            <img src="{{ asset('storage/' . $category->image->file_path) }}" alt="{{ $category->image->alt_text }}" width="100px" style="max-height: 90px">
+                                        </td>
+                                        <td>{{ $category->name }}</td>
+                                        <td>{{ $category->slug }}</td>
+                                        <td>{{ $category->description }}</td>
+                                        <td>{{ $category->parentCategoryTitle() }}</td>
+                                        <td class="ltr text-right created-at">{{ jalalian()->forge($category->created_at)->format(config('common.datetime_format')) }}</td>
+                                        <td class="{{ status_class($category->status) }}">{{ status_message($category->status) }}</td>
+                                        @canany([config('permissions_list.CATEGORY_UPDATE'), config('permissions_list.CATEGORY_DESTROY')])
+                                            <td>
+                                                <div class="d-flex gap-2">
+                                                    @can(config('permissions_list.CATEGORY_UPDATE', false))
+                                                        <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
+                                                           rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('category.edit', $category->id) }}">
+                                                            <i class="icon-pencil fa-flip-horizontal"></i>
+                                                        </a>
+                                                    @endcan
+
+                                                    @can(config('permissions_list.CATEGORY_DESTROY', false))
+                                                        <x-common-delete-button :route="route('category.destroy', $category->id)" />
+                                                    @endcan
+                                                </div>
+                                            </td>
+                                        @endcanany
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div><!-- /.portlet-body -->
+                </div><!-- /.portlet -->
+            </div>
+        @endcan
+
+        {{-- Tags --}}
+        @can(config('permissions_list.TAG_INDEX', false))
+            <div class="col-12">
+                <div class="portlet box shadow min-height-500">
+                    <div class="portlet-heading">
+                        <div class="portlet-title">
+                            <h3 class="title">
+                                <i class="icon-tag"></i>
+                                تگ‌ها
+                            </h3>
+                        </div><!-- /.portlet-title -->
+                        <div class="buttons-box">
+                            <a class="btn btn-sm btn-default btn-round btn-fullscreen" rel="tooltip"
+                               aria-label="تمام صفحه" data-bs-original-title="تمام صفحه">
+                                <i class="icon-size-fullscreen"></i>
+                                <div class="paper-ripple">
+                                    <div class="paper-ripple__background"></div>
+                                    <div class="paper-ripple__waves"></div>
+                                </div>
+                            </a>
+                            <a class="btn btn-sm btn-default btn-round btn-close" rel="tooltip"
+                               aria-label="بستن" data-bs-original-title="بستن">
+                                <i class="icon-trash"></i>
+                                <div class="paper-ripple">
+                                    <div class="paper-ripple__background"></div>
+                                    <div class="paper-ripple__waves"></div>
+                                </div>
+                            </a>
+                        </div><!-- /.buttons-box -->
+                    </div><!-- /.portlet-heading -->
+                    <div class="portlet-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>نام</th>
+                                    <th>slug</th>
+                                    <th>توضیحات</th>
+                                    <th>تاریخ ایجاد</th>
+                                    <th>موضوع داغ</th>
+                                    <th>وضعیت</th>
+                                    @canany([config('permissions_list.TAG_UPDATE'), config('permissions_list.TAG_DESTROY')])
+                                        <th>عملیات</th>
+                                    @endcanany
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($tags as $tag)
+                                    <tr>
+                                        <td>{{ $tag->id }}</td>
+                                        <td>{{ $tag->name }}</td>
+                                        <td>{{ $tag->slug }}</td>
+                                        <td>{{ $tag->description }}</td>
+                                        <td class="ltr text-right created-at">{{ jalalian()->forge($tag->created_at)->format(config('common.datetime_format')) }}</td>
+                                        <td class="{{ status_class($tag->isHot()) }}">{{ status_message($tag->isHot()) }}</td>
+                                        <td class="{{ status_class($tag->status) }}">{{ status_message($tag->status) }}</td>
+                                        @canany([config('permissions_list.TAG_UPDATE'), config('permissions_list.TAG_DESTROY')])
+                                            <td>
+                                                <div class="d-flex gap-2">
+                                                    @can(config('permissions_list.TAG_UPDATE', false))
+                                                        <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
+                                                           rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('tag.edit', $tag->id) }}">
+                                                            <i class="icon-pencil fa-flip-horizontal"></i>
+                                                        </a>
+                                                    @endcan
+
+                                                    @can(config('permissions_list.TAG_DESTROY', false))
+                                                        <x-common-delete-button :route="route('tag.destroy', $tag->id)" />
+                                                    @endcan
+                                                </div>
+                                            </td>
+                                        @endcanany
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div><!-- /.portlet-body -->
+                </div><!-- /.portlet -->
+            </div>
+        @endcan
+
+        {{-- Images --}}
+        @can(config('permissions_list.IMAGE_INDEX', false))
+            <div class="col-12">
+                <div class="portlet box shadow min-height-500">
+                    <div class="portlet-heading">
+                        <div class="portlet-title">
+                            <h3 class="title">
+                                <i class="icon-picture"></i>
+                                تصاویر
+                            </h3>
+                        </div><!-- /.portlet-title -->
+                        <div class="buttons-box">
+                            <a class="btn btn-sm btn-default btn-round btn-fullscreen" rel="tooltip"
+                               aria-label="تمام صفحه" data-bs-original-title="تمام صفحه">
+                                <i class="icon-size-fullscreen"></i>
+                                <div class="paper-ripple">
+                                    <div class="paper-ripple__background"></div>
+                                    <div class="paper-ripple__waves"></div>
+                                </div>
+                            </a>
+                            <a class="btn btn-sm btn-default btn-round btn-close" rel="tooltip"
+                               aria-label="بستن" data-bs-original-title="بستن">
+                                <i class="icon-trash"></i>
+                                <div class="paper-ripple">
+                                    <div class="paper-ripple__background"></div>
+                                    <div class="paper-ripple__waves"></div>
+                                </div>
+                            </a>
+                        </div><!-- /.buttons-box -->
+                    </div><!-- /.portlet-heading -->
+                    <div class="portlet-body">
+                        <div class="table-responsive" style="overflow-x: auto !important;">
+                            <table class="table table-bordered table-striped table-hover">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>تصویر</th>
+                                    <th>مسیر تصویر</th>
+                                    <th>متن جایگزین</th>
+                                    <th>کاربر آپلود کننده</th>
+                                    <th>تاریخ ایجاد</th>
+                                    @can('operations', $imageClassName)
+                                        <th>عملیات</th>
+                                    @endcan
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($images as $image)
+                                    @can('show', $image)
+                                        <tr>
+                                            <td>{{ $image->id }}</td>
+                                            <td>
+                                                <img src="{{ asset('storage/' . $image->file_path) }}" alt="{{ $image->alt_text }}" width="100px" style="max-height: 90px">
+                                            </td>
+                                            <td>{{ $image->file_path }}</td>
+                                            <td>{{ nullable_value($image->alt_text) }}</td>
+                                            <td>{{ $image->user_name }}</td>
+                                            <td class="ltr text-right created-at">{{ jalalian()->forge($image->created_at)->format(config('common.datetime_format')) }}</td>
+                                            @can('operations', $imageClassName)
+                                                <td>
+                                                    <div class="d-flex gap-2">
+                                                        @can('update', $image)
+                                                            <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
+                                                               rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('image.edit', $image->id) }}">
+                                                                <i class="icon-pencil fa-flip-horizontal"></i>
+                                                            </a>
+                                                        @endcan
+
+                                                        @can('destroy', $image)
+                                                            <x-common-delete-button :route="route('image.destroy', $image->id)"/>
+                                                        @endcan
+                                                    </div>
+                                                </td>
+                                            @endcan
+                                        </tr>
+                                    @endcan
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div><!-- /.portlet-body -->
+                </div><!-- /.portlet -->
+            </div>
+        @endcan
 
         {{-- Comments --}}
-        <div class="col-12 col-md-6">
-            <div class="portlet box shadow min-height-500">
-                <div class="portlet-heading">
-                    <div class="portlet-title">
-                        <h3 class="title">
-                            <i class="icon-speech"></i>
-                            دیدگاه ها
-                        </h3>
-                    </div><!-- /.portlet-title -->
-                    <div class="buttons-box">
-                        <a class="btn btn-sm btn-default btn-round btn-fullscreen" rel="tooltip"
-                           aria-label="تمام صفحه" data-bs-original-title="تمام صفحه">
-                            <i class="icon-size-fullscreen"></i>
-                            <div class="paper-ripple">
-                                <div class="paper-ripple__background"></div>
-                                <div class="paper-ripple__waves"></div>
-                            </div>
-                        </a>
-                        <a class="btn btn-sm btn-default btn-round btn-close" rel="tooltip"
-                           aria-label="بستن" data-bs-original-title="بستن">
-                            <i class="icon-trash"></i>
-                            <div class="paper-ripple">
-                                <div class="paper-ripple__background"></div>
-                                <div class="paper-ripple__waves"></div>
-                            </div>
-                        </a>
-                    </div><!-- /.buttons-box -->
-                </div><!-- /.portlet-heading -->
-                <div class="portlet-body">
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link active" data-bs-toggle="tab"
-                               href="{{ asset('admin/#tab1') }}"
-                               aria-selected="true"
-                               role="tab">خوانده نشده</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" data-bs-toggle="tab" href="{{ asset('admin/#tab2') }}"
-                               aria-selected="false"
-                               tabindex="-1" role="tab">تائید شده</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" data-bs-toggle="tab" href="{{ asset('admin/#tab3') }}"
-                               aria-selected="false"
-                               tabindex="-1" role="tab">رد شده</a>
-                        </li>
-                        <li class="float-end">
-                            <a class="float-end p-b-0" href="{{ asset('admin/#') }}">همه دیدگاه ها</a>
-                        </li>
-                    </ul>
-
-                    <div class="tab-content">
-                        <div id="tab1" class="tab-pane active fade show" role="tabpanel">
-                            <div class="comments-box">
-                                <div class="comment-box">
-                                    <div class="comment">
-                                        <a href="{{ asset('admin/#') }}">
-                                            <img src="{{ asset('admin/assets/images/user/32.png') }}"
-                                                 class="img-circle" alt="">
-                                            <span class="user">
-                                                                        حمید آفرینش فر
-                                                                    </span>
-                                        </a>
-                                        <span class="float-end text-muted">
-                                                                    15:50 ، 3 تیر
-                                                                    <i class="icon-clock"></i>
-                                                                </span>
-                                        <p>
-                                            قالب مدیران یک قالب کاملا ایرانی و بومی است که تمام پروسه طراحی
-                                            و
-                                            پیاده سازی آن توسط متخصصان داخلی انجام شده است.
-                                        </p>
-                                    </div><!-- /.comment -->
-                                    <div class="actions">
-                                        <a href="{{ asset('admin/#') }}"
-                                           class="btn btn-round btn-icon btn-sm btn-primary"
-                                           rel="tooltip" aria-label="مشاهده"
-                                           data-bs-original-title="مشاهده">
-                                            <i class="icon-eye"></i>
-                                            <div class="paper-ripple">
-                                                <div class="paper-ripple__background"></div>
-                                                <div class="paper-ripple__waves"></div>
-                                            </div>
-                                        </a>
-                                        <a href="{{ asset('admin/#') }}"
-                                           class="btn btn-round btn-icon btn-sm btn-info" rel="tooltip"
-                                           aria-label="پذیرش" data-bs-original-title="پذیرش">
-                                            <i class="icon-check"></i>
-                                            <div class="paper-ripple">
-                                                <div class="paper-ripple__background"></div>
-                                                <div class="paper-ripple__waves"></div>
-                                            </div>
-                                        </a>
-                                        <a href="{{ asset('admin/#') }}"
-                                           class="btn btn-round btn-icon btn-sm btn-warning"
-                                           rel="tooltip" aria-label="عدم پذیرش"
-                                           data-bs-original-title="عدم پذیرش">
-                                            <i class="icon-close"></i>
-                                            <div class="paper-ripple">
-                                                <div class="paper-ripple__background"></div>
-                                                <div class="paper-ripple__waves"></div>
-                                            </div>
-                                        </a>
-                                        <a href="{{ asset('admin/#') }}"
-                                           class="btn btn-round btn-icon btn-sm btn-danger"
-                                           rel="tooltip" aria-label="حذف" data-bs-original-title="حذف">
-                                            <i class="icon-trash"></i>
-                                            <div class="paper-ripple">
-                                                <div class="paper-ripple__background"></div>
-                                                <div class="paper-ripple__waves"></div>
-                                            </div>
-                                        </a>
-                                    </div><!-- /.actions -->
-                                </div><!-- /.comment-box -->
-                                <div class="comment-box">
-                                    <div class="comment">
-                                        <a href="{{ asset('admin/#') }}">
-                                            <img src="{{ asset('admin/assets/images/user/customer.png') }}"
-                                                 class="img-circle"
-                                                 alt="">
-                                            <span class="user">
-                                                                        بهزاد
-                                                                    </span>
-                                        </a>
-                                        <span class="float-end text-muted">
-                                                                    15:55 ، 3 تیر
-                                                                    <i class="icon-clock"></i>
-                                                                </span>
-                                        <p>
-                                            با سلام. آیا پلاگین های انتخاب تاریخ، شمسی شده اند؟
-                                        </p>
-                                    </div><!-- /.comment -->
-                                    <div class="actions">
-                                        <a href="{{ asset('admin/#') }}"
-                                           class="btn btn-round btn-icon btn-sm btn-primary"
-                                           rel="tooltip" aria-label="مشاهده"
-                                           data-bs-original-title="مشاهده">
-                                            <i class="icon-eye"></i>
-                                            <div class="paper-ripple">
-                                                <div class="paper-ripple__background"></div>
-                                                <div class="paper-ripple__waves"></div>
-                                            </div>
-                                        </a>
-                                        <a href="{{ asset('admin/#') }}"
-                                           class="btn btn-round btn-icon btn-sm btn-info" rel="tooltip"
-                                           aria-label="پذیرش" data-bs-original-title="پذیرش">
-                                            <i class="icon-check"></i>
-                                            <div class="paper-ripple">
-                                                <div class="paper-ripple__background"></div>
-                                                <div class="paper-ripple__waves"></div>
-                                            </div>
-                                        </a>
-                                        <a href="{{ asset('admin/#') }}"
-                                           class="btn btn-round btn-icon btn-sm btn-warning"
-                                           rel="tooltip" aria-label="عدم پذیرش"
-                                           data-bs-original-title="عدم پذیرش">
-                                            <i class="icon-close"></i>
-                                            <div class="paper-ripple">
-                                                <div class="paper-ripple__background"></div>
-                                                <div class="paper-ripple__waves"></div>
-                                            </div>
-                                        </a>
-                                        <a href="{{ asset('admin/#') }}"
-                                           class="btn btn-round btn-icon btn-sm btn-danger"
-                                           rel="tooltip" aria-label="حذف" data-bs-original-title="حذف">
-                                            <i class="icon-trash"></i>
-                                            <div class="paper-ripple">
-                                                <div class="paper-ripple__background"></div>
-                                                <div class="paper-ripple__waves"></div>
-                                            </div>
-                                        </a>
-                                    </div><!-- /.actions -->
-                                </div><!-- /.comment-box -->
-                                <div class="comment-box">
-                                    <div class="comment">
-                                        <a href="{{ asset('admin/#') }}">
-                                            <img src="{{ asset('admin/assets/images/user/32.png') }}"
-                                                 class="img-circle" alt="">
-                                            <span class="user">
-                                                                        حمید آفرینش فر
-                                                                    </span>
-                                        </a>
-                                        <span class="float-end text-muted">
-                                                                    16:10 ، 3 تیر
-                                                                    <i class="icon-clock"></i>
-                                                                </span>
-                                        <p>
-                                            سلام. بله حتما. علاوه بر آن پلاگین ویرایش متن، نمایش نقشه ایران،
-                                            نمودار ها و... هم فارسی و راستچین هستند.
-                                        </p>
-                                    </div><!-- /.comment -->
-                                    <div class="actions">
-                                        <a href="{{ asset('admin/#') }}"
-                                           class="btn btn-round btn-icon btn-sm btn-primary"
-                                           rel="tooltip" aria-label="مشاهده"
-                                           data-bs-original-title="مشاهده">
-                                            <i class="icon-eye"></i>
-                                            <div class="paper-ripple">
-                                                <div class="paper-ripple__background"></div>
-                                                <div class="paper-ripple__waves"></div>
-                                            </div>
-                                        </a>
-                                        <a href="{{ asset('admin/#') }}"
-                                           class="btn btn-round btn-icon btn-sm btn-info" rel="tooltip"
-                                           aria-label="پذیرش" data-bs-original-title="پذیرش">
-                                            <i class="icon-check"></i>
-                                            <div class="paper-ripple">
-                                                <div class="paper-ripple__background"></div>
-                                                <div class="paper-ripple__waves"></div>
-                                            </div>
-                                        </a>
-                                        <a href="{{ asset('admin/#') }}"
-                                           class="btn btn-round btn-icon btn-sm btn-warning"
-                                           rel="tooltip" aria-label="عدم پذیرش"
-                                           data-bs-original-title="عدم پذیرش">
-                                            <i class="icon-close"></i>
-                                            <div class="paper-ripple">
-                                                <div class="paper-ripple__background"></div>
-                                                <div class="paper-ripple__waves"></div>
-                                            </div>
-                                        </a>
-                                        <a href="{{ asset('admin/#') }}"
-                                           class="btn btn-round btn-icon btn-sm btn-danger"
-                                           rel="tooltip" aria-label="حذف" data-bs-original-title="حذف">
-                                            <i class="icon-trash"></i>
-                                            <div class="paper-ripple">
-                                                <div class="paper-ripple__background"></div>
-                                                <div class="paper-ripple__waves"></div>
-                                            </div>
-                                        </a>
-                                    </div><!-- /.actions -->
-                                </div><!-- /.comment-box -->
-                            </div><!-- /.comments-box -->
-                        </div><!-- /.tab-pane -->
-                        <div id="tab2" class="tab-pane fade" role="tabpanel">
-                            <div class="comments-box">
-                                <div class="comment-box">
-                                    <div class="comment">
-                                        <a href="{{ asset('admin/#') }}">
-                                            <img src="{{ asset('admin/assets/images/user/32.png') }}"
-                                                 class="img-circle" alt="">
-                                            <span class="user">
-                                                                        حمید آفرینش فر
-                                                                    </span>
-                                        </a>
-                                        <span class="float-end text-muted">
-                                                                    15:50 ، 3 تیر
-                                                                    <i class="icon-clock"></i>
-                                                                </span>
-                                        <p>
-                                            قالب مدیران یک قالب کاملا ایرانی و بومی است که تمام پروسه طراحی
-                                            و
-                                            پیاده سازی آن توسط متخصصان داخلی انجام شده است.
-                                        </p>
-                                    </div><!-- /.comment -->
-                                    <div class="actions">
-                                        <a href="{{ asset('admin/#') }}"
-                                           class="btn btn-round btn-icon btn-sm btn-primary"
-                                           rel="tooltip" aria-label="مشاهده"
-                                           data-bs-original-title="مشاهده">
-                                            <i class="icon-eye"></i>
-                                            <div class="paper-ripple">
-                                                <div class="paper-ripple__background"></div>
-                                                <div class="paper-ripple__waves"></div>
-                                            </div>
-                                        </a>
-                                        <a href="{{ asset('admin/#') }}"
-                                           class="btn btn-round btn-icon btn-sm btn-warning"
-                                           rel="tooltip" aria-label="عدم پذیرش"
-                                           data-bs-original-title="عدم پذیرش">
-                                            <i class="icon-close"></i>
-                                            <div class="paper-ripple">
-                                                <div class="paper-ripple__background"></div>
-                                                <div class="paper-ripple__waves"></div>
-                                            </div>
-                                        </a>
-                                        <a href="{{ asset('admin/#') }}"
-                                           class="btn btn-round btn-icon btn-sm btn-danger"
-                                           rel="tooltip" aria-label="حذف" data-bs-original-title="حذف">
-                                            <i class="icon-trash"></i>
-                                            <div class="paper-ripple">
-                                                <div class="paper-ripple__background"></div>
-                                                <div class="paper-ripple__waves"></div>
-                                            </div>
-                                        </a>
-                                    </div><!-- /.actions -->
-                                </div><!-- /.comment-box -->
-                                <div class="comment-box">
-                                    <div class="comment">
-                                        <a href="{{ asset('admin/#') }}">
-                                            <img src="{{ asset('admin/assets/images/user/customer.png') }}"
-                                                 class="img-circle"
-                                                 alt="">
-                                            <span class="user">
-                                                                        بهزاد
-                                                                    </span>
-                                        </a>
-                                        <span class="float-end text-muted">
-                                                                    15:55 ، 3 تیر
-                                                                    <i class="icon-clock"></i>
-                                                                </span>
-                                        <p>
-                                            با سلام. آیا پلاگین های انتخاب تاریخ، شمسی شده اند؟
-                                        </p>
-                                    </div><!-- /.comment -->
-                                    <div class="actions">
-                                        <a href="{{ asset('admin/#') }}"
-                                           class="btn btn-round btn-icon btn-sm btn-primary"
-                                           rel="tooltip" aria-label="مشاهده"
-                                           data-bs-original-title="مشاهده">
-                                            <i class="icon-eye"></i>
-                                            <div class="paper-ripple">
-                                                <div class="paper-ripple__background"></div>
-                                                <div class="paper-ripple__waves"></div>
-                                            </div>
-                                        </a>
-                                        <a href="{{ asset('admin/#') }}"
-                                           class="btn btn-round btn-icon btn-sm btn-warning"
-                                           rel="tooltip" aria-label="عدم پذیرش"
-                                           data-bs-original-title="عدم پذیرش">
-                                            <i class="icon-close"></i>
-                                            <div class="paper-ripple">
-                                                <div class="paper-ripple__background"></div>
-                                                <div class="paper-ripple__waves"></div>
-                                            </div>
-                                        </a>
-                                        <a href="{{ asset('admin/#') }}"
-                                           class="btn btn-round btn-icon btn-sm btn-danger"
-                                           rel="tooltip" aria-label="حذف" data-bs-original-title="حذف">
-                                            <i class="icon-trash"></i>
-                                            <div class="paper-ripple">
-                                                <div class="paper-ripple__background"></div>
-                                                <div class="paper-ripple__waves"></div>
-                                            </div>
-                                        </a>
-                                    </div><!-- /.actions -->
-                                </div><!-- /.comment-box -->
-                                <div class="comment-box">
-                                    <div class="comment">
-                                        <a href="{{ asset('admin/#') }}">
-                                            <img src="{{ asset('admin/assets/images/user/32.png') }}"
-                                                 class="img-circle" alt="">
-                                            <span class="user">
-                                                                        حمید آفرینش فر
-                                                                    </span>
-                                        </a>
-                                        <span class="float-end text-muted">
-                                                                    16:10 ، 3 تیر
-                                                                    <i class="icon-clock"></i>
-                                                                </span>
-                                        <p>
-                                            سلام. بله حتما. علاوه بر آن پلاگین ویرایش متن، نمایش نقشه ایران،
-                                            نمودار ها و... هم فارسی و راستچین هستند.
-                                        </p>
-                                    </div><!-- /.comment -->
-                                    <div class="actions">
-                                        <a href="{{ asset('admin/#') }}"
-                                           class="btn btn-round btn-icon btn-sm btn-primary"
-                                           rel="tooltip" aria-label="مشاهده"
-                                           data-bs-original-title="مشاهده">
-                                            <i class="icon-eye"></i>
-                                            <div class="paper-ripple">
-                                                <div class="paper-ripple__background"></div>
-                                                <div class="paper-ripple__waves"></div>
-                                            </div>
-                                        </a>
-                                        <a href="{{ asset('admin/#') }}"
-                                           class="btn btn-round btn-icon btn-sm btn-warning"
-                                           rel="tooltip" aria-label="عدم پذیرش"
-                                           data-bs-original-title="عدم پذیرش">
-                                            <i class="icon-close"></i>
-                                            <div class="paper-ripple">
-                                                <div class="paper-ripple__background"></div>
-                                                <div class="paper-ripple__waves"></div>
-                                            </div>
-                                        </a>
-                                        <a href="{{ asset('admin/#') }}"
-                                           class="btn btn-round btn-icon btn-sm btn-danger"
-                                           rel="tooltip" aria-label="حذف" data-bs-original-title="حذف">
-                                            <i class="icon-trash"></i>
-                                            <div class="paper-ripple">
-                                                <div class="paper-ripple__background"></div>
-                                                <div class="paper-ripple__waves"></div>
-                                            </div>
-                                        </a>
-                                    </div><!-- /.actions -->
-                                </div><!-- /.comment-box -->
-                            </div><!-- /.comments-box -->
-                        </div><!-- /.tab-pane -->
-                        <div id="tab3" class="tab-pane fade" role="tabpanel">
-                            <div class="comments-box">
-                                <div class="comment-box">
-                                    <div class="comment">
-                                        <a href="{{ asset('admin/#') }}">
-                                                                    <span class="user">
-                                                                        کاربر ناشناس
-                                                                    </span>
-                                        </a>
-                                        <span class="float-end text-muted">
-                                                                    15:30 ، 3 تیر
-                                                                    <i class="icon-clock"></i>
-                                                                </span>
-                                        <p>
-                                            سلام. لطفا به سایت من هم سر بزنید...
-                                        </p>
-                                    </div><!-- /.comment -->
-                                    <div class="actions">
-                                        <a href="{{ asset('admin/#') }}"
-                                           class="btn btn-round btn-icon btn-sm btn-primary"
-                                           rel="tooltip" aria-label="مشاهده"
-                                           data-bs-original-title="مشاهده">
-                                            <i class="icon-eye"></i>
-                                            <div class="paper-ripple">
-                                                <div class="paper-ripple__background"></div>
-                                                <div class="paper-ripple__waves"></div>
-                                            </div>
-                                        </a>
-                                        <a href="{{ asset('admin/#') }}"
-                                           class="btn btn-round btn-icon btn-sm btn-info" rel="tooltip"
-                                           aria-label="پذیرش" data-bs-original-title="پذیرش">
-                                            <i class="icon-check"></i>
-                                            <div class="paper-ripple">
-                                                <div class="paper-ripple__background"></div>
-                                                <div class="paper-ripple__waves"></div>
-                                            </div>
-                                        </a>
-                                        <a href="{{ asset('admin/#') }}"
-                                           class="btn btn-round btn-icon btn-sm btn-danger"
-                                           rel="tooltip" aria-label="حذف" data-bs-original-title="حذف">
-                                            <i class="icon-trash"></i>
-                                            <div class="paper-ripple">
-                                                <div class="paper-ripple__background"></div>
-                                                <div class="paper-ripple__waves"></div>
-                                            </div>
-                                        </a>
-                                    </div><!-- /.actions -->
-                                </div><!-- /.comment-box -->
-                            </div><!-- /.comments-box -->
-                        </div><!-- /.tab-pane -->
-                    </div><!-- /.tab-content -->
-
-                </div><!-- /.portlet-body -->
-            </div><!-- /.portlet -->
-        </div>
+        @can(config('permissions_list.COMMENT_INDEX', false))
+            <div class="col-12">
+                <div class="portlet box shadow min-height-500">
+                    <div class="portlet-heading">
+                        <div class="portlet-title">
+                            <h3 class="title">
+                                <i class="icon-bubbles"></i>
+                                نظرات
+                            </h3>
+                        </div><!-- /.portlet-title -->
+                        <div class="buttons-box">
+                            <a class="btn btn-sm btn-default btn-round btn-fullscreen" rel="tooltip"
+                               aria-label="تمام صفحه" data-bs-original-title="تمام صفحه">
+                                <i class="icon-size-fullscreen"></i>
+                                <div class="paper-ripple">
+                                    <div class="paper-ripple__background"></div>
+                                    <div class="paper-ripple__waves"></div>
+                                </div>
+                            </a>
+                            <a class="btn btn-sm btn-default btn-round btn-close" rel="tooltip"
+                               aria-label="بستن" data-bs-original-title="بستن">
+                                <i class="icon-trash"></i>
+                                <div class="paper-ripple">
+                                    <div class="paper-ripple__background"></div>
+                                    <div class="paper-ripple__waves"></div>
+                                </div>
+                            </a>
+                        </div><!-- /.buttons-box -->
+                    </div><!-- /.portlet-heading -->
+                    <div class="portlet-body">
+                        <div class="table-responsive" style="overflow-x: auto !important;">
+                            <table class="table table-bordered table-striped table-hover">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>متن کامنت</th>
+                                    <th>کامنت دهنده</th>
+                                    <th>مهمان</th>
+                                    <th>وضعیت نظر</th>
+                                    <th>پاسخ</th>
+                                    <th>مدل</th>
+                                    <th>تاریخ ایجاد</th>
+                                    @canany([
+                                        config('permissions_list.COMMENT_APPROVE', false),
+                                        config('permissions_list.COMMENT_REJECT', false),
+                                        config('permissions_list.COMMENT_SHOW', false),
+                                        config('permissions_list.COMMENT_DESTROY', false)
+                                    ])
+                                        <th>عملیات</th>
+                                    @endcanany
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($comments as $comment)
+                                    <tr>
+                                        <td>{{ $comment->id }}</td>
+                                        <td>{{ str($comment->comment)->limit(20) }}</td>
+                                        <td>{{ $comment->commenterName() }}</td>
+                                        <td class="{{ status_class(!$comment->isGuest()) }}">{{ $comment->isGuest() ? 'هست' : 'نیست' }}</td>
+                                        <td class="{{ $comment->setStatusClass() }} status">{{ $comment->getStatus() }}</td>
+                                        <td class="reply">{{ $comment->parent ? "{$comment->parent->commenterName()} (id: {$comment->parent->id})" : 'نیست' }}</td>
+                                        <td>{{ $comment->commentable_type }}</td>
+                                        <td class="ltr text-right created-at">{{ jalalian()->forge($comment->created_at)->format(config('common.datetime_format')) }}</td>
+                                        @canany([
+                                            config('permissions_list.COMMENT_APPROVE', false),
+                                            config('permissions_list.COMMENT_REJECT', false),
+                                            config('permissions_list.COMMENT_SHOW', false),
+                                            config('permissions_list.COMMENT_DESTROY', false)
+                                        ])
+                                            <td>
+                                                <div class="d-flex gap-2">
+                                                    @can(config('permissions_list.COMMENT_APPROVE', false))
+                                                        @if ($comment->status !== get_class($comment)::APPROVED)
+                                                            <form action="{{ route('admin.comments.approve', $comment->id) }}" method="post">
+                                                                @csrf
+                                                                @method('patch')
+                                                                <button class="btn btn-sm btn-success btn-icon round d-flex justify-content-center align-items-center"
+                                                                        rel="tooltip" aria-label="تایید نظر" data-bs-original-title="تایید نظر">
+                                                                    <i class="icon-check"></i>
+                                                                </button>
+                                                            </form>
+                                                        @endif
+                                                    @endcan
+                                                    @can(config('permissions_list.COMMENT_REJECT', false))
+                                                        @if ($comment->status !== get_class($comment)::REJECTED)
+                                                            <form action="{{ route('admin.comments.reject', $comment->id) }}" method="post">
+                                                                @csrf
+                                                                @method('patch')
+                                                                <button class="btn btn-sm btn-warning btn-icon round d-flex justify-content-center align-items-center"
+                                                                        rel="tooltip" aria-label="رد نظر" data-bs-original-title="رد نظر">
+                                                                    <i class="icon-close"></i>
+                                                                </button>
+                                                            </form>
+                                                        @endif
+                                                    @endcan
+                                                    @can(config('permissions_list.COMMENT_SHOW', false))
+                                                        <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
+                                                           rel="tooltip" aria-label="مشاهده نظر" data-bs-original-title="مشاهده نظر" href="{{ route('admin.comments.show', $comment->id) }}">
+                                                            <i class="icon-eye"></i>
+                                                        </a>
+                                                    @endcan
+                                                    @can(config('permissions_list.COMMENT_DESTROY', false))
+                                                        <x-common-delete-button :route="route('admin.comments.destroy', $comment->id)"/>
+                                                    @endcan
+                                                </div>
+                                            </td>
+                                        @endcanany
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div><!-- /.portlet-body -->
+                </div><!-- /.portlet -->
+            </div>
+        @endcan
     </div>
 
 @endsection

@@ -126,6 +126,16 @@ class Comment extends Model
         $this->save();
     }
 
+    public function setStatusClass(): string
+    {
+        return match ($this->status) {
+            self::PENDING => 'text-warning',
+            self::APPROVED => 'text-success',
+            self::REJECTED => 'text-danger',
+            default => 'text-muted',
+        };
+    }
+
     public function setGuestData(string $name, string $email): Model
     {
         $this->guest_data = [

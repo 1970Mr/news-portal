@@ -16,16 +16,6 @@ class CommentService
         return $query->paginate(10);
     }
 
-    public function setStatusClass(string $status): string
-    {
-        return match ($status) {
-            Comment::PENDING => 'text-warning',
-            Comment::APPROVED => 'text-success',
-            Comment::REJECTED => 'text-danger',
-            default => 'text-muted',
-        };
-    }
-
     private function setFilters(Request $request, Builder $query): Builder
     {
         $filter = $request->filter;

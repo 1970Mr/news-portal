@@ -25,7 +25,7 @@ class CommentController extends Controller
         $comments = $this->commentService->getComments($request);
         $filters = Comment::COMMENT_STATUS;
         $filters[] = 'all';
-        return view('comment::index', compact(['comments', 'filters']) + ['commentService' => $this->commentService]);
+        return view('comment::index', compact(['comments', 'filters']));
     }
 
     public function show(Comment $comment): View

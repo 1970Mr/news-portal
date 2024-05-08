@@ -12,7 +12,7 @@
                 <div class="portlet-heading">
                     <div class="portlet-title">
                         <h3 class="title">
-                            <i class="icon-people"></i>
+                            <i class="icon-bubbles"></i>
                             لیست نظرات
                         </h3>
                     </div><!-- /.portlet-title -->
@@ -74,7 +74,7 @@
                                     <td>{{ str($comment->comment)->limit(20) }}</td>
                                     <td>{{ $comment->commenterName() }}</td>
                                     <td class="{{ status_class(!$comment->isGuest()) }}">{{ $comment->isGuest() ? 'هست' : 'نیست' }}</td>
-                                    <td class="{{ $commentService->setStatusClass($comment->status) }} status">{{ $comment->getStatus() }}</td>
+                                    <td class="{{ $comment->setStatusClass() }} status">{{ $comment->getStatus() }}</td>
                                     <td class="reply">{{ $comment->parent ? "{$comment->parent->commenterName()} (id: {$comment->parent->id})" : 'نیست' }}</td>
                                     <td>{{ $comment->commentable_type }}</td>
                                     <td class="ltr text-right created-at">{{ jalalian()->forge($comment->created_at)->format(config('common.datetime_format')) }}</td>
