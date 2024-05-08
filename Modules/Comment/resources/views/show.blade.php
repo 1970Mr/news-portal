@@ -38,7 +38,7 @@
                                 </span>
                             </a>
                             <span class="float-end text-muted">
-                                <span class="ltr" style="display: inline-block">{{ jalalian()->forge($comment->created_at)->format(config('common.datetime_format')) }}</span>
+                                <span class="rtl" style="display: inline-block">{{ jalalian()->forge($comment->created_at)->ago() }}</span>
                                 <i class="icon-clock"></i>
                             </span>
                             <p class="my-3 mx-5">

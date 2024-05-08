@@ -7,7 +7,10 @@
                 <div class="comment-body">
                     <div class="meta-data">
                         <span class="comment-author">{{ ($child_comment->isGuest() ? 'کاربر مهمان: ' : '') . $child_comment->commenterName() }}</span>
-                        <span class="comment-date pull-right">{{ jalalian()->forge($child_comment->created_at)->format(config('common.front_datetime_format')) }}</span>
+                        <span class="comment-date pull-right">
+                            <span>{{ jalalian()->forge($child_comment->created_at)->ago() }}</span>
+                            <i class="fa fa-clock-o"></i>
+                        </span>
                     </div>
                     <div class="comment-content">
                         <x-markdown>

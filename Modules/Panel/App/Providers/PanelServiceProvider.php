@@ -4,7 +4,9 @@ namespace Modules\Panel\App\Providers;
 
 use App\Http\Kernel;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Modules\Comment\App\Models\Comment;
 use Modules\Panel\App\Http\Middleware\ShareData;
 
 class PanelServiceProvider extends ServiceProvider
@@ -26,6 +28,8 @@ class PanelServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/migrations'));
 
         $this->registerMiddlewares();
+
+        $this->registerSharedData();
     }
 
     /**
@@ -121,5 +125,18 @@ class PanelServiceProvider extends ServiceProvider
     protected function registerMiddlewares(): void
     {
         $this->app->make(Kernel::class)->appendMiddlewareToGroup('web', ShareData::class);
+    }
+
+    protected function registerSharedData(): void
+    {
+        $this->app->booted(function () {
+            $pendingCommentsQuery = Comment::query()->where('status', Comment::PENDING);
+            $pendingCommentsCount = $pendingCommentsQuery->count();
+            $pendingComments = $pendingCommentsQuery->limit(10)->latest()->get();
+            $pendingCommentsRoute = route('admin.comments.index', ['filter' => Comment::PENDING]);
+            View::share('pendingCommentsCount', $pendingCommentsCount);
+            View::share('pendingComments', $pendingComments);
+            View::share('pendingCommentsRoute', $pendingCommentsRoute);
+        });
     }
 }

@@ -30,7 +30,7 @@ class CommentController extends Controller
 
     public function show(Comment $comment): View
     {
-        return view('comment::show', compact('comment') + ['commentService' => $this->commentService]);
+        return view('comment::show', compact('comment'));
     }
 
     public function approve(Comment $comment): RedirectResponse

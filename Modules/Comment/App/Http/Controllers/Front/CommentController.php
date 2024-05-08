@@ -16,7 +16,9 @@ class CommentController extends Controller
     {
         $this->middleware('auth')->except(['store', 'reply']);
         $this->middleware(ProtectAgainstSpam::class)->only('store');
-        $this->authorizeResource(Comment::class, 'comment');
+        $this->authorizeResource(Comment::class, 'comment', [
+            'except' => ['store', 'reply'],
+        ]);
     }
 
     public function store(CommentRequest $request): RedirectResponse

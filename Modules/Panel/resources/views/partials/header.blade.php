@@ -31,99 +31,55 @@
                         <i class="icon-size-fullscreen"></i>
                     </a>
                 </li>
-                <li class="dropdown dropdown-messages">
-                    <a href="{{ asset('admin/#') }}" class="dropdown-toggle btn" data-bs-toggle="dropdown">
-                        <i class="icon-envelope"></i>
-                        <span class="badge badge-primary">
-                                    4
+                @can(config('permissions_list.COMMENT_SHOW', false))
+                    <li class="dropdown dropdown-messages">
+                        <a class="dropdown-toggle btn" data-bs-toggle="dropdown">
+                            <i class="icon-bubbles"></i>
+                            <span class="badge badge-primary">
+                                {{ $pendingCommentsCount }}
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu custom-dropdown-menu has-scrollbar">
+                            <li class="dropdown-header clearfix">
+                                <span class="float-start">
+                                    <a href="{{ $pendingCommentsRoute }}" rel="tooltip" title="خواندن همه"
+                                       data-placement="left">
+                                        <i class="icon-eye"></i>
+                                    </a>
+                                    شما {{ $pendingCommentsCount }} پیام تازه دارید.
                                 </span>
-                    </a>
-                    <ul class="dropdown-menu custom-dropdown-menu has-scrollbar">
-                        <li class="dropdown-header clearfix">
-                                    <span class="float-start">
-                                        <a href="{{ asset('admin/#') }}" rel="tooltip" title="خواندن همه"
-                                           data-placement="left">
-                                            <i class="icon-eye"></i>
-                                        </a>
-                                        شما 4 پیام تازه دارید.
-                                    </span>
-                        </li>
-                        <li class="dropdown-body">
-                            <ul class="dropdown-menu-list">
-                                <li class="clearfix">
-                                    <a href="{{ asset('admin/#') }}">
-                                        <p class="clearfix">
-                                            <strong class="float-start">
-                                                <img src="{{ asset('admin/assets/images/user/32.png') }}"
-                                                     class="img-circle" alt="">
-                                                سهراب سپهری
-                                            </strong>
-                                            <small class="float-end text-muted">
-                                                <i class="icon-clock"></i>
-                                                ده دقیقه پیش
-                                            </small>
-                                        </p>
-                                        <p>پیام پرمهرتان دریافت شد!</p>
-                                    </a>
-                                </li>
-                                <li class="clearfix">
-                                    <a href="{{ asset('admin/#') }}">
-                                        <p class="clearfix">
-                                            <strong class="float-start">
-                                                <img src="{{ asset('admin/assets/images/user/32.png') }}"
-                                                     class="img-circle" alt="">
-                                                شفیعی کدکنی
-                                            </strong>
-                                            <small class="float-end text-muted">
-                                                <i class="icon-clock"></i>
-                                                سی دقیقه پیش
-                                            </small>
-                                        </p>
-                                        <p>بسته ارسالی شما به دستم رسید.</p>
-                                    </a>
-                                </li>
-                                <li class="clearfix">
-                                    <a href="{{ asset('admin/#') }}">
-                                        <p class="clearfix">
-                                            <strong class="float-start">
-                                                <img src="{{ asset('admin/assets/images/user/32.png') }}"
-                                                     class="img-circle" alt="">
-                                                قیصر امین پور
-                                            </strong>
-                                            <small class="float-end text-muted">
-                                                <i class="icon-clock"></i>
-                                                یک ساعت پیش
-                                            </small>
-                                        </p>
-                                        <p>مجموعه آثار بنده را ببینید.</p>
-                                    </a>
-                                </li>
-                                <li class="clearfix">
-                                    <a href="{{ asset('admin/#') }}">
-                                        <p class="clearfix">
-                                            <strong class="float-start">
-                                                <img src="{{ asset('admin/assets/images/user/32.png') }}"
-                                                     class="img-circle" alt="">
-                                                مهدی اخوان ثالث
-                                            </strong>
-                                            <small class="float-end text-muted">
-                                                <i class="icon-clock"></i>
-                                                دو ساعت پیش
-                                            </small>
-                                        </p>
-                                        <p>با تشکر...</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown-footer clearfix">
-                            <a href="{{ asset('admin/#') }}">
-                                <i class="icon-list fa-flip-horizontal"></i>
-                                مشاهده همه پیام ها
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                            </li>
+                            <li class="dropdown-body">
+                                <ul class="dropdown-menu-list">
+                                    @foreach($pendingComments as $comment)
+                                        <li class="clearfix">
+                                            <a href="{{ route('admin.comments.show', $comment->id) }}">
+                                                <p class="clearfix">
+                                                    <strong class="float-start">
+                                                        <img src="{{ $comment->commenterImageLink() }}"
+                                                             class="img-circle" alt="{{ $comment->commenterName() }}" height="33rem" width="33rem">
+                                                        {{ $comment->commenterName() }}
+                                                    </strong>
+                                                    <small class="float-end text-muted d-flex align-items-center gap-1">
+                                                        <i class="icon-clock"></i>
+                                                        <span>{{ jalalian()->forge($comment->created_at)->ago() }}</span>
+                                                    </small>
+                                                </p>
+                                                <p>{{ str($comment->comment)->limit(30) }}</p>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                            <li class="dropdown-footer clearfix">
+                                <a href="{{ $pendingCommentsRoute }}">
+                                    <i class="icon-list fa-flip-horizontal"></i>
+                                    مشاهده همه پیام ها
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @endcan
 
                 <li class="dropdown dropdown-user">
                     <a class="dropdown-toggle dropdown-hove cursor-pointer d-flex align-items-center gap-2" data-bs-toggle="dropdown">
