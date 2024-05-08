@@ -64,57 +64,55 @@
                             </thead>
                             <tbody>
                             @foreach($comments as $comment)
-                                @can('show', $comment)
-                                    <tr>
-                                        <td>{{ $comment->id }}</td>
-                                        <td>{{ str($comment->comment)->limit(20) }}</td>
-                                        <td>{{ $comment->commenterName() }}</td>
-                                        <td class="{{ status_class(!$comment->isGuest()) }}">{{ $comment->isGuest() ? 'هست' : 'نیست' }}</td>
-                                        <td class="{{ $commentService->setStatusClass($comment->status) }} status">{{ $comment->getStatus() }}</td>
-                                        <td class="reply">{{ $comment->parent ? "{$comment->parent->commenterName()} (id: {$comment->parent->id})" : 'نیست' }}</td>
-                                        <td>{{ $comment->commentable_type }}</td>
-                                        <td class="ltr text-right created-at">{{ jalalian()->forge($comment->created_at)->format(config('common.datetime_format')) }}</td>
-                                        @canany([config('permissions_list.ARTICLE_UPDATE', false), config('permissions_list.ARTICLE_DESTROY', false)])
-                                            <td>
-                                                <div class="d-flex gap-2">
-                                                    @can(config('permissions_list.ARTICLE_UPDATE', false))
-                                                        @if ($comment->status !== get_class($comment)::APPROVED)
-                                                            <form action="{{ route('admin.comments.approve', $comment->id) }}" method="post">
+                                <tr>
+                                    <td>{{ $comment->id }}</td>
+                                    <td>{{ str($comment->comment)->limit(20) }}</td>
+                                    <td>{{ $comment->commenterName() }}</td>
+                                    <td class="{{ status_class(!$comment->isGuest()) }}">{{ $comment->isGuest() ? 'هست' : 'نیست' }}</td>
+                                    <td class="{{ $commentService->setStatusClass($comment->status) }} status">{{ $comment->getStatus() }}</td>
+                                    <td class="reply">{{ $comment->parent ? "{$comment->parent->commenterName()} (id: {$comment->parent->id})" : 'نیست' }}</td>
+                                    <td>{{ $comment->commentable_type }}</td>
+                                    <td class="ltr text-right created-at">{{ jalalian()->forge($comment->created_at)->format(config('common.datetime_format')) }}</td>
+                                    @canany([config('permissions_list.ARTICLE_UPDATE', false), config('permissions_list.ARTICLE_DESTROY', false)])
+                                        <td>
+                                            <div class="d-flex gap-2">
+                                                @can(config('permissions_list.ARTICLE_UPDATE', false))
+                                                    @if ($comment->status !== get_class($comment)::APPROVED)
+                                                        <form action="{{ route('admin.comments.approve', $comment->id) }}" method="post">
+                                                            @csrf
+                                                            @method('patch')
+                                                            <button class="btn btn-sm btn-success btn-icon round d-flex justify-content-center align-items-center"
+                                                                    rel="tooltip" aria-label="تایید نظر" data-bs-original-title="تایید نظر">
+                                                                <i class="icon-check"></i>
+                                                            </button>
+                                                        </form>
+                                                    @endif
+                                                @endcan
+                                                @can(config('permissions_list.ARTICLE_UPDATE', false))
+                                                    @if ($comment->status !== get_class($comment)::REJECTED)
+                                                            <form action="{{ route('admin.comments.reject', $comment->id) }}" method="post">
                                                                 @csrf
                                                                 @method('patch')
-                                                                <button class="btn btn-sm btn-success btn-icon round d-flex justify-content-center align-items-center"
-                                                                        rel="tooltip" aria-label="تایید نظر" data-bs-original-title="تایید نظر">
-                                                                    <i class="icon-check"></i>
+                                                                <button class="btn btn-sm btn-warning btn-icon round d-flex justify-content-center align-items-center"
+                                                                        rel="tooltip" aria-label="رد نظر" data-bs-original-title="رد نظر">
+                                                                    <i class="icon-close"></i>
                                                                 </button>
                                                             </form>
-                                                        @endif
-                                                    @endcan
-                                                    @can(config('permissions_list.ARTICLE_UPDATE', false))
-                                                        @if ($comment->status !== get_class($comment)::REJECTED)
-                                                                <form action="{{ route('admin.comments.reject', $comment->id) }}" method="post">
-                                                                    @csrf
-                                                                    @method('patch')
-                                                                    <button class="btn btn-sm btn-warning btn-icon round d-flex justify-content-center align-items-center"
-                                                                            rel="tooltip" aria-label="رد نظر" data-bs-original-title="رد نظر">
-                                                                        <i class="icon-close"></i>
-                                                                    </button>
-                                                                </form>
-                                                        @endif
-                                                    @endcan
-                                                    @can(config('permissions_list.ARTICLE_UPDATE', false))
-                                                        <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                           rel="tooltip" aria-label="مشاهده نظر" data-bs-original-title="مشاهده نظر" href="{{ route('admin.comments.show', $comment->id) }}">
-                                                            <i class="icon-eye"></i>
-                                                        </a>
-                                                    @endcan
-                                                    @can(config('permissions_list.ARTICLE_DESTROY', false))
-                                                        <x-common-delete-button :route="route('admin.comments.destroy', $comment->id)"/>
-                                                    @endcan
-                                                </div>
-                                            </td>
-                                        @endcanany
-                                    </tr>
-                                @endcan
+                                                    @endif
+                                                @endcan
+                                                @can(config('permissions_list.ARTICLE_UPDATE', false))
+                                                    <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
+                                                       rel="tooltip" aria-label="مشاهده نظر" data-bs-original-title="مشاهده نظر" href="{{ route('admin.comments.show', $comment->id) }}">
+                                                        <i class="icon-eye"></i>
+                                                    </a>
+                                                @endcan
+                                                @can(config('permissions_list.ARTICLE_DESTROY', false))
+                                                    <x-common-delete-button :route="route('admin.comments.destroy', $comment->id)"/>
+                                                @endcan
+                                            </div>
+                                        </td>
+                                    @endcanany
+                                </tr>
                             @endforeach
                             </tbody>
                         </table>

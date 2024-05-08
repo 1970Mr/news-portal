@@ -20,16 +20,18 @@
                             </div>
                             <div class="text-left">
                                 <a class="comment-reply" href="#" data-toggle="modal" data-target="#commentReplyModal{{ $comment->id }}">پاسخ</a>
-                                @if(auth()->check() && auth()->id() === $comment->commenter?->id)
+                                @canany('update', $comment)
                                     <a class="comment-edit" href="#" data-toggle="modal" data-target="#commentEditModal{{ $comment->id }}" style="margin-right: 1rem ">ویرایش</a>
+                                @endcanany
 
+                                @canany('delete', $comment)
                                     <form id="deleteForm{{ $comment->id }}" action="{{ route('comments.destroy', $comment->id) }}" method="POST" style="display: inline">
                                         @method('DELETE')
                                         @csrf
                                     </form>
                                     <a onclick="event.preventDefault(); document.querySelector('#deleteForm{{ $comment->id }}').submit()" class="comment-delete" style="margin-right: 1rem;
                                     cursor: pointer">حذف</a>
-                                @endif
+                                @endcanany
                             </div>
 
                             <div class="text-left">
@@ -52,7 +54,7 @@
                                 </div>
                             </div>
 
-                            @if(auth()->check() && auth()->id() === $comment->commenter?->id)
+                            @canany('update', $comment)
                                 <div class="modal fade" id="commentEditModal{{ $comment->id }}" tabindex="-1" role="dialog" aria-labelledby="commentModalLabel">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -87,7 +89,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endif
+                            @endcanany
                         </div>
                     </div>
 

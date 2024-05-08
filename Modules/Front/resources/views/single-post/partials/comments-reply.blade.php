@@ -16,16 +16,18 @@
                     </div>
                     <div class="text-left">
                         <a class="comment-reply" href="#" data-toggle="modal" data-target="#commentModal{{ $child_comment->id }}">پاسخ</a>
-                        @if(auth()->check() && auth()->id() === $child_comment->commenter?->id)
-                            <a class="comment-edit" href="#" data-toggle="modal" data-target="#commentEditModal{{ $child_comment->id }}" style="margin-right: 1rem ">ویرایش</a>
+                        @canany('update', $child_comment)
+                        <a class="comment-edit" href="#" data-toggle="modal" data-target="#commentEditModal{{ $child_comment->id }}" style="margin-right: 1rem ">ویرایش</a>
+                        @endcanany
 
+                        @canany('delete', $child_comment)
                             <form id="deleteForm{{ $child_comment->id }}" action="{{ route('comments.destroy', $child_comment->id) }}" method="POST" style="display: inline">
                                 @method('DELETE')
                                 @csrf
                             </form>
                             <a onclick="event.preventDefault(); document.querySelector('#deleteForm{{ $child_comment->id }}').submit()" class="comment-delete" style="margin-right: 1rem;
                                 cursor: pointer">حذف</a>
-                        @endif
+                        @endcanany
                     </div>
 
                     <div class="modal fade" id="commentModal{{ $child_comment->id }}" tabindex="-1" role="dialog" aria-labelledby="commentModalLabel">
@@ -45,7 +47,7 @@
                         </div>
                     </div>
 
-                    @if(auth()->check() && auth()->id() === $child_comment->commenter?->id)
+                    @canany('update', $child_comment)
                         <div class="modal fade" id="commentEditModal{{ $child_comment->id }}" tabindex="-1" role="dialog" aria-labelledby="commentModalLabel">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -79,7 +81,7 @@
                                 </div>
                             </div>
                         </div>
-                    @endif
+                    @endcanany
                 </div>
             </div>
         </li>

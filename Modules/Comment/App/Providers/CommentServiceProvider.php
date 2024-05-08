@@ -3,7 +3,10 @@
 namespace Modules\Comment\App\Providers;
 
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
+use Modules\Comment\App\Models\Comment;
+use Modules\Comment\App\Policies\CommentPolicy;
 
 class CommentServiceProvider extends ServiceProvider
 {
@@ -22,6 +25,8 @@ class CommentServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/migrations'));
+
+        Gate::policy(Comment::class, CommentPolicy::class);
     }
 
     /**

@@ -4,7 +4,6 @@ namespace Modules\Comment\App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Modules\Comment\App\Http\Requests\Front\CommentRequest;
 use Modules\Comment\App\Models\Comment;
@@ -17,6 +16,7 @@ class CommentController extends Controller
     {
         $this->middleware('auth')->except(['store', 'reply']);
         $this->middleware(ProtectAgainstSpam::class)->only('store');
+        $this->authorizeResource(Comment::class, 'comment');
     }
 
     public function store(CommentRequest $request): RedirectResponse
@@ -29,7 +29,7 @@ class CommentController extends Controller
     {
 //        $comment->update(['comment' => $request->comment, 'status' => Comment::PENDING]);
         $comment->update(['comment' => $request->comment]);
-        return redirect(URL::previous() . '#comments')->with(['success' => __('comment::messages.comment_saved_successfully')]);
+        return redirect(URL::previous() . '#comments')->with(['success' => __('comment::messages.comment_updated_successfully')]);
     }
 
     public function destroy(Comment $comment): RedirectResponse
