@@ -36,6 +36,7 @@ class ArticleController extends Controller
             $related_articles = Article::with(['image', 'category', 'user'])->where('id', '!=', $article->id)->latest()->limit(6)->get()->shuffle();
         }
 
-        return view('front::single-post.show', compact(['article', 'category', 'shared_links', 'previous_article', 'next_article', 'related_articles']));
+        visits($article)->increment();
+        return view('front::single-article.show', compact(['article', 'category', 'shared_links', 'previous_article', 'next_article', 'related_articles']));
     }
 }
