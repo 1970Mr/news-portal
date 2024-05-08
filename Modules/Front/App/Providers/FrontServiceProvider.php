@@ -26,12 +26,7 @@ class FrontServiceProvider extends ServiceProvider
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/migrations'));
 
-        View::composer([
-            'home::index',
-            'front::single-article.show',
-        ], static function ($view) {
-            $view->with(resolve(ArticleService::class)->composeViewData());
-        });
+        $this->registerSharedData();
     }
 
     /**
@@ -120,5 +115,17 @@ class FrontServiceProvider extends ServiceProvider
         }
 
         return $paths;
+    }
+
+    protected function registerSharedData(): void
+    {
+        $this->app->booted(function () {
+            View::composer([
+                'home::index',
+                'article::front.single-article.show',
+            ], static function ($view) {
+                $view->with(resolve(ArticleService::class)->composeViewData());
+            });
+        });
     }
 }
