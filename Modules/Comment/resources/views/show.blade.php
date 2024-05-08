@@ -38,8 +38,8 @@
                                 </span>
                             </a>
                             <span class="float-end text-muted">
-                                <span class="rtl" style="display: inline-block">{{ jalalian()->forge($comment->created_at)->ago() }}</span>
                                 <i class="icon-clock"></i>
+                                <span class="rtl" style="display: inline-block">{{ jalalian()->forge($comment->created_at)->ago() }}</span>
                             </span>
                             <p class="my-3 mx-5">
                                 <x-markdown class="my-2 mx-5">

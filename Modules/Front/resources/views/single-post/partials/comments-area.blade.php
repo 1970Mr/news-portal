@@ -12,8 +12,8 @@
                             <div class="meta-data">
                                 <span class="comment-author">{{ ($comment->isGuest() ? 'کاربر مهمان: ' : '') . $comment->commenterName() }}</span>
                                 <span class="comment-date pull-right">
-                                    <span>{{ jalalian()->forge($comment->created_at)->ago() }}</span>
                                     <i class="fa fa-clock-o"></i>
+                                    <span>{{ jalalian()->forge($comment->created_at)->ago() }}</span>
                                 </span>
                             </div>
                             <div class="comment-content">

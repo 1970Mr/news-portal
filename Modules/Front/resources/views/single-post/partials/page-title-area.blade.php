@@ -12,7 +12,7 @@
         <span class="post-comment">
             <i class="fa fa-comments-o"></i>
             <a href="#comments" class="comments-link">
-                <span>01</span>
+                <span>{{ $article->approvedComments->count() }}</span>
             </a>
         </span>
     </div>
