@@ -57,7 +57,12 @@
                                 <th>پاسخ</th>
                                 <th>مدل</th>
                                 <th>تاریخ ایجاد</th>
-                                @canany([config('permissions_list.ARTICLE_UPDATE', false), config('permissions_list.ARTICLE_DESTROY', false)])
+                                @canany([
+                                    config('permissions_list.COMMENT_APPROVE', false),
+                                    config('permissions_list.COMMENT_REJECT', false),
+                                    config('permissions_list.COMMENT_SHOW', false),
+                                    config('permissions_list.COMMENT_DESTROY', false)
+                                ])
                                     <th>عملیات</th>
                                 @endcanany
                             </tr>
@@ -73,10 +78,15 @@
                                     <td class="reply">{{ $comment->parent ? "{$comment->parent->commenterName()} (id: {$comment->parent->id})" : 'نیست' }}</td>
                                     <td>{{ $comment->commentable_type }}</td>
                                     <td class="ltr text-right created-at">{{ jalalian()->forge($comment->created_at)->format(config('common.datetime_format')) }}</td>
-                                    @canany([config('permissions_list.ARTICLE_UPDATE', false), config('permissions_list.ARTICLE_DESTROY', false)])
+                                    @canany([
+                                        config('permissions_list.COMMENT_APPROVE', false),
+                                        config('permissions_list.COMMENT_REJECT', false),
+                                        config('permissions_list.COMMENT_SHOW', false),
+                                        config('permissions_list.COMMENT_DESTROY', false)
+                                    ])
                                         <td>
                                             <div class="d-flex gap-2">
-                                                @can(config('permissions_list.ARTICLE_UPDATE', false))
+                                                @can(config('permissions_list.COMMENT_APPROVE', false))
                                                     @if ($comment->status !== get_class($comment)::APPROVED)
                                                         <form action="{{ route('admin.comments.approve', $comment->id) }}" method="post">
                                                             @csrf
@@ -88,7 +98,7 @@
                                                         </form>
                                                     @endif
                                                 @endcan
-                                                @can(config('permissions_list.ARTICLE_UPDATE', false))
+                                                @can(config('permissions_list.COMMENT_REJECT', false))
                                                     @if ($comment->status !== get_class($comment)::REJECTED)
                                                             <form action="{{ route('admin.comments.reject', $comment->id) }}" method="post">
                                                                 @csrf
@@ -100,13 +110,13 @@
                                                             </form>
                                                     @endif
                                                 @endcan
-                                                @can(config('permissions_list.ARTICLE_UPDATE', false))
+                                                @can(config('permissions_list.COMMENT_SHOW', false))
                                                     <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
                                                        rel="tooltip" aria-label="مشاهده نظر" data-bs-original-title="مشاهده نظر" href="{{ route('admin.comments.show', $comment->id) }}">
                                                         <i class="icon-eye"></i>
                                                     </a>
                                                 @endcan
-                                                @can(config('permissions_list.ARTICLE_DESTROY', false))
+                                                @can(config('permissions_list.COMMENT_DESTROY', false))
                                                     <x-common-delete-button :route="route('admin.comments.destroy', $comment->id)"/>
                                                 @endcan
                                             </div>

@@ -11,7 +11,14 @@ use Modules\Comment\App\Services\CommentService;
 
 class CommentController extends Controller
 {
-    public function __construct(private readonly CommentService $commentService) {}
+    public function __construct(private readonly CommentService $commentService)
+    {
+        $this->middleware('can:' . config('permissions_list.COMMENT_INDEX', false))->only('index');
+        $this->middleware('can:' . config('permissions_list.COMMENT_SHOW', false))->only('show');
+        $this->middleware('can:' . config('permissions_list.COMMENT_APPROVE', false))->only('approve');
+        $this->middleware('can:' . config('permissions_list.COMMENT_REJECT', false))->only('reject');
+        $this->middleware('can:' . config('permissions_list.COMMENT_DESTROY', false))->only('destroy');
+    }
 
     public function index(Request $request): View
     {
