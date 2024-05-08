@@ -48,10 +48,12 @@
                             </div>
                             <div class="col-12 row form-group justify-content-center">
                                 <div class="col-md-6 row">
-                                    <div class="text-center col-6">
-                                        <input id="hotness" class="form-control" name="hotness" type="checkbox" @if(old('hotness') || (!old('name') && $tag->isHot()) ) checked @endif>
-                                        <label for="hotness">موضوع داغ</label>
-                                    </div>
+                                    @can(config('permissions_list.TAG_HOTNESS', false))
+                                        <div class="text-center col-6">
+                                            <input id="hotness" class="form-control" name="hotness" type="checkbox" @if(old('hotness') || (!old('name') && $tag->isHot()) ) checked @endif>
+                                            <label for="hotness">موضوع داغ</label>
+                                        </div>
+                                    @endcan
                                     <div class="text-center col-6">
                                         <input id="status" class="form-control" name="status" type="checkbox" @if(old('status') || (!old('name') && $tag->status) ) checked @endif>
                                         <label for="status">وضعیت</label>

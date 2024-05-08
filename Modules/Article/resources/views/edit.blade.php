@@ -110,16 +110,20 @@
                                 <div id="editor"></div>
                                 <input type="hidden" id="body" name="body" value="{{ old('body', $article->body) }}">
                             </div>
-                            <div class="col-12 col-md-6 row form-group">
-                                <div class="text-center col-4">
-                                    {{-- Using title because status is not always --}}
-                                    <input id="editor_choice" class="form-control" name="editor_choice" type="checkbox" @if(old('editor_choice') || (!old('title') && $article->editor_choice) ) checked @endif>
-                                    <label for="editor_choice">انتخاب سردبیر</label>
-                                </div>
-                                <div class="text-center col-4">
-                                    <input id="hotness" class="form-control" name="hotness" type="checkbox" @if(old('hotness') || (!old('title') && $article->isHot()) ) checked @endif>
-                                    <label for="hotness">خبر داغ</label>
-                                </div>
+                            <div class="col-12 col-md-6 row form-group justify-content-center">
+                                @can(config('permissions_list.ARTICLE_EDITOR_CHOICE', false))
+                                    <div class="text-center col-4">
+                                        {{-- Using title because status is not always --}}
+                                        <input id="editor_choice" class="form-control" name="editor_choice" type="checkbox" @if(old('editor_choice') || (!old('title') && $article->editor_choice) ) checked @endif>
+                                        <label for="editor_choice">انتخاب سردبیر</label>
+                                    </div>
+                                @endcan
+                                @can(config('permissions_list.ARTICLE_HOTNESS', false))
+                                    <div class="text-center col-4">
+                                        <input id="hotness" class="form-control" name="hotness" type="checkbox" @if(old('hotness') || (!old('title') && $article->isHot()) ) checked @endif>
+                                        <label for="hotness">خبر داغ</label>
+                                    </div>
+                                @endcan
                                 <div class="text-center col-4">
                                     <input id="status" class="form-control" name="status" type="checkbox" @if(old('status') || (!old('title') && $article->status) ) checked @endif>
                                     <label for="status">وضعیت</label>

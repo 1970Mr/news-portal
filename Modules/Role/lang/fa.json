@@ -21,6 +21,7 @@
     "tag::store": "ایجاد تگ",
     "tag::update": "ویرایش تگ",
     "tag::destroy": "حذف تگ",
+    "tag::hotness": "تعیین موضوع داغ",
 
     "image::index_all": "مشاهده تمام تصاویر",
     "image::index_own": "مشاهده تصاویر خود",
@@ -34,6 +35,8 @@
     "article::store": "ایجاد خبر",
     "article::update": "ویرایش خبر",
     "article::destroy": "حذف خبر",
+    "article::editor_choice": "انتخاب سردبیر",
+    "article::hotness": "تعیین خبر داغ",
 
     "comment::index": "مشاهده نظرات",
     "comment::show": "مشاهده نظر",

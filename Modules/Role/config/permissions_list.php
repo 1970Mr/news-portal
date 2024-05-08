@@ -23,6 +23,7 @@ return [
     'TAG_STORE' => 'tag::store',
     'TAG_UPDATE' => 'tag::update',
     'TAG_DESTROY' => 'tag::destroy',
+    'TAG_HOTNESS' => 'tag::hotness',
 
     'IMAGE_INDEX_ALL' => 'image::index_all',
     'IMAGE_INDEX_OWN' => 'image::index_own',
@@ -36,6 +37,8 @@ return [
     'ARTICLE_STORE' => 'article::store',
     'ARTICLE_UPDATE' => 'article::update',
     'ARTICLE_DESTROY' => 'article::destroy',
+    'ARTICLE_EDITOR_CHOICE' => 'article::editor_choice',
+    'ARTICLE_HOTNESS' => 'article::hotness',
 
     'COMMENT_INDEX' => 'comment::index',
     'COMMENT_SHOW' => 'comment::show',

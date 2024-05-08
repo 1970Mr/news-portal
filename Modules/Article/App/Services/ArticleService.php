@@ -3,6 +3,7 @@
 namespace Modules\Article\App\Services;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Modules\Article\App\Http\Requests\ArticleRequest;
 use Modules\Article\App\Models\Article;
 use Modules\FileManager\App\Services\ImageService;
@@ -28,10 +29,11 @@ class ArticleService
     {
         $data = $request->validated();
         $data['user_id'] = auth()->id();
+        $data = $this->setEditorChoice($data);
         $result = $article->update($data);
         $this->imageService->uploadImageDuringUpdate($request, $article, $article->title);
         $article->tags()->sync($request->get('tag_ids', []));
-        $article->hotness()->update(['is_hot' => $request->hotness]);
+        $this->setHotness($article, $request, 'update');
         return $result;
     }
 
@@ -41,5 +43,21 @@ class ArticleService
         $article->tags()->detach();
         $article->hotness()->delete();
         return $article->delete();
+    }
+
+    private function setHotness(Article $article, ArticleRequest $request, string $method): void
+    {
+        if (Auth::user()->can(config('permissions_list.ARTICLE_HOTNESS', false))) {
+            $article->hotness()->{$method}(['is_hot' => $request->hotness]);
+        }
+    }
+
+    private function setEditorChoice(array $data): array
+    {
+        if (!Auth::user()->can(config('permissions_list.ARTICLE_HOTNESS', false))) {
+            unset($data['editor_choice']);
+            return $data;
+        }
+        return $data;
     }
 }
