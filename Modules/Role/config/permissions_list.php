@@ -37,6 +37,12 @@ return [
     'ARTICLE_UPDATE' => 'article::update',
     'ARTICLE_DESTROY' => 'article::destroy',
 
+    'COMMENT_INDEX' => 'comment::index',
+    'COMMENT_SHOW' => 'comment::show',
+    'COMMENT_APPROVE' => 'comment::approve',
+    'COMMENT_REJECT' => 'comment::reject',
+    'COMMENT_DESTROY' => 'comment::destroy',
+
     'PROFILE_EDIT' => 'profile::edit',
     'PROFILE_CHANGE_PASSWORD' => 'profile::change_password',
     'PROFILE_CHANGE_EMAIL' => 'profile::change_email',

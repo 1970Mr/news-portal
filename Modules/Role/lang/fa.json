@@ -35,6 +35,12 @@
     "article::update": "ویرایش خبر",
     "article::destroy": "حذف خبر",
 
+    "comment::index": "مشاهده نظرات",
+    "comment::show": "مشاهده نظر",
+    "comment::approve": "تایید نظر",
+    "comment::reject": "رد نظر",
+    "comment::destroy": "حذف نظر",
+
     "profile::edit": "ویرایش پروفایل",
     "profile::change_password": "تغییر رمز عبور",
     "profile::change_email": "تغییر ایمیل"
