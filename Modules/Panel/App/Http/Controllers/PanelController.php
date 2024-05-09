@@ -25,12 +25,7 @@ class PanelController extends Controller
         $images = $this->panelService->getLimitedData(Image::class);
         $imageClassName = Image::class;
         $comments = $this->panelService->getLimitedData(Comment::class);
-        $visitorsCount['all'] = visits(Article::class)->count();
-        $visitorsCount['year'] = visits(Article::class)->period('year')->count();
-        $visitorsCount['month'] = visits(Article::class)->period('month')->count();
-        $visitorsCount['week'] = visits(Article::class)->period('week')->count();
-        $visitorsCount['day'] = visits(Article::class)->period('day')->count();
-        $visitorsCount['hour'] = visits(Article::class)->period('hour')->count();
+        $visitorsCount = $this->panelService->getVisitorsCount();
 
         return view('panel::index', compact(['dataCounts', 'articles', 'categories', 'tags', 'images', 'imageClassName', 'comments', 'visitorsCount']));
     }
