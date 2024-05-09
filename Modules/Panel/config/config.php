@@ -5,7 +5,7 @@ return [
         'panel' => [
             'title' => 'پیشخوان',
             'icon' => 'icon-home',
-            'url' => route('panel.index'),
+            'url' => route(config('app.panel_prefix', 'panel') . '.index'),
         ],
         'user' => [
             'title' => 'کاربران',

@@ -1,7 +1,7 @@
 <!-- BEGIN HEADER -->
 <div class="navbar navbar-fixed-top" id="main-navbar">
     <div class="header-right">
-        <a href="{{ route('panel.index') }}" class="logo-con">
+        <a href="{{ route(config('app.panel_prefix', 'panel') . '.index') }}" class="logo-con">
             <img src="{{ asset('admin/assets/images/logo.png') }}" class="img-responsive center-block"
                  alt="لوگو سایت خبری">
         </a>

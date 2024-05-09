@@ -185,4 +185,5 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
+    'panel_prefix' => env('PANEL_PREFIX', 'panel'),
 ];
