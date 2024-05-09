@@ -3,7 +3,7 @@
 @section('content')
 
     <x-common-breadcrumbs>
-        <li><a href="{{ route('admin.comments.index') }}">لیست نظرات</a></li>
+        <li><a href="{{ route(config('app.panel_prefix', 'panel') . '.comments.index') }}">لیست نظرات</a></li>
         <li><a>مشاهده نظر</a></li>
     </x-common-breadcrumbs>
 
@@ -50,7 +50,7 @@
                         <div class="actions d-flex justify-content-end gap-1">
                             @can(config('permissions_list.ARTICLE_UPDATE', false))
                                 @if ($comment->status !== get_class($comment)::APPROVED)
-                                    <form action="{{ route('admin.comments.approve', $comment->id) }}" method="post">
+                                    <form action="{{ route(config('app.panel_prefix', 'panel') . '.comments.approve', $comment->id) }}" method="post">
                                         @csrf
                                         @method('patch')
                                         <button class="btn btn-sm btn-success btn-icon round d-flex justify-content-center align-items-center"
@@ -62,7 +62,7 @@
                             @endcan
                             @can(config('permissions_list.ARTICLE_UPDATE', false))
                                 @if ($comment->status !== get_class($comment)::REJECTED)
-                                    <form action="{{ route('admin.comments.reject', $comment->id) }}" method="post">
+                                    <form action="{{ route(config('app.panel_prefix', 'panel') . '.comments.reject', $comment->id) }}" method="post">
                                         @csrf
                                         @method('patch')
                                         <button class="btn btn-sm btn-warning btn-icon round d-flex justify-content-center align-items-center"
@@ -73,7 +73,7 @@
                                 @endif
                             @endcan
                             @can(config('permissions_list.ARTICLE_DESTROY', false))
-                                <x-common-delete-button :route="route('admin.comments.destroy', $comment->id)"/>
+                                <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.comments.destroy', $comment->id)"/>
                             @endcan
                         </div>
                     </div><!-- /.portlet-body -->

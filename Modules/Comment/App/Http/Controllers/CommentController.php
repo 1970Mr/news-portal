@@ -48,6 +48,6 @@ class CommentController extends Controller
     public function destroy(Comment $comment): RedirectResponse
     {
         $comment->delete();
-        return to_route('admin.comments.index')->with('success', __('entity_deleted', ['entity' => __('comment')]));
+        return to_route(config('app.panel_prefix', 'panel') . '.comments.index')->with('success', __('entity_deleted', ['entity' => __('comment')]));
     }
 }

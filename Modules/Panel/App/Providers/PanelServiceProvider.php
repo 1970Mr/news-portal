@@ -133,7 +133,7 @@ class PanelServiceProvider extends ServiceProvider
             $pendingCommentsQuery = Comment::query()->where('status', Comment::PENDING);
             $pendingCommentsCount = $pendingCommentsQuery->count();
             $pendingComments = $pendingCommentsQuery->limit(10)->latest()->get();
-            $pendingCommentsRoute = route('admin.comments.index', ['filter' => Comment::PENDING]);
+            $pendingCommentsRoute = route(config('app.panel_prefix', 'panel') . '.comments.index', ['filter' => Comment::PENDING]);
             View::share('pendingCommentsCount', $pendingCommentsCount);
             View::share('pendingComments', $pendingComments);
             View::share('pendingCommentsRoute', $pendingCommentsRoute);

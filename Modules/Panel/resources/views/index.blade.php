@@ -531,7 +531,7 @@
                                                 <div class="d-flex gap-2">
                                                     @can(config('permissions_list.COMMENT_APPROVE', false))
                                                         @if ($comment->status !== get_class($comment)::APPROVED)
-                                                            <form action="{{ route('admin.comments.approve', $comment->id) }}" method="post">
+                                                            <form action="{{ route(config('app.panel_prefix', 'panel') . '.comments.approve', $comment->id) }}" method="post">
                                                                 @csrf
                                                                 @method('patch')
                                                                 <button class="btn btn-sm btn-success btn-icon round d-flex justify-content-center align-items-center"
@@ -543,7 +543,7 @@
                                                     @endcan
                                                     @can(config('permissions_list.COMMENT_REJECT', false))
                                                         @if ($comment->status !== get_class($comment)::REJECTED)
-                                                            <form action="{{ route('admin.comments.reject', $comment->id) }}" method="post">
+                                                            <form action="{{ route(config('app.panel_prefix', 'panel') . '.comments.reject', $comment->id) }}" method="post">
                                                                 @csrf
                                                                 @method('patch')
                                                                 <button class="btn btn-sm btn-warning btn-icon round d-flex justify-content-center align-items-center"
@@ -555,12 +555,13 @@
                                                     @endcan
                                                     @can(config('permissions_list.COMMENT_SHOW', false))
                                                         <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                           rel="tooltip" aria-label="مشاهده نظر" data-bs-original-title="مشاهده نظر" href="{{ route('admin.comments.show', $comment->id) }}">
+                                                           rel="tooltip" aria-label="مشاهده نظر" data-bs-original-title="مشاهده نظر"
+                                                           href="{{ route(config('app.panel_prefix', 'panel') . '.comments.show', $comment->id) }}">
                                                             <i class="icon-eye"></i>
                                                         </a>
                                                     @endcan
                                                     @can(config('permissions_list.COMMENT_DESTROY', false))
-                                                        <x-common-delete-button :route="route('admin.comments.destroy', $comment->id)"/>
+                                                        <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.comments.destroy', $comment->id)"/>
                                                     @endcan
                                                 </div>
                                             </td>

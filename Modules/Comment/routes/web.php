@@ -22,7 +22,7 @@ Route::prefix('comments')->name('comments.')->controller(FrontCommentController:
     Route::post('/{comment}', 'reply')->name('reply');
 });
 
-Route::prefix('admin/comments')->name('admin.comments.')->controller(CommentController::class)->group(function () {
+Route::prefix(config('app.panel_prefix', 'panel') . '/comments')->name(config('app.panel_prefix', 'panel') . '.comments.')->controller(CommentController::class)->group(function () {
     Route::get('/', 'index')->name('index');
     Route::patch('/approve/{comment}', 'approve')->name('approve');
     Route::patch('/reject/{comment}', 'reject')->name('reject');

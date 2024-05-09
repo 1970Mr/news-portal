@@ -53,7 +53,7 @@
                                 <ul class="dropdown-menu-list">
                                     @foreach($pendingComments as $comment)
                                         <li class="clearfix">
-                                            <a href="{{ route('admin.comments.show', $comment->id) }}">
+                                            <a href="{{ route(config('app.panel_prefix', 'panel') . '.comments.show', $comment->id) }}">
                                                 <p class="clearfix">
                                                     <strong class="float-start">
                                                         <img src="{{ $comment->commenterImageLink() }}"

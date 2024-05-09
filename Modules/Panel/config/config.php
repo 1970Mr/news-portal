@@ -74,10 +74,10 @@ return [
         'comment' => [
             'title' => 'نظرات',
             'icon' => 'icon-bubbles',
-            'url' => route('admin.comments.index'),
+            'url' => route(config('app.panel_prefix', 'panel') . '.comments.index'),
             'permissions' => config('permissions_list.COMMENT_INDEX', false),
             'active_routes' => [
-                'admin.comments.show',
+                config('app.panel_prefix', 'panel') . '.comments.show',
             ]
         ],
         'profile' => [
