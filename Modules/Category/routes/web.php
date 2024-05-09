@@ -3,6 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use Modules\Category\App\Http\Controllers\CategoryController;
 
-Route::group([], function () {
-    Route::resource('category', CategoryController::class)->names('category')->except(['show']);
+Route::prefix(config('app.panel_prefix', 'panel'))->name(config('app.panel_prefix', 'panel') . '.')->group(function () {
+    Route::resource('categories', CategoryController::class)->names('categories')->except(['show']);
 });

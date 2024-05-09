@@ -31,11 +31,11 @@ return [
         'category' => [
             'title' => 'دسته‌بندی‌ها',
             'icon' => 'icon-grid',
-            'url' => route('category.index'),
+            'url' => route(config('app.panel_prefix', 'panel') . '.categories.index'),
             'permissions' => config('permissions_list.CATEGORY_INDEX', false),
             'active_routes' => [
-                'category.create',
-                'category.edit',
+                config('app.panel_prefix', 'panel') . '.categories.create',
+                config('app.panel_prefix', 'panel') . '.categories.edit',
             ]
         ],
         'tag' => [

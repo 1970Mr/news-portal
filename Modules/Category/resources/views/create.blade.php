@@ -2,7 +2,7 @@
 
 @section('content')
     <x-common-breadcrumbs>
-        <li><a href="{{ route('category.index') }}">لیست دسته‌بندی‌ها</a></li>
+        <li><a href="{{ route(config('app.panel_prefix', 'panel') . '.categories.index') }}">لیست دسته‌بندی‌ها</a></li>
         <li><a>ایجاد دسته‌بندی جدید</a></li>
     </x-common-breadcrumbs>
 
@@ -28,7 +28,8 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="main-form" role="form" action="{{ route('category.store') }}" method="post" enctype="multipart/form-data">
+                    <form id="main-form" role="form"
+                          action="{{ route(config('app.panel_prefix', 'panel') . '.categories.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <x-common-error-messages />
 

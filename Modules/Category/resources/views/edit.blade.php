@@ -2,7 +2,7 @@
 
 @section('content')
     <x-common-breadcrumbs>
-        <li><a href="{{ route('category.index') }}">لیست دسته‌بندی‌ها</a></li>
+        <li><a href="{{ route(config('app.panel_prefix', 'panel') . '.categories.index') }}">لیست دسته‌بندی‌ها</a></li>
         <li><a>ویرایش دسته‌بندی</a></li>
     </x-common-breadcrumbs>
 
@@ -28,7 +28,9 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="main-form" role="form" action="{{ route('category.update', $category->id) }}" method="post" enctype="multipart/form-data">
+                    <form id="main-form" role="form"
+                          action="{{ route(config('app.panel_prefix', 'panel') . '.categories.update', $category->id) }}" method="post"
+                          enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <x-common-error-messages />
