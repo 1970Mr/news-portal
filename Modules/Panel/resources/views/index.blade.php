@@ -67,13 +67,13 @@
     <div class="row m-0 p-0">
         {{-- Visitors --}}
         @can(config('permissions_list.VIEW_AVERAGE_VISITORS', false))
-            <div class="col-12">
+            <div class="col-12 col-md-6">
                 <div class="portlet box shadow min-height-500">
                     <div class="portlet-heading">
                         <div class="portlet-title">
                             <h3 class="title">
                                 <i class="icon-pie-chart"></i>
-                                میانگین بازدیدکنندگان
+                                میانگین بازدیدکنندگان (سالانه)
                             </h3>
                         </div><!-- /.portlet-title -->
                         <div class="buttons-box">
@@ -97,6 +97,39 @@
                     </div><!-- /.portlet-heading -->
                     <div class="portlet-body">
                         <div id="donut" class="morris-chart"></div>
+                    </div><!-- /.portlet-body -->
+                </div><!-- /.portlet -->
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="portlet box shadow min-height-500">
+                    <div class="portlet-heading">
+                        <div class="portlet-title">
+                            <h3 class="title">
+                                <i class="icon-pie-chart"></i>
+                                میانگین بازدیدکنندگان (روزانه)
+                            </h3>
+                        </div><!-- /.portlet-title -->
+                        <div class="buttons-box">
+                            <a class="btn btn-sm btn-default btn-round btn-fullscreen" rel="tooltip"
+                               aria-label="تمام صفحه" data-bs-original-title="تمام صفحه">
+                                <i class="icon-size-fullscreen"></i>
+                                <div class="paper-ripple">
+                                    <div class="paper-ripple__background"></div>
+                                    <div class="paper-ripple__waves"></div>
+                                </div>
+                            </a>
+                            <a class="btn btn-sm btn-default btn-round btn-close" rel="tooltip"
+                               aria-label="بستن" data-bs-original-title="بستن">
+                                <i class="icon-trash"></i>
+                                <div class="paper-ripple">
+                                    <div class="paper-ripple__background"></div>
+                                    <div class="paper-ripple__waves"></div>
+                                </div>
+                            </a>
+                        </div><!-- /.buttons-box -->
+                    </div><!-- /.portlet-heading -->
+                    <div class="portlet-body">
+                        <div id="donut2" class="morris-chart"></div>
                     </div><!-- /.portlet-body -->
                 </div><!-- /.portlet -->
             </div>
@@ -593,21 +626,32 @@
                 { value: {{ $visitorsCount['year'] }}, label: 'سال', formatted: '{{ $visitorsCount['year'] }} نفر' },
                 { value: {{ $visitorsCount['month'] }}, label: 'ماه', formatted: '{{ $visitorsCount['month'] }} نفر' },
                 { value: {{ $visitorsCount['week'] }}, label: 'هفته', formatted: '{{ $visitorsCount['week'] }} نفر' },
-                { value: {{ $visitorsCount['day'] }}, label: 'روز', formatted: '{{ $visitorsCount['day'] }} نفر' },
-                { value: {{ $visitorsCount['hour'] }}, label: 'ساعت', formatted: '{{ $visitorsCount['hour'] }} نفر' },
             ],
             colors: [
-                '#ffbd15',
-                '#13a2a6',
-                '#53a96b',
-                '#4527a0',
-                '#ff5e51',
+                '#1e4572',
+                '#597bbd',
+                '#6da1f1',
+            ],
+            formatter: function (x, data) { return data.formatted; },
+            resize: true
+        });
+
+        Morris.Donut({
+            element: 'donut2',
+            data: [
+                { value: {{ $visitorsCount['day'] }}, label: 'روز', formatted: '{{ $visitorsCount['day'] }} نفر' },
+                { value: {{ $visitorsCount['10hours'] }}, label: 'ده ساعت', formatted: '{{ $visitorsCount['10hours'] }} نفر' },
+                { value: {{ $visitorsCount['hour'] }}, label: 'یک ساعت', formatted: '{{ $visitorsCount['hour'] }} نفر' },
+            ],
+            colors: [
+                '#ffc107',
+                '#e36100',
+                '#d50000',
             ],
             formatter: function (x, data) { return data.formatted; },
             resize: true
         });
     </script>
-
 @endpush
 
 @push('styles')

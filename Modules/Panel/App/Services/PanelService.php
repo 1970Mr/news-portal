@@ -30,6 +30,7 @@ class PanelService
         $visitorsCount['month'] = visits(Article::class)->period('month')->count();
         $visitorsCount['week'] = visits(Article::class)->period('week')->count();
         $visitorsCount['day'] = visits(Article::class)->period('day')->count();
+        $visitorsCount['10hours'] = visits(Article::class)->period('10hours')->count();
         $visitorsCount['hour'] = visits(Article::class)->period('hour')->count();
         return $visitorsCount;
     }
