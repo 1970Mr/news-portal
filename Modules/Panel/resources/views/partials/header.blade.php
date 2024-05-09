@@ -90,19 +90,19 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="{{ route('profile.edit') }}">
+                            <a href="{{ route(config('app.panel_prefix', 'panel') . '.profile.edit') }}">
                                 <i class="icon-note"></i>
                                 ویرایش پروفایل
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('profile.password.change') }}">
+                            <a href="{{ route(config('app.panel_prefix', 'panel') . '.profile.password.change') }}">
                                 <i class="icon-key"></i>
                                 تغییر رمز عبور
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('profile.email.change') }}">
+                            <a href="{{ route(config('app.panel_prefix', 'panel') . '.profile.email.change') }}">
                                 <i class="icon-envelope-letter"></i>
                                 تغییر ایمیل
                             </a>

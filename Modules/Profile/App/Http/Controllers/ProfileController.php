@@ -24,6 +24,6 @@ class ProfileController extends Controller
     public function update(ProfileRequest $request): RedirectResponse
     {
         $this->profileService->update($request);
-        return to_route('profile.edit')->with('success', __('entity_edited', ['entity' => __('profile')]));
+        return to_route(config('app.panel_prefix', 'panel') . '.profile.edit')->with('success', __('entity_edited', ['entity' => __('profile')]));
     }
 }

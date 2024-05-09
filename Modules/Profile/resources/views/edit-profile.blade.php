@@ -27,7 +27,7 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="main-form" role="form" action="{{ route('profile.edit') }}" method="post" enctype="multipart/form-data">
+                    <form id="main-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.profile.edit') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
                         <x-common-error-messages />

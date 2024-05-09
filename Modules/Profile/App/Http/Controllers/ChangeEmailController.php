@@ -25,13 +25,13 @@ class ChangeEmailController extends Controller
     public function sendChangeEmailVerification(ChangeEmailRequest $request): RedirectResponse
     {
         $this->changeEmailService->sendChangeEmailVerification($request);
-        return to_route('profile.email.change')
+        return to_route(config('app.panel_prefix', 'panel') . '.profile.email.change')
             ->with('success', __('Check your email for a verification link to complete the email change.'));
     }
 
     public function verifyChangeEmail(Request $request): RedirectResponse
     {
         auth()->user()->update(['email' => $request->new_email]);
-        return to_route('profile.email.change')->with('success', __('entity_edited', ['entity' => __('email')]));
+        return to_route(config('app.panel_prefix', 'panel') . '.profile.email.change')->with('success', __('entity_edited', ['entity' => __('email')]));
     }
 }

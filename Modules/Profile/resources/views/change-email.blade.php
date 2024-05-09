@@ -34,7 +34,7 @@
                         </div>
                     @endif
 
-                    <form id="main-form" role="form" action="{{ route('profile.email.change') }}" method="post">
+                    <form id="main-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.profile.email.change') }}" method="post">
                         @csrf
                         @method('PATCH')
                         <x-common-error-messages />

@@ -5,7 +5,7 @@ use Modules\Profile\App\Http\Controllers\ChangeEmailController;
 use Modules\Profile\App\Http\Controllers\ChangePasswordController;
 use Modules\Profile\App\Http\Controllers\ProfileController;
 
-Route::prefix('profile')->name('profile.')->group(function () {
+Route::prefix(config('app.panel_prefix', 'panel') . '/profile')->name(config('app.panel_prefix', 'panel') . '.profile.')->group(function () {
 
     Route::prefix('edit')->name('edit')->controller(ProfileController::class)->group(function () {
         Route::get('/', 'edit');

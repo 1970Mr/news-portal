@@ -26,9 +26,9 @@ class ChangePasswordController extends Controller
     {
         try {
             $this->changePasswordService->changePassword($request);
-            return to_route('profile.password.change')->with('success', __('entity_edited', ['entity' => __('password')]));
+            return to_route(config('app.panel_prefix', 'panel') . '.profile.password.change')->with('success', __('entity_edited', ['entity' => __('password')]));
         } catch (IncorrectPasswordException $e) {
-            return to_route('profile.password.change')->with('error', $e->getMessage());
+            return to_route(config('app.panel_prefix', 'panel') . '.profile.password.change')->with('error', $e->getMessage());
         }
     }
 }

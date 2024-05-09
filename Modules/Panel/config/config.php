@@ -84,9 +84,9 @@ return [
             'title' => 'پروفایل',
             'icon' => 'icon-user',
             'active_routes' => [
-                'profile.edit',
-                'profile.email.change',
-                'profile.password.change',
+                config('app.panel_prefix', 'panel') . '.profile.edit',
+                config('app.panel_prefix', 'panel') . '.profile.email.change',
+                config('app.panel_prefix', 'panel') . '.profile.password.change',
             ],
             'permissions' => [
                 config('permissions_list.PROFILE_EDIT', false),
@@ -97,19 +97,19 @@ return [
                 [
                     'title' => 'ویرایش پروفایل',
                     'icon' => 'icon-note',
-                    'url' => route('profile.edit'),
+                    'url' => route(config('app.panel_prefix', 'panel') . '.profile.edit'),
                     'permissions' => config('permissions_list.PROFILE_EDIT', false),
                 ],
                 [
                     'title' => 'ویرایش رمز عبور',
                     'icon' => 'icon-key',
-                    'url' => route('profile.password.change'),
+                    'url' => route(config('app.panel_prefix', 'panel') . '.profile.password.change'),
                     'permissions' => config('permissions_list.PROFILE_CHANGE_PASSWORD', false),
                 ],
                 [
                     'title' => 'ویرایش ایمیل',
                     'icon' => 'icon-envelope-letter',
-                    'url' => route('profile.email.change'),
+                    'url' => route(config('app.panel_prefix', 'panel') . '.profile.email.change'),
                     'permissions' => config('permissions_list.PROFILE_CHANGE_EMAIL', false),
                 ],
             ]
