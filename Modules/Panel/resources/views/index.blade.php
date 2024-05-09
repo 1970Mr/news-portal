@@ -435,13 +435,13 @@
                                                     <div class="d-flex gap-2">
                                                         @can('update', $image)
                                                             <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                               rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('image.edit', $image->id) }}">
+                                                               rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route(config('app.panel_prefix', 'panel') . '.images.edit', $image->id) }}">
                                                                 <i class="icon-pencil fa-flip-horizontal"></i>
                                                             </a>
                                                         @endcan
 
                                                         @can('destroy', $image)
-                                                            <x-common-delete-button :route="route('image.destroy', $image->id)"/>
+                                                            <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.images.destroy', $image->id)"/>
                                                         @endcan
                                                     </div>
                                                 </td>

@@ -51,14 +51,14 @@ return [
         'image' => [
             'title' => 'تصاویر',
             'icon' => 'icon-picture',
-            'url' => route('image.index'),
+            'url' => route(config('app.panel_prefix', 'panel') . '.images.index'),
             'permissions' => [
                 config('permissions_list.IMAGE_INDEX_ALL', false),
                 config('permissions_list.IMAGE_INDEX_OWN', false)
             ],
             'active_routes' => [
-                'image.create',
-                'image.edit',
+                config('app.panel_prefix', 'panel') . '.images.create',
+                config('app.panel_prefix', 'panel') . '.images.edit',
             ]
         ],
         'article' => [

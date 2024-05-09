@@ -94,7 +94,7 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: '{{ route("image.upload") }}',
+                    url: "{{ route(config('app.panel_prefix', 'panel') . '.images.upload') }}",
                     data: formData,
                     cache: false,
                     contentType: false,

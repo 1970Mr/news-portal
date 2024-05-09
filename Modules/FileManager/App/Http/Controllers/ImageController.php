@@ -34,7 +34,7 @@ class ImageController extends Controller
     public function store(ImageRequest $request): RedirectResponse
     {
         $this->imageService->store($request);
-        return to_route('image.index')->with('success', __('entity_created', ['entity' => __('image')]));
+        return to_route(config('app.panel_prefix', 'panel') . '.images.index')->with('success', __('entity_created', ['entity' => __('image')]));
     }
 
     public function edit(Image $image): View
@@ -45,7 +45,7 @@ class ImageController extends Controller
     public function update(ImageRequest $request, image $image): RedirectResponse
     {
         $this->imageService->update($request, $image);
-        return to_route('image.index')->with('success', __('entity_edited', ['entity' => __('image')]));
+        return to_route(config('app.panel_prefix', 'panel') . '.images.index')->with('success', __('entity_edited', ['entity' => __('image')]));
     }
 
     public function destroy(Image $image): RedirectResponse

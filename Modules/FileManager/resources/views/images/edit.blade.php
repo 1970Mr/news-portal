@@ -2,7 +2,7 @@
 
 @section('content')
     <x-common-breadcrumbs>
-        <li><a href="{{ route('image.index') }}">لیست تصویر‌ها</a></li>
+        <li><a href="{{ route(config('app.panel_prefix', 'panel') . '.images.index') }}">لیست تصویر‌ها</a></li>
         <li><a>ویرایش تصویر</a></li>
     </x-common-breadcrumbs>
 
@@ -28,7 +28,8 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="image-create-form" role="form" action="{{ route('image.update', $image->id) }}" method="post" enctype="multipart/form-data">
+                    <form id="image-create-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.images.update', $image->id) }}" method="post"
+                          enctype="multipart/form-data">
                         @csrf
                         @method('put')
                         <x-common-error-messages />

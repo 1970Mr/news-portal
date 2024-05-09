@@ -27,7 +27,7 @@
                         </a>
 {{--                        @can('store', $imageClassName)--}}
 {{--                            <a class="btn btn-sm btn-default btn-round bg-green text-white" rel="tooltip"--}}
-{{--                               href="{{ route('image.create') }}"--}}
+{{--                               href="{{ route(config('app.panel_prefix', 'panel') . '.images.create') }}"--}}
 {{--                               aria-label="ایجاد تصویر‌ جدید" data-bs-original-title="ایجاد تصویر‌ جدید">--}}
 {{--                                <i class="icon-plus d-flex justify-content-center align-items-center"></i>--}}
 {{--                                <div class="paper-ripple">--}}
@@ -49,7 +49,7 @@
                             </button>
                             <ul class="dropdown-menu">
                                 @foreach($filters as $key => $value)
-                                    <li><a class="dropdown-item" href="{{ route('image.index', ['filter' => $key]) }}">{{ $value }}</a></li>
+                                    <li><a class="dropdown-item" href="{{ route(config('app.panel_prefix', 'panel') . '.images.index', ['filter' => $key]) }}">{{ $value }}</a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -88,13 +88,13 @@
                                                 <div class="d-flex gap-2">
                                                     @can('update', $image)
                                                         <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                           rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('image.edit', $image->id) }}">
+                                                           rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route(config('app.panel_prefix', 'panel') . '.images.edit', $image->id) }}">
                                                             <i class="icon-pencil fa-flip-horizontal"></i>
                                                         </a>
                                                     @endcan
 
                                                     @can('destroy', $image)
-                                                        <x-common-delete-button :route="route('image.destroy', $image->id)"/>
+                                                        <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.images.destroy', $image->id)"/>
                                                     @endcan
                                                 </div>
                                             </td>

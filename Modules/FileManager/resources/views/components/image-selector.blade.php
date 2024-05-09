@@ -54,7 +54,7 @@
 
         // Function to fetch images via API based on selected filter
         function fetchImages(filter = null) {
-            const url = filter ? "{{ route('image.selector') }}?filter=" + filter : "{{ route('image.selector') }}";
+            const url = filter ? "{{ route(config('app.panel_prefix', 'panel') . '.images.selector') }}?filter=" + filter : "{{ route('image.selector') }}";
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
@@ -63,7 +63,7 @@
 
                     data.images.forEach(image => {
                         const img = document.createElement('img');
-                        img.src = "{{ asset('storage') }}/" + image.file_path;
+                        img.src = "{{ asset('storage/') }}" + image.file_path;
                         img.alt = image.alt_text;
                         img.classList.add('img-thumbnail', 'img-fluid', 'custom-img', 'cursor-pointer');
                         img.addEventListener('click', () => selectImage("{{ asset('storage') }}/" + image.file_path, image.id));
@@ -75,7 +75,7 @@
 
         // Function to fetch filters via API
         function fetchFilters() {
-            const url = "{{ route('image.selector.filters') }}";
+            const url = "{{ route(config('app.panel_prefix', 'panel') . '.images.selector.filters') }}";
             fetch(url)
                 .then(response => response.json())
                 .then(data => {

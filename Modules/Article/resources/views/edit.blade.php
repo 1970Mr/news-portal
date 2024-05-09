@@ -159,7 +159,7 @@
     <script>
         function CustomUploadAdapterPlugin( editor ) {
             editor.plugins.get( 'FileRepository' ).createUploadAdapter = ( loader ) => {
-                return new UploadAdapter( loader, '{{ route('image.upload') }}', '{{ csrf_token() }}' );
+                return new UploadAdapter( loader, '{{ route(config('app.panel_prefix', 'panel') . '.images.upload') }}', '{{ csrf_token() }}' );
             };
         }
 

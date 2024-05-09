@@ -53,7 +53,7 @@ class ImageService
     public function destroy(Image $image): bool|null
     {
         Gate::authorize('destroy', $image);
-        if ($image->imageable()->exists()) {
+        if ($image->imageable) {
             throw new ImageDeleteException(__('This image cannot be deleted! Because it has been used elsewhere.'));
         }
         return $image->delete();
