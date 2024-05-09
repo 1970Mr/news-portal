@@ -2,7 +2,7 @@
 
 @section('content')
     <x-common-breadcrumbs>
-        <li><a href="{{ route('user.index') }}">لیست کاربران</a></li>
+        <li><a href="{{ route(config('app.panel_prefix', 'panel') . '.users.index') }}">لیست کاربران</a></li>
         <li><a>ویرایش کاربر</a></li>
     </x-common-breadcrumbs>
 
@@ -28,7 +28,7 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="main-form" role="form" action="{{ route('user.update', $user->id) }}" method="post" enctype="multipart/form-data">
+                    <form id="main-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.users.update', $user->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('put')
                         <x-common-error-messages />

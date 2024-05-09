@@ -10,12 +10,12 @@ return [
         'user' => [
             'title' => 'کاربران',
             'icon' => ' icon-people',
-            'url' => route('user.index'),
+            'url' => route(config('app.panel_prefix', 'panel') . '.users.index'),
             'permissions' => config('permissions_list.USER_INDEX', false),
             'active_routes' => [
-                'user.create',
-                'user.edit',
-                'user.role-assignment',
+                config('app.panel_prefix', 'panel') . '.users.create',
+                config('app.panel_prefix', 'panel') . '.users.edit',
+                config('app.panel_prefix', 'panel') . '.users.role-assignment',
             ],
         ],
         'role' => [

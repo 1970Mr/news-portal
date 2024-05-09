@@ -37,7 +37,7 @@ class UserController extends Controller
     public function store(UserStoreRequest $request): RedirectResponse
     {
         $this->userService->store($request);
-        return to_route('user.index')->with('success', __('entity_created', ['entity' => __('user')]));
+        return to_route(config('app.panel_prefix', 'panel') . '.users.index')->with('success', __('entity_created', ['entity' => __('user')]));
     }
 
     public function edit(User $user): View
@@ -49,12 +49,12 @@ class UserController extends Controller
     public function update(UserUpdateRequest $request, User $user): RedirectResponse
     {
         $this->userService->update($request, $user);
-        return to_route('user.index')->with('success', __('entity_edited', ['entity' => __('user')]));
+        return to_route(config('app.panel_prefix', 'panel') . '.users.index')->with('success', __('entity_edited', ['entity' => __('user')]));
     }
 
     public function destroy(User $user): RedirectResponse
     {
         $this->userService->delete($user);
-        return to_route('user.index')->with('success', __('entity_deleted', ['entity' => __('user')]));
+        return back()->with('success', __('entity_deleted', ['entity' => __('user')]));
     }
 }

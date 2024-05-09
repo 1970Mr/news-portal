@@ -26,6 +26,6 @@ class RoleAssignmentController extends Controller
     public function update(Request $request, User $user): RedirectResponse
     {
         $user->syncRoles($request->input('roles', []));
-        return to_route('user.index')->with('success', __('user::messages.role_assignment'));
+        return to_route(config('app.panel_prefix', 'panel') . '.users.index')->with('success', __('user::messages.role_assignment'));
     }
 }

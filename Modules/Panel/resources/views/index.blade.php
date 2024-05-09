@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-lg-3 col-6">
                 <div class="stat-box use-cyan shadow">
-                    <a href="{{ route('user.index') }}">
+                    <a href="{{ route(config('app.panel_prefix', 'panel') . '.users.index') }}">
                         <div class="stat">
                             <div class="counter-down" data-value="{{ $dataCounts['users_count'] }}"></div>
                             <div class="h3">کاربران</div>
