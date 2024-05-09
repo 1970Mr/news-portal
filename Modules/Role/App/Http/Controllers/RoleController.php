@@ -41,7 +41,7 @@ class RoleController extends Controller
     public function store(RoleRequest $request): RedirectResponse
     {
         Role::create($request->only('name', 'local_name'));
-        return to_route('role.index')->with('success', __('entity_created', ['entity' => __('role')]));
+        return to_route(config('app.panel_prefix', 'panel') . '.roles.index')->with('success', __('entity_created', ['entity' => __('role')]));
     }
 
     public function edit(Role $role, PermissionService $permissionService): View
@@ -53,7 +53,7 @@ class RoleController extends Controller
     {
         try {
             $this->roleService->update($request, $role);
-            return to_route('role.index')->with('success', __('entity_edited', ['entity' => __('role')]));
+            return to_route(config('app.panel_prefix', 'panel') . '.roles.index')->with('success', __('entity_edited', ['entity' => __('role')]));
         } catch (UnableToRenameDefaultRoleException $e) {
             return back()->with('error', $e->getMessage());
         }
@@ -63,7 +63,7 @@ class RoleController extends Controller
     {
         try {
             $this->roleService->destroy($role);
-            return to_route('role.index')->with('success', __('entity_deleted', ['entity' => __('role')]));
+            return back()->with('success', __('entity_deleted', ['entity' => __('role')]));
         } catch (UnableToDeleteDefaultRoleException $e) {
             return back()->with('error', $e->getMessage());
         }

@@ -21,11 +21,11 @@ return [
         'role' => [
             'title' => 'نقش‌ها',
             'icon' => 'fas fa-arrow-down-up-lock',
-            'url' => route('role.index'),
+            'url' => route(config('app.panel_prefix', 'panel') . '.roles.index'),
             'permissions' => config('permissions_list.ROLE_INDEX', false),
             'active_routes' => [
-                'role.create',
-                'role.edit',
+                config('app.panel_prefix', 'panel') . '.roles.create',
+                config('app.panel_prefix', 'panel') . '.roles.edit',
             ],
         ],
         'category' => [

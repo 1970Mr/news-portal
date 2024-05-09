@@ -14,6 +14,6 @@ use Modules\Role\App\Http\Controllers\RoleController;
 |
 */
 
-Route::group([], function () {
-    Route::resource('role', RoleController::class)->names('role');
+Route::prefix(config('app.panel_prefix', 'panel'))->name(config('app.panel_prefix', 'panel') . '.')->group(function () {
+    Route::resource('roles', RoleController::class)->names('roles');
 });

@@ -2,7 +2,7 @@
 
 @section('content')
     <x-common-breadcrumbs>
-        <li><a href="{{ route('role.index') }}">لیست نقش‌ها</a></li>
+        <li><a href="{{ route(config('app.panel_prefix', 'panel') . '.roles.index') }}">لیست نقش‌ها</a></li>
         <li><a>ایجاد نقش جدید</a></li>
     </x-common-breadcrumbs>
 
@@ -28,7 +28,7 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="role-create-form" role="form" action="{{ route('role.store') }}" method="post">
+                    <form id="role-create-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.roles.store') }}" method="post">
                         @csrf
                         <x-common-error-messages />
 
