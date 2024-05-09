@@ -64,11 +64,11 @@ return [
         'article' => [
             'title' => 'اخبار',
             'icon' => 'icon-globe',
-            'url' => route('article.index'),
+            'url' => route(config('app.panel_prefix', 'panel') . '.articles.index'),
             'permissions' => config('permissions_list.ARTICLE_INDEX', false),
             'active_routes' => [
-                'article.create',
-                'article.edit',
+                config('app.panel_prefix', 'panel') . '.articles.create',
+                config('app.panel_prefix', 'panel') . '.articles.edit',
             ]
         ],
         'comment' => [

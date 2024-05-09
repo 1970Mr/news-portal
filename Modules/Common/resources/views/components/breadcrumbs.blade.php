@@ -3,7 +3,7 @@
     <div class="breadcrumb-box shadow">
         <ul class="breadcrumb">
             @if(!$noprefix)
-                <li><a href="{{ route('panel.index') }}">پیشخوان</a></li>
+                <li><a href="{{ route(config('app.panel_prefix', 'panel') . '.index') }}">پیشخوان</a></li>
             @endif
             {{ $slot }}
         </ul>

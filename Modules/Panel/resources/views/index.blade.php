@@ -22,7 +22,7 @@
             </div><!-- /.col-lg-3 -->
             <div class="col-lg-3 col-6">
                 <div class="stat-box use-blue shadow">
-                    <a href="{{ route('article.index') }}">
+                    <a href="{{ route(config('app.panel_prefix', 'panel') . '.articles.index') }}">
                         <div class="stat">
                             <div class="counter-down" data-value="{{ $dataCounts['articles_count'] }}"></div>
                             <div class="h3">اخبار</div>
@@ -180,13 +180,14 @@
                                                 <div class="d-flex gap-2">
                                                     @can(config('permissions_list.ARTICLE_UPDATE', false))
                                                         <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                           rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('article.edit', $article->id) }}">
+                                                           rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش"
+                                                           href="{{ route(config('app.panel_prefix', 'panel') . '.articles.edit', $article->id) }}">
                                                             <i class="icon-pencil fa-flip-horizontal"></i>
                                                         </a>
                                                     @endcan
 
                                                     @can(config('permissions_list.ARTICLE_DESTROY', false))
-                                                        <x-common-delete-button :route="route('article.destroy', $article->id)" />
+                                                        <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.articles.destroy', $article->id)" />
                                                     @endcan
                                                 </div>
                                             </td>

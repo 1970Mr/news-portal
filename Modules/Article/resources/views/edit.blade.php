@@ -2,7 +2,7 @@
 
 @section('content')
     <x-common-breadcrumbs>
-        <li><a href="{{ route('article.index') }}">لیست اخبار</a></li>
+        <li><a href="{{ route(config('app.panel_prefix', 'panel') . '.articles.index') }}">لیست اخبار</a></li>
         <li><a>ویرایش خبر جدید</a></li>
     </x-common-breadcrumbs>
 
@@ -28,7 +28,8 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="article-create-form" role="form" action="{{ route('article.update', $article->id) }}" method="post" enctype="multipart/form-data">
+                    <form id="article-create-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.articles.update', $article->id) }}" method="post"
+                          enctype="multipart/form-data">
                         @csrf
                         @method('put')
                         <x-common-error-messages />

@@ -14,8 +14,8 @@ use Modules\Article\App\Http\Controllers\ArticleController;
 |
 */
 
-Route::group([], function () {
-    Route::resource('article', ArticleController::class)->names('article')->middleware('auth');
+Route::prefix(config('app.panel_prefix', 'panel'))->name(config('app.panel_prefix', 'panel') . '.')->group(function () {
+    Route::resource('articles', ArticleController::class)->names('articles')->middleware('auth');
 });
 
 // Front routes

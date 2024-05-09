@@ -144,7 +144,7 @@
                     fa-sign-out"></i></a>
                 </div>
                 <div class="nav-user-panel">
-                    <a href="{{ route('panel.index') }}"><i class="fa fa-user" title="پنل کاربری"></i></a>
+                    <a href="{{ route(config('app.panel_prefix', 'panel') . '.index') }}"><i class="fa fa-user" title="پنل کاربری"></i></a>
                 </div>
             @endauth
 

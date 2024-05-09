@@ -26,7 +26,7 @@
                         </a>
                         @can(config('permissions_list.ARTICLE_STORE', false))
                             <a class="btn btn-sm btn-default btn-round bg-green text-white" rel="tooltip"
-                               href="{{ route('article.create') }}"
+                               href="{{ route(config('app.panel_prefix', 'panel') . '.articles.create') }}"
                                aria-label="ایجاد خبر‌ جدید" data-bs-original-title="ایجاد خبر‌ جدید">
                                 <i class="icon-plus d-flex justify-content-center align-items-center"></i>
                                 <div class="paper-ripple">
@@ -85,13 +85,14 @@
                                             <div class="d-flex gap-2">
                                                 @can(config('permissions_list.ARTICLE_UPDATE', false))
                                                     <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                       rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('article.edit', $article->id) }}">
+                                                       rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route(config('app.panel_prefix', 'panel') . '.articles.edit',
+                                                        $article->id) }}">
                                                         <i class="icon-pencil fa-flip-horizontal"></i>
                                                     </a>
                                                 @endcan
 
                                                 @can(config('permissions_list.ARTICLE_DESTROY', false))
-                                                    <x-common-delete-button :route="route('article.destroy', $article->id)" />
+                                                    <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.articles.destroy', $article->id)" />
                                                 @endcan
                                             </div>
                                         </td>
