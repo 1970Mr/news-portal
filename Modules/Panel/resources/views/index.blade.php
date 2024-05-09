@@ -50,7 +50,7 @@
                 <div class="stat-box use-purple shadow">
                     <a>
                         <div class="stat">
-                            <div class="counter-down" data-value="256"></div>
+                            <div class="counter-down" data-value="{{ $visitorsCount['all'] }}"></div>
                             <div class="h3">بازدیدکنندگان</div>
                         </div><!-- /.stat -->
                         <div class="visual">
@@ -65,6 +65,43 @@
     </div><!-- /.col-md-12 -->
 
     <div class="row m-0 p-0">
+        {{-- Visitors --}}
+        @can(config('permissions_list.VIEW_AVERAGE_VISITORS', false))
+            <div class="col-12">
+                <div class="portlet box shadow min-height-500">
+                    <div class="portlet-heading">
+                        <div class="portlet-title">
+                            <h3 class="title">
+                                <i class="icon-pie-chart"></i>
+                                میانگین بازدیدکنندگان
+                            </h3>
+                        </div><!-- /.portlet-title -->
+                        <div class="buttons-box">
+                            <a class="btn btn-sm btn-default btn-round btn-fullscreen" rel="tooltip"
+                               aria-label="تمام صفحه" data-bs-original-title="تمام صفحه">
+                                <i class="icon-size-fullscreen"></i>
+                                <div class="paper-ripple">
+                                    <div class="paper-ripple__background"></div>
+                                    <div class="paper-ripple__waves"></div>
+                                </div>
+                            </a>
+                            <a class="btn btn-sm btn-default btn-round btn-close" rel="tooltip"
+                               aria-label="بستن" data-bs-original-title="بستن">
+                                <i class="icon-trash"></i>
+                                <div class="paper-ripple">
+                                    <div class="paper-ripple__background"></div>
+                                    <div class="paper-ripple__waves"></div>
+                                </div>
+                            </a>
+                        </div><!-- /.buttons-box -->
+                    </div><!-- /.portlet-heading -->
+                    <div class="portlet-body">
+                        <div id="donut" class="morris-chart"></div>
+                    </div><!-- /.portlet-body -->
+                </div><!-- /.portlet -->
+            </div>
+        @endcan
+
         {{-- Articles --}}
         @can(config('permissions_list.ARTICLE_INDEX', false))
             <div class="col-12">
@@ -541,11 +578,34 @@
 @endsection
 
 @push('scripts')
-    <script
-        src="{{ asset('admin/assets/plugins/jquery-incremental-counter/jquery.incremental-counter.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/plugins/jquery-incremental-counter/jquery.incremental-counter.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/plugins/raphael/raphael.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/plugins/morris.js/morris.min.js') }}"></script>
     <script>
         $(".counter-down").incrementalCounter({digits: 'auto'});
     </script>
+    <script>
+        Morris.Donut({
+            element: 'donut',
+            data: [
+                { value: {{ $visitorsCount['year'] }}, label: 'سال', formatted: '{{ $visitorsCount['year'] }} نفر' },
+                { value: {{ $visitorsCount['month'] }}, label: 'ماه', formatted: '{{ $visitorsCount['month'] }} نفر' },
+                { value: {{ $visitorsCount['week'] }}, label: 'هفته', formatted: '{{ $visitorsCount['week'] }} نفر' },
+                { value: {{ $visitorsCount['day'] }}, label: 'روز', formatted: '{{ $visitorsCount['day'] }} نفر' },
+                { value: {{ $visitorsCount['hour'] }}, label: 'ساعت', formatted: '{{ $visitorsCount['hour'] }} نفر' },
+            ],
+            colors: [
+                '#ffbd15',
+                '#13a2a6',
+                '#53a96b',
+                '#4527a0',
+                '#ff5e51',
+            ],
+            formatter: function (x, data) { return data.formatted; },
+            resize: true
+        });
+    </script>
+
 @endpush
 
 @push('styles')

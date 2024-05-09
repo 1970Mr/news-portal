@@ -1,5 +1,6 @@
 {
     "admin::full_access": "دسترسی کامل",
+    "admin::view_average_visitors": "مشاهده میانگین بازدیدکنندگان",
 
     "user::index": "مشاهده کاربران",
     "user::store": "ایجاد کاربر",

@@ -28,6 +28,7 @@ return [
         'week',
         'month',
         'year',
+        'hour',
     ],
 
     /*

@@ -2,6 +2,7 @@
 
 return [
     'SUPER_ADMIN' => 'admin::full_access',
+    'VIEW_AVERAGE_VISITORS' => 'admin::view_average_visitors',
 
     'USER_INDEX' => 'user::index',
     'USER_STORE' => 'user::store',
