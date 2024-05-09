@@ -2,7 +2,7 @@
 
 @section('content')
     <x-common-breadcrumbs>
-        <li><a href="{{ route('tag.index') }}">لیست تگ‌ها</a></li>
+        <li><a href="{{ route(config('app.panel_prefix', 'panel') . '.tags.index') }}">لیست تگ‌ها</a></li>
         <li><a>ویرایش تگ</a></li>
     </x-common-breadcrumbs>
 
@@ -28,7 +28,7 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="tag-create-form" role="form" action="{{ route('tag.update', $tag->id) }}" method="post">
+                    <form id="tag-create-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.tags.update', $tag->id) }}" method="post">
                         @csrf
                         @method('PUT')
                         <x-common-error-messages />

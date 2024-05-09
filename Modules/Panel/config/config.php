@@ -41,11 +41,11 @@ return [
         'tag' => [
             'title' => 'تگ‌ها',
             'icon' => 'icon-tag',
-            'url' => route('tag.index'),
+            'url' => route(config('app.panel_prefix', 'panel') . '.tags.index'),
             'permissions' => config('permissions_list.TAG_INDEX', false),
             'active_routes' => [
-                'tag.create',
-                'tag.edit',
+                config('app.panel_prefix', 'panel') . '.tags.create',
+                config('app.panel_prefix', 'panel') . '.tags.edit',
             ]
         ],
         'image' => [

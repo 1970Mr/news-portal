@@ -351,13 +351,13 @@
                                                 <div class="d-flex gap-2">
                                                     @can(config('permissions_list.TAG_UPDATE', false))
                                                         <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                           rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route('tag.edit', $tag->id) }}">
+                                                           rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route(config('app.panel_prefix', 'panel') . '.tags.edit', $tag->id) }}">
                                                             <i class="icon-pencil fa-flip-horizontal"></i>
                                                         </a>
                                                     @endcan
 
                                                     @can(config('permissions_list.TAG_DESTROY', false))
-                                                        <x-common-delete-button :route="route('tag.destroy', $tag->id)" />
+                                                        <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.tags.destroy', $tag->id)" />
                                                     @endcan
                                                 </div>
                                             </td>

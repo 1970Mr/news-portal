@@ -34,7 +34,7 @@ class TagController extends Controller
     public function store(TagRequest $request): RedirectResponse
     {
         $this->tagService->store($request);
-        return to_route('tag.index')->with('success', __('entity_created', ['entity' => __('tag')]));
+        return to_route(config('app.panel_prefix', 'panel') . '.tags.index')->with('success', __('entity_created', ['entity' => __('tag')]));
     }
 
     public function edit(Tag $tag): View
@@ -46,12 +46,12 @@ class TagController extends Controller
     public function update(TagRequest $request, Tag $tag): RedirectResponse
     {
         $this->tagService->update($request, $tag);
-        return to_route('tag.index')->with('success', __('entity_edited', ['entity' => __('tag')]));
+        return to_route(config('app.panel_prefix', 'panel') . '.tags.index')->with('success', __('entity_edited', ['entity' => __('tag')]));
     }
 
     public function destroy(Tag $tag): RedirectResponse
     {
         $this->tagService->destroy($tag);
-        return to_route('tag.index')->with('success', __('entity_deleted', ['entity' => __('tag')]));
+        return back()->with('success', __('entity_deleted', ['entity' => __('tag')]));
     }
 }
