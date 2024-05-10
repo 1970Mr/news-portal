@@ -13,12 +13,13 @@ namespace Modules\User\App\Models;
  use Modules\Comment\App\Traits\Commenter;
  use Modules\FileManager\App\Traits\HasImage;
  use Modules\Role\App\Models\Role;
+ use Modules\SocialNetwork\App\Traits\HasSocialNetwork;
  use Modules\User\Database\Factories\UserFactory;
  use Spatie\Permission\Traits\HasRoles;
 
  class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles, SoftDeletes, HasImage, Commenter;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, SoftDeletes, HasImage, Commenter, HasSocialNetwork;
 
     /**
      * The attributes that are mass assignable.
