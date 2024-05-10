@@ -12,5 +12,6 @@
     "Profile": true,
     "Hotness": true,
     "Comment": true,
-    "Front": true
+    "Front": true,
+    "SocialMedia": true
 }
