@@ -18,7 +18,7 @@ class SocialNetworkController extends Controller
     public function edit(): View
     {
         $userSocialNetworks = $this->socialNetworkService->getUserSocialNetworks();
-        $socialNetworksList = SocialNetworkService::SocialNetworks;
+        $socialNetworksList = SocialNetworkService::SOCIAL_NETWORKS;
         return view('profile::social-networks-address', compact(['userSocialNetworks', 'socialNetworksList']));
     }
 

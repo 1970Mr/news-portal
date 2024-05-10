@@ -8,7 +8,7 @@ use Modules\Profile\App\Http\Controllers\SocialNetworkController;
 
 Route::prefix(config('app.panel_prefix', 'panel') . '/profile')->name(config('app.panel_prefix', 'panel') . '.profile.')->group(function () {
 
-    Route::prefix('edit')->name('edit')->controller(ProfileController::class)->group(function () {
+    Route::prefix('')->name('edit')->controller(ProfileController::class)->group(function () {
         Route::get('/', 'edit');
         Route::patch('/', 'update');
     });
@@ -24,7 +24,7 @@ Route::prefix(config('app.panel_prefix', 'panel') . '/profile')->name(config('ap
         Route::patch('/', 'changePassword');
     });
 
-    Route::prefix('social-networks')->name('social-networks')->controller(SocialNetworkController::class)->group(function () {
+    Route::prefix('social-networks')->name('social-networks.edit')->controller(SocialNetworkController::class)->group(function () {
         Route::get('/', 'edit');
         Route::put('/', 'update');
     });

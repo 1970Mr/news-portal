@@ -2,6 +2,7 @@
 
 @section('content')
     <x-common-breadcrumbs>
+        <li><a>پروفایل</a></li>
         <li><a>آدرس شبکه‌های اجتماعی</a></li>
     </x-common-breadcrumbs>
 
@@ -34,7 +35,7 @@
                         </div>
                     @endif
 
-                    <form id="main-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.profile.social-networks') }}" method="post">
+                    <form id="main-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.profile.social-networks.edit') }}" method="post">
                         @csrf
                         @method('PUT')
                         <x-common-error-messages />

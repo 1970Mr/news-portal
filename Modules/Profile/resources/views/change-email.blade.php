@@ -2,6 +2,7 @@
 
 @section('content')
     <x-common-breadcrumbs>
+        <li><a>پروفایل</a></li>
         <li><a>تغییر ایمیل</a></li>
     </x-common-breadcrumbs>
 

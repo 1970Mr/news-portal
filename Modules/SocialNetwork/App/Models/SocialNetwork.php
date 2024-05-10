@@ -13,6 +13,7 @@ class SocialNetwork extends Model
     protected $fillable = [
         'name',
         'url',
+        'tag',
     ];
 
     public function owner(): MorphTo

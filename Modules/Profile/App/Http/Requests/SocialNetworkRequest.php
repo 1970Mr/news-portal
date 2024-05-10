@@ -12,17 +12,7 @@ class SocialNetworkRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'instagram' => 'nullable|url',
-            'telegram' => 'nullable|url',
-            'twitter' => 'nullable|url',
-            'linkedin' => 'nullable|url',
-            'whatsapp' => 'nullable|url',
-            'facebook' => 'nullable|url',
-            'pinterest' => 'nullable|url',
-            'youtube' => 'nullable|url',
-            'github' => 'nullable|url',
-        ];
+        return resolve(SocialNetworkService::class)->rules();
     }
 
     /**

@@ -2,13 +2,15 @@
 
 namespace Modules\Profile\App\Services;
 
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Modules\Profile\App\Http\Requests\SocialNetworkRequest;
+use Modules\SocialNetwork\App\Traits\SocialNetwork;
 
 class SocialNetworkService
 {
-    public const SocialNetworks = [
+    use SocialNetwork;
+
+    public const SOCIAL_NETWORKS = [
         'instagram' => 'https://instagram.com/{username}',
         'telegram' => 'https://t.me/{username}',
         'twitter' => 'https://twitter.com/{username}',
@@ -30,14 +32,5 @@ class SocialNetworkService
                 ['url' => $url]
             );
         }
-    }
-
-    public function getUserSocialNetworks(): Collection
-    {
-        $userSocialNetworks = collect();
-        foreach (auth()->user()->socialNetworks as $socialNetwork) {
-            $userSocialNetworks[$socialNetwork->name] = $socialNetwork->url;
-        }
-        return $userSocialNetworks;
     }
 }

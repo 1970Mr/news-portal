@@ -116,7 +116,7 @@ return [
                 [
                     'title' => 'ثبت شبکه‌های اجتماعی',
                     'icon' => 'icon-link',
-                    'url' => route(config('app.panel_prefix', 'panel') . '.profile.social-networks'),
+                    'url' => route(config('app.panel_prefix', 'panel') . '.profile.social-networks.edit'),
                     'permissions' => config('permissions_list.PROFILE_SOCIAL_NETWORKS', false),
                 ],
             ]

@@ -15,10 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('url')->nullable();
+            $table->string('tag')->nullable();
 
-            $table->string("owner_type");
-            $table->uuid("owner_id");
-            $table->index(["owner_type", "owner_id"]);
+            $table->nullableMorphs('owner');
             $table->timestamps();
         });
     }
