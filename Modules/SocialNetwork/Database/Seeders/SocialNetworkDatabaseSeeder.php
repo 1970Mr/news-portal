@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\SocialMedia\Database\Seeders;
+namespace Modules\SocialNetwork\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class SocialMediaDatabaseSeeder extends Seeder
+class SocialNetworkDatabaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.

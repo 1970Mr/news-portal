@@ -1,0 +1,11 @@
+{
+    "name": "SocialNetwork",
+    "alias": "socialnetwork",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\SocialNetwork\\App\\Providers\\SocialNetworkServiceProvider"
+    ],
+    "files": []
+}

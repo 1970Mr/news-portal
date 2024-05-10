@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\SocialMedia\App\Providers;
+namespace Modules\SocialNetwork\App\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -10,7 +10,7 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * The module namespace to assume when generating URLs to actions.
      */
-    protected string $moduleNamespace = 'Modules\SocialMedia\App\Http\Controllers';
+    protected string $moduleNamespace = 'Modules\SocialNetwork\App\Http\Controllers';
 
     /**
      * Called before routes are registered.
@@ -41,7 +41,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::middleware('web')
             ->namespace($this->moduleNamespace)
-            ->group(module_path('SocialMedia', '/routes/web.php'));
+            ->group(module_path('SocialNetwork', '/routes/web.php'));
     }
 
     /**
@@ -54,6 +54,6 @@ class RouteServiceProvider extends ServiceProvider
         Route::prefix('api')
             ->middleware('api')
             ->namespace($this->moduleNamespace)
-            ->group(module_path('SocialMedia', '/routes/api.php'));
+            ->group(module_path('SocialNetwork', '/routes/api.php'));
     }
 }

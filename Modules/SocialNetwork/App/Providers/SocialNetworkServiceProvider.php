@@ -1,15 +1,15 @@
 <?php
 
-namespace Modules\SocialMedia\App\Providers;
+namespace Modules\SocialNetwork\App\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
-class SocialMediaServiceProvider extends ServiceProvider
+class SocialNetworkServiceProvider extends ServiceProvider
 {
-    protected string $moduleName = 'SocialMedia';
+    protected string $moduleName = 'SocialNetwork';
 
-    protected string $moduleNameLower = 'socialmedia';
+    protected string $moduleNameLower = 'social-network';
 
     /**
      * Boot the application events.

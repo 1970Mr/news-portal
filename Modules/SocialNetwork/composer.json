@@ -1,5 +1,5 @@
 {
-    "name": "nwidart/socialmedia",
+    "name": "nwidart/socialnetwork",
     "description": "",
     "authors": [
         {
@@ -17,15 +17,15 @@
     },
     "autoload": {
         "psr-4": {
-            "Modules\\SocialMedia\\": "",
-            "Modules\\SocialMedia\\App\\": "app/",
-            "Modules\\SocialMedia\\Database\\Factories\\": "database/factories/",
-            "Modules\\SocialMedia\\Database\\Seeders\\": "database/seeders/"
+            "Modules\\SocialNetwork\\": "",
+            "Modules\\SocialNetwork\\App\\": "app/",
+            "Modules\\SocialNetwork\\Database\\Factories\\": "database/factories/",
+            "Modules\\SocialNetwork\\Database\\Seeders\\": "database/seeders/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Modules\\SocialMedia\\Tests\\": "tests/"
+            "Modules\\SocialNetwork\\Tests\\": "tests/"
         }
     }
 }

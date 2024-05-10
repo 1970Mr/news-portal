@@ -1,20 +1,20 @@
 <?php
 
-namespace Modules\SocialMedia\App\Http\Controllers;
+namespace Modules\SocialNetwork\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class SocialMediaController extends Controller
+class SocialNetworkController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('socialmedia::index');
+        return view('socialnetwork::index');
     }
 
     /**
@@ -22,7 +22,7 @@ class SocialMediaController extends Controller
      */
     public function create()
     {
-        return view('socialmedia::create');
+        return view('socialnetwork::create');
     }
 
     /**
@@ -38,7 +38,7 @@ class SocialMediaController extends Controller
      */
     public function show($id)
     {
-        return view('socialmedia::show');
+        return view('socialnetwork::show');
     }
 
     /**
@@ -46,7 +46,7 @@ class SocialMediaController extends Controller
      */
     public function edit($id)
     {
-        return view('socialmedia::edit');
+        return view('socialnetwork::edit');
     }
 
     /**

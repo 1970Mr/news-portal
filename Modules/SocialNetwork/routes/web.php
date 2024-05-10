@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\SocialMedia\App\Http\Controllers\SocialMediaController;
+use Modules\SocialNetwork\App\Http\Controllers\SocialNetworkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +15,5 @@ use Modules\SocialMedia\App\Http\Controllers\SocialMediaController;
 */
 
 Route::group([], function () {
-    Route::resource('socialmedia', SocialMediaController::class)->names('socialmedia');
+    Route::resource('social-network', SocialNetworkController::class)->names('social-network');
 });
