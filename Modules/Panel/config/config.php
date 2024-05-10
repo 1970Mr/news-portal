@@ -87,6 +87,7 @@ return [
                 config('app.panel_prefix', 'panel') . '.profile.edit',
                 config('app.panel_prefix', 'panel') . '.profile.email.change',
                 config('app.panel_prefix', 'panel') . '.profile.password.change',
+                config('app.panel_prefix', 'panel') . '.profile.social-networks',
             ],
             'permissions' => [
                 config('permissions_list.PROFILE_EDIT', false),
@@ -114,9 +115,9 @@ return [
                 ],
                 [
                     'title' => 'ثبت شبکه‌های اجتماعی',
-                    'icon' => 'icon-envelope-letter',
-                    'url' => route(config('app.panel_prefix', 'panel') . '.profile.email.change'),
-                    'permissions' => config('permissions_list.PROFILE_CHANGE_EMAIL', false),
+                    'icon' => 'icon-link',
+                    'url' => route(config('app.panel_prefix', 'panel') . '.profile.social-networks'),
+                    'permissions' => config('permissions_list.PROFILE_SOCIAL_NETWORKS', false),
                 ],
             ]
         ],

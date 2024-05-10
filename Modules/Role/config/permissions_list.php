@@ -50,4 +50,5 @@ return [
     'PROFILE_EDIT' => 'profile::edit',
     'PROFILE_CHANGE_PASSWORD' => 'profile::change_password',
     'PROFILE_CHANGE_EMAIL' => 'profile::change_email',
+    'PROFILE_SOCIAL_NETWORKS' => 'profile::social_networks',
 ];
