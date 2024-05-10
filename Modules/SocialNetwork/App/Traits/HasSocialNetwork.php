@@ -9,6 +9,6 @@ trait HasSocialNetwork
 {
     public function socialNetworks(): MorphMany
     {
-        return $this->morphMany(SocialNetwork::class, 'owner')->latest();
+        return $this->morphMany(SocialNetwork::class, 'owner')->whereNotNull('url');
     }
 }

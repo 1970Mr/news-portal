@@ -21,6 +21,7 @@ class SocialNetworkRequest extends FormRequest
             'facebook' => 'nullable|url',
             'pinterest' => 'nullable|url',
             'youtube' => 'nullable|url',
+            'github' => 'nullable|url',
         ];
     }
 
