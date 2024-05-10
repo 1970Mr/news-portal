@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Modules\Profile\App\Http\Controllers\ChangeEmailController;
 use Modules\Profile\App\Http\Controllers\ChangePasswordController;
 use Modules\Profile\App\Http\Controllers\ProfileController;
+use Modules\Profile\App\Http\Controllers\SocialNetworkController;
 
 Route::prefix(config('app.panel_prefix', 'panel') . '/profile')->name(config('app.panel_prefix', 'panel') . '.profile.')->group(function () {
 
@@ -21,5 +22,10 @@ Route::prefix(config('app.panel_prefix', 'panel') . '/profile')->name(config('ap
     Route::prefix('password/change')->name('password.change')->controller(ChangePasswordController::class)->group(function () {
         Route::get('/', 'changePasswordView');
         Route::patch('/', 'changePassword');
+    });
+
+    Route::prefix('social-networks')->name('social-networks')->controller(SocialNetworkController::class)->group(function () {
+        Route::get('/', 'edit');
+        Route::put('/', 'update');
     });
 });
