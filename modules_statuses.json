@@ -13,5 +13,6 @@
     "Hotness": true,
     "Comment": true,
     "Front": true,
-    "SocialNetwork": true
+    "SocialNetwork": true,
+    "Setting": true
 }
