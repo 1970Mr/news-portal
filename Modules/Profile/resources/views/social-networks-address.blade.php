@@ -52,7 +52,7 @@
                                 <div class="col-sm-6 col-sm-offset-4 mx-auto">
                                     <button class="btn btn-success btn-block">
                                         <i class="icon-check"></i>
-                                        ثبت آدرس‌های شبکه‌های اجتماعی
+                                        ثبت آدرس شبکه‌های اجتماعی
                                     </button>
                                 </div>
                             </div>

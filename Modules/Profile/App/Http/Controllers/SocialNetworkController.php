@@ -10,25 +10,18 @@ use Modules\Profile\App\Services\SocialNetworkService;
 
 class SocialNetworkController extends Controller
 {
+    public function __construct(private readonly SocialNetworkService $socialNetworkService) {}
+
     public function edit(): View
     {
-        $userSocialNetworks = collect();
-        foreach (auth()->user()->socialNetworks as $socialNetwork) {
-            $userSocialNetworks[$socialNetwork->name] = $socialNetwork->url;
-        }
+        $userSocialNetworks = $this->socialNetworkService->getUserSocialNetworks();
         $socialNetworksList = SocialNetworkService::SocialNetworks;
         return view('profile::social-networks-address', compact(['userSocialNetworks', 'socialNetworksList']));
     }
 
     public function update(SocialNetworkRequest $request): RedirectResponse
     {
-        $userSocialNetworks = $request->validated();
-        foreach ($userSocialNetworks as $name => $url) {
-            auth()->user()->socialNetworks()->updateOrCreate(
-                ['name' => $name],
-                ['url' => $url]
-            );
-        }
-        return back()->with(['success' => 'آدرس‌های شبکه‌های اجتماعی با موفقیت ثبت شدند.']);
+        $this->socialNetworkService->update($request);
+        return back()->with(['success' => __('Social network addresses have been registered successfully.')]);
     }
 }

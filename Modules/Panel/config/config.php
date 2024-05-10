@@ -112,6 +112,12 @@ return [
                     'url' => route(config('app.panel_prefix', 'panel') . '.profile.email.change'),
                     'permissions' => config('permissions_list.PROFILE_CHANGE_EMAIL', false),
                 ],
+                [
+                    'title' => 'ثبت شبکه‌های اجتماعی',
+                    'icon' => 'icon-envelope-letter',
+                    'url' => route(config('app.panel_prefix', 'panel') . '.profile.email.change'),
+                    'permissions' => config('permissions_list.PROFILE_CHANGE_EMAIL', false),
+                ],
             ]
         ],
     ]
