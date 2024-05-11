@@ -42,9 +42,11 @@
                                 <label for="email">ایمیل <small>(ضروری)</small> </label>
                                 <input id="email" class="form-control" name="email" type="email" required value="{{ old('email', $user->email) }}">
                             </div>
-                            <div class="form-group col-lg-6">
-                                <label for="description">توضیح مختصری در مورد کاربر</label>
-                                <textarea class="form-control" name="description" id="description">{{ old('description', $user->description) }}</textarea>
+                            <div class="form-group col-12 row justify-content-center">
+                                <div class="col-md-6">
+                                    <label for="description">توضیح مختصری در مورد کاربر</label>
+                                    <textarea class="form-control" name="description" id="description">{{ old('description', $user->description) }}</textarea>
+                                </div>
                             </div>
                             <div class="accordion mb-3" id="accordionEditPassword">
                                 <div class="accordion-item">

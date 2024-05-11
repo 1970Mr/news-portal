@@ -38,6 +38,12 @@
                                 <label for="name">نام کاربری</label>
                                 <input id="name" class="form-control" name="name" type="text" required value="{{ $user->name }}">
                             </div>
+                            <div class="form-group col-12 row justify-content-center">
+                                <div class="col-md-6">
+                                    <label for="description">توضیح مختصری در مورد کاربر</label>
+                                    <textarea class="form-control" name="description" id="description">{{ old('description', $user->description) }}</textarea>
+                                </div>
+                            </div>
                             <div class="col-12 d-flex flex-column align-items-center">
                                 <div class="form-group relative col-lg-6">
                                     <label>تصویر کاربر <small>(ضروری)</small></label>
