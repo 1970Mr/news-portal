@@ -13,7 +13,11 @@
             <h3 class="block-title"><span>ما را دنبال کنید</span></h3>
             <ul class="social-icon" style="display: flex; flex-wrap: wrap; justify-content: center; gap: .3rem">
                 @foreach($social_networks as $name => $url)
-                    <li><a href="{{ $url }}" target="_blank"><i class="fa fa-{{ $name }} with-color"></i></a></li>
+                    <li>
+                        <a title="{{ ucfirst($name) }}" href="{{ $url }}" target="_blank">
+                            <i class="fa fa-{{ $name }} with-color"></i>
+                        </a>
+                    </li>
                 @endforeach
             </ul>
         </div><!-- Widget Social end -->

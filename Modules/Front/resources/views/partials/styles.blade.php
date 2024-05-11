@@ -16,4 +16,6 @@
 <link rel="stylesheet" href="{{ asset('home/css/owl.theme.default.min.css') }}">
 <!-- Colorbox -->
 <link rel="stylesheet" href="{{ asset('home/css/colorbox.css') }}">
+<!-- Custom -->
+<link rel="stylesheet" href="{{ asset('home/css/custom-style.css') }}">
 
