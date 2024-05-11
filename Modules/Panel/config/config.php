@@ -121,5 +121,23 @@ return [
                 ],
             ]
         ],
+        'setting' => [
+            'title' => 'تنظیمات سایت',
+            'icon' => 'icon-settings',
+            'active_routes' => [
+                config('app.panel_prefix', 'panel') . '.settings.social-networks.edit',
+            ],
+            'permissions' => [
+                config('permissions_list.PROFILE_CHANGE_EMAIL', false),
+            ],
+            'children' => [
+                [
+                    'title' => 'ثبت شبکه‌های اجتماعی',
+                    'icon' => 'icon-link',
+                    'url' => route(config('app.panel_prefix', 'panel') . '.settings.social-networks.edit'),
+                    'permissions' => config('permissions_list.PROFILE_SOCIAL_NETWORKS', false),
+                ],
+            ]
+        ],
     ]
 ];

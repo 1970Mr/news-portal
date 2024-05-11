@@ -1,9 +1,9 @@
-@extends('panel::layouts.master', ['title' => 'آدرس شبکه‌های اجتماعی'])
+@extends('panel::layouts.master', ['title' => 'ثبت آدرس شبکه‌های اجتماعی سایت'])
 
 @section('content')
     <x-common-breadcrumbs>
         <li><a>تنظیمات</a></li>
-        <li><a>آدرس شبکه‌های اجتماعی</a></li>
+        <li><a>ثبت آدرس شبکه‌های اجتماعی سایت</a></li>
     </x-common-breadcrumbs>
 
     <div class="row pe-0">
@@ -12,8 +12,8 @@
                 <div class="portlet-heading">
                     <div class="portlet-title">
                         <h3 class="title">
-                            <i class="far fa-pen-to-square"></i>
-                            آدرس شبکه‌های اجتماعی
+                            <i class="icon-link"></i>
+                            ثبت آدرس شبکه‌های اجتماعی سایت
                         </h3>
                     </div><!-- /.portlet-title -->
                     <div class="buttons-box">
