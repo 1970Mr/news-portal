@@ -28,14 +28,19 @@ class SocialNetworkService
 
     public function update(SocialNetworkRequest $request): void
     {
-        $userSocialNetworks = $request->validated();
-        foreach ($userSocialNetworks as $name => $url) {
+        $socialNetworks = $request->validated();
+        $this->setSocialNetworks($socialNetworks);
+    }
+
+    private function setSocialNetworks(mixed $socialNetworks): void
+    {
+        foreach ($socialNetworks as $name => $url) {
             SocialNetworkModel::query()->updateOrCreate(
                 [
                     'name' => $name,
                     'tag' => self::TAG,
                 ],
-                [ 'url' => $url ]
+                ['url' => $url]
             );
         }
     }

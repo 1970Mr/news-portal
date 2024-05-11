@@ -2,6 +2,7 @@
 
 namespace Modules\Profile\App\Services;
 
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Auth;
 use Modules\Profile\App\Http\Requests\SocialNetworkRequest;
 use Modules\SocialNetwork\App\Traits\SocialNetwork;
@@ -26,6 +27,11 @@ class SocialNetworkService
     {
         $userSocialNetworks = $request->validated();
         $user = Auth::user();
+        $this->setUserSocialNetworks($userSocialNetworks, $user);
+    }
+
+    private function setUserSocialNetworks(mixed $userSocialNetworks, Authenticatable $user): void
+    {
         foreach ($userSocialNetworks as $name => $url) {
             $user->socialNetworks()->updateOrCreate(
                 ['name' => $name],
