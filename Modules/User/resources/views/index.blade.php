@@ -47,7 +47,9 @@
                                 <th>نام</th>
                                 <th>ایمیل</th>
                                 <th>نقش</th>
+                                <th>توضیحات</th>
                                 <th>تاریخ عضویت</th>
+                                <th>وضعیت ایمیل</th>
                                 <th>وضعیت</th>
                                 @canany([
                                                     config('permissions_list.USER_UPDATE'),
@@ -69,8 +71,10 @@
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->getRoleLocalNames()->implode(', ') }}</td>
+                                    <td>{{ nullable_value(str($user->description)->limit(30)->toString()) }}</td>
                                     <td class="ltr text-right created-at">{{ jalalian()->forge($user->created_at)->format(config('common.datetime_format')) }}</td>
                                     <td class="{{ status_class($user->email_verified_at) }}">{{ $user->verified_email_status }}</td>
+                                    <td class="{{ status_class($user->status) }}">{{ status_message($user->status) }}</td>
                                     @canany([
                                                     config('permissions_list.USER_UPDATE'),
                                                     config('permissions_list.USER_DESTROY'),

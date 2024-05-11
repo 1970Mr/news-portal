@@ -15,10 +15,19 @@ class UserUpdateRequest extends FormRequest
         return [
             'name' => 'required|min:2',
             'email' => 'required|email|unique:users,email,' . $this->route('user')->id,
+            'description' => 'nullable|string|max:600',
             'password' => 'exclude_if:password,null|min:8|confirmed',
             'picture' => 'nullable|image|max:5000',
             'email_verification' => 'nullable',
+            'status' => 'bool',
         ];
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'status' => (bool) $this->status,
+        ]);
     }
 
     /**

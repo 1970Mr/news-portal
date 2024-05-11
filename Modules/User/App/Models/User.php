@@ -29,7 +29,9 @@ namespace Modules\User\App\Models;
     protected $fillable = [
         'name',
         'email',
+        'description',
         'password',
+        'status',
     ];
 
     /**

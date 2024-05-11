@@ -14,10 +14,19 @@ class UserStoreRequest extends FormRequest
         return [
             'name' => 'required|min:2',
             'email' => 'required|email|unique:users',
+            'description' => 'nullable|string|max:600',
             'password' => 'required|min:8|confirmed',
             'picture' => 'required|image|max:5000',
             'email_verification' => 'nullable',
+            'status' => 'bool',
         ];
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'status' => (bool) $this->status,
+        ]);
     }
 
     /**

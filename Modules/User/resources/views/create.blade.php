@@ -62,9 +62,25 @@
                                 <input type="file" class="form-control" name="picture" required>
                                 <div class="help-block"></div>
                             </div>
-                            <div class="form-group text-center">
-                                <input id="email_verification" class="form-control" name="email_verification" type="checkbox" @if(old('email_verification')) checked @endif>
-                                <label for="email_verification">تایید ایمیل</label>
+                            <div class="form-group col-12 row justify-content-center">
+                                <div class="col-md-6">
+                                    <label for="description">توضیح مختصری در مورد کاربر</label>
+                                    <textarea class="form-control" name="description" id="description">{{ old('description') }}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group col-12 row justify-content-center">
+                                <div class="row justify-content-center col-6 row">
+                                    <div class="text-center col-6">
+                                        <input id="email_verification" class="form-control" name="email_verification" type="checkbox"
+                                               @if(old('email_verification')) checked @endif>
+                                        <label for="email_verification">تایید ایمیل</label>
+                                    </div>
+                                    <div class="text-center col-6">
+                                        <input id="status" class="form-control" name="status" type="checkbox"
+                                               @if(old('status')) checked @endif>
+                                        <label for="status">وضعیت</label>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-6 col-sm-offset-4 mx-auto">

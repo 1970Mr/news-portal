@@ -4,10 +4,9 @@
     </div>
     <div class="author-info">
         <h3>{{ $article->user->name }}</h3>
-        <p class="author-url"><a href="#">لورم ایپسوم متن ساختگی با تولید</a></p>
         <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط</p>
         @if($socialNetworks = $article->user->socialNetworks)
-            <div class="authors-social">
+            <div class="authors-social" style="clear: both">
                 <span>مرا دنبال کنید: </span>
                 @foreach($socialNetworks as $socialNetwork)
                     <a href="{{ $socialNetwork->url }}" title="{{ $socialNetwork->name }}"><i class="fa fa-{{ $socialNetwork->name }}"></i></a>

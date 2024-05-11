@@ -36,11 +36,15 @@
                         <fieldset class="row justify-content-center">
                             <div class="form-group col-lg-6">
                                 <label for="name">نام <small>(ضروری)</small></label>
-                                <input id="name" class="form-control" name="name" type="text" required value="{{ $user->name }}">
+                                <input id="name" class="form-control" name="name" type="text" required value="{{ old('name', $user->name) }}">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="email">ایمیل <small>(ضروری)</small> </label>
-                                <input id="email" class="form-control" name="email" type="email" required value="{{ $user->email }}">
+                                <input id="email" class="form-control" name="email" type="email" required value="{{ old('email', $user->email) }}">
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label for="description">توضیح مختصری در مورد کاربر</label>
+                                <textarea class="form-control" name="description" id="description">{{ old('description', $user->description) }}</textarea>
                             </div>
                             <div class="accordion mb-3" id="accordionEditPassword">
                                 <div class="accordion-item">
@@ -87,9 +91,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group text-center">
-                                <input id="email_verification" class="form-control" name="email_verification" type="checkbox" {{ $user->email_verified_at ? 'checked' : '' }}>
-                                <label for="email_verification">تایید ایمیل</label>
+                            <div class="form-group col-12 row justify-content-center">
+                                <div class="row justify-content-center col-6 row">
+                                    <div class="text-center col-6">
+                                        <input id="email_verification" class="form-control" name="email_verification" type="checkbox"
+                                               @if(old('email_verification') || (!old('name') && $user->email_verified_at)) checked @endif>
+                                        <label for="email_verification">تایید ایمیل</label>
+                                    </div>
+                                    <div class="text-center col-6">
+                                        <input id="status" class="form-control" name="status" type="checkbox"
+                                               @if(old('status') || (!old('name') && $user->status)) checked @endif>
+                                        <label for="status">وضعیت</label>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-6 col-sm-offset-4 mx-auto">
