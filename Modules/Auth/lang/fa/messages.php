@@ -12,4 +12,5 @@ return [
     'password_change_failed' => 'تغییر رمز عبور با موفقیت انجام نشد! لطفا دوباره تلاش کنید.',
     'email_verification_successfully' => 'ایمیل شما با موفقیت تایید شد.',
     'email_verification_sent' => 'لینک تایید برای ایمیل شما ارسال شد.',
+    'account_disabled' => 'حساب کاربری غیر فعال می‌باشد! برای فعال سازی به پشتیبانی پیام دهید.',
 ];
