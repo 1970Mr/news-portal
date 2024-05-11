@@ -128,14 +128,14 @@ return [
                 config('app.panel_prefix', 'panel') . '.settings.social-networks.edit',
             ],
             'permissions' => [
-                config('permissions_list.PROFILE_CHANGE_EMAIL', false),
+                config('permissions_list.SETTING_SOCIAL_NETWORKS', false),
             ],
             'children' => [
                 [
                     'title' => 'ثبت شبکه‌های اجتماعی',
                     'icon' => 'icon-link',
                     'url' => route(config('app.panel_prefix', 'panel') . '.settings.social-networks.edit'),
-                    'permissions' => config('permissions_list.PROFILE_SOCIAL_NETWORKS', false),
+                    'permissions' => config('permissions_list.SETTING_SOCIAL_NETWORKS', false),
                 ],
             ]
         ],

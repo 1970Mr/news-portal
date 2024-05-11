@@ -11,4 +11,5 @@ return [
     'article' => 'اخبار',
     'comment' => 'نظرات',
     'profile' => 'پروفایل',
+    'setting' => 'تنظیمات سایت',
 ];

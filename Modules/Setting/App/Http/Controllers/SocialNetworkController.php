@@ -12,7 +12,7 @@ class SocialNetworkController extends Controller
 {
     public function __construct(private readonly SocialNetworkService $socialNetworkService)
     {
-        $this->middleware('can:' . config('permissions_list.PROFILE_SOCIAL_NETWORKS', false));
+        $this->middleware('can:' . config('permissions_list.SETTING_SOCIAL_NETWORKS', false));
     }
 
     public function edit(): View
