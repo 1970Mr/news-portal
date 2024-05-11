@@ -6,7 +6,7 @@
             <div class="item">
                 <div class="post-block-style clearfix">
                     <div class="post-thumb">
-                        <a href="single-post1.html"><img class="img-responsive" src="{{ asset('storage/' . $related_article->image->file_path) }}" alt="{{ $related_article->image->alt_text }}"></a>
+                        <a href="{{ route('news.show', [$related_article->category->slug, $related_article->slug]) }}"><img class="img-responsive" src="{{ asset('storage/' . $related_article->image->file_path) }}" alt="{{ $related_article->image->alt_text }}"></a>
                     </div>
                     <a class="post-cat" href="#">{{ $related_article->category->name }}</a>
                     <div class="post-content">

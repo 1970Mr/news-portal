@@ -4,7 +4,7 @@
     </div>
     <div class="author-info">
         <h3>{{ $article->user->name }}</h3>
-        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط</p>
+        <p>{{ $article->user->description }}</p>
         @if($socialNetworks = $article->user->socialNetworks)
             <div class="authors-social" style="clear: both">
                 <span>مرا دنبال کنید: </span>
