@@ -2,15 +2,16 @@
 
 namespace Modules\SocialNetwork\App\Traits;
 
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Collection;
 use \Modules\SocialNetwork\App\Models\SocialNetwork as SocialNetworkModel;
 
 trait SocialNetwork
 {
-    public function getUserSocialNetworks(): Collection
+    public function getUserSocialNetworks(Authenticatable $user): Collection
     {
         $socialNetworks = collect();
-        $userSocialNetworks = auth()->user()->socialNetworks;
+        $userSocialNetworks = $user->socialNetworks;
         foreach ($userSocialNetworks as $socialNetwork) {
             $socialNetworks[$socialNetwork->name] = $socialNetwork->url;
         }

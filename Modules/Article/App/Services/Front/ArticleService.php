@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Front\App\Services;
+namespace Modules\Article\App\Services\Front;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;

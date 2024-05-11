@@ -128,33 +128,11 @@
                         <p class="footer-info-email"><i class="fa fa-envelope-o"></i> <span class="ltr_text">info@example.com</span></p>
                         <ul class="unstyled footer-social">
                             <li>
-                                <a title="Rss" href="#">
-                                    <span class="social-icon"><i class="fa fa-rss"></i></span>
-                                </a>
-                                <a title="Facebook" href="#">
-                                    <span class="social-icon"><i class="fa fa-facebook"></i></span>
-                                </a>
-                                <a title="Twitter" href="#">
-                                    <span class="social-icon"><i class="fa fa-twitter"></i></span>
-                                </a>
-                                <a title="Google+" href="#">
-                                    <span class="social-icon"><i class="fa fa-google-plus"></i></span>
-                                </a>
-                                <a title="Linkdin" href="#">
-                                    <span class="social-icon"><i class="fa fa-linkedin"></i></span>
-                                </a>
-                                <a title="Skype" href="#">
-                                    <span class="social-icon"><i class="fa fa-skype"></i></span>
-                                </a>
-                                <a title="Skype" href="#">
-                                    <span class="social-icon"><i class="fa fa-dribbble"></i></span>
-                                </a>
-                                <a title="Skype" href="#">
-                                    <span class="social-icon"><i class="fa fa-pinterest"></i></span>
-                                </a>
-                                <a title="Skype" href="#">
-                                    <span class="social-icon"><i class="fa fa-instagram"></i></span>
-                                </a>
+                                @foreach($social_networks as $name => $url)
+                                    <a title="{{ ucfirst($name) }}" href="{{ $url }}" target="_blank">
+                                        <span class="social-icon"><i class="fa fa-{{ $name }}"></i></span>
+                                    </a>
+                                @endforeach
                             </li>
                         </ul>
                     </div><!-- Footer info content end -->

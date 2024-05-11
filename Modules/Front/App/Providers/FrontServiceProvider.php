@@ -5,7 +5,8 @@ namespace Modules\Front\App\Providers;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-use Modules\Front\App\Services\ArticleService;
+use Modules\Article\App\Services\Front\ArticleService;
+use Modules\Setting\App\Services\SocialNetworkService;
 
 
 class FrontServiceProvider extends ServiceProvider
@@ -120,11 +121,12 @@ class FrontServiceProvider extends ServiceProvider
     protected function registerSharedData(): void
     {
         $this->app->booted(function () {
+            $socialNetworks = resolve(SocialNetworkService::class)->getSocialNetworksWithTag(SocialNetworkService::TAG);
             View::composer([
                 'home::index',
                 'article::front.single-article.show',
-            ], static function ($view) {
-                $view->with(resolve(ArticleService::class)->composeViewData());
+            ], static function ($view) use ($socialNetworks) {
+                $view->with(resolve(ArticleService::class)->composeViewData() + ['social_networks' => $socialNetworks]);
             });
         });
     }

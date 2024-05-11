@@ -4,6 +4,7 @@ namespace Modules\Profile\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Modules\Profile\App\Http\Requests\SocialNetworkRequest;
 use Modules\Profile\App\Services\SocialNetworkService;
@@ -17,7 +18,7 @@ class SocialNetworkController extends Controller
 
     public function edit(): View
     {
-        $userSocialNetworks = $this->socialNetworkService->getUserSocialNetworks();
+        $userSocialNetworks = $this->socialNetworkService->getUserSocialNetworks(Auth::user());
         $socialNetworksList = SocialNetworkService::SOCIAL_NETWORKS;
         return view('profile::social-networks-address', compact(['userSocialNetworks', 'socialNetworksList']));
     }
