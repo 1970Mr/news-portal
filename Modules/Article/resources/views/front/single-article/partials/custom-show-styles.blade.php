@@ -1,8 +1,4 @@
 <style>
-    .breadcrumb > li {
-        display: inline-flex;
-    }
-
     .second-sidebar {
         margin: 5.5rem 0 0;
     }

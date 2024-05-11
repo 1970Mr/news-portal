@@ -41,3 +41,7 @@ li.github, .with-color.fa-github {
 li.rss, .with-color.fa-rss {
     background: #FFA500;
 }
+
+.breadcrumb > li {
+    display: inline-flex;
+}

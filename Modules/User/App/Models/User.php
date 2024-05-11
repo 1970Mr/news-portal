@@ -5,11 +5,13 @@ namespace Modules\User\App\Models;
  use Illuminate\Contracts\Auth\MustVerifyEmail;
  use Illuminate\Database\Eloquent\Casts\Attribute;
  use Illuminate\Database\Eloquent\Factories\HasFactory;
+ use Illuminate\Database\Eloquent\Relations\HasMany;
  use Illuminate\Database\Eloquent\SoftDeletes;
  use Illuminate\Foundation\Auth\User as Authenticatable;
  use Illuminate\Notifications\Notifiable;
  use Illuminate\Support\Collection;
  use Laravel\Sanctum\HasApiTokens;
+ use Modules\Article\App\Models\Article;
  use Modules\Comment\App\Traits\Commenter;
  use Modules\FileManager\App\Traits\HasImage;
  use Modules\Role\App\Models\Role;
@@ -86,6 +88,11 @@ namespace Modules\User\App\Models;
      public function role(): \Spatie\Permission\Models\Role
      {
          return $this->roles()->first();
+     }
+
+     public function Articles(): HasMany
+     {
+         return $this->hasMany(Article::class, 'user_id');
      }
 
      protected static function newFactory(): UserFactory
