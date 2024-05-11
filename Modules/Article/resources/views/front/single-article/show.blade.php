@@ -1,7 +1,10 @@
 @extends('front::layouts.master', ['title' => "{$article->category->name}: {$article->title}"])
 
 @section('content')
-    @include('article::front.single-article.partials.breadcrumb')
+    <x-front-breadcrumbs>
+        <li><a href="#">{{ $category->name }}</a></li>
+        <li>{{ $article->title }}</li>
+    </x-front-breadcrumbs>
 
     <section class="block-wrapper">
         <div class="container">
