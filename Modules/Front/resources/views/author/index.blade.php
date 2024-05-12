@@ -13,6 +13,8 @@
                     @include('front::author.partials.author-box')
 
                     @include('front::author.partials.category-listing')
+
+                    <x-front-listing-page-pagination :paginator="$articles" />
                 </div><!-- Content Col end -->
 
                 @include('front::partials.sidebar1')
