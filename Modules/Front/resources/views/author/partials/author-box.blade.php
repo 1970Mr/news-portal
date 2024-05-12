@@ -3,13 +3,13 @@
         <img src="{{ asset('storage/' . $author->image->file_path) }}" alt="{{ $author->image->alt_text }}">
     </div>
     <div class="author-info">
-        <h3>{{ $author->name }}</h3>
+        <h3>{{ $author->full_name }}</h3>
         <div class="author-counter pull-right">
-            <span>{{ $author->articles()->count() }} مطلب</span>
-            <span>{{ $author->approvedComments()->count() }} دیدگاه</span>
+            <span>{{ $articlesCount }} مطلب</span>
+            <span>{{ $commentsCount }} دیدگاه</span>
         </div>
-        <p>{{ $author->description }}</p>
-        @if($socialNetworks = $author->socialNetworks)
+        <p>{{ $author->about }}</p>
+        @if($socialNetworks)
             <div class="authors-social" style="clear: both">
                 <span>مرا دنبال کنید: </span>
                 @foreach($socialNetworks as $socialNetwork)

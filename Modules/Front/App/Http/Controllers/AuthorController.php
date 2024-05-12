@@ -10,6 +10,11 @@ class AuthorController extends Controller
 {
     public function index(User $user): View
     {
-        return view('front::author.index', ['author' => $user]);
+        $articlesCount = $user->articles()->count();
+        $articles = $user->articles()->paginate(15);
+        $commentsCount = $user->approvedComments()->count();
+        $socialNetworks = $user->socialNetworks;
+        return view('front::author.index',
+            compact(['articlesCount', 'articles', 'commentsCount', 'socialNetworks']) + ['author' => $user]);
     }
 }

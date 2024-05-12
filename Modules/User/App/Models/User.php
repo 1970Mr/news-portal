@@ -93,7 +93,7 @@ namespace Modules\User\App\Models;
 
      public function Articles(): HasMany
      {
-         return $this->hasMany(Article::class, 'user_id');
+         return $this->hasMany(Article::class, 'user_id')->active()->published();
      }
 
      protected static function newFactory(): UserFactory
