@@ -3,14 +3,16 @@
 namespace Modules\Profile\App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileRequest extends FormRequest
 {
     public function rules(): array
     {
         return [
-            'name' => 'required|string',
-            'description' => 'nullable|string|max:600',
+            'full_name' => 'required|string|min:2',
+            'username' => 'required|string|min:2|unique:users,username,' . Auth::id(),
+            'about' => 'nullable|string|max:600',
             'picture' => 'nullable|image|max:5000',
         ];
     }

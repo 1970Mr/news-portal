@@ -37,6 +37,7 @@ class UserService
     public function delete(User $user): void
     {
         Gate::authorize('delete', $user);
+        $this->imageService->destroyWithoutKeyConstraints($user->image);
         $user->delete();
     }
 

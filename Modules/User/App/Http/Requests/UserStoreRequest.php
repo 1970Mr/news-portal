@@ -15,7 +15,7 @@ class UserStoreRequest extends FormRequest
             'full_name' => 'required|string|min:2',
             'username' => 'required|string|min:2|unique:users',
             'email' => 'required|email|unique:users',
-            'description' => 'nullable|string|max:600',
+            'about' => 'nullable|string|max:600',
             'password' => 'required|min:8|confirmed',
             'picture' => 'required|image|max:5000',
             'email_verification' => 'nullable',
