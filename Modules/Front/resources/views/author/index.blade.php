@@ -13,19 +13,6 @@
                     @include('front::author.partials.author-box')
 
                     @include('front::author.partials.category-listing')
-
-                    <div class="paging">
-                        <ul class="pagination">
-                            <li class="active"><span>1</span></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">بعدی</a></li>
-                            <li>
-                                <span class="page-numbers">صفحه 1 از 2</span>
-                            </li>
-                        </ul>
-                    </div><!-- Paging end -->
                 </div><!-- Content Col end -->
 
                 @include('front::partials.sidebar1')

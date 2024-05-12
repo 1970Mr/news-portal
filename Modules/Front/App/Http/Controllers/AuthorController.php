@@ -11,7 +11,7 @@ class AuthorController extends Controller
     public function index(User $user): View
     {
         $articlesCount = $user->articles()->count();
-        $articles = $user->articles()->paginate(15);
+        $articles = $user->articles()->with(['category', 'image', 'approvedComments'])->paginate(10);
         $commentsCount = $user->approvedComments()->count();
         $socialNetworks = $user->socialNetworks;
         return view('front::author.index',
