@@ -14,7 +14,8 @@ class RegisterService
     public function createUser(RegisterRequest $request): Model
     {
         $user = User::query()->create([
-            'name' => $request->get('name'),
+            'full_name' => $request->get('full_name'),
+            'username' => UserHelper::createDefaultUsername(),
             'email' => $request->get('email'),
             'password' => Hash::make($request->get('password')),
         ]);

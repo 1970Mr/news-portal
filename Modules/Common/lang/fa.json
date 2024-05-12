@@ -18,6 +18,7 @@
     "comment": "نظر",
     "email": "ایمیل",
     "password": "رمز عبور",
+    "full_name": "نام کامل",
     "This action is unauthorized.": "این اقدام برای شما غیر مجاز است",
     "This image cannot be deleted! Because it has been used elsewhere.": "این تصویر قابل حذف نیست! زیرا در جایی از آن استفاده شده است.",
     "Password incorrect.": "رمز عبور اشتباه است.",

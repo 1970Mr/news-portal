@@ -58,4 +58,13 @@ class UserHelper
             'user_id' => $user_id,
         ]);
     }
+
+    public static function createDefaultUsername(): string
+    {
+        $username = uniqid('user_', false);
+        while (User::where('username', $username)->exists()) {
+            $username = uniqid('user_', true);
+        }
+        return $username;
+    }
 }

@@ -35,8 +35,12 @@
 
                         <fieldset class="row justify-content-center">
                             <div class="form-group col-lg-6">
-                                <label for="name">نام <small>(ضروری)</small></label>
-                                <input id="name" class="form-control" name="name" type="text" required value="{{ old('name', $user->full_name) }}">
+                                <label for="full_name">نام کامل <small>(ضروری)</small></label>
+                                <input id="full_name" class="form-control" name="full_name" type="text" required value="{{ old('full_name', $user->full_name) }}">
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label for="username">نام کاربری <small>(ضروری)</small></label>
+                                <input id="username" class="form-control" name="username" type="text" required value="{{ old('username', $user->username) }}">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="email">ایمیل <small>(ضروری)</small> </label>
@@ -44,8 +48,8 @@
                             </div>
                             <div class="form-group col-12 row justify-content-center">
                                 <div class="col-md-6">
-                                    <label for="description">توضیح مختصری در مورد کاربر</label>
-                                    <textarea class="form-control" name="description" id="description">{{ old('description', $user->about) }}</textarea>
+                                    <label for="about">توضیح مختصری در مورد کاربر</label>
+                                    <textarea class="form-control" name="about" id="about">{{ old('about', $user->about) }}</textarea>
                                 </div>
                             </div>
                             <div class="accordion mb-3" id="accordionEditPassword">

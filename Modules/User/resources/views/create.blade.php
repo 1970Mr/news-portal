@@ -34,20 +34,16 @@
 
                         <fieldset class="row justify-content-center">
                             <div class="form-group col-lg-6">
-                                <label for="name">نام <small>(ضروری)</small></label>
-                                <input id="name" class="form-control" name="name" type="text" required value="{{ old('name') }}">
+                                <label for="full_name">نام <small>(ضروری)</small></label>
+                                <input id="full_name" class="form-control" name="full_name" type="text" required value="{{ old('full_name') }}">
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label for="username">نام کاربری <small>(ضروری)</small></label>
+                                <input id="username" class="form-control" name="username" type="text" required value="{{ old('username') }}">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="email">ایمیل <small>(ضروری)</small> </label>
                                 <input id="email" class="form-control" name="email" type="email" required value="{{ old('email') }}">
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label for="password">رمز عبور <small>(ضروری، حداقل 8 کاراکتر)</small></label>
-                                <input id="password" class="form-control" name="password" minlength="8" type="password" required value="{{ old('password') }}">
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label for="password_confirmation">تکرار رمز عبور <small>(ضروری، حداقل 8 کاراکتر)</small></label>
-                                <input id="password_confirmation" class="form-control" name="password_confirmation" minlength="8" type="password" required value="{{ old('password_confirmation') }}">
                             </div>
                             <div class="form-group relative col-lg-6">
                                 <label>تصویر کاربر <small>(ضروری)</small></label>
@@ -62,10 +58,18 @@
                                 <input type="file" class="form-control" name="picture" required>
                                 <div class="help-block"></div>
                             </div>
+                            <div class="form-group col-lg-6">
+                                <label for="password">رمز عبور <small>(ضروری، حداقل 8 کاراکتر)</small></label>
+                                <input id="password" class="form-control" name="password" minlength="8" type="password" required value="{{ old('password') }}">
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label for="password_confirmation">تکرار رمز عبور <small>(ضروری، حداقل 8 کاراکتر)</small></label>
+                                <input id="password_confirmation" class="form-control" name="password_confirmation" minlength="8" type="password" required value="{{ old('password_confirmation') }}">
+                            </div>
                             <div class="form-group col-12 row justify-content-center">
                                 <div class="col-md-6">
-                                    <label for="description">توضیح مختصری در مورد کاربر</label>
-                                    <textarea class="form-control" name="description" id="description">{{ old('description') }}</textarea>
+                                    <label for="about">توضیح مختصری در مورد کاربر</label>
+                                    <textarea class="form-control" name="about" id="about">{{ old('about') }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group col-12 row justify-content-center">

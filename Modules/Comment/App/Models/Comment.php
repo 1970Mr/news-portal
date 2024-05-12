@@ -95,7 +95,7 @@ class Comment extends Model
 
     public function commenterName(): string
     {
-        return $this->isGuest() ? $this->getGuestName() : $this->commenter->name;
+        return $this->isGuest() ? $this->getGuestName() : $this->commenter->full_name;
     }
 
     public function commenterImageLink(): string

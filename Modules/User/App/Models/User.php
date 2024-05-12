@@ -29,7 +29,7 @@ namespace Modules\User\App\Models;
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'full_name',
         'username',
         'email',
         'about',

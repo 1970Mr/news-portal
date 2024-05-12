@@ -44,7 +44,8 @@
                             <tr>
                                 <th>#</th>
                                 <th>تصویر کاربر</th>
-                                <th>نام</th>
+                                <th>نام کامل</th>
+                                <th>نام کاربری</th>
                                 <th>ایمیل</th>
                                 <th>نقش</th>
                                 <th>توضیحات</th>
@@ -69,6 +70,7 @@
                                              width="70px" height="70px">
                                     </td>
                                     <td>{{ $user->full_name }}</td>
+                                    <td>{{ $user->username }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->getRoleLocalNames()->implode(', ') }}</td>
                                     <td>{{ nullable_value(str($user->about)->limit(30)->toString()) }}</td>

@@ -12,7 +12,8 @@ class UserStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|min:2',
+            'full_name' => 'required|string|min:2',
+            'username' => 'required|string|min:2|unique:users',
             'email' => 'required|email|unique:users',
             'description' => 'nullable|string|max:600',
             'password' => 'required|min:8|confirmed',
@@ -27,6 +28,13 @@ class UserStoreRequest extends FormRequest
         $this->merge([
             'status' => (bool) $this->status,
         ]);
+    }
+
+    public function attributes(): array
+    {
+        return [
+            'full_name' => __('full_name'),
+        ];
     }
 
     /**

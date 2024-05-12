@@ -16,18 +16,18 @@
         <div class="form-group">
             <label class="sr-only control-label" for="username">نام</label>
             <div class="input-group round">
-                                    <span class="input-group-addon">
-                                        <i class="icon-user"></i>
-                                    </span>
-                <input type="text" class="form-control round" id="name" name="name" value="{{ old('name') }}">
+                <span class="input-group-addon">
+                    <i class="icon-user"></i>
+                </span>
+                <input type="text" class="form-control round" id="full_name" name="full_name" value="{{ old('full_name') }}">
             </div><!-- /.input-group-->
         </div><!-- /.form-group -->
         <div class="form-group">
             <label class="sr-only control-label" for="email">ایمیل</label>
             <div class="input-group round">
-                                    <span class="input-group-addon">
-                                        <i class="icon-envelope"></i>
-                                    </span>
+                <span class="input-group-addon">
+                    <i class="icon-envelope"></i>
+                </span>
                 <input type="text" class="form-control round ltr text-left" id="email" name="email"
                        placeholder="info@site.com" value="{{ old('email') }}">
             </div><!-- /.input-group-->
@@ -35,9 +35,9 @@
         <div class="form-group">
             <label class="sr-only control-label" for="password">رمز عبور</label>
             <div class="input-group round">
-                                    <span class="input-group-addon">
-                                        <i class="icon-key"></i>
-                                    </span>
+                <span class="input-group-addon">
+                    <i class="icon-key"></i>
+                </span>
                 <input type="password" class="form-control round rtl text-left" id="password" name="password"
                        minlength="8">
             </div><!-- /.input-group-->
@@ -45,9 +45,9 @@
         <div class="form-group">
             <label class="sr-only control-label" for="confirm_password">تکرار رمز عبور</label>
             <div class="input-group round">
-                                    <span class="input-group-addon">
-                                        <i class="icon-key"></i>
-                                    </span>
+                <span class="input-group-addon">
+                    <i class="icon-key"></i>
+                </span>
                 <input type="password" class="form-control round rtl text-left" id="password_confirmation"
                        name="password_confirmation" minlength="8">
             </div><!-- /.input-group-->

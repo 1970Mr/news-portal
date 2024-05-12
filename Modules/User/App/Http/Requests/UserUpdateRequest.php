@@ -6,14 +6,14 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UserUpdateRequest extends FormRequest
 {
-    private $user;
     /**
      * Get the validation rules that apply to the request.
      */
     public function rules(): array
     {
         return [
-            'name' => 'required|min:2',
+            'full_name' => 'required|min:2',
+            'username' => 'required|string|min:2|unique:users,username,' . $this->route('user')->id,
             'email' => 'required|email|unique:users,email,' . $this->route('user')->id,
             'description' => 'nullable|string|max:600',
             'password' => 'exclude_if:password,null|min:8|confirmed',
@@ -28,6 +28,13 @@ class UserUpdateRequest extends FormRequest
         $this->merge([
             'status' => (bool) $this->status,
         ]);
+    }
+
+    public function attributes(): array
+    {
+        return [
+            'full_name' => __('full_name'),
+        ];
     }
 
     /**
