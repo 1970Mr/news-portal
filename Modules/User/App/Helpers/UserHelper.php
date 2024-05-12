@@ -31,7 +31,8 @@ class UserHelper
     public static function createAdminUser(): Model
     {
         $attributes = collect([
-            'name' => config('user.admin_name', 'test'),
+            'full_name' => config('user.admin_full_name', 'test'),
+            'username' => config('user.admin_username', 'test'),
             'email' => config('user.admin_email'),
             'password' => Hash::make(config('user.admin_password')),
             'email_verified_at' => now(),

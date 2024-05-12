@@ -3,8 +3,8 @@
         <img src="{{ asset('storage/' . $article->user->image->file_path) }}" alt="{{ $article->user->image->alt_text }}">
     </div>
     <div class="author-info">
-        <h3>{{ $article->user->name }}</h3>
-        <p>{{ $article->user->description }}</p>
+        <h3>{{ $article->user->full_name }}</h3>
+        <p>{{ $article->user->about }}</p>
         @if($socialNetworks = $article->user->socialNetworks)
             <div class="authors-social" style="clear: both">
                 <span>مرا دنبال کنید: </span>

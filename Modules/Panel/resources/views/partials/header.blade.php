@@ -85,7 +85,7 @@
                     <a class="dropdown-toggle dropdown-hove cursor-pointer d-flex align-items-center gap-2" data-bs-toggle="dropdown">
                         <img src="{{ asset('storage/' . $currentUser->image->file_path) }}" alt="{{ $currentUser->image->alt_text }}"
                              class="object-fit-cover img-circle" style="width: 45px; height: 45px">
-                        <span>{{ $currentUser->name }}</span>
+                        <span>{{ $currentuser->full_name }}</span>
                         <i class="icon-arrow-down"></i>
                     </a>
                     <ul class="dropdown-menu">

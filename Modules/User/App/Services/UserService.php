@@ -19,7 +19,7 @@ class UserService
         $data = $request->validated();
         $request->merge(['alt_text' => 'User profile picture']);
         $user = User::create($data);
-        $profile_picture = $this->imageService->store($request, 'picture', $user->name);
+        $profile_picture = $this->imageService->store($request, 'picture', $user->full_name);
         $user->image()->save($profile_picture);
         if ($request->email_verification) {
             $user->markEmailAsVerified();
@@ -29,7 +29,7 @@ class UserService
     public function update(UserUpdateRequest $request, User $user): void
     {
         $data = $request->validated();
-        $this->imageService->uploadImageDuringUpdate($request, $user, $user->name);
+        $this->imageService->uploadImageDuringUpdate($request, $user, $user->full_name);
         $user->update($data);
         $this->checkEmailAsVerified($request, $user);
     }

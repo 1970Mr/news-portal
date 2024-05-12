@@ -1,8 +1,9 @@
-@extends('front::layouts.master', ['title' => $author->name . ' | ' . config('app.name')])
+@extends('front::layouts.master', ['title' => $author->full_name . ' | ' . config('app.name')])
 
 @section('content')
     <x-front-breadcrumbs>
-        <li>{{ $author->name }}</li>
+        <li>نویسندگان</li>
+        <li>{{ $author->full_name }}</li>
     </x-front-breadcrumbs>
 
     <section class="block-wrapper">

@@ -7,7 +7,7 @@
                       class="object-fit-cover img-circle" style="width: 70px; height: 70px">
             </a>
             <div class="user-details">
-                <h4>{{ $currentUser->name }}</h4>
+                <h4>{{ $currentuser->full_name }}</h4>
                 <p class="role">{{ __($currentUser->role()->name) }}</p>
             </div><!-- /.user-details -->
         </div><!-- /.user-box -->

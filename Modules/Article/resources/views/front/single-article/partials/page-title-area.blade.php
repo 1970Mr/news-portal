@@ -5,7 +5,7 @@
     </h2>
     <div class="post-meta">
         <span class="post-author">
-            <a href="#">{{ $article->user->name }}</a>
+            <a href="#">{{ $article->user->full_name }}</a>
         </span>
         <span class="post-date"><i class="fa fa-clock-o"></i> {{ jalalian()->forge($article->updated_at)->format(config('common.front_date_format')) }}</span>
         <span class="post-hits"><i class="fa fa-eye"></i> {{ visits($article)->count() }}</span>

@@ -31,7 +31,7 @@ class RegisterServiceTest extends TestCase
         $user = $service->createUser($request);
 
         $this->assertInstanceOf(User::class, $user);
-        $this->assertEquals('test', $user->name);
+        $this->assertEquals('test', $user->full_name);
         $this->assertEquals('test@example.com', $user->email);
         $this->assertTrue(Hash::check('password', $user->password));
     }

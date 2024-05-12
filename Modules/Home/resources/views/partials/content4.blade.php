@@ -18,7 +18,7 @@
                                     <a href="single-post1.html">{{ $article->title }}</a>
                                 </h2>
                                 <div class="post-meta">
-                                    <span class="post-author"><a href="#">{{ $article->user->name }}</a></span>
+                                    <span class="post-author"><a href="#">{{ $article->user->full_name }}</a></span>
                                     <span class="post-date">{{ jalalian()->forge($article->created_at)->format(config('common.front_date_format')) }}</span>
                                 </div>
                                 <p>{{ $article->bodyText(200) }}</p>

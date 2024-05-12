@@ -30,8 +30,9 @@ namespace Modules\User\App\Models;
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
-        'description',
+        'about',
         'password',
         'status',
     ];

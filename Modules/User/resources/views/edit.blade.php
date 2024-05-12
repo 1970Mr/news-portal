@@ -13,7 +13,7 @@
                     <div class="portlet-title">
                         <h3 class="title">
                             <i class="icon-user-follow"></i>
-                            ویرایش کاربر {{ $user->name }}
+                            ویرایش کاربر {{ $user->full_name }}
                         </h3>
                     </div><!-- /.portlet-title -->
                     <div class="buttons-box">
@@ -36,7 +36,7 @@
                         <fieldset class="row justify-content-center">
                             <div class="form-group col-lg-6">
                                 <label for="name">نام <small>(ضروری)</small></label>
-                                <input id="name" class="form-control" name="name" type="text" required value="{{ old('name', $user->name) }}">
+                                <input id="name" class="form-control" name="name" type="text" required value="{{ old('name', $user->full_name) }}">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="email">ایمیل <small>(ضروری)</small> </label>
@@ -45,7 +45,7 @@
                             <div class="form-group col-12 row justify-content-center">
                                 <div class="col-md-6">
                                     <label for="description">توضیح مختصری در مورد کاربر</label>
-                                    <textarea class="form-control" name="description" id="description">{{ old('description', $user->description) }}</textarea>
+                                    <textarea class="form-control" name="description" id="description">{{ old('description', $user->about) }}</textarea>
                                 </div>
                             </div>
                             <div class="accordion mb-3" id="accordionEditPassword">

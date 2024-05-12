@@ -14,7 +14,7 @@
                             <a href="{{ route('news.show', [$related_article->category->slug, $related_article->slug]) }}">{{ $related_article->title }}</a>
                         </h2>
                         <div class="post-meta">
-                            <span class="post-author"><a href="#">{{ $related_article->user->name }}</a></span>
+                            <span class="post-author"><a href="#">{{ $related_article->user->full_name }}</a></span>
                             <span class="post-date">{{ jalalian()->forge($related_article->created_at)->format(config('common.front_date_format')) }}</span>
                         </div>
                     </div><!-- Post content end -->

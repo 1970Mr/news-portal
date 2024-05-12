@@ -13,7 +13,7 @@
                     <div class="portlet-title">
                         <h3 class="title">
                             <i class="icon-user-follow"></i>
-                            اختصاص نقش به {{ $user->name }}
+                            اختصاص نقش به {{ $user->full_name }}
                         </h3>
                     </div><!-- /.portlet-title -->
                     <div class="buttons-box">

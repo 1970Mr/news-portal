@@ -21,7 +21,7 @@
                                             <a href="single-post1.html">{{ $article->title }}</a>
                                         </h2>
                                         <div class="post-meta">
-                                            <span class="post-author"><a href="#">{{ $article->user->name }}</a></span>
+                                            <span class="post-author"><a href="#">{{ $article->user->full_name }}</a></span>
                                             <span class="post-date">{{ jalalian()->forge($article->created_at)->format(config('common.front_date_format')) }}</span>
                                         </div>
                                     </div><!-- Post content end -->
@@ -45,7 +45,7 @@
 {{--                                        <a href="single-post1.html">{{ $chunk[0]->title }}</a>--}}
 {{--                                    </h2>--}}
 {{--                                    <div class="post-meta">--}}
-{{--                                        <span class="post-author"><a href="#">{{ $chunk[0]->user->name }}</a></span>--}}
+{{--                                        <span class="post-author"><a href="#">{{ $chunk[0]->user->full_name }}</a></span>--}}
 {{--                                        <span class="post-date">{{ jalalian()->forge($chunk[0]->created_at)->format(config('common.front_date_format')) }}</span>--}}
 {{--                                    </div>--}}
 {{--                                </div><!-- Post content end -->--}}

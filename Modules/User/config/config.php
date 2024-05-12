@@ -2,7 +2,8 @@
 
 return [
     'name' => 'User',
-    'admin_name' => env('ADMIN_NAME', 'test'),
+    'admin_full_name' => env('ADMIN_FULL_NAME', 'test'),
+    'admin_username' => env('ADMIN_USERNAME', 'test'),
     'admin_email' => env('ADMIN_EMAIL', 'test@gmail.com'),
     'admin_password' => env('ADMIN_PASSWORD', 'password'),
 //    'default_profile_picture' => module_path('User', 'Database/Seeders/data/images/profile_picture.jpg')

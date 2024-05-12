@@ -15,7 +15,7 @@ class ProfileService
     {
         $user = User::query()->find(auth()->id());
         $data = $request->validated();
-        $this->imageService->uploadImageDuringUpdate($request, $user, $user->name);
+        $this->imageService->uploadImageDuringUpdate($request, $user, $user->full_name);
         return $user->update($data);
     }
 }
