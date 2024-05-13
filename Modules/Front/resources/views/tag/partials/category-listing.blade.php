@@ -1,17 +1,6 @@
 <div class="block category-listing">
     <h3 class="block-title"><span>{{ $tag->name }}</span></h3>
 
-    <div class="row">
-        <div class="col-md-12 col-sm-12">
-            <div class="post-block-style top-larget-post clearfix">
-                <div class="post-thumb">
-                    <a>
-                        <img class="img-responsive" src="{{ asset('storage/' . $tag->image->file_path) }}" alt="{{ $tag->image->alt_text }}" style="height: 490px">
-                    </a>
-                </div>
-            </div>
-        </div><!-- Col end -->
-    </div>
     <div class="row" style="min-height: 5rem">
         @foreach($articles as $article)
             <div class="col-md-6 col-sm-6">
