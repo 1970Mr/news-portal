@@ -12,6 +12,7 @@ class AuthorController extends Controller
     {
         $articlesCount = $user->articles()->count();
         $articles = $user->articles()->with(['category', 'image', 'approvedComments'])->paginate(10);
+        abort_if($articles->count() < 1, 404);
         $commentsCount = $user->approvedComments()->count();
         $socialNetworks = $user->socialNetworks;
         return view('front::author.index',
