@@ -85,6 +85,8 @@ class Article extends Model
 
     public function bodyText(int $limit = 120): Stringable
     {
-        return str(strip_tags($this->body))->limit($limit);
+        $cleanedBody = str_replace('&nbsp;', ' ', $this->body);
+        $strippedBody = strip_tags($cleanedBody);
+        return str($strippedBody)->limit($limit);
     }
 }
