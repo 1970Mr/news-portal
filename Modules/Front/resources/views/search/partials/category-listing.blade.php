@@ -1,8 +1,9 @@
 <div class="block category-listing">
+    <h3 class="block-title"><span>{{ $searchText }}</span></h3>
     <div class="row" style="min-height: 5rem">
         @if($articles->count() < 1)
             <h3 class="alert-warning" style="padding: 3rem; margin: 0 1rem; text-align: center; border-radius: 5px;">
-                مطلبی با محتوای موردنظر شما یافت نشد!
+                مطلبی مناسب با جستجوی موردنظر شما یافت نشد!
             </h3>
         @endif
         @foreach($articles as $article)

@@ -6,7 +6,7 @@ use Modules\Front\App\Http\Controllers\CategoryController;
 use Modules\Front\App\Http\Controllers\SearchController;
 use Modules\Front\App\Http\Controllers\TagController;
 
-Route::get('author/{user:username}', [AuthorController::class, 'index'])->name('author.index');
+Route::get('author/{user:username}', AuthorController::class)->name('author.index');
 
 Route::get('categories/{category:slug}', [CategoryController::class, 'show'])->name('categories.show');
 

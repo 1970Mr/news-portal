@@ -12,7 +12,6 @@ class CategoryController extends Controller
     {
         $subCategories = $category->categories()->latest()->get();
         $articles = $category->articles()->with(['category', 'image', 'approvedComments', 'user',])->paginate(10);
-        abort_if($articles->count() < 1, 404);
         return view('front::category.index',
             compact(['category', 'subCategories', 'articles']));
     }

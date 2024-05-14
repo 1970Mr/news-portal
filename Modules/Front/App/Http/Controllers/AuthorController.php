@@ -8,11 +8,10 @@ use Modules\User\App\Models\User;
 
 class AuthorController extends Controller
 {
-    public function index(User $user): View
+    public function __invoke(User $user): View
     {
         $articlesCount = $user->articles()->count();
         $articles = $user->articles()->with(['category', 'image', 'approvedComments'])->paginate(10);
-        abort_if($articles->count() < 1, 404);
         $commentsCount = $user->approvedComments()->count();
         $socialNetworks = $user->socialNetworks;
         return view('front::author.index',

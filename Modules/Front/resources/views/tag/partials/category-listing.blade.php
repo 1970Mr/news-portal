@@ -1,6 +1,10 @@
 <div class="block category-listing">
     <h3 class="block-title"><span>{{ $tag->name }}</span></h3>
-
+    @if($articles->count() < 1)
+        <h3 class="alert-warning" style="padding: 3rem; margin: 0 1rem; text-align: center; border-radius: 5px;">
+            مطلبی برای تگ موردنظر یافت نشد!
+        </h3>
+    @endif
     <div class="row" style="min-height: 5rem">
         @foreach($articles as $article)
             <div class="col-md-6 col-sm-6">
