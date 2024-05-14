@@ -1,9 +1,9 @@
 <div class="block category-listing">
     <div class="row" style="min-height: 5rem">
         @if($articles->count() < 1)
-            <p class="alert-warning" style="padding: 1rem; border-radius: 5px;">
+            <h3 class="alert-warning" style="padding: 3rem; margin: 0 1rem; text-align: center; border-radius: 5px;">
                 مطلبی با محتوای موردنظر شما یافت نشد!
-            </p>
+            </h3>
         @endif
         @foreach($articles as $article)
             <div class="col-md-6 col-sm-6">
