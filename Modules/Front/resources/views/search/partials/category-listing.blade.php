@@ -3,7 +3,7 @@
     <div class="row" style="min-height: 5rem">
         @if($articles->count() < 1)
             <h3 class="alert-warning" style="padding: 3rem; margin: 0 1rem; text-align: center; border-radius: 5px;">
-                مطلبی مناسب با جستجوی موردنظر شما یافت نشد!
+                مطلبی مناسب با جستجوی {{ "\"$searchText\"" }} یافت نشد!
             </h3>
         @endif
         @foreach($articles as $article)

@@ -1,4 +1,4 @@
-@if($paginator->lastPage() > 1)
+@if($paginator->count() > 1 && $paginator->lastPage() > 1)
     <div class="paging">
         <ul class="pagination">
             <!-- Previous Page Link -->

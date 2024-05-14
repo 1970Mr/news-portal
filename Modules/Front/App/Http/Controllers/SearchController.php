@@ -16,6 +16,9 @@ class SearchController extends Controller
         $articles = Article::with(['category', 'image', 'approvedComments', 'user'])
             ->whereIn('id', $articleIds)
             ->paginate(10);
+        if (!$searchText) {
+            $searchText = __('all');
+        }
         return view('front::search.index',
             compact(['searchText', 'articles']));
     }

@@ -152,10 +152,10 @@
                 <span id="search"><i class="fa fa-search" title="جستجو"></i></span>
             </div><!-- Search end -->
 
-            <div class="search-block" style="display: none;">
-                <input type="text" class="form-control" placeholder="عبارتی را وارد نموده و اینتر بزنید">
+            <form class="search-block" style="display: none;" action="{{ route('search.index') }}">
+                <input name="text" type="text" class="form-control" placeholder="عبارتی را وارد نموده و اینتر بزنید">
                 <span class="search-close">×</span>
-            </div><!-- Site search end -->
+            </form><!-- Site search end -->
 
         </div><!--/ Row end -->
     </div><!--/ Container end -->
