@@ -15,9 +15,11 @@
                     <x-front-listing-page-pagination :paginator="$articles" />
                 </div><!-- Content Col end -->
 
-                @include('front::partials.sidebar1')
+                <div class="col-xs-4 row">
+                    @include('front::partials.sidebar1')
 
-                @include('front::partials.sidebar2')
+                    @include('front::partials.sidebar2')
+                </div>
             </div><!-- Row end -->
         </div><!-- Container end -->
     </section><!-- First block end -->

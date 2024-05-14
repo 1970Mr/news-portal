@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
+use Laravel\Scout\Searchable;
 use Modules\Category\App\Models\Category;
 use Modules\Comment\App\Traits\HasComments;
 use Modules\FileManager\App\Traits\HasImage;
@@ -19,7 +20,7 @@ use Modules\User\App\Models\User;
 
 class Article extends Model
 {
-    use HasFactory, HasImage, HasHotness, HasComments;
+    use HasFactory, HasImage, HasHotness, HasComments, Searchable;
 
     protected $fillable = [
         'title',
@@ -33,6 +34,16 @@ class Article extends Model
         'category_id',
         'user_id',
     ];
+
+    public function toSearchableArray()
+    {
+        return [
+            'title' => (int) $this->id,
+            'slug' => $this->name,
+            'description' => (float) $this->price,
+            'keywords' => (float) $this->price,
+        ];
+    }
 
     protected function slug(): Attribute
     {

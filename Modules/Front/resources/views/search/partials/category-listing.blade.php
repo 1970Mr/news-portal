@@ -1,5 +1,10 @@
 <div class="block category-listing">
     <div class="row" style="min-height: 5rem">
+        @if($articles->count() < 1)
+            <p class="alert-warning" style="padding: 1rem; border-radius: 5px;">
+                مطلبی با محتوای موردنظر شما یافت نشد!
+            </p>
+        @endif
         @foreach($articles as $article)
             <div class="col-md-6 col-sm-6">
                 <div class="post-block-style post-grid clearfix">
