@@ -12,7 +12,11 @@ class ContactInfoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|string',
+            'content' => 'required|string',
+            'address' => 'nullable|string',
+            'email' => 'nullable|email',
+            'phone' => 'nullable|string',
         ];
     }
 

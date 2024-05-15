@@ -3,12 +3,14 @@
 namespace Modules\ContactUs\App\Services;
 
 use Modules\ContactUs\App\Http\Requests\ContactInfoRequest;
+use Modules\ContactUs\App\Models\ContactInfo;
 
 class ContactService
 {
     public function update(ContactInfoRequest $request): void
     {
-//        $this->contactService->update($request);
-//        return back()->with(['success' => __('entity_edited', ['entity' => __('about_us')])]);
+        $validData = $request->validated();
+        $contactInfo = ContactInfo::query()->firstOrNew();
+        $contactInfo->fill($validData)->save();
     }
 }
