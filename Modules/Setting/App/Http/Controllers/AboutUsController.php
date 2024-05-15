@@ -21,7 +21,7 @@ class AboutUsController extends Controller
     public function edit(): View
     {
         $about = AboutUs::first();
-        return view('setting::social-networks-address', compact(['about']));
+        return view('setting::about-us', compact(['about']));
     }
 
     public function update(AboutUsRequest $request): RedirectResponse

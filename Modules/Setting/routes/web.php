@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Modules\Setting\App\Http\Controllers\AboutUsController;
 use Modules\Setting\App\Http\Controllers\SocialNetworkController;
 
 /*
@@ -14,9 +15,20 @@ use Modules\Setting\App\Http\Controllers\SocialNetworkController;
 |
 */
 
-Route::prefix(config('app.panel_prefix', 'panel') . '/settings/social-networks')
-    ->name(config('app.panel_prefix', 'panel') . '.settings.social-networks.')
-    ->controller(SocialNetworkController::class)->group(function () {
-    Route::get('/', 'edit')->name('edit');
-    Route::put('/', 'update');
-});
+Route::prefix(config('app.panel_prefix', 'panel') . '/settings')
+    ->name(config('app.panel_prefix', 'panel') . '.settings.')
+    ->group(function () {
+        Route::prefix('/social-networks')
+            ->name('social-networks.')
+            ->controller(SocialNetworkController::class)->group(function () {
+                Route::get('/', 'edit')->name('edit');
+                Route::put('/', 'update');
+            });
+
+        Route::prefix('/about-us')
+            ->name('about-us.')
+            ->controller(AboutUsController::class)->group(function () {
+                Route::get('/', 'edit')->name('edit');
+                Route::put('/', 'update');
+            });
+    });

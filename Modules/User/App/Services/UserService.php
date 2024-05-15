@@ -17,7 +17,7 @@ class UserService
     public function store(UserStoreRequest $request): void
     {
         $data = $request->validated();
-        $request->merge(['alt_text' => 'User profile picture']);
+        $request->merge(['alt_text' => 'User Profile Picture']);
         $user = User::create($data);
         $profile_picture = $this->imageService->store($request, 'picture', $user->full_name);
         $user->image()->save($profile_picture);

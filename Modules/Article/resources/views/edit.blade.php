@@ -114,7 +114,7 @@
                             <div class="col-12 col-md-6 row form-group justify-content-center">
                                 @can(config('permissions_list.ARTICLE_EDITOR_CHOICE', false))
                                     <div class="text-center col-4">
-                                        {{-- Using title because status is not always --}}
+                                        {{-- Using title because editor_choice is not always --}}
                                         <input id="editor_choice" class="form-control" name="editor_choice" type="checkbox" @if(old('editor_choice') || (!old('title') && $article->editor_choice) ) checked @endif>
                                         <label for="editor_choice">انتخاب سردبیر</label>
                                     </div>

@@ -50,7 +50,7 @@ class UserHelper
     {
         $defaultImagePath = config('user.default_profile_picture.file_path');
         $uploadedFile = new UploadedFile($defaultImagePath, basename($defaultImagePath));
-        $defaultAltText = 'Default profile picture';
+        $defaultAltText = 'Default Profile Picture';
         $uploadedFilePath = FileManagerService::uploadFromFile($uploadedFile);
         return Image::query()->create([
             'file_path' => $uploadedFilePath,
