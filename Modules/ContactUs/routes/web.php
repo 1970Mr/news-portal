@@ -14,8 +14,8 @@ use Modules\ContactUs\App\Http\Controllers\ContactInfoController;
 |
 */
 
-Route::prefix(config('app.panel_prefix', 'panel') . '/contact')
-    ->name(config('app.panel_prefix', 'panel') . '.contact.')
+Route::prefix(config('app.panel_prefix', 'panel') . '/contact-us')
+    ->name(config('app.panel_prefix', 'panel') . '.contact-us.')
     ->group(function () {
         Route::controller(ContactInfoController::class)->group(function () {
                 Route::get('/edit', 'edit')->name('edit');

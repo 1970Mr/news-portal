@@ -4,8 +4,6 @@ namespace Modules\ContactUs\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\View\View;
 use Modules\ContactUs\App\Http\Requests\ContactInfoRequest;
 use Modules\ContactUs\App\Models\ContactInfo;
@@ -21,7 +19,7 @@ class ContactInfoController extends Controller
     public function edit(): View
     {
         $contact = ContactInfo::first();
-        return view('setting::about-us', compact(['contact']));
+        return view('contact-us::contact-info', compact(['contact']));
     }
 
     public function update(ContactInfoRequest $request): RedirectResponse

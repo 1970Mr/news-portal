@@ -43,21 +43,21 @@
                         <fieldset class="row justify-content-center">
                             <div class="form-group col-lg-6">
                                 <label for="title">عنوان <small>(ضروری)</small></label>
-                                <input id="title" class="form-control" name="title" value="{{ old('title', $about?->title) }}">
+                                <input id="title" class="form-control" name="title" value="{{ old('title', $about?->title) }}" required>
                             </div>
 
                             <div class="form-group col-12">
                                 <label>محتوا <small>(ضروری)</small></label>
                                 <div id="toolbar-container"></div>
                                 <div id="editor"></div>
-                                <input type="hidden" id="content" name="content" value="{{ old('content', $about?->content) }}">
+                                <input type="hidden" id="content" name="content" value="{{ old('content', $about?->content) }}" required>
                             </div>
 
                             <div class="form-group">
                                 <div class="col-sm-6 col-sm-offset-4 mx-auto">
                                     <button class="btn btn-success btn-block">
                                         <i class="icon-check"></i>
-                                        درباره ما
+                                        ثبت اطلاعات درباره ما
                                     </button>
                                 </div>
                             </div>
@@ -126,7 +126,7 @@
                 }
             }
         });
-        $("#article-create-form").validate();
+        $("#main-form").validate();
     </script>
 @endpush
 
