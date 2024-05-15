@@ -134,6 +134,7 @@ class FrontServiceProvider extends ServiceProvider
                 'front::category.index',
                 'front::tag.index',
                 'front::search.index',
+                'front::about-us.index',
             ], static function ($view) use ($socialNetworks) {
                 $view->with(resolve(ArticleService::class)->composeViewData() + ['social_networks' => $socialNetworks]);
             });
