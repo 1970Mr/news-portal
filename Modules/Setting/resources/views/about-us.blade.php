@@ -12,7 +12,7 @@
                 <div class="portlet-heading">
                     <div class="portlet-title">
                         <h3 class="title">
-                            <i class="icon-link"></i>
+                            <i class="icon-question"></i>
                             درباره ما
                         </h3>
                     </div><!-- /.portlet-title -->
