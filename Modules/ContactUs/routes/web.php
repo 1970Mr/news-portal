@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Modules\ContactUs\App\Http\Controllers\ContactInfoController;
 use Modules\ContactUs\App\Http\Controllers\UserMessageController;
+use Modules\ContactUs\App\Http\Controllers\Front\UserMessageController as FrontUserMessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,6 @@ Route::prefix(config('app.panel_prefix', 'panel') . '/contact-us')
             Route::put('/show/{userMessage}', 'show')->name('show');
         });
     });
+
+Route::get('contact-us', [FrontUserMessageController::class, 'index'])->name('contact-us.index');
+
