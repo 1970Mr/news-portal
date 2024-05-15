@@ -15,7 +15,7 @@ class AboutUsController extends Controller
 {
     public function __construct(private readonly AboutUsService $aboutUsService)
     {
-//        $this->middleware('can:' . config('permissions_list.SETTING_ABOUT_US', false));
+        $this->middleware('can:' . config('permissions_list.SETTING_ABOUT_US', false));
     }
 
     public function edit(): View

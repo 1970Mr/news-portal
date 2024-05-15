@@ -4,6 +4,9 @@ return [
     'SUPER_ADMIN' => 'admin::full_access',
     'VIEW_AVERAGE_VISITORS' => 'admin::view_average_visitors',
 
+    'SETTING_SOCIAL_NETWORKS' => 'setting::social_networks',
+    'SETTING_ABOUT_US' => 'setting::about_us',
+
     'USER_INDEX' => 'user::index',
     'USER_STORE' => 'user::store',
     'USER_UPDATE' => 'user::update',
@@ -51,6 +54,4 @@ return [
     'PROFILE_CHANGE_PASSWORD' => 'profile::change_password',
     'PROFILE_CHANGE_EMAIL' => 'profile::change_email',
     'PROFILE_SOCIAL_NETWORKS' => 'profile::social_networks',
-
-    'SETTING_SOCIAL_NETWORKS' => 'setting::social_networks',
 ];

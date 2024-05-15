@@ -126,9 +126,11 @@ return [
             'icon' => 'icon-settings',
             'active_routes' => [
                 config('app.panel_prefix', 'panel') . '.settings.social-networks.edit',
+                config('app.panel_prefix', 'panel') . '.settings.about-us.edit',
             ],
             'permissions' => [
                 config('permissions_list.SETTING_SOCIAL_NETWORKS', false),
+                config('permissions_list.SETTING_ABOUT_US', false),
             ],
             'children' => [
                 [
@@ -136,6 +138,12 @@ return [
                     'icon' => 'icon-link',
                     'url' => route(config('app.panel_prefix', 'panel') . '.settings.social-networks.edit'),
                     'permissions' => config('permissions_list.SETTING_SOCIAL_NETWORKS', false),
+                ],
+                [
+                    'title' => 'درباره ما',
+                    'icon' => 'icon-question',
+                    'url' => route(config('app.panel_prefix', 'panel') . '.settings.about-us.edit'),
+                    'permissions' => config('permissions_list.SETTING_ABOUT_US', false),
                 ],
             ]
         ],

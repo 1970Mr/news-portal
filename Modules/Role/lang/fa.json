@@ -50,5 +50,6 @@
     "profile::change_email": "تغییر ایمیل",
     "profile::social_networks": "ثبت شبکه\u200Cهای اجتماعی کاربر",
 
-    "setting::social_networks": "ثبت شبکه\u200Cهای اجتماعی سایت"
+    "setting::social_networks": "ثبت شبکه\u200Cهای اجتماعی سایت",
+    "setting::about_us": "درباره ما"
 }
