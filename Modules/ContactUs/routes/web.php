@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Modules\ContactUs\App\Http\Controllers\ContactInfoController;
+use Modules\ContactUs\App\Http\Controllers\UserMessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +22,9 @@ Route::prefix(config('app.panel_prefix', 'panel') . '/contact-us')
                 Route::get('/edit', 'edit')->name('edit');
                 Route::put('/update', 'update')->name('update');
             });
+
+        Route::controller(UserMessageController::class)->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::put('/show/{userMessage}', 'show')->name('show');
+        });
     });
