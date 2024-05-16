@@ -37,7 +37,7 @@ class ArticleService
 
     public function getArticleWithMostComments(): Collection
     {
-        return $this->baseQuery()
+        return Article::with(['hotness', 'image', 'category', 'tags', 'user'])->active()->published()
             ->withCount('approvedComments')
             ->orderBy('approved_comments_count', 'desc')
             ->limit(3)

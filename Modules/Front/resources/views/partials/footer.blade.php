@@ -10,17 +10,17 @@
                                 <li class="clearfix">
                                     <div class="post-block-style post-float clearfix">
                                         <div class="post-thumb">
-                                            <a href="single-post1.html">
+                                            <a href="{{ route('news.show', [$editor_choice->category->slug, $editor_choice->slug]) }}">
                                                 <img class="img-responsive" src="{{ asset('storage/' . $editor_choice->image->file_path) }}" alt="{{ $editor_choice->image->alt_text }}">
                                             </a>
                                         </div><!-- Post thumb end -->
 
                                         <div class="post-content">
                                             <h2 class="post-title title-small">
-                                                <a href="single-post1.html">{{ $editor_choice->title }}</a>
+                                                <a href="{{ route('news.show', [$editor_choice->category->slug, $editor_choice->slug]) }}">{{ $editor_choice->title }}</a>
                                             </h2>
                                             <div class="post-meta">
-                                                <span class="post-date">{{ jalalian()->forge($editor_choice->created_at)->format(config('common.front_date_format')) }}</span>
+                                                <span class="post-date">{{ front_date_format($editor_choice->created_at) }}</span>
                                             </div>
                                         </div><!-- Post content end -->
                                     </div><!-- Post block style end -->
@@ -36,7 +36,7 @@
                         <ul>
                             @foreach($footer['hot_topics'] as $tag)
                                 <li>
-                                    <a href="#">
+                                    <a href="{{ route('tags.show', $tag->slug) }}">
                                         <span class="catTitle">{{ $tag->name }}</span>
                                         <span class="catCounter">{{ $tag->articles_count }}</span>
                                     </a>
