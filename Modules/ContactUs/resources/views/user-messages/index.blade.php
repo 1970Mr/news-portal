@@ -55,7 +55,7 @@
                                 <th>ایمیل</th>
                                 <th>شماره تماس</th>
                                 <th>پیام</th>
-{{--                                <th>وضعیت خواندن</th>--}}
+                                <th>وضعیت خواندن</th>
                                 <th>تاریخ دریافت پیام</th>
                                 <th>عملیات</th>
                             </tr>
@@ -69,7 +69,7 @@
                                     <td>{{ $userMessage->email }}</td>
                                     <td>{{ nullable_value($userMessage->phone) }}</td>
                                     <td>{{ str($userMessage->message)->limit(30) }}</td>
-{{--                                    <td class="{{ $userMessage->setStatusClass() }} status">{{ $userMessage->getStatus() }}</td>--}}
+                                    <td class="{{ status_class($userMessage->isSeen()) }}">{{ $userMessage->getSeenStatus() }}</td>
                                     <td class="ltr text-right created-at">{{ jalalian()->forge($userMessage->created_at)->format(config('common.datetime_format')) }}</td>
                                     <td>
                                         <div class="d-flex gap-2">

@@ -21,6 +21,7 @@ class UserMessageController extends Controller
 
     public function show(UserMessage $userMessage): View
     {
+        $userMessage->markAsSeen();
         return view('contact-us::user-messages.show', compact(['userMessage']));
     }
 }
