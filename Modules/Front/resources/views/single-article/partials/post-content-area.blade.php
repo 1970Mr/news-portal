@@ -7,7 +7,7 @@
     <div class="entry-content">
         {!! $article->body !!}
     </div><!-- Entry content end -->
-    @include('article::front.single-article.partials.tags-area')
+    @include('front::single-article.partials.tags-area')
 
-    @include('article::front.single-article.partials.share-items')
+    @include('front::single-article.partials.share-items')
 </div><!-- Post content end -->

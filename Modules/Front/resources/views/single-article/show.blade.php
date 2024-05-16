@@ -12,21 +12,21 @@
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
 
                     <div class="single-post">
-                        @include('article::front.single-article.partials.page-title-area')
+                        @include('front::single-article.partials.page-title-area')
 
-                        @include('article::front.single-article.partials.post-content-area')
+                        @include('front::single-article.partials.post-content-area')
                     </div><!-- Single post end -->
 
-                    @include('article::front.single-article.partials.post-navigation')
+                    @include('front::single-article.partials.post-navigation')
 
-                    @include('article::front.single-article.partials.author-box')
+                    @include('front::single-article.partials.author-box')
 
-                    @include('article::front.single-article.partials.related-posts')
+                    @include('front::single-article.partials.related-posts')
 
                     <!-- Post comment start -->
-                    @include('article::front.single-article.partials.comments-area')
+                    @include('front::single-article.partials.comments-area')
 
-                    @include('article::front.single-article.partials.comment-form')
+                    @include('front::single-article.partials.comment-form')
                 </div><!-- Content Col end -->
 
                 @include('front::partials.sidebar1')
@@ -38,5 +38,5 @@
 @endsection
 
 @push('styles')
-    @include('article::front.single-article.partials.custom-show-styles')
+    @include('front::single-article.partials.custom-show-styles')
 @endpush

@@ -11,6 +11,6 @@
             </div>
         @endif
 
-        @include('article::front.single-article.partials.comment-form-inputs')
+        @include('front::single-article.partials.comment-form-inputs')
     </form><!-- Form end -->
 </div><!-- Comments form end -->

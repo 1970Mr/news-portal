@@ -43,7 +43,7 @@
                                 <div class="modal-body">
                                     <!-- Your form here -->
                                     <form id="commentForm" role="form" action="{{ route('comments.reply', $child_comment->id) }}" method="POST">
-                                        @include('article::front.single-article.partials.comment-form-inputs')
+                                        @include('front::single-article.partials.comment-form-inputs')
                                     </form>
                                 </div>
                             </div>

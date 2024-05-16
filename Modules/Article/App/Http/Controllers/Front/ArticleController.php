@@ -37,6 +37,6 @@ class ArticleController extends Controller
         }
 
         visits($article)->increment();
-        return view('article::front.single-article.show', compact(['article', 'category', 'shared_links', 'previous_article', 'next_article', 'related_articles']));
+        return view('front::single-article.show', compact(['article', 'category', 'shared_links', 'previous_article', 'next_article', 'related_articles']));
     }
 }

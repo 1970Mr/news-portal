@@ -129,7 +129,7 @@ class FrontServiceProvider extends ServiceProvider
             $socialNetworks = resolve(SocialNetworkService::class)->getSocialNetworksWithTag(SocialNetworkService::TAG);
             View::composer([
                 'home::index',
-                'article::front.single-article.show',
+                'front::single-article.show',
                 'front::author.index',
                 'front::category.index',
                 'front::tag.index',
