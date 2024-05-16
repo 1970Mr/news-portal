@@ -10,6 +10,10 @@
             <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     @include('front::contact-us.partials.content')
+
+                    @include('front::contact-us.partials.contact-info')
+
+                    @include('front::contact-us.partials.contact-form')
                 </div><!-- Content Col end -->
 
                 <div class="col-xs-4 row" style="padding: 0; margin: 0">

@@ -30,5 +30,10 @@ Route::prefix(config('app.panel_prefix', 'panel') . '/contact-us')
         });
     });
 
-Route::get('contact-us', [FrontUserMessageController::class, 'index'])->name('contact-us.index');
-
+Route::prefix('contact-us')
+    ->name('contact-us.')
+    ->controller(FrontUserMessageController::class)
+    ->group(function () {
+        Route::get('/', [FrontUserMessageController::class, 'index'])->name('index');
+        Route::post('/message', [FrontUserMessageController::class, 'store'])->name('message');
+    });
