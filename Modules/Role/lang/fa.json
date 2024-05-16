@@ -1,6 +1,11 @@
 {
     "admin::full_access": "دسترسی کامل",
     "admin::view_average_visitors": "مشاهده میانگین بازدیدکنندگان",
+    "admin::contact_info": "ثبت اطلاعات تماس با ما",
+    "admin::contact_user_messages": "مشاهده پیام\u200Cهای کاربران",
+
+    "setting::social_networks": "ثبت شبکه\u200Cهای اجتماعی سایت",
+    "setting::about_us": "ثبت اطلاعات درباره ما",
 
     "user::index": "مشاهده کاربران",
     "user::store": "ایجاد کاربر",
@@ -48,8 +53,5 @@
     "profile::edit": "ویرایش پروفایل",
     "profile::change_password": "تغییر رمز عبور",
     "profile::change_email": "تغییر ایمیل",
-    "profile::social_networks": "ثبت شبکه\u200Cهای اجتماعی کاربر",
-
-    "setting::social_networks": "ثبت شبکه\u200Cهای اجتماعی سایت",
-    "setting::about_us": "درباره ما"
+    "profile::social_networks": "ثبت شبکه\u200Cهای اجتماعی کاربر"
 }

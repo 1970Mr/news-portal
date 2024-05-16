@@ -19,7 +19,6 @@ class UserMessageController extends Controller
 
     public function store(UserMessageRequest $request): RedirectResponse
     {
-        debug('test');
         UserMessage::create($request->validated());
         return back()->with('success', __('Your message has been sent successfully.'));
     }
