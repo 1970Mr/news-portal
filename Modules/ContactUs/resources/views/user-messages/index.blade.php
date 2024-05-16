@@ -3,6 +3,7 @@
 @section('content')
 
     <x-common-breadcrumbs>
+        <li><a>تماس با ما</a></li>
         <li><a>لیست پیام‌های کاربران</a></li>
     </x-common-breadcrumbs>
 

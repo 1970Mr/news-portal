@@ -10,17 +10,17 @@
         <div class="top-bar">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="{{ asset('admin/#') }}" class="btn" id="toggle-sidebar">
+                    <a class="btn" id="toggle-sidebar">
                         <span class="menu"></span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ asset('admin/#') }}" class="btn open" id="toggle-sidebar-top">
+                    <a class="btn open" id="toggle-sidebar-top">
                         <i class="icon-user-following"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ asset('admin/#') }}" class="btn" id="toggle-dark-mode">
+                    <a class="btn" id="toggle-dark-mode">
                         <i class="icon-bulb"></i>
                     </a>
                 </li>
@@ -31,6 +31,51 @@
                         <i class="icon-size-fullscreen"></i>
                     </a>
                 </li>
+                @can(config('permissions_list.CONTACT_USER_MESSAGES', false))
+                    <li class="dropdown dropdown-messages">
+                        <a class="dropdown-toggle btn" data-bs-toggle="dropdown">
+                            <i class="icon-earphones-alt"></i>
+                            <span class="badge badge-primary">
+                                {{ $unseenUserMessagesCount }}
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu custom-dropdown-menu has-scrollbar">
+                            <li class="dropdown-header clearfix">
+                                <span class="float-start">
+                                    <a href="{{ $unseenUserMessagesRoute }}" rel="tooltip" title="خواندن همه"
+                                       data-placement="left">
+                                        <i class="icon-eye"></i>
+                                    </a>
+                                    شما {{ $unseenUserMessagesCount }} پیام تازه دارید.
+                                </span>
+                            </li>
+                            <li class="dropdown-body">
+                                <ul class="dropdown-menu-list">
+                                    @foreach($unseenUserMessages as $unseenUserMessage)
+                                        <li class="clearfix">
+                                            <a href="{{ route(config('app.panel_prefix', 'panel') . '.contact-us.messages.show', $unseenUserMessage->id) }}">
+                                                <p class="clearfix">
+                                                    <small class="float-end text-muted d-flex align-items-center gap-1">
+                                                        <i class="icon-clock"></i>
+                                                        <span>{{ jalalian()->forge($unseenUserMessage->created_at)->ago() }}</span>
+                                                    </small>
+                                                </p>
+                                                <p>{{ str($unseenUserMessage->message)->limit(30) }}</p>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                            <li class="dropdown-footer clearfix">
+                                <a href="{{ $unseenUserMessagesRoute }}">
+                                    <i class="icon-list fa-flip-horizontal"></i>
+                                    مشاهده همه پیام‌ها
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @endcan
+
                 @can(config('permissions_list.COMMENT_SHOW', false))
                     <li class="dropdown dropdown-messages">
                         <a class="dropdown-toggle btn" data-bs-toggle="dropdown">
@@ -46,7 +91,7 @@
                                        data-placement="left">
                                         <i class="icon-eye"></i>
                                     </a>
-                                    شما {{ $pendingCommentsCount }} پیام تازه دارید.
+                                    شما {{ $pendingCommentsCount }} نظر تازه دارید.
                                 </span>
                             </li>
                             <li class="dropdown-body">
@@ -74,7 +119,7 @@
                             <li class="dropdown-footer clearfix">
                                 <a href="{{ $pendingCommentsRoute }}">
                                     <i class="icon-list fa-flip-horizontal"></i>
-                                    مشاهده همه پیام ها
+                                    مشاهده همه نظرها
                                 </a>
                             </li>
                         </ul>

@@ -8,12 +8,18 @@ use Modules\ContactUs\App\Http\Controllers\Front\UserMessageController as FrontU
 Route::prefix(config('app.panel_prefix', 'panel') . '/contact-us')
     ->name(config('app.panel_prefix', 'panel') . '.contact-us.')
     ->group(function () {
-        Route::controller(ContactInfoController::class)->name('info.')->group(function () {
+        Route::prefix('info')
+            ->name('info.')
+            ->controller(ContactInfoController::class)
+            ->group(function () {
                 Route::get('/edit', 'edit')->name('edit');
                 Route::put('/update', 'update')->name('update');
             });
 
-        Route::controller(UserMessageController::class)->name('messages.')->group(function () {
+        Route::prefix('messages')
+            ->name('messages.')
+            ->controller(UserMessageController::class)
+            ->group(function () {
             Route::get('/', 'index')->name('index');
             Route::get('/show/{userMessage}', 'show')->name('show');
         });
