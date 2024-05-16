@@ -20,9 +20,10 @@ Route::prefix(config('app.panel_prefix', 'panel') . '/contact-us')
             ->name('messages.')
             ->controller(UserMessageController::class)
             ->group(function () {
-            Route::get('/', 'index')->name('index');
-            Route::get('/show/{userMessage}', 'show')->name('show');
-        });
+                Route::get('/', 'index')->name('index');
+                Route::get('/show/{userMessage}', 'show')->name('show');
+                Route::post('/mark-all-seen', 'markAllAsSeen')->name('mark-all-seen');
+            });
     });
 
 Route::prefix('contact-us')

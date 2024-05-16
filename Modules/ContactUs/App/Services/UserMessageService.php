@@ -25,4 +25,11 @@ class UserMessageService
             default => $query,
         };
     }
+
+    public function markAllAsSeen(): void
+    {
+        UserMessage::unseen()->each(function (UserMessage $message) {
+            $message->markAsSeen();
+        });
+    }
 }

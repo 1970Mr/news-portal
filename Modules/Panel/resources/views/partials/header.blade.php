@@ -42,10 +42,12 @@
                         <ul class="dropdown-menu custom-dropdown-menu has-scrollbar">
                             <li class="dropdown-header clearfix">
                                 <span class="float-start">
-                                    <a href="{{ $unseenUserMessagesRoute }}" rel="tooltip" title="خواندن همه"
-                                       data-placement="left">
-                                        <i class="icon-eye"></i>
-                                    </a>
+                                    <form action="{{ $markAllAsSeenUserMessages }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        <button type="submit" rel="tooltip" title="خواندن همه" data-placement="left" style="padding: 0; border: none; background: none;">
+                                            <i class="icon-eye"></i>
+                                        </button>
+                                    </form>
                                     شما {{ $unseenUserMessagesCount }} پیام تازه دارید.
                                 </span>
                             </li>

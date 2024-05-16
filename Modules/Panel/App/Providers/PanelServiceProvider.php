@@ -156,8 +156,10 @@ class PanelServiceProvider extends ServiceProvider
         $unseenUserMessagesCount = $unseenUserMessagesQuery->count();
         $unseenUserMessages = $unseenUserMessagesQuery->limit(10)->latest()->get();
         $unseenUserMessagesRoute = route(config('app.panel_prefix', 'panel') . '.contact-us.messages.index', ['filter' => UserMessage::UNSEEN]);
+        $markAllAsSeenUserMessages = route(config('app.panel_prefix', 'panel') . '.contact-us.messages.mark-all-seen');
         View::share('unseenUserMessagesCount', $unseenUserMessagesCount);
         View::share('unseenUserMessages', $unseenUserMessages);
         View::share('unseenUserMessagesRoute', $unseenUserMessagesRoute);
+        View::share('markAllAsSeenUserMessages', $markAllAsSeenUserMessages);
     }
 }

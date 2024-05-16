@@ -3,6 +3,7 @@
 namespace Modules\ContactUs\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Modules\ContactUs\App\Models\UserMessage;
@@ -27,5 +28,11 @@ class UserMessageController extends Controller
     {
         $userMessage->markAsSeen();
         return view('contact-us::user-messages.show', compact(['userMessage']));
+    }
+
+    public function markAllAsSeen(): RedirectResponse
+    {
+        $this->userMessageService->markAllAsSeen();
+        return back()->with('success', __('All messages have been marked as seen.'));
     }
 }
