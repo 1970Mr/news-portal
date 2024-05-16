@@ -39,6 +39,12 @@ class CommentController extends Controller
         return back()->with(['success' => __('comment::messages.comment_approved')]);
     }
 
+    public function approveAll(): RedirectResponse
+    {
+        Comment::query()->where('status', Comment::PENDING)->update(['status' => Comment::APPROVED]);
+        return back()->with(['success' => __('comment::messages.comment_approved_all')]);
+    }
+
     public function reject(Comment $comment): RedirectResponse
     {
         $comment->setStatus(Comment::REJECTED);

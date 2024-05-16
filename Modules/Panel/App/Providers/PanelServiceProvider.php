@@ -143,9 +143,11 @@ class PanelServiceProvider extends ServiceProvider
         $pendingCommentsCount = $pendingCommentsQuery->count();
         $pendingComments = $pendingCommentsQuery->limit(10)->latest()->get();
         $pendingCommentsRoute = route(config('app.panel_prefix', 'panel') . '.comments.index', ['filter' => Comment::PENDING]);
+        $approveAllCommentsRoute = route(config('app.panel_prefix', 'panel') . '.comments.approve-all');
         View::share('pendingCommentsCount', $pendingCommentsCount);
         View::share('pendingComments', $pendingComments);
         View::share('pendingCommentsRoute', $pendingCommentsRoute);
+        View::share('approveAllCommentsRoute', $approveAllCommentsRoute);
     }
 
     private function userMessagesSharedData(): void
@@ -156,10 +158,10 @@ class PanelServiceProvider extends ServiceProvider
         $unseenUserMessagesCount = $unseenUserMessagesQuery->count();
         $unseenUserMessages = $unseenUserMessagesQuery->limit(10)->latest()->get();
         $unseenUserMessagesRoute = route(config('app.panel_prefix', 'panel') . '.contact-us.messages.index', ['filter' => UserMessage::UNSEEN]);
-        $markAllAsSeenUserMessages = route(config('app.panel_prefix', 'panel') . '.contact-us.messages.mark-all-seen');
+        $markAllAsSeenUserMessagesRoute = route(config('app.panel_prefix', 'panel') . '.contact-us.messages.mark-all-seen');
         View::share('unseenUserMessagesCount', $unseenUserMessagesCount);
         View::share('unseenUserMessages', $unseenUserMessages);
         View::share('unseenUserMessagesRoute', $unseenUserMessagesRoute);
-        View::share('markAllAsSeenUserMessages', $markAllAsSeenUserMessages);
+        View::share('markAllAsSeenUserMessagesRoute', $markAllAsSeenUserMessagesRoute);
     }
 }

@@ -42,11 +42,13 @@
                         <ul class="dropdown-menu custom-dropdown-menu has-scrollbar">
                             <li class="dropdown-header clearfix">
                                 <span class="float-start">
-                                    <form action="{{ $markAllAsSeenUserMessages }}" method="POST" style="display: inline;">
+                                    <form action="{{ $markAllAsSeenUserMessagesRoute }}" method="POST" style="display: inline;">
                                         @csrf
-                                        <button type="submit" rel="tooltip" title="خواندن همه" data-placement="left" style="padding: 0; border: none; background: none;">
+                                        @if($unseenUserMessagesCount > 0)
+                                            <button type="submit" rel="tooltip" title="خواندن همه" data-placement="left" style="padding: 0; border: none; background: none;">
                                             <i class="icon-eye"></i>
                                         </button>
+                                        @endif
                                     </form>
                                     شما {{ $unseenUserMessagesCount }} پیام تازه دارید.
                                 </span>
@@ -68,12 +70,14 @@
                                     @endforeach
                                 </ul>
                             </li>
-                            <li class="dropdown-footer clearfix">
-                                <a href="{{ $unseenUserMessagesRoute }}">
-                                    <i class="icon-list fa-flip-horizontal"></i>
-                                    مشاهده همه پیام‌ها
-                                </a>
-                            </li>
+                            @if($unseenUserMessagesCount > 0)
+                                <li class="dropdown-footer clearfix">
+                                    <a href="{{ $unseenUserMessagesRoute }}">
+                                        <i class="icon-list fa-flip-horizontal"></i>
+                                        مشاهده همه
+                                    </a>
+                                </li>
+                            @endif
                         </ul>
                     </li>
                 @endcan
@@ -89,10 +93,14 @@
                         <ul class="dropdown-menu custom-dropdown-menu has-scrollbar">
                             <li class="dropdown-header clearfix">
                                 <span class="float-start">
-                                    <a href="{{ $pendingCommentsRoute }}" rel="tooltip" title="خواندن همه"
-                                       data-placement="left">
-                                        <i class="icon-eye"></i>
-                                    </a>
+                                    <form action="{{ $approveAllCommentsRoute }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        @if($pendingCommentsCount > 0)
+                                            <button type="submit" rel="tooltip" title="تایید همه" data-placement="left" style="padding: 0; border: none; background: none;">
+                                                <i class="icon-eye"></i>
+                                            </button>
+                                        @endif
+                                    </form>
                                     شما {{ $pendingCommentsCount }} نظر تازه دارید.
                                 </span>
                             </li>
@@ -118,12 +126,14 @@
                                     @endforeach
                                 </ul>
                             </li>
-                            <li class="dropdown-footer clearfix">
-                                <a href="{{ $pendingCommentsRoute }}">
-                                    <i class="icon-list fa-flip-horizontal"></i>
-                                    مشاهده همه نظرها
-                                </a>
-                            </li>
+                            @if($pendingCommentsCount > 0)
+                                <li class="dropdown-footer clearfix">
+                                    <a href="{{ $pendingCommentsRoute }}">
+                                        <i class="icon-list fa-flip-horizontal"></i>
+                                        مشاهده همه
+                                    </a>
+                                </li>
+                            @endif
                         </ul>
                     </li>
                 @endcan
