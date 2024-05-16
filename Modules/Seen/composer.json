@@ -1,0 +1,31 @@
+{
+    "name": "nwidart/seen",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Seen\\": "",
+            "Modules\\Seen\\App\\": "app/",
+            "Modules\\Seen\\Database\\Factories\\": "database/factories/",
+            "Modules\\Seen\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Seen\\Tests\\": "tests/"
+        }
+    }
+}

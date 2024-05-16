@@ -1,0 +1,11 @@
+{
+    "name": "Seen",
+    "alias": "seen",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Seen\\App\\Providers\\SeenServiceProvider"
+    ],
+    "files": []
+}

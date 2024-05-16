@@ -15,5 +15,6 @@
     "Front": true,
     "SocialNetwork": true,
     "Setting": true,
-    "ContactUs": true
+    "ContactUs": true,
+    "Seen": true
 }
