@@ -121,6 +121,36 @@ return [
                 ],
             ]
         ],
+        'contact_us' => [
+            'title' => 'تماس با ما',
+            'icon' => 'icon-earphones-alt',
+            'active_routes' => [
+                config('app.panel_prefix', 'panel') . '.contact-us.info.edit',
+                config('app.panel_prefix', 'panel') . '.contact-us.messages.index',
+                config('app.panel_prefix', 'panel') . '.contact-us.messages.show',
+            ],
+            'permissions' => [
+                config('permissions_list.CONTACT_INFO', false),
+                config('permissions_list.CONTACT_MESSAGES', false),
+            ],
+            'children' => [
+                [
+                    'title' => 'ثبت اطلاعات تماس',
+                    'icon' => 'icon-call-in',
+                    'url' => route(config('app.panel_prefix', 'panel') . '.contact-us.info.edit'),
+                    'permissions' => config('permissions_list.CONTACT_INFO', false),
+                ],
+                [
+                    'title' => 'پیام‌های کاربران',
+                    'icon' => 'icon-envelope',
+                    'url' => route(config('app.panel_prefix', 'panel') . '.contact-us.messages.index'),
+                    'permissions' => config('permissions_list.CONTACT_MESSAGES', false),
+                    'active_routes' => [
+                        config('app.panel_prefix', 'panel') . '.contact-us.messages.show',
+                    ],
+                ],
+            ]
+        ],
         'setting' => [
             'title' => 'تنظیمات سایت',
             'icon' => 'icon-settings',

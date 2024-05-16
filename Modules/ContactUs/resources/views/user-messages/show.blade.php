@@ -3,7 +3,7 @@
 @section('content')
 
 <x-common-breadcrumbs>
-    <li><a href="{{ route(config('app.panel_prefix', 'panel') . '.contact-us.index') }}">لیست پیام‌های کاربران</a></li>
+    <li><a href="{{ route(config('app.panel_prefix', 'panel') . '.contact-us.messages.index') }}">لیست پیام‌های کاربران</a></li>
     <li><a>مشاهده پیام</a></li>
 </x-common-breadcrumbs>
 
@@ -13,7 +13,7 @@
             <div class="portlet-heading">
                 <div class="portlet-title">
                     <h3 class="title">
-                        <i class="far fa-comment"></i>
+                        <i class="icon-envelope-open"></i>
                         مشاهده پیام
                     </h3>
                 </div><!-- /.portlet-title -->

@@ -75,7 +75,7 @@
                                         <div class="d-flex gap-2">
                                             <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
                                                rel="tooltip" aria-label="مشاهده پیام" data-bs-original-title="مشاهده پیام"
-                                               href="{{ route(config('app.panel_prefix', 'panel') . '.contact-us.show', $userMessage->id) }}">
+                                               href="{{ route(config('app.panel_prefix', 'panel') . '.contact-us.messages.show', $userMessage->id) }}">
                                                 <i class="icon-eye"></i>
                                             </a>
                                         </div>
