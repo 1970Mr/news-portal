@@ -5,17 +5,6 @@ use Modules\ContactUs\App\Http\Controllers\ContactInfoController;
 use Modules\ContactUs\App\Http\Controllers\UserMessageController;
 use Modules\ContactUs\App\Http\Controllers\Front\UserMessageController as FrontUserMessageController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::prefix(config('app.panel_prefix', 'panel') . '/contact-us')
     ->name(config('app.panel_prefix', 'panel') . '.contact-us.')
     ->group(function () {
@@ -26,7 +15,7 @@ Route::prefix(config('app.panel_prefix', 'panel') . '/contact-us')
 
         Route::controller(UserMessageController::class)->group(function () {
             Route::get('/', 'index')->name('index');
-            Route::put('/show/{userMessage}', 'show')->name('show');
+            Route::get('/show/{userMessage}', 'show')->name('show');
         });
     });
 
