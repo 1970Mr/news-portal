@@ -27,21 +27,25 @@
                         </a>
 
                         <!-- Filter box -->
-{{--                        <div class="btn-group" rel="tooltip"--}}
-{{--                             aria-label="فیلتر نظرات" data-bs-original-title="فیلتر نظرات">--}}
-{{--                            <button type="button" class="btn btn-sm btn-default btn-round btn-info text-white dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="true">--}}
-{{--                                <i class=" fas fa-filter d-flex justify-content-center align-items-center"></i>--}}
-{{--                                <div class="paper-ripple">--}}
-{{--                                    <div class="paper-ripple__background"></div>--}}
-{{--                                    <div class="paper-ripple__waves"></div>--}}
-{{--                                </div>--}}
-{{--                            </button>--}}
-{{--                            <ul class="dropdown-menu">--}}
-{{--                                @foreach($filters as $value)--}}
-{{--                                    <li><a class="dropdown-item" href="{{ route(config('app.panel_prefix', 'panel') . '.comments.index', ['filter' => $value]) }}">{{ __($value) }}</a></li>--}}
-{{--                                @endforeach--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
+                        <div class="btn-group" rel="tooltip"
+                             aria-label="فیلتر نظرات" data-bs-original-title="فیلتر نظرات">
+                            <button type="button" class="btn btn-sm btn-default btn-round btn-info text-white dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="true">
+                                <i class=" fas fa-filter d-flex justify-content-center align-items-center"></i>
+                                <div class="paper-ripple">
+                                    <div class="paper-ripple__background"></div>
+                                    <div class="paper-ripple__waves"></div>
+                                </div>
+                            </button>
+                            <ul class="dropdown-menu">
+                                @foreach($filters as $value)
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route(config('app.panel_prefix', 'panel') . '.contact-us.messages.index', ['filter' => $value]) }}">
+                                            {{ __($value) }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">

@@ -9,6 +9,13 @@ class UserMessage extends Model
 {
     use HasSeen;
 
+    public const SEEN = 'seen';
+    public const UNSEEN = 'unseen';
+    public const USER_MESSAGE_STATUS = [
+        self::SEEN,
+        self::UNSEEN,
+    ];
+
     protected $fillable = [
         'name',
         'email',
