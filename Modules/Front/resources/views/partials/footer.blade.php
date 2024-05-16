@@ -50,62 +50,27 @@
                         <h3 class="widget-title">خبرهای پربحث ماه</h3>
                         <div class="list-post-block">
                             <ul class="list-post">
-                                <li class="clearfix">
-                                    <div class="post-block-style post-float clearfix">
-                                        <div class="post-thumb">
-                                            <a href="single-post1.html">
-                                                <img class="img-responsive" src="{{ asset('home/images/news/lifestyle/health2.jpg') }}" alt="">
-                                            </a>
-                                        </div><!-- Post thumb end -->
 
-                                        <div class="post-content">
-                                            <h2 class="post-title title-small">
-                                                <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</a>
-                                            </h2>
-                                            <div class="post-meta">
-                                                <span class="post-date">15 آذر 1396</span>
-                                            </div>
-                                        </div><!-- Post content end -->
-                                    </div><!-- Post block style end -->
-                                </li><!-- Li 1 end -->
+                                @foreach($footer['articles_with_most_comments'] as $article)
+                                    <li class="clearfix">
+                                        <div class="post-block-style post-float clearfix">
+                                            <div class="post-thumb">
+                                                <a href="{{ route('news.show', [$article->category->slug, $article->slug]) }}">
+                                                    <img class="img-responsive" src="{{ asset('storage/' . $article->image->file_path) }}" alt="{{ $article->image->alt_text }}">
+                                                </a>
+                                            </div><!-- Post thumb end -->
 
-                                <li class="clearfix">
-                                    <div class="post-block-style post-float clearfix">
-                                        <div class="post-thumb">
-                                            <a href="single-post1.html">
-                                                <img class="img-responsive" src="{{ asset('home/images/news/lifestyle/health3.jpg') }}" alt="">
-                                            </a>
-                                        </div><!-- Post thumb end -->
-
-                                        <div class="post-content">
-                                            <h2 class="post-title title-small">
-                                                <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</a>
-                                            </h2>
-                                            <div class="post-meta">
-                                                <span class="post-date">18 بهمن 1396</span>
-                                            </div>
-                                        </div><!-- Post content end -->
-                                    </div><!-- Post block style end -->
-                                </li><!-- Li 2 end -->
-
-                                <li class="clearfix">
-                                    <div class="post-block-style post-float clearfix">
-                                        <div class="post-thumb">
-                                            <a href="single-post1.html">
-                                                <img class="img-responsive" src="{{ asset('home/images/news/lifestyle/health4.jpg') }}" alt="">
-                                            </a>
-                                        </div><!-- Post thumb end -->
-
-                                        <div class="post-content">
-                                            <h2 class="post-title title-small">
-                                                <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی</a>
-                                            </h2>
-                                            <div class="post-meta">
-                                                <span class="post-date">30 فروردین 1396</span>
-                                            </div>
-                                        </div><!-- Post content end -->
-                                    </div><!-- Post block style end -->
-                                </li><!-- Li 3 end -->
+                                            <div class="post-content">
+                                                <h2 class="post-title title-small">
+                                                    <a href="{{ route('news.show', [$article->category->slug, $article->slug]) }}">{{ $article->title }}</a>
+                                                </h2>
+                                                <div class="post-meta">
+                                                    <span class="post-date">{{ front_date_format($article->created_at) }}</span>
+                                                </div>
+                                            </div><!-- Post content end -->
+                                        </div><!-- Post block style end -->
+                                    </li>
+                                @endforeach
                             </ul><!-- List post end -->
                         </div><!-- List post block end -->
 

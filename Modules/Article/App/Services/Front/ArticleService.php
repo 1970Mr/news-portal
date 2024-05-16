@@ -35,6 +35,15 @@ class ArticleService
             ->get();
     }
 
+    public function getArticleWithMostComments(): Collection
+    {
+        return $this->baseQuery()
+            ->withCount('approvedComments')
+            ->orderBy('approved_comments_count', 'desc')
+            ->limit(3)
+            ->get();
+    }
+
     public function getParentCategories(): Collection
     {
         $categories = Category::with(['categories' => function ($query) {
@@ -103,6 +112,7 @@ class ArticleService
         $footer = [
             'editor_choices' => $this->getEditorChoices(),
             'hot_topics' => $this->getHotTopics(),
+            'articles_with_most_comments' => $this->getArticleWithMostComments(),
         ];
 
         $second_sidebar = [

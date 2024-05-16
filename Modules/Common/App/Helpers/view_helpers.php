@@ -35,3 +35,8 @@ function nullable_value($value): string
 {
     return $value ?: __('have_not');
 }
+
+function front_date_format($date): string
+{
+    return jalalian()->forge($date)->format(config('common.front_date_format'));
+}

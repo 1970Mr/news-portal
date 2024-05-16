@@ -14,7 +14,7 @@
                                     <h2 class="post-title title-extra-large">
                                         <a href="{{ route('news.show', [$article->category->slug, $article->slug]) }}">{{ $article->title }}</a>
                                     </h2>
-                                    <span class="post-date">{{ jalalian()->forge($article->created_at)->format(config('common.front_date_format')) }}</span>
+                                    <span class="post-date">{{ front_date_format($article->created_at) }}</span>
                                 </div>
                             </div><!--/ Featured post end -->
                         </div>
