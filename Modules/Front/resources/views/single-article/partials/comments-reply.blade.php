@@ -18,9 +18,9 @@
                         </x-markdown>
                     </div>
                     <div class="text-left">
-                        <a class="comment-reply" href="#" data-toggle="modal" data-target="#commentModal{{ $child_comment->id }}">پاسخ</a>
+                        <a class="comment-reply" data-toggle="modal" data-target="#commentModal{{ $child_comment->id }}">پاسخ</a>
                         @canany('update', $child_comment)
-                            <a class="comment-edit" href="#" data-toggle="modal" data-target="#commentEditModal{{ $child_comment->id }}" style="margin-right: 1rem ">ویرایش</a>
+                            <a class="comment-edit" data-toggle="modal" data-target="#commentEditModal{{ $child_comment->id }}" style="margin-right: 1rem ">ویرایش</a>
                         @endcanany
 
                         @canany('delete', $child_comment)

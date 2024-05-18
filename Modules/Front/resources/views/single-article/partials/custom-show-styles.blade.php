@@ -19,4 +19,12 @@
     .comments-list .comment-edit:hover, .comments-list .comment-delete:hover {
         color: #ec0000;
     }
+
+    .author-info h3 a {
+        color: black;
+    }
+
+    .author-info h3 a:hover {
+        color: #ec0000;
+    }
 </style>

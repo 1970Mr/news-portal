@@ -1,9 +1,13 @@
 <div class="author-box">
     <div class="author-img pull-left">
-        <img src="{{ asset('storage/' . $article->user->image->file_path) }}" alt="{{ $article->user->image->alt_text }}">
+        <a href="{{ route('author.index', $article->user->username) }}">
+            <img src="{{ asset('storage/' . $article->user->image->file_path) }}" alt="{{ $article->user->image->alt_text }}">
+        </a>
     </div>
     <div class="author-info">
-        <h3>{{ $article->user->full_name }}</h3>
+        <h3>
+            <a class="" href="{{ route('author.index', $article->user->username) }}">{{ $article->user->full_name }}</a>
+        </h3>
         <p>{{ $article->user->about }}</p>
         @if($socialNetworks = $article->user->socialNetworks)
             <div class="authors-social" style="clear: both">
