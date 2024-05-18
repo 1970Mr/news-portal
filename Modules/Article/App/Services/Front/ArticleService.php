@@ -35,6 +35,22 @@ class ArticleService
             ->get();
     }
 
+    public function getHotArticles(): Collection
+    {
+        $articles = $this->baseQuery()
+            ->whereHas('hotness', function ($query) {
+                $query->where('is_hot', true);
+            })
+            ->limit(15)
+            ->get();
+
+        if ($articles->count() <= 0) {
+            $this->baseQuery()->limit(10)->get();
+        }
+
+        return $articles;
+    }
+
     public function getArticleWithMostComments(): Collection
     {
         return Article::with(['hotness', 'image', 'category', 'tags', 'user'])->active()->published()
@@ -100,6 +116,10 @@ class ArticleService
 
     public function composeViewData(): array
     {
+        $trending_bar = [
+            'hot_articles' => $this->getHotArticles(),
+        ];
+
         $main_nav = [
             'parent_categories' => $this->getParentCategories(),
             'categories_without_parent' => $this->getCategoriesWithoutParent(),
@@ -109,17 +129,17 @@ class ArticleService
             ],
         ];
 
+        $second_sidebar = [
+            'latest_tags' => $this->getLatestTags(),
+        ];
+
         $footer = [
             'editor_choices' => $this->getEditorChoices(),
             'hot_topics' => $this->getHotTopics(),
             'articles_with_most_comments' => $this->getArticleWithMostComments(),
         ];
 
-        $second_sidebar = [
-            'latest_tags' => $this->getLatestTags(),
-        ];
-
-        return compact(['main_nav', 'footer', 'second_sidebar']);
+        return compact(['trending_bar', 'main_nav', 'second_sidebar', 'footer']);
     }
 
     private function baseQuery(): Builder
