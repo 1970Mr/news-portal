@@ -4,8 +4,8 @@
         <div class="row">
             <div class="col-12">
                 <div class="logo">
-                    <a href="index.html">
-                        <img src="{{ asset('home/images/logos/logo.png') }}" alt="">
+                    <a href="{{ route('home.index') }}">
+                        <img src="{{ asset('home/images/logos/logo.png') }}" alt="{{ config('app.name') }}">
                     </a>
                 </div>
             </div><!-- logo col end -->

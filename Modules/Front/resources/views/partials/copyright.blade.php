@@ -10,11 +10,8 @@
             <div class="col-xs-12 col-sm-6">
                 <div class="footer-menu">
                     <ul class="nav unstyled">
-                        <li><a href="#">قوانین سایت</a></li>
-                        <li><a href="#">حریم شخصی</a></li>
-                        <li><a href="#">تبلیغات</a></li>
-                        <li><a href="#">قوانین کوکی ها</a></li>
-                        <li><a href="#">تماس با ما</a></li>
+                        <li><a href="{{ route('about-us.index') }}">درباره ما</a></li>
+                        <li><a href="{{ route('contact-us.index') }}">تماس با ما</a></li>
                     </ul>
                 </div>
             </div>

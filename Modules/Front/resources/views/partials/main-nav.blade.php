@@ -19,7 +19,7 @@
                             <!-- All Parent Categories -->
                             @foreach($main_nav['parent_categories'] as $parent_category)
                                 <li class="dropdown mega-dropdown">
-                                    <a href="category-style1.html" class="dropdown-toggle">{{ $parent_category->name }} <i class="fa fa-angle-down"></i></a>
+                                    <a href="{{ route('categories.show', $parent_category->slug) }}" class="dropdown-toggle">{{ $parent_category->name }} <i class="fa fa-angle-down"></i></a>
                                     <div class="dropdown-menu mega-menu-content hidden-xs hidden-sm clearfix">
                                         <div class="menu-tab">
                                             <ul class="nav nav-tabs nav-stacked col-md-2" data-toggle="tab-hover">
@@ -42,15 +42,15 @@
                                                                 <div class="col-md-3">
                                                                     <div class="post-block-style clearfix">
                                                                         <div class="post-thumb">
-                                                                            <a href="single-post1.html">
+                                                                            <a href="{{ route('news.show', [$category->slug, $article->slug]) }}l">
                                                                                 <img class="img-responsive nav-parent-cat-post-img" src="{{ asset('storage/' . $article->image->file_path) }}"
                                                                                      alt="{{ $article->image->alt_text }}">
                                                                             </a>
                                                                         </div>
-                                                                        <a class="post-cat" href="#">{{ $category->name }}</a>
+                                                                        <a class="post-cat" href="{{ route('categories.show', $category->slug) }}">{{ $category->name }}</a>
                                                                         <div class="post-content">
                                                                             <h2 class="post-title title-small">
-                                                                                <a href="single-post1.html">{{ $article->title }}</a>
+                                                                                <a href="{{ route('news.show', [$category->slug, $article->slug]) }}">{{ $article->title }}</a>
                                                                             </h2>
                                                                         </div><!-- Post content end -->
                                                                     </div><!-- Post Block style end -->
@@ -68,7 +68,8 @@
                             <!-- All Categories Without Parent -->
                             @foreach($main_nav['categories_without_parent'] as $category)
                                 <li class="dropdown mega-dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ $category->name }} <i class="fa fa-angle-down"></i></a>
+                                    <a href="{{ route('categories.show', $category->slug) }}" class="dropdown-toggle" data-toggle="dropdown">{{ $category->name }} <i class="fa
+                                    fa-angle-down"></i></a>
                                     <div class="dropdown-menu mega-menu-content hidden-xs hidden-sm clearfix">
                                         <div class="mega-menu-content-inner">
                                             <div class="row">
@@ -80,7 +81,7 @@
                                                             </div><!-- Post thumb end -->
                                                             <div class="post-content">
                                                                 <h2 class="post-title title-small">
-                                                                    <a href="single-post1.html">{{ $article->title }}</a>
+                                                                    <a href="{{ route('news.show', [$category->slug, $article->slug]) }}">{{ $article->title }}</a>
                                                                 </h2>
                                                             </div><!-- Post content end -->
                                                         </div><!-- Post Block style end -->
@@ -95,15 +96,15 @@
 
                             @if($main_nav['other_categories']['categories_without_parent']->count() >= 1 || $main_nav['other_categories']['parent_categories']->count() >= 1)
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">سایر دسته‌بندی‌ها <i class="fa fa-angle-down"></i></a>
+                                    <a class="dropdown-toggle" data-toggle="dropdown">سایر دسته‌بندی‌ها <i class="fa fa-angle-down"></i></a>
                                     <ul class="dropdown-menu" role="menu">
                                         <!-- All Categories Without Parent -->
                                         @foreach($main_nav['other_categories']['parent_categories'] as $parent_category)
                                             <li class="dropdown-submenu">
-                                                <a href="#.">{{ $parent_category->name }}</a>
+                                                <a href="{{ route('categories.show', $category->slug) }}">{{ $parent_category->name }}</a>
                                                 <ul class="dropdown-menu">
                                                     @foreach($parent_category->categories as $category)
-                                                        <li><a href="category-style1.html">{{ $category->name }}</a></li>
+                                                        <li><a href="{{ route('categories.show', $category->slug) }}">{{ $category->name }}</a></li>
                                                     @endforeach
                                                 </ul>
                                             </li>
@@ -112,7 +113,7 @@
                                         <!-- All Categories Without Parent -->
                                         @foreach($main_nav['other_categories']['categories_without_parent'] as $category)
                                             <li>
-                                                <a href="#">{{ $category->name }}</a>
+                                                <a href="{{ route('categories.show', $category->slug) }}">{{ $category->name }}</a>
                                             </li>
                                         @endforeach
                                     </ul><!-- End dropdown -->
