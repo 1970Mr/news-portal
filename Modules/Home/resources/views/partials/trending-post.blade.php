@@ -10,7 +10,7 @@
                             <img src="{{ asset('storage/' . $article->image->file_path) }}" alt="{{ $article->image->alt_text }}">
                             <div class="featured-post">
                                 <div class="post-content">
-                                    <a class="post-cat" href="#">{{ $article->category->name }}</a>
+                                    <a class="post-cat" href="{{ route('categories.show', $article->category->slug) }}">{{ $article->category->name }}</a>
                                     <h2 class="post-title title-extra-large">
                                         <a href="{{ route('news.show', [$article->category->slug, $article->slug]) }}">{{ $article->title }}</a>
                                     </h2>
@@ -34,7 +34,7 @@
                                 </a>
                             </div>
                             <div class="post-content">
-                                <a class="post-cat" href="#">{{ $trending_posts['first_editor_choice']->category->name }}</a>
+                                <a class="post-cat" href="{{ route('categories.show', $trending_posts['first_editor_choice']->category->slug) }}">{{ $trending_posts['first_editor_choice']->category->name }}</a>
                                 <h2 class="post-title title-large">
                                     <a href="{{ route('news.show', [$trending_posts['first_editor_choice']->category->slug, $trending_posts['first_editor_choice']->slug]) }}">{{ $trending_posts['first_editor_choice']->title }}</a>
                                 </h2>
@@ -54,7 +54,7 @@
                                     </a>
                                 </div>
                                 <div class="post-content">
-                                    <a class="post-cat" href="#">{{ $editor_choice->category->name }}</a>
+                                    <a class="post-cat" href="{{ route('categories.show', $editor_choice->category->slug) }}">{{ $editor_choice->category->name }}</a>
                                     <h2 class="post-title title-medium">
                                         <a href="{{ route('news.show', [$editor_choice->category->slug, $editor_choice->slug]) }}">{{ $editor_choice->title }}</a>
                                     </h2>

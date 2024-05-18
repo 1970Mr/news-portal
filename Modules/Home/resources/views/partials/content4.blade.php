@@ -8,17 +8,17 @@
                     @foreach($articles as $article)
                         <div class="post-block-style post-float-half clearfix">
                             <div class="post-thumb">
-                                <a href="single-post1.html">
+                                <a href="{{ route('news.show', [$article->category->slug, $article->slug]) }}">
                                     <img class="img-responsive" src="{{ asset('storage/' . $article->image->file_path) }}" alt="{{ $article->image->alt_text }}">
                                 </a>
                             </div>
-                            <a class="post-cat" href="#">{{ $article->category->name }}</a>
+                            <a class="post-cat" href="{{ route('categories.show', $article->category->slug) }}">{{ $article->category->name }}</a>
                             <div class="post-content">
                                 <h2 class="post-title">
-                                    <a href="single-post1.html">{{ $article->title }}</a>
+                                    <a href="{{ route('news.show', [$article->category->slug, $article->slug]) }}">{{ $article->title }}</a>
                                 </h2>
                                 <div class="post-meta">
-                                    <span class="post-author"><a href="#">{{ $article->user->full_name }}</a></span>
+                                    <span class="post-author"><a href="{{ route('author.index', $article->user->username) }}">{{ $article->user->full_name }}</a></span>
                                     <span class="post-date">{{ jalalian()->forge($article->created_at)->format(config('common.front_date_format')) }}</span>
                                 </div>
                                 <p>{{ $article->bodyText(200) }}</p>

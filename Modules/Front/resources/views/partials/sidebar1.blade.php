@@ -2,7 +2,7 @@
     <div class="sidebar sidebar-right first-sidebar">
         <div class="widget color-default m-bottom-0">
             <h3 class="block-title"><span>اخبار پربازدید</span></h3>
-            @php($first_article = $first_sidebar['articles_with_most_visits']->pop())
+            @php($first_article = $first_sidebar['articles_with_most_visits']->shift())
             <div class="post-overlay-style clearfix">
                 <div class="post-thumb">
                     <a href="{{ route('news.show', [$first_article->category->slug, $first_article->slug]) }}">
