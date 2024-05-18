@@ -2,91 +2,50 @@
     <div class="sidebar sidebar-right first-sidebar">
         <div class="widget color-default m-bottom-0">
             <h3 class="block-title"><span>اخبار پربازدید</span></h3>
-
+            @php($first_article = $first_sidebar['articles_with_most_visits']->pop())
             <div class="post-overlay-style clearfix">
                 <div class="post-thumb">
-                    <a href="single-post1.html">
-                        <img class="img-responsive" src="{{ asset('home/images/news/lifestyle/health4.jpg') }}" alt="">
+                    <a href="{{ route('news.show', [$first_article->category->slug, $first_article->slug]) }}">
+                        <img class="img-responsive" src="{{ asset('storage/' . $first_article->image->file_path) }}" alt="{{ $first_article->image->alt_text }}" style="height: 226px">
                     </a>
                 </div>
 
                 <div class="post-content">
-                    <a class="post-cat" href="#">سلامتی</a>
+                    <a class="post-cat" href="{{ route('categories.show', $first_article->category->slug) }}">{{ $first_article->category->name }}</a>
                     <h2 class="post-title">
-                        <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت</a>
+                        <a href="{{ route('news.show', [$first_article->category->slug, $first_article->slug]) }}">{{ $first_article->title }}</a>
                     </h2>
                     <div class="post-meta">
-                        <span class="post-date">2 شهریور 1396</span>
+                        <span class="post-date">{{ front_date_format($first_article->created_at) }}</span>
                     </div>
                 </div><!-- Post content end -->
             </div><!-- Post overlay Article end -->
 
-
             <div class="list-post-block">
                 <ul class="list-post">
-                    <li class="clearfix">
-                        <div class="post-block-style post-float clearfix">
-                            <div class="post-thumb">
-                                <a href="single-post1.html">
-                                    <img class="img-responsive" src="{{ asset('home/images/news/tech/gadget3.jpg') }}" alt="">
-                                </a>
-                                <a class="post-cat" href="#">گجت ها</a>
-                            </div><!-- Post thumb end -->
+                    @foreach($first_sidebar['articles_with_most_visits'] as $article)
+                        <li class="clearfix">
+                            <div class="post-block-style post-float clearfix">
+                                <div class="post-thumb">
+                                    <a href="{{ route('news.show', [$article->category->slug, $first_article->slug]) }}">
+                                        <img class="img-responsive" src="{{ asset('storage/' . $article->image->file_path) }}" alt="{{ $article->image->alt_text }}" style="height: 75px">
+                                    </a>
+                                    <a class="post-cat" href="{{ route('categories.show', $article->category->slug) }}">{{ $article->category->name }}</a>
+                                </div><!-- Post thumb end -->
 
-                            <div class="post-content">
-                                <h2 class="post-title title-small">
-                                    <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با</a>
-                                </h2>
-                                <div class="post-meta">
-                                    <span class="post-date">15 آذر 1396</span>
-                                </div>
-                            </div><!-- Post content end -->
-                        </div><!-- Post block style end -->
-                    </li><!-- Li 1 end -->
-
-                    <li class="clearfix">
-                        <div class="post-block-style post-float clearfix">
-                            <div class="post-thumb">
-                                <a href="single-post1.html">
-                                    <img class="img-responsive" src="{{ asset('home/images/news/lifestyle/travel5.jpg') }}" alt="">
-                                </a>
-                                <a class="post-cat" href="#">مسافرت</a>
-                            </div><!-- Post thumb end -->
-
-                            <div class="post-content">
-                                <h2 class="post-title title-small">
-                                    <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت</a>
-                                </h2>
-                                <div class="post-meta">
-                                    <span class="post-date">18 بهمن 1396</span>
-                                </div>
-                            </div><!-- Post content end -->
-                        </div><!-- Post block style end -->
-                    </li><!-- Li 2 end -->
-
-                    <li class="clearfix">
-                        <div class="post-block-style post-float clearfix">
-                            <div class="post-thumb">
-                                <a href="single-post1.html">
-                                    <img class="img-responsive" src="{{ asset('home/images/news/tech/robot5.jpg') }}" alt="">
-                                </a>
-                                <a class="post-cat" href="#">رباتیک</a>
-                            </div><!-- Post thumb end -->
-
-                            <div class="post-content">
-                                <h2 class="post-title title-small">
-                                    <a href="single-post1.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با</a>
-                                </h2>
-                                <div class="post-meta">
-                                    <span class="post-date">30 فروردین 1396</span>
-                                </div>
-                            </div><!-- Post content end -->
-                        </div><!-- Post block style end -->
-                    </li><!-- Li 3 end -->
-
+                                <div class="post-content">
+                                    <h2 class="post-title title-small">
+                                        <a href="{{ route('news.show', [$article->category->slug, $article->slug]) }}">{{ $article->title }}</a>
+                                    </h2>
+                                    <div class="post-meta">
+                                        <span class="post-date">{{ front_date_format($article->created_at) }}</span>
+                                    </div>
+                                </div><!-- Post content end -->
+                            </div><!-- Post block style end -->
+                        </li>
+                    @endforeach
                 </ul><!-- List post end -->
             </div><!-- List post block end -->
-
         </div><!-- Popular news widget end -->
     </div><!-- Sidebar right end -->
 </div><!-- Sidebar Col end -->

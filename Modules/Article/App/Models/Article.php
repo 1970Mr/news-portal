@@ -35,7 +35,7 @@ class Article extends Model
         'user_id',
     ];
 
-    public function toSearchableArray()
+    public function toSearchableArray(): array
     {
         return [
             'title' => (int) $this->id,

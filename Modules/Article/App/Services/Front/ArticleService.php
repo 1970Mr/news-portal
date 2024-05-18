@@ -17,6 +17,11 @@ class ArticleService
         return Tag::query()->latest()->limit(30)->get();
     }
 
+    public function getArticlesWithMostVisit(): \Illuminate\Support\Collection
+    {
+        return visits(Article::class)->top(4);
+    }
+
     public function getEditorChoices(): Collection
     {
         return $this->baseQuery()->editorChoice()->limit(3)->get();
@@ -129,6 +134,10 @@ class ArticleService
             ],
         ];
 
+        $first_sidebar = [
+            'articles_with_most_visits' => $this->getArticlesWithMostVisit(),
+        ];
+
         $second_sidebar = [
             'latest_tags' => $this->getLatestTags(),
         ];
@@ -139,7 +148,7 @@ class ArticleService
             'articles_with_most_comments' => $this->getArticleWithMostComments(),
         ];
 
-        return compact(['trending_bar', 'main_nav', 'second_sidebar', 'footer']);
+        return compact(['trending_bar', 'main_nav', 'second_sidebar', 'first_sidebar', 'footer']);
     }
 
     private function baseQuery(): Builder
