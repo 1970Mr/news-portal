@@ -9,6 +9,7 @@ use Illuminate\Support\ServiceProvider;
 use Modules\Article\App\Services\Front\ArticleService;
 use Modules\Front\App\View\Components\breadcrumbs;
 use Modules\Front\App\View\Components\ListingPagePagination;
+use Modules\Front\App\View\Composers\SharedDataComposer;
 use Modules\Setting\App\Services\SocialNetworkService;
 
 
@@ -126,7 +127,6 @@ class FrontServiceProvider extends ServiceProvider
     protected function registerSharedData(): void
     {
         $this->app->booted(function () {
-            $socialNetworks = resolve(SocialNetworkService::class)->getSocialNetworksWithTag(SocialNetworkService::TAG);
             View::composer([
                 'home::index',
                 'front::single-article.show',
@@ -136,9 +136,7 @@ class FrontServiceProvider extends ServiceProvider
                 'front::search.index',
                 'front::about-us.index',
                 'front::contact-us.index',
-            ], static function ($view) use ($socialNetworks) {
-                $view->with(resolve(ArticleService::class)->composeViewData() + ['social_networks' => $socialNetworks]);
-            });
+            ], SharedDataComposer::class);
         });
     }
 }
