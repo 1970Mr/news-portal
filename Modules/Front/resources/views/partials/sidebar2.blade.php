@@ -4,7 +4,7 @@
             <h3 class="block-title"><span>آخرین برچسب‌ها</span></h3>
             <ul class="unstyled clearfix">
                 @foreach($second_sidebar['latest_tags'] as $tag)
-                    <li><a href="#">{{ $tag->name }}</a></li>
+                    <li><a href="{{ route('tags.show', $tag->slug) }}">{{ $tag->name }}</a></li>
                 @endforeach
             </ul>
         </div><!-- Tags end -->

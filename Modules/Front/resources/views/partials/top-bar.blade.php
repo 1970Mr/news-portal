@@ -7,34 +7,20 @@
                     {{ jalalian()->now()->format(config('common.front_date_format')) }}
                 </div>
                 <ul class="unstyled top-nav">
-                    <li><a href="#">درباره ما</a></li>
-                    <li><a href="#">برای ما بنویسید</a></li>
-                    <li><a href="#">تبلیغات</a></li>
-                    <li><a href="#">تماس</a></li>
+                    <li><a href="{{ route('about-us.index') }}">درباره ما</a></li>
+                    <li><a href="{{ route('contact-us.index') }}">تماس با ما</a></li>
+                </ul>
                 </ul>
             </div><!--/ Top bar left end -->
 
             <div class="col-md-4 col-sm-4 col-xs-12 top-social text-right">
                 <ul class="unstyled">
                     <li>
-                        <a title="Facebook" href="#">
-                            <span class="social-icon"><i class="fa fa-facebook"></i></span>
-                        </a>
-                        <a title="Twitter" href="#">
-                            <span class="social-icon"><i class="fa fa-twitter"></i></span>
-                        </a>
-                        <a title="Google+" href="#">
-                            <span class="social-icon"><i class="fa fa-google-plus"></i></span>
-                        </a>
-                        <a title="Linkdin" href="#">
-                            <span class="social-icon"><i class="fa fa-linkedin"></i></span>
-                        </a>
-                        <a title="Rss" href="#">
-                            <span class="social-icon"><i class="fa fa-rss"></i></span>
-                        </a>
-                        <a title="Skype" href="#">
-                            <span class="social-icon"><i class="fa fa-skype"></i></span>
-                        </a>
+                        @foreach($social_networks as $name => $url)
+                            <a title="{{ ucfirst($name) }}" href="{{ $url }}" target="_blank">
+                                <span class="social-icon"><i class="fa fa-{{ $name }}"></i></span>
+                            </a>
+                        @endforeach
                     </li>
                 </ul><!-- Ul end -->
             </div><!--/ Top social col end -->
