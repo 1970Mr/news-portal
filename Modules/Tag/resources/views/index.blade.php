@@ -99,7 +99,7 @@
 
 @push('styles')
     <style>
-        .page-link{
+        .page-link {
             text-align: center;
         }
     </style>
