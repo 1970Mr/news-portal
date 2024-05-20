@@ -16,5 +16,6 @@
     "SocialNetwork": true,
     "Setting": true,
     "ContactUs": true,
-    "Seen": true
+    "Seen": true,
+    "Newsletter": true
 }
