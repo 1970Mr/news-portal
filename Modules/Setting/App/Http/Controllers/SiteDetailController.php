@@ -6,12 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Modules\Setting\App\Models\SiteDetail;
 
-class HeaderController extends Controller
+class SiteDetailController extends Controller
 {
     public function edit(): View
     {
-        return view('setting::header');
+        $siteDetail = SiteDetail::with('footerLogo', 'headerLogo')->first();
+        return view('setting::header', compact('siteDetail'));
     }
 
     public function update(Request $request, $id): RedirectResponse

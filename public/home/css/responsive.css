@@ -46,7 +46,7 @@
 @media (min-width: 992px) and (max-width:1199px) {
 
 
-	/* Header */
+	/* SiteDetail */
 	ul.navbar-nav > li > a,
 	.dropdown-menu li a {
 		font-size: 12px;
@@ -135,7 +135,7 @@
 		padding-left: 12px;
 	}
 
-	/* Header */
+	/* SiteDetail */
 	.navbar-fixed {
 		position: relative;
 		-webkit-animation: none;
@@ -576,7 +576,7 @@
 		display: inline-block;
 	}
 
-	/* Header */
+	/* SiteDetail */
 	.navbar-fixed {
 		position: relative;
 		-webkit-animation: none;

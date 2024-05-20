@@ -53,7 +53,7 @@ return [
     '426'          => 'Upgrade Required',
     '428'          => 'Precondition Required',
     '429'          => 'Too Many Requests',
-    '431'          => 'Request Header Fields Too Large',
+    '431'          => 'Request SiteDetail Fields Too Large',
     '444'          => 'Connection Closed Without Response',
     '449'          => 'Retry With',
     '451'          => 'Unavailable For Legal Reasons',

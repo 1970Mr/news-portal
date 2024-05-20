@@ -1,4 +1,4 @@
-<!-- Header start -->
+<!-- SiteDetail start -->
 <header id="header" class="header">
     <div class="container">
         <div class="row">
@@ -17,4 +17,4 @@
             </div><!-- header right end -->
         </div><!-- Row end -->
     </div><!-- Logo and banner area end -->
-</header><!--/ Header end -->
+</header><!--/ SiteDetail end -->

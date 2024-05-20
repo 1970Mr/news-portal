@@ -1476,7 +1476,7 @@ body.dark .select2-container--default .select2-search--inline .select2-search__f
 
 
 
-/*-------------------------- Header Start -------------------------*/
+/*-------------------------- SiteDetail Start -------------------------*/
 .morris-chart *, .morris-hover.morris-default-style{
     font-family: IranSans, Tahoma !important
 }
@@ -1705,7 +1705,7 @@ ul[id^="noty_"] li.flat{
 
 
 
-/*-------------------------- Header Start -------------------------*/
+/*-------------------------- SiteDetail Start -------------------------*/
 body{
     padding-top: 0;
 }
@@ -1932,7 +1932,7 @@ body.fix-header .navbar-fixed-top{
     float: left;
     margin: 12px 15px;
 }
-/*-------------------------- Header End --------------------------*/
+/*-------------------------- SiteDetail End --------------------------*/
 
 
 

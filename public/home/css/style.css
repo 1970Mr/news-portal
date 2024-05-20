@@ -6,7 +6,7 @@
 1.    Typography
 2.    Global Styles
 3.    Top Bar
-4.    Header area
+4.    SiteDetail area
 5.    Slider
 6.    Call to action
 7.    Features
@@ -1280,7 +1280,7 @@ span.post-comment span {
 }
 
 
-/* Header Default
+/* SiteDetail Default
 ================================================== */
 
 .header {
@@ -1807,7 +1807,7 @@ ul.navbar-nav > li.mega-dropdown {
 	padding-right: 10px;
 }
 
-/* Header with Menu
+/* SiteDetail with Menu
 ================================================== */
 
 .header.header-menu {

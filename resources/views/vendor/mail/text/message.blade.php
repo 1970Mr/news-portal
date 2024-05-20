@@ -1,5 +1,5 @@
 <x-mail::layout>
-    {{-- Header --}}
+    {{-- SiteDetail --}}
     <x-slot:header>
         <x-mail::header :url="config('app.url')">
             {{ config('app.name') }}

@@ -1,9 +1,9 @@
-@extends('panel::layouts.master', ['title' => 'ثبت هدر سایت'])
+@extends('panel::layouts.master', ['title' => 'ثبت جزئیات سایت'])
 
 @section('content')
     <x-common-breadcrumbs>
         <li><a>تنظیمات</a></li>
-        <li><a>ثبت هدر سایت</a></li>
+        <li><a>ثبت جزئیات سایت</a></li>
     </x-common-breadcrumbs>
 
     <div class="row pe-0">
@@ -13,7 +13,7 @@
                     <div class="portlet-title">
                         <h3 class="title">
                             <i class="icon-question"></i>
-                            ثبت هدر سایت
+                            ثبت جزئیات سایت
                         </h3>
                     </div><!-- /.portlet-title -->
                     <div class="buttons-box">
@@ -35,29 +35,72 @@
                         </div>
                     @endif
 
-                    <form id="main-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.settings.about-us.edit') }}" method="post">
+                    <form id="main-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.settings.about-us.edit') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
-                        <x-common-error-messages />
+                        <x-common-error-messages/>
 
                         <fieldset class="row justify-content-center">
                             <div class="form-group col-lg-6">
-                                <label for="title">عنوان <small>(ضروری)</small></label>
-                                <input id="title" class="form-control" name="title" value="{{ old('title', $about?->title) }}" required>
+                                <label for="description">توضیحات فوتر <small>(ضروری)</small></label>
+                                <input id="description" class="form-control" name="description" value="{{ old('description', $siteDetail?->description) }}" required>
                             </div>
 
-                            <div class="form-group col-12">
-                                <label>محتوا <small>(ضروری)</small></label>
-                                <div id="toolbar-container"></div>
-                                <div id="editor"></div>
-                                <input type="hidden" id="content" name="content" value="{{ old('content', $about?->content) }}" required>
+                            <div class="col-12 d-flex flex-column align-items-center">
+                                <div class="form-group relative col-lg-6">
+                                    <label>لوگوی هدر <small>(ضروری)</small></label>
+                                    <div class="input-group round">
+                                        <input type="text" class="form-control file-input" placeholder="برای آپلود کلیک کنید">
+                                        <span class="input-group-btn">
+                                        <button type="button" class="btn btn-success">
+                                            <i class="icon-picture"></i>
+                                            آپلود تصویر</button>
+                                    </span>
+                                    </div>
+                                    <input type="file" class="form-control" name="header_image">
+                                    <div class="help-block"></div>
+                                </div>
+                                <div class="form-group col-12 text-center">
+                                    <img class="mb-2" src="{{ asset('storage/' . $siteDetail->headerLogo?->file_path) }}" alt="{{ $siteDetail->headerLogo?->alt_text }}" style="max-width:
+                                    300px;
+                                    max-height:
+                                    300px">
+                                    <div>
+                                        {{ asset('storage/' . $siteDetail->headerLogo?->file_path) }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 d-flex flex-column align-items-center">
+                                <div class="form-group relative col-lg-6">
+                                    <label>لوگوی فوتر <small>(ضروری)</small></label>
+                                    <div class="input-group round">
+                                        <input type="text" class="form-control file-input" placeholder="برای آپلود کلیک کنید">
+                                        <span class="input-group-btn">
+                                        <button type="button" class="btn btn-success">
+                                            <i class="icon-picture"></i>
+                                            آپلود تصویر</button>
+                                    </span>
+                                    </div>
+                                    <input type="file" class="form-control" name="footer_image">
+                                    <div class="help-block"></div>
+                                </div>
+                                <div class="form-group col-12 text-center">
+                                    <img class="mb-2" src="{{ asset('storage/' . $siteDetail->footerLogo?->file_path) }}" alt="{{ $siteDetail->footerLogo?->alt_text }}" style="max-width:
+                                    300px;
+                                    max-height:
+                                    300px">
+                                    <div>
+                                        {{ asset('storage/' . $siteDetail->footerLogo?->file_path) }}
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="col-sm-6 col-sm-offset-4 mx-auto">
                                     <button class="btn btn-success btn-block">
                                         <i class="icon-check"></i>
-                                        ثبت هدر سایت
+                                        ثبت جزئیات سایت
                                     </button>
                                 </div>
                             </div>
@@ -76,8 +119,8 @@
     <script src="{{ asset('admin/assets/plugins/ckeditor5-document-editor/translations/fa.js') }}"></script>
     <script src="{{ asset('admin/assets/js/pages/UploadAdapter.js') }}"></script>
     <script>
-        function CustomUploadAdapterPlugin( editor ) {
-            editor.plugins.get( 'FileRepository' ).createUploadAdapter = ( loader ) => {
+        function CustomUploadAdapterPlugin(editor) {
+            editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
                 return new UploadAdapter(
                     loader,
                     '{{ route(config('app.panel_prefix', 'panel') . '.images.upload', ['alt_text' => 'About Us']) }}',
@@ -88,38 +131,38 @@
 
         $(document).ready(function () {
             DecoupledEditor
-                .create( document.querySelector( '#editor' ), {
-                    extraPlugins: [ CustomUploadAdapterPlugin ],
+                .create(document.querySelector('#editor'), {
+                    extraPlugins: [CustomUploadAdapterPlugin],
                     language: 'fa',
                     direction: 'rtl',
                     fontFamily: {
                         'default': 'IranSans, Arial, sans-serif',
                     },
                 })
-                .then( editor => {
+                .then(editor => {
                     editor.setData('{!! old('content', $about?->content) !!}');
                     editor.model.document.on('change:data', () => {
                         document.querySelector('input[name="content"]').value = editor.getData();
                     });
-                    const toolbarContainer = document.querySelector( '#toolbar-container' );
-                    toolbarContainer.appendChild( editor.ui.view.toolbar.element );
-                } )
-                .catch( error => {
-                    console.error( error );
-                } );
+                    const toolbarContainer = document.querySelector('#toolbar-container');
+                    toolbarContainer.appendChild(editor.ui.view.toolbar.element);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
         });
 
         $.validator.setDefaults({
-            highlight: function(element) {
+            highlight: function (element) {
                 $(element).closest('.form-group').addClass('has-error').removeClass("has-success");
             },
-            unhighlight: function(element) {
+            unhighlight: function (element) {
                 $(element).closest('.form-group').removeClass('has-error').addClass("has-success");
             },
             errorElement: 'span',
             errorClass: 'help-block',
-            errorPlacement: function(error, element) {
-                if(element.parent('.input-group').length) {
+            errorPlacement: function (error, element) {
+                if (element.parent('.input-group').length) {
                     error.insertAfter(element.parent());
                 } else {
                     error.insertAfter(element);

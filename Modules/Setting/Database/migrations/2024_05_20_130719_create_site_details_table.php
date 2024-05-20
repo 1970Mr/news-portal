@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('header', function (Blueprint $table) {
+        Schema::create('site_details', function (Blueprint $table) {
             $table->id();
+            $table->string('footer_description');
+            $table->foreignId('header_logo_id')->constrained('images');
+            $table->foreignId('footer_logo_id')->constrained('images');
             $table->timestamps();
         });
     }
