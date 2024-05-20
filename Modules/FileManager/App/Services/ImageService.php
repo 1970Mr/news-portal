@@ -26,7 +26,7 @@ class ImageService
         return $this->getAllImages($request)->get();
     }
 
-    public function store(Request $request, $fileName = 'image', $altText = 'Default alt text'): Model
+    public function store(Request $request, $fileName = 'image', $altText = 'Default Alt Text'): Model
     {
 //        Gate::authorize('store', Image::class);
         $data['file_path'] = FileManagerService::upload( $request->file($fileName) );

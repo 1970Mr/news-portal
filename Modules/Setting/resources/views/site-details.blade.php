@@ -43,7 +43,7 @@
                         <fieldset class="row justify-content-center">
                             <div class="form-group col-lg-6">
                                 <label for="description">توضیحات فوتر <small>(ضروری)</small></label>
-                                <textarea id="description" class="form-control" name="description" required>{{ old('description', $siteDetail?->description) }}</textarea>
+                                <textarea id="footer_description" class="form-control" name="footer_description" required>{{ old('footer_description', $siteDetail?->footer_description) }}</textarea>
                             </div>
 
                             <div class="col-12 d-flex flex-column align-items-center">
@@ -57,7 +57,7 @@
                                             آپلود تصویر</button>
                                     </span>
                                     </div>
-                                    <input type="file" class="form-control" name="header_image">
+                                    <input type="file" class="form-control" name="header_logo">
                                     <div class="help-block"></div>
                                 </div>
                                 @if($siteDetail?->headerLogo)
@@ -84,7 +84,7 @@
                                             آپلود تصویر</button>
                                     </span>
                                     </div>
-                                    <input type="file" class="form-control" name="footer_image">
+                                    <input type="file" class="form-control" name="footer_logo">
                                     <div class="help-block"></div>
                                 </div>
                                 @if($siteDetail?->footerLogo)
