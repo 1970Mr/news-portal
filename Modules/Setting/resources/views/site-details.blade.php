@@ -35,7 +35,7 @@
                         </div>
                     @endif
 
-                    <form id="main-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.settings.about-us.edit') }}" method="post" enctype="multipart/form-data">
+                    <form id="main-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.settings.site-details.edit') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <x-common-error-messages/>
@@ -43,7 +43,7 @@
                         <fieldset class="row justify-content-center">
                             <div class="form-group col-lg-6">
                                 <label for="description">توضیحات فوتر <small>(ضروری)</small></label>
-                                <input id="description" class="form-control" name="description" value="{{ old('description', $siteDetail?->description) }}" required>
+                                <textarea id="description" class="form-control" name="description" required>{{ old('description', $siteDetail?->description) }}</textarea>
                             </div>
 
                             <div class="col-12 d-flex flex-column align-items-center">
@@ -60,15 +60,17 @@
                                     <input type="file" class="form-control" name="header_image">
                                     <div class="help-block"></div>
                                 </div>
-                                <div class="form-group col-12 text-center">
-                                    <img class="mb-2" src="{{ asset('storage/' . $siteDetail->headerLogo?->file_path) }}" alt="{{ $siteDetail->headerLogo?->alt_text }}" style="max-width:
-                                    300px;
-                                    max-height:
-                                    300px">
-                                    <div>
-                                        {{ asset('storage/' . $siteDetail->headerLogo?->file_path) }}
+                                @if($siteDetail?->headerLogo)
+                                    <div class="form-group col-12 text-center">
+                                        <img class="mb-2" src="{{ asset('storage/' . $siteDetail?->headerLogo->file_path) }}" alt="{{ $siteDetail?->headerLogo->alt_text }}" style="max-width:
+                                        300px;
+                                        max-height:
+                                        300px">
+                                            <div>
+                                                {{ asset('storage/' . $siteDetail?->headerLogo->file_path) }}
+                                            </div>
                                     </div>
-                                </div>
+                                @endif
                             </div>
 
                             <div class="col-12 d-flex flex-column align-items-center">
@@ -85,18 +87,20 @@
                                     <input type="file" class="form-control" name="footer_image">
                                     <div class="help-block"></div>
                                 </div>
-                                <div class="form-group col-12 text-center">
-                                    <img class="mb-2" src="{{ asset('storage/' . $siteDetail->footerLogo?->file_path) }}" alt="{{ $siteDetail->footerLogo?->alt_text }}" style="max-width:
-                                    300px;
-                                    max-height:
-                                    300px">
-                                    <div>
-                                        {{ asset('storage/' . $siteDetail->footerLogo?->file_path) }}
+                                @if($siteDetail?->footerLogo)
+                                    <div class="form-group col-12 text-center">
+                                        <img class="mb-2" src="{{ asset('storage/' . $siteDetail?->footerLogo->file_path) }}" alt="{{ $siteDetail?->footerLogo->alt_text }}" style="max-width:
+                                        300px;
+                                        max-height:
+                                        300px">
+                                            <div>
+                                                {{ asset('storage/' . $siteDetail?->footerLogo->file_path) }}
+                                            </div>
                                     </div>
-                                </div>
+                                @endif
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group mt-3">
                                 <div class="col-sm-6 col-sm-offset-4 mx-auto">
                                     <button class="btn btn-success btn-block">
                                         <i class="icon-check"></i>
@@ -113,45 +117,7 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('admin/assets/plugins/mdsPersianDatetimepicker/dist/js/mds.bs.datetimepicker.js') }}"></script>
-
-    <script src="{{ asset('admin/assets/plugins/ckeditor5-document-editor/ckeditor.js') }}"></script>
-    <script src="{{ asset('admin/assets/plugins/ckeditor5-document-editor/translations/fa.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/pages/UploadAdapter.js') }}"></script>
     <script>
-        function CustomUploadAdapterPlugin(editor) {
-            editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
-                return new UploadAdapter(
-                    loader,
-                    '{{ route(config('app.panel_prefix', 'panel') . '.images.upload', ['alt_text' => 'About Us']) }}',
-                    '{{ csrf_token() }}'
-                );
-            };
-        }
-
-        $(document).ready(function () {
-            DecoupledEditor
-                .create(document.querySelector('#editor'), {
-                    extraPlugins: [CustomUploadAdapterPlugin],
-                    language: 'fa',
-                    direction: 'rtl',
-                    fontFamily: {
-                        'default': 'IranSans, Arial, sans-serif',
-                    },
-                })
-                .then(editor => {
-                    editor.setData('{!! old('content', $about?->content) !!}');
-                    editor.model.document.on('change:data', () => {
-                        document.querySelector('input[name="content"]').value = editor.getData();
-                    });
-                    const toolbarContainer = document.querySelector('#toolbar-container');
-                    toolbarContainer.appendChild(editor.ui.view.toolbar.element);
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-        });
-
         $.validator.setDefaults({
             highlight: function (element) {
                 $(element).closest('.form-group').addClass('has-error').removeClass("has-success");
@@ -171,32 +137,4 @@
         });
         $("#main-form").validate();
     </script>
-@endpush
-
-@push('styles')
-    <link rel="stylesheet" href="{{ asset('admin/assets/plugins/select2/dist/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin/assets/plugins/mdsPersianDatetimepicker/dist/css/mds.bs.datetimepicker.style.css') }}">
-
-    <style>
-        .ck-powered-by-balloon {
-            display: none !important;
-        }
-
-        #toolbar-container * {
-            font-family: 'IranSans';
-        }
-
-        #editor {
-            border-bottom-left-radius: 5px;
-            border-bottom-right-radius: 5px;
-            border: #dee2e6 solid 1px;
-            border-top: none;
-        }
-
-        #editor:focus {
-            border-radius: 5px;
-            border: gray solid 1px;
-            box-shadow: 1px 1px #dee2e6;
-        }
-    </style>
 @endpush

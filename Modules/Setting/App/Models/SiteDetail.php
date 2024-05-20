@@ -12,6 +12,11 @@ class SiteDetail extends Model
         'footer_description'
     ];
 
+    public function headerLogo(): BelongsTo
+    {
+        return $this->belongsTo(Image::class, 'header_logo_id');
+    }
+
     public function footerLogo(): BelongsTo
     {
         return $this->belongsTo(Image::class, 'footer_logo_id');

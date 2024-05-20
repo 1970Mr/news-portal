@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Modules\Setting\App\Http\Controllers\AboutUsController;
+use Modules\Setting\App\Http\Controllers\SiteDetailController;
 use Modules\Setting\App\Http\Controllers\SocialNetworkController;
 
 /*
@@ -28,6 +29,13 @@ Route::prefix(config('app.panel_prefix', 'panel') . '/settings')
         Route::prefix('/about-us')
             ->name('about-us.')
             ->controller(AboutUsController::class)->group(function () {
+                Route::get('/', 'edit')->name('edit');
+                Route::put('/', 'update');
+            });
+
+        Route::prefix('/site-details')
+            ->name('site-details.')
+            ->controller(SiteDetailController::class)->group(function () {
                 Route::get('/', 'edit')->name('edit');
                 Route::put('/', 'update');
             });

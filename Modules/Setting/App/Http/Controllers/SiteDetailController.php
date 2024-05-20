@@ -13,7 +13,7 @@ class SiteDetailController extends Controller
     public function edit(): View
     {
         $siteDetail = SiteDetail::with('footerLogo', 'headerLogo')->first();
-        return view('setting::header', compact('siteDetail'));
+        return view('setting::site-details', compact('siteDetail'));
     }
 
     public function update(Request $request, $id): RedirectResponse
