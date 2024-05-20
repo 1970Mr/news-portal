@@ -89,8 +89,8 @@
                             <img class="img-responsive" src="{{ $site_details->footerLogoLink() }}" alt="{{ config('app.name') }}" style="max-height: 80px; max-width: 300px">
                         </div>
                         <p>{{ $site_details->footer_description }}</p>
-                        <p class="footer-info-phone"><i class="fa fa-phone"></i> <span class="ltr_text">+(785) 238-4131</span></p>
-                        <p class="footer-info-email"><i class="fa fa-envelope-o"></i> <span class="ltr_text">info@example.com</span></p>
+                        <p class="footer-info-phone"><i class="fa fa-phone"></i> <span class="ltr_text">{{ $contact_info->phone }}</span></p>
+                        <p class="footer-info-email"><i class="fa fa-envelope-o"></i> <span class="ltr_text">{{ $contact_info->email }}</span></p>
                         <ul class="unstyled footer-social">
                             <li>
                                 @foreach($social_networks as $name => $url)
