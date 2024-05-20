@@ -31,7 +31,10 @@
                 </div>
 
                 <div class="newsletter-form">
-                    <form action="#" method="post">
+                    <form action="{{ route('newsletters.subscribe') }}" method="post">
+                        @csrf
+                        @honeypot
+
                         <div class="form-group">
                             <input type="email" name="email" id="newsletter-form-email" class="form-control form-control-lg" placeholder="ایمیل" autocomplete="off">
                             <button class="btn btn-primary">عضویت</button>

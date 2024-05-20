@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('newsletters', function (Blueprint $table) {
             $table->id();
             $table->string('email')->unique();
-            $table->timestamp('subscribed_at');
+            $table->timestamp('subscribed_at')->useCurrent();
             $table->softDeletes();
             $table->timestamps();
         });
