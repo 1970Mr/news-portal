@@ -80,6 +80,12 @@ return [
                 config('app.panel_prefix', 'panel') . '.comments.show',
             ]
         ],
+        'newsletter' => [
+            'title' => 'خبرنامه',
+            'icon' => 'icon-paper-plane',
+            'url' => route(config('app.panel_prefix', 'panel') . '.newsletters.index'),
+            'permissions' => config('permissions_list.NEWSLETTER_INDEX', false),
+        ],
         'profile' => [
             'title' => 'پروفایل',
             'icon' => 'icon-user',

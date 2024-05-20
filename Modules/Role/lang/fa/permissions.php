@@ -12,4 +12,5 @@ return [
     'comment' => 'نظرات',
     'profile' => 'پروفایل',
     'setting' => 'تنظیمات سایت',
+    'newsletter' => 'خبرنامه',
 ];

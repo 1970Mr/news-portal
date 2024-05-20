@@ -10,6 +10,9 @@ return [
     'SETTING_ABOUT_US' => 'setting::about_us',
     'SETTING_SITE_DETAILS' => 'setting::site_details',
 
+    'NEWSLETTER_INDEX' => 'newsletter::index',
+    'NEWSLETTER_DESTROY' => 'newsletter::destroy',
+
     'USER_INDEX' => 'user::index',
     'USER_STORE' => 'user::store',
     'USER_UPDATE' => 'user::update',
