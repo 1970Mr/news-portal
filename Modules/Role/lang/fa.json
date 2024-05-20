@@ -6,6 +6,7 @@
 
     "setting::social_networks": "ثبت شبکه\u200Cهای اجتماعی سایت",
     "setting::about_us": "ثبت اطلاعات درباره ما",
+    "setting::site_details": "ثبت جزئیات سایت",
 
     "user::index": "مشاهده کاربران",
     "user::store": "ایجاد کاربر",

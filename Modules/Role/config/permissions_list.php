@@ -8,6 +8,7 @@ return [
 
     'SETTING_SOCIAL_NETWORKS' => 'setting::social_networks',
     'SETTING_ABOUT_US' => 'setting::about_us',
+    'SETTING_SITE_DETAILS' => 'setting::site_details',
 
     'USER_INDEX' => 'user::index',
     'USER_STORE' => 'user::store',

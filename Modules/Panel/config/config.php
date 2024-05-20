@@ -155,14 +155,22 @@ return [
             'title' => 'تنظیمات سایت',
             'icon' => 'icon-settings',
             'active_routes' => [
+                config('app.panel_prefix', 'panel') . '.settings.site-details.edit',
                 config('app.panel_prefix', 'panel') . '.settings.social-networks.edit',
                 config('app.panel_prefix', 'panel') . '.settings.about-us.edit',
             ],
             'permissions' => [
+                config('permissions_list.SETTING_SITE_DETAILS', false),
                 config('permissions_list.SETTING_SOCIAL_NETWORKS', false),
                 config('permissions_list.SETTING_ABOUT_US', false),
             ],
             'children' => [
+                [
+                    'title' => 'ثبت جزئیات سایت',
+                    'icon' => 'icon-wrench',
+                    'url' => route(config('app.panel_prefix', 'panel') . '.settings.site-details.edit'),
+                    'permissions' => config('permissions_list.SETTING_SITE_DETAILS', false),
+                ],
                 [
                     'title' => 'ثبت شبکه‌های اجتماعی',
                     'icon' => 'icon-link',

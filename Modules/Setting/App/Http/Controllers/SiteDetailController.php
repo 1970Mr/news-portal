@@ -14,7 +14,7 @@ class SiteDetailController extends Controller
 {
     public function __construct(private readonly SiteDetailService $detailService)
     {
-//        $this->middleware('can:' . config('permissions_list.SETTING_SITE_DETAILS', false));
+        $this->middleware('can:' . config('permissions_list.SETTING_SITE_DETAILS', false));
     }
 
     public function edit(): View
