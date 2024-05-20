@@ -21,4 +21,21 @@ class SiteDetail extends Model
     {
         return $this->belongsTo(Image::class, 'footer_logo_id');
     }
+
+    public function getLogo($relation): string
+    {
+        return $relation ?
+            config('setting.default_logo_picture.file_link') :
+            asset('storage/' . $relation->file_path);
+    }
+
+    public function headerLogoLink(): string
+    {
+        return $this->getLogo($this->headerLogo);
+    }
+
+    public function footerLogoLink(): string
+    {
+        return $this->getLogo($this->footerLogo);
+    }
 }

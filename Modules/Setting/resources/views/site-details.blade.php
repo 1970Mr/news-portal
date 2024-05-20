@@ -43,7 +43,7 @@
                         <fieldset class="row justify-content-center">
                             <div class="form-group col-lg-6">
                                 <label for="description">توضیحات فوتر <small>(ضروری)</small></label>
-                                <textarea id="footer_description" class="form-control" name="footer_description" required>{{ old('footer_description', $siteDetail?->footer_description) }}</textarea>
+                                <textarea id="footer_description" class="form-control" name="footer_description" required>{{ old('footer_description', $siteDetails?->footer_description) }}</textarea>
                             </div>
 
                             <div class="col-12 d-flex flex-column align-items-center">
@@ -60,14 +60,14 @@
                                     <input type="file" class="form-control" name="header_logo">
                                     <div class="help-block"></div>
                                 </div>
-                                @if($siteDetail?->headerLogo)
+                                @if($siteDetails?->headerLogo)
                                     <div class="form-group col-12 text-center">
-                                        <img class="mb-2" src="{{ asset('storage/' . $siteDetail?->headerLogo->file_path) }}" alt="{{ $siteDetail?->headerLogo->alt_text }}" style="max-width:
+                                        <img class="mb-2" src="{{ asset('storage/' . $siteDetails?->headerLogo->file_path) }}" alt="{{ $siteDetails?->headerLogo->alt_text }}" style="max-width:
                                         300px;
                                         max-height:
                                         300px">
                                             <div>
-                                                {{ asset('storage/' . $siteDetail?->headerLogo->file_path) }}
+                                                {{ asset('storage/' . $siteDetails?->headerLogo->file_path) }}
                                             </div>
                                     </div>
                                 @endif
@@ -87,14 +87,14 @@
                                     <input type="file" class="form-control" name="footer_logo">
                                     <div class="help-block"></div>
                                 </div>
-                                @if($siteDetail?->footerLogo)
+                                @if($siteDetails?->footerLogo)
                                     <div class="form-group col-12 text-center">
-                                        <img class="mb-2" src="{{ asset('storage/' . $siteDetail?->footerLogo->file_path) }}" alt="{{ $siteDetail?->footerLogo->alt_text }}" style="max-width:
+                                        <img class="mb-2" src="{{ asset('storage/' . $siteDetails?->footerLogo->file_path) }}" alt="{{ $siteDetails?->footerLogo->alt_text }}" style="max-width:
                                         300px;
                                         max-height:
                                         300px">
                                             <div>
-                                                {{ asset('storage/' . $siteDetail?->footerLogo->file_path) }}
+                                                {{ asset('storage/' . $siteDetails?->footerLogo->file_path) }}
                                             </div>
                                     </div>
                                 @endif

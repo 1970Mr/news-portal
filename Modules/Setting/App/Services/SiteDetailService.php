@@ -13,16 +13,16 @@ class SiteDetailService
 
     public function update(SiteDetailRequest $request): void
     {
-        $siteDetail = SiteDetail::query()->firstOrNew();
+        $siteDetails = SiteDetail::query()->firstOrNew();
         if ($headerLogo = $this->storeImage($request, 'header_logo', 'Header Logo')) {
-            $this->imageService->destroyWithoutKeyConstraints($siteDetail->headerLogo);
-            $siteDetail->header_logo_id = $headerLogo->id;
+            $this->imageService->destroyWithoutKeyConstraints($siteDetails->headerLogo);
+            $siteDetails->header_logo_id = $headerLogo->id;
         }
         if ($footerLogo = $this->storeImage($request, 'footer_logo', 'Footer Logo')) {
-            $this->imageService->destroyWithoutKeyConstraints($siteDetail->footerLogo);
-            $siteDetail->footer_logo_id = $footerLogo->id;
+            $this->imageService->destroyWithoutKeyConstraints($siteDetails->footerLogo);
+            $siteDetails->footer_logo_id = $footerLogo->id;
         }
-        $siteDetail->fill($request->only('footer_description'))->save();
+        $siteDetails->fill($request->only('footer_description'))->save();
     }
 
     private function storeImage(SiteDetailRequest $request, string $fieldName, string $altText): ?Model
