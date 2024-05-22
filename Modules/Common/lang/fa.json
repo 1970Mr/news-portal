@@ -34,5 +34,6 @@
     "Get in touch with us for any inquiries or support.": "برای هرگونه سوال یا پشتیبانی با ما تماس بگیرید.",
     "about_us_description": "با سایت :siteName بیشتر آشنا شوید.",
     "category_description": "مقالات را در دسته :categoryName مرور کنید.",
-    "tag_description": "کاوش در مقالات برچسب گذاری شده با :tagName."
+    "tag_description": "کاوش در مقالات برچسب گذاری شده با :tagName.",
+    "search_description": "نتایج جستجو برای :searchText"
 }

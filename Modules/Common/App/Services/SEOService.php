@@ -132,6 +132,7 @@ class SEOService
         SEOTools::setTitle($tag->name);
         SEOTools::setDescription(__('tag_description', ['tagName' => $tag->name]));
         SEOTools::setCanonical(route('tags.show', $tag->slug));
+        SEOMeta::addMeta('robots', 'index, follow');
 
         OpenGraph::setTitle($tag->name);
         OpenGraph::setDescription(__('tag_description', ['tagName' => $tag->name]));
@@ -140,5 +141,21 @@ class SEOService
         JsonLd::setTitle($tag->name);
         JsonLd::setDescription(__('tag_description', ['tagName' => $tag->name]));
         JsonLd::setType('Tag');
+    }
+
+    public function setSearchPageSEO($searchText): void
+    {
+        SEOTools::setTitle(__('search_description', ['searchText' => $searchText]));
+        SEOTools::setDescription(__('search_description', ['searchText' => $searchText]));
+        SEOTools::setCanonical(route('search.index', ['text' => $searchText]));
+        SEOMeta::addMeta('robots', 'index, follow');
+
+        OpenGraph::setTitle(__('search_description', ['searchText' => $searchText]));
+        OpenGraph::setDescription(__('search_description', ['searchText' => $searchText]));
+        OpenGraph::setType('search');
+
+        JsonLd::setTitle(__('search_description', ['searchText' => $searchText]));
+        JsonLd::setDescription(__('search_description', ['searchText' => $searchText]));
+        JsonLd::setType('SearchResultsPage');
     }
 }
