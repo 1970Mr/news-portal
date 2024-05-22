@@ -120,4 +120,37 @@ class Article extends Model implements Feedable
         $strippedBody = strip_tags($cleanedBody);
         return str($strippedBody)->limit($limit);
     }
+
+    public function previousArticle()
+    {
+        return $this->where('created_at', '<', $this->created_at)
+            ->orderBy('created_at', 'desc')
+            ->first();
+    }
+
+    public function nextArticle()
+    {
+        return $this->where('created_at', '>', $this->created_at)
+            ->orderBy('created_at')
+            ->first();
+    }
+
+    public function relatedArticles($limit = 6)
+    {
+        $relatedArticles = $this->category->articles()
+            ->with(['image', 'category', 'user'])
+            ->where('id', '!=', $this->id)
+            ->latest()
+            ->limit($limit)
+            ->get();
+        if ($relatedArticles->count() < 3) {
+            $relatedArticles = self::with(['image', 'category', 'user'])
+                ->where('id', '!=', $this->id)
+                ->latest()
+                ->limit($limit)
+                ->get()
+                ->shuffle();
+        }
+        return $relatedArticles;
+    }
 }

@@ -7,35 +7,21 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Jorenvh\Share\ShareFacade;
 use Modules\Article\App\Models\Article;
+use Modules\Article\App\Services\Front\ShareService;
 use Modules\Category\App\Models\Category;
+use Modules\Comment\App\Services\SEOService;
 
 class ArticleController extends Controller
 {
+    public function __construct(private readonly SEOService $seoService, private readonly ShareService $shareService) {}
 
     public function show(Request $request, Category $category, Article $article): View
     {
-        $shared_links = ShareFacade::page($request->url(), $article->title)
-            ->facebook()
-            ->twitter()
-            ->linkedin()
-            ->telegram()
-            ->whatsapp()
-            ->pinterest()
-            ->getRawLinks();
-
-        $previous_article = Article::with('category')->where('created_at', '<', $article->created_at)
-            ->orderBy('created_at', 'desc')
-            ->first();
-
-        $next_article = Article::with('category')->where('created_at', '>', $article->created_at)
-            ->orderBy('created_at')
-            ->first();
-
-        $related_articles = $article->category->articles()->with(['image', 'category', 'user'])->where('id', '!=', $article->id)->latest()->limit(6)->get();
-        if ($related_articles->count() < 3) {
-            $related_articles = Article::with(['image', 'category', 'user'])->where('id', '!=', $article->id)->latest()->limit(6)->get()->shuffle();
-        }
-
+        $this->seoService->setArticlePageSEO($article);
+        $shared_links = $this->shareService->generateSharedLinks($request->url(), $article->title);
+        $previous_article = $article->previousArticle();
+        $next_article = $article->nextArticle();
+        $related_articles = $article->relatedArticles();
         visits($article)->increment();
         return view('front::single-article.show', compact(['article', 'category', 'shared_links', 'previous_article', 'next_article', 'related_articles']));
     }

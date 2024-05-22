@@ -2,27 +2,13 @@
 
 namespace Modules\Home\App\Services;
 
-use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Article\App\Models\Article;
 use Modules\Category\App\Models\Category;
-use Modules\Setting\App\Models\SiteDetail;
 
 class HomeService
 {
-    public function setHomePageSeo(): void
-    {
-        $site_details = SiteDetail::with('headerLogo')->first();
-        $site_title = __('news agency') . ' ' . config('app.name') . ' - ' . __('independent and reliable news site');
-        SEOTools::setTitle($site_title, false);
-        SEOTools::setDescription(__('site_description'));
-        SEOTools::opengraph()->setUrl(route('home.index'));
-        SEOTools::setCanonical(route('home.index'));
-        SEOTools::opengraph()->addProperty('type', 'website');
-        SEOTools::jsonLd()->addImage(asset('storage/' . $site_details->headerLogo->file_path));
-    }
-
     public function baseQuery(): Builder
     {
         return Article::with(['hotness', 'image', 'category', 'tags'])->latest()->active()->published();

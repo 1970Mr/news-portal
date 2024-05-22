@@ -4,15 +4,17 @@ namespace Modules\Home\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\View\View;
+use Modules\Comment\App\Services\SEOService;
 use Modules\Home\App\Services\HomeService;
 
 class HomeController extends Controller
 {
-    public function __construct(private readonly HomeService $homeService) {}
+    public function __construct(private readonly HomeService $homeService, private readonly SEOService $seoService) {}
 
     public function __invoke(): View
     {
-        $this->homeService->setHomePageSEO();
+        $this->seoService->setHomePageSEO();
+
         $trendingPosts = $this->homeService->getTrendingPosts();
         $articlesIdsIgnore = $trendingPosts['editor_choices']->pluck('id');
         $trendingPosts['first_editor_choice'] = $trendingPosts['editor_choices']->pop();
@@ -35,5 +37,4 @@ class HomeController extends Controller
             'fourth_content' => $fourthContent,
         ]);
     }
-
 }
