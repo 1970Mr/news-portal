@@ -126,4 +126,19 @@ class SEOService
         JsonLd::setDescription(__('category_description', ['categoryName' => $category->name]));
         JsonLd::setType('Category');
     }
+
+    public function setTagPageSEO($tag): void
+    {
+        SEOTools::setTitle($tag->name);
+        SEOTools::setDescription(__('tag_description', ['tagName' => $tag->name]));
+        SEOTools::setCanonical(route('tags.show', $tag->slug));
+
+        OpenGraph::setTitle($tag->name);
+        OpenGraph::setDescription(__('tag_description', ['tagName' => $tag->name]));
+        OpenGraph::setType('tag');
+
+        JsonLd::setTitle($tag->name);
+        JsonLd::setDescription(__('tag_description', ['tagName' => $tag->name]));
+        JsonLd::setType('Tag');
+    }
 }
