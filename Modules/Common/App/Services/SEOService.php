@@ -110,4 +110,20 @@ class SEOService
             SEOTools::jsonLd()->addImage(asset('storage/' . $siteDetails->headerLogo->file_path));
         }
     }
+
+    public function setCategoryPageSEO($category): void
+    {
+        SEOTools::setTitle($category->name);
+        SEOTools::setDescription(__('category_description', ['categoryName' => $category->name]));
+        SEOTools::setCanonical(route('categories.show', $category->slug));
+        SEOMeta::addMeta('robots', 'index, follow');
+
+        OpenGraph::setTitle($category->name);
+        OpenGraph::setDescription(__('category_description', ['categoryName' => $category->name]));
+        OpenGraph::setType('category');
+
+        JsonLd::setTitle($category->name);
+        JsonLd::setDescription(__('category_description', ['categoryName' => $category->name]));
+        JsonLd::setType('Category');
+    }
 }
