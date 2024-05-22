@@ -4,6 +4,7 @@ namespace Modules\Article\App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -17,8 +18,10 @@ use Modules\FileManager\App\Traits\HasImage;
 use Modules\Hotness\App\Traits\HasHotness;
 use Modules\Tag\App\Models\Tag;
 use Modules\User\App\Models\User;
+use Spatie\Feed\Feedable;
+use Spatie\Feed\FeedItem;
 
-class Article extends Model
+class Article extends Model implements Feedable
 {
     use HasFactory, HasImage, HasHotness, HasComments, Searchable;
 
@@ -34,6 +37,23 @@ class Article extends Model
         'category_id',
         'user_id',
     ];
+
+    public function toFeedItem(): FeedItem
+    {
+        return FeedItem::create()
+            ->id($this->id)
+            ->title($this->title)
+            ->summary($this->description)
+            ->updated($this->updated_at)
+            ->link(route('news.show', [$this->category->slug, $this->slug]))
+            ->authorName($this->user->full_name)
+            ->authorEmail($this->user->email);
+    }
+
+    public static function getFeedItems(): Collection
+    {
+        return Article::latest()->limit(50)->get();
+    }
 
     public function toSearchableArray(): array
     {

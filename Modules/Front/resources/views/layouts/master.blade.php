@@ -18,6 +18,8 @@
     <link rel="shortcut icon" href="{{ asset('home/images/favicon.ico') }}" type="image/x-icon">
     <link rel="icon" href="{{ asset('home/images/favicon.ico') }}" type="image/x-icon">
 
+    <x-feed-links />
+
     @include('front::partials.styles')
 
     @include('front::partials.custom-footer-style')

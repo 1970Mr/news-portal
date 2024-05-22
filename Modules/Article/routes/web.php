@@ -20,3 +20,4 @@ Route::prefix(config('app.panel_prefix', 'panel'))->name(config('app.panel_prefi
 
 // Front routes
 Route::get('news/{category:slug}/{article:slug}', [\Modules\Article\App\Http\Controllers\Front\ArticleController::class, 'show'])->name('news.show');
+Route::feeds();
