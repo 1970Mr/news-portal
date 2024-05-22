@@ -3,57 +3,37 @@
 namespace Modules\Home\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\View\View;
-use Modules\Article\App\Models\Article;
-use Modules\Category\App\Models\Category;
+use Modules\Home\App\Services\HomeService;
 
 class HomeController extends Controller
 {
+    public function __construct(private readonly HomeService $homeService) {}
+
     public function __invoke(): View
     {
-        $trending_posts['editor_choices'] = $this->baseQuery()->editorChoice()->limit(3)->get();
-        if ($trending_posts['editor_choices']->count() < 3) {
-            $trending_posts['editor_choices'] = $this->baseQuery()->limit(3)->get()->shuffle();
-        }
-        $articles_ids_ignore = $trending_posts['editor_choices']->pluck('id');
-        $trending_posts['first_editor_choice'] = $trending_posts['editor_choices']->pop();
+        $this->homeService->setHomePageSEO();
+        $trendingPosts = $this->homeService->getTrendingPosts();
+        $articlesIdsIgnore = $trendingPosts['editor_choices']->pluck('id');
+        $trendingPosts['first_editor_choice'] = $trendingPosts['editor_choices']->pop();
 
-        $trending_posts['latest_articles'] = $this->baseQuery()->whereNotIn('id', $articles_ids_ignore)->limit(5)->get();
-        if ($trending_posts['latest_articles']->count() < 1) {
-            $trending_posts['latest_articles'] = $this->baseQuery()->limit(5)->get();
-        }
-        $articles_ids_ignore = $trending_posts['latest_articles']->pluck('id');
+        $trendingPosts['latest_articles'] = $this->homeService->getLatestArticles($articlesIdsIgnore);
+        $articlesIdsIgnore = $trendingPosts['latest_articles']->pluck('id');
 
-        $first_content['latest_articles'] = $this->baseQuery()->whereNotIn('id', $articles_ids_ignore)->limit(20)->get();
-        if ($first_content['latest_articles']->count() < 3) {
-            $first_content['latest_articles'] = $this->baseQuery()->limit(5)->get()->shuffle();
-        }
-        $articles_ids_ignore = $articles_ids_ignore->merge($first_content['latest_articles']->pluck('id'));
+        $firstContent['latest_articles'] = $this->homeService->getFirstContentArticles($articlesIdsIgnore);
+        $articlesIdsIgnore = $articlesIdsIgnore->merge($firstContent['latest_articles']->pluck('id'));
 
-        $second_content['parent_categories'] = Category::with(['categories' => function ($query) {
-            $query->whereHas('articles')->limit(6);
-        }])->whereHas('categories.articles', function ($query) {
-            $query->limit(5)->published();
-        })->latest()->limit(5)->get();
+        $secondContent['parent_categories'] = $this->homeService->getParentCategories();
+        $thirdContent['categories'] = $this->homeService->getCategoriesWithoutParent();
+        $fourthContent['latest_articles'] = $this->homeService->getFourthContentArticles($articlesIdsIgnore);
 
-        $third_content['categories'] = Category::with(['articles' => function ($query) {
-            $query->limit(5)->published();
-        }])->whereHas('articles')->where('parent_id', null)->latest()->limit(5)->get();
-
-        $fourth_content['latest_articles'] = $this->baseQuery()->whereNotIn('id', $articles_ids_ignore)->limit(24)->get();
-
-        return view('home::index', compact([
-            'trending_posts',
-            'first_content',
-            'second_content',
-            'third_content',
-            'fourth_content',
-        ]));
+        return view('home::index', [
+            'trending_posts' => $trendingPosts,
+            'first_content' => $firstContent,
+            'second_content' => $secondContent,
+            'third_content' => $thirdContent,
+            'fourth_content' => $fourthContent,
+        ]);
     }
 
-    private function baseQuery(): Builder
-    {
-        return Article::with(['hotness', 'image', 'category', 'tags'])->latest()->active()->published();
-    }
 }

@@ -6,7 +6,7 @@
     <!-- Basic Page Needs
 ================================================== -->
     <meta charset="utf-8">
-    <title>{{ !empty($title) ? $title : config('app.name') }}</title>
+{{--    <title>{{ !empty($title) ? $title : config('app.name') }}</title>--}}
 
     <!-- Mobile Specific Metas
 ================================================== -->
@@ -19,6 +19,7 @@
     <link rel="icon" href="{{ asset('home/images/favicon.ico') }}" type="image/x-icon">
 
     <x-feed-links />
+    {!! SEO::generate() !!}
 
     @include('front::partials.styles')
 
