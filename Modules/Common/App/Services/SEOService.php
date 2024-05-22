@@ -7,7 +7,6 @@ use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Artesaos\SEOTools\Facades\TwitterCard;
-use Carbon\Carbon;
 use Modules\Setting\App\Models\SiteDetail;
 
 class SEOService
@@ -17,11 +16,12 @@ class SEOService
         $siteDetails = SiteDetail::with('headerLogo')->first();
         $siteTitle = __('news agency') . ' ' . config('app.name') . ' - ' . __('independent and reliable news site');
 
-        SEOTools::setTitle($siteTitle);
+        SEOTools::setTitle($siteTitle, false);
         SEOTools::setDescription(__('site_description'));
-        SEOTools::opengraph()->setUrl(route('home.index'));
         SEOTools::setCanonical(route('home.index'));
+        SEOTools::opengraph()->setUrl(route('home.index'));
         SEOTools::opengraph()->addProperty('type', 'website');
+        SEOTools::opengraph()->addProperty('site_name', __('news agency') . ' ' . config('app.name'));
         SEOMeta::addMeta('robots', 'index, follow');
 
         if ($siteDetails && $siteDetails->headerLogo) {

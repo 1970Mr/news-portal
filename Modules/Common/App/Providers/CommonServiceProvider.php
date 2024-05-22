@@ -2,9 +2,11 @@
 
 namespace Modules\Common\App\Providers;
 
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Modules\Common\App\Console\GenerateSitemap;
 use Modules\Common\App\Console\SendTestEmail;
 use Modules\Common\App\View\Components\Breadcrumbs;
 use Modules\Common\App\View\Components\DeleteButton;
@@ -39,9 +41,6 @@ class CommonServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->register(RouteServiceProvider::class);
-        $this->commands([
-            SendTestEmail::class,
-        ]);
     }
 
     /**
@@ -49,7 +48,10 @@ class CommonServiceProvider extends ServiceProvider
      */
     protected function registerCommands(): void
     {
-        // $this->commands([]);
+         $this->commands([
+             SendTestEmail::class,
+             GenerateSitemap::class
+         ]);
     }
 
     /**
@@ -57,10 +59,12 @@ class CommonServiceProvider extends ServiceProvider
      */
     protected function registerCommandSchedules(): void
     {
-        // $this->app->booted(function () {
-        //     $schedule = $this->app->make(Schedule::class);
-        //     $schedule->command('inspire')->hourly();
-        // });
+        // Run schedule in server:
+        // * * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
+         $this->app->booted(function () {
+             $schedule = $this->app->make(Schedule::class);
+             $schedule->command('sitemap:generate')->daily();
+         });
     }
 
     /**
