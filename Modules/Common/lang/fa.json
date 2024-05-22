@@ -30,5 +30,6 @@
     "This image cannot be deleted! Because it has been used elsewhere.": "این تصویر قابل حذف نیست! زیرا در جایی از آن استفاده شده است.",
     "Password incorrect.": "رمز عبور اشتباه است.",
     "nothing": "هیچی",
-    "all": "همه"
+    "all": "همه",
+    "about_us_description": "با سایت :siteName بیشتر آشنا شوید."
 }

@@ -9,7 +9,7 @@ use Jorenvh\Share\ShareFacade;
 use Modules\Article\App\Models\Article;
 use Modules\Article\App\Services\Front\ShareService;
 use Modules\Category\App\Models\Category;
-use Modules\Comment\App\Services\SEOService;
+use Modules\Common\App\Services\SEOService;
 
 class ArticleController extends Controller
 {

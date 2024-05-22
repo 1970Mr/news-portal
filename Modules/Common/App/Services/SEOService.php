@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Comment\App\Services;
+namespace Modules\Common\App\Services;
 
 use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\OpenGraph;
@@ -22,6 +22,7 @@ class SEOService
         SEOTools::opengraph()->setUrl(route('home.index'));
         SEOTools::setCanonical(route('home.index'));
         SEOTools::opengraph()->addProperty('type', 'website');
+        SEOMeta::addMeta('robots', 'index, follow');
 
         if ($siteDetails && $siteDetails->headerLogo) {
             SEOTools::jsonLd()->addImage(asset('storage/' . $siteDetails->headerLogo->file_path));
@@ -40,6 +41,7 @@ class SEOService
         SEOMeta::addMeta('article:tag', $article->tags->pluck('name'), 'property');
         SEOMeta::addMeta('article:section', $article->category->name, 'property');
         SEOMeta::addKeyword(explode(',', $article->keywords));
+        SEOMeta::addMeta('robots', 'index, follow');
 
         SEOTools::opengraph()->setUrl(route('news.show', [$article->category->slug, $article->slug]));
         SEOTools::opengraph()->addImage(asset('storage/' . $article->image->file_path), ['width' => 300]);
@@ -60,6 +62,7 @@ class SEOService
         SEOMeta::setTitle($author->full_name);
         SEOMeta::setDescription("Profile of " . $author->full_name);
         SEOMeta::addMeta('author:published_articles', $author->articles()->count(), 'property');
+        SEOMeta::addMeta('robots', 'index, follow');
 
         OpenGraph::setTitle($author->name);
         OpenGraph::setDescription("Profile of " . $author->full_name);
@@ -74,5 +77,21 @@ class SEOService
         JsonLd::setTitle($author->full_name);
         JsonLd::setDescription("Profile of " . $author->full_name);
         JsonLd::setType('Person');
+    }
+
+    public function setAboutUsPageSEO(): void
+    {
+        $siteDetails = SiteDetail::first();
+
+        SEOTools::setTitle(__('about_us'));
+        SEOTools::setDescription(__('about_us_description', ['siteName' => config('app.name')]));
+        SEOTools::setCanonical(route('about-us.index'));
+        SEOTools::opengraph()->setUrl(route('about-us.index'));
+        SEOTools::opengraph()->addProperty('type', 'website');
+        SEOMeta::addMeta('robots', 'index, follow');
+
+        if ($siteDetails && $siteDetails->headerLogo) {
+            SEOTools::jsonLd()->addImage(asset('storage/' . $siteDetails->headerLogo->file_path));
+        }
     }
 }
