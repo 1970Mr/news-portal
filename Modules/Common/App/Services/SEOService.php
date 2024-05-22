@@ -94,4 +94,20 @@ class SEOService
             SEOTools::jsonLd()->addImage(asset('storage/' . $siteDetails->headerLogo->file_path));
         }
     }
+
+    public function setContactUsPageSEO(): void
+    {
+        $siteDetails = SiteDetail::first();
+
+        SEOTools::setTitle(__('contact_us'));
+        SEOTools::setDescription(__('Get in touch with us for any inquiries or support.'));
+        SEOTools::setCanonical(route('contact-us.index'));
+        SEOTools::opengraph()->setUrl(route('contact-us.index'));
+        SEOTools::opengraph()->addProperty('type', 'website');
+        SEOMeta::addMeta('robots', 'index, follow');
+
+        if ($siteDetails && $siteDetails->headerLogo) {
+            SEOTools::jsonLd()->addImage(asset('storage/' . $siteDetails->headerLogo->file_path));
+        }
+    }
 }
