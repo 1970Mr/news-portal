@@ -9,7 +9,7 @@ use Modules\ContactUs\App\Http\Requests\UserMessageRequest;
 use Modules\ContactUs\App\Models\ContactInfo;
 use Modules\ContactUs\App\Models\UserMessage;
 
-class UserMessageController extends Controller
+class ContactUsController extends Controller
 {
     public function index(): View
     {

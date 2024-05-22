@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Modules\ContactUs\App\Http\Controllers\ContactInfoController;
 use Modules\ContactUs\App\Http\Controllers\UserMessageController;
-use Modules\ContactUs\App\Http\Controllers\Front\UserMessageController as FrontUserMessageController;
+use Modules\ContactUs\App\Http\Controllers\Front\ContactUsController as FrontUserMessageController;
 
 Route::prefix(config('app.panel_prefix', 'panel') . '/contact-us')
     ->name(config('app.panel_prefix', 'panel') . '.contact-us.')

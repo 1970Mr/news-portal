@@ -2,8 +2,11 @@
 
 namespace Modules\Comment\App\Services;
 
+use Artesaos\SEOTools\Facades\JsonLd;
+use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\SEOTools;
+use Artesaos\SEOTools\Facades\TwitterCard;
 use Carbon\Carbon;
 use Modules\Setting\App\Models\SiteDetail;
 
@@ -50,5 +53,26 @@ class SEOService
         SEOTools::jsonLd()->setTitle($article->title);
         SEOTools::jsonLd()->setDescription($article->description);
         SEOTools::jsonLd()->addImage(asset('storage/' . $article->image->file_path));
+    }
+
+    public function setAuthorPageSEO($author): void
+    {
+        SEOMeta::setTitle($author->full_name);
+        SEOMeta::setDescription("Profile of " . $author->full_name);
+        SEOMeta::addMeta('author:published_articles', $author->articles()->count(), 'property');
+
+        OpenGraph::setTitle($author->name);
+        OpenGraph::setDescription("Profile of " . $author->full_name);
+        OpenGraph::setType('profile');
+        OpenGraph::addProperty('profile:full_name', $author->full_name);
+        OpenGraph::addProperty('profile:username', $author->username);
+
+        TwitterCard::setTitle($author->full_name);
+        TwitterCard::setDescription("Profile of " . $author->full_name);
+//        TwitterCard::setSite('@' . $author->username);
+
+        JsonLd::setTitle($author->full_name);
+        JsonLd::setDescription("Profile of " . $author->full_name);
+        JsonLd::setType('Person');
     }
 }
