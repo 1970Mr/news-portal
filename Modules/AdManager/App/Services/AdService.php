@@ -26,4 +26,10 @@ class AdService
         Ad::query()->create($data);
         $this->imageService->uploadImageDuringUpdate($request, $ad, $ad->title);
     }
+
+    public function destroy(Ad $ad): void
+    {
+        $this->imageService->destroyWithoutKeyConstraints($ad->image);
+        $ad->delete();
+    }
 }
