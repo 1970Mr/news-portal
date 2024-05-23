@@ -65,7 +65,7 @@
                                     </td>
                                     <td>{{ $ad->title }}</td>
                                     <td>{{ $ad->link }}</td>
-                                    <td>{{ nullable_value($ad->getSection()) }}</td>
+                                    <td>{{ nullable_value( __($ad->getSection()) ) }}</td>
                                     <td class="ltr text-right nowrap">{{ jalalian()->forge($ad->published_at)->format(config('common.datetime_format')) }}</td>
                                     <td class="ltr text-right nowrap">
                                         @if($ad->expired_at)
@@ -81,8 +81,8 @@
                                             <div class="d-flex gap-2">
                                                 @can(config('permissions_list.AD_UPDATE', false))
                                                     <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                       rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route(config('app.panel_prefix', 'panel') . '.ads.edit',
-                                                        $ad->id) }}">
+                                                       rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش"
+                                                       href="{{ route(config('app.panel_prefix', 'panel') . '.ads.edit', $ad->id) }}">
                                                         <i class="icon-pencil fa-flip-horizontal"></i>
                                                     </a>
                                                 @endcan

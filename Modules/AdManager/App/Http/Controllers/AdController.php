@@ -54,6 +54,6 @@ class AdController extends Controller
     public function destroy(Ad $ad): RedirectResponse
     {
         $this->adService->destroy($ad);
-        return back()->with('success', __('deleted_edited', ['entity' => __('ad')]));
+        return back()->with('success', __('entity_deleted', ['entity' => __('ad')]));
     }
 }
