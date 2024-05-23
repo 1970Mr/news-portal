@@ -65,9 +65,15 @@
                                     </td>
                                     <td>{{ $ad->title }}</td>
                                     <td>{{ $ad->link }}</td>
-                                    <td>{{ $ad->getSection() }}</td>
+                                    <td>{{ nullable_value($ad->getSection()) }}</td>
                                     <td class="ltr text-right nowrap">{{ jalalian()->forge($ad->published_at)->format(config('common.datetime_format')) }}</td>
-                                    <td class="ltr text-right nowrap">{{ jalalian()->forge($ad->expired_at)->format(config('common.datetime_format')) }}</td>
+                                    <td class="ltr text-right nowrap">
+                                        @if($ad->expired_at)
+                                            {{ jalalian()->forge($ad->expired_at)->format(config('common.datetime_format')) }}
+                                        @else
+                                            {{ nullable_value($ad->expired_at) }}
+                                        @endif
+                                    </td>
                                     <td class="ltr text-right nowrap">{{ jalalian()->forge($ad->created_at)->format(config('common.datetime_format')) }}</td>
                                     <td class="{{ status_class($ad->status) }}">{{ status_message($ad->status) }}</td>
                                     @canany([config('permissions_list.AD_UPDATE'), config('permissions_list.AD_DESTROY')])

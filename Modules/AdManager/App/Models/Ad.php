@@ -13,7 +13,6 @@ class Ad extends Model
 
     protected $fillable = [
         'title',
-        'image',
         'link',
         'section',
         'published_at',
@@ -41,9 +40,9 @@ class Ad extends Model
         self::FOURTH_CONTENT,
     ];
 
-    public function getSection(): string
+    public function getSection(): ?string
     {
-        return self::SECTIONS[$this->section] ?? 'unknown';
+        return self::SECTIONS[$this->section] ?? null;
     }
 
     public function scopeBySection(Builder $query, int $section): Builder

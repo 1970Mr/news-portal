@@ -15,7 +15,7 @@ class AdRequest extends FormRequest
             'title' => 'required|string',
             'image' => 'required' . $imageRules,
             'link' => 'required|url',
-            'section' => 'required|integer|in:' . $sectionNumbers,
+            'section' => 'nullable|integer|in:' . $sectionNumbers,
             'published_at' => 'required|date',
             'expired_at' => 'nullable|date|after:published_at',
             'status' => 'nullable|boolean',
@@ -38,6 +38,7 @@ class AdRequest extends FormRequest
     public function attributes(): array
     {
         return [
+            'link' => __('link'),
             'section' => __('section'),
             'published_at' => __('published_at'),
             'expired_at' => __('expired_at'),

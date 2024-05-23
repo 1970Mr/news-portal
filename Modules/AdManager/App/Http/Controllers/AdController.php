@@ -28,7 +28,8 @@ class AdController extends Controller
 
     public function create(): View
     {
-        return view('ad-manager::create');
+        $sections = Ad::SECTIONS;
+        return view('ad-manager::create', compact('sections'));
     }
 
     public function store(AdRequest $request): RedirectResponse

@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('ads', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('image');
             $table->string('link');
             $table->tinyInteger('section')->nullable();
             $table->timestamp('published_at');
