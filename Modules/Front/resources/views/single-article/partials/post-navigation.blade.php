@@ -1,4 +1,4 @@
-<nav class="post-navigation clearfix">
+<nav class="post-navigation clearfix" style="display: flex">
     <div class="post-previous">
         @if($previous_article)
             <a href="{{ route('news.show', [$previous_article->category->slug, $previous_article->slug]) }}">

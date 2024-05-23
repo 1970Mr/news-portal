@@ -9,7 +9,7 @@ class AdManagerServiceProvider extends ServiceProvider
 {
     protected string $moduleName = 'AdManager';
 
-    protected string $moduleNameLower = 'admanager';
+    protected string $moduleNameLower = 'ad-manager';
 
     /**
      * Boot the application events.
