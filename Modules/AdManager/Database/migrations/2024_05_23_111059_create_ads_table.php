@@ -16,7 +16,10 @@ return new class extends Migration
             $table->string('title');
             $table->string('image');
             $table->string('link');
-            $table->tinyInteger('section');
+            $table->tinyInteger('section')->nullable();
+            $table->timestamp('published_at');
+            $table->timestamp('expired_at')->nullable();
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

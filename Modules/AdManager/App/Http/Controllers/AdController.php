@@ -6,13 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Modules\AdManager\App\Http\Requests\AdRequest;
 use Modules\AdManager\App\Models\Ad;
 
 class AdController extends Controller
 {
     public function index(): View
     {
-        return view('ad-manager::index');
+        $ads = Ad::query()->latest()->get();
+        return view('ad-manager::index', compact('ads'));
     }
 
     public function create(): View
@@ -20,9 +22,11 @@ class AdController extends Controller
         return view('ad-manager::create');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(AdRequest $request): RedirectResponse
     {
-        //
+        Ad::create($request->validated());
+        return to_route(config('app.panel_prefix', 'panel') . '.ads.index')->
+            with('success', __('entity_created', ['entity' => __('ad')]));
     }
 
     public function edit(Ad $ad): View

@@ -35,5 +35,10 @@
     "about_us_description": "با سایت :siteName بیشتر آشنا شوید.",
     "category_description": "مقالات را در دسته :categoryName مرور کنید.",
     "tag_description": "کاوش در مقالات برچسب گذاری شده با :tagName.",
-    "search_description": "نتایج جستجو برای :searchText"
+    "search_description": "نتایج جستجو برای :searchText",
+    "section": "بخش",
+    "published_at": "تاریخ انتشار",
+    "expired_at": "زمان انقضا",
+    "ad": "تبلیغ",
+    "ads": "تبلیغات"
 }

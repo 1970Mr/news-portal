@@ -1,0 +1,51 @@
+<?php
+
+namespace Modules\AdManager\App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+use Modules\AdManager\App\Models\Ad;
+
+class AdRequest extends FormRequest
+{
+    public function rules(): array
+    {
+        $sectionNumbers = implode(',', array_keys(Ad::SECTIONS));
+        $imageRules = '|image|max:5000';
+        $rules = [
+            'title' => 'required|string',
+            'image' => 'required' . $imageRules,
+            'link' => 'required|url',
+            'section' => 'required|integer|in:' . $sectionNumbers,
+            'published_at' => 'required|date',
+            'expired_at' => 'nullable|date|after:published_at',
+            'status' => 'nullable|boolean',
+        ];
+
+        if (strtolower($this->method()) === 'put') {
+            $rules['image'] = 'nullable' . $imageRules;
+        }
+
+        return $rules;
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'status' => (bool) $this->status,
+        ]);
+    }
+
+    public function attributes(): array
+    {
+        return [
+            'section' => __('section'),
+            'published_at' => __('published_at'),
+            'expired_at' => __('expired_at'),
+        ];
+    }
+
+    public function authorize(): bool
+    {
+        return true;
+    }
+}

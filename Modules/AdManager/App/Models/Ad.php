@@ -2,16 +2,23 @@
 
 namespace Modules\AdManager\App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
+use Modules\FileManager\App\Traits\HasImage;
 
 class Ad extends Model
 {
+    use HasImage;
+
     protected $fillable = [
         'title',
         'image',
         'link',
         'section',
+        'published_at',
+        'expired_at',
+        'status',
     ];
 
     public const HEADER = "header";
@@ -42,5 +49,16 @@ class Ad extends Model
     public function scopeBySection(Builder $query, int $section): Builder
     {
         return $query->where('section', $section);
+    }
+
+    public function scopeActive(Builder $query): Builder
+    {
+        $now = Carbon::now();
+        return $query->where('status', true)
+            ->where('published_at', '<=', $now)
+            ->where(function (Builder $query) use ($now) {
+                $query->whereNull('expired_at')
+                    ->orWhere('expired_at', '>=', $now);
+            });
     }
 }
