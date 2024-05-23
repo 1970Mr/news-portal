@@ -40,12 +40,14 @@ class AdController extends Controller
 
     public function edit(Ad $ad): View
     {
-        return view('ad-manager::edit');
+        return view('ad-manager::edit', compact('ad'));
     }
 
-    public function update(Request $request, Ad $ad): RedirectResponse
+    public function update(AdRequest $request, Ad $ad): RedirectResponse
     {
-        //
+        $this->adService->update($request, $ad);
+        return to_route(config('app.panel_prefix', 'panel') . '.ads.index')->
+            with('success', __('entity_edited', ['entity' => __('ad')]));
     }
 
     public function destroy(Ad $ad): RedirectResponse

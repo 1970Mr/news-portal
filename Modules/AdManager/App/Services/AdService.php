@@ -19,4 +19,11 @@ class AdService
         $ad->image()->save($image);
         return $ad;
     }
+
+    public function update(AdRequest $request, Ad $ad): void
+    {
+        $data = $request->validated();
+        Ad::query()->create($data);
+        $this->imageService->uploadImageDuringUpdate($request, $ad, $ad->title);
+    }
 }
