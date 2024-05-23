@@ -12,7 +12,7 @@
                 <div class="portlet-heading">
                     <div class="portlet-title">
                         <h3 class="title">
-                            <i class="icon-people"></i>
+                            <i class="icon-feed"></i>
                             لیست اعضای خبرنامه
                         </h3>
                     </div><!-- /.portlet-title -->

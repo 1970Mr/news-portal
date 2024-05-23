@@ -13,6 +13,7 @@ class AdService
 
     public function store(AdRequest $request): Model
     {
+        dd($request->validated());
         $data = $request->validated();
         $ad = Ad::query()->create($data);
         $image = $this->imageService->store($request, altText: $ad->title);

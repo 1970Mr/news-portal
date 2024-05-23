@@ -7,7 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\URL;
 use Modules\Comment\App\Http\Requests\Front\CommentRequest;
 use Modules\Comment\App\Models\Comment;
-use Modules\Common\App\Services\Front\CommentService;
+use Modules\Comment\App\Services\Front\CommentService;
 use Spatie\Honeypot\ProtectAgainstSpam;
 
 class CommentController extends Controller

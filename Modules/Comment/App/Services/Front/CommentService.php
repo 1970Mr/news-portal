@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Common\App\Services\Front;
+namespace Modules\Comment\App\Services\Front;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;

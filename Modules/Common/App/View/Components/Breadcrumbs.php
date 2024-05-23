@@ -13,7 +13,7 @@ class Breadcrumbs extends Component
     public function __construct(public bool $noprefix = false) {}
 
     /**
-     * Get the view/contents that represent the component.
+     * Get the views/contents that represent the component.
      */
     public function render(): View|string
     {

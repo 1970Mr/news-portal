@@ -117,7 +117,7 @@ return [
      * set this to true before doing the migration.
      * If you already did the migration then you must make a new migration to also
      * add 'team_foreign_key' to 'roles', 'model_has_roles', and 'model_has_permissions'
-     * (view the latest version of this package's migration file)
+     * (views the latest version of this package's migration file)
      */
 
     'teams' => false,

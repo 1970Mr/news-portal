@@ -67,7 +67,7 @@ return [
         'search'    => 'Search :name',
         'show'      => 'Show :name',
         'update'    => 'Update :name',
-        'view'      => 'View :name',
+        'views'      => 'View :name',
     ],
     'new'             => 'New',
     'no'              => 'No',
@@ -106,6 +106,6 @@ return [
     'up'              => 'Up',
     'update'          => 'Update',
     'user'            => 'User',
-    'view'            => 'View',
+    'views'            => 'View',
     'yes'             => 'Yes',
 ];

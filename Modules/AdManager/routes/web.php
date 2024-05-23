@@ -5,5 +5,5 @@ use Modules\AdManager\App\Http\Controllers\AdController;
 
 Route::prefix(config('app.panel_prefix', 'panel') . '/ads')
     ->name(config('app.panel_prefix', 'panel') . '.ads.')->group(function () {
-    Route::resource('ads', AdController::class)->names('ads');
+    Route::resource('', AdController::class);
 });

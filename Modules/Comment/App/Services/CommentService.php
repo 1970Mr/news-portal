@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Common\App\Services;
+namespace Modules\Comment\App\Services;
 
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Builder;

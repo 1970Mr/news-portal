@@ -22,7 +22,7 @@ class AdController extends Controller
 
     public function index(): View
     {
-        $ads = Ad::query()->latest()->get();
+        $ads = Ad::query()->latest()->paginate(10);
         return view('ad-manager::index', compact('ads'));
     }
 

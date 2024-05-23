@@ -128,7 +128,7 @@ return [
             'emails' => ['path' => 'App/Emails', 'generate' => false],
             'notifications' => ['path' => 'App/Notifications', 'generate' => false],
             'resource' => ['path' => 'App/resources', 'generate' => false],
-            'component-view' => ['path' => 'resources/views/components', 'generate' => false],
+            'component-views' => ['path' => 'resources/views/components', 'generate' => false],
             'component-class' => ['path' => 'App/View/Components', 'generate' => false],
         ],
     ],
