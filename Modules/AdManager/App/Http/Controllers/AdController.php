@@ -41,7 +41,8 @@ class AdController extends Controller
 
     public function edit(Ad $ad): View
     {
-        return view('ad-manager::edit', compact('ad'));
+        $sections = Ad::SECTIONS;
+        return view('ad-manager::edit', compact(['ad', 'sections']));
     }
 
     public function update(AdRequest $request, Ad $ad): RedirectResponse

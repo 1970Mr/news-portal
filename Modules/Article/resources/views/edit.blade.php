@@ -1,9 +1,9 @@
-@extends('panel::layouts.master', ['title' => 'ویرایش خبر جدید'])
+@extends('panel::layouts.master', ['title' => 'ویرایش خبر'])
 
 @section('content')
     <x-common-breadcrumbs>
         <li><a href="{{ route(config('app.panel_prefix', 'panel') . '.articles.index') }}">لیست اخبار</a></li>
-        <li><a>ویرایش خبر جدید</a></li>
+        <li><a>ویرایش خبر</a></li>
     </x-common-breadcrumbs>
 
     <div class="row pe-0">
@@ -13,7 +13,7 @@
                     <div class="portlet-title">
                         <h3 class="title">
                             <i class="icon-user-follow"></i>
-                            ویرایش خبر جدید
+                            ویرایش خبر
                         </h3>
                     </div><!-- /.portlet-title -->
                     <div class="buttons-box">
@@ -84,7 +84,7 @@
                             </div>
                             <div class="col-12 d-flex flex-column align-items-center">
                                 <div class="form-group relative col-lg-6">
-                                    <label>تصویر شاخص <small>(ضروری)</small></label>
+                                    <label>تصویر شاخص </label>
                                     <div class="input-group round">
                                         <input type="text" class="form-control file-input" placeholder="برای آپلود کلیک کنید">
                                         <span class="input-group-btn">
@@ -134,7 +134,7 @@
                                 <div class="col-sm-6 col-sm-offset-4 mx-auto">
                                     <button class="btn btn-success btn-block">
                                         <i class="icon-check"></i>
-                                        ویرایش خبر جدید
+                                        ویرایش خبر
                                     </button>
                                 </div>
                             </div>

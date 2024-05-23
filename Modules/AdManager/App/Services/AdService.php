@@ -13,8 +13,7 @@ class AdService
 
     public function store(AdRequest $request): Model
     {
-        $data = $request->validated();
-        $ad = Ad::query()->create($data);
+        $ad = Ad::query()->create($request->validated());
         $image = $this->imageService->store($request, altText: $ad->title);
         $ad->image()->save($image);
         return $ad;
@@ -22,8 +21,7 @@ class AdService
 
     public function update(AdRequest $request, Ad $ad): void
     {
-        $data = $request->validated();
-        Ad::query()->create($data);
+        $ad->update($request->validated());
         $this->imageService->uploadImageDuringUpdate($request, $ad, $ad->title);
     }
 

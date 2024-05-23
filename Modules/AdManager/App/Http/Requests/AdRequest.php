@@ -32,6 +32,7 @@ class AdRequest extends FormRequest
     {
         $this->merge([
             'status' => (bool) $this->status,
+            'expired_at' => $this->expired_at ?? null,
         ]);
     }
 
