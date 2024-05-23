@@ -17,5 +17,6 @@
     "Setting": true,
     "ContactUs": true,
     "Seen": true,
-    "Newsletter": true
+    "Newsletter": true,
+    "AdManager": true
 }

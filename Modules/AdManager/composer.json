@@ -1,0 +1,31 @@
+{
+    "name": "nwidart/admanager",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\AdManager\\": "",
+            "Modules\\AdManager\\App\\": "app/",
+            "Modules\\AdManager\\Database\\Factories\\": "database/factories/",
+            "Modules\\AdManager\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\AdManager\\Tests\\": "tests/"
+        }
+    }
+}
