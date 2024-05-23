@@ -71,10 +71,10 @@
                                     <td>{{ $article->title }}</td>
                                     <td>{{ $article->slug }}</td>
                                     <td>{{ $article->description }}</td>
-                                    <td>{{ $article->keywords }}</td>
+                                    <td class="min-w-10">{{ $article->keywords }}</td>
                                     <td>{{ $article->user->full_name }}</td>
                                     <td>{{ $article->category->name }}</td>
-                                    <td>{{ nullable_value($article->tagNames()) }}</td>
+                                    <td class="min-w-10">{{ nullable_value($article->tagNames()) }}</td>
                                     <td class="ltr text-right created-at">{{ jalalian()->forge($article->published_at)->format(config('common.datetime_format')) }}</td>
                                     <td class="ltr text-right created-at">{{ jalalian()->forge($article->created_at)->format(config('common.datetime_format')) }}</td>
                                     <td class="{{ status_class($article->editor_choice) }}">{{ status_message($article->editor_choice) }}</td>
@@ -121,6 +121,10 @@
 
         th, .created-at {
             white-space: nowrap;
+        }
+
+        .min-w-10 {
+            min-width: 10rem;
         }
     </style>
 @endpush

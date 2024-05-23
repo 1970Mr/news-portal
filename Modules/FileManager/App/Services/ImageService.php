@@ -101,7 +101,7 @@ class ImageService
         return $this->setFilters($request, $query);
     }
 
-    public function uploadImageDuringUpdate(Request $request, Model $model, $altText = 'Default alt text'): void
+    public function uploadImageDuringUpdate(Request $request, Model $model, $altText = 'Default Alt Text'): void
     {
         if ($request->hasFile('image')) {
             $this->destroyWithoutKeyConstraints($model->image);
