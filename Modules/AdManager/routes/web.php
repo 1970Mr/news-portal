@@ -1,19 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\AdManager\App\Http\Controllers\AdManagerController;
+use Modules\AdManager\App\Http\Controllers\AdController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-Route::group([], function () {
-    Route::resource('admanager', AdManagerController::class)->names('admanager');
+Route::prefix(config('app.panel_prefix', 'panel') . '/ads')
+    ->name(config('app.panel_prefix', 'panel') . '.ads.')->group(function () {
+    Route::resource('ads', AdController::class)->names('ads');
 });
