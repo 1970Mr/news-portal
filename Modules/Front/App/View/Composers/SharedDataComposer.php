@@ -34,7 +34,7 @@ class SharedDataComposer
             return [
                 'header' => Ad::active()->bySection(Ad::HEADER)->first(),
                 'first_sidebar' => Ad::active()->bySection(Ad::FIRST_SIDEBAR)->limit(4)->get(),
-                'second_sidebar' => Ad::active()->bySection(Ad::SECOND_SIDEBAR)->limit(4)->get(),
+                'second_sidebar' => Ad::active()->bySection(Ad::SECOND_SIDEBAR)->limit(10)->get(),
                 'first_section' => Ad::active()->bySection(Ad::FIRST_SECTION)->limit(10)->get(),
                 'second_section' => Ad::active()->bySection(Ad::SECOND_SECTION)->limit(10)->get(),
                 'third_section' => Ad::active()->bySection(Ad::THIRD_SECTION)->limit(10)->get(),
