@@ -66,7 +66,7 @@
                                 <select id="section" class="form-control select2" name="section">
                                     <option value="">انتخاب مکان قرارگیری</option>
                                     @foreach($sections as $key => $sectionName)
-                                        <option value="{{ $key }}" @if(old('section', $ad->section) === (string) $key) selected @endif>{{ __($sectionName) }}</option>
+                                        <option value="{{ $key }}" @if((string) old('section', $ad->section) === (string) $key) selected @endif>{{ __($sectionName) }}</option>
                                     @endforeach
                                 </select>
                             </div>

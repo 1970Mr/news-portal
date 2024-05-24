@@ -31,6 +31,8 @@
 
                 @include('front::partials.sidebar1')
 
+                @include('front::partials.ads-sidebar1')
+
                 @include('front::partials.sidebar2')
             </div><!-- Row end -->
         </div><!-- Container end -->

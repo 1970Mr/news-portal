@@ -45,3 +45,10 @@ li.rss, .with-color.fa-rss {
 .breadcrumb > li {
     display: inline-flex;
 }
+
+.ads-list {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

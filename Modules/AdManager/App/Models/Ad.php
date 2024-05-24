@@ -4,7 +4,7 @@ namespace Modules\AdManager\App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Eloquent\Builder;
 use Modules\FileManager\App\Traits\HasImage;
 
 class Ad extends Model
@@ -23,21 +23,19 @@ class Ad extends Model
     public const HEADER = "header";
     public const FIRST_SIDEBAR = "first_sidebar";
     public const SECOND_SIDEBAR = "second_sidebar";
-    public const THIRD_SIDEBAR = "third_sidebar";
-    public const FIRST_CONTENT = "first_content";
-    public const SECOND_CONTENT = "second_content";
-    public const THIRD_CONTENT = "third_content";
-    public const FOURTH_CONTENT = "fourth_content";
+    public const FIRST_SECTION = "first_section";
+    public const SECOND_SECTION = "second_section";
+    public const THIRD_SECTION = "third_section";
+    public const FOURTH_SECTION = "fourth_section";
 
     public const SECTIONS = [
         self::HEADER,
         self::FIRST_SIDEBAR,
         self::SECOND_SIDEBAR,
-        self::THIRD_SIDEBAR,
-        self::FIRST_CONTENT,
-        self::SECOND_CONTENT,
-        self::THIRD_CONTENT,
-        self::FOURTH_CONTENT,
+        self::FIRST_SECTION,
+        self::SECOND_SECTION,
+        self::THIRD_SECTION,
+        self::FOURTH_SECTION,
     ];
 
     public function getSection(): ?string
@@ -45,8 +43,16 @@ class Ad extends Model
         return self::SECTIONS[$this->section] ?? null;
     }
 
-    public function scopeBySection(Builder $query, int $section): Builder
+    public function getNumberSection(string $section): int
     {
+        return array_search($section, self::SECTIONS, true);
+    }
+
+    public function scopeBySection(Builder $query, int|string $section): Builder
+    {
+        if (is_string($section)) {
+            $section = $this->getNumberSection($section);
+        }
         return $query->where('section', $section);
     }
 

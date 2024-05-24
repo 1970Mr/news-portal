@@ -33,13 +33,12 @@ class SharedDataComposer
         $ads = Cache::remember('ads', 60 * 60, static function () {
             return [
                 'header' => Ad::active()->bySection(Ad::HEADER)->first(),
-                'first_sidebar' => Ad::active()->bySection(Ad::FIRST_SIDEBAR)->first(),
-                'second_sidebar' => Ad::active()->bySection(Ad::SECOND_SIDEBAR)->first(),
-                'third_sidebar' => Ad::active()->bySection(Ad::THIRD_SIDEBAR)->limit(5)->get(),
-                'first_content' => Ad::active()->bySection(Ad::FIRST_CONTENT)->first(),
-                'second_content' => Ad::active()->bySection(Ad::SECOND_CONTENT)->first(),
-                'third_content' => Ad::active()->bySection(Ad::THIRD_CONTENT)->first(),
-                'fourth_content' => Ad::active()->bySection(Ad::FOURTH_CONTENT)->first(),
+                'first_sidebar' => Ad::active()->bySection(Ad::FIRST_SIDEBAR)->limit(4)->get(),
+                'second_sidebar' => Ad::active()->bySection(Ad::SECOND_SIDEBAR)->limit(4)->get(),
+                'first_section' => Ad::active()->bySection(Ad::FIRST_SECTION)->limit(10)->get(),
+                'second_section' => Ad::active()->bySection(Ad::SECOND_SECTION)->limit(10)->get(),
+                'third_section' => Ad::active()->bySection(Ad::THIRD_SECTION)->limit(10)->get(),
+                'fourth_section' => Ad::active()->bySection(Ad::FOURTH_SECTION)->limit(10)->get(),
             ];
         });
 
