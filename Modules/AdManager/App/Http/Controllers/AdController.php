@@ -14,10 +14,10 @@ class AdController extends Controller
 {
     public function __construct(private readonly AdService $adService,)
     {
-//        $this->middleware('can:' . config('permissions_list.AD_INDEX', false))->only('index');
-//        $this->middleware('can:' . config('permissions_list.AD_STORE', false))->only('store');
-//        $this->middleware('can:' . config('permissions_list.AD_UPDATE', false))->only('update');
-//        $this->middleware('can:' . config('permissions_list.AD_DESTROY', false))->only('destroy');
+        $this->middleware('can:' . config('permissions_list.ADS_INDEX', false))->only('index');
+        $this->middleware('can:' . config('permissions_list.ADS_STORE', false))->only('store');
+        $this->middleware('can:' . config('permissions_list.ADS_UPDATE', false))->only('update');
+        $this->middleware('can:' . config('permissions_list.ADS_DESTROY', false))->only('destroy');
     }
 
     public function index(): View

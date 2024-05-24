@@ -60,4 +60,9 @@ return [
     'PROFILE_CHANGE_PASSWORD' => 'profile::change_password',
     'PROFILE_CHANGE_EMAIL' => 'profile::change_email',
     'PROFILE_SOCIAL_NETWORKS' => 'profile::social_networks',
+
+    'ADS_INDEX' => 'ads::index',
+    'ADS_STORE' => 'ads::store',
+    'ADS_UPDATE' => 'ads::update',
+    'ADS_DESTROY' => 'ads::destroy',
 ];

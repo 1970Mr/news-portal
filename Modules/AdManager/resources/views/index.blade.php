@@ -24,7 +24,7 @@
                                 <div class="paper-ripple__waves"></div>
                             </div>
                         </a>
-                        @can(config('permissions_list.AD_STORE', false))
+                        @can(config('permissions_list.ADS_STORE', false))
                             <a class="btn btn-sm btn-default btn-round bg-green text-white" rel="tooltip"
                                href="{{ route(config('app.panel_prefix', 'panel') . '.ads.create') }}"
                                aria-label="ایجاد تبلیغ جدید" data-bs-original-title="ایجاد تبلیغ جدید">
@@ -51,7 +51,7 @@
                                 <th>تاریخ انقضا</th>
                                 <th>تاریخ ایجاد</th>
                                 <th>وضعیت</th>
-                                @canany([config('permissions_list.AD_UPDATE'), config('permissions_list.AD_DESTROY')])
+                                @canany([config('permissions_list.ADS_UPDATE'), config('permissions_list.ADS_DESTROY')])
                                     <th>عملیات</th>
                                 @endcanany
                             </tr>
@@ -76,10 +76,10 @@
                                     </td>
                                     <td class="ltr text-right nowrap">{{ jalalian()->forge($ad->created_at)->format(config('common.datetime_format')) }}</td>
                                     <td class="{{ status_class($ad->status) }}">{{ status_message($ad->status) }}</td>
-                                    @canany([config('permissions_list.AD_UPDATE'), config('permissions_list.AD_DESTROY')])
+                                    @canany([config('permissions_list.ADS_UPDATE'), config('permissions_list.ADS_DESTROY')])
                                         <td>
                                             <div class="d-flex gap-2">
-                                                @can(config('permissions_list.AD_UPDATE', false))
+                                                @can(config('permissions_list.ADS_UPDATE', false))
                                                     <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
                                                        rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش"
                                                        href="{{ route(config('app.panel_prefix', 'panel') . '.ads.edit', $ad->id) }}">
@@ -87,7 +87,7 @@
                                                     </a>
                                                 @endcan
 
-                                                @can(config('permissions_list.AD_DESTROY', false))
+                                                @can(config('permissions_list.ADS_DESTROY', false))
                                                     <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.ads.destroy', $ad->id)" />
                                                 @endcan
                                             </div>

@@ -80,6 +80,16 @@ return [
                 config('app.panel_prefix', 'panel') . '.comments.show',
             ]
         ],
+        'ads' => [
+            'title' => 'تبلیغات',
+            'icon' => 'fas fa-bullhorn',
+            'url' => route(config('app.panel_prefix', 'panel') . '.ads.index'),
+            'permissions' => config('permissions_list.AD_INDEX', false),
+            'active_routes' => [
+                config('app.panel_prefix', 'panel') . '.ads.create',
+                config('app.panel_prefix', 'panel') . '.ads.edit',
+            ]
+        ],
         'newsletter' => [
             'title' => 'خبرنامه',
             'icon' => 'icon-feed',
