@@ -29,11 +29,7 @@
                     @include('front::single-article.partials.comment-form')
                 </div><!-- Content Col end -->
 
-                @include('front::partials.sidebar1')
-
-                @include('front::partials.ads-sidebar1')
-
-                @include('front::partials.sidebar2')
+                @include('front::partials.pages-sidebars')
             </div><!-- Row end -->
         </div><!-- Container end -->
     </section><!-- First block end -->

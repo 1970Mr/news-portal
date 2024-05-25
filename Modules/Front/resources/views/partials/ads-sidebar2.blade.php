@@ -1,10 +1,10 @@
-@if($ads['first_sidebar'])
+@if($ads['second_sidebar'])
     <div class="col-xs-12" style="margin-top: 5rem">
         <div class="sidebar sidebar-right second-sidebar">
             <div class="widget widget-tags">
                 <h3 class="block-title"><span>تبلیغات</span></h3>
                 <div class="ads-list">
-                    @foreach($ads['first_sidebar'] as $ad)
+                    @foreach($ads['second_sidebar'] as $ad)
                         <div class="col-xs-5" style="padding: 0">
                             <div class="post-block-style clearfix">
                                 <div class="post-thumb">

@@ -17,13 +17,7 @@
                     <x-front-listing-page-pagination :paginator="$articles" />
                 </div><!-- Content Col end -->
 
-                <div class="col-xs-12 col-md-4 row" style="padding: 0; margin: 0">
-                    @include('front::partials.sidebar1', ['sidebarClasses' => 'col-xs-12'])
-
-                    @include('front::partials.ads-sidebar1', ['sidebarClasses' => 'col-xs-12', 'sidebarStyles' => 'margin-top: 5rem;'])
-
-                    @include('front::partials.sidebar2', ['sidebarClasses' => 'col-xs-12', 'sidebarStyles' => 'margin-top: 3rem;'])
-                </div>
+                @include('front::partials.pages-sidebars')
             </div><!-- Row end -->
         </div><!-- Container end -->
     </section><!-- First block end -->

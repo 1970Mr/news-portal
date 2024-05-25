@@ -1,4 +1,4 @@
-<div class="{{ $sidebarClasses ?? 'col-lg-4 col-md-4 col-sm-12 col-xs-12' }}" style="{{ $sidebarStyles ?? '' }}">
+<div class="col-xs-12" style="margin-top: 3rem">
     <div class="sidebar sidebar-right second-sidebar">
         <div class="widget widget-tags">
             <h3 class="block-title"><span>آخرین برچسب‌ها</span></h3>
