@@ -86,3 +86,10 @@ li.rss, .with-color.fa-rss {
         margin-top: 10rem;
     }
 }
+
+.ads-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+}

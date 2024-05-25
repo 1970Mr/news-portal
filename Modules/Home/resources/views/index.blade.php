@@ -13,6 +13,8 @@
         </div><!-- Container end -->
     </section><!-- First block end -->
 
+    @include('home::partials.ads-content1')
+
     @include('home::partials.content2')
 
     @include('home::partials.content3')
@@ -22,7 +24,7 @@
             <div class="row">
                 @include('home::partials.content4')
 
-                @include('front::partials.sidebar2')
+                @include('front::partials.sidebar2', ['sidebar_classes' => 'col-lg-4 col-md-4 col-sm-12 col-xs-12', 'sidebar_style' => 'margin-top', 0])
             </div><!-- Row end -->
         </div><!-- Container end -->
     </section><!-- Fourth block end -->
