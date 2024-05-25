@@ -32,6 +32,8 @@
             </div><!-- Row end -->
         </div><!-- Container end -->
     </section><!-- Fourth block end -->
+
+    @include('home::partials.ads-content4')
 @endsection
 
 @push('styles')
