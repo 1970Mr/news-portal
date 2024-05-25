@@ -1,4 +1,4 @@
-@if(count($ads['first_section']) > 0)
+@if(count($ads['second_section']) > 0)
     <section class="block-wrapper">
         <div class="container">
             <div class="row">
@@ -7,7 +7,7 @@
                         <h3 class="block-title"><span>تبلیغات</span></h3>
 
                         <div class="ads-list">
-                            @foreach($ads['first_section'] as $ad)
+                            @foreach($ads['second_section'] as $ad)
                                 <div class="col-xl-6 col-md-2" style="padding: 0;">
                                     <div class="post-block-style clearfix">
                                         <div class="post-thumb">

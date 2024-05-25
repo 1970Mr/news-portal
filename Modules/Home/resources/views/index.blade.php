@@ -17,6 +17,8 @@
 
     @include('home::partials.content2')
 
+    @include('home::partials.ads-content2')
+
     @include('home::partials.content3')
 
     <section class="block-wrapper pb-3">
