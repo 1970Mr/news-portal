@@ -1,8 +1,8 @@
 <section class="block-wrapper">
     <div class="container">
-        <div class="row" style="display: flex; justify-content: center">
+        <div class="row third-content-row">
             @foreach($third_content['categories'] as $category)
-                <div class="col-md-4">
+                <div class="col-xl-12 col-md-4">
                     <div class="block color-red">
                         <h3 class="block-title"><span>{{ $category->name }}</span></h3>
                         <div class="post-overlay-style clearfix">

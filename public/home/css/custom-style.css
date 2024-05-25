@@ -52,3 +52,37 @@ li.rss, .with-color.fa-rss {
     flex-wrap: wrap;
     justify-content: space-between;
 }
+
+.second-content-row {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.second-content-row .featured-tab {
+    padding: 0;
+}
+
+.third-content-row {
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .second-content-row {
+        padding: 0 2rem;
+    }
+
+    .second-content-row .featured-tab {
+        width: 100%;
+    }
+
+    .third-content-row {
+        display: block;
+    }
+
+    .third-content-row > div:not(:first-child) {
+        margin-top: 10rem;
+    }
+}

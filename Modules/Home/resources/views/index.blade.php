@@ -8,7 +8,7 @@
             <div class="row">
                 @include('home::partials.content1')
 
-                @include('front::partials.sidebar1')
+                @include('front::partials.sidebar1', ['sidebar_classes' => 'col-lg-4 col-md-4 col-sm-12 col-xs-12'])
             </div><!-- Row end -->
         </div><!-- Container end -->
     </section><!-- First block end -->

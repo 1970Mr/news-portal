@@ -1,10 +1,10 @@
     <section class="block-wrapper">
         <div class="container">
-            <div class="row" style="display: flex; gap: 3rem; justify-content: center">
+            <div class="row second-content-row" style="">
                 @foreach($second_content['parent_categories'] as $parent_category)
 
                 <!--- Featured Tab starter -->
-                <div class="featured-tab color-default col-12 col-md-6" style="padding: 0">
+                <div class="featured-tab color-default col-xl-12 col-md-5">
                     <h3 class="block-title"><span>{{ $parent_category->name }}</span></h3>
                     <ul class="nav nav-tabs">
                         @foreach($parent_category->categories as $category)
