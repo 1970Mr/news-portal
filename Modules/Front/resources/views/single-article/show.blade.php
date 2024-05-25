@@ -1,4 +1,4 @@
-@extends('front::layouts.master', ['title' => "{$article->category->name}: {$article->title}"])
+@extends('front::layouts.master')
 
 @section('content')
     <x-front-breadcrumbs>

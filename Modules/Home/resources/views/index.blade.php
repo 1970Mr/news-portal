@@ -1,4 +1,4 @@
-@extends('front::layouts.master', ['title' => 'News Site | سایت خبری'])
+@extends('front::layouts.master')
 
 @section('content')
     @include('home::partials.trending-post')

@@ -1,4 +1,4 @@
-@extends('front::layouts.master', ['title' => $searchText . ' | ' . config('app.name')])
+@extends('front::layouts.master')
 
 @section('content')
     <x-front-breadcrumbs>
