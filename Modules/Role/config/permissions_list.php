@@ -10,6 +10,13 @@ return [
     'SETTING_ABOUT_US' => 'setting::about_us',
     'SETTING_SITE_DETAILS' => 'setting::site_details',
 
+    'CACHE_INDEX' => 'cache::index',
+    'CACHE_CLEAR_ALL' => 'cache::clear_all',
+    'CACHE_CLEAR_APPLICATION' => 'cache::clear_application',
+    'CACHE_CLEAR_VIEW' => 'cache::clear_view',
+    'CACHE_CLEAR_CONFIG' => 'cache::clear_config',
+    'CACHE_CLEAR_ROUTE' => 'cache::clear_route',
+
     'NEWSLETTER_INDEX' => 'newsletter::index',
     'NEWSLETTER_DESTROY' => 'newsletter::destroy',
 

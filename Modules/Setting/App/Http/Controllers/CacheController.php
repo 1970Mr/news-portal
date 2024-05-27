@@ -16,6 +16,7 @@ class CacheController extends Controller
 {
     public function __construct(private readonly CacheService $cacheClearService)
     {
+//        $this->middleware('can:' . config('permissions_list.CACHE_INDEX', false))->only('index');
 //        $this->middleware('can:' . config('permissions_list.CACHE_CLEAR_ALL', false))->only('clearAllCache');
 //        $this->middleware('can:' . config('permissions_list.CACHE_CLEAR_APPLICATION', false))->only('clearApplicationCache');
 //        $this->middleware('can:' . config('permissions_list.CACHE_CLEAR_VIEW', false))->only('clearViewCache');

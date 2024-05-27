@@ -8,6 +8,13 @@
     "setting::about_us": "ثبت اطلاعات درباره ما",
     "setting::site_details": "ثبت جزئیات سایت",
 
+    "cache::index": "نمایش مدیریت حافظه پنهان",
+    "cache::clear_all": "حذف تمام حافظه\u200Cهای پنهان",
+    "cache::clear_application": "حذف حافظه پنهان داده\u200Cهای برنامه",
+    "cache::clear_view": "حذف حافظه پنهان قالب\u200Cها",
+    "cache::clear_config": "حذف حافظه پنهان کانفیگ\u200Cها",
+    "cache::clear_route": "حذف حافظه پنهان مسیرها",
+
     "newsletter::index": "مشاهده اعضای خبرنامه",
     "newsletter::destroy": "حذف عضو از خبرنامه",
 

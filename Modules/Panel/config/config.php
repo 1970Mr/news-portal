@@ -174,11 +174,13 @@ return [
                 config('app.panel_prefix', 'panel') . '.settings.site-details.edit',
                 config('app.panel_prefix', 'panel') . '.settings.social-networks.edit',
                 config('app.panel_prefix', 'panel') . '.settings.about-us.edit',
+                config('app.panel_prefix', 'panel') . '.settings.cache-management.index',
             ],
             'permissions' => [
                 config('permissions_list.SETTING_SITE_DETAILS', false),
                 config('permissions_list.SETTING_SOCIAL_NETWORKS', false),
                 config('permissions_list.SETTING_ABOUT_US', false),
+                config('permissions_list.CACHE_INDEX', false),
             ],
             'children' => [
                 [
@@ -198,6 +200,12 @@ return [
                     'icon' => 'icon-question',
                     'url' => route(config('app.panel_prefix', 'panel') . '.settings.about-us.edit'),
                     'permissions' => config('permissions_list.SETTING_ABOUT_US', false),
+                ],
+                [
+                    'title' => 'مدیریت حافظه پنهان',
+                    'icon' => 'icon-layers',
+                    'url' => route(config('app.panel_prefix', 'panel') . '.settings.cache-management.index'),
+                    'permissions' => config('permissions_list.CACHE_INDEX', false),
                 ],
             ]
         ],
