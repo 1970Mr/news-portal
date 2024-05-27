@@ -52,7 +52,7 @@
                             </div>
 
                             <div class="form-group col-lg-6">
-                                <label for="description">توضیحات <small>(ضروری)</small></label>
+                                <label for="description">توضیحات سایت <small>(ضروری)</small></label>
                                 <textarea id="description" class="form-control" name="description" required>{{ old('description', $siteDetails?->description) }}</textarea>
                             </div>
 

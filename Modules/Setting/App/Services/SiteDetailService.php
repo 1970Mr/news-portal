@@ -26,7 +26,9 @@ class SiteDetailService
     {
         if ($image = $this->storeImage($request, $fieldName)) {
             $relation = $this->getRelationName($fieldName);
-            $this->imageService->destroyWithoutKeyConstraints($siteDetails->$relation);
+            if ($siteDetails->{$relation}) {
+                $this->imageService->destroyWithoutKeyConstraints($siteDetails->{$relation});
+            }
             $siteDetails->{$fieldName . '_id'} = $image->id;
         }
     }

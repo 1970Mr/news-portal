@@ -10,7 +10,10 @@ class SiteDetailRequest extends FormRequest
     {
         $imageRules = '|image|max:5000';
         $rules = [
+            'title' => 'required|string',
             'description' => 'required|string',
+            'keywords' => 'required|string',
+            'footer_text' => 'required|string',
             'main_logo' => 'required' . $imageRules,
             'second_logo' => 'required' . $imageRules,
             'favicon' => 'nullable' . $imageRules,
@@ -27,9 +30,10 @@ class SiteDetailRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'footer_description' => __('footer_description'),
-            'header_logo' => __('header_logo'),
-            'footer_logo' => __('footer_logo'),
+            'keywords' => __('keywords'),
+            'footer_text' => __('footer_text'),
+            'main_logo' => __('main_logo'),
+            'second_logo' => __('second_logo'),
         ];
     }
 
