@@ -4,13 +4,16 @@ namespace Modules\Article\App\Services\Front;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Cache;
 use Modules\Article\App\Models\Article;
 use Modules\Category\App\Models\Category;
 use Modules\Tag\App\Models\Tag;
 
 class ArticleService
 {
-    public function __construct(private \Illuminate\Support\Collection $categoriesIdsIgnore) {}
+    public function __construct(private \Illuminate\Support\Collection $categoriesIdsIgnore)
+    {
+    }
 
     public function getLatestTags(): Collection
     {
@@ -76,7 +79,7 @@ class ArticleService
             ->latest()
             ->limit(5)
             ->get();
-        $this->categoriesIdsIgnore = $this->categoriesIdsIgnore->merge( $categories->pluck('id') );
+        $this->categoriesIdsIgnore = $this->categoriesIdsIgnore->merge($categories->pluck('id'));
         return $categories;
     }
 
@@ -90,7 +93,7 @@ class ArticleService
             ->latest()
             ->limit(5)
             ->get();
-        $this->categoriesIdsIgnore = $this->categoriesIdsIgnore->merge( $categories->pluck('id') );
+        $this->categoriesIdsIgnore = $this->categoriesIdsIgnore->merge($categories->pluck('id'));
         return $categories;
     }
 
@@ -103,7 +106,7 @@ class ArticleService
             ->whereNotIn('id', $this->categoriesIdsIgnore)
             ->latest()
             ->get();
-        $this->categoriesIdsIgnore = $this->categoriesIdsIgnore->merge( $categories->pluck('id') );
+        $this->categoriesIdsIgnore = $this->categoriesIdsIgnore->merge($categories->pluck('id'));
         return $categories;
     }
 
@@ -115,37 +118,57 @@ class ArticleService
             ->whereNotIn('id', $this->categoriesIdsIgnore)
             ->latest()
             ->get();
-        $this->categoriesIdsIgnore = $this->categoriesIdsIgnore->merge( $categories->pluck('id') );
+        $this->categoriesIdsIgnore = $this->categoriesIdsIgnore->merge($categories->pluck('id'));
         return $categories;
     }
 
     public function composeViewData(): array
     {
         $trending_bar = [
-            'hot_articles' => $this->getHotArticles(),
+            'hot_articles' => Cache::remember('hot_articles', 60 * 60, function () {
+                return $this->getHotArticles();
+            }),
         ];
 
         $main_nav = [
-            'parent_categories' => $this->getParentCategories(),
-            'categories_without_parent' => $this->getCategoriesWithoutParent(),
+            'parent_categories' => Cache::remember('parent_categories', 60 * 60, function () {
+                return $this->getParentCategories();
+            }),
+            'categories_without_parent' => Cache::remember('categories_without_parent', 60 * 60, function () {
+                return $this->getCategoriesWithoutParent();
+            }),
             'other_categories' => [
-                'parent_categories' => $this->getOtherParentCategories(),
-                'categories_without_parent' => $this->getOtherCategoriesWithoutParent(),
+                'parent_categories' => Cache::remember('other_parent_categories', 60 * 60, function () {
+                    return $this->getOtherParentCategories();
+                }),
+                'categories_without_parent' => Cache::remember('other_categories_without_parent', 60 * 60, function () {
+                    return $this->getOtherCategoriesWithoutParent();
+                }),
             ],
         ];
 
         $first_sidebar = [
-            'articles_with_most_visits' => $this->getArticlesWithMostVisit(),
+            'articles_with_most_visits' => Cache::remember('articles_with_most_visits', 60 * 60, function () {
+                return $this->getArticlesWithMostVisit();
+            }),
         ];
 
         $second_sidebar = [
-            'latest_tags' => $this->getLatestTags(),
+            'latest_tags' => Cache::remember('latest_tags', 60 * 60, function () {
+                return $this->getLatestTags();
+            }),
         ];
 
         $footer = [
-            'editor_choices' => $this->getEditorChoices(),
-            'hot_topics' => $this->getHotTopics(),
-            'articles_with_most_comments' => $this->getArticleWithMostComments(),
+            'editor_choices' => Cache::remember('editor_choices', 60 * 60, function () {
+                return $this->getEditorChoices();
+            }),
+            'hot_topics' => Cache::remember('hot_topics', 60 * 60, function () {
+                return $this->getHotTopics();
+            }),
+            'articles_with_most_comments' => Cache::remember('articles_with_most_comments', 60 * 60, function () {
+                return $this->getArticleWithMostComments();
+            }),
         ];
 
         return compact(['trending_bar', 'main_nav', 'second_sidebar', 'first_sidebar', 'footer']);

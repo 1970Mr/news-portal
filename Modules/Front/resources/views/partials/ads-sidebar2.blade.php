@@ -1,6 +1,6 @@
 @if($ads['second_sidebar'])
     <div class="col-xs-12" style="margin-top: 5rem">
-        <div class="sidebar sidebar-right second-sidebar">
+        <div class="sidebar sidebar-right second-sidebar color-red">
             <div class="widget widget-tags">
                 <h3 class="block-title"><span>تبلیغات</span></h3>
                 <div class="ads-list">
