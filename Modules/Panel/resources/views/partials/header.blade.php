@@ -1,9 +1,9 @@
 <!-- BEGIN HEADER -->
 <div class="navbar navbar-fixed-top" id="main-navbar">
-    <div class="header-right">
-        <a href="{{ route(config('app.panel_prefix', 'panel') . '.index') }}" class="logo-con">
-            <img src="{{ asset('admin/assets/images/logo.png') }}" class="img-responsive center-block"
-                 alt="لوگو سایت خبری">
+    <div class="header-right d-flex justify-content-center align-items-center">
+        <a href="{{ route(config('app.panel_prefix', 'panel') . '.index') }}" class="logo-con my-0">
+            <img src="{{ $siteDetails->mainLogoLink() }}" class="img-responsive center-block"
+                 alt="{{ config('app.name') }}" style="max-width: 9rem; max-height: 4rem">
         </a>
     </div><!-- /.header-right -->
     <div class="header-left">

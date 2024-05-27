@@ -16,7 +16,7 @@ class SiteDetailRequest extends FormRequest
             'footer_text' => 'required|string',
             'main_logo' => 'required' . $imageRules,
             'second_logo' => 'required' . $imageRules,
-            'favicon' => 'nullable' . $imageRules,
+            'favicon' => 'nullable|mimes:jpg,jpeg,png,bmp,gif,svg,ico|max:5000',
         ];
 
         if (strtolower($this->method()) === 'put') {

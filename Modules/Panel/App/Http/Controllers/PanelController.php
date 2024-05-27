@@ -4,7 +4,6 @@ namespace Modules\Panel\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Carbon;
 use Modules\Article\App\Models\Article;
 use Modules\Category\App\Models\Category;
 use Modules\Comment\App\Models\Comment;

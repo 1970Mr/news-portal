@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="fontiran.com:license" content="NE29X">
-    <link rel="shortcut icon" href="{{ asset('admin/assets/images/favicon.png') }}">
+    <link rel="shortcut icon" href="{{ $siteDetails->faviconLink() }}">
 
     @include('panel::partials.styles')
 
