@@ -129,6 +129,7 @@ class FrontServiceProvider extends ServiceProvider
         $this->app->booted(function () {
             View::composer([
                 'home::index',
+                'front::layouts.master',
                 'front::single-article.show',
                 'front::author.index',
                 'front::category.index',

@@ -86,9 +86,9 @@
                 <div class="col-md-12">
                     <div class="footer-info-content">
                         <div class="footer-logo">
-                            <img class="img-responsive" src="{{ $site_details->footerLogoLink() }}" alt="{{ config('app.name') }}" style="max-height: 80px; max-width: 300px">
+                            <img class="img-responsive" src="{{ $site_details->secondLogoLink() }}" alt="{{ config('app.name') }}" style="max-height: 80px; max-width: 300px">
                         </div>
-                        <p>{{ $site_details->footer_description }}</p>
+                        <p>{{ $site_details->footer_text }}</p>
                         <p class="footer-info-phone"><i class="fa fa-phone"></i> <span class="ltr_text">{{ $contact_info->phone }}</span></p>
                         <p class="footer-info-email"><i class="fa fa-envelope-o"></i> <span class="ltr_text">{{ $contact_info->email }}</span></p>
                         <ul class="unstyled footer-social">

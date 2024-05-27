@@ -72,7 +72,7 @@
                                             آپلود تصویر</button>
                                     </span>
                                     </div>
-                                    <input type="file" class="form-control" name="main_logo" required>
+                                    <input type="file" class="form-control" name="main_logo" @if(!$siteDetails?->mainLogo) required @endif>
                                     <div class="help-block"></div>
                                 </div>
                                 @if($siteDetails?->mainLogo)
@@ -96,7 +96,7 @@
                                             آپلود تصویر</button>
                                     </span>
                                     </div>
-                                    <input type="file" class="form-control" name="second_logo" required>
+                                    <input type="file" class="form-control" name="second_logo" @if(!$siteDetails?->secondLogo) required @endif>
                                     <div class="help-block"></div>
                                 </div>
                                 @if($siteDetails?->secondLogo)

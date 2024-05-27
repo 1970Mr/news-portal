@@ -13,19 +13,19 @@ class SEOService
 {
     public function setHomePageSEO(): void
     {
-        $siteDetails = SiteDetail::with('headerLogo')->first();
-        $siteTitle = __('news agency') . ' ' . config('app.name') . ' - ' . __('independent and reliable news site');
+        $siteDetails = SiteDetail::with('mainLogo')->first();
 
-        SEOTools::setTitle($siteTitle, false);
-        SEOTools::setDescription(__('site_description'));
+        SEOTools::setTitle($siteDetails->title, false);
+        SEOTools::setDescription($siteDetails->description);
         SEOTools::setCanonical(route('home.index'));
         SEOTools::opengraph()->setUrl(route('home.index'));
         SEOTools::opengraph()->addProperty('type', 'website');
         SEOTools::opengraph()->addProperty('site_name', __('news agency') . ' ' . config('app.name'));
+        SEOMeta::addKeyword(explode(',', $siteDetails->keywords));
         SEOMeta::addMeta('robots', 'index, follow');
 
-        if ($siteDetails && $siteDetails->headerLogo) {
-            SEOTools::jsonLd()->addImage(asset('storage/' . $siteDetails->headerLogo->file_path));
+        if ($siteDetails && $siteDetails->mainLogo) {
+            SEOTools::jsonLd()->addImage(asset('storage/' . $siteDetails->mainLogo->file_path));
         }
     }
 
@@ -90,8 +90,8 @@ class SEOService
         SEOTools::opengraph()->addProperty('type', 'website');
         SEOMeta::addMeta('robots', 'index, follow');
 
-        if ($siteDetails && $siteDetails->headerLogo) {
-            SEOTools::jsonLd()->addImage(asset('storage/' . $siteDetails->headerLogo->file_path));
+        if ($siteDetails && $siteDetails->mainLogo) {
+            SEOTools::jsonLd()->addImage(asset('storage/' . $siteDetails->mainLogo->file_path));
         }
     }
 
@@ -106,8 +106,8 @@ class SEOService
         SEOTools::opengraph()->addProperty('type', 'website');
         SEOMeta::addMeta('robots', 'index, follow');
 
-        if ($siteDetails && $siteDetails->headerLogo) {
-            SEOTools::jsonLd()->addImage(asset('storage/' . $siteDetails->headerLogo->file_path));
+        if ($siteDetails && $siteDetails->mainLogo) {
+            SEOTools::jsonLd()->addImage(asset('storage/' . $siteDetails->mainLogo->file_path));
         }
     }
 

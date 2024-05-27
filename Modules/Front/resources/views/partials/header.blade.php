@@ -6,7 +6,7 @@
                 <div class="col-12">
                     <div class="logo">
                         <a href="{{ route('home.index') }}">
-                            <img src="{{ $site_details->headerLogoLink() }}" alt="{{ config('app.name') }}">
+                            <img src="{{ $site_details->mainLogoLink() }}" alt="{{ config('app.name') }}">
                         </a>
                     </div>
                 </div><!-- logo col end -->
@@ -15,7 +15,7 @@
                 <div class="col-xs-12 col-sm-3 col-md-3">
                     <div class="logo">
                         <a href="{{ route('home.index') }}">
-                            <img src="{{ $site_details->headerLogoLink() }}" alt="{{ config('app.name') }}">
+                            <img src="{{ $site_details->mainLogoLink() }}" alt="{{ config('app.name') }}">
                         </a>
                     </div>
                 </div><!-- logo col end -->

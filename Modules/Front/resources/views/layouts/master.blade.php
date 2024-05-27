@@ -2,23 +2,17 @@
 <html lang="fa">
 
 <head>
-
-    <!-- Basic Page Needs
-================================================== -->
     <meta charset="utf-8">
-{{--    <title>{{ !empty($title) ? $title : config('app.name') }}</title>--}}
-
-    <!-- Mobile Specific Metas
-================================================== -->
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
-    <!--Favicon-->
-    <link rel="shortcut icon" href="{{ asset('home/images/favicon.ico') }}" type="image/x-icon">
-    <link rel="icon" href="{{ asset('home/images/favicon.ico') }}" type="image/x-icon">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ $site_details->faviconLink() }}" type="image/x-icon">
+    <link rel="icon" href="{{ $site_details->faviconLink() }}" type="image/x-icon">
 
     <x-feed-links />
+
     {!! SEO::generate() !!}
 
     @include('front::partials.styles')

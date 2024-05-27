@@ -23,7 +23,7 @@ class SharedDataComposer
         });
 
         $siteDetails = Cache::remember('site_details', 60 * 60, static function () {
-            return SiteDetail::with('footerLogo', 'headerLogo')->first();
+            return SiteDetail::with('mainLogo', 'secondLogo', 'favicon')->first();
         });
 
         $contactInfo = Cache::remember('contact_info', 60 * 60, static function () {
