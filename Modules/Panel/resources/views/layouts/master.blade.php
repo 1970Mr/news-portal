@@ -15,6 +15,20 @@
         #page-content {
             min-height: 87vh;
         }
+
+        .header-right {
+            transition: .3s all;
+        }
+
+        .logo-con img {
+            max-width: 9rem;
+            max-height: 4rem;
+        }
+
+        .sidebar-collapse .logo-con img {
+            max-width: 100%;
+            max-height: 100%;
+        }
     </style>
     @stack('styles')
     <!-- END PAGE CSS -->

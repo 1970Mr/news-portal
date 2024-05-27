@@ -10,6 +10,7 @@ use Illuminate\Support\ServiceProvider;
 use Modules\Comment\App\Models\Comment;
 use Modules\ContactUs\App\Models\UserMessage;
 use Modules\Panel\App\Http\Middleware\ShareData;
+use Modules\Setting\App\Models\SiteDetail;
 
 class PanelServiceProvider extends ServiceProvider
 {
@@ -134,6 +135,7 @@ class PanelServiceProvider extends ServiceProvider
         $this->app->booted(function () {
             $this->commentsSharedData();
             $this->userMessagesSharedData();
+            $this->siteDetailsSharedData();
         });
     }
 
@@ -163,5 +165,11 @@ class PanelServiceProvider extends ServiceProvider
         View::share('unseenUserMessages', $unseenUserMessages);
         View::share('unseenUserMessagesRoute', $unseenUserMessagesRoute);
         View::share('markAllAsSeenUserMessagesRoute', $markAllAsSeenUserMessagesRoute);
+    }
+
+    private function siteDetailsSharedData(): void
+    {
+        $siteDetails = SiteDetail::with('mainLogo', 'secondLogo', 'favicon')->first();
+        View::share('siteDetails', $siteDetails);
     }
 }

@@ -199,10 +199,10 @@
                                         <td>{{ $article->title }}</td>
                                         <td>{{ $article->slug }}</td>
                                         <td>{{ $article->description }}</td>
-                                        <td>{{ $article->keywords }}</td>
+                                        <td class="min-w-10">{{ $article->keywords }}</td>
                                         <td>{{ $article->user->full_name }}</td>
                                         <td>{{ $article->category->name }}</td>
-                                        <td>{{ nullable_value($article->tagNames()) }}</td>
+                                        <td class="min-w-10">{{ nullable_value($article->tagNames()) }}</td>
                                         <td class="ltr text-right created-at">{{ jalalian()->forge($article->published_at)->format(config('common.datetime_format')) }}</td>
                                         <td class="ltr text-right created-at">{{ jalalian()->forge($article->created_at)->format(config('common.datetime_format')) }}</td>
                                         <td class="{{ status_class($article->editor_choice) }}">{{ status_message($article->editor_choice) }}</td>
@@ -220,7 +220,7 @@
                                                     @endcan
 
                                                     @can(config('permissions_list.ARTICLE_DESTROY', false))
-                                                        <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.articles.destroy', $article->id)" />
+                                                        <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.articles.destroy', $article->id)"/>
                                                     @endcan
                                                 </div>
                                             </td>
@@ -301,13 +301,14 @@
                                                 <div class="d-flex gap-2">
                                                     @can(config('permissions_list.CATEGORY_UPDATE', false))
                                                         <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                           rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route(config('app.panel_prefix', 'panel') . '.categories.edit', $category->id) }}">
+                                                           rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش"
+                                                           href="{{ route(config('app.panel_prefix', 'panel') . '.categories.edit', $category->id) }}">
                                                             <i class="icon-pencil fa-flip-horizontal"></i>
                                                         </a>
                                                     @endcan
 
                                                     @can(config('permissions_list.CATEGORY_DESTROY', false))
-                                                        <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.categories.destroy', $category->id)" />
+                                                        <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.categories.destroy', $category->id)"/>
                                                     @endcan
                                                 </div>
                                             </td>
@@ -384,13 +385,14 @@
                                                 <div class="d-flex gap-2">
                                                     @can(config('permissions_list.TAG_UPDATE', false))
                                                         <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                           rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route(config('app.panel_prefix', 'panel') . '.tags.edit', $tag->id) }}">
+                                                           rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش"
+                                                           href="{{ route(config('app.panel_prefix', 'panel') . '.tags.edit', $tag->id) }}">
                                                             <i class="icon-pencil fa-flip-horizontal"></i>
                                                         </a>
                                                     @endcan
 
                                                     @can(config('permissions_list.TAG_DESTROY', false))
-                                                        <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.tags.destroy', $tag->id)" />
+                                                        <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.tags.destroy', $tag->id)"/>
                                                     @endcan
                                                 </div>
                                             </td>
@@ -461,14 +463,15 @@
                                             </td>
                                             <td>{{ $image->file_path }}</td>
                                             <td>{{ nullable_value($image->alt_text) }}</td>
-                                            <td>{{ $image->user_name }}</td>
+                                            <td>{{ $image->user_full_name }}</td>
                                             <td class="ltr text-right created-at">{{ jalalian()->forge($image->created_at)->format(config('common.datetime_format')) }}</td>
                                             @can('operations', $imageClassName)
                                                 <td>
                                                     <div class="d-flex gap-2">
                                                         @can('update', $image)
                                                             <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                               rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route(config('app.panel_prefix', 'panel') . '.images.edit', $image->id) }}">
+                                                               rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش"
+                                                               href="{{ route(config('app.panel_prefix', 'panel') . '.images.edit', $image->id) }}">
                                                                 <i class="icon-pencil fa-flip-horizontal"></i>
                                                             </a>
                                                         @endcan
@@ -623,32 +626,36 @@
         Morris.Donut({
             element: 'donut',
             data: [
-                { value: {{ $visitorsCount['year'] }}, label: 'سال', formatted: '{{ $visitorsCount['year'] }} نفر' },
-                { value: {{ $visitorsCount['month'] }}, label: 'ماه', formatted: '{{ $visitorsCount['month'] }} نفر' },
-                { value: {{ $visitorsCount['week'] }}, label: 'هفته', formatted: '{{ $visitorsCount['week'] }} نفر' },
+                {value: {{ $visitorsCount['year'] }}, label: 'سال', formatted: '{{ $visitorsCount['year'] }} نفر'},
+                {value: {{ $visitorsCount['month'] }}, label: 'ماه', formatted: '{{ $visitorsCount['month'] }} نفر'},
+                {value: {{ $visitorsCount['week'] }}, label: 'هفته', formatted: '{{ $visitorsCount['week'] }} نفر'},
             ],
             colors: [
                 '#1e4572',
                 '#597bbd',
                 '#6da1f1',
             ],
-            formatter: function (x, data) { return data.formatted; },
+            formatter: function (x, data) {
+                return data.formatted;
+            },
             resize: true
         });
 
         Morris.Donut({
             element: 'donut2',
             data: [
-                { value: {{ $visitorsCount['day'] }}, label: 'روز', formatted: '{{ $visitorsCount['day'] }} نفر' },
-                { value: {{ $visitorsCount['10hours'] }}, label: 'ده ساعت', formatted: '{{ $visitorsCount['10hours'] }} نفر' },
-                { value: {{ $visitorsCount['hour'] }}, label: 'یک ساعت', formatted: '{{ $visitorsCount['hour'] }} نفر' },
+                {value: {{ $visitorsCount['day'] }}, label: 'روز', formatted: '{{ $visitorsCount['day'] }} نفر'},
+                {value: {{ $visitorsCount['10hours'] }}, label: 'ده ساعت', formatted: '{{ $visitorsCount['10hours'] }} نفر'},
+                {value: {{ $visitorsCount['hour'] }}, label: 'یک ساعت', formatted: '{{ $visitorsCount['hour'] }} نفر'},
             ],
             colors: [
                 '#ffc107',
                 '#e36100',
                 '#d50000',
             ],
-            formatter: function (x, data) { return data.formatted; },
+            formatter: function (x, data) {
+                return data.formatted;
+            },
             resize: true
         });
     </script>
@@ -666,6 +673,10 @@
 
         th, .created-at {
             white-space: nowrap;
+        }
+
+        .min-w-10 {
+            min-width: 10rem;
         }
     </style>
 @endpush

@@ -21,7 +21,7 @@ class Image extends Model
 
     use HasFactory;
 
-    protected $appends = ['user_name'];
+    protected $appends = ['user_full_name'];
 
     public const ALL = 'all';
     public const MY_IMAGE = 'my_images';
@@ -41,21 +41,12 @@ class Image extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function userName(): Attribute
+    public function userFullName(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->user?->name,
+            get: fn () => $this->user?->full_name,
         );
     }
-
-//    public function altText(): Attribute
-//    {
-//        $fileName = pathinfo($this->file_path, PATHINFO_FILENAME);
-//        $fileName = Str::replace(['_', '-'], ' ', $fileName);
-//        return Attribute::make(
-//            set: fn () => $this->alt_text ?? $fileName,
-//        );
-//    }
 
     public function getUri(): string
     {

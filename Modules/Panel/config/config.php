@@ -92,7 +92,7 @@ return [
         ],
         'newsletter' => [
             'title' => 'خبرنامه',
-            'icon' => 'icon-feed',
+            'icon' => 'icon-paper-plane',
             'url' => route(config('app.panel_prefix', 'panel') . '.newsletters.index'),
             'permissions' => config('permissions_list.NEWSLETTER_INDEX', false),
         ],

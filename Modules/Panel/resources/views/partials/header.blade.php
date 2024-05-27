@@ -1,9 +1,9 @@
 <!-- BEGIN HEADER -->
 <div class="navbar navbar-fixed-top" id="main-navbar">
-    <div class="header-right d-flex justify-content-center align-items-center">
-        <a href="{{ route(config('app.panel_prefix', 'panel') . '.index') }}" class="logo-con my-0">
+    <div class="header-right d-md-flex justify-content-center align-items-center">
+        <a href="{{ route(config('app.panel_prefix', 'panel') . '.index') }}" class="logo-con my-0 d-none d-md-block">
             <img src="{{ $siteDetails->mainLogoLink() }}" class="img-responsive center-block"
-                 alt="{{ config('app.name') }}" style="max-width: 9rem; max-height: 4rem">
+                 alt="{{ config('app.name') }}">
         </a>
     </div><!-- /.header-right -->
     <div class="header-left">

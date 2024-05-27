@@ -81,7 +81,7 @@
                                         </td>
                                         <td>{{ $image->file_path }}</td>
                                         <td>{{ nullable_value($image->alt_text) }}</td>
-                                        <td>{{ $image->user_name }}</td>
+                                        <td>{{ $image->user_full_name }}</td>
                                         <td class="ltr text-right created-at">{{ jalalian()->forge($image->created_at)->format(config('common.datetime_format')) }}</td>
                                         @can('operations', $imageClassName)
                                             <td>
