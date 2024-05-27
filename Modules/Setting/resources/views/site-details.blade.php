@@ -42,13 +42,28 @@
 
                         <fieldset class="row justify-content-center">
                             <div class="form-group col-lg-6">
-                                <label for="description">توضیحات فوتر <small>(ضروری)</small></label>
-                                <textarea id="footer_description" class="form-control" name="footer_description" required>{{ old('footer_description', $siteDetails?->footer_description) }}</textarea>
+                                <label for="title">عنوان <small>(ضروری)</small></label>
+                                <input id="title" class="form-control" name="title" required value="{{ old('title', $siteDetails?->title) }}">
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <label for="keywords">کلمات کلیدی</label>
+                                <input id="keywords" class="form-control" name="keywords" required value="{{ old('keywords', $siteDetails?->keywords) }}">
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <label for="description">توضیحات <small>(ضروری)</small></label>
+                                <textarea id="description" class="form-control" name="description" required>{{ old('description', $siteDetails?->description) }}</textarea>
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <label for="footer_text">متن فوتر</label>
+                                <textarea id="footer_text" class="form-control" name="footer_text" required>{{ old('footer_text', $siteDetails?->footer_text) }}</textarea>
                             </div>
 
                             <div class="col-12 d-flex flex-column align-items-center">
                                 <div class="form-group relative col-lg-6">
-                                    <label>لوگوی هدر <small>(ضروری)</small></label>
+                                    <label>لوگوی اصلی <small>(ضروری)</small></label>
                                     <div class="input-group round">
                                         <input type="text" class="form-control file-input" placeholder="برای آپلود کلیک کنید">
                                         <span class="input-group-btn">
@@ -57,25 +72,22 @@
                                             آپلود تصویر</button>
                                     </span>
                                     </div>
-                                    <input type="file" class="form-control" name="header_logo">
+                                    <input type="file" class="form-control" name="main_logo" required>
                                     <div class="help-block"></div>
                                 </div>
-                                @if($siteDetails?->headerLogo)
+                                @if($siteDetails?->mainLogo)
                                     <div class="form-group col-12 text-center">
-                                        <img class="mb-2" src="{{ asset('storage/' . $siteDetails?->headerLogo->file_path) }}" alt="{{ $siteDetails?->headerLogo->alt_text }}" style="max-width:
-                                        300px;
-                                        max-height:
-                                        300px">
-                                            <div>
-                                                {{ asset('storage/' . $siteDetails?->headerLogo->file_path) }}
-                                            </div>
+                                        <img class="mb-2" src="{{ asset('storage/' . $siteDetails?->mainLogo->file_path) }}" alt="{{ $siteDetails?->mainLogo->alt_text }}">
+                                        <div>
+                                            {{ asset('storage/' . $siteDetails?->mainLogo->file_path) }}
+                                        </div>
                                     </div>
                                 @endif
                             </div>
 
                             <div class="col-12 d-flex flex-column align-items-center">
                                 <div class="form-group relative col-lg-6">
-                                    <label>لوگوی فوتر <small>(ضروری)</small></label>
+                                    <label>لوگوی فرعی <small>(ضروری)</small></label>
                                     <div class="input-group round">
                                         <input type="text" class="form-control file-input" placeholder="برای آپلود کلیک کنید">
                                         <span class="input-group-btn">
@@ -84,18 +96,39 @@
                                             آپلود تصویر</button>
                                     </span>
                                     </div>
-                                    <input type="file" class="form-control" name="footer_logo">
+                                    <input type="file" class="form-control" name="second_logo" required>
                                     <div class="help-block"></div>
                                 </div>
-                                @if($siteDetails?->footerLogo)
+                                @if($siteDetails?->secondLogo)
                                     <div class="form-group col-12 text-center">
-                                        <img class="mb-2" src="{{ asset('storage/' . $siteDetails?->footerLogo->file_path) }}" alt="{{ $siteDetails?->footerLogo->alt_text }}" style="max-width:
-                                        300px;
-                                        max-height:
-                                        300px">
-                                            <div>
-                                                {{ asset('storage/' . $siteDetails?->footerLogo->file_path) }}
-                                            </div>
+                                        <img class="mb-2" src="{{ asset('storage/' . $siteDetails?->secondLogo->file_path) }}" alt="{{ $siteDetails?->secondLogo->alt_text }}">
+                                        <div>
+                                            {{ asset('storage/' . $siteDetails?->secondLogo->file_path) }}
+                                        </div>
+                                    </div>
+                                @endif
+                            </div>
+
+                            <div class="col-12 d-flex flex-column align-items-center">
+                                <div class="form-group relative col-lg-6">
+                                    <label>favicon</label>
+                                    <div class="input-group round">
+                                        <input type="text" class="form-control file-input" placeholder="برای آپلود کلیک کنید">
+                                        <span class="input-group-btn">
+                                        <button type="button" class="btn btn-success">
+                                            <i class="icon-picture"></i>
+                                            آپلود تصویر</button>
+                                    </span>
+                                    </div>
+                                    <input type="file" class="form-control" name="favicon">
+                                    <div class="help-block"></div>
+                                </div>
+                                @if($siteDetails?->favicon)
+                                    <div class="form-group col-12 text-center">
+                                        <img class="mb-2" src="{{ asset('storage/' . $siteDetails?->favicon->file_path) }}" alt="{{ $siteDetails?->favicon->alt_text }}">
+                                        <div>
+                                            {{ asset('storage/' . $siteDetails?->favicon->file_path) }}
+                                        </div>
                                     </div>
                                 @endif
                             </div>
@@ -137,4 +170,13 @@
         });
         $("#main-form").validate();
     </script>
+@endpush
+
+@push('styles')
+    <style>
+        img {
+            max-width: 300px;
+            max-height: 300px;
+        }
+    </style>
 @endpush

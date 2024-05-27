@@ -9,17 +9,25 @@ use Modules\FileManager\App\Models\Image;
 class SiteDetail extends Model
 {
     protected $fillable = [
-        'footer_description'
+        'title',
+        'description',
+        'keywords',
+        'footer_text',
     ];
 
-    public function headerLogo(): BelongsTo
+    public function mainLogo(): BelongsTo
     {
-        return $this->belongsTo(Image::class, 'header_logo_id');
+        return $this->belongsTo(Image::class, 'main_logo_id');
     }
 
-    public function footerLogo(): BelongsTo
+    public function secondLogo(): BelongsTo
     {
-        return $this->belongsTo(Image::class, 'footer_logo_id');
+        return $this->belongsTo(Image::class, 'second_logo_id');
+    }
+
+    public function favicon(): BelongsTo
+    {
+        return $this->belongsTo(Image::class, 'favicon_id');
     }
 
     public function getLogo($relation): string
@@ -29,13 +37,18 @@ class SiteDetail extends Model
             config('setting.default_logo_picture.file_link');
     }
 
-    public function headerLogoLink(): string
+    public function mainLogoLink(): string
     {
-        return $this->getLogo($this->headerLogo);
+        return $this->getLogo($this->mainLogo);
     }
 
-    public function footerLogoLink(): string
+    public function secondLogoLink(): string
     {
-        return $this->getLogo($this->footerLogo);
+        return $this->getLogo($this->secondLogo);
+    }
+
+    public function faviconLink(): string
+    {
+        return $this->getLogo($this->favicon);
     }
 }

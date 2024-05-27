@@ -19,7 +19,7 @@ class SiteDetailController extends Controller
 
     public function edit(): View
     {
-        $siteDetails = SiteDetail::with('footerLogo', 'headerLogo')->first();
+        $siteDetails = SiteDetail::with('mainLogo', 'secondLogo', 'favicon')->first();
         return view('setting::site-details', compact('siteDetails'));
     }
 

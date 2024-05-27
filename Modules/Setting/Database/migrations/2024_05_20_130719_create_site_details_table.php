@@ -13,9 +13,13 @@ return new class extends Migration
     {
         Schema::create('site_details', function (Blueprint $table) {
             $table->id();
-            $table->text('footer_description');
-            $table->foreignId('header_logo_id')->constrained('images');
-            $table->foreignId('footer_logo_id')->constrained('images');
+            $table->text('title');
+            $table->text('description');
+            $table->text('keywords')->nullable();
+            $table->text('footer_text')->nullable();
+            $table->foreignId('main_logo_id')->constrained('images');
+            $table->foreignId('second_logo_id')->constrained('images');
+            $table->foreignId('favicon_id')->nullable()->constrained('images');
             $table->timestamps();
         });
     }

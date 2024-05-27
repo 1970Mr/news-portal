@@ -14,22 +14,49 @@ class SiteDetailService
     public function update(SiteDetailRequest $request): void
     {
         $siteDetails = SiteDetail::query()->firstOrNew();
-        if ($headerLogo = $this->storeImage($request, 'header_logo', 'Header Logo')) {
-            $this->imageService->destroyWithoutKeyConstraints($siteDetails->headerLogo);
-            $siteDetails->header_logo_id = $headerLogo->id;
-        }
-        if ($footerLogo = $this->storeImage($request, 'footer_logo', 'Footer Logo')) {
-            $this->imageService->destroyWithoutKeyConstraints($siteDetails->footerLogo);
-            $siteDetails->footer_logo_id = $footerLogo->id;
-        }
-        $siteDetails->fill($request->only('footer_description'))->save();
+
+        $this->updateImage($request, $siteDetails, 'main_logo');
+        $this->updateImage($request, $siteDetails, 'second_logo');
+        $this->updateImage($request, $siteDetails, 'favicon');
+
+        $siteDetails->fill($request->except(['main_logo', 'second_logo', 'favicon']))->save();
     }
 
-    private function storeImage(SiteDetailRequest $request, string $fieldName, string $altText): ?Model
+    private function updateImage(SiteDetailRequest $request, SiteDetail $siteDetails, string $fieldName): void
+    {
+        if ($image = $this->storeImage($request, $fieldName)) {
+            $relation = $this->getRelationName($fieldName);
+            $this->imageService->destroyWithoutKeyConstraints($siteDetails->$relation);
+            $siteDetails->{$fieldName . '_id'} = $image->id;
+        }
+    }
+
+    private function storeImage(SiteDetailRequest $request, string $fieldName): ?Model
     {
         if ($request->hasFile($fieldName)) {
-            return $this->imageService->store($request, $fieldName, "$altText | " . config('app.name'));
+            $altText = $this->getAltText($fieldName) . config('seotools.meta.defaults.separator') . config('app.name');
+            return $this->imageService->store($request, $fieldName, $altText);
         }
         return null;
+    }
+
+    private function getRelationName(string $fieldName): string
+    {
+        return match($fieldName) {
+            'main_logo' => 'mainLogo',
+            'second_logo' => 'secondLogo',
+            'favicon' => 'favicon',
+            default => throw new \InvalidArgumentException("Invalid field name: $fieldName"),
+        };
+    }
+
+    private function getAltText(string $fieldName): string
+    {
+        return match($fieldName) {
+            'main_logo' => 'Main Logo',
+            'second_logo' => 'Second Logo',
+            'favicon' => 'Favicon',
+            default => 'Image',
+        };
     }
 }

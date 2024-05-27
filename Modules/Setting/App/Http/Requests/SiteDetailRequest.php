@@ -6,16 +6,22 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class SiteDetailRequest extends FormRequest
 {
-    /**
-     * Get the validation rules that apply to the request.
-     */
     public function rules(): array
     {
-        return [
-            'footer_description' => 'required|string',
-            'header_logo' => 'nullable|image|max:5000',
-            'footer_logo' => 'nullable|image|max:5000',
+        $imageRules = '|image|max:5000';
+        $rules = [
+            'description' => 'required|string',
+            'main_logo' => 'required' . $imageRules,
+            'second_logo' => 'required' . $imageRules,
+            'favicon' => 'nullable' . $imageRules,
         ];
+
+        if (strtolower($this->method()) === 'put') {
+            $rules['main_logo'] = 'nullable' . $imageRules;
+            $rules['second_logo'] = 'nullable' . $imageRules;
+        }
+
+        return $rules;
     }
 
     public function attributes(): array
@@ -27,9 +33,6 @@ class SiteDetailRequest extends FormRequest
         ];
     }
 
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
         return true;
