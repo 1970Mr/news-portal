@@ -158,7 +158,7 @@ return [
         'body'                     => 'بدن',
         'city'                     => 'شهر',
         'content'                  => 'محتوا',
-        'country'                  => 'کشور',
+        'country'                  => 'حافظه پنهانور',
         'created_at'               => 'ایجاد شده در',
         'creator'                  => 'سازنده',
         'currency'                 => 'واحد پول',
