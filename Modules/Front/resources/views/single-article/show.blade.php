@@ -2,7 +2,7 @@
 
 @section('content')
     <x-front-breadcrumbs>
-        <li><a href="#">{{ $category->name }}</a></li>
+        <li><a href="{{ route('categories.show', $category->slug) }}">{{ $category->name }}</a></li>
         <li>{{ $article->title }}</li>
     </x-front-breadcrumbs>
 
@@ -37,4 +37,25 @@
 
 @push('styles')
     @include('front::single-article.partials.custom-show-styles')
+@endpush
+
+@push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            @if($article->liked())
+                submitLikeRequest('.post-unlike', '.unlike-form')
+            @else
+                submitLikeRequest('.post-like', '.like-form')
+            @endif
+
+            function submitLikeRequest(clickableClass, formClass) {
+                const clickable = document.querySelector(clickableClass);
+                const form = document.querySelector(formClass);
+                clickable.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    form.submit()
+                })
+            }
+        });
+    </script>
 @endpush

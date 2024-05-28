@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Modules\ContactUs\App\Http\Controllers\ContactInfoController;
 use Modules\ContactUs\App\Http\Controllers\UserMessageController;
 use Modules\ContactUs\App\Http\Controllers\Front\ContactUsController as FrontUserMessageController;
+use Spatie\Honeypot\ProtectAgainstSpam;
 
 Route::prefix(config('app.panel_prefix', 'panel') . '/contact-us')
     ->name(config('app.panel_prefix', 'panel') . '.contact-us.')
@@ -29,6 +30,7 @@ Route::prefix(config('app.panel_prefix', 'panel') . '/contact-us')
 Route::prefix('contact-us')
     ->name('contact-us.')
     ->controller(FrontUserMessageController::class)
+    ->middleware(ProtectAgainstSpam::class)
     ->group(function () {
         Route::get('/', [FrontUserMessageController::class, 'index'])->name('index');
         Route::post('/message', [FrontUserMessageController::class, 'store'])->name('message');

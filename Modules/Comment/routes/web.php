@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Modules\Comment\App\Http\Controllers\CommentController;
 use Modules\Comment\App\Http\Controllers\Front\CommentController as FrontCommentController;
+use Spatie\Honeypot\ProtectAgainstSpam;
 
 Route::prefix(config('app.panel_prefix', 'panel') . '/comments')->name(config('app.panel_prefix', 'panel') . '.comments.')->controller(CommentController::class)->group(function () {
     Route::get('/', 'index')->name('index');
@@ -13,9 +14,13 @@ Route::prefix(config('app.panel_prefix', 'panel') . '/comments')->name(config('a
     Route::delete('/{comment}', 'destroy')->name('destroy');
 });
 
-Route::prefix('comments')->name('comments.')->controller(FrontCommentController::class)->group(function () {
-    Route::post('/', 'store')->name('store');
-    Route::put('/{comment}', 'update')->name('update');
-    Route::delete('/{comment}', 'destroy')->name('destroy');
-    Route::post('/{comment}', 'reply')->name('reply');
-});
+Route::prefix('comments')
+    ->name('comments.')
+    ->controller(FrontCommentController::class)
+    ->middleware(ProtectAgainstSpam::class)
+    ->group(function () {
+        Route::post('/', 'store')->name('store');
+        Route::put('/{comment}', 'update')->name('update');
+        Route::delete('/{comment}', 'destroy')->name('destroy');
+        Route::post('/{comment}', 'reply')->name('reply');
+    });

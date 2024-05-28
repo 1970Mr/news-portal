@@ -2,6 +2,7 @@
 
 namespace Modules\Article\App\Models;
 
+use Conner\Likeable\Likeable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Collection;
@@ -23,7 +24,7 @@ use Spatie\Feed\FeedItem;
 
 class Article extends Model implements Feedable
 {
-    use HasFactory, HasImage, HasHotness, HasComments, Searchable;
+    use HasFactory, HasImage, HasHotness, HasComments, Searchable, Likeable;
 
     protected $fillable = [
         'title',

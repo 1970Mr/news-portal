@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.8",
         "morilog/jalali": "3.*",
         "realrashid/sweet-alert": "^7.1",
+        "rtconner/laravel-likeable": "^3.2",
         "spatie/laravel-feed": "^4.4",
         "spatie/laravel-honeypot": "^4.5",
         "spatie/laravel-markdown": "^2.5",

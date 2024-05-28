@@ -51,6 +51,7 @@
                                 <th>کاربر</th>
                                 <th>دسته‌بندی</th>
                                 <th>تگ(ها)</th>
+                                <th>تعداد لایک</th>
                                 <th>تاریخ انتشار</th>
                                 <th>تاریخ ایجاد</th>
                                 <th>انتخاب سردبیر</th>
@@ -75,6 +76,7 @@
                                     <td>{{ $article->user->full_name }}</td>
                                     <td>{{ $article->category->name }}</td>
                                     <td class="min-w-10">{{ nullable_value($article->tagNames()) }}</td>
+                                    <td>{{ $article->likeCount }}</td>
                                     <td class="ltr text-right created-at">{{ jalalian()->forge($article->published_at)->format(config('common.datetime_format')) }}</td>
                                     <td class="ltr text-right created-at">{{ jalalian()->forge($article->created_at)->format(config('common.datetime_format')) }}</td>
                                     <td class="{{ status_class($article->editor_choice) }}">{{ status_message($article->editor_choice) }}</td>
@@ -92,7 +94,7 @@
                                                 @endcan
 
                                                 @can(config('permissions_list.ARTICLE_DESTROY', false))
-                                                    <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.articles.destroy', $article->id)" />
+                                                    <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.articles.destroy', $article->id)"/>
                                                 @endcan
                                             </div>
                                         </td>

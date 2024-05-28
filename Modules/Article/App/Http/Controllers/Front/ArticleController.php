@@ -3,9 +3,9 @@
 namespace Modules\Article\App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Jorenvh\Share\ShareFacade;
 use Modules\Article\App\Models\Article;
 use Modules\Article\App\Services\Front\ShareService;
 use Modules\Category\App\Models\Category;
@@ -24,5 +24,17 @@ class ArticleController extends Controller
         $related_articles = $article->relatedArticles();
         visits($article)->increment();
         return view('front::single-article.show', compact(['article', 'category', 'shared_links', 'previous_article', 'next_article', 'related_articles']));
+    }
+
+    public function like(Article $article): RedirectResponse
+    {
+        $article->like();
+        return redirect()->back()->with('success', __('article::messages.liked'));
+    }
+
+    public function unlike(Article $article): RedirectResponse
+    {
+        $article->unlike();
+        return redirect()->back()->with('success', __('article::messages.unliked'));
     }
 }

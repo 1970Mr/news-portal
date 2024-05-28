@@ -27,4 +27,41 @@
     .author-info h3 a:hover {
         color: #ec0000;
     }
+
+    .comments-link {
+        color: #a3a3a3 !important;
+    }
+
+    .comments-link * {
+        transition: .3s all;
+    }
+
+    .comments-link:hover * {
+        color: #ec0000 !important;
+    }
+
+    .post-like {
+        color: #a3a3a3;
+        cursor: pointer;
+        transition: .3s all;
+    }
+
+    .post-like:hover {
+        color: #ec0000;
+        cursor: pointer;
+    }
+
+    .post-unlike {
+        color: #ec0000 !important;
+        cursor: pointer;
+        transition: .3s all;
+    }
+
+    .post-unlike:hover {
+        color: #a3a3a3 !important;
+    }
+
+    .like-count {
+        display: inline;
+    }
 </style>
