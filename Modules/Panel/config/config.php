@@ -118,13 +118,13 @@ return [
                     'permissions' => config('permissions_list.PROFILE_EDIT', false),
                 ],
                 [
-                    'title' => 'ویرایش رمز عبور',
+                    'title' => 'تغییر رمز عبور',
                     'icon' => 'icon-key',
                     'url' => route(config('app.panel_prefix', 'panel') . '.profile.password.change'),
                     'permissions' => config('permissions_list.PROFILE_CHANGE_PASSWORD', false),
                 ],
                 [
-                    'title' => 'ویرایش ایمیل',
+                    'title' => 'تغییر ایمیل',
                     'icon' => 'icon-envelope-letter',
                     'url' => route(config('app.panel_prefix', 'panel') . '.profile.email.change'),
                     'permissions' => config('permissions_list.PROFILE_CHANGE_EMAIL', false),

@@ -146,32 +146,33 @@
                         <i class="icon-arrow-down"></i>
                     </a>
                     <ul class="dropdown-menu">
-                        <li>
-                            <a href="{{ route(config('app.panel_prefix', 'panel') . '.profile.edit') }}">
-                                <i class="icon-note"></i>
-                                ویرایش پروفایل
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route(config('app.panel_prefix', 'panel') . '.profile.password.change') }}">
-                                <i class="icon-key"></i>
-                                تغییر رمز عبور
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route(config('app.panel_prefix', 'panel') . '.profile.email.change') }}">
-                                <i class="icon-envelope-letter"></i>
-                                تغییر ایمیل
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="{{ asset('admin/chat.html') }}">
-                                <span class="badge badge-primary float-end"> 14 </span>
-                                <i class="icon-envelope"></i>
-                                تیکت های جدید
-                            </a>
-                        </li>
+                        @can(config('permissions_list.PROFILE_EDIT', false))
+                            <li>
+                                <a href="{{ route(config('app.panel_prefix', 'panel') . '.profile.edit') }}">
+                                    <i class="icon-note"></i>
+                                    ویرایش پروفایل
+                                </a>
+                            </li>
+                        @endcan
+
+                        @can(config('permissions_list.PROFILE_CHANGE_PASSWORD', false))
+                            <li>
+                                <a href="{{ route(config('app.panel_prefix', 'panel') . '.profile.password.change') }}">
+                                    <i class="icon-key"></i>
+                                    تغییر رمز عبور
+                                </a>
+                            </li>
+                        @endcan
+
+                        @can(config('permissions_list.PROFILE_CHANGE_EMAIL', false))
+                            <li>
+                                <a href="{{ route(config('app.panel_prefix', 'panel') . '.profile.email.change') }}">
+                                    <i class="icon-envelope-letter"></i>
+                                    تغییر ایمیل
+                                </a>
+                            </li>
+                        @endcan
+
                         <li class="divider"></li>
                         <li>
                             <a href="{{ route('logout') }}" onclick="event.preventDefault(); $('#headerLogout').submit()">
