@@ -37,14 +37,14 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="name">نام <small>(ضروری)</small> </label>
-                                    <input id="name" class="form-control" name="name" type="text" required value="{{ old('name') ?? $role->name }}">
+                                    <input id="name" class="form-control" name="name" type="text" required value="{{ old('name', $role->name) }}">
                                 </div>
                             </div>
 
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="localName">نام نمایشی</label>
-                                    <input id="localName" class="form-control" name="localName" type="text" value="{{ old('localName') ?? $role->local_name }}">
+                                    <input id="localName" class="form-control" name="localName" type="text" value="{{ old('localName', $role->local_name) }}">
                                 </div>
                             </div>
 
@@ -52,7 +52,7 @@
                                 <h2 class="mb-3 px-0">تعیین دسترسی‌های نقش</h2>
                                 <div class="row mx-4">
                                     @foreach($groupedPermissions as $key => $permissions)
-                                        <h3 class="mb-2 px-0">@lang('role::permissions.' . $key)</h3>
+                                        <h3 class="mb-2 mt-4 px-0">@lang('role::permissions.' . $key)</h3>
                                         <div class="permissions-layout">
                                             @foreach($permissions as $permission)
                                                 <div class="form-group px-0 w-auto">
@@ -113,11 +113,13 @@
             display: grid;
             grid-template-columns: repeat(4, auto);
             justify-content: space-between;
+            gap: 1rem;
         }
 
         @media screen and (max-width: 767px) {
             .permissions-layout {
                 grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                font-size: 14px;
             }
         }
 

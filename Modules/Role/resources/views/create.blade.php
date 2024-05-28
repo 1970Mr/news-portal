@@ -47,20 +47,22 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-10 d-flex row my-3">
+                            <div class="col-12 d-flex row m-3">
                                 <h2 class="mb-3 px-0">تعیین دسترسی‌های نقش</h2>
-                                @foreach($groupedPermissions as $key => $permissions)
-                                    <h3 class="mb-2 px-0">@lang('role::permissions.' . $key)</h3>
-                                    @foreach($permissions as $permission)
-                                        <div class="form-group col-lg-3 px-0">
-                                            <label for="{{ $permission->id }}" class="cursor-pointer">
-                                                <input id="{{ $permission->id }}" class="form-control" name="permissions[]" type="checkbox" value="{{ $permission->name }}"
-                                                       @if(old('permissions') && in_array($permission->name, old('permissions'))) checked @endif>
-                                                {{ $permission->local_name }}
-                                            </label>
-                                        </div>
+                                <div class="row mx-4 gap-3 gap-md-0">
+                                    @foreach($groupedPermissions as $key => $permissions)
+                                        <h3 class="mb-2 mt-4 px-0" style="margin-right: -1rem;">@lang('role::permissions.' . $key)</h3>
+                                        @foreach($permissions as $permission)
+                                            <div class="form-group col-lg-3 col-5 px-0">
+                                                <label for="{{ $permission->id }}" class="cursor-pointer">
+                                                    <input id="{{ $permission->id }}" class="form-control" name="permissions[]" type="checkbox" value="{{ $permission->name }}"
+                                                           @if(old('permissions') && in_array($permission->name, old('permissions'))) checked @endif>
+                                                    {{ $permission->local_name }}
+                                                </label>
+                                            </div>
+                                        @endforeach
                                     @endforeach
-                                @endforeach
+                                </div>
                             </div>
 
                             <div class="form-group">
