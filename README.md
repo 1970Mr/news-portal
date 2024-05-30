@@ -23,6 +23,7 @@ Welcome to the News Portal, a comprehensive and modular news website built with 
     - [Hotness](#hotness)
     - [Newsletter](#newsletter)
     - [Panel](#panel)
+    - [Profile](#profile)
     - [Role](#role)
     - [Seen](#seen)
     - [Setting](#setting)
@@ -240,6 +241,16 @@ The Panel module provides the administrative interface for managing the site.
     - Dashboard with site statistics
     - Management tools for all modules
 
+### Profile
+
+The Profile module manages user profiles and user-related functionalities.
+
+- **Features:**
+    - Edit personal information
+    - Change email
+    - Change password
+    - Manage user social networks
+
 ### Role
 
 The Role module manages user roles and permissions.
@@ -290,7 +301,7 @@ The User module manages user profiles and user-related functionalities.
 
 - **Features:**
     - User profile management
-    - Assign role to users
+    - User activity tracking
 
 ## Contributing
 
