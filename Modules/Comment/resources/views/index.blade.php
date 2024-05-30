@@ -77,7 +77,7 @@
                                     <td class="{{ $comment->setStatusClass() }} status">{{ $comment->getStatus() }}</td>
                                     <td class="reply">{{ $comment->parent ? "{$comment->parent->commenterName()} (id: {$comment->parent->id})" : 'نیست' }}</td>
                                     <td>{{ $comment->commentable_type }}</td>
-                                    <td class="ltr text-right created-at">{{ jalalian()->forge($comment->created_at)->format(config('common.datetime_format')) }}</td>
+                                    <td class="ltr text-right nowrap">{{ jalalian()->forge($comment->created_at)->format(config('common.datetime_format')) }}</td>
                                     @canany([
                                         config('permissions_list.COMMENT_APPROVE', false),
                                         config('permissions_list.COMMENT_REJECT', false),
@@ -138,19 +138,3 @@
     </div>
 
 @endsection
-
-@push('styles')
-    <style>
-        .page-link {
-            text-align: center;
-        }
-
-        .btn-info {
-            background-color: #03a9f4 !important;
-        }
-
-        th, .created-at, .reply, .status {
-            white-space: nowrap;
-        }
-    </style>
-@endpush

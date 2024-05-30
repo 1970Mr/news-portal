@@ -68,15 +68,3 @@
     </div>
 
 @endsection
-
-@push('styles')
-    <style>
-        .page-link{
-            text-align: center;
-        }
-
-        .subscribed-at {
-            white-space: nowrap;
-        }
-    </style>
-@endpush

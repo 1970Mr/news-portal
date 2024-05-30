@@ -1,0 +1,23 @@
+th, .reply, .status, .subscribed-at {
+    white-space: nowrap;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.table-responsive {
+    overflow-x: auto !important;
+}
+
+.min-w-10 {
+    min-width: 10rem;
+}
+
+.page-link {
+    text-align: center;
+}
+
+.btn-info {
+    background-color: #03a9f4 !important;
+}

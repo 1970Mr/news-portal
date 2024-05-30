@@ -66,15 +66,15 @@
                                 <tr>
                                     <td>{{ $user->id }}</td>
                                     <td>
-                                        <img class="rounded-circle object-fit-cover" src="{{ asset('storage/' . $user->image->file_path) }}" alt="{{ $user->image->alt_text }}"
+                                        <img class="rounded-circle object-fit-cover" src="{{ asset('storage/' . $user->image?->file_path) }}" alt="{{ $user->image?->alt_text }}"
                                              width="70px" height="70px">
                                     </td>
                                     <td>{{ $user->full_name }}</td>
                                     <td>{{ $user->username }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->getRoleLocalNames()->implode(', ') }}</td>
+                                    <td class="nowrap">{{ $user->getRoleLocalNames()->implode(', ') }}</td>
                                     <td>{{ nullable_value(str($user->about)->limit(30)->toString()) }}</td>
-                                    <td class="ltr text-right created-at">{{ jalalian()->forge($user->created_at)->format(config('common.datetime_format')) }}</td>
+                                    <td class="ltr text-right nowrap">{{ jalalian()->forge($user->created_at)->format(config('common.datetime_format')) }}</td>
                                     <td class="{{ status_class($user->email_verified_at) }}">{{ $user->verified_email_status }}</td>
                                     <td class="{{ status_class($user->status) }}">{{ status_message($user->status) }}</td>
                                     @canany([
@@ -120,11 +120,3 @@
     </div>
 
 @endsection
-
-@push('styles')
-    <style>
-        .page-link {
-            text-align: center;
-        }
-    </style>
-@endpush

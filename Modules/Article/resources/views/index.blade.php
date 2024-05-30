@@ -77,8 +77,8 @@
                                     <td>{{ $article->category->name }}</td>
                                     <td class="min-w-10">{{ nullable_value($article->tagNames()) }}</td>
                                     <td>{{ $article->likeCount }}</td>
-                                    <td class="ltr text-right created-at">{{ jalalian()->forge($article->published_at)->format(config('common.datetime_format')) }}</td>
-                                    <td class="ltr text-right created-at">{{ jalalian()->forge($article->created_at)->format(config('common.datetime_format')) }}</td>
+                                    <td class="ltr text-right nowrap">{{ jalalian()->forge($article->published_at)->format(config('common.datetime_format')) }}</td>
+                                    <td class="ltr text-right nowrap">{{ jalalian()->forge($article->created_at)->format(config('common.datetime_format')) }}</td>
                                     <td class="{{ status_class($article->editor_choice) }}">{{ status_message($article->editor_choice) }}</td>
                                     <td class="{{ status_class($article->isHot()) }}">{{ status_message($article->isHot()) }}</td>
                                     <td class="{{ status_class($article->status) }}">{{ status_message($article->status) }}</td>
@@ -114,19 +114,3 @@
     </div>
 
 @endsection
-
-@push('styles')
-    <style>
-        .page-link {
-            text-align: center;
-        }
-
-        th, .created-at {
-            white-space: nowrap;
-        }
-
-        .min-w-10 {
-            min-width: 10rem;
-        }
-    </style>
-@endpush

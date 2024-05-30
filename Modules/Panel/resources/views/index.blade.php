@@ -205,8 +205,8 @@
                                         <td>{{ $article->category->name }}</td>
                                         <td class="min-w-10">{{ nullable_value($article->tagNames()) }}</td>
                                         <td>{{ $article->likeCount }}</td>
-                                        <td class="ltr text-right created-at">{{ jalalian()->forge($article->published_at)->format(config('common.datetime_format')) }}</td>
-                                        <td class="ltr text-right created-at">{{ jalalian()->forge($article->created_at)->format(config('common.datetime_format')) }}</td>
+                                        <td class="ltr text-right nowrap">{{ jalalian()->forge($article->published_at)->format(config('common.datetime_format')) }}</td>
+                                        <td class="ltr text-right nowrap">{{ jalalian()->forge($article->created_at)->format(config('common.datetime_format')) }}</td>
                                         <td class="{{ status_class($article->editor_choice) }}">{{ status_message($article->editor_choice) }}</td>
                                         <td class="{{ status_class($article->isHot()) }}">{{ status_message($article->isHot()) }}</td>
                                         <td class="{{ status_class($article->status) }}">{{ status_message($article->status) }}</td>
@@ -296,7 +296,7 @@
                                         <td>{{ $category->slug }}</td>
                                         <td>{{ $category->description }}</td>
                                         <td>{{ $category->parentCategoryTitle() }}</td>
-                                        <td class="ltr text-right created-at">{{ jalalian()->forge($category->created_at)->format(config('common.datetime_format')) }}</td>
+                                        <td class="ltr text-right nowrap">{{ jalalian()->forge($category->created_at)->format(config('common.datetime_format')) }}</td>
                                         <td class="{{ status_class($category->status) }}">{{ status_message($category->status) }}</td>
                                         @canany([config('permissions_list.CATEGORY_UPDATE'), config('permissions_list.CATEGORY_DESTROY')])
                                             <td>
@@ -379,7 +379,7 @@
                                         <td>{{ $tag->name }}</td>
                                         <td>{{ $tag->slug }}</td>
                                         <td>{{ $tag->description }}</td>
-                                        <td class="ltr text-right created-at">{{ jalalian()->forge($tag->created_at)->format(config('common.datetime_format')) }}</td>
+                                        <td class="ltr text-right nowrap">{{ jalalian()->forge($tag->created_at)->format(config('common.datetime_format')) }}</td>
                                         <td class="{{ status_class($tag->isHot()) }}">{{ status_message($tag->isHot()) }}</td>
                                         <td class="{{ status_class($tag->status) }}">{{ status_message($tag->status) }}</td>
                                         @canany([config('permissions_list.TAG_UPDATE'), config('permissions_list.TAG_DESTROY')])
@@ -466,7 +466,7 @@
                                             <td>{{ $image->file_path }}</td>
                                             <td>{{ nullable_value($image->alt_text) }}</td>
                                             <td>{{ $image->user_full_name }}</td>
-                                            <td class="ltr text-right created-at">{{ jalalian()->forge($image->created_at)->format(config('common.datetime_format')) }}</td>
+                                            <td class="ltr text-right nowrap">{{ jalalian()->forge($image->created_at)->format(config('common.datetime_format')) }}</td>
                                             @can('operations', $imageClassName)
                                                 <td>
                                                     <div class="d-flex gap-2">
@@ -558,7 +558,7 @@
                                         <td class="{{ $comment->setStatusClass() }} status">{{ $comment->getStatus() }}</td>
                                         <td class="reply">{{ $comment->parent ? "{$comment->parent->commenterName()} (id: {$comment->parent->id})" : 'نیست' }}</td>
                                         <td>{{ $comment->commentable_type }}</td>
-                                        <td class="ltr text-right created-at">{{ jalalian()->forge($comment->created_at)->format(config('common.datetime_format')) }}</td>
+                                        <td class="ltr text-right nowrap">{{ jalalian()->forge($comment->created_at)->format(config('common.datetime_format')) }}</td>
                                         @canany([
                                             config('permissions_list.COMMENT_APPROVE', false),
                                             config('permissions_list.COMMENT_REJECT', false),
@@ -665,20 +665,6 @@
 
 @push('styles')
     <style>
-        .page-link {
-            text-align: center;
-        }
 
-        .btn-info {
-            background-color: #03a9f4 !important;
-        }
-
-        th, .created-at {
-            white-space: nowrap;
-        }
-
-        .min-w-10 {
-            min-width: 10rem;
-        }
     </style>
 @endpush

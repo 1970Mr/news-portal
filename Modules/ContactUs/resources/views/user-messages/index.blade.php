@@ -75,7 +75,7 @@
                                     <td>{{ nullable_value($userMessage->phone) }}</td>
                                     <td>{{ str($userMessage->message)->limit(30) }}</td>
                                     <td class="{{ status_class($userMessage->isSeen()) }}">{{ $userMessage->getSeenStatus() }}</td>
-                                    <td class="ltr text-right created-at">{{ jalalian()->forge($userMessage->created_at)->format(config('common.datetime_format')) }}</td>
+                                    <td class="ltr text-right nowrap">{{ jalalian()->forge($userMessage->created_at)->format(config('common.datetime_format')) }}</td>
                                     <td>
                                         <div class="d-flex gap-2">
                                             <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
@@ -98,21 +98,4 @@
             </div><!-- /.portlet -->
         </div>
     </div>
-
 @endsection
-
-@push('styles')
-    <style>
-        .page-link {
-            text-align: center;
-        }
-
-        .btn-info {
-            background-color: #03a9f4 !important;
-        }
-
-        th, .created-at, .reply, .status {
-            white-space: nowrap;
-        }
-    </style>
-@endpush

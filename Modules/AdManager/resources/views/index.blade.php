@@ -108,19 +108,3 @@
     </div>
 
 @endsection
-
-@push('styles')
-    <style>
-        .page-link {
-            text-align: center;
-        }
-
-        th, .nowrap {
-            white-space: nowrap;
-        }
-
-        .min-w-10 {
-            min-width: 10rem;
-        }
-    </style>
-@endpush

@@ -62,7 +62,7 @@
                                         <td>
                                             {{ $role->getPermissionLocalNames()->implode(', ') }}
                                         </td>
-                                        <td class="ltr text-right created-at">{{ jalalian()->forge($role->created_at)->format(config('common.datetime_format')) }}</td>
+                                        <td class="ltr text-right nowrap">{{ jalalian()->forge($role->created_at)->format(config('common.datetime_format')) }}</td>
                                         @canany([config('permissions_list.ROLE_UPDATE'), config('permissions_list.ROLE_DESTROY')])
                                             <td>
                                                 <div class="d-flex gap-2">
@@ -94,15 +94,3 @@
     </div>
 
 @endsection
-
-@push('styles')
-    <style>
-        .page-link {
-            text-align: center;
-        }
-
-        th, .created-at {
-            white-space: nowrap;
-        }
-    </style>
-@endpush
