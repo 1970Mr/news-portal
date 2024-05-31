@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use Modules\Article\App\Models\Article;
+use Modules\Category\Database\Factories\CategoryFactory;
 use Modules\FileManager\App\Traits\HasImage;
 
 class Category extends Model
@@ -66,8 +67,8 @@ class Category extends Model
         $query->where('status', 1);
     }
 
-//    protected static function newFactory(): CategoryFactory
-//    {
-//        return CategoryFactory::new();
-//    }
+    protected static function newFactory(): CategoryFactory
+    {
+        return CategoryFactory::new();
+    }
 }

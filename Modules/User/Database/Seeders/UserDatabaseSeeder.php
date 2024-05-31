@@ -13,9 +13,9 @@ class UserDatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        try {
-            DB::beginTransaction();
+        DB::beginTransaction();
 
+        try {
             $this->call([
                 UserSeeder::class,
             ]);

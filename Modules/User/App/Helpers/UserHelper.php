@@ -16,8 +16,9 @@ class UserHelper
 {
     public static function assignAdminRoleToAdminUser(): void
     {
+        DB::beginTransaction();
+
         try {
-            DB::beginTransaction();
             $admin_user = self::createAdminUser();
             $admin_role = Role::query()->where('name', Role::ADMIN)->first();
             $admin_user->syncRoles($admin_role);
