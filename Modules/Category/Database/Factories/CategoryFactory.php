@@ -5,6 +5,7 @@ namespace Modules\Category\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use Modules\Category\App\Models\Category;
+use Modules\Common\App\Helpers\FactoryHelper;
 
 class CategoryFactory extends Factory
 {
@@ -13,10 +14,11 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         $name = fake()->unique()->word;
+        $uniqueName = FactoryHelper::uniqueValue(Category::class, 'name', $name);
 
         return [
-            'name' => ucfirst($name),
-            'slug' => Str::slug($name),
+            'name' => ucfirst($uniqueName),
+            'slug' => Str::slug($uniqueName),
             'description' => fake()->sentence,
             'status' => fake()->boolean,
             'parent_id' => null,

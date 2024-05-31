@@ -13,14 +13,14 @@ class TagService
     public function store(TagRequest $request): Tag
     {
         $tag = Tag::create($request->validated());
-        $this->setHotness($tag, $request, 'create');
+        $this->setHotness($tag, $request);
         return $tag;
     }
 
     public function update(TagRequest $request, Tag $tag): Tag
     {
         $tag->update($request->validated());
-        $this->setHotness($tag, $request, 'update');
+        $this->setHotness($tag, $request);
         return $tag;
     }
 
@@ -30,10 +30,10 @@ class TagService
         $tag->delete();
     }
 
-    private function setHotness(Tag $tag, TagRequest $request, string $method): void
+    private function setHotness(Tag $tag, TagRequest $request): void
     {
         if (Auth::user()->can(config('permissions_list.TAG_HOTNESS', false))) {
-            $tag->hotness()->{$method}(['is_hot' => $request->hotness]);
+            $tag->hotness()->updateOrCreate([], ['is_hot' => $request->hotness]);
         }
     }
 }

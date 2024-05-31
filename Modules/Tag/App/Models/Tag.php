@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use Modules\Article\App\Models\Article;
 use Modules\Hotness\App\Traits\HasHotness;
+use Modules\Tag\Database\Factories\TagFactory;
 
 class Tag extends Model
 {
@@ -38,5 +39,10 @@ class Tag extends Model
     public function articles(): MorphToMany
     {
         return $this->morphedByMany(Article::class, 'taggable');
+    }
+
+    protected static function newFactory(): TagFactory
+    {
+        return TagFactory::new();
     }
 }

@@ -13,18 +13,8 @@ class UserDatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::beginTransaction();
-
-        try {
-            $this->call([
-                UserSeeder::class,
-            ]);
-
-            DB::commit();
-        } catch (\Exception $e) {
-            DB::rollBack();
-            Log::error('Failed to seed users: ' . $e->getMessage());
-            echo "Error: " . $e->getMessage() . "\n";
-        }
+        $this->call([
+            UserSeeder::class,
+        ]);
     }
 }

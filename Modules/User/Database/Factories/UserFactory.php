@@ -5,6 +5,7 @@ namespace Modules\User\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Modules\User\App\Helpers\UserHelper;
 use Modules\User\App\Models\User;
 
 /**
@@ -27,7 +28,7 @@ class UserFactory extends Factory
     {
         return [
             'full_name' => fake()->name,
-            'username' => fake()->unique()->userName,
+            'username' => UserHelper::createDefaultUsername(),
             'email' => fake()->unique()->safeEmail,
             'about' => fake()->sentence,
             'email_verified_at' => now(),
