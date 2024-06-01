@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
 use Laravel\Scout\Searchable;
+use Modules\Article\Database\Factories\ArticleFactory;
 use Modules\Category\App\Models\Category;
 use Modules\Comment\App\Traits\HasComments;
 use Modules\FileManager\App\Traits\HasImage;
@@ -153,5 +154,10 @@ class Article extends Model implements Feedable
                 ->shuffle();
         }
         return $relatedArticles;
+    }
+
+    protected static function newFactory(): ArticleFactory
+    {
+        return ArticleFactory::new();
     }
 }

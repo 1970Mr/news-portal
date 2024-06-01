@@ -3,8 +3,6 @@
 namespace Modules\Category\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 use Modules\Category\App\Models\Category;
 use Modules\Common\App\Helpers\TransactionHelper;
 use Modules\FileManager\App\Helpers\ImageHelper;

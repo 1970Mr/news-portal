@@ -11,9 +11,7 @@ use Modules\Tag\App\Models\Tag;
 
 class ArticleService
 {
-    public function __construct(private \Illuminate\Support\Collection $categoriesIdsIgnore)
-    {
-    }
+    public function __construct(private \Illuminate\Support\Collection $categoriesIdsIgnore) {}
 
     public function getLatestTags(): Collection
     {
