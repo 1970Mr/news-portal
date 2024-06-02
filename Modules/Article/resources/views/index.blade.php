@@ -73,8 +73,8 @@
                                     <td>{{ $article->slug }}</td>
                                     <td class="nowrap">{{ str($article->description)->limit(25) }}</td>
                                     <td class="min-w-10">{{ $article->keywords }}</td>
-                                    <td>{{ $article->user->full_name }}</td>
-                                    <td>{{ $article->category->name }}</td>
+                                    <td>{{ $article->user?->full_name }}</td>
+                                    <td>{{ $article->category?->name }}</td>
                                     <td class="nowrap">{{ str(nullable_value($article->tagNames()))->limit(50) }}</td>
                                     <td>{{ $article->likeCount }}</td>
                                     <td class="ltr text-right nowrap">{{ jalalian()->forge($article->published_at)->format(config('common.datetime_format')) }}</td>

@@ -28,7 +28,7 @@ class ImageService
     public function store(Request $request, $fileName = 'image', $altText = 'Default Alt Text'): Model
     {
 //        Gate::authorize('store', Image::class);
-        $data['file_path'] = FileManagerService::upload( $request->file($fileName) );
+        $data['file_path'] = FileManagerService::upload($request->file($fileName));
         $data['alt_text'] = $request->get('alt_text', $altText);
         $data['user_id'] = auth()->id();
         return Image::query()->create($data);
@@ -58,8 +58,11 @@ class ImageService
         return $image->delete();
     }
 
-    public function destroyWithoutKeyConstraints(Image $image): bool|null
+    public function destroyWithoutKeyConstraints(?Image $image): bool|null
     {
+        if (!$image) {
+            return null;
+        }
         Schema::disableForeignKeyConstraints();
         $result = $image->delete();
         Schema::enableForeignKeyConstraints();
@@ -81,7 +84,7 @@ class ImageService
 
     private function setPermissionsFilter(Builder $query): Builder
     {
-        if ( !$this->canAccessAllImages() ) {
+        if (!$this->canAccessAllImages()) {
             $query->where('user_id', auth()->id());
         }
         return $query;

@@ -5,11 +5,13 @@ namespace Modules\User\App\Models;
  use Illuminate\Contracts\Auth\MustVerifyEmail;
  use Illuminate\Database\Eloquent\Casts\Attribute;
  use Illuminate\Database\Eloquent\Factories\HasFactory;
+ use Illuminate\Database\Eloquent\Model;
  use Illuminate\Database\Eloquent\Relations\HasMany;
  use Illuminate\Database\Eloquent\SoftDeletes;
  use Illuminate\Foundation\Auth\User as Authenticatable;
  use Illuminate\Notifications\Notifiable;
  use Illuminate\Support\Collection;
+ use Illuminate\Support\Facades\DB;
  use Laravel\Sanctum\HasApiTokens;
  use Modules\Article\App\Models\Article;
  use Modules\Comment\App\Traits\Commenter;
@@ -94,6 +96,27 @@ namespace Modules\User\App\Models;
      public function Articles(): HasMany
      {
          return $this->hasMany(Article::class, 'user_id')->active()->published();
+     }
+
+     protected static function boot(): void
+     {
+         parent::boot();
+
+         static::deleting(static function ($user) {
+             DB::transaction(static function () use ($user) {
+                 $user->articles()->each(function (Article $article) {
+                     $admin = User::getFirstAdmin() ?? User::first();
+                     $article->update(['user_id' => $admin->id]);
+                 });
+             });
+         });
+     }
+
+     public static function getFirstAdmin(): ?Model
+     {
+         return self::query()->whereHas('roles', function ($query) {
+             $query->where('name', Role::ADMIN);
+         })->first();
      }
 
      protected static function newFactory(): UserFactory

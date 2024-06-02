@@ -52,7 +52,7 @@ class UserFactory extends Factory
     public function configure(): Factory
     {
         return $this->afterCreating(function (User $user) {
-            $defaultImage = ImageHelper::createDefaultImage();
+            $defaultImage = UserHelper::createDefaultProfilePicture();
             $user->image()->save($defaultImage);
         });
     }
