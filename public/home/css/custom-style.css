@@ -1,3 +1,7 @@
+img {
+    object-fit: cover;
+}
+
 li.instagram, .with-color.fa-instagram {
     background: #c72090;
 }
@@ -67,6 +71,8 @@ li.rss, .with-color.fa-rss {
 .third-content-row {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 10rem 0;
 }
 
 .ads-list {
@@ -90,6 +96,15 @@ li.rss, .with-color.fa-rss {
 .header .logo img {
     max-width: 25rem;
     max-height: 8rem;
+}
+
+.post-block-style.post-float .post-thumb img {
+    width: 10rem;
+    height: 7rem;
+}
+
+.third-img-category {
+    height: 25rem;
 }
 
 @media (max-width: 768px) {

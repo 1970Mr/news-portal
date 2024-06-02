@@ -46,18 +46,40 @@ class HomeService
 
     public function getParentCategories(): Collection
     {
-        return Category::with(['categories' => function ($query) {
-            $query->whereHas('articles')->limit(6);
+        $categories = Category::with(['categories' => function ($query) {
+            $query->whereHas('articles', function ($query) {
+                $query->published()->active();
+            });
         }])->whereHas('categories.articles', function ($query) {
-            $query->limit(5)->published();
-        })->latest()->limit(5)->get();
+            $query->published()->active();
+        })->active()->latest()->limit(5)->get();
+
+        // Set limit for each category articles
+        $categories->each(function ($category) {
+            $category->setRelation('categories', $category->categories->take(6));
+            $category->categories->each(function ($childCategory) {
+                $childCategory->setRelation('articles', $childCategory->articles->take(6));
+            });
+        });
+
+        return $categories;
     }
 
     public function getCategoriesWithoutParent(): Collection
     {
-        return Category::with(['articles' => function ($query) {
-            $query->limit(5)->published();
-        }])->whereHas('articles')->where('parent_id', null)->latest()->limit(5)->get();
+        $categories = Category::with(['articles' => function ($query) {
+            $query->published()->active();
+        }])->whereHas('articles', function ($query) {
+            $query->published()->active();
+        })
+            ->where('parent_id', null)->active()->latest()->limit(15)->get();
+
+        // Set limit for each category articles
+        $categories->each(function ($category) {
+            $category->articles = $category->articles->take(5);
+        });
+
+        return $categories;
     }
 
     public function getFourthContentArticles($articlesIdsIgnore): Collection

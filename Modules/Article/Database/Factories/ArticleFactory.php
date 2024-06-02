@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Modules\Article\App\Models\Article;
 use Modules\Category\App\Models\Category;
 use Modules\Common\App\Helpers\FactoryHelper;
+use Modules\FileManager\App\Helpers\ImageHelper;
 use Modules\User\App\Models\User;
 
 class ArticleFactory extends Factory
@@ -21,19 +22,6 @@ class ArticleFactory extends Factory
      */
     public function definition(): array
     {
-        [
-            'title',
-            'slug',
-            'description',
-            'keywords',
-            'body',
-            'published_at',
-            'editor_choice',
-            'status',
-            'category_id',
-            'user_id',
-        ];
-
         $title = fake()->unique()->word;
         $uniqueTitle = FactoryHelper::uniqueValue(Article::class, 'title', $title);
 
@@ -49,5 +37,13 @@ class ArticleFactory extends Factory
             'category_id' => Category::factory(),
             'user_id' => User::factory(),
         ];
+    }
+
+    public function configure(): Factory
+    {
+        return $this->afterCreating(function (Article $article) {
+            $defaultImage = ImageHelper::createDefaultImage();
+            $article->image()->save($defaultImage);
+        });
     }
 }

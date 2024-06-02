@@ -15,7 +15,7 @@ class TagSeeder extends Seeder
             $tags = Tag::factory(10)->create();
             foreach ($tags as $tag) {
                 if (random_int(0, 1)) {
-                    $tag->hotness()->updateOrCreate(['is_hot' => true]);
+                    $tag->hotness()->create(['is_hot' => true]);
                 }
             }
         });

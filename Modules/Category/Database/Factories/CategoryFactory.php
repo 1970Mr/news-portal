@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use Modules\Category\App\Models\Category;
 use Modules\Common\App\Helpers\FactoryHelper;
+use Modules\FileManager\App\Helpers\ImageHelper;
 
 class CategoryFactory extends Factory
 {
@@ -30,5 +31,13 @@ class CategoryFactory extends Factory
         return $this->state(fn (array $attributes) => [
             'parent_id' => $parentId,
         ]);
+    }
+
+    public function configure(): Factory
+    {
+        return $this->afterCreating(function (Category $category) {
+            $defaultImage = ImageHelper::createDefaultImage();
+            $category->image()->save($defaultImage);
+        });
     }
 }

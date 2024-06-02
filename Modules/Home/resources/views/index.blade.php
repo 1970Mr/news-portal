@@ -35,16 +35,3 @@
 
     @include('home::partials.ads-content4')
 @endsection
-
-@push('styles')
-    <style>
-        .third-img-category {
-            height: 25rem;
-            object-fit: cover;
-        }
-
-        .post-thumb img {
-            max-height: 30rem;
-        }
-    </style>
-@endpush

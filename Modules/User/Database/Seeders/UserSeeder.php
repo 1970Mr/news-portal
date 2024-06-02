@@ -14,12 +14,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         TransactionHelper::beginTransaction('Failed to seed users: ', static function() {
-            $users = User::factory(10)->create();
-
-            foreach ($users as $user) {
-                $profilePicture = UserHelper::createDefaultProfilePicture($user->id);
-                $user->image()->save($profilePicture);
-            }
+            User::factory(10)->create();
         });
     }
 }

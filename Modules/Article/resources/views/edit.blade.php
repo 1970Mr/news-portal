@@ -28,7 +28,7 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="article-create-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.articles.update', $article->id) }}" method="post"
+                    <form id="main-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.articles.update', $article->id) }}" method="post"
                           enctype="multipart/form-data">
                         @csrf
                         @method('put')
@@ -174,7 +174,7 @@
                     },
                 })
                 .then( editor => {
-                    editor.setData('{!! old('body', $article->body) !!}');
+                    editor.setData('{!! old('body', trim(json_encode($article->body), '"')) !!}');
                     editor.model.document.on('change:data', () => {
                         document.querySelector('input[name="body"]').value = editor.getData();
                     });
@@ -210,7 +210,7 @@
                 }
             }
         });
-        $("#article-create-form").validate();
+        $("#main-form").validate();
     </script>
 @endpush
 

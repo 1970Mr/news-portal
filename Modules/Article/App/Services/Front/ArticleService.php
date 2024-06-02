@@ -4,6 +4,7 @@ namespace Modules\Article\App\Services\Front;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Cache;
 use Modules\Article\App\Models\Article;
 use Modules\Category\App\Models\Category;
@@ -11,7 +12,9 @@ use Modules\Tag\App\Models\Tag;
 
 class ArticleService
 {
-    public function __construct(private \Illuminate\Support\Collection $categoriesIdsIgnore) {}
+    public function __construct(private \Illuminate\Support\Collection $categoriesIdsIgnore)
+    {
+    }
 
     public function getLatestTags(): Collection
     {
@@ -69,14 +72,26 @@ class ArticleService
     public function getParentCategories(): Collection
     {
         $categories = Category::with(['categories' => function ($query) {
-            $query->whereHas('articles')->limit(4);
+            $query->whereHas('articles', function ($query) {
+                $query->published()->active();
+            });
         }])
             ->whereHas('categories.articles', function ($query) {
-                $query->limit(4)->published();
+                $query->published()->active();
             })
+            ->active()
             ->latest()
             ->limit(5)
             ->get();
+
+        // Set limit for each category articles
+        $categories->each(function ($category) {
+            $category->setRelation('categories', $category->categories->take(5));
+            $category->categories->each(function ($childCategory) {
+                $childCategory->setRelation('articles', $childCategory->articles->take(4));
+            });
+        });
+
         $this->categoriesIdsIgnore = $this->categoriesIdsIgnore->merge($categories->pluck('id'));
         return $categories;
     }
@@ -84,13 +99,22 @@ class ArticleService
     public function getCategoriesWithoutParent(): Collection
     {
         $categories = Category::with(['articles' => function ($query) {
-            $query->limit(4)->published();
+            $query->published()->active();
         }])
-            ->whereHas('articles')
+            ->whereHas('articles', function ($query) {
+                $query->published()->active();
+            })
             ->where('parent_id', null)
+            ->active()
             ->latest()
             ->limit(5)
             ->get();
+
+        // Set limit for each category articles
+        $categories->each(function ($category) {
+            $category->articles = $category->articles->take(4);
+        });
+
         $this->categoriesIdsIgnore = $this->categoriesIdsIgnore->merge($categories->pluck('id'));
         return $categories;
     }

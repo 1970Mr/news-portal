@@ -15,14 +15,7 @@ class CategorySeeder extends Seeder
             $parentCategories = Category::factory(5)->create();
 
             foreach ($parentCategories as $parentCategory) {
-                $defaultImage = ImageHelper::createDefaultImage();
-                $parentCategory->image()->save($defaultImage);
-                $childCategories = Category::factory(3)->withParent($parentCategory->id)->create();
-
-                foreach ($childCategories as $childCategory) {
-                    $defaultImage = ImageHelper::createDefaultImage();
-                    $childCategory->image()->save($defaultImage);
-                }
+                Category::factory(3)->withParent($parentCategory->id)->create();
             }
         });
     }
