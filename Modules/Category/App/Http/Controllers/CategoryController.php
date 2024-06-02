@@ -22,7 +22,7 @@ class CategoryController extends Controller
 
     public function index(): View
     {
-        $categories = Category::with('image')->has('image')->latest()->paginate(10);
+        $categories = Category::with('image')->has('image')->latest('updated_at')->paginate(10);
         return view('category::index', compact('categories'));
     }
 

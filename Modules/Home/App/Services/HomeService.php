@@ -58,7 +58,7 @@ class HomeService
         $categories->each(function ($category) {
             $category->setRelation('categories', $category->categories->take(6));
             $category->categories->each(function ($childCategory) {
-                $childCategory->setRelation('articles', $childCategory->articles->take(6));
+                $childCategory->setRelation('articles', $childCategory->articles->take(4));
             });
         });
 
@@ -76,7 +76,7 @@ class HomeService
 
         // Set limit for each category articles
         $categories->each(function ($category) {
-            $category->articles = $category->articles->take(5);
+            $category->articles = $category->articles->take(4);
         });
 
         return $categories;

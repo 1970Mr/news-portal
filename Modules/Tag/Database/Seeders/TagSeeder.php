@@ -3,7 +3,6 @@
 namespace Modules\Tag\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Modules\Common\App\Helpers\TransactionHelper;
 use Modules\Tag\App\Models\Tag;
 

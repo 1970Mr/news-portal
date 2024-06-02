@@ -7,6 +7,7 @@ use Modules\Article\App\Models\Article;
 use Modules\Category\App\Models\Category;
 use Modules\Common\App\Helpers\TransactionHelper;
 use Modules\FileManager\App\Helpers\ImageHelper;
+use Modules\Tag\App\Models\Tag;
 use Modules\User\App\Models\User;
 
 class ArticleSeeder extends Seeder
@@ -25,14 +26,22 @@ class ArticleSeeder extends Seeder
                 User::factory(5)->create();
             }
 
-            $articles = Article::factory(20)->create();
-            foreach ($articles as $article) {
-                $defaultImage = ImageHelper::createDefaultImage();
-                $article->image()->save($defaultImage);
-                if (random_int(0, 1)) {
-                    $article->hotness()->create(['is_hot' => true]);
-                }
+            if (Tag::count() === 0) {
+                Tag::factory(5)->create();
             }
+
+            $users = User::all();
+            Category::query()->whereDoesntHave('articles')->active()->limit(30)->each(function ($category) use ($users) {
+//                $articlesCount = random_int(1, 10);
+                Article::factory(10)->create([
+                    'category_id' => $category->id,
+                    'user_id' => $users->random()->id,
+                ])->each(function ($article) {
+                    if (random_int(0, 5) === 5) {
+                        $article->hotness()->create(['is_hot' => true]);
+                    }
+                });
+            });
         });
     }
 }

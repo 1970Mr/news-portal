@@ -72,7 +72,7 @@ li.rss, .with-color.fa-rss {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 10rem 0;
+    gap: 5rem 0;
 }
 
 .ads-list {
@@ -107,6 +107,11 @@ li.rss, .with-color.fa-rss {
     height: 25rem;
 }
 
+.latest-news .owl-carousel .owl-item img {
+    min-width: 20rem;
+    height: 15rem;
+}
+
 @media (max-width: 768px) {
     .second-content-row {
         padding: 0 2rem;
@@ -139,5 +144,9 @@ li.rss, .with-color.fa-rss {
     header .logo img {
         height: 40px;
         max-width: 100%;
+    }
+
+    .ads-list > div {
+        flex-basis: calc(50% - 2rem);
     }
 }

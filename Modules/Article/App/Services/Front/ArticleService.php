@@ -80,8 +80,8 @@ class ArticleService
                 $query->published()->active();
             })
             ->active()
-            ->latest()
-            ->limit(5)
+            ->latest('updated_at')
+            ->limit(3)
             ->get();
 
         // Set limit for each category articles
@@ -106,8 +106,8 @@ class ArticleService
             })
             ->where('parent_id', null)
             ->active()
-            ->latest()
-            ->limit(5)
+            ->latest('updated_at')
+            ->limit(3)
             ->get();
 
         // Set limit for each category articles

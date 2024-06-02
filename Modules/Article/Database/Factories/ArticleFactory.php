@@ -22,16 +22,16 @@ class ArticleFactory extends Factory
      */
     public function definition(): array
     {
-        $title = fake()->unique()->word;
+        $title = fake()->word;
         $uniqueTitle = FactoryHelper::uniqueValue(Article::class, 'title', $title);
 
         return [
             'title' => $uniqueTitle,
             'slug' => Str::slug($uniqueTitle),
-            'description' => fake()->paragraph,
+            'description' => fake()->words(20, true),
             'keywords' => implode(', ', fake()->words(5)),
             'body' => fake()->paragraphs(3, true),
-            'published_at' => fake()->dateTimeBetween('-1 year', 'now'),
+            'published_at' => fake()->dateTimeBetween('-1 year', 'now')->format('Y-m-d H:i:s'),
             'editor_choice' => fake()->boolean,
             'status' => fake()->boolean,
             'category_id' => Category::factory(),
