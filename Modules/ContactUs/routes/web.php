@@ -8,6 +8,7 @@ use Spatie\Honeypot\ProtectAgainstSpam;
 
 Route::prefix(config('app.panel_prefix', 'panel') . '/contact-us')
     ->name(config('app.panel_prefix', 'panel') . '.contact-us.')
+    ->middleware(['web', 'auth', 'verified'])
     ->group(function () {
         Route::prefix('info')
             ->name('info.')

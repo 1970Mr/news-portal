@@ -39,7 +39,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes(): void
     {
-        Route::middleware(['web', 'auth'])
+        Route::middleware(['web', 'auth', 'verified'])
             ->namespace($this->moduleNamespace)
             ->group(module_path('Tag', '/routes/web.php'));
     }
@@ -52,7 +52,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapApiRoutes(): void
     {
         Route::prefix('api')
-            ->middleware(['web', 'auth'])
+            ->middleware(['web', 'auth', 'verified'])
             ->namespace($this->moduleNamespace)
             ->group(module_path('Tag', '/routes/api.php'));
     }

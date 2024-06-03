@@ -5,7 +5,11 @@ use Modules\Comment\App\Http\Controllers\CommentController;
 use Modules\Comment\App\Http\Controllers\Front\CommentController as FrontCommentController;
 use Spatie\Honeypot\ProtectAgainstSpam;
 
-Route::prefix(config('app.panel_prefix', 'panel') . '/comments')->name(config('app.panel_prefix', 'panel') . '.comments.')->controller(CommentController::class)->group(function () {
+Route::prefix(config('app.panel_prefix', 'panel') . '/comments')
+    ->name(config('app.panel_prefix', 'panel') . '.comments.')
+    ->controller(CommentController::class)
+    ->middleware(['web', 'auth', 'verified'])
+    ->group(function () {
     Route::get('/', 'index')->name('index');
     Route::patch('/approve/{comment}', 'approve')->name('approve');
     Route::post('/approve-all', 'approveAll')->name('approve-all');

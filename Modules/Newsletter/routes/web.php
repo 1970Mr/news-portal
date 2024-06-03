@@ -7,6 +7,7 @@ use Modules\Newsletter\App\Http\Controllers\Front\NewsletterController as FrontN
 Route::prefix(config('app.panel_prefix', 'panel') . '/newsletters')
     ->name(config('app.panel_prefix', 'panel') . '.newsletters.')
     ->controller(NewsletterController::class)
+    ->middleware(['web', 'auth', 'verified'])
     ->group(function () {
        Route::get('/', 'index')->name('index');
        Route::delete('/{newsletter}', 'destroy')->name('destroy');

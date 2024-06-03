@@ -41,5 +41,4 @@ Route::prefix(config('app.panel_prefix', 'panel') . '/settings')
                 Route::post('/clear-route', 'clearRouteCache')->name('clear-route');
                 Route::post('/clear-application', 'clearApplicationCache')->name('clear-application');
             });
-
     });
