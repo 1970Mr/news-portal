@@ -4156,7 +4156,8 @@ body.dark #sidebar::-webkit-scrollbar-thumb, body.dark.sidebar-collapse .metisme
         content: "\e605";
     }
     body.sidebar-collapse #sidebar .user-box img{
-        max-width: 50px;
+        width: 50px !important;
+        height: 50px !important;
     }
     body.sidebar-collapse .metismenu>li>a {
         text-align: center;

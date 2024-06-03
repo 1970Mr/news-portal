@@ -2,14 +2,15 @@
 
 namespace Modules\SocialNetwork\App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Modules\SocialNetwork\Database\Factories\SocialNetworkFactory;
 
 class SocialNetwork extends Model
 {
-    /**
-     * The attributes that are mass assignable.
-     */
+    use HasFactory;
+
     protected $fillable = [
         'name',
         'url',
@@ -19,5 +20,10 @@ class SocialNetwork extends Model
     public function owner(): MorphTo
     {
         return $this->morphTo();
+    }
+
+    protected static function newFactory(): SocialNetworkFactory
+    {
+        return SocialNetworkFactory::new();
     }
 }
