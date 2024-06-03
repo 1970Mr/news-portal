@@ -28,7 +28,7 @@
                             </li><!-- Li end -->
 
                             @if(!$loop->last)
-                                <div class="gap-30"></div>
+                                <div class="gap-60"></div>
                             @endif
                         @endforeach
                     </ul><!-- List post 1 end -->

@@ -4,7 +4,6 @@ namespace Modules\Article\App\Services\Front;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Cache;
 use Modules\Article\App\Models\Article;
 use Modules\Category\App\Models\Category;
@@ -12,9 +11,7 @@ use Modules\Tag\App\Models\Tag;
 
 class ArticleService
 {
-    public function __construct(private \Illuminate\Support\Collection $categoriesIdsIgnore)
-    {
-    }
+    public function __construct(private \Illuminate\Support\Collection $categoriesIdsIgnore) {}
 
     public function getLatestTags(): Collection
     {
@@ -24,6 +21,9 @@ class ArticleService
     public function getArticlesWithMostVisit(): array
     {
         $mostVisits = visits(Article::class)->top(4);
+        if ($mostVisits->count() === 0) {
+            $mostVisits = $this->baseQuery()->limit(4)->get();
+        }
         $firstArticle = $mostVisits->shift();
         return [
             'first' => $firstArticle,
@@ -131,6 +131,7 @@ class ArticleService
         }])
             ->whereHas('categories.articles')
             ->whereNotIn('id', $this->categoriesIdsIgnore)
+            ->active()
             ->latest()
             ->get();
         $this->categoriesIdsIgnore = $this->categoriesIdsIgnore->merge($categories->pluck('id'));
@@ -143,6 +144,7 @@ class ArticleService
             ->whereHas('articles')
             ->where('parent_id', null)
             ->whereNotIn('id', $this->categoriesIdsIgnore)
+            ->active()
             ->latest()
             ->get();
         $this->categoriesIdsIgnore = $this->categoriesIdsIgnore->merge($categories->pluck('id'));
