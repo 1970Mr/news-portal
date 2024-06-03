@@ -21,9 +21,14 @@ class ArticleService
         return Tag::query()->latest()->limit(30)->get();
     }
 
-    public function getArticlesWithMostVisit(): \Illuminate\Support\Collection
+    public function getArticlesWithMostVisit(): array
     {
-        return visits(Article::class)->top(4);
+        $mostVisits = visits(Article::class)->top(4);
+        $firstArticle = $mostVisits->shift();
+        return [
+            'first' => $firstArticle,
+            'others' => $mostVisits,
+        ];
     }
 
     public function getEditorChoices(): Collection
