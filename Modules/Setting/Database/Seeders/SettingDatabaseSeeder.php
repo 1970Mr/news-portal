@@ -11,6 +11,8 @@ class SettingDatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // $this->call([]);
+         $this->call([
+             SiteDetailSeeder::class,
+         ]);
     }
 }

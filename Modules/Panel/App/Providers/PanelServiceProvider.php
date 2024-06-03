@@ -169,7 +169,7 @@ class PanelServiceProvider extends ServiceProvider
 
     private function siteDetailsSharedData(): void
     {
-        $siteDetails = SiteDetail::with('mainLogo', 'secondLogo', 'favicon')->first();
+        $siteDetails = SiteDetail::with('mainLogo', 'secondLogo', 'favicon')->latest()->first();
         View::share('siteDetails', $siteDetails);
     }
 }

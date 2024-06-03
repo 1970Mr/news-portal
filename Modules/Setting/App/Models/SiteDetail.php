@@ -2,12 +2,16 @@
 
 namespace Modules\Setting\App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\FileManager\App\Models\Image;
+use Modules\Setting\Database\Factories\SiteDetailFactory;
 
 class SiteDetail extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'title',
         'description',
@@ -34,7 +38,7 @@ class SiteDetail extends Model
     {
         return $relation ?
             asset('storage/' . $relation->file_path) :
-            config('setting.default_logo_picture.file_link');
+            config('common.default_logo.file_link');
     }
 
     public function mainLogoLink(): string
@@ -50,5 +54,10 @@ class SiteDetail extends Model
     public function faviconLink(): string
     {
         return $this->getLogo($this->favicon);
+    }
+
+    protected static function newFactory(): SiteDetailFactory
+    {
+        return SiteDetailFactory::new();
     }
 }

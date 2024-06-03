@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 use Modules\Article\App\Models\Article;
 use Modules\Category\App\Models\Category;
 use Modules\Common\App\Helpers\TransactionHelper;
-use Modules\FileManager\App\Helpers\ImageHelper;
 use Modules\Tag\App\Models\Tag;
 use Modules\User\App\Models\User;
 

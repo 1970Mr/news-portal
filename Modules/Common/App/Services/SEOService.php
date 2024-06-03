@@ -13,7 +13,7 @@ class SEOService
 {
     public function setHomePageSEO(): void
     {
-        $siteDetails = SiteDetail::with('mainLogo')->first();
+        $siteDetails = SiteDetail::with('mainLogo')->latest()->first();
 
         SEOTools::setTitle($siteDetails->title, false);
         SEOTools::setDescription($siteDetails->description);
