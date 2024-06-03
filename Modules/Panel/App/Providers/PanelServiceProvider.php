@@ -5,6 +5,7 @@ namespace Modules\Panel\App\Providers;
 use App\Http\Kernel;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Modules\Comment\App\Models\Comment;
@@ -67,7 +68,7 @@ class PanelServiceProvider extends ServiceProvider
      */
     public function registerTranslations(): void
     {
-        $langPath = resource_path('lang/modules/'.$this->moduleNameLower);
+        $langPath = resource_path('lang/modules/' . $this->moduleNameLower);
 
         if (is_dir($langPath)) {
             $this->loadTranslationsFrom($langPath, $this->moduleNameLower);
@@ -84,7 +85,7 @@ class PanelServiceProvider extends ServiceProvider
     protected function registerConfig(): void
     {
         $this->app->booted(function () {
-            $this->publishes([module_path($this->moduleName, 'config/config.php') => config_path($this->moduleNameLower.'.php')], 'config');
+            $this->publishes([module_path($this->moduleName, 'config/config.php') => config_path($this->moduleNameLower . '.php')], 'config');
             $this->mergeConfigFrom(module_path($this->moduleName, 'config/config.php'), $this->moduleNameLower);
         });
     }
@@ -94,14 +95,14 @@ class PanelServiceProvider extends ServiceProvider
      */
     public function registerViews(): void
     {
-        $viewPath = resource_path('views/modules/'.$this->moduleNameLower);
+        $viewPath = resource_path('views/modules/' . $this->moduleNameLower);
         $sourcePath = module_path($this->moduleName, 'resources/views');
 
-        $this->publishes([$sourcePath => $viewPath], ['views', $this->moduleNameLower.'-module-views']);
+        $this->publishes([$sourcePath => $viewPath], ['views', $this->moduleNameLower . '-module-views']);
 
         $this->loadViewsFrom(array_merge($this->getPublishableViewPaths(), [$sourcePath]), $this->moduleNameLower);
 
-        $componentNamespace = str_replace('/', '\\', config('modules.namespace').'\\'.$this->moduleName.'\\'.config('modules.paths.generator.component-class.path'));
+        $componentNamespace = str_replace('/', '\\', config('modules.namespace') . '\\' . $this->moduleName . '\\' . config('modules.paths.generator.component-class.path'));
         Blade::componentNamespace($componentNamespace, $this->moduleNameLower);
     }
 
@@ -117,8 +118,8 @@ class PanelServiceProvider extends ServiceProvider
     {
         $paths = [];
         foreach (config('view.paths') as $path) {
-            if (is_dir($path.'/modules/'.$this->moduleNameLower)) {
-                $paths[] = $path.'/modules/'.$this->moduleNameLower;
+            if (is_dir($path . '/modules/' . $this->moduleNameLower)) {
+                $paths[] = $path . '/modules/' . $this->moduleNameLower;
             }
         }
 
@@ -133,9 +134,13 @@ class PanelServiceProvider extends ServiceProvider
     protected function registerSharedData(): void
     {
         $this->app->booted(function () {
-            $this->commentsSharedData();
-            $this->userMessagesSharedData();
-            $this->siteDetailsSharedData();
+            View::composer([
+                '*',
+            ], function () {
+                $this->commentsSharedData();
+                $this->userMessagesSharedData();
+                $this->siteDetailsSharedData();
+            });
         });
     }
 
