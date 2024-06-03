@@ -69,9 +69,7 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": [
-                "spatie/laravel-comments"
-            ]
+            "dont-discover": []
         }
     },
     "config": {

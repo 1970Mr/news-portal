@@ -14,7 +14,7 @@ use Modules\User\App\Models\User;
 
 class UserHelper
 {
-    public static function assignAdminRoleToAdminUser(): void
+    public static function firstOrCreateAdminUser(): void
     {
         DB::beginTransaction();
 

@@ -7,6 +7,8 @@ use Illuminate\Database\Seeder;
 use Modules\Article\Database\Seeders\ArticleSeeder;
 use Modules\Category\Database\Seeders\CategorySeeder;
 use Modules\ContactUs\Database\Seeders\ContactInfoSeeder;
+use Modules\Role\Database\Seeders\PermissionSeeder;
+use Modules\Role\Database\Seeders\RoleSeeder;
 use Modules\Setting\Database\Seeders\AboutUsSeeder;
 use Modules\Setting\Database\Seeders\SiteDetailSeeder;
 use Modules\Setting\Database\Seeders\SocialNetworkForSiteSeeder;
@@ -21,6 +23,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
+            PermissionSeeder::class,
+            RoleSeeder::class,
             UserSeeder::class,
             CategorySeeder::class,
             TagSeeder::class,

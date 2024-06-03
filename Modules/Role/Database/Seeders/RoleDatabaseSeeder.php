@@ -13,19 +13,9 @@ class RoleDatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        try {
-            DB::beginTransaction();
-
-            $this->call([
-                PermissionSeeder::class,
-                RoleSeeder::class,
-            ]);
-            UserHelper::assignAdminRoleToAdminUser();
-
-            DB::commit();
-        } catch (\Exception $e) {
-            DB::rollBack();
-            throw new \Exception($e->getMessage());
-        }
+        $this->call([
+            PermissionSeeder::class,
+            RoleSeeder::class,
+        ]);
     }
 }
