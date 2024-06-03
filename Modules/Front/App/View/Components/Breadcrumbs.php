@@ -5,7 +5,7 @@ namespace Modules\Front\App\View\Components;
 use Illuminate\View\Component;
 use Illuminate\View\View;
 
-class breadcrumbs extends Component
+class Breadcrumbs extends Component
 {
     /**
      * Create a new component instance.
