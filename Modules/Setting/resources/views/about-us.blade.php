@@ -95,7 +95,7 @@
                     },
                 })
                 .then( editor => {
-                    editor.setData('{!! old('content', $about?->content) !!}');
+                    editor.setData('{!! old('content', trim(json_encode($about?->content), '"')) !!}');
                     editor.model.document.on('change:data', () => {
                         document.querySelector('input[name="content"]').value = editor.getData();
                     });

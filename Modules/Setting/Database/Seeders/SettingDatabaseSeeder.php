@@ -13,6 +13,7 @@ class SettingDatabaseSeeder extends Seeder
     {
          $this->call([
              SiteDetailSeeder::class,
+             AboutUsSeeder::class,
          ]);
     }
 }
