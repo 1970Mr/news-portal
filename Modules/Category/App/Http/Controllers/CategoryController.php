@@ -5,6 +5,7 @@ namespace Modules\Category\App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Modules\Category\App\Http\Requests\CategoryRequest;
 use Modules\Category\App\Models\Category;
 use Modules\Category\App\Services\CategoryService;
@@ -20,9 +21,9 @@ class CategoryController extends Controller
         $this->middleware('can:' . config('permissions_list.CATEGORY_DESTROY', false))->only('destroy');
     }
 
-    public function index(): View
+    public function index(Request $request): View
     {
-        $categories = Category::with('image')->has('image')->latest('updated_at')->paginate(10);
+        $categories = $this->categoryService->index($request);
         return view('category::index', compact('categories'));
     }
 

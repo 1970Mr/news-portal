@@ -10,13 +10,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+use Laravel\Scout\Searchable;
 use Modules\Article\App\Models\Article;
 use Modules\Category\Database\Factories\CategoryFactory;
 use Modules\FileManager\App\Traits\HasImage;
 
 class Category extends Model
 {
-    use HasFactory, SoftDeletes, HasImage;
+    use HasFactory, SoftDeletes, HasImage, Searchable;
 
     protected $fillable = [
         'name',
@@ -26,10 +27,20 @@ class Category extends Model
         'parent_id',
     ];
 
+    public function toSearchableArray(): array
+    {
+        return [
+            'id' => (int)$this->id,
+            'name' => $this->name,
+            'slug' => $this->slug,
+            'description' => $this->description,
+        ];
+    }
+
     protected function slug(): Attribute
     {
         return Attribute::make(
-            set: static fn (string $value) => Str::slug($value),
+            set: static fn(string $value) => Str::slug($value),
         );
     }
 
@@ -54,7 +65,7 @@ class Category extends Model
     {
         return ($this->parentCategory() === null)
             ? __('have_not')
-                : $this->parentCategory()->first()->name;
+            : $this->parentCategory()->first()->name;
     }
 
     public function articles(): HasMany
