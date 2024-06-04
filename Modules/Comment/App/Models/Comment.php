@@ -9,10 +9,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
+use Laravel\Scout\Searchable;
 
 class Comment extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, Searchable;
 
     public const PENDING = 'pending';
     public const APPROVED = 'approved';
@@ -29,13 +30,23 @@ class Comment extends Model
     ];
 
     protected $fillable = [
-        'comment', 'status', 'guest_data'
+        'comment',
+        'status',
+        'guest_data',
     ];
 
     protected $casts = [
         'approved' => 'boolean',
         'guest_data' => 'array',
     ];
+
+    public function toSearchableArray(): array
+    {
+        return [
+            'id' => (int)$this->id,
+            'comment' => $this->comment,
+        ];
+    }
 
     /**
      * A model who comments

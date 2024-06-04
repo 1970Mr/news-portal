@@ -10,11 +10,19 @@
         <div class="col-12 pe-0">
             <div class="portlet box shadow min-height-500">
                 <div class="portlet-heading">
-                    <div class="portlet-title">
-                        <h3 class="title">
+                    <div class="portlet-title d-flex gap-3">
+                        <h3 class="title m-0">
                             <i class="icon-bubbles"></i>
                             لیست نظرات
                         </h3>
+                        <form class="d-inline-block search-form" action="{{ route(config('app.panel_prefix', 'panel') . '.comments.index', request()->all()) }}" method="get">
+                            <div class="input-group">
+                                <button class="btn btn-secondary d-flex align-items-center" type="submit">
+                                    <i class="icon-magnifier"></i>
+                                </button>
+                                <input name="query" type="text" class="form-control p-2" placeholder="جستجو..." value="{{ request()->get('query') }}">
+                            </div>
+                        </form>
                     </div><!-- /.portlet-title -->
                     <div class="buttons-box ltr">
                         <a class="btn btn-sm btn-default btn-round btn-fullscreen" rel="tooltip"
@@ -38,14 +46,19 @@
                             </button>
                             <ul class="dropdown-menu">
                                 @foreach($filters as $value)
-                                    <li><a class="dropdown-item" href="{{ route(config('app.panel_prefix', 'panel') . '.comments.index', ['filter' => $value]) }}">{{ __($value) }}</a></li>
+                                    <li>
+                                        <a class="dropdown-item"
+                                           href="{{ route(config('app.panel_prefix', 'panel') . '.comments.index', ['filter' => $value] + request()->all()) }}">
+                                            {{ __($value) }}
+                                        </a>
+                                    </li>
                                 @endforeach
                             </ul>
                         </div>
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <div class="table-responsive" style="overflow-x: auto !important;">
+                    <div class="table-responsive overflow-x-auto">
                         <table class="table table-bordered table-striped table-hover">
                             <thead>
                             <tr>
@@ -100,14 +113,14 @@
                                                 @endcan
                                                 @can(config('permissions_list.COMMENT_REJECT', false))
                                                     @if ($comment->status !== get_class($comment)::REJECTED)
-                                                            <form action="{{ route(config('app.panel_prefix', 'panel') . '.comments.reject', $comment->id) }}" method="post">
-                                                                @csrf
-                                                                @method('patch')
-                                                                <button class="btn btn-sm btn-warning btn-icon round d-flex justify-content-center align-items-center"
-                                                                        rel="tooltip" aria-label="رد نظر" data-bs-original-title="رد نظر">
-                                                                    <i class="icon-close"></i>
-                                                                </button>
-                                                            </form>
+                                                        <form action="{{ route(config('app.panel_prefix', 'panel') . '.comments.reject', $comment->id) }}" method="post">
+                                                            @csrf
+                                                            @method('patch')
+                                                            <button class="btn btn-sm btn-warning btn-icon round d-flex justify-content-center align-items-center"
+                                                                    rel="tooltip" aria-label="رد نظر" data-bs-original-title="رد نظر">
+                                                                <i class="icon-close"></i>
+                                                            </button>
+                                                        </form>
                                                     @endif
                                                 @endcan
                                                 @can(config('permissions_list.COMMENT_SHOW', false))
