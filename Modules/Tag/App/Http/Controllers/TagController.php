@@ -4,6 +4,7 @@ namespace Modules\Tag\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Modules\Tag\App\Http\Requests\TagRequest;
 use Modules\Tag\App\Models\Tag;
@@ -19,9 +20,9 @@ class TagController extends Controller
         $this->middleware('can:' . config('permissions_list.TAG_DESTROY', false))->only('destroy');
     }
 
-    public function index(): View
+    public function index(Request $request): View
     {
-        $tags = Tag::with('hotness')->latest()->paginate(10);
+        $tags = $this->tagService->index($request);
         return view('tag::index', compact('tags'));
     }
 

@@ -2,14 +2,26 @@
 
 namespace Modules\Tag\App\Services;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Gate;
 use Modules\Tag\App\Http\Requests\TagRequest;
 use Modules\Tag\App\Models\Tag;
 
 class TagService
 {
+    public function index(Request $request): Paginator
+    {
+        $searchText = $request->get('query');
+        if ($searchText) {
+            $articles = $this->search($searchText);
+        } else {
+            $articles = Tag::with('hotness')->latest()->paginate(10);
+        }
+        return $articles;
+    }
+
     public function store(TagRequest $request): Tag
     {
         $tag = Tag::create($request->validated());
@@ -35,5 +47,12 @@ class TagService
         if (Auth::user()->can(config('permissions_list.TAG_HOTNESS', false))) {
             $tag->hotness()->updateOrCreate([], ['is_hot' => $request->hotness]);
         }
+    }
+
+    private function search(mixed $searchText): Paginator
+    {
+        return Tag::search($searchText)->query(static function (Builder $query) {
+            $query->with('hotness');
+        })->latest()->paginate(10);
     }
 }

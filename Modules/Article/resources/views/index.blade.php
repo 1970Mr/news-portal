@@ -22,7 +22,6 @@
                                 <input name="query" type="text" class="form-control p-2" placeholder="جستجو..." value="{{ request()->get('query') }}">
                             </div>
                         </form>
-
                     </div><!-- /.portlet-title -->
 
                     <div class="buttons-box ltr">

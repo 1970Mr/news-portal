@@ -43,6 +43,7 @@ class CategoryService
     private function search(mixed $searchText): Paginator
     {
         return Category::search($searchText)->query(static function (Builder $query) use ($searchText) {
+            $query->with('image');
             // Search in parent categories
             $query->orWhereHas('category', function ($q) use ($searchText) {
                 $q->where('name', 'like', "%{$searchText}%");

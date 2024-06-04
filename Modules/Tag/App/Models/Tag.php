@@ -9,13 +9,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+use Laravel\Scout\Searchable;
 use Modules\Article\App\Models\Article;
 use Modules\Hotness\App\Traits\HasHotness;
 use Modules\Tag\Database\Factories\TagFactory;
 
 class Tag extends Model
 {
-    use HasFactory, SoftDeletes, HasHotness;
+    use HasFactory, SoftDeletes, HasHotness, Searchable;
 
     protected $fillable = [
         'name',
@@ -23,6 +24,16 @@ class Tag extends Model
         'description',
         'status',
     ];
+
+    public function toSearchableArray(): array
+    {
+        return [
+            'id' => (int)$this->id,
+            'name' => $this->name,
+            'slug' => $this->slug,
+            'description' => $this->description,
+        ];
+    }
 
     protected function slug(): Attribute
     {
