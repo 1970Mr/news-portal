@@ -60,7 +60,7 @@ class Article extends Model implements Feedable
     public function toSearchableArray(): array
     {
         return [
-            'id' => (int) $this->id,
+            'id' => (int)$this->id,
             'title' => $this->title,
             'slug' => $this->slug,
             'description' => $this->description,

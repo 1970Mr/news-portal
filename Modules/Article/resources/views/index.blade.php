@@ -14,7 +14,7 @@
                             <i class="icon-people"></i>
                             لیست اخبار
                         </h3>
-                        <form role="form" class="d-inline-block search-form">
+                        <form class="d-inline-block search-form">
                             <div class="input-group">
                                 <button class="btn btn-secondary d-flex align-items-center" type="submit">
                                     <i class="icon-magnifier"></i>

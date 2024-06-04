@@ -2,6 +2,9 @@
 
 namespace Modules\User\App\Services;
 
+use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Modules\FileManager\App\Services\ImageService;
 use Modules\User\App\Http\Requests\UserStoreRequest;
@@ -13,6 +16,17 @@ class UserService
     public function __construct(
         private readonly ImageService $imageService
     ) {}
+
+    public function index(Request $request): Paginator
+    {
+        $searchText = $request->get('query');
+        if ($searchText) {
+            $users = $this->search($searchText);
+        } else {
+            $users = User::query()->latest()->paginate(10);
+        }
+        return $users;
+    }
 
     public function store(UserStoreRequest $request): void
     {
@@ -46,5 +60,16 @@ class UserService
         ($request->email_verification) ?
             $user->markEmailAsVerified() :
             $user->unmarkEmailAsVerified();
+    }
+
+    private function search(mixed $searchText): Paginator
+    {
+        return User::search($searchText)->query(static function (Builder $query) use ($searchText) {
+            // Search in roles
+            $query->orWhereHas('roles', function ($q) use ($searchText) {
+                $q->where('name', 'like', "%{$searchText}%")
+                    ->orWhere('local_name', 'like', "%{$searchText}%");
+            });
+        })->latest()->paginate(10);
     }
 }

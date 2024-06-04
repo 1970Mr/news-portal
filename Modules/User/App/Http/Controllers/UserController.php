@@ -4,6 +4,7 @@ namespace Modules\User\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Modules\User\App\Http\Requests\UserStoreRequest;
 use Modules\User\App\Http\Requests\UserUpdateRequest;
@@ -23,9 +24,9 @@ class UserController extends Controller
         // $this->middleware('can:' . config('permissions_list.USER_DESTROY', false))->only('destroy');
     }
 
-    public function index(): View
+    public function index(Request $request): View
     {
-        $users = User::latest()->paginate(10);
+        $users = $this->userService->index($request);
         return view('user::index', compact('users'));
     }
 
