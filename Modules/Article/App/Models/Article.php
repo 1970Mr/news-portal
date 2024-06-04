@@ -60,17 +60,18 @@ class Article extends Model implements Feedable
     public function toSearchableArray(): array
     {
         return [
-            'title' => (int) $this->id,
-            'slug' => $this->name,
-            'description' => (float) $this->price,
-            'keywords' => (float) $this->price,
+            'id' => (int) $this->id,
+            'title' => $this->title,
+            'slug' => $this->slug,
+            'description' => $this->description,
+            'keywords' => $this->keywords,
         ];
     }
 
     protected function slug(): Attribute
     {
         return Attribute::make(
-            set: static fn (string $value) => Str::slug($value),
+            set: static fn(string $value) => Str::slug($value),
         );
     }
 

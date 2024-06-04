@@ -21,3 +21,8 @@ th, .reply, .status, .subscribed-at {
 .btn-info {
     background-color: #03a9f4 !important;
 }
+
+.search-form input, .search-form button {
+    height: 1.6rem;
+    font-size: .8rem;
+}

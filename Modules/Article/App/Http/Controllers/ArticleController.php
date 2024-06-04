@@ -3,7 +3,9 @@
 namespace Modules\Article\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Modules\Article\App\Http\Requests\ArticleRequest;
 use Modules\Article\App\Models\Article;
@@ -22,9 +24,10 @@ class ArticleController extends Controller
         $this->middleware('can:' . config('permissions_list.ARTICLE_UPDATE', false))->only('update');
         $this->middleware('can:' . config('permissions_list.ARTICLE_DESTROY', false))->only('destroy');
     }
-    public function index(): View
+
+    public function index(Request $request): View
     {
-        $articles = Article::query()->latest()->paginate(10);
+        $articles = $this->articleService->index($request);
         return view('article::index', compact('articles'));
     }
 

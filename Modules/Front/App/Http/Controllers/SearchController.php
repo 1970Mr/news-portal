@@ -3,6 +3,7 @@
 namespace Modules\Front\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Modules\Article\App\Models\Article;
@@ -14,11 +15,10 @@ class SearchController extends Controller
 
     public function __invoke(Request $request): View
     {
-        $searchText = $request->text;
+        $searchText = $request->get('query', $request->get('text'));
         $this->SEOService->setSearchPageSEO($searchText);
-        $articleIds = Article::search($searchText)->get()->pluck('id');
-        $articles = Article::with(['category', 'image', 'approvedComments', 'user'])
-            ->whereIn('id', $articleIds)
+        $articles = Article::search($searchText)
+            ->query(fn(Builder $query) => $query->with(['category', 'image', 'approvedComments', 'user']))
             ->paginate(10);
         if (!$searchText) {
             $searchText = __('all');

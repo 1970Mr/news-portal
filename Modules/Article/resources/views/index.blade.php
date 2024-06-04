@@ -9,12 +9,22 @@
         <div class="col-12 pe-0">
             <div class="portlet box shadow min-height-500">
                 <div class="portlet-heading">
-                    <div class="portlet-title">
-                        <h3 class="title">
+                    <div class="portlet-title d-flex gap-3">
+                        <h3 class="title m-0">
                             <i class="icon-people"></i>
                             لیست اخبار
                         </h3>
+                        <form role="form" class="d-inline-block search-form">
+                            <div class="input-group">
+                                <button class="btn btn-secondary d-flex align-items-center" type="submit">
+                                    <i class="icon-magnifier"></i>
+                                </button>
+                                <input name="query" type="text" class="form-control p-2" placeholder="جستجو..." value="{{ request()->get('query') }}">
+                            </div>
+                        </form>
+
                     </div><!-- /.portlet-title -->
+
                     <div class="buttons-box ltr">
                         <a class="btn btn-sm btn-default btn-round btn-fullscreen" rel="tooltip"
                            aria-label="تمام صفحه" data-bs-original-title="تمام صفحه">
@@ -36,6 +46,24 @@
                             </a>
                         @endcan
                     </div><!-- /.buttons-box -->
+
+
+{{--                    <div class="portlet-body" style="">--}}
+{{--                        <form role="form">--}}
+{{--                            <div class="form-body">--}}
+{{--                                <div class="input-group">--}}
+{{--                                    <input type="text" class="form-control numeric ltr" placeholder="شماره همراه">--}}
+{{--                                    <span class="input-group-btn">--}}
+{{--                                                    <button class="btn btn-primary" type="button">ارسال SMS<div class="paper-ripple"><div class="paper-ripple__background"></div><div--}}
+{{--                                                                class="paper-ripple__waves"></div></div></button>--}}
+{{--                                                </span>--}}
+{{--                                </div><!-- ./input-group -->--}}
+{{--                            </div><!-- /.form-body -->--}}
+{{--                        </form>--}}
+{{--                        <hr>--}}
+
+
+{{--                    </div>--}}
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
                     <div class="table-responsive overflow-x-auto">

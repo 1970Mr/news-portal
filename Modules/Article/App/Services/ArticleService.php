@@ -2,7 +2,10 @@
 
 namespace Modules\Article\App\Services;
 
+use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Modules\Article\App\Http\Requests\ArticleRequest;
 use Modules\Article\App\Models\Article;
@@ -13,6 +16,18 @@ class ArticleService
     public function __construct(
         private readonly ImageService $imageService
     ) {}
+
+    public function index(Request $request): Paginator
+    {
+        $searchText = $request->get('query');
+        if ($searchText) {
+            $articles = $this->search($searchText);
+        } else {
+            $articles = Article::query()->latest()->paginate(10);
+        }
+        return $articles;
+    }
+
     public function store(ArticleRequest $request): Model
     {
         $data = $request->validated();
@@ -59,5 +74,24 @@ class ArticleService
             return $data;
         }
         return $data;
+    }
+
+    private function search(mixed $searchText): Paginator
+    {
+        return Article::search($searchText)->query(static function (Builder $query) use ($searchText) {
+            // Search in categories
+            $query->orWhereHas('category', function ($q) use ($searchText) {
+                $q->where('name', 'like', "%{$searchText}%");
+            });
+            // Search in tags
+            $query->orWhereHas('tags', function ($q) use ($searchText) {
+                $q->where('name', 'like', "%{$searchText}%");
+            });
+            // Search in users
+            $query->orWhereHas('user', function ($q) use ($searchText) {
+                $q->where('full_name', 'like', "%{$searchText}%")
+                    ->orWhere('email', 'like', "%{$searchText}%");
+            });
+        })->latest()->paginate(10);
     }
 }
