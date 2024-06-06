@@ -20,9 +20,9 @@ class AdController extends Controller
         $this->middleware('can:' . config('permissions_list.ADS_DESTROY', false))->only('destroy');
     }
 
-    public function index(): View
+    public function index(Request $request): View
     {
-        $ads = Ad::query()->latest()->paginate(10);
+        $ads = $this->adService->index($request);
         return view('ad-manager::index', compact('ads'));
     }
 

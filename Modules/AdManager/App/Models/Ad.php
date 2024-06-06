@@ -5,11 +5,12 @@ namespace Modules\AdManager\App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Laravel\Scout\Searchable;
 use Modules\FileManager\App\Traits\HasImage;
 
 class Ad extends Model
 {
-    use HasImage;
+    use HasImage, Searchable;
 
     protected $fillable = [
         'title',
@@ -37,6 +38,15 @@ class Ad extends Model
         self::THIRD_SECTION,
         self::FOURTH_SECTION,
     ];
+
+    public function toSearchableArray(): array
+    {
+        return [
+            'id' => (int)$this->id,
+            'title' => $this->title,
+            'link' => $this->link,
+        ];
+    }
 
     public function getSection(): ?string
     {

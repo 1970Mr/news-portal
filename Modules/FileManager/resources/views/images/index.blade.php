@@ -21,6 +21,9 @@
                                     <i class="icon-magnifier"></i>
                                 </button>
                                 <input name="query" type="text" class="form-control p-2" placeholder="جستجو..." value="{{ request()->get('query') }}">
+                                @foreach(request()->except(['query', 'page']) as $key => $value)
+                                    <input name="{{ $key }}" type="hidden" value="{{ $value }}">
+                                @endforeach
                             </div>
                         </form>
                     </div><!-- /.portlet-title -->
@@ -57,7 +60,11 @@
                             </button>
                             <ul class="dropdown-menu">
                                 @foreach($filters as $key => $value)
-                                    <li><a class="dropdown-item" href="{{ route(config('app.panel_prefix', 'panel') . '.images.index', ['filter' => $key]) }}">{{ $value }}</a></li>
+                                    <li><a class="dropdown-item"
+                                           href="{{ route(
+                                                                config('app.panel_prefix', 'panel') . '.images.index',
+                                                                ['filter' => $key] + request()->all()
+                                                       ) }}">{{ $value }}</a></li>
                                 @endforeach
                             </ul>
                         </div>
