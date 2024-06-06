@@ -11,11 +11,22 @@
         <div class="col-12 pe-0">
             <div class="portlet box shadow min-height-500">
                 <div class="portlet-heading">
-                    <div class="portlet-title">
-                        <h3 class="title">
+                    <div class="portlet-title d-flex gap-3">
+                        <h3 class="title m-0">
                             <i class="icon-envelope"></i>
                             لیست پیام‌های کاربران
                         </h3>
+                        <form class="d-inline-block search-form">
+                            <div class="input-group">
+                                <button class="btn btn-secondary d-flex align-items-center" type="submit">
+                                    <i class="icon-magnifier"></i>
+                                </button>
+                                <input name="query" type="text" class="form-control p-2" placeholder="جستجو..." value="{{ request()->get('query') }}">
+                                @foreach(request()->except(['query', 'page']) as $key => $value)
+                                    <input name="{{ $key }}" type="hidden" value="{{ $value }}">
+                                @endforeach
+                            </div>
+                        </form>
                     </div><!-- /.portlet-title -->
                     <div class="buttons-box ltr">
                         <a class="btn btn-sm btn-default btn-round btn-fullscreen" rel="tooltip"
@@ -40,7 +51,11 @@
                             <ul class="dropdown-menu">
                                 @foreach($filters as $value)
                                     <li>
-                                        <a class="dropdown-item" href="{{ route(config('app.panel_prefix', 'panel') . '.contact-us.messages.index', ['filter' => $value]) }}">
+                                        <a class="dropdown-item"
+                                           href="{{ route(
+                                                            config('app.panel_prefix', 'panel') . '.contact-us.messages.index',
+                                                            ['filter' => $value] + request()->all()
+                                                        ) }}">
                                             {{ __($value) }}
                                         </a>
                                     </li>

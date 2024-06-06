@@ -5,7 +5,6 @@ namespace Modules\Comment\App\Services;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Modules\Comment\App\Models\Comment;
 
@@ -22,17 +21,6 @@ class CommentService
             return $query->paginate(10)->appends('query', $searchText);
         }
         return $query->paginate(10);
-    }
-
-    public function index(Request $request): Paginator
-    {
-        $searchText = $request->get('query');
-        if ($searchText) {
-            $articles = $this->search($searchText);
-        } else {
-            $articles = Article::query()->latest()->paginate(10);
-        }
-        return $articles;
     }
 
     private function setFilters(Request $request, Builder $query): Builder

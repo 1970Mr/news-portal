@@ -13,6 +13,12 @@ class UserMessageService
     {
         $query = UserMessage::with('seen')->latest();
         $this->setFilters($request, $query);
+        $searchText = $request->get('query');
+        if ($searchText) {
+            $userMessagesIds = UserMessage::search($searchText)->get()->pluck('id');
+            $query->whereIn('id', $userMessagesIds);
+            return $query->paginate(10);
+        }
         return $query->paginate(10);
     }
 

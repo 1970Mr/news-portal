@@ -11,10 +11,10 @@ class NewsletterService
     {
         $searchText = $request->get('query');
         if ($searchText) {
-            $articles = Newsletter::search($searchText)->latest()->paginate(10);
+            $newsletters = Newsletter::search($searchText)->latest()->paginate(10);
         } else {
-            $articles = Newsletter::query()->latest()->paginate(10);
+            $newsletters = Newsletter::query()->latest()->paginate(10);
         }
-        return $articles;
+        return $newsletters;
     }
 }

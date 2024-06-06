@@ -3,11 +3,12 @@
 namespace Modules\ContactUs\App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 use Modules\Seen\App\Traits\HasSeen;
 
 class UserMessage extends Model
 {
-    use HasSeen;
+    use HasSeen, Searchable;
 
     public const SEEN = 'seen';
     public const UNSEEN = 'unseen';
@@ -23,4 +24,16 @@ class UserMessage extends Model
         'subject',
         'message',
     ];
+
+    public function toSearchableArray(): array
+    {
+        return [
+            'id' => (int)$this->id,
+            'name' => $this->name,
+            'email' => $this->email,
+            'phone' => $this->phone,
+            'subject' => $this->subject,
+            'message' => $this->message,
+        ];
+    }
 }

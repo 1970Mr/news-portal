@@ -21,7 +21,7 @@
                                     <i class="icon-magnifier"></i>
                                 </button>
                                 <input name="query" type="text" class="form-control p-2" placeholder="جستجو..." value="{{ request()->get('query') }}">
-                                @foreach(request()->except('query') as $key => $value)
+                                @foreach(request()->except(['query', 'page']) as $key => $value)
                                     <input name="{{ $key }}" type="hidden" value="{{ $value }}">
                                 @endforeach
                             </div>
