@@ -15,12 +15,15 @@
                             <i class="icon-bubbles"></i>
                             لیست نظرات
                         </h3>
-                        <form class="d-inline-block search-form" action="{{ route(config('app.panel_prefix', 'panel') . '.comments.index', request()->all()) }}" method="get">
+                        <form class="d-inline-block search-form">
                             <div class="input-group">
                                 <button class="btn btn-secondary d-flex align-items-center" type="submit">
                                     <i class="icon-magnifier"></i>
                                 </button>
                                 <input name="query" type="text" class="form-control p-2" placeholder="جستجو..." value="{{ request()->get('query') }}">
+                                @foreach(request()->except('query') as $key => $value)
+                                    <input name="{{ $key }}" type="hidden" value="{{ $value }}">
+                                @endforeach
                             </div>
                         </form>
                     </div><!-- /.portlet-title -->
