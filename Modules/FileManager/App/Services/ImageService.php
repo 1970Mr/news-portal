@@ -17,7 +17,7 @@ class ImageService
 {
     public function index(Request $request): Paginator
     {
-        return $this->getAllImages($request)->paginate(10);
+        return $this->getAllImages($request)->paginate(10)->appends('query', $request->get('query'));
     }
 
     public function imageSelectorData(Request $request): Collection
@@ -100,6 +100,11 @@ class ImageService
         Gate::authorize('index', Image::class);
         $query = Image::query()->latest();
         $query = $this->setPermissionsFilter($query);
+        $searchText = $request->get('query');
+        if ($searchText) {
+            $imageIds = $this->search($searchText)->pluck('id');
+            $query->whereIn('id', $imageIds);
+        }
         return $this->setFilters($request, $query);
     }
 
@@ -110,5 +115,16 @@ class ImageService
             $image = $this->store($request, altText: $altText);
             $model->image()->save($image);
         }
+    }
+
+    private function search(mixed $searchText): Collection
+    {
+        return Image::search($searchText)->query(static function (Builder $query) use ($searchText) {
+            // Search in users
+            $query->orWhereHas('user', function ($q) use ($searchText) {
+                $q->where('full_name', 'like', "%{$searchText}%")
+                    ->orWhere('email', 'like', "%{$searchText}%");
+            });
+        })->get();
     }
 }

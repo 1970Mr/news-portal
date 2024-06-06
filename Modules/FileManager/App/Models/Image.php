@@ -7,10 +7,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Laravel\Scout\Searchable;
 use Modules\User\App\Models\User;
 
 class Image extends Model
 {
+    use Searchable;
+
     protected $fillable = [
         'file_path',
         'alt_text',
@@ -26,6 +29,15 @@ class Image extends Model
     public const ALL = 'all';
     public const MY_IMAGE = 'my_images';
     public const OTHER_USERS_IMAGE = 'other_users_images';
+
+    public function toSearchableArray(): array
+    {
+        return [
+            'id' => (int)$this->id,
+            'file_path' => $this->file_path,
+            'alt_text' => $this->alt_text,
+        ];
+    }
 
     public static function filters(): array
     {

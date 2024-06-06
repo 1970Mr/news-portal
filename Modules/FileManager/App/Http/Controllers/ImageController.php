@@ -15,7 +15,7 @@ use Modules\FileManager\App\Services\ImageService;
 class ImageController extends Controller
 {
     public function __construct(
-        public ImageService $imageService,
+        private readonly ImageService $imageService,
     ) {}
 
     public function index(Request $request): View
