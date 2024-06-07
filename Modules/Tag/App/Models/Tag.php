@@ -12,11 +12,12 @@ use Illuminate\Support\Str;
 use Laravel\Scout\Searchable;
 use Modules\Article\App\Models\Article;
 use Modules\Hotness\App\Traits\HasHotness;
+use Modules\SEOManager\App\Traits\SEOAble;
 use Modules\Tag\Database\Factories\TagFactory;
 
 class Tag extends Model
 {
-    use HasFactory, SoftDeletes, HasHotness, Searchable;
+    use HasFactory, SoftDeletes, HasHotness, Searchable, SEOAble;
 
     protected $fillable = [
         'name',

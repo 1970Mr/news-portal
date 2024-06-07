@@ -86,6 +86,14 @@
                                                     @can(config('permissions_list.TAG_DESTROY', false))
                                                         <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.tags.destroy', $tag->id)" />
                                                     @endcan
+
+                                                    @can(config('permissions_list.SEO_MANAGEMENT', false))
+                                                            <a class="btn btn-sm btn-warning btn-icon round d-flex justify-content-center align-items-center"
+                                                               rel="tooltip" aria-label="تنظیمات سئو" data-bs-original-title="تنظیمات سئو"
+                                                               href="{{ route(config('app.panel_prefix', 'panel') . '.tags.seo-settings', $tag->id) }}">
+                                                                <i class="fab fa-searchengin fa-flip-horizontal"></i>
+                                                            </a>
+                                                    @endcan
                                                 </div>
                                             </td>
                                         @endcanany

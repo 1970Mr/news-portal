@@ -1,19 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\SEOManager\App\Http\Controllers\SEOManagerController;
+use Modules\SEOManager\App\Http\Controllers\SEOController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-Route::group([], function () {
-    Route::resource('seomanager', SEOManagerController::class)->names('seomanager');
-});
+Route::prefix(config('app.panel_prefix', 'panel'))
+    ->name(config('app.panel_prefix', 'panel') . '.seo-settings.')
+    ->group(function () {
+        Route::put('/', [SEOController::class, 'adjustSEOSettings'])->name('adjust');
+    });

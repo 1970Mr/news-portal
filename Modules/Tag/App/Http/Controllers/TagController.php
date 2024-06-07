@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Modules\SEOManager\App\SEOService;
 use Modules\Tag\App\Http\Requests\TagRequest;
 use Modules\Tag\App\Models\Tag;
 use Modules\Tag\App\Services\TagService;
@@ -54,5 +55,11 @@ class TagController extends Controller
     {
         $this->tagService->destroy($tag);
         return back()->with('success', __('entity_deleted', ['entity' => __('tag')]));
+    }
+
+    public function SEOSettings(Tag $tag): view
+    {
+        $nextUrl  = config('app.panel_prefix', 'panel') . '.tags.index';
+        return view('seo-manager::seo-settings', compact('nextUrl') + ['model' => $tag]);
     }
 }

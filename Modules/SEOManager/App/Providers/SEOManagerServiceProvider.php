@@ -9,7 +9,7 @@ class SEOManagerServiceProvider extends ServiceProvider
 {
     protected string $moduleName = 'SEOManager';
 
-    protected string $moduleNameLower = 'seomanager';
+    protected string $moduleNameLower = 'seo-manager';
 
     /**
      * Boot the application events.
