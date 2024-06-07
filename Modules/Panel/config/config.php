@@ -46,6 +46,7 @@ return [
             'active_routes' => [
                 config('app.panel_prefix', 'panel') . '.tags.create',
                 config('app.panel_prefix', 'panel') . '.tags.edit',
+                config('app.panel_prefix', 'panel') . '.tags.seo-settings',
             ]
         ],
         'image' => [

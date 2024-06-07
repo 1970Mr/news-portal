@@ -59,7 +59,8 @@ class TagController extends Controller
 
     public function SEOSettings(Tag $tag): view
     {
+        $modelTitle = $tag->name;
         $nextUrl  = config('app.panel_prefix', 'panel') . '.tags.index';
-        return view('seo-manager::seo-settings', compact('nextUrl') + ['model' => $tag]);
+        return view('seo-manager::seo-settings', compact(['modelTitle', 'nextUrl']) + ['model' => $tag]);
     }
 }

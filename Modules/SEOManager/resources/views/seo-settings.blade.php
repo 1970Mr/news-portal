@@ -13,7 +13,7 @@
                     <div class="portlet-title">
                         <h3 class="title">
                             <i class="fab fa-searchengin"></i>
-                            تنظیمات سئو
+                            تنظیمات سئو {{ $modelTitle }}
                         </h3>
                     </div><!-- /.portlet-title -->
                     <div class="buttons-box">

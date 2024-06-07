@@ -5,6 +5,7 @@ return [
     'VIEW_AVERAGE_VISITORS' => 'admin::view_average_visitors',
     'CONTACT_INFO' => 'admin::contact_info',
     'CONTACT_USER_MESSAGES' => 'admin::contact_user_messages',
+    'SEO_MANAGEMENT' => 'admin::seo_management',
 
     'SETTING_SOCIAL_NETWORKS' => 'setting::social_networks',
     'SETTING_ABOUT_US' => 'setting::about_us',
