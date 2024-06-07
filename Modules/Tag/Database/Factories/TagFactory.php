@@ -25,7 +25,6 @@ class TagFactory extends Factory
         return [
             'name' => ucfirst($uniqueName),
             'slug' => Str::slug($uniqueName),
-            'description' => fake()->sentence,
             'status' => fake()->boolean,
         ];
     }

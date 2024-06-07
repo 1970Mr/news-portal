@@ -42,10 +42,6 @@
                                 <label for="slug">slug <small>(ضروری)</small> </label>
                                 <input id="slug" class="form-control" name="slug" type="text" required value="{{ old('slug') ?? $tag->slug }}">
                             </div>
-                            <div class="form-group col-lg-6">
-                                <label for="description">توضیحات </label>
-                                <input id="description" class="form-control" name="description" type="text" value="{{ old('description') ?? $tag->description }}">
-                            </div>
                             <div class="col-12 row form-group justify-content-center">
                                 <div class="col-md-6 row">
                                     @can(config('permissions_list.TAG_HOTNESS', false))
