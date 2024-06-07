@@ -18,5 +18,6 @@
     "ContactUs": true,
     "Seen": true,
     "Newsletter": true,
-    "AdManager": true
+    "AdManager": true,
+    "SEOManager": true
 }

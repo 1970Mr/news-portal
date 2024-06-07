@@ -1,0 +1,11 @@
+{
+    "name": "SEOManager",
+    "alias": "seomanager",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\SEOManager\\App\\Providers\\SEOManagerServiceProvider"
+    ],
+    "files": []
+}
