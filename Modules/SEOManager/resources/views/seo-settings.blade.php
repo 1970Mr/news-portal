@@ -13,7 +13,7 @@
                     <div class="portlet-title">
                         <h3 class="title">
                             <i class="fab fa-searchengin"></i>
-                            تنظیمات سئو {{ $modelTitle }}
+                            تنظیمات سئو {{ $title ?? null }}
                         </h3>
                     </div><!-- /.portlet-title -->
                     <div class="buttons-box">
@@ -38,7 +38,7 @@
                     <form id="main-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.seo-settings.adjust') }}" method="post">
                         @csrf
                         @method('PUT')
-                        <x-common-error-messages />
+                        <x-common-error-messages/>
 
                         <!-- Hidden input for model type and ID -->
                         <input type="hidden" name="model_type" value="{{ get_class($model) }}">
@@ -48,7 +48,10 @@
 
                         <fieldset class="row justify-content-center">
                             <div class="form-group col-lg-6">
-                                <label for="meta_title">عنوان متا</label>
+                                <label for="meta_title">
+                                    <span>عنوان متا</span>
+                                    <span>(پیشنهاد: {{ $title }})</span>
+                                </label>
                                 <input id="meta_title" class="form-control" name="meta_title" type="text" value="{{ old('meta_title', $model->seoSettings?->meta_title) }}">
                             </div>
 
@@ -68,13 +71,20 @@
                             </div>
 
                             <div class="form-group col-lg-6">
-                                <label for="canonical_url">Canonical URL</label>
-                                <input id="canonical_url" class="form-control" name="canonical_url" type="url" value="{{ old('canonical_url', $model->seoSettings?->canonical_url) }}">
+                                <label for="canonical_url">
+                                    <span>Canonical URL</span>
+                                    <span class="d-block d-lg-inline suggest-default-value">(پیشنهاد: {{ $canonicalUrl }})</span>
+                                </label>
+                                <input id="canonical_url" class="form-control" name="canonical_url" dir="auto"
+                                       value="{{ old('canonical_url', $model->seoSettings?->canonical_url) }}">
                             </div>
 
                             <div class="form-group col-lg-6">
-                                <label for="robots">Robots</label>
-                                <input id="robots" class="form-control" name="robots" type="text" value="{{ old('robots', $model->seoSettings?->robots ?? 'index, follow') }}">
+                                <label for="robots">
+                                    <span>Robots</span>
+                                    <span>(پیشنهاد: index, follow)</span>
+                                </label>
+                                <input id="robots" class="form-control" name="robots" type="text" dir="auto" value="{{ old('robots', $model->seoSettings?->robots) }}">
                             </div>
 
                             <div class="form-group">
@@ -96,16 +106,16 @@
 @push('scripts')
     <script>
         $.validator.setDefaults({
-            highlight: function(element) {
+            highlight: function (element) {
                 $(element).closest('.form-group').addClass('has-error').removeClass("has-success");
             },
-            unhighlight: function(element) {
+            unhighlight: function (element) {
                 $(element).closest('.form-group').removeClass('has-error').addClass("has-success");
             },
             errorElement: 'span',
             errorClass: 'help-block',
-            errorPlacement: function(error, element) {
-                if(element.parent('.input-group').length) {
+            errorPlacement: function (error, element) {
+                if (element.parent('.input-group').length) {
                     error.insertAfter(element.parent());
                 } else {
                     error.insertAfter(element);

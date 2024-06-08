@@ -64,8 +64,9 @@ class ArticleController extends Controller
 
     public function SEOSettings(Article $article): view
     {
-        $modelTitle = $article->title;
         $nextUrl  = config('app.panel_prefix', 'panel') . '.articles.index';
-        return view('seo-manager::seo-settings', compact(['modelTitle', 'nextUrl']) + ['model' => $article]);
+        $title = $article->title;
+        $canonicalUrl = route('news.show', [$article->category->slug, $article->slug]);
+        return view('seo-manager::seo-settings', compact(['nextUrl', 'title', 'canonicalUrl']) + ['model' => $article]);
     }
 }

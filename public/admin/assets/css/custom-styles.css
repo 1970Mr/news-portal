@@ -26,3 +26,9 @@ th, .reply, .status, .subscribed-at {
     height: 1.6rem;
     font-size: .8rem;
 }
+
+@media (max-width: 768px) {
+    .suggest-default-value {
+        font-size: .8rem;
+    }
+}
