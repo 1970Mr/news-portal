@@ -56,4 +56,14 @@ class CategoryController extends Controller
         $category->delete();
         return back()->with('success', __('entity_deleted', ['entity' => __('category')]));
     }
+
+    public function SEOSettings(Category $category): view
+    {
+        $nextUrl = config('app.panel_prefix', 'panel') . '.categories.index';
+        $title = $category->name;
+        $pageTitle = __('category') . ' ' . $title;
+        // Optional placeholder
+        $canonicalUrl = route('categories.show', $category->slug);
+        return view('seo-manager::seo-settings', compact(['nextUrl', 'title', 'canonicalUrl', 'pageTitle']) + ['model' => $category]);
+    }
 }

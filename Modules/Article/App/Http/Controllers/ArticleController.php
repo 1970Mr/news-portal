@@ -66,7 +66,9 @@ class ArticleController extends Controller
     {
         $nextUrl  = config('app.panel_prefix', 'panel') . '.articles.index';
         $title = $article->title;
+        $pageTitle = __('article') . ' ' . $title;
+        // Optional placeholder
         $canonicalUrl = route('news.show', [$article->category->slug, $article->slug]);
-        return view('seo-manager::seo-settings', compact(['nextUrl', 'title', 'canonicalUrl']) + ['model' => $article]);
+        return view('seo-manager::seo-settings', compact(['nextUrl', 'title', 'canonicalUrl', 'pageTitle']) + ['model' => $article]);
     }
 }

@@ -2,7 +2,7 @@
 
 @section('content')
     <x-common-breadcrumbs>
-        <li><a>پروفایل</a></li>
+        <li><a>{{ $pageTitle ?? null }}</a></li>
         <li><a>تنظیمات سئو</a></li>
     </x-common-breadcrumbs>
 
@@ -13,7 +13,7 @@
                     <div class="portlet-title">
                         <h3 class="title">
                             <i class="fab fa-searchengin"></i>
-                            تنظیمات سئو {{ $title ?? null }}
+                            تنظیمات سئو {{ $pageTitle ?? null }}
                         </h3>
                     </div><!-- /.portlet-title -->
                     <div class="buttons-box">

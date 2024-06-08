@@ -15,7 +15,6 @@ class CategoryRequest extends FormRequest
         $rules = [
             'name' => 'required|min:2|max:100|unique:categories,name',
             'slug' => 'required|unique:categories,slug',
-            'description' => 'required|min:10',
             'parent_id' => 'nullable|numeric',
             'image' => 'required' . $imageRules,
             'status' => 'required|boolean',

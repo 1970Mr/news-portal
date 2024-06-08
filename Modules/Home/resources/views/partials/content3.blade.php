@@ -14,7 +14,7 @@
 
                             <div class="post-content">
                                 <h2 class="post-title">
-                                    <a href="{{ route('categories.show', $category->slug) }}">{{ $category->description }}</a>
+                                    <a href="{{ route('categories.show', $category->slug) }}">دسته‌بندی {{ $category->name }}</a>
                                 </h2>
                             </div><!-- Post content end -->
                         </div><!-- Post overlay Article end -->

@@ -36,6 +36,7 @@ return [
             'active_routes' => [
                 config('app.panel_prefix', 'panel') . '.categories.create',
                 config('app.panel_prefix', 'panel') . '.categories.edit',
+                config('app.panel_prefix', 'panel') . '.categories.seo-settings',
             ]
         ],
         'tag' => [
@@ -60,6 +61,7 @@ return [
             'active_routes' => [
                 config('app.panel_prefix', 'panel') . '.images.create',
                 config('app.panel_prefix', 'panel') . '.images.edit',
+                config('app.panel_prefix', 'panel') . '.articles.seo-settings',
             ]
         ],
         'article' => [

@@ -272,7 +272,6 @@
                                     <th>تصویر شاخص</th>
                                     <th>نام</th>
                                     <th>slug</th>
-                                    <th>توضیحات</th>
                                     <th>دسته‌بندی والد</th>
                                     <th>تاریخ ایجاد</th>
                                     <th>وضعیت</th>
@@ -290,7 +289,6 @@
                                         </td>
                                         <td>{{ $category->name }}</td>
                                         <td>{{ $category->slug }}</td>
-                                        <td>{{ $category->description }}</td>
                                         <td>{{ $category->parentCategoryTitle() }}</td>
                                         <td class="ltr text-right nowrap">{{ jalalian()->forge($category->created_at)->format(config('common.datetime_format')) }}</td>
                                         <td class="{{ status_class($category->status) }}">{{ status_message($category->status) }}</td>

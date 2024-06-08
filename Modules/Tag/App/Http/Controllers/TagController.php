@@ -60,9 +60,10 @@ class TagController extends Controller
     public function SEOSettings(Tag $tag): view
     {
         $nextUrl  = config('app.panel_prefix', 'panel') . '.tags.index';
-        // Optional placeholders
         $title = $tag->name;
+        $pageTitle = __('tag') . ' ' . $title;
+        // Optional placeholders
         $canonicalUrl = route('tags.show', $tag->slug);
-        return view('seo-manager::seo-settings', compact(['nextUrl', 'title', 'canonicalUrl']) + ['model' => $tag]);
+        return view('seo-manager::seo-settings', compact(['nextUrl', 'title', 'canonicalUrl', 'pageTitle']) + ['model' => $tag]);
     }
 }

@@ -55,7 +55,6 @@
                                 <th>تصویر شاخص</th>
                                 <th>نام</th>
                                 <th>slug</th>
-                                <th>توضیحات</th>
                                 <th>دسته‌بندی والد</th>
                                 <th>تاریخ ایجاد</th>
                                 <th>تاریخ بروزرسانی</th>
@@ -74,12 +73,15 @@
                                         </td>
                                         <td>{{ $category->name }}</td>
                                         <td>{{ $category->slug }}</td>
-                                        <td>{{ $category->description }}</td>
                                         <td>{{ $category->parentCategoryTitle() }}</td>
                                         <td class="ltr text-right nowrap">{{ jalalian()->forge($category->created_at)->format(config('common.datetime_format')) }}</td>
                                         <td class="ltr text-right nowrap">{{ jalalian()->forge($category->updated_at)->format(config('common.datetime_format')) }}</td>
                                         <td class="{{ status_class($category->status) }}">{{ status_message($category->status) }}</td>
-                                        @canany([config('permissions_list.CATEGORY_UPDATE'), config('permissions_list.CATEGORY_DESTROY')])
+                                    @canany([
+                                                    config('permissions_list.CATEGORY_UPDATE'),
+                                                    config('permissions_list.CATEGORY_DESTROY'),
+                                                    config('permissions_list.SEO_MANAGEMENT', false)
+                                    ])
                                             <td>
                                                 <div class="d-flex gap-2">
                                                     @can(config('permissions_list.CATEGORY_UPDATE', false))
@@ -91,6 +93,10 @@
 
                                                     @can(config('permissions_list.CATEGORY_DESTROY', false))
                                                         <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.categories.destroy', $category->id)" />
+                                                    @endcan
+
+                                                    @can(config('permissions_list.SEO_MANAGEMENT', false))
+                                                        <x-seo-manager-seo-settings-button :route="route(config('app.panel_prefix', 'panel') . '.categories.seo-settings', $category->id)"/>
                                                     @endcan
                                                 </div>
                                             </td>

@@ -45,10 +45,6 @@
                                 <input id="slug" class="form-control" name="slug" type="text" required value="{{ $category->slug }}">
                             </div>
                             <div class="form-group col-lg-6">
-                                <label for="description">توضیحات </label>
-                                <input id="description" class="form-control" name="description" type="text" value="{{ $category->description }}">
-                            </div>
-                            <div class="form-group col-lg-6">
                                 <label for="parent_id">دسته‌بندی والد</label>
                                 <select id="parent_id" class="form-control select2" name="parent_id">
                                     <option value="">انتخاب دسته‌بندی والد</option>

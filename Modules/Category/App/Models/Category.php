@@ -14,15 +14,15 @@ use Laravel\Scout\Searchable;
 use Modules\Article\App\Models\Article;
 use Modules\Category\Database\Factories\CategoryFactory;
 use Modules\FileManager\App\Traits\HasImage;
+use Modules\SEOManager\App\Traits\SEOAble;
 
 class Category extends Model
 {
-    use HasFactory, SoftDeletes, HasImage, Searchable;
+    use HasFactory, SoftDeletes, HasImage, Searchable, SEOAble;
 
     protected $fillable = [
         'name',
         'slug',
-        'description',
         'status',
         'parent_id',
     ];
