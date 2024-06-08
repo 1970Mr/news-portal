@@ -61,10 +61,10 @@
                                 <th>وضعیت ایمیل</th>
                                 <th>وضعیت</th>
                                 @canany([
-                                                    config('permissions_list.USER_UPDATE'),
-                                                    config('permissions_list.USER_DESTROY'),
-                                                    config('permissions_list.USER_ROLE_ASSIGNMENT'),
-                                                ])
+                                    config('permissions_list.USER_UPDATE'),
+                                    config('permissions_list.USER_DESTROY'),
+                                    config('permissions_list.USER_ROLE_ASSIGNMENT'),
+                                 ])
                                     <th>عملیات</th>
                                 @endcanany
                             </tr>
@@ -86,10 +86,10 @@
                                     <td class="{{ status_class($user->email_verified_at) }}">{{ $user->verified_email_status }}</td>
                                     <td class="{{ status_class($user->status) }}">{{ status_message($user->status) }}</td>
                                     @canany([
-                                                    config('permissions_list.USER_UPDATE'),
-                                                    config('permissions_list.USER_DESTROY'),
-                                                    config('permissions_list.USER_ROLE_ASSIGNMENT'),
-                                                ])
+                                        config('permissions_list.USER_UPDATE'),
+                                        config('permissions_list.USER_DESTROY'),
+                                        config('permissions_list.USER_ROLE_ASSIGNMENT'),
+                                    ])
                                         <td>
                                             <div class="d-flex gap-2">
                                                 @can(config('permissions_list.USER_UPDATE', false))

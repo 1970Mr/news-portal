@@ -16,6 +16,7 @@ return [
                 config('app.panel_prefix', 'panel') . '.users.create',
                 config('app.panel_prefix', 'panel') . '.users.edit',
                 config('app.panel_prefix', 'panel') . '.users.role-assignment',
+                config('app.panel_prefix', 'panel') . '.users.seo-settings',
             ],
         ],
         'role' => [

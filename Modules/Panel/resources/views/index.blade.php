@@ -206,7 +206,11 @@
                                         <td class="{{ status_class($article->editor_choice) }}">{{ status_message($article->editor_choice) }}</td>
                                         <td class="{{ status_class($article->isHot()) }}">{{ status_message($article->isHot()) }}</td>
                                         <td class="{{ status_class($article->status) }}">{{ status_message($article->status) }}</td>
-                                        @canany([config('permissions_list.ARTICLE_UPDATE'), config('permissions_list.ARTICLE_DESTROY')])
+                                        @canany([
+                                            config('permissions_list.ARTICLE_UPDATE'),
+                                            config('permissions_list.ARTICLE_DESTROY'),
+                                            config('permissions_list.SEO_MANAGEMENT', false)
+                                        ])
                                             <td>
                                                 <div class="d-flex gap-2">
                                                     @can(config('permissions_list.ARTICLE_UPDATE', false))
@@ -219,6 +223,10 @@
 
                                                     @can(config('permissions_list.ARTICLE_DESTROY', false))
                                                         <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.articles.destroy', $article->id)"/>
+                                                    @endcan
+
+                                                    @can(config('permissions_list.SEO_MANAGEMENT', false))
+                                                        <x-seo-manager-seo-settings-button :route="route(config('app.panel_prefix', 'panel') . '.articles.seo-settings', $article->id)"/>
                                                     @endcan
                                                 </div>
                                             </td>
@@ -292,7 +300,11 @@
                                         <td>{{ $category->parentCategoryTitle() }}</td>
                                         <td class="ltr text-right nowrap">{{ jalalian()->forge($category->created_at)->format(config('common.datetime_format')) }}</td>
                                         <td class="{{ status_class($category->status) }}">{{ status_message($category->status) }}</td>
-                                        @canany([config('permissions_list.CATEGORY_UPDATE'), config('permissions_list.CATEGORY_DESTROY')])
+                                        @canany([
+                                            config('permissions_list.CATEGORY_UPDATE'),
+                                            config('permissions_list.CATEGORY_DESTROY'),
+                                            config('permissions_list.SEO_MANAGEMENT', false)
+                                        ])
                                             <td>
                                                 <div class="d-flex gap-2">
                                                     @can(config('permissions_list.CATEGORY_UPDATE', false))
@@ -305,6 +317,10 @@
 
                                                     @can(config('permissions_list.CATEGORY_DESTROY', false))
                                                         <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.categories.destroy', $category->id)"/>
+                                                    @endcan
+
+                                                    @can(config('permissions_list.SEO_MANAGEMENT', false))
+                                                        <x-seo-manager-seo-settings-button :route="route(config('app.panel_prefix', 'panel') . '.categories.seo-settings', $category->id)"/>
                                                     @endcan
                                                 </div>
                                             </td>
@@ -374,7 +390,11 @@
                                         <td class="ltr text-right nowrap">{{ jalalian()->forge($tag->created_at)->format(config('common.datetime_format')) }}</td>
                                         <td class="{{ status_class($tag->isHot()) }}">{{ status_message($tag->isHot()) }}</td>
                                         <td class="{{ status_class($tag->status) }}">{{ status_message($tag->status) }}</td>
-                                        @canany([config('permissions_list.TAG_UPDATE'), config('permissions_list.TAG_DESTROY')])
+                                        @canany([
+                                            config('permissions_list.TAG_UPDATE'),
+                                            config('permissions_list.TAG_DESTROY'),
+                                            config('permissions_list.SEO_MANAGEMENT', false)
+                                        ])
                                             <td>
                                                 <div class="d-flex gap-2">
                                                     @can(config('permissions_list.TAG_UPDATE', false))
@@ -387,6 +407,10 @@
 
                                                     @can(config('permissions_list.TAG_DESTROY', false))
                                                         <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.tags.destroy', $tag->id)"/>
+                                                    @endcan
+
+                                                    @can(config('permissions_list.SEO_MANAGEMENT', false))
+                                                        <x-seo-manager-seo-settings-button :route="route(config('app.panel_prefix', 'panel') . '.tags.seo-settings', $tag->id)"/>
                                                     @endcan
                                                 </div>
                                             </td>

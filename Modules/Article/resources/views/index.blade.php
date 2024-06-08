@@ -88,9 +88,9 @@
                                     <td class="{{ status_class($article->isHot()) }}">{{ status_message($article->isHot()) }}</td>
                                     <td class="{{ status_class($article->status) }}">{{ status_message($article->status) }}</td>
                                     @canany([
-                                                    config('permissions_list.ARTICLE_UPDATE'),
-                                                    config('permissions_list.ARTICLE_DESTROY'),
-                                                    config('permissions_list.SEO_MANAGEMENT', false)
+                                        config('permissions_list.ARTICLE_UPDATE'),
+                                        config('permissions_list.ARTICLE_DESTROY'),
+                                        config('permissions_list.SEO_MANAGEMENT', false)
                                     ])
                                         <td>
                                             <div class="d-flex gap-2">
@@ -107,7 +107,7 @@
                                                 @endcan
 
                                                 @can(config('permissions_list.SEO_MANAGEMENT', false))
-                                                        <x-seo-manager-seo-settings-button :route="route(config('app.panel_prefix', 'panel') . '.articles.seo-settings', $article->id)"/>
+                                                    <x-seo-manager-seo-settings-button :route="route(config('app.panel_prefix', 'panel') . '.articles.seo-settings', $article->id)"/>
                                                 @endcan
                                             </div>
                                         </td>
