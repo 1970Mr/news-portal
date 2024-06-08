@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug')->unique();
-            $table->string('description');
-            $table->string('keywords');
             $table->longText('body');
             $table->timestamp('published_at');
             $table->boolean('editor_choice')->default(false);

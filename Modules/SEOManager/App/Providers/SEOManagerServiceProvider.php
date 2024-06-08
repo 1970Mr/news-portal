@@ -4,6 +4,7 @@ namespace Modules\SEOManager\App\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Modules\SEOManager\App\View\Components\SEOSettingsButton;
 
 class SEOManagerServiceProvider extends ServiceProvider
 {
@@ -22,6 +23,7 @@ class SEOManagerServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/migrations'));
+        $this->loadViewComponentsAs($this->moduleNameLower, [SEOSettingsButton::class => 'seo-settings-button']);
     }
 
     /**

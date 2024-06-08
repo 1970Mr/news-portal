@@ -45,24 +45,6 @@
                             </a>
                         @endcan
                     </div><!-- /.buttons-box -->
-
-
-{{--                    <div class="portlet-body" style="">--}}
-{{--                        <form role="form">--}}
-{{--                            <div class="form-body">--}}
-{{--                                <div class="input-group">--}}
-{{--                                    <input type="text" class="form-control numeric ltr" placeholder="شماره همراه">--}}
-{{--                                    <span class="input-group-btn">--}}
-{{--                                                    <button class="btn btn-primary" type="button">ارسال SMS<div class="paper-ripple"><div class="paper-ripple__background"></div><div--}}
-{{--                                                                class="paper-ripple__waves"></div></div></button>--}}
-{{--                                                </span>--}}
-{{--                                </div><!-- ./input-group -->--}}
-{{--                            </div><!-- /.form-body -->--}}
-{{--                        </form>--}}
-{{--                        <hr>--}}
-
-
-{{--                    </div>--}}
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
                     <div class="table-responsive overflow-x-auto">
@@ -73,8 +55,6 @@
                                 <th>تصویر شاخص</th>
                                 <th>عنوان</th>
                                 <th>slug</th>
-                                <th>توضیحات</th>
-                                <th>کلمات کلیدی</th>
                                 <th>کاربر</th>
                                 <th>دسته‌بندی</th>
                                 <th>تگ(ها)</th>
@@ -98,8 +78,6 @@
                                     </td>
                                     <td>{{ $article->title }}</td>
                                     <td>{{ $article->slug }}</td>
-                                    <td class="nowrap">{{ str($article->description)->limit(25) }}</td>
-                                    <td class="min-w-10">{{ $article->keywords }}</td>
                                     <td>{{ $article->user?->full_name }}</td>
                                     <td>{{ $article->category?->name }}</td>
                                     <td class="nowrap">{{ str(nullable_value($article->tagNames()))->limit(50) }}</td>
@@ -122,6 +100,10 @@
 
                                                 @can(config('permissions_list.ARTICLE_DESTROY', false))
                                                     <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.articles.destroy', $article->id)"/>
+                                                @endcan
+
+                                                @can(config('permissions_list.SEO_MANAGEMENT', false))
+                                                        <x-seo-manager-seo-settings-button :route="route(config('app.panel_prefix', 'panel') . '.articles.seo-settings', $article->id)"/>
                                                 @endcan
                                             </div>
                                         </td>

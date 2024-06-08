@@ -3,7 +3,6 @@
 namespace Modules\Article\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -61,5 +60,12 @@ class ArticleController extends Controller
     {
         $this->articleService->destroy($article);
         return back()->with('success', __('entity_deleted', ['entity' => __('article')]));
+    }
+
+    public function SEOSettings(Article $article): view
+    {
+        $modelTitle = $article->title;
+        $nextUrl  = config('app.panel_prefix', 'panel') . '.articles.index';
+        return view('seo-manager::seo-settings', compact(['modelTitle', 'nextUrl']) + ['model' => $article]);
     }
 }

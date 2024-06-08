@@ -42,14 +42,6 @@
                                 <input id="slug" class="form-control" name="slug" type="text" required value="{{ old('slug') }}">
                             </div>
                             <div class="form-group col-lg-6">
-                                <label for="description">توضیحات <small>(ضروری)</small></label>
-                                <input id="description" class="form-control" name="description" required type="text" value="{{ old('description') }}">
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label for="keywords">کلمات کلیدی <small>(ضروری)</small></label>
-                                <input id="keywords" class="form-control" name="keywords" required type="text" value="{{ old('keywords') }}">
-                            </div>
-                            <div class="form-group col-lg-6">
                                 <label for="published_at">تاریخ انتشار <small>(ضروری)</small></label>
                                 <div class="input-group" id="dtp1">
                                     <input id="published_at" type="text" class="form-control cursor-pointer" required readonly data-name="dtp1-text" dir="ltr">

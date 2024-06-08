@@ -18,6 +18,7 @@ use Modules\Category\App\Models\Category;
 use Modules\Comment\App\Traits\HasComments;
 use Modules\FileManager\App\Traits\HasImage;
 use Modules\Hotness\App\Traits\HasHotness;
+use Modules\SEOManager\App\Traits\SEOAble;
 use Modules\Tag\App\Models\Tag;
 use Modules\User\App\Models\User;
 use Spatie\Feed\Feedable;
@@ -25,13 +26,11 @@ use Spatie\Feed\FeedItem;
 
 class Article extends Model implements Feedable
 {
-    use HasFactory, HasImage, HasHotness, HasComments, Searchable, Likeable;
+    use HasFactory, HasImage, HasHotness, HasComments, Searchable, Likeable, SEOAble;
 
     protected $fillable = [
         'title',
         'slug',
-        'description',
-        'keywords',
         'body',
         'published_at',
         'editor_choice',
@@ -63,8 +62,7 @@ class Article extends Model implements Feedable
             'id' => (int)$this->id,
             'title' => $this->title,
             'slug' => $this->slug,
-            'description' => $this->description,
-            'keywords' => $this->keywords,
+            'body' => $this->body,
         ];
     }
 

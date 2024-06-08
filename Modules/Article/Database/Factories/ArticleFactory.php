@@ -28,8 +28,6 @@ class ArticleFactory extends Factory
         return [
             'title' => $uniqueTitle,
             'slug' => Str::slug($uniqueTitle),
-            'description' => fake()->words(20, true),
-            'keywords' => implode(', ', fake()->words(5)),
             'body' => fake()->paragraphs(3, true),
             'published_at' => fake()->dateTimeBetween('-1 year', 'now')->format('Y-m-d H:i:s'),
             'editor_choice' => fake()->boolean,
