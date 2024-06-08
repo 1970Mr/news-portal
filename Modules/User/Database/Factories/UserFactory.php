@@ -31,7 +31,7 @@ class UserFactory extends Factory
             'full_name' => fake()->name,
             'username' => UserHelper::createDefaultUsername(),
             'email' => fake()->unique()->safeEmail,
-            'about' => fake()->sentence,
+            'bio' => fake()->sentence,
             'email_verified_at' => now(),
             'password' => Hash::make('password'),
             'remember_token' => Str::random(10),

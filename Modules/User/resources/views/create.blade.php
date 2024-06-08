@@ -68,8 +68,8 @@
                             </div>
                             <div class="form-group col-12 row justify-content-center">
                                 <div class="col-md-6">
-                                    <label for="about">توضیح مختصری در مورد کاربر</label>
-                                    <textarea class="form-control" name="about" id="about">{{ old('about') }}</textarea>
+                                    <label for="bio">توضیح مختصری در مورد کاربر</label>
+                                    <textarea class="form-control" name="bio" id="bio">{{ old('bio') }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group col-12 row justify-content-center">

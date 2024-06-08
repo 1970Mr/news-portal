@@ -35,7 +35,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'full_name',
         'username',
         'email',
-        'about',
+        'bio',
         'password',
         'status',
     ];
@@ -71,7 +71,7 @@ class User extends Authenticatable implements MustVerifyEmail
             'full_name' => $this->full_name,
             'username' => $this->username,
             'email' => $this->email,
-            'about' => $this->about,
+            'bio' => $this->bio,
         ];
     }
 

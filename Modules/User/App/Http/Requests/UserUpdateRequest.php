@@ -15,7 +15,7 @@ class UserUpdateRequest extends FormRequest
             'full_name' => 'required|string|min:2',
             'username' => 'required|string|min:2|unique:users,username,' . $this->route('user')->id,
             'email' => 'required|email|unique:users,email,' . $this->route('user')->id,
-            'about' => 'nullable|string|max:600',
+            'bio' => 'nullable|string|max:600',
             'password' => 'exclude_if:password,null|min:8|confirmed',
             'picture' => 'nullable|image|max:5000',
             'email_verification' => 'nullable',

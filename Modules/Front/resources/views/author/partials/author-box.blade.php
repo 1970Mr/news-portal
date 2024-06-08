@@ -8,7 +8,7 @@
             <span>{{ $articlesCount }} مطلب</span>
             <span>{{ $commentsCount }} دیدگاه</span>
         </div>
-        <p>{{ $author->about }}</p>
+        <p>{{ $author->bio }}</p>
         @if($socialNetworks)
             <div class="authors-social" style="clear: both">
                 <span>مرا دنبال کنید: </span>

@@ -8,7 +8,7 @@
         <h3>
             <a class="" href="{{ route('author.index', $article->user->username) }}">{{ $article->user->full_name }}</a>
         </h3>
-        <p>{{ $article->user->about }}</p>
+        <p>{{ $article->user->bio }}</p>
         @if($socialNetworks = $article->user->socialNetworks)
             <div class="authors-social" style="clear: both">
                 <span>مرا دنبال کنید: </span>

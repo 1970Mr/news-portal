@@ -48,8 +48,8 @@
                             </div>
                             <div class="form-group col-12 row justify-content-center">
                                 <div class="col-md-6">
-                                    <label for="about">توضیح مختصری در مورد کاربر</label>
-                                    <textarea class="form-control" name="about" id="about">{{ old('about', $user->about) }}</textarea>
+                                    <label for="bio">توضیح مختصری در مورد کاربر</label>
+                                    <textarea class="form-control" name="bio" id="bio">{{ old('bio', $user->bio) }}</textarea>
                                 </div>
                             </div>
                             <div class="accordion mb-3" id="accordionEditPassword">

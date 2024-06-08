@@ -56,7 +56,7 @@
                                 <th>نام کاربری</th>
                                 <th>ایمیل</th>
                                 <th>نقش</th>
-                                <th>توضیحات</th>
+                                <th>بیوگرافی</th>
                                 <th>تاریخ عضویت</th>
                                 <th>وضعیت ایمیل</th>
                                 <th>وضعیت</th>
@@ -81,7 +81,7 @@
                                     <td>{{ $user->username }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td class="nowrap">{{ $user->getRoleLocalNames()->implode(', ') }}</td>
-                                    <td>{{ nullable_value(str($user->about)->limit(30)->toString()) }}</td>
+                                    <td>{{ nullable_value(str($user->bio)->limit(30)->toString()) }}</td>
                                     <td class="ltr text-right nowrap">{{ jalalian()->forge($user->created_at)->format(config('common.datetime_format')) }}</td>
                                     <td class="{{ status_class($user->email_verified_at) }}">{{ $user->verified_email_status }}</td>
                                     <td class="{{ status_class($user->status) }}">{{ status_message($user->status) }}</td>

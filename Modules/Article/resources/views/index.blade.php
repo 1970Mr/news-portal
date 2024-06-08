@@ -87,7 +87,11 @@
                                     <td class="{{ status_class($article->editor_choice) }}">{{ status_message($article->editor_choice) }}</td>
                                     <td class="{{ status_class($article->isHot()) }}">{{ status_message($article->isHot()) }}</td>
                                     <td class="{{ status_class($article->status) }}">{{ status_message($article->status) }}</td>
-                                    @canany([config('permissions_list.ARTICLE_UPDATE'), config('permissions_list.ARTICLE_DESTROY')])
+                                    @canany([
+                                                    config('permissions_list.ARTICLE_UPDATE'),
+                                                    config('permissions_list.ARTICLE_DESTROY'),
+                                                    config('permissions_list.SEO_MANAGEMENT', false)
+                                    ])
                                         <td>
                                             <div class="d-flex gap-2">
                                                 @can(config('permissions_list.ARTICLE_UPDATE', false))

@@ -174,8 +174,6 @@
                                     <th>تصویر شاخص</th>
                                     <th>عنوان</th>
                                     <th>slug</th>
-                                    <th>توضیحات</th>
-                                    <th>کلمات کلیدی</th>
                                     <th>کاربر</th>
                                     <th>دسته‌بندی</th>
                                     <th>تگ(ها)</th>
@@ -199,8 +197,6 @@
                                         </td>
                                         <td>{{ $article->title }}</td>
                                         <td>{{ $article->slug }}</td>
-                                        <td  class="nowrap">{{ str($article->description)->limit(25) }}</td>
-                                        <td class="min-w-10">{{ $article->keywords }}</td>
                                         <td>{{ $article->user->full_name }}</td>
                                         <td>{{ $article->category->name }}</td>
                                         <td class="nowrap">{{ str(nullable_value($article->tagNames()))->limit(50) }}</td>
