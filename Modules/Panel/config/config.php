@@ -61,7 +61,6 @@ return [
             'active_routes' => [
                 config('app.panel_prefix', 'panel') . '.images.create',
                 config('app.panel_prefix', 'panel') . '.images.edit',
-                config('app.panel_prefix', 'panel') . '.articles.seo-settings',
             ]
         ],
         'article' => [
@@ -72,6 +71,7 @@ return [
             'active_routes' => [
                 config('app.panel_prefix', 'panel') . '.articles.create',
                 config('app.panel_prefix', 'panel') . '.articles.edit',
+                config('app.panel_prefix', 'panel') . '.articles.seo-settings',
             ]
         ],
         'comment' => [

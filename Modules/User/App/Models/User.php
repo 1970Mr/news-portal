@@ -18,13 +18,14 @@ use Modules\Article\App\Models\Article;
 use Modules\Comment\App\Traits\Commenter;
 use Modules\FileManager\App\Traits\HasImage;
 use Modules\Role\App\Models\Role;
+use Modules\SEOManager\App\Traits\SEOAble;
 use Modules\SocialNetwork\App\Traits\HasSocialNetwork;
 use Modules\User\Database\Factories\UserFactory;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles, SoftDeletes, HasImage, Commenter, HasSocialNetwork, Searchable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, SoftDeletes, HasImage, Commenter, HasSocialNetwork, Searchable, SEOAble;
 
     /**
      * The attributes that are mass assignable.
@@ -67,7 +68,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function toSearchableArray(): array
     {
         return [
-            'id' => (int) $this->id,
+            'id' => (int)$this->id,
             'full_name' => $this->full_name,
             'username' => $this->username,
             'email' => $this->email,

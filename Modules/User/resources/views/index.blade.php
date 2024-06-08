@@ -104,8 +104,12 @@
                                                     <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.users.destroy', $user->id)"/>
                                                 @endcan
 
+                                                @can(config('permissions_list.SEO_MANAGEMENT', false))
+                                                    <x-seo-manager-seo-settings-button :route="route(config('app.panel_prefix', 'panel') . '.users.seo-settings', $user->id)"/>
+                                                @endcan
+
                                                 @can(config('permissions_list.USER_ROLE_ASSIGNMENT', false))
-                                                    <a class="btn btn-sm btn-warning btn-icon round d-flex justify-content-center align-items-center"
+                                                    <a class="btn btn-sm btn-secondary btn-icon round d-flex justify-content-center align-items-center"
                                                        rel="tooltip" aria-label="اختصاص نقش" data-bs-original-title="اختصاص نقش" href="{{ route(config('app.panel_prefix', 'panel') . '.users.role-assignment', $user->id) }}">
                                                         <i class="fas fa-arrow-down-up-lock"></i>
                                                     </a>

@@ -1,4 +1,4 @@
-@extends('panel::layouts.master', ['title' => 'تنظیمات سئو'])
+@extends('panel::layouts.master', ['title' => 'تنظیمات سئو' . (' ' . $pageTitle ?? null)])
 
 @section('content')
     <x-common-breadcrumbs>

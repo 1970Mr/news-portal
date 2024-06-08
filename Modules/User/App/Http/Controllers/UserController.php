@@ -58,4 +58,14 @@ class UserController extends Controller
         $this->userService->delete($user);
         return back()->with('success', __('entity_deleted', ['entity' => __('user')]));
     }
+
+    public function SEOSettings(User $user): view
+    {
+        $nextUrl  = config('app.panel_prefix', 'panel') . '.users.index';
+        $title = $user->full_name;
+        $pageTitle = __('user') . ' ' . $title;
+        // Optional placeholders
+        $canonicalUrl = route('author.index', $user->username);
+        return view('seo-manager::seo-settings', compact(['nextUrl', 'title', 'canonicalUrl', 'pageTitle']) + ['model' => $user]);
+    }
 }
