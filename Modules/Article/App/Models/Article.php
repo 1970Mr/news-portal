@@ -41,10 +41,11 @@ class Article extends Model implements Feedable
 
     public function toFeedItem(): FeedItem
     {
+        $summary = $this->seoSettings?->meta_description ?? $this->bodyText();
         return FeedItem::create()
             ->id($this->id)
             ->title($this->title)
-            ->summary($this->description)
+            ->summary($summary)
             ->updated($this->updated_at)
             ->link(route('news.show', [$this->category->slug, $this->slug]))
             ->authorName($this->user->full_name)

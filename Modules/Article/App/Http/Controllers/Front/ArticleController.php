@@ -9,7 +9,7 @@ use Illuminate\View\View;
 use Modules\Article\App\Models\Article;
 use Modules\Article\App\Services\Front\ShareService;
 use Modules\Category\App\Models\Category;
-use Modules\Common\App\Services\SEOService;
+use Modules\SEOManager\App\Services\Front\SEOService;
 
 class ArticleController extends Controller
 {

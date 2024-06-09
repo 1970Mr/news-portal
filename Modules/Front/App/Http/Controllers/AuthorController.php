@@ -4,7 +4,7 @@ namespace Modules\Front\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\View\View;
-use Modules\Common\App\Services\SEOService;
+use Modules\SEOManager\App\Services\Front\SEOService;
 use Modules\User\App\Models\User;
 
 class AuthorController extends Controller

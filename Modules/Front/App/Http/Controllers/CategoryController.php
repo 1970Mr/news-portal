@@ -5,7 +5,7 @@ namespace Modules\Front\App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\View\View;
 use Modules\Category\App\Models\Category;
-use Modules\Common\App\Services\SEOService;
+use Modules\SEOManager\App\Services\Front\SEOService;
 
 class CategoryController extends Controller
 {

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Modules\Article\App\Models\Article;
-use Modules\Common\App\Services\SEOService;
+use Modules\SEOManager\App\Services\Front\SEOService;
 
 class SearchController extends Controller
 {
