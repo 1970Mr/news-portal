@@ -7,6 +7,7 @@ use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Artesaos\SEOTools\Facades\TwitterCard;
+use Illuminate\Support\Collection;
 use Modules\Article\App\Models\Article;
 use Modules\Category\App\Models\Category;
 use Modules\Setting\App\Models\SiteDetail;
@@ -187,7 +188,7 @@ class SEOService
         string $description,
         string $canonicalUrl,
         string $robots = 'index, follow',
-        array  $keywords = []
+        array|Collection  $keywords = []
     ): void
     {
         SEOTools::setTitle($title);

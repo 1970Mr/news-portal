@@ -36,7 +36,7 @@
 @endsection
 
 @push('styles')
-    @include('front::single-article.partials.custom-show-styles')
+    <link rel="stylesheet" href="{{ asset('home/css/custom-single-article-style.css') }}">
 @endpush
 
 @push('scripts')

@@ -17,22 +17,6 @@
 
     @include('front::partials.styles')
 
-    @include('front::partials.custom-footer-style')
-
-    <style>
-        .nav-parent-cat-post-img {
-            height: 14rem;
-        }
-
-        .nav-cat-post-img {
-            height: 17rem;
-        }
-
-        img {
-            object-fit: cover;
-        }
-    </style>
-
     @stack('styles')
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
