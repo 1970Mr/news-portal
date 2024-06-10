@@ -15,7 +15,7 @@ class VerifyEmailControllerTest extends TestCase
     /** @test */
     public function user_can_view_email_verification_page(): void
     {
-        $user = User::factory()->create(['email_verified_at' => null]);
+        $user = User::factory()->active()->unverified()->create();
         $response = $this->actingAs($user)->get(route('verification.notice'));
         $response->assertStatus(200)
             ->assertViewIs('auth::verify-email');
@@ -24,7 +24,7 @@ class VerifyEmailControllerTest extends TestCase
     /** @test */
     public function user_can_verify_email(): void
     {
-        $user = User::factory()->create(['email_verified_at' => null]);
+        $user = User::factory()->active()->unverified()->create();
         $url = URL::temporarySignedRoute(
             'verification.verify',
             now()->addMinutes(60),
@@ -42,7 +42,7 @@ class VerifyEmailControllerTest extends TestCase
     public function user_can_resend_email_verification(): void
     {
         Mail::fake();
-        $user = User::factory()->create(['email_verified_at' => null]);
+        $user = User::factory()->active()->unverified()->create();
         $response = $this->actingAs($user)->post(route('verification.send'));
         $response->assertRedirect()
             ->assertSessionHas('success', __('auth::messages.email_verification_sent'));

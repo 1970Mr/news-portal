@@ -27,7 +27,7 @@ class PasswordResetControllerTest extends TestCase
     /** @test */
     public function user_can_request_password_reset_link(): void
     {
-        $user = User::factory()->create();
+        $user = User::factory()->active()->create();
         Password::shouldReceive('sendResetLink')
             ->once()
             ->andReturn(Password::RESET_LINK_SENT);
@@ -43,7 +43,7 @@ class PasswordResetControllerTest extends TestCase
     /** @test */
     public function user_can_view_reset_password_form_with_valid_token_and_email(): void
     {
-        $user = User::factory()->create();
+        $user = User::factory()->active()->create();
         $token = Password::broker()->createToken($user);
         $response = $this->get(route('password.reset', ['token' => $token, 'email' => $user->email]));
         $response->assertStatus(200)
@@ -62,7 +62,7 @@ class PasswordResetControllerTest extends TestCase
     /** @test */
     public function password_reset_service_works(): void
     {
-        $user = User::factory()->create();
+        $user = User::factory()->active()->create();
         $this->instance(
             PasswordResetService::class,
             mock(PasswordResetService::class, static function (MockInterface $mock) {
@@ -86,7 +86,7 @@ class PasswordResetControllerTest extends TestCase
     /** @test */
     public function user_can_reset_password(): void
     {
-        $user = User::factory()->create();
+        $user = User::factory()->active()->create();
         $token = Password::broker()->createToken($user);
 
         $response = $this->post(route('password.update'), [

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->longText('body');
-            $table->timestamp('published_at');
+            $table->dateTime('published_at');
             $table->boolean('editor_choice')->default(false);
             $table->boolean('status')->default(false);
             $table->foreignId('category_id')->constrained('categories');

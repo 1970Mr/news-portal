@@ -49,6 +49,13 @@ class UserFactory extends Factory
         ]);
     }
 
+    public function active(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'status' => true,
+        ]);
+    }
+
     public function configure(): Factory
     {
         return $this->afterCreating(function (User $user) {

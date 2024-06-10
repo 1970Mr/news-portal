@@ -22,7 +22,7 @@ class LoginControllerTest extends TestCase
     /** @test */
     public function user_can_login_with_valid_credentials(): void
     {
-        $user = User::factory()->create([
+        $user = User::factory()->active()->create([
             'password' => 'password'
         ]);
 
@@ -40,7 +40,7 @@ class LoginControllerTest extends TestCase
     /** @test */
     public function user_cannot_login_with_invalid_credentials(): void
     {
-        $user = User::factory()->create([
+        $user = User::factory()->active()->create([
             'password' => 'password'
         ]);
 

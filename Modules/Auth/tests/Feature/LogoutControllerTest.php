@@ -13,7 +13,7 @@ class LogoutControllerTest extends TestCase
     /** @test */
     public function user_can_logout(): void
     {
-        $user = User::factory()->create([
+        $user = User::factory()->active()->create([
             'password' => 'password'
         ]);
         $this->actingAs($user);

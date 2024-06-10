@@ -22,7 +22,7 @@ class PasswordResetServiceTest extends TestCase
     {
         Event::fake();
 
-        $user = User::factory()->create();
+        $user = User::factory()->active()->create();
         $token = Password::createToken($user);
         $requestData = [
             'token' =>  $token,
