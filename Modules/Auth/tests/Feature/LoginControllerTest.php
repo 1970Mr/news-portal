@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\Auth\tests\Feature;
+namespace Modules\Auth\Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Modules\User\Database\Factories\UserFactory;
+use Modules\User\App\Models\User;
 use Tests\TestCase;
 
 class LoginControllerTest extends TestCase
@@ -22,15 +22,17 @@ class LoginControllerTest extends TestCase
     /** @test */
     public function user_can_login_with_valid_credentials(): void
     {
-        $user = UserFactory::new()->create();
+        $user = User::factory()->create([
+            'password' => 'password'
+        ]);
 
         $response = $this->post(route('login'), [
-            'email' => 'test@example.com',
+            'email' => $user->email,
             'password' => 'password',
         ]);
 
         $response->assertRedirect(route('home.index'))
-            ->assertSessionHas('success',  __('auth::messages.login_success'));
+            ->assertSessionHas('success', __('auth::messages.login_success'));
 
         $this->assertAuthenticatedAs($user);
     }
@@ -38,15 +40,16 @@ class LoginControllerTest extends TestCase
     /** @test */
     public function user_cannot_login_with_invalid_credentials(): void
     {
-        UserFactory::new()->create();
+        $user = User::factory()->create([
+            'password' => 'password'
+        ]);
 
         $response = $this->post(route('login'), [
-            'email' => 'test@example.com',
+            'email' => $user->email,
             'password' => 'password2',
         ]);
 
-        $response->assertSessionHasErrors()
-            ->assertSessionHasErrors();
+        $response->assertSessionHasErrors();
 
         $this->assertGuest();
     }
