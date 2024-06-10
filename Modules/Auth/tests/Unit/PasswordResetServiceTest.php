@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Modules\Auth\App\Http\Requests\PasswordResetRequest;
 use Modules\Auth\App\Services\PasswordResetService;
+use Modules\User\App\Models\User;
 use Modules\User\Database\Factories\UserFactory;
 use Tests\TestCase;
 
@@ -21,7 +22,7 @@ class PasswordResetServiceTest extends TestCase
     {
         Event::fake();
 
-        $user = UserFactory::new()->create(['password' => Hash::make('old_password')]);
+        $user = User::factory()->create();
         $token = Password::createToken($user);
         $requestData = [
             'token' =>  $token,

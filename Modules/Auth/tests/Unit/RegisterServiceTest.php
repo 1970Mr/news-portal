@@ -19,7 +19,7 @@ class RegisterServiceTest extends TestCase
     public function it_can_create_user(): void
     {
         $requestData = [
-            'name' => 'test',
+            'full_name' => 'test',
             'email' => 'test@example.com',
             'password' => 'password',
             'password_confirmation' => 'password',
@@ -42,7 +42,7 @@ class RegisterServiceTest extends TestCase
         Event::fake();
 
         $requestData = [
-            'name' => 'test',
+            'full_name' => 'test',
             'email' => 'test@example.com',
             'password' => 'password',
             'password_confirmation' => 'password',
