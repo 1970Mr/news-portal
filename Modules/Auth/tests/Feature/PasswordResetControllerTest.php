@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Mockery\MockInterface;
 use Modules\Auth\App\Services\PasswordResetService;
+use Modules\User\App\Models\User;
 use Modules\User\Database\Factories\UserFactory;
 use Tests\TestCase;
 
@@ -27,14 +28,13 @@ class PasswordResetControllerTest extends TestCase
     /** @test */
     public function user_can_request_password_reset_link(): void
     {
-        UserFactory::new()->create();
-
+        $user = User::factory()->create();
         Password::shouldReceive('sendResetLink')
             ->once()
             ->andReturn(Password::RESET_LINK_SENT);
 
         $response = $this->post(route('password.email'), [
-            'email' => 'test@example.com',
+            'email' => $user->email,
         ]);
 
         $response->assertRedirect()
@@ -44,9 +44,9 @@ class PasswordResetControllerTest extends TestCase
     /** @test */
     public function user_can_view_reset_password_form_with_valid_token_and_email(): void
     {
-        $user = UserFactory::new()->create();
+        $user = User::factory()->create();
         $token = Password::broker()->createToken($user);
-        $response = $this->get(route('password.reset', ['token' => $token, 'email' => 'test@example.com']));
+        $response = $this->get(route('password.reset', ['token' => $token, 'email' => $user->email]));
         $response->assertStatus(200)
             ->assertViewIs('auth::password.reset');
     }
@@ -63,7 +63,7 @@ class PasswordResetControllerTest extends TestCase
     /** @test */
     public function password_reset_service_works(): void
     {
-        UserFactory::new()->create();
+        $user = User::factory()->create();
         $this->instance(
             PasswordResetService::class,
             mock(PasswordResetService::class, static function (MockInterface $mock) {
@@ -74,7 +74,7 @@ class PasswordResetControllerTest extends TestCase
         );
 
         $this->post(route('password.update'), [
-            'email' => 'test@example.com',
+            'email' => $user->email,
             'token' => $this->faker()->uuid(),
             'password' => 'new_password',
             'password_confirmation' => 'new_password',
@@ -84,11 +84,11 @@ class PasswordResetControllerTest extends TestCase
     /** @test */
     public function user_can_reset_password(): void
     {
-        $user = UserFactory::new()->create();
+        $user = User::factory()->create();
         $token = Password::broker()->createToken($user);
 
         $response = $this->post(route('password.update'), [
-            'email' => 'test@example.com',
+            'email' => $user->email,
             'token' => $token,
             'password' => 'new_password',
             'password_confirmation' => 'new_password',

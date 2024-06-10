@@ -3,7 +3,7 @@
 namespace Modules\Auth\tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Modules\User\Database\Factories\UserFactory;
+use Modules\User\App\Models\User;
 use Tests\TestCase;
 
 class LogoutControllerTest extends TestCase
@@ -13,9 +13,8 @@ class LogoutControllerTest extends TestCase
     /** @test */
     public function user_can_logout(): void
     {
-        $user = UserFactory::new()->create([
-            'email' => 'test@example.com',
-            'password' => bcrypt('password'),
+        $user = User::factory()->create([
+            'password' => 'password'
         ]);
         $this->actingAs($user);
         $response = $this->post(route('logout'));
