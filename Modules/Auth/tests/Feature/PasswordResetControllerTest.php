@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Password;
 use Mockery\MockInterface;
 use Modules\Auth\App\Services\PasswordResetService;
 use Modules\User\App\Models\User;
-use Modules\User\Database\Factories\UserFactory;
 use Tests\TestCase;
 
 class PasswordResetControllerTest extends TestCase
@@ -73,12 +72,15 @@ class PasswordResetControllerTest extends TestCase
             })
         );
 
-        $this->post(route('password.update'), [
+        $response = $this->post(route('password.update'), [
             'email' => $user->email,
             'token' => $this->faker()->uuid(),
             'password' => 'new_password',
             'password_confirmation' => 'new_password',
         ]);
+
+        $response->assertRedirect(route('login'))
+            ->assertSessionHas('success', __('auth::messages.password_changed_successfully'));
     }
 
     /** @test */

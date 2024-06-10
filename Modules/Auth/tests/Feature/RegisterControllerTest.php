@@ -1,8 +1,10 @@
 <?php
 
-namespace Modules\Auth\tests\Feature;
+namespace Modules\Auth\Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Mail\Mailable;
+use Illuminate\Support\Facades\Mail;
 use Mockery\MockInterface;
 use Modules\Auth\App\Services\RegisterService;
 use Tests\TestCase;
@@ -25,7 +27,7 @@ class RegisterControllerTest extends TestCase
     {
         $this->instance(
             RegisterService::class,
-            mock(RegisterService::class, static function (MockInterface $mock) {
+            \Mockery::mock(RegisterService::class, static function (MockInterface $mock) {
                 $mock->shouldReceive('register')
                     ->once()
                     ->andReturn(true);
@@ -33,20 +35,25 @@ class RegisterControllerTest extends TestCase
         );
 
         $requestData = [
-            'name' => 'John Doe',
+            'full_name' => 'John Doe',
             'email' => 'john@example.com',
             'password' => 'password',
             'password_confirmation' => 'password',
             'agree' => true,
         ];
-        $this->post(route('register'), $requestData);
+
+        $response = $this->post(route('register'), $requestData);
+        $response->assertRedirect(route('home.index'))
+            ->assertSessionHas('success', __('auth::messages.user_created'));
     }
 
     /** @test */
     public function user_can_register_with_valid_data(): void
     {
+        Mail::fake();
+
         $requestData = [
-            'name' => 'test',
+            'full_name' => 'test',
             'email' => 'test@example.com',
             'password' => 'password',
             'password_confirmation' => 'password',
@@ -57,7 +64,6 @@ class RegisterControllerTest extends TestCase
 
         $response->assertRedirect(route('home.index'))
             ->assertSessionHas('success', __('auth::messages.user_created'));
-
         $this->assertDatabaseHas('users', ['email' => 'test@example.com']);
     }
 }

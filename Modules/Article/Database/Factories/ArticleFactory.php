@@ -29,7 +29,7 @@ class ArticleFactory extends Factory
             'title' => $uniqueTitle,
             'slug' => Str::slug($uniqueTitle),
             'body' => fake()->paragraphs(3, true),
-            'published_at' => fake()->dateTimeBetween('-1 year', 'now')->format('Y-m-d H:i:s'),
+            'published_at' => fake()->dateTimeBetween('-1 year', 'now')->getTimestamp(),
             'editor_choice' => fake()->boolean,
             'status' => fake()->boolean,
             'category_id' => Category::factory(),

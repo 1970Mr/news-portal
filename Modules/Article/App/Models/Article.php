@@ -39,6 +39,10 @@ class Article extends Model implements Feedable
         'user_id',
     ];
 
+    protected $casts = [
+        'published_at' => 'datetime',
+    ];
+
     public function toFeedItem(): FeedItem
     {
         $summary = $this->seoSettings?->meta_description ?? $this->bodyText();

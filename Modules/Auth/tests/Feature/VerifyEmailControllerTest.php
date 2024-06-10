@@ -3,26 +3,20 @@
 namespace Modules\Auth\tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
-use Modules\User\Database\Factories\UserFactory;
+use Modules\User\App\Models\User;
 use Tests\TestCase;
 
 class VerifyEmailControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function setUp(): void
-    {
-        parent::setUp();
-    }
-
     /** @test */
     public function user_can_view_email_verification_page(): void
     {
-        $user = UserFactory::new()->create(['email_verified_at' => null]);
-
+        $user = User::factory()->create(['email_verified_at' => null]);
         $response = $this->actingAs($user)->get(route('verification.notice'));
-
         $response->assertStatus(200)
             ->assertViewIs('auth::verify-email');
     }
@@ -30,7 +24,7 @@ class VerifyEmailControllerTest extends TestCase
     /** @test */
     public function user_can_verify_email(): void
     {
-        $user = UserFactory::new()->create(['email_verified_at' => null]);
+        $user = User::factory()->create(['email_verified_at' => null]);
         $url = URL::temporarySignedRoute(
             'verification.verify',
             now()->addMinutes(60),
@@ -41,17 +35,15 @@ class VerifyEmailControllerTest extends TestCase
 
         $response->assertRedirect(route('home.index'))
             ->assertSessionHas('success', __('auth::messages.email_verification_successfully'));
-
         $this->assertNotNull($user->fresh()->email_verified_at);
     }
 
     /** @test */
     public function user_can_resend_email_verification(): void
     {
-        $user = UserFactory::new()->create(['email_verified_at' => null]);
-
+        Mail::fake();
+        $user = User::factory()->create(['email_verified_at' => null]);
         $response = $this->actingAs($user)->post(route('verification.send'));
-
         $response->assertRedirect()
             ->assertSessionHas('success', __('auth::messages.email_verification_sent'));
     }
