@@ -184,21 +184,27 @@ class SEOService
     }
 
     private function setBasicSEO(
-        string $title,
-        string $description,
-        string $canonicalUrl,
+        ?string $title = null,
+        ?string $description = null,
+        ?string $canonicalUrl = null,
         string $robots = 'index, follow',
-        array|Collection  $keywords = []
+        array|Collection $keywords = []
     ): void
     {
         SEOTools::setTitle($title);
         SEOTools::setDescription($description);
         SEOTools::setCanonical($canonicalUrl);
+        if (!empty($keywords)) {
+            SEOMeta::addKeyword($keywords);
+        }
         SEOMeta::addMeta('robots', $robots);
-        SEOMeta::addKeyword($keywords);
     }
 
-    private function setOpenGraphSEO(string $url, string $type, ?string $imageUrl = null, string $locale = 'fa-ir'): void
+    private function setOpenGraphSEO(
+        string  $url,
+        string  $type,
+        ?string $imageUrl = null,
+        string  $locale = 'fa-ir'): void
     {
         SEOTools::opengraph()->setUrl($url);
         if ($imageUrl) {
@@ -208,12 +214,16 @@ class SEOService
         SEOTools::opengraph()->addProperty('locale', $locale);
     }
 
-    private function setTwitterSEO(string $title): void
+    private function setTwitterSEO(?string $title = null): void
     {
         SEOTools::twitter()->setTitle($title);
     }
 
-    private function setJsonLdSEO(string $title, string $description, string $type, ?string $imageUrl = null): void
+    private function setJsonLdSEO(
+        ?string $title = null,
+        ?string $description = null,
+        ?string $type = null,
+        ?string $imageUrl = null): void
     {
         SEOTools::jsonLd()->setType($type);
         SEOTools::jsonLd()->setTitle($title);
