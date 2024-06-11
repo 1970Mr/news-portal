@@ -26,6 +26,7 @@ Welcome to the News Portal, a comprehensive and modular news website built with 
     - [Profile](#profile)
     - [Role](#role)
     - [Seen](#seen)
+    - [SEOManager](#seomanager)
     - [Setting](#setting)
     - [SocialNetwork](#socialnetwork)
     - [Tag](#tag)
@@ -267,6 +268,15 @@ The Seen module tracks article views and user interactions.
     - View analytics for article performance
     - Track user engagement
 
+### SEOManager
+
+The SEOManager module handles SEO-related settings and optimizations.
+
+- **Features:**
+    - Manage meta tags for articles
+    - Optimize site for search engines
+    - Track SEO performance
+
 ### Setting
 
 The Setting module handles the site-wide settings and configurations.
@@ -314,6 +324,8 @@ The News Portal project is open-source software licensed under the MIT license. 
 ---
 
 > **Note**: All modules in this project were developed by [Mr1970](https://github.com/1970Mr), except for the frontend template, which uses a pre-built template.
+
+> **Note:** The frontend template is in Persian, but all messages and sections in the backend code are read from translation files.
 
 ---
 
