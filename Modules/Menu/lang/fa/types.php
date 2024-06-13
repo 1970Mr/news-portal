@@ -3,7 +3,7 @@
 use Modules\Menu\App\Models\Menu;
 
 return [
-    Menu::TYPE_MAIN => 'منوی اصلی',
-    Menu::TYPE_CATEGORY => 'منوی دسته‌بندی',
-    Menu::TYPE_PARENT_CATEGORY => 'منوی دسته‌بندی والد',
+    Menu::MAIN_TYPE => 'منوی اصلی',
+    Menu::CATEGORY_TYPE => 'منوی دسته‌بندی',
+    Menu::PARENT_CATEGORY_TYPE => 'منوی دسته‌بندی والد',
 ];

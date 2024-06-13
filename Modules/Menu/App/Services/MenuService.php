@@ -15,7 +15,7 @@ class MenuService
         if ($searchText) {
             $menus = $this->search($searchText);
         } else {
-            $menus = Menu::with(['parent', 'category'])->latest()->paginate(10);
+            $menus = Menu::with(['parent', 'category'])->latest('position')->paginate(10);
         }
         return $menus;
     }
@@ -32,6 +32,6 @@ class MenuService
             $query->orWhereHas('category', function (Builder $q) use ($searchText) {
                 $q->where('name', 'like', "%{$searchText}%");
             });
-        })->latest()->paginate(10);
+        })->latest('position')->paginate(10);
     }
 }

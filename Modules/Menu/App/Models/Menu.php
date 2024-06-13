@@ -26,14 +26,14 @@ class Menu extends Model
         'category_id',
     ];
 
-    public const TYPE_MAIN = 'main';
-    public const TYPE_CATEGORY = 'category';
-    public const TYPE_PARENT_CATEGORY = 'parent_category';
+    public const MAIN_TYPE = 'main';
+    public const CATEGORY_TYPE = 'category';
+    public const PARENT_CATEGORY_TYPE = 'parent_category';
 
     public const TYPES = [
-        self::TYPE_MAIN,
-        self::TYPE_CATEGORY,
-        self::TYPE_PARENT_CATEGORY,
+        self::MAIN_TYPE,
+        self::CATEGORY_TYPE,
+        self::PARENT_CATEGORY_TYPE,
     ];
 
     public function toSearchableArray(): array

@@ -79,7 +79,7 @@
                                 </div>
                             </div>
                             <div class="form-group text-center">
-                                <input id="status" class="form-control" name="status" type="checkbox" @if($category->status) checked @endif>
+                                <input id="status" class="form-control" name="status" type="checkbox" @if(old('status') || (!old('name') && $category->status) ) checked @endif>
                                 <label for="status">وضعیت</label>
                             </div>
                             <div class="form-group">

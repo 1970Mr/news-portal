@@ -104,7 +104,12 @@
                                                 @can(config('permissions_list.MENU_UPDATE', false))
                                                     <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
                                                        rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش"
-                                                       href="{{ route(config('app.panel_prefix', 'panel') . '.menus.edit', $menu->id) }}">
+                                                       @if($menu->type === get_class($menu)::MAIN_TYPE)
+                                                           href="{{ route(config('app.panel_prefix', 'panel') . '.menus.edit', $menu->id) }}"
+                                                       @else
+                                                           href="{{ route(config('app.panel_prefix', 'panel') . '.menus.category-menu.edit', $menu->id) }}"
+                                                        @endif
+                                                    >
                                                         <i class="icon-pencil fa-flip-horizontal"></i>
                                                     </a>
                                                 @endcan

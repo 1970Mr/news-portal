@@ -9,6 +9,9 @@ Route::prefix(config('app.panel_prefix', 'panel'))
     ->group(function () {
     Route::resource('menus', MenuController::class)->names('menus')
         ->except('show');
-    Route::resource('menus/category-menu', CategoryMenuController::class)->names('menus.category-menu')
-        ->except(['index', 'show', 'destroy']);
-});
+
+    Route::resource('menus/category-menu', CategoryMenuController::class)
+        ->names('menus.category-menu')
+        ->except(['index', 'show', 'destroy'])
+        ->parameters(['category-menu' => 'menu']);
+    });

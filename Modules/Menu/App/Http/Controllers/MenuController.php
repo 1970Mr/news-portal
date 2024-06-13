@@ -33,17 +33,22 @@ class MenuController extends Controller
     public function store(MainMenuRequest $request): RedirectResponse
     {
         Menu::query()->create($request->validated());
-        return to_route(config('app.panel_prefix', 'panel') . '.menus.index');
+        return to_route(config('app.panel_prefix', 'panel') . '.menus.index')
+            ->with('success', __('entity_created', ['entity' => __('menu')]));
     }
 
-    public function edit($id): View
+    public function edit(Menu $menu): View
     {
-        return view('menu::edit');
+        $parentMenus = Menu::query()->where('parent_id', null)->where('category_id', null)->get();
+        $latestPosition = Menu::query()->latest('position')->first()?->position ?? 0;
+        return view('menu::edit-main-menu', compact(['parentMenus', 'latestPosition', 'menu']));
     }
 
-    public function update(Request $request, $id): RedirectResponse
+    public function update(MainMenuRequest $request, Menu $menu): RedirectResponse
     {
-        //
+        $menu->update($request->validated());
+        return to_route(config('app.panel_prefix', 'panel') . '.menus.index')
+            ->with('success', __('entity_edited', ['entity' => __('menu')]));
     }
 
     public function destroy(Menu $menu): RedirectResponse

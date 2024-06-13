@@ -1,9 +1,9 @@
-@extends('panel::layouts.master', ['title' => 'ایجاد منوی اصلی جدید'])
+@extends('panel::layouts.master', ['title' => 'ویرایش منوی دسته‌بندی'])
 
 @section('content')
     <x-common-breadcrumbs>
         <li><a href="{{ route(config('app.panel_prefix', 'panel') . '.menus.index') }}">لیست منوها</a></li>
-        <li><a>ایجاد منوی اصلی جدید</a></li>
+        <li><a>ویرایش منوی دسته‌بندی</a></li>
     </x-common-breadcrumbs>
 
     <div class="row pe-0">
@@ -13,7 +13,7 @@
                     <div class="portlet-title">
                         <h3 class="title">
                             <i class="icon-menu"></i>
-                            ایجاد منوی اصلی جدید
+                            ویرایش منوی دسته‌بندی
                         </h3>
                     </div><!-- /.portlet-title -->
                     <div class="buttons-box">
@@ -29,41 +29,44 @@
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
                     <form id="main-form" role="form"
-                          action="{{ route(config('app.panel_prefix', 'panel') . '.menus.store') }}" method="post" enctype="multipart/form-data">
+                          action="{{ route(config('app.panel_prefix', 'panel') . '.menus.category-menu.update', $menu->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <x-common-error-messages/>
 
                         <fieldset class="row justify-content-center">
                             <div class="form-group col-lg-6">
-                                <label for="name">نام <small>(ضروری)</small></label>
-                                <input id="name" class="form-control" name="name" type="text" required value="{{ old('name') }}">
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label for="url">آدرس <small>(ضروری)</small></label>
-                                <input id="url" class="form-control" name="url" type="text" value="{{ old('url') }}" required>
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label for="position">ترتیب قرارگیری <small>(ضروری)</small></label>
-                                <input id="position" class="form-control" name="position" type="number" required value="{{ old('position') }}">
-                                <p class="small">{{ 'بزرگ‌ترین ترتیب ثبت شده: ' . $latestPosition}}</p>
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label for="parent_id">منوی والد</label>
-                                <select id="parent_id" class="form-control select2" name="parent_id">
-                                    <option value="">انتخاب منوی والد</option>
-                                    @foreach($parentMenus as $menu)
-                                        <option value="{{ $menu->id }}" @if((int) old('parent_id') === $menu->id) selected @endif>{{ $menu->name }}</option>
+                                <label for="type">نوع <small>(ضروری)</small></label>
+                                <select id="type" class="form-control" name="type" required>
+                                    @foreach($types as $type)
+                                        <option value="{{ $type }}" @if(old('type', $menu->type) === $type) selected @endif>{{ __('menu::types.' . $type) }}</option>
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="form-group col-lg-6">
+                                <label for="category_id">دسته‌بندی <small>(ضروری)</small></label>
+                                <select id="category_id" class="form-control select2" name="category_id" required>
+                                    <option value="">انتخاب دسته‌بندی</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->id }}" @if((int) old('category_id', $menu->category_id) === (int) $category->id) selected @endif>
+                                            {{ $category->name}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label for="position">ترتیب قرارگیری <small>(ضروری)</small></label>
+                                <input id="position" class="form-control" name="position" type="number" required value="{{ old('position', $menu->position) }}">
+                                <p class="small">{{ 'بزرگ‌ترین ترتیب ثبت شده: ' . $latestPosition}}</p>
+                            </div>
                             <div class="form-group text-center col-lg-12">
-                                <input id="status" class="form-control" name="status" type="checkbox" @if(old('status')) checked @endif>
+                                <input id="status" class="form-control" name="status" type="checkbox" @if(old('status', $menu->status)) checked @endif>
                                 <label for="status">وضعیت</label>
                             </div>
                             <div class="form-group col-lg-6">
                                 <button class="btn btn-success btn-block">
                                     <i class="icon-check"></i>
-                                    ایجاد منوی اصلی جدید
+                                    ویرایش منوی دسته‌بندی
                                 </button>
                             </div>
                         </fieldset>
