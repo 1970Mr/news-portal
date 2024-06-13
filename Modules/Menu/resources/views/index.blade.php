@@ -35,7 +35,7 @@
                         </a>
                         @can(config('permissions_list.MENU_STORE', false))
                             <a class="btn btn-sm btn-default btn-round bg-green text-white" rel="tooltip"
-                               href="{{ route(config('app.panel_prefix', 'panel') . '.menu.create') }}"
+                               href="{{ route(config('app.panel_prefix', 'panel') . '.menus.create') }}"
                                aria-label="ایجاد دسته‌بندی‌ جدید" data-bs-original-title="ایجاد دسته‌بندی‌ جدید">
                                 <i class="icon-plus d-flex justify-content-center align-items-center"></i>
                                 <div class="paper-ripple">
@@ -87,13 +87,13 @@
                                                 @can(config('permissions_list.MENU_UPDATE', false))
                                                     <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
                                                        rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش"
-                                                       href="{{ route(config('app.panel_prefix', 'panel') . '.menu.edit', $menu->id) }}">
+                                                       href="{{ route(config('app.panel_prefix', 'panel') . '.menus.edit', $menu->id) }}">
                                                         <i class="icon-pencil fa-flip-horizontal"></i>
                                                     </a>
                                                 @endcan
 
                                                 @can(config('permissions_list.MENU_DESTROY', false))
-                                                    <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.menu.destroy', $menu->id)"/>
+                                                    <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.menus.destroy', $menu->id)"/>
                                                 @endcan
                                             </div>
                                         </td>
