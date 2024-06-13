@@ -22,13 +22,25 @@ th, .reply, .status, .subscribed-at {
     background-color: #03a9f4 !important;
 }
 
-.search-form input, .search-form button {
-    height: 1.6rem;
-    font-size: .8rem;
+.search-form .input-group input, .search-form .input-group button {
+    height: 1.6rem !important;
+    font-size: .8rem !important;
+}
+
+.portlet-title .title {
+    white-space: nowrap;
 }
 
 @media (max-width: 768px) {
     .suggest-default-value {
         font-size: .8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .portlet-title {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: .5rem;
     }
 }

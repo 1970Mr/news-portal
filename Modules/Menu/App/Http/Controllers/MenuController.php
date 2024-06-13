@@ -34,9 +34,14 @@ class MenuController extends Controller
 
     public function createCategoryMenu(): View
     {
-        $categories = Category::query()->latest()->get();
+        $types = [Menu::TYPE_CATEGORY, Menu::TYPE_PARENT_CATEGORY];
+        $categoriesWithMenus = Menu::query()->whereNotNull('category_id')->pluck('category_id')->toArray();
+        $categories = Category::query()
+            ->whereNotIn('id', $categoriesWithMenus)
+            ->latest()
+            ->get();
         $latestPosition = Menu::query()->latest('position')->first()?->position ?? 0;
-        return view('menu::create-category-menu', compact(['categories', 'latestPosition']));
+        return view('menu::create-category-menu', compact(['categories', 'latestPosition', 'types']));
     }
 
     public function storeCategoryMenu(CategoryMenuRequest $request): RedirectResponse

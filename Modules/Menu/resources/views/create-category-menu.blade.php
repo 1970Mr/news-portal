@@ -29,19 +29,11 @@
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
                     <form id="main-form" role="form"
-                          action="{{ route(config('app.panel_prefix', 'panel') . '.menus.store') }}" method="post" enctype="multipart/form-data">
+                          action="{{ route(config('app.panel_prefix', 'panel') . '.menus.category-menu.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <x-common-error-messages/>
 
                         <fieldset class="row justify-content-center">
-                            <div class="form-group col-lg-6">
-                                <label for="name">نام <small>(ضروری)</small></label>
-                                <input id="name" class="form-control" name="name" type="text" required value="{{ old('name') }}">
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label for="url">آدرس</label>
-                                <input id="url" class="form-control" name="url" type="text" value="{{ old('url') }}">
-                            </div>
                             <div class="form-group col-lg-6">
                                 <label for="position">ترتیب قرارگیری <small>(ضروری)</small></label>
                                 <input id="position" class="form-control" name="position" type="number" required value="{{ old('position') }}">
@@ -56,17 +48,8 @@
                                 </select>
                             </div>
                             <div class="form-group col-lg-6">
-                                <label for="parent_id">منوی والد</label>
-                                <select id="parent_id" class="form-control select2" name="parent_id">
-                                    <option value="">انتخاب منوی والد</option>
-                                    @foreach($parentMenus as $menu)
-                                        <option value="{{ $menu->id }}" @if((int) old('parent_id') === $menu->id) selected @endif>{{ $menu->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label for="category_id">دسته‌بندی</label>
-                                <select id="category_id" class="form-control select2" name="category_id">
+                                <label for="category_id">دسته‌بندی <small>(ضروری)</small></label>
+                                <select id="category_id" class="form-control select2" name="category_id" required>
                                     <option value="">انتخاب دسته‌بندی</option>
                                     @foreach($categories as $category)
                                         <option value="{{ $category->id }}" @if((int) old('category_id') === $category->id) selected @endif>{{ $category->name }}</option>
@@ -77,7 +60,7 @@
                                 <input id="status" class="form-control" name="status" type="checkbox" @if(old('status')) checked @endif>
                                 <label for="status">وضعیت</label>
                             </div>
-                            <div class="form-group col-lg-12">
+                            <div class="form-group col-lg-6">
                                 <button class="btn btn-success btn-block">
                                     <i class="icon-check"></i>
                                     ایجاد منوی جدید
@@ -111,6 +94,8 @@
             errorPlacement: function (error, element) {
                 if (element.parent('.input-group').length) {
                     error.insertAfter(element.parent());
+                } else if (element.hasClass('select2-hidden-accessible')) {
+                    error.insertAfter(element.next('span.select2'));
                 } else {
                     error.insertAfter(element);
                 }

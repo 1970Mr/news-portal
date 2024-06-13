@@ -39,8 +39,8 @@
                                 <input id="name" class="form-control" name="name" type="text" required value="{{ old('name') }}">
                             </div>
                             <div class="form-group col-lg-6">
-                                <label for="url">آدرس</label>
-                                <input id="url" class="form-control" name="url" type="text" value="{{ old('url') }}">
+                                <label for="url">آدرس <small>(ضروری)</small></label>
+                                <input id="url" class="form-control" name="url" type="text" value="{{ old('url') }}" required>
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="position">ترتیب قرارگیری <small>(ضروری)</small></label>
@@ -60,7 +60,7 @@
                                 <input id="status" class="form-control" name="status" type="checkbox" @if(old('status')) checked @endif>
                                 <label for="status">وضعیت</label>
                             </div>
-                            <div class="form-group col-lg-12">
+                            <div class="form-group col-lg-6">
                                 <button class="btn btn-success btn-block">
                                     <i class="icon-check"></i>
                                     ایجاد منوی اصلی جدید

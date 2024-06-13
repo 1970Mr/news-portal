@@ -36,8 +36,18 @@
                         @can(config('permissions_list.MENU_STORE', false))
                             <a class="btn btn-sm btn-default btn-round bg-green text-white" rel="tooltip"
                                href="{{ route(config('app.panel_prefix', 'panel') . '.menus.create') }}"
-                               aria-label="ایجاد دسته‌بندی‌ جدید" data-bs-original-title="ایجاد دسته‌بندی‌ جدید">
+                               aria-label="ایجاد منوی اصلی" data-bs-original-title="ایجاد منوی اصلی">
                                 <i class="icon-plus d-flex justify-content-center align-items-center"></i>
+                                <div class="paper-ripple">
+                                    <div class="paper-ripple__background"></div>
+                                    <div class="paper-ripple__waves"></div>
+                                </div>
+                            </a>
+
+                            <a class="btn btn-sm btn-default btn-round bg-green text-white" rel="tooltip"
+                               href="{{ route(config('app.panel_prefix', 'panel') . '.menus.category-menu.create') }}"
+                               aria-label="ایجاد منوی دسته‌بندی" data-bs-original-title="ایجاد منوی دسته‌بندی">
+                                <i class="icon-list d-flex justify-content-center align-items-center"></i>
                                 <div class="paper-ripple">
                                     <div class="paper-ripple__background"></div>
                                     <div class="paper-ripple__waves"></div>
@@ -55,6 +65,7 @@
                                 <th>نام</th>
                                 <th>آدرس</th>
                                 <th>ترتیب قرارگیری</th>
+                                <th>نوع</th>
                                 <th>منوی والد</th>
                                 <th>دسته‌بندی</th>
                                 <th>تاریخ ایجاد</th>
@@ -71,9 +82,10 @@
                             @foreach($menus as $menu)
                                 <tr>
                                     <td>{{ $menu->id }}</td>
-                                    <td>{{ $menu->name }}</td>
-                                    <td>{{ nullable_value($menu->url) }}</td>
+                                    <td>{{ $menu->getName() }}</td>
+                                    <td>{{ $menu->getUrl() }}</td>
                                     <td>{{ $menu->position }}</td>
+                                    <td class="nowrap">{{ __('menu::types.' . $menu->type) }}</td>
                                     <td>{{ $menu->parentMenuTitle() }}</td>
                                     <td>{{ nullable_value($menu->category?->name) }}</td>
                                     <td class="ltr text-right nowrap">{{ jalalian()->forge($menu->created_at)->format(config('common.datetime_format')) }}</td>

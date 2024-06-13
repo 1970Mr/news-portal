@@ -79,6 +79,16 @@ class Menu extends Model
         $query->where('status', 1);
     }
 
+    public function getName(): string
+    {
+        return $this->name ?? $this->category->name;
+    }
+
+    public function getUrl(): string
+    {
+        return $this->url ?? route('categories.show', $this->category->slug);
+    }
+
 //    protected static function newFactory(): MenuFactory
 //    {
 //        return MenuFactory::new();
