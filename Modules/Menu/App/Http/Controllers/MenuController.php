@@ -10,12 +10,16 @@ use Modules\Category\App\Models\Category;
 use Modules\Menu\App\Http\Requests\CategoryMenuRequest;
 use Modules\Menu\App\Http\Requests\MainMenuRequest;
 use Modules\Menu\App\Models\Menu;
+use Modules\Menu\App\Services\MenuService;
 
 class MenuController extends Controller
 {
-    public function index(): View
+    public function __construct(
+        private readonly MenuService $menuService,
+    ) {}
+    public function index(Request $request): View
     {
-        $menus = Menu::with('parent')->latest()->paginate(10);
+        $menus = $this->menuService->index($request);
         return view('menu::index', compact('menus'));
     }
 
