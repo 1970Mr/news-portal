@@ -12,7 +12,7 @@
                 <div class="portlet-heading">
                     <div class="portlet-title d-flex gap-3">
                         <h3 class="title m-0">
-                            <i class="icon-people"></i>
+                            <i class="icon-menu"></i>
                             لیست منوها
                         </h3>
                         <form class="d-inline-block search-form">
@@ -33,9 +33,9 @@
                                 <div class="paper-ripple__waves"></div>
                             </div>
                         </a>
-                        @can(config('permissions_list.CATEGORY_STORE', false))
+                        @can(config('permissions_list.MENU_STORE', false))
                             <a class="btn btn-sm btn-default btn-round bg-green text-white" rel="tooltip"
-                               href="{{ route(config('app.panel_prefix', 'panel') . '.categories.create') }}"
+                               href="{{ route(config('app.panel_prefix', 'panel') . '.menu.create') }}"
                                aria-label="ایجاد دسته‌بندی‌ جدید" data-bs-original-title="ایجاد دسته‌بندی‌ جدید">
                                 <i class="icon-plus d-flex justify-content-center align-items-center"></i>
                                 <div class="paper-ripple">
@@ -54,11 +54,15 @@
                                 <th>#</th>
                                 <th>نام</th>
                                 <th>آدرس</th>
+                                <th>ترتیب قرارگیری</th>
                                 <th>منوی والد</th>
-                                <th>ترتیب</th>
+                                <th>دسته‌بندی</th>
                                 <th>تاریخ ایجاد</th>
                                 <th>وضعیت</th>
-                                @canany([config('permissions_list.CATEGORY_UPDATE'), config('permissions_list.CATEGORY_DESTROY')])
+                                @canany([
+                                    config('permissions_list.MENU_UPDATE', false),
+                                    config('permissions_list.MENU_DESTROY', false),
+                                ])
                                     <th>عملیات</th>
                                 @endcanany
                             </tr>
@@ -68,32 +72,28 @@
                                 <tr>
                                     <td>{{ $menu->id }}</td>
                                     <td>{{ $menu->name }}</td>
-                                    <td>{{ $menu->slug }}</td>
-                                    <td>{{ $menu->parentCategoryTitle() }}</td>
+                                    <td>{{ nullable_value($menu->url) }}</td>
+                                    <td>{{ $menu->position }}</td>
+                                    <td>{{ $menu->parentMenuTitle() }}</td>
+                                    <td>{{ nullable_value($menu->category?->name) }}</td>
                                     <td class="ltr text-right nowrap">{{ jalalian()->forge($menu->created_at)->format(config('common.datetime_format')) }}</td>
-                                    <td class="ltr text-right nowrap">{{ jalalian()->forge($menu->updated_at)->format(config('common.datetime_format')) }}</td>
                                     <td class="{{ status_class($menu->status) }}">{{ status_message($menu->status) }}</td>
                                     @canany([
-                                        config('permissions_list.CATEGORY_UPDATE'),
-                                        config('permissions_list.CATEGORY_DESTROY'),
-                                        config('permissions_list.SEO_MANAGEMENT', false)
+                                        config('permissions_list.MENU_UPDATE', false),
+                                        config('permissions_list.MENU_DESTROY', false),
                                     ])
                                         <td>
                                             <div class="d-flex gap-2">
-                                                @can(config('permissions_list.CATEGORY_UPDATE', false))
+                                                @can(config('permissions_list.MENU_UPDATE', false))
                                                     <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
                                                        rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش"
-                                                       href="{{ route(config('app.panel_prefix', 'panel') . '.categories.edit', $menu->id) }}">
+                                                       href="{{ route(config('app.panel_prefix', 'panel') . '.menu.edit', $menu->id) }}">
                                                         <i class="icon-pencil fa-flip-horizontal"></i>
                                                     </a>
                                                 @endcan
 
-                                                @can(config('permissions_list.CATEGORY_DESTROY', false))
-                                                    <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.categories.destroy', $menu->id)"/>
-                                                @endcan
-
-                                                @can(config('permissions_list.SEO_MANAGEMENT', false))
-                                                    <x-seo-manager-seo-settings-button :route="route(config('app.panel_prefix', 'panel') . '.categories.seo-settings', $menu->id)"/>
+                                                @can(config('permissions_list.MENU_DESTROY', false))
+                                                    <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.menu.destroy', $menu->id)"/>
                                                 @endcan
                                             </div>
                                         </td>

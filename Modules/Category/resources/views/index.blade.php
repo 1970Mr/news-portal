@@ -59,7 +59,11 @@
                                 <th>تاریخ ایجاد</th>
                                 <th>تاریخ بروزرسانی</th>
                                 <th>وضعیت</th>
-                                @canany([config('permissions_list.CATEGORY_UPDATE'), config('permissions_list.CATEGORY_DESTROY')])
+                                @canany([
+                                    config('permissions_list.CATEGORY_UPDATE', false),
+                                    config('permissions_list.CATEGORY_DESTROY', false),
+                                    config('permissions_list.SEO_MANAGEMENT', false)
+                                ])
                                     <th>عملیات</th>
                                 @endcanany
                             </tr>
@@ -78,8 +82,8 @@
                                     <td class="ltr text-right nowrap">{{ jalalian()->forge($category->updated_at)->format(config('common.datetime_format')) }}</td>
                                     <td class="{{ status_class($category->status) }}">{{ status_message($category->status) }}</td>
                                     @canany([
-                                        config('permissions_list.CATEGORY_UPDATE'),
-                                        config('permissions_list.CATEGORY_DESTROY'),
+                                        config('permissions_list.CATEGORY_UPDATE', false),
+                                        config('permissions_list.CATEGORY_DESTROY', false),
                                         config('permissions_list.SEO_MANAGEMENT', false)
                                     ])
                                         <td>

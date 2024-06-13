@@ -57,7 +57,11 @@
                                 <th>تاریخ ایجاد</th>
                                 <th>موضوع داغ</th>
                                 <th>وضعیت</th>
-                                @canany([config('permissions_list.TAG_UPDATE'), config('permissions_list.TAG_DESTROY')])
+                                @canany([
+                                    config('permissions_list.TAG_UPDATE', false),
+                                    config('permissions_list.TAG_DESTROY', false),
+                                    config('permissions_list.SEO_MANAGEMENT', false)
+                                ])
                                     <th>عملیات</th>
                                 @endcanany
                             </tr>
@@ -72,8 +76,8 @@
                                     <td class="{{ status_class($tag->isHot()) }}">{{ status_message($tag->isHot()) }}</td>
                                     <td class="{{ status_class($tag->status) }}">{{ status_message($tag->status) }}</td>
                                     @canany([
-                                        config('permissions_list.TAG_UPDATE'),
-                                        config('permissions_list.TAG_DESTROY'),
+                                        config('permissions_list.TAG_UPDATE', false),
+                                        config('permissions_list.TAG_DESTROY', false),
                                         config('permissions_list.SEO_MANAGEMENT', false)
                                     ])
                                         <td>
