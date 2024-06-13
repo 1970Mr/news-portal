@@ -35,11 +35,6 @@
 
                         <fieldset class="row justify-content-center">
                             <div class="form-group col-lg-6">
-                                <label for="position">ترتیب قرارگیری <small>(ضروری)</small></label>
-                                <input id="position" class="form-control" name="position" type="number" required value="{{ old('position') }}">
-                                <p class="small">{{ 'بزرگ‌ترین ترتیب ثبت شده: ' . $latestPosition}}</p>
-                            </div>
-                            <div class="form-group col-lg-6">
                                 <label for="type">نوع <small>(ضروری)</small></label>
                                 <select id="type" class="form-control" name="type" required>
                                     @foreach($types as $type)
@@ -55,6 +50,11 @@
                                         <option value="{{ $category->id }}" @if((int) old('category_id') === $category->id) selected @endif>{{ $category->name }}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label for="position">ترتیب قرارگیری <small>(ضروری)</small></label>
+                                <input id="position" class="form-control" name="position" type="number" required value="{{ old('position') }}">
+                                <p class="small">{{ 'بزرگ‌ترین ترتیب ثبت شده: ' . $latestPosition}}</p>
                             </div>
                             <div class="form-group text-center col-lg-12">
                                 <input id="status" class="form-control" name="status" type="checkbox" @if(old('status')) checked @endif>

@@ -34,25 +34,30 @@
                             </div>
                         </a>
                         @can(config('permissions_list.MENU_STORE', false))
-                            <a class="btn btn-sm btn-default btn-round bg-green text-white" rel="tooltip"
-                               href="{{ route(config('app.panel_prefix', 'panel') . '.menus.create') }}"
-                               aria-label="ایجاد منوی اصلی" data-bs-original-title="ایجاد منوی اصلی">
-                                <i class="icon-plus d-flex justify-content-center align-items-center"></i>
-                                <div class="paper-ripple">
-                                    <div class="paper-ripple__background"></div>
-                                    <div class="paper-ripple__waves"></div>
-                                </div>
-                            </a>
-
-                            <a class="btn btn-sm btn-default btn-round bg-green text-white" rel="tooltip"
-                               href="{{ route(config('app.panel_prefix', 'panel') . '.menus.category-menu.create') }}"
-                               aria-label="ایجاد منوی دسته‌بندی" data-bs-original-title="ایجاد منوی دسته‌بندی">
-                                <i class="icon-list d-flex justify-content-center align-items-center"></i>
-                                <div class="paper-ripple">
-                                    <div class="paper-ripple__background"></div>
-                                    <div class="paper-ripple__waves"></div>
-                                </div>
-                            </a>
+                            <div class="btn-group" rel="tooltip"
+                                 aria-label="ایجاد منوی جدید" data-bs-original-title="ایجاد منوی جدید">
+                                <button type="button" class="btn btn-sm btn-default btn-round bg-green text-white" data-bs-toggle="dropdown" aria-expanded="true">
+                                    <i class="icon-plus d-flex justify-content-center align-items-center"></i>
+                                    <div class="paper-ripple">
+                                        <div class="paper-ripple__background"></div>
+                                        <div class="paper-ripple__waves"></div>
+                                    </div>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item"
+                                           href="{{ route(config('app.panel_prefix', 'panel') . '.menus.create') }}">
+                                            ایجاد منوی اصلی
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item"
+                                           href="{{ route(config('app.panel_prefix', 'panel') . '.menus.category-menu.create') }}">
+                                            ایجاد منوی دسته‌بندی
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         @endcan
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->

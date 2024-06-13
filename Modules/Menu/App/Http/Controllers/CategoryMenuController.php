@@ -11,22 +11,21 @@ use Modules\Menu\App\Http\Requests\CategoryMenuRequest;
 use Modules\Menu\App\Http\Requests\MainMenuRequest;
 use Modules\Menu\App\Models\Menu;
 
-class MenuController extends Controller
+class CategoryMenuController extends Controller
 {
-    public function index(): View
-    {
-        $menus = Menu::with('parent')->latest()->paginate(10);
-        return view('menu::index', compact('menus'));
-    }
-
     public function create(): View
     {
-        $parentMenus = Menu::query()->where('parent_id', null)->where('category_id', null)->get();
+        $types = [Menu::TYPE_CATEGORY, Menu::TYPE_PARENT_CATEGORY];
+        $categoriesWithMenus = Menu::query()->whereNotNull('category_id')->pluck('category_id')->toArray();
+        $categories = Category::query()
+            ->whereNotIn('id', $categoriesWithMenus)
+            ->latest()
+            ->get();
         $latestPosition = Menu::query()->latest('position')->first()?->position ?? 0;
-        return view('menu::create-main-menu', compact(['parentMenus', 'latestPosition']));
+        return view('menu::create-category-menu', compact(['categories', 'latestPosition', 'types']));
     }
 
-    public function store(MainMenuRequest $request): RedirectResponse
+    public function store(CategoryMenuRequest $request): RedirectResponse
     {
         Menu::query()->create($request->validated());
         return to_route(config('app.panel_prefix', 'panel') . '.menus.index');
@@ -40,11 +39,5 @@ class MenuController extends Controller
     public function update(Request $request, $id): RedirectResponse
     {
         //
-    }
-
-    public function destroy(Menu $menu): RedirectResponse
-    {
-        $menu->delete();
-        return back()->with('success', __('entity_deleted', ['entity' => __('menu')]));
     }
 }
