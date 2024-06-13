@@ -29,7 +29,6 @@
         "fakerphp/faker": "^1.9.1",
         "laravel-lang/common": "^6.1",
         "laravel/pint": "^1.0",
-        "laravel/sail": "^1.18",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^7.0",
         "nwidart/laravel-modules": "^10.0",
