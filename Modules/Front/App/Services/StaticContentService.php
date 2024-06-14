@@ -12,194 +12,134 @@ use Modules\Tag\App\Models\Tag;
 
 class StaticContentService
 {
-    public function __construct(private \Illuminate\Support\Collection $categoriesIdsIgnore) {}
+    private const CACHE_TTL = 60 * 60 * 3;
 
     public function getLatestTags(): Collection
     {
-        return Tag::query()->latest()->limit(30)->get();
+        return Cache::remember('latest_tags', self::CACHE_TTL, function () {
+            return Tag::query()->latest()->limit(30)->get();
+        });
     }
 
     public function getArticlesWithMostVisit(): array
     {
-        $mostVisits = visits(Article::class)->top(4);
-        if ($mostVisits->count() === 0) {
-            $mostVisits = $this->baseQuery()->limit(4)->get();
-        }
-        $firstArticle = $mostVisits->shift();
-        return [
-            'first' => $firstArticle,
-            'others' => $mostVisits,
-        ];
+        return Cache::remember('articles_with_most_visits', self::CACHE_TTL, function () {
+            $mostVisits = visits(Article::class)->top(4);
+            if ($mostVisits->count() === 0) {
+                $mostVisits = $this->baseQuery()->limit(4)->get();
+            }
+            $firstArticle = $mostVisits->shift();
+            return [
+                'first' => $firstArticle,
+                'others' => $mostVisits,
+            ];
+        });
     }
 
     public function getEditorChoices(): Collection
     {
-        return $this->baseQuery()->editorChoice()->limit(3)->get();
+        return Cache::remember('editor_choices', self::CACHE_TTL, function () {
+            return $this->baseQuery()->editorChoice()->limit(3)->get();
+        });
     }
 
     public function getHotTopics(): Collection
     {
-        return Tag::with('hotness')
-            ->whereHas('hotness', function ($query) {
-                $query->where('is_hot', true);
-            })
-            ->withCount('articles')
-            ->whereHas('articles')
-            ->latest()
-            ->limit(7)
-            ->get();
+        return Cache::remember('hot_topics', self::CACHE_TTL, function () {
+            return Tag::with('hotness')
+                ->whereHas('hotness', function ($query) {
+                    $query->where('is_hot', true);
+                })
+                ->withCount('articles')
+                ->whereHas('articles')
+                ->latest()
+                ->limit(7)
+                ->get();
+        });
     }
 
     public function getHotArticles(): Collection
     {
-        $articles = $this->baseQuery()
-            ->whereHas('hotness', function ($query) {
-                $query->where('is_hot', true);
-            })
-            ->limit(15)
-            ->get();
+        return Cache::remember('hot_articles', self::CACHE_TTL, function () {
+            $articles = $this->baseQuery()
+                ->whereHas('hotness', function ($query) {
+                    $query->where('is_hot', true);
+                })
+                ->limit(15)
+                ->get();
 
-        if ($articles->count() <= 0) {
-            $this->baseQuery()->limit(10)->get();
-        }
+            if ($articles->count() <= 0) {
+                $articles = $this->baseQuery()->limit(10)->get();
+            }
 
-        return $articles;
+            return $articles;
+        });
     }
 
     public function getArticleWithMostComments(): Collection
     {
-        return Article::with(['hotness', 'image', 'category', 'tags', 'user'])->active()->published()
-            ->withCount('approvedComments')
-            ->orderBy('approved_comments_count', 'desc')
-            ->limit(3)
-            ->get();
-    }
-
-    public function getParentCategories(): Collection
-    {
-        $categories = Category::with(['categories' => function ($query) {
-            $query->whereHas('articles', function ($query) {
-                $query->published()->active();
-            });
-        }])
-            ->whereHas('categories.articles', function ($query) {
-                $query->published()->active();
-            })
-            ->active()
-            ->latest('updated_at')
-            ->limit(3)
-            ->get();
-
-        // Set limit for each category articles
-        $categories->each(function ($category) {
-            $category->setRelation('categories', $category->categories->take(5));
-            $category->categories->each(function ($childCategory) {
-                $childCategory->setRelation('articles', $childCategory->articles->take(4));
-            });
+        return Cache::remember('articles_with_most_comments', self::CACHE_TTL, function () {
+            return Article::with(['hotness', 'image', 'category', 'tags', 'user'])->active()->published()
+                ->withCount('approvedComments')
+                ->orderBy('approved_comments_count', 'desc')
+                ->limit(3)
+                ->get();
         });
-
-        $this->categoriesIdsIgnore = $this->categoriesIdsIgnore->merge($categories->pluck('id'));
-        return $categories;
     }
 
-    public function getCategoriesWithoutParent(): Collection
+    public function getMenus(): Collection
     {
-        $categories = Category::with(['articles' => function ($query) {
-            $query->published()->active();
-        }])
-            ->whereHas('articles', function ($query) {
-                $query->published()->active();
-            })
-            ->where('parent_id', null)
-            ->active()
-            ->latest('updated_at')
-            ->limit(3)
-            ->get();
+        return Cache::remember('menus', self::CACHE_TTL, static function () {
+            $mainMenus = Menu::mainMenus()->get()->pluck('id')->toArray();
+            $mainMenusWithChildren = Menu::mainMenusWithChildren()->get()->pluck('id')->toArray();
+            $categoryMenus = Menu::categoryMenus()->get()->pluck('id')->toArray();
+            $parentCategoryMenus = Menu::parentCategoryMenus()->get()->pluck('id')->toArray();
+            $ignoreIds = array_merge($mainMenus, $mainMenusWithChildren, $categoryMenus, $parentCategoryMenus);
 
-        // Set limit for each category articles
-        $categories->each(function ($category) {
-            $category->articles = $category->articles->take(4);
+            return Menu::with(['parent', 'children', 'category'])
+                ->whereIn('id', $ignoreIds)
+                ->latest('position')
+                ->get();
         });
-
-        $this->categoriesIdsIgnore = $this->categoriesIdsIgnore->merge($categories->pluck('id'));
-        return $categories;
     }
 
-    public function getOtherParentCategories(): Collection
+    public function getCategories(): Collection
     {
-        $categories = Category::with(['categories' => function ($query) {
-            $query->whereHas('articles');
-        }])
-            ->whereHas('categories.articles')
-            ->whereNotIn('id', $this->categoriesIdsIgnore)
-            ->active()
-            ->latest()
-            ->get();
-        $this->categoriesIdsIgnore = $this->categoriesIdsIgnore->merge($categories->pluck('id'));
-        return $categories;
-    }
-
-    public function getOtherCategoriesWithoutParent(): Collection
-    {
-        $categories = Category::query()
-            ->whereHas('articles')
-            ->where('parent_id', null)
-            ->whereNotIn('id', $this->categoriesIdsIgnore)
-            ->active()
-            ->latest()
-            ->get();
-        $this->categoriesIdsIgnore = $this->categoriesIdsIgnore->merge($categories->pluck('id'));
-        return $categories;
+        return Cache::remember('categories', self::CACHE_TTL, function () {
+            return Category::query()
+                ->whereHas('articles', function (Builder $query) {
+                    $query->active()->published();
+                })
+                ->limit(30)
+                ->latest()
+                ->active()
+                ->get();
+        });
     }
 
     public function composeViewData(): array
     {
         $trending_bar = [
-            'hot_articles' => Cache::remember('hot_articles', 60 * 60, function () {
-                return $this->getHotArticles();
-            }),
+            'hot_articles' => $this->getHotArticles(),
         ];
 
         $main_nav = [
-            'menus' => Menu::query()->latest('position')->get(),
-            'parent_categories' => Cache::remember('parent_categories', 60 * 60, function () {
-                return $this->getParentCategories();
-            }),
-            'categories_without_parent' => Cache::remember('categories_without_parent', 60 * 60, function () {
-                return $this->getCategoriesWithoutParent();
-            }),
-            'other_categories' => [
-                'parent_categories' => Cache::remember('other_parent_categories', 60 * 60, function () {
-                    return $this->getOtherParentCategories();
-                }),
-                'categories_without_parent' => Cache::remember('other_categories_without_parent', 60 * 60, function () {
-                    return $this->getOtherCategoriesWithoutParent();
-                }),
-            ],
+            'menus' => $this->getMenus(),
+            'categories' => $this->getCategories(),
         ];
 
         $first_sidebar = [
-            'articles_with_most_visits' => Cache::remember('articles_with_most_visits', 60 * 60, function () {
-                return $this->getArticlesWithMostVisit();
-            }),
+            'articles_with_most_visits' => $this->getArticlesWithMostVisit(),
         ];
 
         $second_sidebar = [
-            'latest_tags' => Cache::remember('latest_tags', 60 * 60, function () {
-                return $this->getLatestTags();
-            }),
+            'latest_tags' => $this->getLatestTags(),
         ];
 
         $footer = [
-            'editor_choices' => Cache::remember('editor_choices', 60 * 60, function () {
-                return $this->getEditorChoices();
-            }),
-            'hot_topics' => Cache::remember('hot_topics', 60 * 60, function () {
-                return $this->getHotTopics();
-            }),
-            'articles_with_most_comments' => Cache::remember('articles_with_most_comments', 60 * 60, function () {
-                return $this->getArticleWithMostComments();
-            }),
+            'editor_choices' => $this->getEditorChoices(),
+            'hot_topics' => $this->getHotTopics(),
+            'articles_with_most_comments' => $this->getArticleWithMostComments(),
         ];
 
         return compact(['trending_bar', 'main_nav', 'second_sidebar', 'first_sidebar', 'footer']);

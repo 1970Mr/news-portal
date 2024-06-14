@@ -24,6 +24,7 @@ class CategoryMenuController extends Controller
         $categories = Category::query()
             ->whereNotIn('id', $categoriesWithMenus)
             ->latest()
+            ->active()
             ->get();
         $latestPosition = Menu::query()->latest('position')->first()?->position ?? 0;
         return view('menu::create-category-menu', compact(['categories', 'latestPosition', 'types']));
@@ -44,6 +45,7 @@ class CategoryMenuController extends Controller
         $categories = Category::query()
             ->whereNotIn('id', $categoriesWithMenus)
             ->latest()
+            ->active()
             ->get();
         $latestPosition = Menu::query()->latest('position')->first()?->position ?? 0;
         return view('menu::edit-category-menu', compact(['categories', 'latestPosition', 'types', 'menu']));

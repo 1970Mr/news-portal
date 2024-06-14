@@ -20,7 +20,7 @@ class CategoryService
         if ($searchText) {
             $categories = $this->search($searchText);
         } else {
-            $categories = Category::with('image')->latest('updated_at')->paginate(10);
+            $categories = Category::with('image')->latest()->paginate(10);
         }
         return $categories;
     }
@@ -48,6 +48,6 @@ class CategoryService
             $query->orWhereHas('category', function ($q) use ($searchText) {
                 $q->where('name', 'like', "%{$searchText}%");
             });
-        })->latest('updated_at')->paginate(10);
+        })->latest()->paginate(10);
     }
 }

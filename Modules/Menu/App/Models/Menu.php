@@ -93,28 +93,38 @@ class Menu extends Model
     {
         return $query->where('type', self::MAIN_TYPE)
             ->whereNull('parent_id')
-            ->whereDoesntHave('children')
-            ->orderBy('position');
+            ->whereDoesntHave('children');
     }
 
     public function scopeMainMenusWithChildren(Builder $query): Builder
     {
         return $query->where('type', self::MAIN_TYPE)
             ->whereNull('parent_id')
-            ->whereHas('children')
-            ->orderBy('position');
+            ->whereHas('children', function (Builder $query) {
+                $query->active();
+            });
     }
 
     public function scopeCategoryMenus(Builder $query): Builder
     {
         return $query->where('type', self::CATEGORY_TYPE)
-            ->orderBy('position');
+            ->whereHas('category', function (Builder $query) {
+                $query->whereHas('articles', function (Builder $query) {
+                    $query->active()->published();
+                })->active();
+            });
     }
 
     public function scopeParentCategoryMenus(Builder $query): Builder
     {
         return $query->where('type', self::PARENT_CATEGORY_TYPE)
-            ->orderBy('position');
+            ->whereHas('category', function (Builder $query) {
+                $query->whereHas('categories', function (Builder $query) {
+                    $query->whereHas('articles', function (Builder $query) {
+                        $query->active()->published();
+                    })->active();
+                })->active();
+            });
     }
 
     public function isMainMenu(): bool

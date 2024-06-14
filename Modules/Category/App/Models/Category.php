@@ -33,7 +33,6 @@ class Category extends Model
             'id' => (int)$this->id,
             'name' => $this->name,
             'slug' => $this->slug,
-            'description' => $this->description,
         ];
     }
 
@@ -76,12 +75,6 @@ class Category extends Model
     public function scopeActive(Builder $query): void
     {
         $query->where('status', 1);
-    }
-
-    public function update(array $attributes = [], array $options = []): bool
-    {
-        $this->touch();
-        return parent::update($attributes, $options);
     }
 
     protected static function newFactory(): CategoryFactory

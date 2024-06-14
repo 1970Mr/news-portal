@@ -12,6 +12,36 @@
 
                     <div class="collapse navbar-collapse navbar-responsive-collapse">
                         <ul class="nav navbar-nav">
+                            {{-- All categories --}}
+                            @if($main_nav['categories']->count() >= 1)
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="fa fa-list categories-icon"></i>
+                                        دسته‌بندی‌ها
+                                        <i class="fa fa-angle-down"></i></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <!-- All parent categories -->
+                                        @foreach($main_nav['categories'] as $category)
+                                            @if($category->categories->count() >= 1)
+                                                <li class="dropdown-submenu">
+                                                    <a href="{{ route('categories.show', $category->slug) }}">{{ $category->name }}</a>
+                                                    <ul class="dropdown-menu">
+                                                        @foreach($category->categories as $childCategory)
+                                                            <li><a href="{{ route('categories.show', $childCategory->slug) }}">{{ $childCategory->name }}</a></li>
+                                                        @endforeach
+                                                    </ul>
+                                                </li>
+                                            @else
+                                                <li>
+                                                    <a href="{{ route('categories.show', $category->slug) }}">{{ $category->name }}</a>
+                                                </li>
+                                            @endif
+                                        @endforeach
+                                    </ul><!-- End dropdown -->
+
+                                </li><!-- Features menu end -->
+                            @endif
+
                             <li class="{{ request()->url() === route('home.index') ? 'active' : '' }}">
                                 <a href="{{ route('home.index') }}">خانه</a>
                             </li>
@@ -44,14 +74,12 @@
                                     <li class="dropdown mega-dropdown {{ request()->url() === $menu->getUrl() ? 'active' : '' }}">
                                         <a href="{{ $menu->getUrl() }}" class="dropdown-toggle" data-toggle="dropdown">
                                             {{ $menu->getName() }}
-                                            @if($menu->category->articles->count() > 0)
-                                                <i class="fa fa-angle-down"></i>
-                                            @endif
+                                            <i class="fa fa-angle-down"></i>
                                         </a>
                                         <div class="dropdown-menu mega-menu-content hidden-xs hidden-sm clearfix">
                                             <div class="mega-menu-content-inner">
                                                 <div class="row">
-                                                    @foreach($menu->category->articles as $article)
+                                                    @foreach($menu->category->articles->take(4) as $article)
                                                         <div class="col-md-3">
                                                             <div class="post-block-style clearfix">
                                                                 <div class="post-thumb">
@@ -81,7 +109,7 @@
                                         <div class="dropdown-menu mega-menu-content hidden-xs hidden-sm clearfix">
                                             <div class="menu-tab">
                                                 <ul class="nav nav-tabs nav-stacked col-md-2" data-toggle="tab-hover">
-                                                    @foreach($menu->category->categories as $category)
+                                                    @foreach($menu->category->categories->take(5) as $category)
                                                         <li class="@if($loop->first) active @endif">
                                                             <a class="animated fadeIn" href="#tab-{{ $category->id }}" data-toggle="tab">
 															<span class="tab-head">
@@ -93,10 +121,10 @@
                                                 </ul>
 
                                                 <div class="tab-content col-md-10">
-                                                    @foreach($menu->category->categories as $category)
+                                                    @foreach($menu->category->categories->take(5) as $category)
                                                         <div class="tab-pane @if($loop->first) active @endif animated fadeIn" id="tab-{{ $category->id }}">
                                                             <div class="row">
-                                                                @foreach($category->articles as $article)
+                                                                @foreach($category->articles->take(4) as $article)
                                                                     <div class="col-md-3">
                                                                         <div class="post-block-style clearfix">
                                                                             <div class="post-thumb">

@@ -171,6 +171,11 @@ li.rss, .with-color.fa-rss {
     }
 }
 
+@media (max-width: 1024px) {
+    .dropdown .categories-icon {
+        display: none;
+    }
+}
 /* Footer Styles */
 .footer-row {
     display: flex;
