@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Article\App\Services\Front;
+namespace Modules\Front\App\Services;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -10,7 +10,7 @@ use Modules\Category\App\Models\Category;
 use Modules\Menu\App\Models\Menu;
 use Modules\Tag\App\Models\Tag;
 
-class ArticleService
+class StaticContentService
 {
     public function __construct(private \Illuminate\Support\Collection $categoriesIdsIgnore) {}
 

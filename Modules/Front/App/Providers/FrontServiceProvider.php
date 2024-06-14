@@ -6,11 +6,9 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-use Modules\Article\App\Services\Front\ArticleService;
 use Modules\Front\App\View\Components\Breadcrumbs;
 use Modules\Front\App\View\Components\ListingPagePagination;
 use Modules\Front\App\View\Composers\SharedDataComposer;
-use Modules\Setting\App\Services\SocialNetworkService;
 
 
 class FrontServiceProvider extends ServiceProvider

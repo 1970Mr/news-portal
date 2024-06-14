@@ -5,7 +5,7 @@ namespace Modules\Front\App\View\Composers;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 use Modules\AdManager\App\Models\Ad;
-use Modules\Article\App\Services\Front\ArticleService;
+use Modules\Front\App\Services\StaticContentService;
 use Modules\ContactUs\App\Models\ContactInfo;
 use Modules\Setting\App\Models\SiteDetail;
 use Modules\Setting\App\Services\SocialNetworkService;
@@ -13,8 +13,9 @@ use Modules\Setting\App\Services\SocialNetworkService;
 class SharedDataComposer
 {
     public function __construct(
-        private readonly ArticleService $articleService,
-        private readonly SocialNetworkService $socialNetworkService) {}
+        private readonly StaticContentService $staticContentService,
+        private readonly SocialNetworkService $socialNetworkService
+    ) {}
 
     public function compose(View $view): void
     {
@@ -42,7 +43,7 @@ class SharedDataComposer
             ];
         });
 
-        $viewData = $this->articleService->composeViewData();
+        $viewData = $this->staticContentService->composeViewData();
         $viewData['social_networks'] = $socialNetworks;
         $viewData['site_details'] = $siteDetails;
         $viewData['contact_info'] = $contactInfo;
