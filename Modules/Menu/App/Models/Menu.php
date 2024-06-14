@@ -89,6 +89,55 @@ class Menu extends Model
         return $this->url ?? route('categories.show', $this->category->slug);
     }
 
+    public function scopeMainMenus(Builder $query): Builder
+    {
+        return $query->where('type', self::MAIN_TYPE)
+            ->whereNull('parent_id')
+            ->whereDoesntHave('children')
+            ->orderBy('position');
+    }
+
+    public function scopeMainMenusWithChildren(Builder $query): Builder
+    {
+        return $query->where('type', self::MAIN_TYPE)
+            ->whereNull('parent_id')
+            ->whereHas('children')
+            ->orderBy('position');
+    }
+
+    public function scopeCategoryMenus(Builder $query): Builder
+    {
+        return $query->where('type', self::CATEGORY_TYPE)
+            ->orderBy('position');
+    }
+
+    public function scopeParentCategoryMenus(Builder $query): Builder
+    {
+        return $query->where('type', self::PARENT_CATEGORY_TYPE)
+            ->orderBy('position');
+    }
+
+    public function isMainMenu(): bool
+    {
+        return $this->type === self::MAIN_TYPE && $this->parent_id === null && !$this->children->isNotEmpty();
+    }
+
+    public function isMainMenuWithChildren(): bool
+    {
+        return $this->type === self::MAIN_TYPE && $this->parent_id === null && $this->children->isNotEmpty();
+    }
+
+    public function isCategoryMenu(): bool
+    {
+        return $this->type === self::CATEGORY_TYPE;
+    }
+
+    public function isParentCategoryMenu(): bool
+    {
+        return $this->type === self::PARENT_CATEGORY_TYPE;
+    }
+
+
 //    protected static function newFactory(): MenuFactory
 //    {
 //        return MenuFactory::new();

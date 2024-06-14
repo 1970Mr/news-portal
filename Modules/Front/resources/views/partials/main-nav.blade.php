@@ -16,112 +16,113 @@
                                 <a href="{{ route('home.index') }}">خانه</a>
                             </li>
 
-                            <!-- All Parent Categories -->
-                            @foreach($main_nav['parent_categories'] as $parent_category)
-                                <li class="dropdown mega-dropdown">
-                                    <a href="{{ route('categories.show', $parent_category->slug) }}" class="dropdown-toggle">{{ $parent_category->name }} <i class="fa fa-angle-down"></i></a>
-                                    <div class="dropdown-menu mega-menu-content hidden-xs hidden-sm clearfix">
-                                        <div class="menu-tab">
-                                            <ul class="nav nav-tabs nav-stacked col-md-2" data-toggle="tab-hover">
-                                                @foreach($parent_category->categories as $category)
-                                                    <li class="@if($loop->first) active @endif">
-                                                        <a class="animated fadeIn" href="#tab-{{ $category->id }}" data-toggle="tab">
+                            @foreach($main_nav['menus'] as $menu)
+                                {{-- Main menus --}}
+                                @if($menu->isMainMenu())
+                                    <li class="{{ request()->url() === $menu->getUrl() ? 'active' : '' }}">
+                                        <a href="{{ $menu->getUrl() }}">{{ $menu->getName() }}</a>
+                                    </li>
+
+                                {{-- Main menus with chidlren --}}
+                                @elseif($menu->isMainMenuWithChildren())
+                                    <li class="dropdown {{ request()->url() === $menu->getUrl() ? 'active' : '' }}">
+                                        <a href="{{ $menu->getUrl() }}" class="dropdown-toggle" data-toggle="dropdown">
+                                            {{ $menu->getName() }}
+                                            <i class="fa fa-angle-down"></i>
+                                        </a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            @foreach($menu->children as $childMenu)
+                                                <li>
+                                                    <a href="{{ $childMenu->getUrl() }}">{{ $childMenu->getName() }}</a>
+                                                </li>
+                                            @endforeach
+                                        </ul><!-- End dropdown -->
+                                    </li><!-- Features menu end -->
+
+                                {{-- Category menus --}}
+                                @elseif($menu->isCategoryMenu())
+                                    <li class="dropdown mega-dropdown {{ request()->url() === $menu->getUrl() ? 'active' : '' }}">
+                                        <a href="{{ $menu->getUrl() }}" class="dropdown-toggle" data-toggle="dropdown">
+                                            {{ $menu->getName() }}
+                                            @if($menu->category->articles->count() > 0)
+                                                <i class="fa fa-angle-down"></i>
+                                            @endif
+                                        </a>
+                                        <div class="dropdown-menu mega-menu-content hidden-xs hidden-sm clearfix">
+                                            <div class="mega-menu-content-inner">
+                                                <div class="row">
+                                                    @foreach($menu->category->articles as $article)
+                                                        <div class="col-md-3">
+                                                            <div class="post-block-style clearfix">
+                                                                <div class="post-thumb">
+                                                                    <img class="img-responsive nav-cat-post-img" src="{{ asset('storage/' . $article->image->file_path) }}" alt="{{ $article->image->alt_text }}">
+                                                                </div><!-- Post thumb end -->
+                                                                <div class="post-content">
+                                                                    <h2 class="post-title title-small">
+                                                                        <a href="{{ route('news.show', [$menu->category->slug, $article->slug]) }}">{{ $article->title }}</a>
+                                                                    </h2>
+                                                                </div><!-- Post content end -->
+                                                            </div><!-- Post Block style end -->
+                                                        </div><!-- Col 1 end -->
+                                                    @endforeach
+                                                </div><!-- Post block row end -->
+                                            </div>
+
+                                        </div><!-- Mega menu content end -->
+                                    </li>
+
+                                {{-- Parent category menus --}}
+                                @elseif($menu->isParentCategoryMenu())
+                                    <li class="dropdown mega-dropdown">
+                                        <a href="{{ $menu->getUrl() }}" class="dropdown-toggle">
+                                            {{ $menu->getName() }}
+                                            <i class="fa fa-angle-down"></i>
+                                        </a>
+                                        <div class="dropdown-menu mega-menu-content hidden-xs hidden-sm clearfix">
+                                            <div class="menu-tab">
+                                                <ul class="nav nav-tabs nav-stacked col-md-2" data-toggle="tab-hover">
+                                                    @foreach($menu->category->categories as $category)
+                                                        <li class="@if($loop->first) active @endif">
+                                                            <a class="animated fadeIn" href="#tab-{{ $category->id }}" data-toggle="tab">
 															<span class="tab-head">
 																<span class="tab-text-title">{{ $category->name }}</span>
 															</span>
-                                                        </a>
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-
-                                            <div class="tab-content col-md-10">
-                                                @foreach($parent_category->categories as $category)
-                                                    <div class="tab-pane @if($loop->first) active @endif animated fadeIn" id="tab-{{ $category->id }}">
-                                                        <div class="row">
-                                                            @foreach($category->articles as $article)
-                                                                <div class="col-md-3">
-                                                                    <div class="post-block-style clearfix">
-                                                                        <div class="post-thumb">
-                                                                            <a href="{{ route('news.show', [$category->slug, $article->slug]) }}l">
-                                                                                <img class="img-responsive nav-parent-cat-post-img" src="{{ asset('storage/' . $article->image->file_path) }}"
-                                                                                     alt="{{ $article->image->alt_text }}">
-                                                                            </a>
-                                                                        </div>
-                                                                        <a class="post-cat" href="{{ route('categories.show', $category->slug) }}">{{ $category->name }}</a>
-                                                                        <div class="post-content">
-                                                                            <h2 class="post-title title-small">
-                                                                                <a href="{{ route('news.show', [$category->slug, $article->slug]) }}">{{ $article->title }}</a>
-                                                                            </h2>
-                                                                        </div><!-- Post content end -->
-                                                                    </div><!-- Post Block style end -->
-                                                                </div><!-- Col 1 end -->
-                                                            @endforeach
-                                                        </div><!-- Post block row end -->
-                                                    </div><!-- Tab pane 1 end -->
-                                                @endforeach
-                                            </div><!-- tab content -->
-                                        </div><!-- Menu tab end -->
-                                    </div><!-- Mega menu end -->
-                                </li><!-- Tab menu end -->
-                            @endforeach
-
-                            <!-- All Categories Without Parent -->
-                            @foreach($main_nav['categories_without_parent'] as $category)
-                                <li class="dropdown mega-dropdown">
-                                    <a href="{{ route('categories.show', $category->slug) }}" class="dropdown-toggle" data-toggle="dropdown">{{ $category->name }} <i class="fa
-                                    fa-angle-down"></i></a>
-                                    <div class="dropdown-menu mega-menu-content hidden-xs hidden-sm clearfix">
-                                        <div class="mega-menu-content-inner">
-                                            <div class="row">
-                                                @foreach($category->articles as $article)
-                                                    <div class="col-md-3">
-                                                        <div class="post-block-style clearfix">
-                                                            <div class="post-thumb">
-                                                                <img class="img-responsive nav-cat-post-img" src="{{ asset('storage/' . $article->image->file_path) }}" alt="{{ $article->image->alt_text }}">
-                                                            </div><!-- Post thumb end -->
-                                                            <div class="post-content">
-                                                                <h2 class="post-title title-small">
-                                                                    <a href="{{ route('news.show', [$category->slug, $article->slug]) }}">{{ $article->title }}</a>
-                                                                </h2>
-                                                            </div><!-- Post content end -->
-                                                        </div><!-- Post Block style end -->
-                                                    </div><!-- Col 1 end -->
-                                                @endforeach
-                                            </div><!-- Post block row end -->
-                                        </div>
-
-                                    </div><!-- Mega menu content end -->
-                                </li>
-                            @endforeach
-
-                            @if($main_nav['other_categories']['categories_without_parent']->count() >= 1 || $main_nav['other_categories']['parent_categories']->count() >= 1)
-                                <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown">سایر دسته‌بندی‌ها <i class="fa fa-angle-down"></i></a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <!-- All Categories Without Parent -->
-                                        @foreach($main_nav['other_categories']['parent_categories'] as $parent_category)
-                                            <li class="dropdown-submenu">
-                                                <a href="{{ route('categories.show', $category->slug) }}">{{ $parent_category->name }}</a>
-                                                <ul class="dropdown-menu">
-                                                    @foreach($parent_category->categories as $category)
-                                                        <li><a href="{{ route('categories.show', $category->slug) }}">{{ $category->name }}</a></li>
+                                                            </a>
+                                                        </li>
                                                     @endforeach
                                                 </ul>
-                                            </li>
-                                        @endforeach
 
-                                        <!-- All Categories Without Parent -->
-                                        @foreach($main_nav['other_categories']['categories_without_parent'] as $category)
-                                            <li>
-                                                <a href="{{ route('categories.show', $category->slug) }}">{{ $category->name }}</a>
-                                            </li>
-                                        @endforeach
-                                    </ul><!-- End dropdown -->
-
-                                </li><!-- Features menu end -->
-                            @endif
-
-
+                                                <div class="tab-content col-md-10">
+                                                    @foreach($menu->category->categories as $category)
+                                                        <div class="tab-pane @if($loop->first) active @endif animated fadeIn" id="tab-{{ $category->id }}">
+                                                            <div class="row">
+                                                                @foreach($category->articles as $article)
+                                                                    <div class="col-md-3">
+                                                                        <div class="post-block-style clearfix">
+                                                                            <div class="post-thumb">
+                                                                                <a href="{{ route('news.show', [$category->slug, $article->slug]) }}l">
+                                                                                    <img class="img-responsive nav-parent-cat-post-img" src="{{ asset('storage/' . $article->image->file_path) }}"
+                                                                                         alt="{{ $article->image->alt_text }}">
+                                                                                </a>
+                                                                            </div>
+                                                                            <a class="post-cat" href="{{ route('categories.show', $category->slug) }}">{{ $category->name }}</a>
+                                                                            <div class="post-content">
+                                                                                <h2 class="post-title title-small">
+                                                                                    <a href="{{ route('news.show', [$category->slug, $article->slug]) }}">{{ $article->title }}</a>
+                                                                                </h2>
+                                                                            </div><!-- Post content end -->
+                                                                        </div><!-- Post Block style end -->
+                                                                    </div><!-- Col 1 end -->
+                                                                @endforeach
+                                                            </div><!-- Post block row end -->
+                                                        </div><!-- Tab pane 1 end -->
+                                                    @endforeach
+                                                </div><!-- tab content -->
+                                            </div><!-- Menu tab end -->
+                                        </div><!-- Mega menu end -->
+                                    </li><!-- Tab menu end -->
+                                @endif
+                            @endforeach
                         </ul><!--/ Nav ul end -->
                     </div><!--/ Collapse end -->
 

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Cache;
 use Modules\Article\App\Models\Article;
 use Modules\Category\App\Models\Category;
+use Modules\Menu\App\Models\Menu;
 use Modules\Tag\App\Models\Tag;
 
 class ArticleService
@@ -160,6 +161,7 @@ class ArticleService
         ];
 
         $main_nav = [
+            'menus' => Menu::query()->latest('position')->get(),
             'parent_categories' => Cache::remember('parent_categories', 60 * 60, function () {
                 return $this->getParentCategories();
             }),
