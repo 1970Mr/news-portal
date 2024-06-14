@@ -42,5 +42,14 @@ th, .reply, .status, .subscribed-at {
         display: flex;
         flex-direction: column;
         padding-bottom: .5rem;
+        align-items: flex-start;
+    }
+
+    .portlet-title .title {
+        margin: 0;
+    }
+
+    .search-form {
+        width: 100%;
     }
 }

@@ -18,6 +18,11 @@ return [
     'CACHE_CLEAR_CONFIG' => 'cache::clear_config',
     'CACHE_CLEAR_ROUTE' => 'cache::clear_route',
 
+    'MENU_INDEX' => 'menu::index',
+    'MENU_STORE' => 'menu::store',
+    'MENU_UPDATE' => 'menu::update',
+    'MENU_DESTROY' => 'menu::destroy',
+
     'NEWSLETTER_INDEX' => 'newsletter::index',
     'NEWSLETTER_DESTROY' => 'newsletter::destroy',
 
@@ -49,11 +54,6 @@ return [
     'ARTICLE_DESTROY' => 'article::destroy',
     'ARTICLE_EDITOR_CHOICE' => 'article::editor_choice',
     'ARTICLE_HOTNESS' => 'article::hotness',
-
-    'MENU_INDEX' => 'menu::index',
-    'MENU_STORE' => 'menu::store',
-    'MENU_UPDATE' => 'menu::update',
-    'MENU_DESTROY' => 'menu::destroy',
 
     'IMAGE_INDEX_ALL' => 'image::index_all',
     'IMAGE_INDEX_OWN' => 'image::index_own',

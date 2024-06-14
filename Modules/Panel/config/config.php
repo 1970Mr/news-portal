@@ -29,6 +29,17 @@ return [
                 config('app.panel_prefix', 'panel') . '.roles.edit',
             ],
         ],
+        'article' => [
+            'title' => 'اخبار',
+            'icon' => 'icon-globe',
+            'url' => route(config('app.panel_prefix', 'panel') . '.articles.index'),
+            'permissions' => config('permissions_list.ARTICLE_INDEX', false),
+            'active_routes' => [
+                config('app.panel_prefix', 'panel') . '.articles.create',
+                config('app.panel_prefix', 'panel') . '.articles.edit',
+                config('app.panel_prefix', 'panel') . '.articles.seo-settings',
+            ]
+        ],
         'category' => [
             'title' => 'دسته‌بندی‌ها',
             'icon' => 'icon-grid',
@@ -64,17 +75,6 @@ return [
                 config('app.panel_prefix', 'panel') . '.images.edit',
             ]
         ],
-        'article' => [
-            'title' => 'اخبار',
-            'icon' => 'icon-globe',
-            'url' => route(config('app.panel_prefix', 'panel') . '.articles.index'),
-            'permissions' => config('permissions_list.ARTICLE_INDEX', false),
-            'active_routes' => [
-                config('app.panel_prefix', 'panel') . '.articles.create',
-                config('app.panel_prefix', 'panel') . '.articles.edit',
-                config('app.panel_prefix', 'panel') . '.articles.seo-settings',
-            ]
-        ],
         'comment' => [
             'title' => 'نظرات',
             'icon' => 'icon-bubbles',
@@ -82,6 +82,18 @@ return [
             'permissions' => config('permissions_list.COMMENT_INDEX', false),
             'active_routes' => [
                 config('app.panel_prefix', 'panel') . '.comments.show',
+            ]
+        ],
+        'menu' => [
+            'title' => 'منو ساز',
+            'icon' => 'icon-menu',
+            'url' => route(config('app.panel_prefix', 'panel') . '.menus.index'),
+            'permissions' => config('permissions_list.TAG_INDEX', false),
+            'active_routes' => [
+                config('app.panel_prefix', 'panel') . '.menus.create',
+                config('app.panel_prefix', 'panel') . '.menus.edit',
+                config('app.panel_prefix', 'panel') . '.menus.category-menu.create',
+                config('app.panel_prefix', 'panel') . '.menus.category-menu.edit',
             ]
         ],
         'ads' => [
