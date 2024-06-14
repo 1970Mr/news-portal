@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Modules\Category\App\Models\Category;
-use Modules\Menu\App\Http\Requests\CategoryMenuRequest;
 use Modules\Menu\App\Http\Requests\MainMenuRequest;
 use Modules\Menu\App\Models\Menu;
 use Modules\Menu\App\Services\MenuService;
@@ -16,7 +14,13 @@ class MenuController extends Controller
 {
     public function __construct(
         private readonly MenuService $menuService,
-    ) {}
+    )
+    {
+        $this->middleware('can:' . config('permissions_list.MENU_INDEX', false))->only('index');
+        $this->middleware('can:' . config('permissions_list.MENU_STORE', false))->only('store');
+        $this->middleware('can:' . config('permissions_list.MENU_UPDATE', false))->only('update');
+        $this->middleware('can:' . config('permissions_list.MENU_DESTROY', false))->only('destroy');
+    }
     public function index(Request $request): View
     {
         $menus = $this->menuService->index($request);

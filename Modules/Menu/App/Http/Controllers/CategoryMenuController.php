@@ -11,6 +11,12 @@ use Modules\Menu\App\Models\Menu;
 
 class CategoryMenuController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:' . config('permissions_list.MENU_STORE', false))->only('store');
+        $this->middleware('can:' . config('permissions_list.MENU_UPDATE', false))->only('update');
+    }
+
     public function create(): View
     {
         $types = [Menu::CATEGORY_TYPE, Menu::PARENT_CATEGORY_TYPE];

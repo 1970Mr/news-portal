@@ -43,6 +43,18 @@ return [
     'TAG_DESTROY' => 'tag::destroy',
     'TAG_HOTNESS' => 'tag::hotness',
 
+    'ARTICLE_INDEX' => 'article::index',
+    'ARTICLE_STORE' => 'article::store',
+    'ARTICLE_UPDATE' => 'article::update',
+    'ARTICLE_DESTROY' => 'article::destroy',
+    'ARTICLE_EDITOR_CHOICE' => 'article::editor_choice',
+    'ARTICLE_HOTNESS' => 'article::hotness',
+
+    'MENU_INDEX' => 'menu::index',
+    'MENU_STORE' => 'menu::store',
+    'MENU_UPDATE' => 'menu::update',
+    'MENU_DESTROY' => 'menu::destroy',
+
     'IMAGE_INDEX_ALL' => 'image::index_all',
     'IMAGE_INDEX_OWN' => 'image::index_own',
 //    'IMAGE_STORE' => 'image::store',
@@ -50,13 +62,6 @@ return [
     'IMAGE_UPDATE_OWN' => 'image::update_own',
     'IMAGE_DESTROY_ALL' => 'image::destroy_all',
     'IMAGE_DESTROY_OWN' => 'image::destroy_own',
-
-    'ARTICLE_INDEX' => 'article::index',
-    'ARTICLE_STORE' => 'article::store',
-    'ARTICLE_UPDATE' => 'article::update',
-    'ARTICLE_DESTROY' => 'article::destroy',
-    'ARTICLE_EDITOR_CHOICE' => 'article::editor_choice',
-    'ARTICLE_HOTNESS' => 'article::hotness',
 
     'COMMENT_INDEX' => 'comment::index',
     'COMMENT_SHOW' => 'comment::show',
