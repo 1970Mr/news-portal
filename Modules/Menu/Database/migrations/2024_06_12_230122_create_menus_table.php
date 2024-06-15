@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('url')->nullable();
             $table->unsignedBigInteger('position')->unique();
             $table->enum('type', Menu::TYPES)->default(Menu::MAIN_TYPE);
-            $table->foreignId('parent_id')->nullable()->constrained('menus')->onDelete('set null');
+            $table->foreignId('parent_id')->nullable()->constrained('menus')->onDelete('cascade');
             $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('cascade');
             $table->boolean('status')->default(1);
             $table->softDeletes();

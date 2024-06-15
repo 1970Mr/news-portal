@@ -34,4 +34,10 @@ class MenuService
             });
         })->latest('position')->paginate(10);
     }
+
+    public function destroy(Menu $menu): void
+    {
+        $menu->children()->delete();
+        $menu->delete();
+    }
 }

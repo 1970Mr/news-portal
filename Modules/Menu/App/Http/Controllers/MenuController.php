@@ -57,7 +57,7 @@ class MenuController extends Controller
 
     public function destroy(Menu $menu): RedirectResponse
     {
-        $menu->delete();
+        $this->menuService->destroy($menu);
         return back()->with('success', __('entity_deleted', ['entity' => __('menu')]));
     }
 }

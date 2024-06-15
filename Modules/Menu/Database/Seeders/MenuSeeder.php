@@ -15,19 +15,23 @@ class MenuSeeder extends Seeder
     public function run(): void
     {
         TransactionHelper::beginTransaction('Failed to seed menus: ', static function () {
-            if (Category::count() === 0) {
+            if (Category::active()->count() === 0) {
                 Category::factory(5)->create();
             }
 
             Menu::factory(10)->create()->each(function (Menu $menu) {
                 $data = [];
-
-                if ($menu->type === Menu::SUBMENU_TYPE && Menu::mainMenus()->count() > 0) {
-                    $data['parent_id'] = Menu::mainMenus()->inRandomOrder()->first()->id;
+                if ($menu->type === Menu::SUBMENU_TYPE ) {
+                    if (Menu::mainMenus()->count() > 0) {
+                        $data['parent_id'] = Menu::mainMenus()->inRandomOrder()->first()->id;
+                    }
+                    else {
+                        $data['type'] = Menu::MAIN_TYPE;
+                    }
                 } elseif ($menu->type === Menu::CATEGORY_TYPE || $menu->type === Menu::PARENT_CATEGORY_TYPE) {
                     $data['name'] = null;
                     $data['url'] = null;
-                    $data['category_id'] = Category::query()->inRandomOrder()->first()->id;
+                    $data['category_id'] = Category::query()->active()->inRandomOrder()->first()->id;
                 }
                 $menu->update($data);
             });

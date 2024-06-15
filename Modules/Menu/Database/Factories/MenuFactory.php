@@ -30,7 +30,7 @@ class MenuFactory extends Factory
         $type = fake()->randomElement(Menu::TYPES);
 
         return [
-            'name' => fake()->words(2, true),
+            'name' => fake()->word(),
             'url' => fake()->url(),
             'position' => $this->position++,
             'type' => $type,
