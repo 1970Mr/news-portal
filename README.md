@@ -88,12 +88,34 @@ Welcome to the News Portal, a comprehensive and modular news website built with 
    Add the following initial settings to your `.env` file:
 
     ```sh
+    APP_NAME="News Portal"
+    ...
     ADMIN_FULL_NAME=test
     ADMIN_USERNAME=test
     ADMIN_EMAIL=test@gmail.com
     ADMIN_PASSWORD=password
 
     PANEL_PREFIX=panel
+    ```
+
+    Configure your database and email server settings in the .env file:
+
+    ```sh
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=news_portal
+    DB_USERNAME=root
+    DB_PASSWORD=your_password
+    
+    MAIL_MAILER=smtp
+    MAIL_HOST=smtp.mailtrap.io
+    MAIL_PORT=2525
+    MAIL_USERNAME=your_username
+    MAIL_PASSWORD=your_password
+    MAIL_ENCRYPTION=null
+    MAIL_FROM_ADDRESS=hello@example.com
+    MAIL_FROM_NAME="${APP_NAME}"
     ```
 
 4. **Generate application key:**
@@ -114,7 +136,13 @@ Welcome to the News Portal, a comprehensive and modular news website built with 
     php artisan db:seed
     ```
 
-7. **Start the development server:**
+7. **Create a symbolic link to the storage directory:**
+
+    ```sh
+    php artisan storage:link
+    ```
+
+8. **Start the development server:**
 
     ```sh
     php artisan serve
