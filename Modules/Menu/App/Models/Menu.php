@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Scout\Searchable;
-//use Modules\Menu\Database\Factories\MenuFactory;
+use Modules\Menu\Database\Factories\MenuFactory;
 use Modules\Category\App\Models\Category;
 
 class Menu extends Model
@@ -50,12 +50,11 @@ class Menu extends Model
         return $this->belongsTo(__CLASS__, 'parent_id');
     }
 
-    public function parentMenu(): BelongsTo|null
+    public function parentMenu(): BelongsTo
     {
-        return ($this->parent_id === null)
-            ? null
-            : $this->parent();
+        return $this->belongsTo(Menu::class, 'parent_id');
     }
+
 
     public function children(): HasMany
     {
@@ -64,9 +63,9 @@ class Menu extends Model
 
     public function parentMenuTitle(): string
     {
-        return ($this->parentMenu() === null)
+        return ($this->parentMenu === null)
             ? __('have_not')
-            : $this->parentMenu()->first()->name;
+            : $this->parentMenu->first()?->name;
     }
 
     public function category(): BelongsTo
@@ -148,8 +147,8 @@ class Menu extends Model
     }
 
 
-//    protected static function newFactory(): MenuFactory
-//    {
-//        return MenuFactory::new();
-//    }
+    protected static function newFactory(): MenuFactory
+    {
+        return MenuFactory::new();
+    }
 }

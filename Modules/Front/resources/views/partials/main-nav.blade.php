@@ -168,7 +168,7 @@
 
                 </div><!-- Site Navbar inner end -->
             </nav><!--/ Navigation end -->
-
+            
             @guest
                 <div class="nav-login">
                     <a href="{{ route('login') }}" id="login"><i class="fa fa-sign-in" title="ورود به حساب کاربری"></i></a>

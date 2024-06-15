@@ -184,6 +184,13 @@ li.rss, .with-color.fa-rss {
         display: none;
     }
 }
+
+@media (min-width: 992px) {
+    .site-navigation {
+        padding-left: 10rem;
+    }
+}
+
 /* Footer Styles */
 .footer-row {
     display: flex;

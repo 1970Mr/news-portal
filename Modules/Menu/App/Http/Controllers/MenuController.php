@@ -30,7 +30,7 @@ class MenuController extends Controller
     public function create(): View
     {
         $parentMenus = Menu::query()->where('parent_id', null)->where('category_id', null)->get();
-        $latestPosition = Menu::query()->latest('position')->first()?->position ?? 0;
+        $latestPosition = (int) Menu::query()->max('position');
         return view('menu::create-main-menu', compact(['parentMenus', 'latestPosition']));
     }
 
@@ -44,7 +44,7 @@ class MenuController extends Controller
     public function edit(Menu $menu): View
     {
         $parentMenus = Menu::query()->where('parent_id', null)->where('category_id', null)->get();
-        $latestPosition = Menu::query()->latest('position')->first()?->position ?? 0;
+        $latestPosition = (int) Menu::query()->max('position');
         return view('menu::edit-main-menu', compact(['parentMenus', 'latestPosition', 'menu']));
     }
 

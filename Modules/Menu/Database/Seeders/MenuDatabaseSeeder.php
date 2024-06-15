@@ -11,6 +11,8 @@ class MenuDatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // $this->call([]);
+         $this->call([
+             MenuSeeder::class,
+         ]);
     }
 }

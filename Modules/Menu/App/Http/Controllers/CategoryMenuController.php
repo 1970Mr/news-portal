@@ -26,7 +26,8 @@ class CategoryMenuController extends Controller
             ->latest()
             ->active()
             ->get();
-        $latestPosition = Menu::query()->latest('position')->first()?->position ?? 0;
+//        $latestPosition = Menu::query()->latest('position')->first()?->position ?? 0;
+        $latestPosition = (int) Menu::query()->max('position');
         return view('menu::create-category-menu', compact(['categories', 'latestPosition', 'types']));
     }
 
@@ -47,7 +48,7 @@ class CategoryMenuController extends Controller
             ->latest()
             ->active()
             ->get();
-        $latestPosition = Menu::query()->latest('position')->first()?->position ?? 0;
+        $latestPosition = (int) Menu::query()->max('position');
         return view('menu::edit-category-menu', compact(['categories', 'latestPosition', 'types', 'menu']));
     }
 
