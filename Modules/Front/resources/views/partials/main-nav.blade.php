@@ -14,32 +14,40 @@
                         <ul class="nav navbar-nav">
                             {{-- All categories --}}
                             @if($main_nav['categories']->count() >= 1)
-                                <li class="dropdown">
+                                <li class="dropdown mega-dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown">
-                                        <i class="fa fa-list categories-icon"></i>
+                                        <i class="fa fa-list"></i>
                                         دسته‌بندی‌ها
                                         <i class="fa fa-angle-down"></i></a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <!-- All parent categories -->
-                                        @foreach($main_nav['categories'] as $category)
-                                            @if($category->categories->count() >= 1)
-                                                <li class="dropdown-submenu">
-                                                    <a href="{{ route('categories.show', $category->slug) }}">{{ $category->name }}</a>
-                                                    <ul class="dropdown-menu">
-                                                        @foreach($category->categories as $childCategory)
-                                                            <li><a href="{{ route('categories.show', $childCategory->slug) }}">{{ $childCategory->name }}</a></li>
-                                                        @endforeach
-                                                    </ul>
-                                                </li>
-                                            @else
-                                                <li>
-                                                    <a href="{{ route('categories.show', $category->slug) }}">{{ $category->name }}</a>
-                                                </li>
-                                            @endif
-                                        @endforeach
-                                    </ul><!-- End dropdown -->
-
-                                </li><!-- Features menu end -->
+                                    <div class="dropdown-menu mega-menu-content hidden-xs hidden-sm clearfix">
+                                        <div class="mega-menu-content-inner">
+                                            <div class="row">
+                                                @foreach($main_nav['categories']->chunk(4) as $categoryChunk)
+                                                    <div class="col-md-3">
+                                                        <ul class="mega-menu-category-list">
+                                                            @foreach($categoryChunk as $category)
+                                                                @if($category->categories->count() >= 1)
+                                                                    <li class="dropdown-submenu">
+                                                                        <a href="{{ route('categories.show', $category->slug) }}">{{ $category->name }}</a>
+                                                                        <ul class="dropdown-menu">
+                                                                            @foreach($category->categories as $childCategory)
+                                                                                <li><a href="{{ route('categories.show', $childCategory->slug) }}">{{ $childCategory->name }}</a></li>
+                                                                            @endforeach
+                                                                        </ul>
+                                                                    </li>
+                                                                @else
+                                                                    <li>
+                                                                        <a href="{{ route('categories.show', $category->slug) }}">{{ $category->name }}</a>
+                                                                    </li>
+                                                                @endif
+                                                            @endforeach
+                                                        </ul>
+                                                    </div><!-- Col end -->
+                                                @endforeach
+                                            </div><!-- Row end -->
+                                        </div><!-- Mega menu content inner end -->
+                                    </div><!-- Mega menu content end -->
+                                </li><!-- Mega menu end -->
                             @endif
 
                             <li class="{{ request()->url() === route('home.index') ? 'active' : '' }}">
