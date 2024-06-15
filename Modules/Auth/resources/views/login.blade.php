@@ -2,10 +2,10 @@
 
 @section('content')
     <div class="logo-con m-t-10 m-b-10">
-        <img src="{{ asset('home/images/logos/logo.png') }}" class="dark-logo center-block img-responsive"
-             alt="logo" width="256px">
-        <img src="{{ asset('home/images/logos/logo_dark.png') }}" class="light-logo center-block img-responsive"
-             alt="logo" width="256px">
+        <img src="{{ $siteDetails->mainLogoLink() }}" alt="{{ config('app.name') }}" class="dark-logo center-block img-responsive"
+             width="256px">
+        <img src="{{ $siteDetails->secondLogoLink() }}" alt="{{ config('app.name') }}" class="light-logo center-block img-responsive"
+             width="256px">
     </div><!-- /.logo-con -->
     <h2 class="text-center m-b-20">وارد شوید</h2>
 

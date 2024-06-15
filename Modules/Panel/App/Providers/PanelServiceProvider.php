@@ -134,10 +134,16 @@ class PanelServiceProvider extends ServiceProvider
     {
         $this->app->booted(function () {
             View::composer([
-                '*',
+//                '*',
+                'panel::*',
             ], function () {
                 $this->commentsSharedData();
                 $this->userMessagesSharedData();
+            });
+
+            View::composer([
+                '*',
+            ], function () {
                 $this->siteDetailsSharedData();
             });
         });
