@@ -17,7 +17,7 @@ class ContactUsPageSEOService extends BaseSEOService
             $title = __('contact_us');
             $description = __('Get in touch with us for any inquiries or support.');
             $canonicalUrl = route('contact-us.index');
-            $logoUrl = $siteDetails && $siteDetails->mainLogo ? asset('storage/' . $siteDetails->mainLogo->file_path) : null;
+            $logoUrl = $siteDetails->mainLogoLink();
 
             return compact('title', 'description', 'canonicalUrl', 'logoUrl');
         });

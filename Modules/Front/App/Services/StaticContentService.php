@@ -110,7 +110,8 @@ class StaticContentService
                 ->whereHas('articles', function (Builder $query) {
                     $query->active()->published();
                 })
-                ->latest()
+                ->withCount('articles')
+                ->latest('articles_count')
                 ->active()
                 ->get();
         });

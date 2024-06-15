@@ -132,6 +132,14 @@ li.rss, .with-color.fa-rss {
     margin: 0 !important;
 }
 
+.categories-list .post-grid {
+    min-height: 0 !important;
+}
+
+.categories-list .post-meta {
+    margin: 0 0 2rem 0 !important;
+}
+
 @media (max-width: 768px) {
     .second-content-row {
         padding: 0 2rem;

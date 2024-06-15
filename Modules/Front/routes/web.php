@@ -9,6 +9,7 @@ use Modules\Front\App\Http\Controllers\TagController;
 
 Route::get('author/{user:username}', AuthorController::class)->name('author.index');
 
+Route::get('categories', [CategoryController::class, 'index'])->name('categories.index');
 Route::get('categories/{category:slug}', [CategoryController::class, 'show'])->name('categories.show');
 
 Route::get('tags/{tag:slug}', [TagController::class, 'show'])->name('tags.show');

@@ -14,8 +14,8 @@
                         <ul class="nav navbar-nav">
                             {{-- All categories --}}
                             @if($main_nav['categories']->count() >= 1)
-                                <li class="dropdown mega-dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown">
+                                <li class="dropdown mega-dropdown {{ front_active_menu(route('categories.index')) }} hidden-xs hidden-sm">
+                                    <a href="{{ route('categories.index') }}" class="dropdown-toggle" data-toggle="dropdown">
                                         <i class="fa fa-list"></i>
                                         دسته‌بندی‌ها
                                         <i class="fa fa-angle-down"></i></a>
@@ -50,20 +50,20 @@
                                 </li><!-- Mega menu end -->
                             @endif
 
-                            <li class="{{ request()->url() === route('home.index') ? 'active' : '' }}">
+                            <li class="{{ front_active_menu(route('home.index')) }}">
                                 <a href="{{ route('home.index') }}">خانه</a>
                             </li>
 
                             @foreach($main_nav['menus'] as $menu)
                                 {{-- Main menus --}}
                                 @if($menu->isMainMenu())
-                                    <li class="{{ request()->url() === $menu->getUrl() ? 'active' : '' }}">
+                                    <li class="{{ front_active_menu($menu->getUrl()) }}">
                                         <a href="{{ $menu->getUrl() }}">{{ $menu->getName() }}</a>
                                     </li>
 
-                                {{-- Main menus with chidlren --}}
+                                    {{-- Main menus with chidlren --}}
                                 @elseif($menu->isMainMenuWithChildren())
-                                    <li class="dropdown {{ request()->url() === $menu->getUrl() ? 'active' : '' }}">
+                                    <li class="dropdown {{ front_active_menu($menu->getUrl()) }}">
                                         <a href="{{ $menu->getUrl() }}" class="dropdown-toggle" data-toggle="dropdown">
                                             {{ $menu->getName() }}
                                             <i class="fa fa-angle-down"></i>
@@ -77,9 +77,9 @@
                                         </ul><!-- End dropdown -->
                                     </li><!-- Features menu end -->
 
-                                {{-- Category menus --}}
+                                    {{-- Category menus --}}
                                 @elseif($menu->isCategoryMenu())
-                                    <li class="dropdown mega-dropdown {{ request()->url() === $menu->getUrl() ? 'active' : '' }}">
+                                    <li class="dropdown mega-dropdown {{ front_active_menu($menu->getUrl()) }}">
                                         <a href="{{ $menu->getUrl() }}" class="dropdown-toggle" data-toggle="dropdown">
                                             {{ $menu->getName() }}
                                             <i class="fa fa-angle-down"></i>
@@ -103,11 +103,10 @@
                                                     @endforeach
                                                 </div><!-- Post block row end -->
                                             </div>
-
                                         </div><!-- Mega menu content end -->
                                     </li>
 
-                                {{-- Parent category menus --}}
+                                    {{-- Parent category menus --}}
                                 @elseif($menu->isParentCategoryMenu())
                                     <li class="dropdown mega-dropdown">
                                         <a href="{{ $menu->getUrl() }}" class="dropdown-toggle">
@@ -159,6 +158,11 @@
                                     </li><!-- Tab menu end -->
                                 @endif
                             @endforeach
+
+                            {{-- Link to categories for mobile view --}}
+                            <li class="visible-xs visible-sm {{ front_active_menu(route('categories.index')) }}">
+                                <a href="{{ route('categories.index') }}">دسته‌بندی‌ها</a>
+                            </li>
                         </ul><!--/ Nav ul end -->
                     </div><!--/ Collapse end -->
 

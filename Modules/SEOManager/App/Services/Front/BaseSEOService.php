@@ -21,10 +21,10 @@ class BaseSEOService
         SEOTools::setTitle($title);
         SEOTools::setDescription($description);
         SEOTools::setCanonical($canonicalUrl);
+        SEOMeta::addMeta('robots', $robots);
         if (!empty($keywords)) {
             SEOMeta::addKeyword($keywords);
         }
-        SEOMeta::addMeta('robots', $robots);
     }
 
     protected function setOpenGraphSEO(
@@ -41,9 +41,12 @@ class BaseSEOService
         SEOTools::opengraph()->addProperty('locale', $locale);
     }
 
-    protected function setTwitterSEO(?string $title = null): void
+    protected function setTwitterSEO(?string $title = null, ?string $imageUrl = null): void
     {
         SEOTools::twitter()->setTitle($title);
+        if ($imageUrl) {
+            SEOTools::twitter()->setImage($imageUrl);
+        }
     }
 
     protected function setJsonLdSEO(

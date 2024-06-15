@@ -2,9 +2,11 @@
 
 namespace Modules\SEOManager\App\Services\Front;
 
+use Artesaos\SEOTools\Facades\SEOTools;
 use Modules\Category\App\Models\Category;
+use Modules\Setting\App\Models\SiteDetail;
 
-class CategoryPageSEOService extends BaseSEOService
+class CategoriesPageSEOService extends BaseSEOService
 {
     public function setCategoryPageSEO(Category $category): void
     {
@@ -34,6 +36,27 @@ class CategoryPageSEOService extends BaseSEOService
 
         $this->setOpenGraphSEO($seoData['categoryUrl'], 'category', $seoData['imageUrl']);
         $this->setJsonLdSEO($seoData['title'], $seoData['description'], 'Category', $seoData['imageUrl']);
-        $this->setTwitterSEO($seoData['title']);
+        $this->setTwitterSEO($seoData['title'], $seoData['imageUrl']);
+    }
+
+    public function setCategoriesPageSEO(): void
+    {
+        $cacheKey = 'categories_page_seo';
+        $cacheTTL = now()->addHours(self::CACHE_TTL);
+
+        $seoData = cache()->remember($cacheKey, $cacheTTL, function() {
+            $siteDetails = SiteDetail::first();
+            $title = __('categories');
+            $description = __('Browse all categories available on our website.');
+            $canonicalUrl = route('categories.index');
+            $logoUrl = $siteDetails->mainLogoLink();
+
+            return compact('title', 'description', 'canonicalUrl', 'logoUrl');
+        });
+
+        $this->setBasicSEO($seoData['title'], $seoData['description'], $seoData['canonicalUrl']);
+        $this->setOpenGraphSEO($seoData['canonicalUrl'], 'category', $seoData['logoUrl']);
+        $this->setJsonLdSEO($seoData['title'], $seoData['description'], 'Category', $seoData['logoUrl']);
+        $this->setTwitterSEO($seoData['title'], $seoData['logoUrl']);
     }
 }

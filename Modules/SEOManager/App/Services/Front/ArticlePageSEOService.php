@@ -33,7 +33,7 @@ class ArticlePageSEOService extends BaseSEOService
 
         $this->setBasicSEO($seoData['title'], $seoData['description'], $seoData['canonicalUrl'], $seoData['robots'], $seoData['keywords']);
         $this->setOpenGraphSEO($seoData['articleUrl'], 'article', $seoData['imageUrl']);
-        $this->setTwitterSEO($seoData['title']);
+        $this->setTwitterSEO($seoData['title'], $seoData['imageUrl']);
         $this->setJsonLdSEO($seoData['title'], $seoData['description'], 'Article', $seoData['imageUrl']);
         $this->setMetaTags($article, $seoData['authorUrl'], $seoData['authorName'], $seoData['tags'], $seoData['category']);
     }

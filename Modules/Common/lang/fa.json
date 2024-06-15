@@ -33,6 +33,7 @@
     "nothing": "هیچی",
     "all": "همه",
     "Get in touch with us for any inquiries or support.": "برای هرگونه سوال یا پشتیبانی با ما تماس بگیرید.",
+    "Browse all categories available on our website.": "مرور همه دسته\u200Cهای موجود در وب سایت.",
     "about_us_description": "با سایت :siteName بیشتر آشنا شوید.",
     "category_description": "مقالات را در دسته :categoryName مرور کنید.",
     "tag_description": "کاوش در مقالات برچسب گذاری شده با :tagName.",
@@ -44,5 +45,6 @@
     "ad": "تبلیغ",
     "ads": "تبلیغات",
     "position": "مکان قرارگیری",
-    "menu": "منو"
+    "menu": "منو",
+    "categories": "دسته\u200Cبندی\u200Cها"
 }

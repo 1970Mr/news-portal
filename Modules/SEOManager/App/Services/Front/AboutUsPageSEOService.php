@@ -17,7 +17,7 @@ class AboutUsPageSEOService extends BaseSEOService
             $title = __('about_us');
             $description = __('about_us_description', ['siteName' => config('app.name')]);
             $canonicalUrl = route('about-us.index');
-            $logoUrl = $siteDetails && $siteDetails->mainLogo ? asset('storage/' . $siteDetails->mainLogo->file_path) : null;
+            $logoUrl = $siteDetails->mainLogoLink();
 
             return compact('title', 'description', 'canonicalUrl', 'logoUrl');
         });

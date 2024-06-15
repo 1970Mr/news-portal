@@ -2,16 +2,17 @@
 
 @section('content')
     <x-front-breadcrumbs>
-        <li>دسته‌بندی‌ها</li>
+        <li><a href="{{ route('categories.index') }}">دسته‌بندی‌ها</a></li>
+        <li>{{ $category->name }}</li>
     </x-front-breadcrumbs>
 
     <section class="block-wrapper">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                    @include('front::category.partials.categories-listing')
+                    @include('front::category.partials.category-listing')
 
-                    <x-front-listing-page-pagination :paginator="$categories" />
+                    <x-front-listing-page-pagination :paginator="$articles" />
                 </div><!-- Content Col end -->
 
                 @include('front::partials.pages-sidebars')

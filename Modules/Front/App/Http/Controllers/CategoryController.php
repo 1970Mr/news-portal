@@ -11,12 +11,19 @@ class CategoryController extends Controller
 {
     public function __construct(private readonly SEOService $SEOService) {}
 
+    public function index(): View
+    {
+        $this->SEOService->setCategoriesPageSEO();
+        $categories = Category::with('image')->withCount('articles')->latest('articles_count')->paginate(10);
+        return view('front::category.index', compact('categories'));
+    }
+
     public function show(Category $category): View
     {
         $this->SEOService->setCategoryPageSEO($category);
         $subCategories = $category->categories()->latest()->get();
         $articles = $category->articles()->with(['category', 'image', 'approvedComments', 'user',])->paginate(10);
-        return view('front::category.index',
+        return view('front::category.show',
             compact(['category', 'subCategories', 'articles']));
     }
 }

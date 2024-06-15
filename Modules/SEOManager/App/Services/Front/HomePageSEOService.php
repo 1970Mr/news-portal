@@ -18,7 +18,7 @@ class HomePageSEOService extends BaseSEOService
             $title = $siteDetails->title;
             $description = $siteDetails->description;
             $keywords = explode(',', $siteDetails->keywords);
-            $logoUrl = $siteDetails && $siteDetails->mainLogo ? asset('storage/' . $siteDetails->mainLogo->file_path) : null;
+            $logoUrl = $siteDetails->mainLogoLink();
 
             return compact('title', 'description', 'siteUrl', 'keywords', 'logoUrl');
         });
@@ -34,6 +34,6 @@ class HomePageSEOService extends BaseSEOService
         OpenGraph::addProperty('site_name', __('news agency') . ' ' . config('app.name'));
         $this->setOpenGraphSEO($seoData['siteUrl'], 'website', $seoData['logoUrl']);
         $this->setJsonLdSEO($seoData['title'], $seoData['description'], 'Website', $seoData['logoUrl']);
-        $this->setTwitterSEO($seoData['title']);
+        $this->setTwitterSEO($seoData['title'], $seoData['logoUrl']);
     }
 }

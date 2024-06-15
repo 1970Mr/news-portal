@@ -40,3 +40,8 @@ function front_date_format($date): string
 {
     return jalalian()->forge($date)->format(config('common.front_date_format'));
 }
+
+function front_active_menu($url, $class = 'active'): string
+{
+    return request()->url() === $url ? $class : '';
+}

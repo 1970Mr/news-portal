@@ -10,14 +10,14 @@ use Modules\User\App\Models\User;
 class SEOService
 {
     public function __construct(
-        protected HomePageSEOService $homePageSEOService,
-        protected ArticlePageSEOService $articlePageSEOService,
-        protected AuthorPageSEOService $authorPageSEOService,
-        protected AboutUsPageSEOService $aboutUsPageSEOService,
-        protected ContactUsPageSEOService $contactUsPageSEOService,
-        protected CategoryPageSEOService $categoryPageSEOService,
-        protected TagPageSEOService $tagPageSEOService,
-        protected SearchPageSEOService $searchPageSEOService,
+        protected HomePageSEOService       $homePageSEOService,
+        protected ArticlePageSEOService    $articlePageSEOService,
+        protected AuthorPageSEOService     $authorPageSEOService,
+        protected AboutUsPageSEOService    $aboutUsPageSEOService,
+        protected ContactUsPageSEOService  $contactUsPageSEOService,
+        protected CategoriesPageSEOService $categoriesPageSEOService,
+        protected TagPageSEOService        $tagPageSEOService,
+        protected SearchPageSEOService     $searchPageSEOService,
     ) {}
 
     public function setHomePageSEO(): void
@@ -47,7 +47,12 @@ class SEOService
 
     public function setCategoryPageSEO(Category $category): void
     {
-        $this->categoryPageSEOService->setCategoryPageSEO($category);
+        $this->categoriesPageSEOService->setCategoryPageSEO($category);
+    }
+
+    public function setCategoriesPageSEO(): void
+    {
+        $this->categoriesPageSEOService->setCategoriesPageSEO();
     }
 
     public function setTagPageSEO(Tag $tag): void
