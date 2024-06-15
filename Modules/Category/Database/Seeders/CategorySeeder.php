@@ -12,10 +12,14 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         TransactionHelper::beginTransaction('Failed to seed categories: ', static function() {
-            $parentCategories = Category::factory(5)->create();
+            $parentCategories = Category::factory(16)->create([
+                'status' => true,
+            ]);
 
             foreach ($parentCategories as $parentCategory) {
-                Category::factory(4)->withParent($parentCategory->id)->create();
+                if (fake()->boolean()) {
+                    Category::factory(4)->withParent($parentCategory->id)->create();
+                }
             }
         });
     }

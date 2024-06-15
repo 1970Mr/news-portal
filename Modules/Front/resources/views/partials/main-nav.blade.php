@@ -26,11 +26,11 @@
                                                     <div class="col-md-3">
                                                         <ul class="mega-menu-category-list">
                                                             @foreach($categoryChunk as $category)
-                                                                @if($category->categories->count() >= 1)
+                                                                @if($category->categories()->active()->count() >= 1)
                                                                     <li class="dropdown-submenu">
                                                                         <a href="{{ route('categories.show', $category->slug) }}">{{ $category->name }}</a>
                                                                         <ul class="dropdown-menu">
-                                                                            @foreach($category->categories as $childCategory)
+                                                                            @foreach($category->categories()->active()->get() as $childCategory)
                                                                                 <li><a href="{{ route('categories.show', $childCategory->slug) }}">{{ $childCategory->name }}</a></li>
                                                                             @endforeach
                                                                         </ul>
@@ -168,7 +168,7 @@
 
                 </div><!-- Site Navbar inner end -->
             </nav><!--/ Navigation end -->
-            
+
             @guest
                 <div class="nav-login">
                     <a href="{{ route('login') }}" id="login"><i class="fa fa-sign-in" title="ورود به حساب کاربری"></i></a>

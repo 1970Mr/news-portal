@@ -77,6 +77,11 @@ class Category extends Model
         $query->where('status', 1);
     }
 
+    public function scopeParentCategories(Builder $query): Builder
+    {
+        return $query->whereNull('parent_id');
+    }
+
     protected static function newFactory(): CategoryFactory
     {
         return CategoryFactory::new();

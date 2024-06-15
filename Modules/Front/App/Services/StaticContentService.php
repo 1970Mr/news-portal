@@ -110,6 +110,7 @@ class StaticContentService
                 ->whereHas('articles', function (Builder $query) {
                     $query->active()->published();
                 })
+                ->parentCategories()
                 ->withCount('articles')
                 ->latest('articles_count')
                 ->active()

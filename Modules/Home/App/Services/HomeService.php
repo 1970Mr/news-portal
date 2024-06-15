@@ -52,7 +52,7 @@ class HomeService
             });
         }])->whereHas('categories.articles', function ($query) {
             $query->published()->active();
-        })->active()->latest()->limit(5)->get();
+        })->active()->latest()->limit(6)->get();
 
         // Set limit for each category articles
         $categories->each(function ($category) {
