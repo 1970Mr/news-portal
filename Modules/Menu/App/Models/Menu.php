@@ -27,11 +27,13 @@ class Menu extends Model
     ];
 
     public const MAIN_TYPE = 'main';
+    public const SUBMENU_TYPE = 'submenu';
     public const CATEGORY_TYPE = 'category';
     public const PARENT_CATEGORY_TYPE = 'parent_category';
 
     public const TYPES = [
         self::MAIN_TYPE,
+        self::SUBMENU_TYPE,
         self::CATEGORY_TYPE,
         self::PARENT_CATEGORY_TYPE,
     ];
@@ -50,22 +52,23 @@ class Menu extends Model
         return $this->belongsTo(__CLASS__, 'parent_id');
     }
 
-    public function parentMenu(): BelongsTo
+    public function parentMenu(): BelongsTo|null
     {
-        return $this->belongsTo(Menu::class, 'parent_id');
+        return ($this->parent_id === null)
+            ? null
+            : $this->parent();
     }
-
 
     public function children(): HasMany
     {
         return $this->hasMany(__CLASS__, 'parent_id');
     }
 
-    public function parentMenuTitle(): string
+    public function parentMenuName(): string
     {
-        return ($this->parentMenu === null)
+        return ($this->parentMenu() === null)
             ? __('have_not')
-            : $this->parentMenu->first()?->name;
+            : $this->parentMenu()->first()->getName();
     }
 
     public function category(): BelongsTo
@@ -145,7 +148,6 @@ class Menu extends Model
     {
         return $this->type === self::PARENT_CATEGORY_TYPE;
     }
-
 
     protected static function newFactory(): MenuFactory
     {

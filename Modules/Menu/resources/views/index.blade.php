@@ -91,7 +91,7 @@
                                     <td>{{ $menu->getUrl() }}</td>
                                     <td>{{ $menu->position }}</td>
                                     <td class="nowrap">{{ __('menu::types.' . $menu->type) }}</td>
-                                    <td>{{ $menu->parentMenuTitle() }}</td>
+                                    <td>{{ $menu->parentMenuName() }}</td>
                                     <td>{{ nullable_value($menu->category?->name) }}</td>
                                     <td class="ltr text-right nowrap">{{ jalalian()->forge($menu->created_at)->format(config('common.datetime_format')) }}</td>
                                     <td class="{{ status_class($menu->status) }}">{{ status_message($menu->status) }}</td>

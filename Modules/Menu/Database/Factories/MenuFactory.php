@@ -29,28 +29,14 @@ class MenuFactory extends Factory
     {
         $type = fake()->randomElement(Menu::TYPES);
 
-        $parentMenuId = null;
-        if ($type === Menu::MAIN_TYPE && Menu::count() > 0 && fake()->boolean()) {
-            $parentMenuId = Menu::query()->whereNull('parent_id')->inRandomOrder()->first()?->id;
-        }
-
-        $categoryId = null;
-        if ($type !== Menu::MAIN_TYPE) {
-            if (Category::count() === 0) {
-                Category::factory(5)->create();
-            }
-
-            $categoryId = Category::query()->inRandomOrder()->first()->id;
-        }
-
         return [
             'name' => fake()->words(2, true),
             'url' => fake()->url(),
             'position' => $this->position++,
             'type' => $type,
             'status' => fake()->boolean(80),
-            'parent_id' => $parentMenuId,
-            'category_id' => $categoryId,
+            'parent_id' => null,
+            'category_id' => null,
         ];
     }
 }

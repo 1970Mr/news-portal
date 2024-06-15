@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('url')->nullable();
             $table->unsignedBigInteger('position')->unique();
-            $table->enum('type', Menu::TYPES)->default('main');
+            $table->enum('type', Menu::TYPES)->default(Menu::MAIN_TYPE);
             $table->foreignId('parent_id')->nullable()->constrained('menus')->onDelete('set null');
             $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('cascade');
             $table->boolean('status')->default(1);
