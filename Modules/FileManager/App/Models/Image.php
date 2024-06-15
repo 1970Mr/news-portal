@@ -56,7 +56,7 @@ class Image extends Model
     public function userFullName(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->user?->full_name,
+            get: fn () => $this->user?->full_name ?? __('unknown'),
         );
     }
 
