@@ -10,28 +10,27 @@ Welcome to the News Portal, a comprehensive and modular news website built with 
 - [Configuration](#configuration)
 - [Usage](#usage)
 - [Modules](#modules)
-    - [AdManager](#admanager)
     - [Article](#article)
-    - [Auth](#auth)
     - [Category](#category)
-    - [Comment](#comment)
-    - [Common](#common)
-    - [ContactUs](#contactus)
-    - [FileManager](#filemanager)
-    - [Front](#front)
-    - [Home](#home)
-    - [Hotness](#hotness)
-    - [Menu](#menu)
-    - [Newsletter](#newsletter)
-    - [Panel](#panel)
-    - [Profile](#profile)
-    - [Role](#role)
-    - [Seen](#seen)
-    - [SEOManager](#seomanager)
-    - [Setting](#setting)
-    - [SocialNetwork](#socialnetwork)
     - [Tag](#tag)
+    - [Comment](#comment)
+    - [AdManager](#admanager)
     - [User](#user)
+    - [Profile](#profile)
+    - [Auth](#auth)
+    - [Role](#role)
+    - [Menu](#menu)
+    - [Home](#home)
+    - [SEOManager](#seomanager)
+    - [FileManager](#filemanager)
+    - [Newsletter](#newsletter)
+    - [SocialNetwork](#socialnetwork)
+    - [ContactUs](#contactus)
+    - [Hotness](#hotness)
+    - [Seen](#seen)
+    - [Setting](#setting)
+    - [Panel](#panel)
+    - [Common](#common)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -98,7 +97,7 @@ Welcome to the News Portal, a comprehensive and modular news website built with 
     PANEL_PREFIX=panel
     ```
 
-    Configure your database and email server settings in the .env file:
+   Configure your database and email server settings in the .env file:
 
     ```sh
     DB_CONNECTION=mysql
@@ -170,15 +169,6 @@ Once installed, you can start using the News Portal by navigating to the appropr
 
 ## Modules
 
-### AdManager
-
-The AdManager module handles the creation, management, and display of advertisements across the site.
-
-- **Features:**
-    - Create and manage ad campaigns
-    - Track ad performance
-    - Display ads in various sections of the site
-
 ### Article
 
 The Article module manages the creation, editing, and publishing of news articles.
@@ -192,16 +182,6 @@ The Article module manages the creation, editing, and publishing of news article
     - Mark articles as "hot"
     - Feature articles as editor's picks
 
-### Auth
-
-The Auth module handles user authentication and authorization.
-
-- **Features:**
-    - User registration and login
-    - Password reset functionality
-    - Email verification functionality
-    - Role-based access control
-
 ### Category
 
 The Category module manages the categorization of articles.
@@ -209,6 +189,14 @@ The Category module manages the categorization of articles.
 - **Features:**
     - Create and manage categories
     - Assign articles to categories
+
+### Tag
+
+The Tag module handles the tagging of articles.
+
+- **Features:**
+    - Create and manage tags
+    - Assign tags to articles
 
 ### Comment
 
@@ -222,52 +210,54 @@ The Comment module allows users to comment on articles.
     - Review and change the status of comments to approved, rejected, or seen
     - Comments can be submitted in Markdown format
 
-### Common
+### AdManager
 
-The Common module includes shared functionalities and utilities used across different modules.
-
-### ContactUs
-
-The ContactUs module manages the contact form and incoming messages from users.
+The AdManager module handles the creation, management, and display of advertisements across the site.
 
 - **Features:**
-    - Contact form management
-    - View and respond to messages
+    - Create and manage ad campaigns
+    - Track ad performance
+    - Display ads in various sections of the site
 
-### FileManager
+### User
 
-The FileManager module handles the upload and management of files.
-
-- **Features:**
-    - Upload and manage images
-      - View all uploaded files on the site
-      - Edit existing files
-      - Create new files
-
-### Front
-
-The Front module deals with the frontend presentation of the site.
+The User module manages user profiles and user-related functionalities.
 
 - **Features:**
-    - Customizable templates
-    - Responsive design
-    - Widgets and dynamic content
+    - Perform CRUD (Create, Read, Update, Delete) operations on users
+    - Assign roles to users
+    - Deactivate users
+    - Revoke email verification and other similar actions
 
-### Home
+### Profile
 
-The Home module manages the homepage content.
-
-- **Features:**
-    - Configurable sections for featured articles, latest news, and more
-    - Customizable layout
-
-### Hotness
-
-The Hotness module tracks and displays trending content, including articles and tags, and allows administrators to mark them as "hot".
+The Profile module manages user profiles and user-related functionalities.
 
 - **Features:**
-    - Mark articles as "hot"
-    - Mark tags as "hot"
+    - Edit personal information
+    - Change email
+    - Change password
+    - Manage user social networks
+
+### Auth
+
+The Auth module handles user authentication and authorization.
+
+- **Features:**
+    - User registration and login
+    - Password reset functionality
+    - Email verification functionality
+    - Role-based access control
+
+### Role
+
+The Role module manages user roles and permissions.
+
+- **Features:**
+    - Create and manage roles
+    - Define permissions for each role
+    - All site sections and operations are permission-based
+    - Assign permissions to roles for comprehensive access control
 
 ### Menu
 
@@ -283,6 +273,42 @@ The Menu module manages the creation and organization of site menus.
         - `category`: Menu items for specific categories
         - `parent_category`: Menu items for parent categories
 
+### Home
+
+The Home module manages the homepage content.
+
+- **Features:**
+    - Configurable sections for featured articles, latest news, and more
+    - Customizable layout
+
+### SEOManager
+
+The SEOManager module handles SEO-related settings and optimizations.
+
+- **Features:**
+    - Manage meta tags for articles
+    - Manage meta tags for author pages
+    - Manage meta tags for categories
+    - Manage meta tags for tags
+    - Manage meta tags for the homepage
+    - Manage meta tags for the contact us page
+    - Manage meta tags for the about us page
+    - Manage meta tags for search pages
+    - Optimize site for
+
+search engines
+- Track SEO performance
+
+### FileManager
+
+The FileManager module handles the upload and management of files.
+
+- **Features:**
+    - Upload and manage images
+        - View all uploaded files on the site
+        - Edit existing files
+        - Create new files
+
 ### Newsletter
 
 The Newsletter module manages newsletter subscriptions and email campaigns.
@@ -292,33 +318,30 @@ The Newsletter module manages newsletter subscriptions and email campaigns.
     - Send newsletters to subscribers
     - Track email campaign performance
 
-### Panel
+### SocialNetwork
 
-The Panel module provides the administrative interface for managing the site.
-
-- **Features:**
-    - Dashboard with site statistics
-    - Management tools for all modules
-
-### Profile
-
-The Profile module manages user profiles and user-related functionalities.
+The SocialNetwork module manages social media integrations.
 
 - **Features:**
-    - Edit personal information
-    - Change email
-    - Change password
-    - Manage user social networks
+    - Share articles on social media
+    - Users can register their own social media links
+    - Administrators can register social media links for the site
 
-### Role
+### ContactUs
 
-The Role module manages user roles and permissions.
+The ContactUs module manages the contact form and incoming messages from users.
 
 - **Features:**
-    - Create and manage roles
-    - Define permissions for each role
-    - All site sections and operations are permission-based
-    - Assign permissions to roles for comprehensive access control
+    - Contact form management
+    - View and respond to messages
+
+### Hotness
+
+The Hotness module tracks and displays trending content, including articles and tags, and allows administrators to mark them as "hot".
+
+- **Features:**
+    - Mark articles as "hot"
+    - Mark tags as "hot"
 
 ### Seen
 
@@ -327,23 +350,6 @@ The Seen module tracks article views and user interactions.
 - **Features:**
     - View analytics for article performance
     - Track user engagement
-
-### SEOManager
-
-The SEOManager module handles SEO-related settings and optimizations.
-
-- **Features:**
-    - Manage meta tags for articles 
-    - Manage meta tags for articles 
-    - Manage meta tags for author pages
-    - Manage meta tags for categories
-    - Manage meta tags for tags
-    - Manage meta tags for the homepage
-    - Manage meta tags for the contact us page
-    - Manage meta tags for the about us page
-    - Manage meta tags for search pages
-    - Optimize site for search engines
-    - Track SEO performance
 
 ### Setting
 
@@ -357,32 +363,17 @@ The Setting module handles the site-wide settings and configurations.
     - **Site Details:** Configure site-wide details such as site name, logo, and contact information
     - **Social Networks:** Manage social network links and integrations
 
-### SocialNetwork
+### Panel
 
-The SocialNetwork module manages social media integrations.
-
-- **Features:**
-    - Share articles on social media
-    - Users can register their own social media links
-    - Administrators can register social media links for the site
-
-### Tag
-
-The Tag module handles the tagging of articles.
+The Panel module provides the administrative interface for managing the site.
 
 - **Features:**
-    - Create and manage tags
-    - Assign tags to articles
+    - Dashboard with site statistics
+    - Management tools for all modules
 
-### User
+### Common
 
-The User module manages user profiles and user-related functionalities.
-
-- **Features:**
-    - Perform CRUD (Create, Read, Update, Delete) operations on users
-    - Assign roles to users
-    - Deactivate users
-    - Revoke email verification and other similar actions
+The Common module includes shared functionalities and utilities used across different modules.
 
 ## Contributing
 
