@@ -20,5 +20,6 @@
     "Newsletter": true,
     "AdManager": true,
     "SEOManager": true,
-    "Menu": true
+    "Menu": true,
+    "UserTracking": true
 }

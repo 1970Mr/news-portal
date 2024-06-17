@@ -1,0 +1,11 @@
+{
+    "name": "UserTracking",
+    "alias": "usertracking",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\UserTracking\\App\\Providers\\UserTrackingServiceProvider"
+    ],
+    "files": []
+}
