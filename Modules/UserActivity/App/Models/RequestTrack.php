@@ -11,6 +11,7 @@ class RequestTrack extends Model
         'user_track_id',
         'url',
         'referer',
+        'tag',
     ];
 
     public function userTrack(): BelongsTo

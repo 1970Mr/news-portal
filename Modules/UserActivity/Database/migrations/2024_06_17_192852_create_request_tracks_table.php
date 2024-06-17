@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('url');
             $table->string('referer')->nullable();
+            $table->string('tag')->nullable();
             $table->foreignId('user_track_id')->constrained('user_tracks')->onDelete('cascade');
             $table->timestamps();
         });
