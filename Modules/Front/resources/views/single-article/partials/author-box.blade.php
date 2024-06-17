@@ -9,10 +9,10 @@
             <a class="" href="{{ route('author.index', $article->user->username) }}">{{ $article->user->full_name }}</a>
         </h3>
         <p>{{ $article->user->bio }}</p>
-        @if($socialNetworks = $article->user->socialNetworks)
-            <div class="authors-social" style="clear: both">
+        @if(!empty($article->user?->socialNetworks) && $article->user?->socialNetworks->count() > 0)
+            <div class="authors-social">
                 <span>مرا دنبال کنید: </span>
-                @foreach($socialNetworks as $socialNetwork)
+                @foreach($article->user->socialNetworks as $socialNetwork)
                     <a href="{{ $socialNetwork->url }}" title="{{ $socialNetwork->name }}"><i class="fa fa-{{ $socialNetwork->name }}"></i></a>
                 @endforeach
             </div>

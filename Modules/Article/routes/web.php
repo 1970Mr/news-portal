@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Modules\Article\App\Http\Controllers\ArticleController;
+use Modules\Article\App\Http\Controllers\Front\ArticleController as FrontArticleController;
 use Spatie\Honeypot\ProtectAgainstSpam;
 
 Route::prefix(config('app.panel_prefix', 'panel'))
@@ -12,10 +13,10 @@ Route::prefix(config('app.panel_prefix', 'panel'))
 });
 
 // Front routes
-Route::get('news/{category:slug}/{article:slug}', [\Modules\Article\App\Http\Controllers\Front\ArticleController::class, 'show'])->name('news.show');
+Route::get('news/{article:slug}', [FrontArticleController::class, 'show'])->name('news.show');
 
 Route::prefix('news/{article:slug}')
-    ->controller(\Modules\Article\App\Http\Controllers\Front\ArticleController::class)
+    ->controller(FrontArticleController::class)
     ->name('news.')
     ->middleware(ProtectAgainstSpam::class)
     ->group(function () {

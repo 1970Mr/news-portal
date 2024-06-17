@@ -34,6 +34,7 @@ class Article extends Model implements Feedable
         'body',
         'published_at',
         'editor_choice',
+        'type',
         'status',
         'category_id',
         'user_id',
@@ -41,6 +42,15 @@ class Article extends Model implements Feedable
 
     protected $casts = [
         'published_at' => 'datetime',
+    ];
+
+    public const ARTICLE = 'article';
+
+    public const NEWS = 'news';
+
+    public const TYPES = [
+        self::NEWS,
+        self::ARTICLE,
     ];
 
     public function toFeedItem(): FeedItem
@@ -68,6 +78,7 @@ class Article extends Model implements Feedable
             'title' => $this->title,
             'slug' => $this->slug,
             'body' => $this->body,
+            'type' => $this->type,
         ];
     }
 
@@ -162,7 +173,7 @@ class Article extends Model implements Feedable
 
     public function getUrl(): string
     {
-        return route('news.show', [$this->category->slug, $this->slug]);
+        return route('news.show', $this->slug);
     }
 
     protected static function newFactory(): ArticleFactory

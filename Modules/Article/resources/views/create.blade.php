@@ -28,7 +28,7 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="article-create-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.articles.store') }}" method="post" enctype="multipart/form-data">
+                    <form id="main-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.articles.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <x-common-error-messages />
 
@@ -69,6 +69,15 @@
                                     @foreach($categories as $category)
                                         <option value="{{ $category->id }}" @if((int) old('category_id') === $category->id) selected @endif>{{ $category->name
                                         }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label for="type">نوع محتوا <small>(ضروری)</small></label>
+                                <select id="type" class="form-control select2" name="type">
+                                    <option value="">انتخاب نوع محتوا</option>
+                                    @foreach($types as $type)
+                                        <option value="{{ $type }}" @if(old('type') === $type) selected @endif>{{ __('article::types.' . $type) }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -186,9 +195,9 @@
                 } else {
                     error.insertAfter(element);
                 }
-            }
+            },
         });
-        $("#article-create-form").validate();
+        $("#main-form").validate();
     </script>
 @endpush
 

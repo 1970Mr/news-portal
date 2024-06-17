@@ -140,6 +140,14 @@ li.rss, .with-color.fa-rss {
     margin: 0 0 2rem 0 !important;
 }
 
+.author-box {
+    min-height: 14rem;
+}
+
+.author-info .authors-social {
+    clear: both;
+}
+
 @media (max-width: 768px) {
     .second-content-row {
         padding: 0 2rem;

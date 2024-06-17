@@ -15,7 +15,7 @@ class ArticleController extends Controller
 {
     public function __construct(private readonly SEOService $seoService, private readonly ShareService $shareService) {}
 
-    public function show(Request $request, Category $category, Article $article): View
+    public function show(Request $request, Article $article): View
     {
         $this->seoService->setArticlePageSEO($article);
         $shared_links = $this->shareService->generateSharedLinks($request->url(), $article->title);
@@ -23,7 +23,7 @@ class ArticleController extends Controller
         $next_article = $article->nextArticle();
         $related_articles = $article->relatedArticles();
         visits($article)->increment();
-        return view('front::single-article.show', compact(['article', 'category', 'shared_links', 'previous_article', 'next_article', 'related_articles']));
+        return view('front::single-article.show', compact(['article', 'shared_links', 'previous_article', 'next_article', 'related_articles']));
     }
 
     public function like(Article $article): RedirectResponse

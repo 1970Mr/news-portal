@@ -47,5 +47,6 @@
     "position": "مکان قرارگیری",
     "menu": "منو",
     "categories": "دسته\u200Cبندی\u200Cها",
-    "unknown": "ناشناس"
+    "unknown": "ناشناس",
+    "type": "نوع"
 }

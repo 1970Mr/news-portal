@@ -1,5 +1,5 @@
 <div class="post-title-area">
-    <a class="post-cat" href="{{ route('categories.show', $category->slug) }}">{{ $category->name }}</a>
+    <a class="post-cat" href="{{ route('categories.show', $article->category->slug) }}">{{ $article->category->name }}</a>
     <h2 class="post-title">
         {{ $article->title }}
     </h2>

@@ -92,6 +92,12 @@ class ArticleService
                 $q->where('full_name', 'like', "%{$searchText}%")
                     ->orWhere('email', 'like', "%{$searchText}%");
             });
+
+            // If local not en
+            if (app()->getLocale() !== 'en') {
+                $enSearchText = __('article::types.' . $searchText);
+                $query->orWhere('type', $enSearchText);
+            }
         })->latest()->paginate(10);
     }
 }

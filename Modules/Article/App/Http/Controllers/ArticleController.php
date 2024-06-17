@@ -34,7 +34,8 @@ class ArticleController extends Controller
     {
         $categories = Category::query()->active()->latest()->get();
         $tags = Tag::query()->active()->latest()->get();
-        return view('article::create', compact('categories', 'tags'));
+        $types = Article::TYPES;
+        return view('article::create', compact(['categories', 'tags', 'types']));
     }
 
     public function store(ArticleRequest $request): RedirectResponse
@@ -47,7 +48,7 @@ class ArticleController extends Controller
     {
         $categories = Category::query()->active()->latest()->get();
         $tags = Tag::query()->active()->latest()->get();
-        return view('article::edit', compact('categories', 'tags', 'article'));
+        return view('article::edit', compact(['categories', 'tags', 'article']));
     }
 
     public function update(ArticleRequest $request, Article $article): RedirectResponse

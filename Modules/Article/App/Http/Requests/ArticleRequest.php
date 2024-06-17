@@ -3,6 +3,7 @@
 namespace Modules\Article\App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Modules\Article\App\Models\Article;
 
 class ArticleRequest extends FormRequest
 {
@@ -26,6 +27,8 @@ class ArticleRequest extends FormRequest
         if (strtolower($this->method()) === 'put') {
             $rules['image'] = 'nullable' . $imageRules;
             $rules['slug'] .= ',' . $this->route('article')->id;
+        } else {
+            $rules['type'] = 'required|in:' . implode(',', Article::TYPES);
         }
 
         return $rules;
@@ -44,6 +47,7 @@ class ArticleRequest extends FormRequest
     {
         return [
             'category_id' => __('category'),
+            'type' => __('article::attributes.type'),
             'hotness' => __('common::attributes.hotness'),
             'body' => __('common::attributes.news_text'),
         ];

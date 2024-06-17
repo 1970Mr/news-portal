@@ -2,7 +2,7 @@
 
 @section('content')
     <x-front-breadcrumbs>
-        <li><a href="{{ route('categories.show', $category->slug) }}">{{ $category->name }}</a></li>
+        <li><a href="{{ route('categories.show', $article->category->slug) }}">{{ $article->category->name }}</a></li>
         <li>{{ $article->title }}</li>
     </x-front-breadcrumbs>
 

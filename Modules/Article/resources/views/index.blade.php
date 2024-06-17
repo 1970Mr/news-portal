@@ -59,6 +59,7 @@
                                 <th>دسته‌بندی</th>
                                 <th>تگ(ها)</th>
                                 <th>تعداد لایک</th>
+                                <th>نوع محتوا</th>
                                 <th>تاریخ انتشار</th>
                                 <th>تاریخ ایجاد</th>
                                 <th>انتخاب سردبیر</th>
@@ -82,6 +83,7 @@
                                     <td>{{ $article->category?->name }}</td>
                                     <td class="nowrap">{{ str(nullable_value($article->tagNames()))->limit(50) }}</td>
                                     <td>{{ $article->likeCount }}</td>
+                                    <td>{{ __('article::types.' . $article->type) }}</td>
                                     <td class="ltr text-right nowrap">{{ jalalian()->forge($article->published_at)->format(config('common.datetime_format')) }}</td>
                                     <td class="ltr text-right nowrap">{{ jalalian()->forge($article->created_at)->format(config('common.datetime_format')) }}</td>
                                     <td class="{{ status_class($article->editor_choice) }}">{{ status_message($article->editor_choice) }}</td>

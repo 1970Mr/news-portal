@@ -17,8 +17,7 @@ class AuthorController extends Controller
         $articlesCount = $user->articles()->count();
         $articles = $user->articles()->with(['category', 'image', 'approvedComments'])->paginate(10);
         $commentsCount = $user->approvedComments()->count();
-        $socialNetworks = $user->socialNetworks;
         return view('front::author.index',
-            compact(['articlesCount', 'articles', 'commentsCount', 'socialNetworks']) + ['author' => $user]);
+            compact(['articlesCount', 'articles', 'commentsCount']) + ['author' => $user]);
     }
 }
