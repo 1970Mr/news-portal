@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\UserTracking\Database\Seeders;
+namespace Modules\UserActivity\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class UserTrackingDatabaseSeeder extends Seeder
+class UserActivityDatabaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.

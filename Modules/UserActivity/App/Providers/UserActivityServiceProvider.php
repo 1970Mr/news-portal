@@ -1,15 +1,15 @@
 <?php
 
-namespace Modules\UserTracking\App\Providers;
+namespace Modules\UserActivity\App\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
-class UserTrackingServiceProvider extends ServiceProvider
+class UserActivityServiceProvider extends ServiceProvider
 {
-    protected string $moduleName = 'UserTracking';
+    protected string $moduleName = 'UserActivity';
 
-    protected string $moduleNameLower = 'usertracking';
+    protected string $moduleNameLower = 'user-activity';
 
     /**
      * Boot the application events.

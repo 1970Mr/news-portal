@@ -17,15 +17,15 @@
     },
     "autoload": {
         "psr-4": {
-            "Modules\\UserTracking\\": "",
-            "Modules\\UserTracking\\App\\": "app/",
-            "Modules\\UserTracking\\Database\\Factories\\": "database/factories/",
-            "Modules\\UserTracking\\Database\\Seeders\\": "database/seeders/"
+            "Modules\\UserActivity\\": "",
+            "Modules\\UserActivity\\App\\": "app/",
+            "Modules\\UserActivity\\Database\\Factories\\": "database/factories/",
+            "Modules\\UserActivity\\Database\\Seeders\\": "database/seeders/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Modules\\UserTracking\\Tests\\": "tests/"
+            "Modules\\UserActivity\\Tests\\": "tests/"
         }
     }
 }
