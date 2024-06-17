@@ -173,7 +173,13 @@ class Article extends Model implements Feedable
 
     public function getUrl(): string
     {
-        return route('news.show', $this->slug);
+        if ($this->type === self::NEWS){
+            return route('news.show', [
+                'date' => $this->published_at->format('Y/m/d'),
+                'article' => $this->slug,
+            ]);
+        }
+        return route('articles.show', ['article' => $this->slug]);
     }
 
     protected static function newFactory(): ArticleFactory

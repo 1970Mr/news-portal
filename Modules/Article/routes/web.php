@@ -13,7 +13,9 @@ Route::prefix(config('app.panel_prefix', 'panel'))
 });
 
 // Front routes
-Route::get('news/{article:slug}', [FrontArticleController::class, 'show'])->name('news.show');
+Route::get('news/{date}/{article:slug}', [FrontArticleController::class, 'showNews'])->name('news.show')
+    ->where('date', '[0-9]{4}/[0-9]{2}/[0-9]{2}');
+Route::get('articles/{article:slug}', [FrontArticleController::class, 'show'])->name('articles.show');
 
 Route::prefix('news/{article:slug}')
     ->controller(FrontArticleController::class)
