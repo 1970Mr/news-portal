@@ -5,6 +5,7 @@ namespace Modules\UserActivity\App\Services;
 use DeviceDetector\ClientHints;
 use DeviceDetector\DeviceDetector;
 use DeviceDetector\Parser\Device\AbstractDeviceParser;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Modules\User\App\Models\User;
@@ -15,7 +16,7 @@ class TrackUserRequestService
 {
     public function __construct(
         private readonly Request $request,
-        private ?User $user = null,
+        private ?Authenticatable $user = null,
         public ?Model $userTrack = null
     ) {}
 
@@ -37,7 +38,7 @@ class TrackUserRequestService
      */
     public function getUserTracking(): Model
     {
-        if ($this->userTrack) {
+        if (!$this->userTrack) {
             $this->setUserTracking();
         }
         return $this->userTrack;

@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Modules\UserActivity\App\Http\Middleware\CheckIpChange;
 use Modules\UserActivity\App\Http\Middleware\TrackUserRequests;
 
 class Kernel extends HttpKernel
@@ -39,6 +40,7 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \RealRashid\SweetAlert\ToSweetAlert::class,
             TrackUserRequests::class,
+            CheckIpChange::class,
         ],
 
         'api' => [

@@ -21,6 +21,7 @@ use Modules\Role\App\Models\Role;
 use Modules\SEOManager\App\Traits\SEOAble;
 use Modules\SocialNetwork\App\Traits\HasSocialNetwork;
 use Modules\User\Database\Factories\UserFactory;
+use Modules\UserActivity\App\Models\UserTrack;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -109,6 +110,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function Articles(): HasMany
     {
         return $this->hasMany(Article::class, 'user_id')->active()->published();
+    }
+
+    public function userTracks(): HasMany
+    {
+        return $this->hasMany(UserTrack::class, 'user_id');
     }
 
     protected static function boot(): void
