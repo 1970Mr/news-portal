@@ -9,6 +9,7 @@ use DeviceDetector\Parser\Device\AbstractDeviceParser;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Modules\User\App\Models\User;
 use Modules\UserActivity\App\Models\RequestTrack;
 use Modules\UserActivity\App\Models\UserTrack;
 
@@ -24,27 +25,23 @@ class TrackUserRequests
             return $next($request);
         }
 
-        $tag = $this->getTag($request);
-        $userId = $user ? $user->id : null;
-        $currentIp = $request->ip();
-        $userAgent = $request->userAgent();
-        $referer = $request->header('referer');
-        $currentUrl = $request->fullUrl();
-        $deviceInfo = $this->getDeviceInfo($userAgent);
-
-        $track = $this->getOrCreateUserTrack($userId, $currentIp, $deviceInfo);
-        $this->createRequestTrack($track, $currentUrl, $referer, $tag);
+        $track = $this->trackUserRequest($request, $user);
+        $this->createRequestTrack($request, $track);
 
         return $next($request);
     }
 
     /**
-     * Get the tag based on the request URL.
+     * Track the user request.
      */
-    private function getTag(Request $request): string
+    private function trackUserRequest(Request $request, ?User $user): Model
     {
-        $panelPrefix = config('app.panel_prefix', 'panel');
-        return $request->is("{$panelPrefix}*") ? $panelPrefix : 'front';
+        $userId = $user ? $user->id : null;
+        $currentIp = $request->ip();
+        $deviceInfo = $this->getDeviceInfo($request->userAgent());
+        $deviceInfo['referer'] = $request->header('referer');
+
+        return $this->getOrCreateUserTrack($userId, $currentIp, $deviceInfo);
     }
 
     /**
@@ -79,13 +76,22 @@ class TrackUserRequests
     /**
      * Create a new request track record.
      */
-    private function createRequestTrack(Model $track, string $currentUrl, ?string $referer = null, ?string $tag = null): void
+    private function createRequestTrack(Request $request, Model $track): void
     {
         RequestTrack::create([
             'user_track_id' => $track->id,
-            'url' => $currentUrl,
-            'referer' => $referer,
-            'tag' => $tag,
+            'url' => $request->fullUrl(),
+            'referer' => $request->header('referer'),
+            'tag' => $this->getTag($request),
         ]);
+    }
+
+    /**
+     * Get the tag based on the request URL.
+     */
+    private function getTag(Request $request): string
+    {
+        $panelPrefix = config('app.panel_prefix', 'panel');
+        return $request->is("{$panelPrefix}*") ? $panelPrefix : 'front';
     }
 }
