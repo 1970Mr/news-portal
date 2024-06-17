@@ -8,7 +8,7 @@
                         <div class="item">
                             <div class="post-content">
                                 <h2 class="post-title title-small">
-                                    <a href="{{ route('news.show', [$article->category->slug, $article->slug]) }}">{{ $article->title }}</a>
+                                    <a href="{{ $article->getUrl() }}">{{ $article->title }}</a>
                                 </h2>
                             </div><!-- Post content end -->
                         </div>

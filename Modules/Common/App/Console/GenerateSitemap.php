@@ -73,7 +73,7 @@ class GenerateSitemap extends Command
 
         $articles = Article::all();
         foreach ($articles as $article) {
-            $sitemap->add(Url::create(route('news.show', [$article->category->slug, $article->slug]))
+            $sitemap->add(Url::create($article->getUrl())
                 ->setLastModificationDate($article->updated_at)
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
                 ->setPriority(0.8));

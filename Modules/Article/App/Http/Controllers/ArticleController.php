@@ -68,7 +68,7 @@ class ArticleController extends Controller
         $title = $article->title;
         $pageTitle = __('article') . ' ' . $title;
         // Optional placeholder
-        $canonicalUrl = route('news.show', [$article->category->slug, $article->slug]);
+        $canonicalUrl = $article->getUrl();
         return view('seo-manager::seo-settings', compact(['nextUrl', 'title', 'canonicalUrl', 'pageTitle']) + ['model' => $article]);
     }
 }

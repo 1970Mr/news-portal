@@ -51,7 +51,7 @@ class Article extends Model implements Feedable
             ->title($this->title)
             ->summary($summary)
             ->updated($this->updated_at)
-            ->link(route('news.show', [$this->category->slug, $this->slug]))
+            ->link($this->getUrl())
             ->authorName($this->user->full_name)
             ->authorEmail($this->user->email);
     }
@@ -158,6 +158,11 @@ class Article extends Model implements Feedable
                 ->shuffle();
         }
         return $relatedArticles;
+    }
+
+    public function getUrl(): string
+    {
+        return route('news.show', [$this->category->slug, $this->slug]);
     }
 
     protected static function newFactory(): ArticleFactory

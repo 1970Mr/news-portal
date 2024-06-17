@@ -25,14 +25,14 @@
                                     <li class="clearfix">
                                         <div class="post-block-style post-float clearfix">
                                             <div class="post-thumb">
-                                                <a href="{{ route('news.show', [$article->category->slug, $article->slug]) }}">
+                                                <a href="{{ $article->getUrl() }}">
                                                     <img class="img-responsive" src="{{ asset('storage/' . $article->image->file_path) }}" alt="{{ $article->image->elt_text }}">
                                                 </a>
                                             </div><!-- Post thumb end -->
 
                                             <div class="post-content">
                                                 <h2 class="post-title title-small">
-                                                    <a href="{{ route('news.show', [$article->category->slug, $article->slug]) }}">{{ $article->title }}</a>
+                                                    <a href="{{ $article->getUrl() }}">{{ $article->title }}</a>
                                                 </h2>
                                                 <div class="post-meta">
                                                     <span class="post-date">{{ jalalian()->forge($article->created_at)->format(config('common.front_date_format')) }}</span>

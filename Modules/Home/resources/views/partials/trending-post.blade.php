@@ -12,7 +12,7 @@
                                 <div class="post-content">
                                     <a class="post-cat" href="{{ route('categories.show', $article->category->slug) }}">{{ $article->category->name }}</a>
                                     <h2 class="post-title title-extra-large">
-                                        <a href="{{ route('news.show', [$article->category->slug, $article->slug]) }}">{{ $article->title }}</a>
+                                        <a href="{{ $article->getUrl() }}">{{ $article->title }}</a>
                                     </h2>
                                     <span class="post-date">{{ front_date_format($article->created_at) }}</span>
                                 </div>
@@ -28,7 +28,7 @@
                     <div class="col-sm-12">
                         <div class="post-overlay-style contentTop hot-post-top clearfix">
                             <div class="post-thumb">
-                                <a href="{{ route('news.show', [$trending_posts['first_editor_choice']->category->slug, $trending_posts['first_editor_choice']->slug]) }}">
+                                <a href="{{ $trending_posts['first_editor_choice']->getUrl() }}">
                                     <img class="img-responsive" src="{{ asset('storage/' . $trending_posts['first_editor_choice']->image->file_path) }}"
                                          alt="{{ asset('storage/' . $trending_posts['first_editor_choice']->image->alt_text) }}">
                                 </a>
@@ -36,7 +36,7 @@
                             <div class="post-content">
                                 <a class="post-cat" href="{{ route('categories.show', $trending_posts['first_editor_choice']->category->slug) }}">{{ $trending_posts['first_editor_choice']->category->name }}</a>
                                 <h2 class="post-title title-large">
-                                    <a href="{{ route('news.show', [$trending_posts['first_editor_choice']->category->slug, $trending_posts['first_editor_choice']->slug]) }}">{{ $trending_posts['first_editor_choice']->title }}</a>
+                                    <a href="{{ $trending_posts['first_editor_choice']->getUrl() }}">{{ $trending_posts['first_editor_choice']->title }}</a>
                                 </h2>
                                 <span class="post-date">{{ jalalian()->forge($trending_posts['first_editor_choice']->created_at)->format(config('common.front_date_format')) }}</span>
                             </div><!-- Post content end -->
@@ -48,7 +48,7 @@
                         <div class="col-sm-6 pad-{{ $editor_choice_direction->shift() }}-small">
                             <div class="post-overlay-style contentTop hot-post-bottom clearfix">
                                 <div class="post-thumb">
-                                    <a href="{{ route('news.show', [$editor_choice->category->slug, $editor_choice->slug]) }}">
+                                    <a href="{{ $editor_choice->getUrl() }}">
                                         <img class="img-responsive" src="{{ asset('storage/' . $editor_choice->image->file_path) }}"
                                              alt="{{ asset('storage/' . $editor_choice->image->alt_text) }}">
                                     </a>
@@ -56,7 +56,7 @@
                                 <div class="post-content">
                                     <a class="post-cat" href="{{ route('categories.show', $editor_choice->category->slug) }}">{{ $editor_choice->category->name }}</a>
                                     <h2 class="post-title title-medium">
-                                        <a href="{{ route('news.show', [$editor_choice->category->slug, $editor_choice->slug]) }}">{{ $editor_choice->title }}</a>
+                                        <a href="{{ $editor_choice->getUrl() }}">{{ $editor_choice->title }}</a>
                                     </h2>
                                 </div><!-- Post content end -->
                             </div><!-- Post overlay end -->

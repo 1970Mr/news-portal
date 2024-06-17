@@ -19,7 +19,7 @@ class ArticlePageSEOService extends BaseSEOService
 
             $title = $seoSettings?->meta_title ?? $article->title;
             $description = $seoSettings?->meta_description ?? $article->bodyText();
-            $articleUrl = route('news.show', [$category->slug, $article->slug]);
+            $articleUrl = $article->getUrl();
             $canonicalUrl = $seoSettings?->canonical_url ?? $articleUrl;
             $robots = $seoSettings?->robots ?? 'index, follow';
             $tags = $article->tags->pluck('name');

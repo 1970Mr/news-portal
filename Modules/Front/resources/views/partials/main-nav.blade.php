@@ -96,7 +96,7 @@
                                                                 </div><!-- Post thumb end -->
                                                                 <div class="post-content">
                                                                     <h2 class="post-title title-small">
-                                                                        <a href="{{ route('news.show', [$menu->category->slug, $article->slug]) }}">{{ $article->title }}</a>
+                                                                        <a href="{{ $article->getUrl() }}">{{ $article->title }}</a>
                                                                     </h2>
                                                                 </div><!-- Post content end -->
                                                             </div><!-- Post Block style end -->
@@ -136,7 +136,7 @@
                                                                     <div class="col-md-3">
                                                                         <div class="post-block-style clearfix">
                                                                             <div class="post-thumb">
-                                                                                <a href="{{ route('news.show', [$category->slug, $article->slug]) }}l">
+                                                                                <a href="{{ $article->getUrl() }}l">
                                                                                     <img class="img-responsive nav-parent-cat-post-img" src="{{ asset('storage/' . $article->image->file_path) }}"
                                                                                          alt="{{ $article->image->alt_text }}">
                                                                                 </a>
@@ -144,7 +144,7 @@
                                                                             <a class="post-cat" href="{{ route('categories.show', $category->slug) }}">{{ $category->name }}</a>
                                                                             <div class="post-content">
                                                                                 <h2 class="post-title title-small">
-                                                                                    <a href="{{ route('news.show', [$category->slug, $article->slug]) }}">{{ $article->title }}</a>
+                                                                                    <a href="{{ $article->getUrl() }}">{{ $article->title }}</a>
                                                                                 </h2>
                                                                             </div><!-- Post content end -->
                                                                         </div><!-- Post Block style end -->
