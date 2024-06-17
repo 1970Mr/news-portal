@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('user_tracks', function (Blueprint $table) {
             $table->id();
             $table->string('ip');
-            $table->string('country')->nullable();
             $table->string('device')->nullable();
+            $table->string('os')->nullable();
             $table->string('browser')->nullable();
-            $table->string('referrer')->nullable();
+            $table->text('user_agent')->nullable();
+            $table->string('referer')->nullable();
             $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });

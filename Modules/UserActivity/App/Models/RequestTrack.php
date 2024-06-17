@@ -10,9 +10,10 @@ class RequestTrack extends Model
     protected $fillable = [
         'user_track_id',
         'url',
+        'referer',
     ];
 
-    public function user(): BelongsTo
+    public function userTrack(): BelongsTo
     {
         return $this->belongsTo(UserTrack::class);
     }
