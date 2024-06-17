@@ -87,6 +87,7 @@
                                         <div class="dropdown-menu mega-menu-content hidden-xs hidden-sm clearfix">
                                             <div class="mega-menu-content-inner">
                                                 <div class="row">
+                                                    {{-- Note: the right value is set on the backend, but we will enter it here for a more accurate understanding --}}
                                                     @foreach($menu->category->articles->take(4) as $article)
                                                         <div class="col-md-3">
                                                             <div class="post-block-style clearfix">

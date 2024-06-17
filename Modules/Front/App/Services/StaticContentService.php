@@ -96,10 +96,24 @@ class StaticContentService
             $parentCategoryMenus = Menu::parentCategoryMenus()->get()->pluck('id')->toArray();
             $ignoreIds = array_merge($mainMenus, $mainMenusWithChildren, $categoryMenus, $parentCategoryMenus);
 
-            return Menu::with(['parent', 'children', 'category'])
+            $menus = Menu::with(['parent', 'children', 'category'])
                 ->whereIn('id', $ignoreIds)
                 ->latest('position')
                 ->get();
+
+            // Set limit for each category articles
+            $menus->each(function ($menu) {
+                if ($menu?->category !== null) {
+                    $menu->category->setRelation('articles', $menu->category->articles->take(4));
+
+                    $menu->category->setRelation('categories', $menu->category->categories->take(5));
+                    $menu->category->categories->each(function ($childCategory) {
+                        $childCategory->setRelation('articles', $childCategory->articles->take(4));
+                    });
+                }
+            });
+
+            return $menus;
         });
     }
 

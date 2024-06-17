@@ -76,7 +76,7 @@ class HomeService
 
         // Set limit for each category articles
         $categories->each(function ($category) {
-            $category->articles = $category->articles->take(4);
+            $category->setRelation('articles', $category->articles->take(4));
         });
 
         return $categories;
