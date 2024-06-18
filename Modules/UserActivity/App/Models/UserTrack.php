@@ -85,12 +85,18 @@ class UserTrack extends Model
     public function lastActivity(): Attribute
     {
         $lastActivity = $this->requestTracks()->latest()->first()?->created_at;
-
         return Attribute::make(
             get: fn() => $lastActivity ?
-                jalalian()->forge($lastActivity)->ago() :
-                __('unknown'),
+                date('Y-m-d H:i:s', $lastActivity->getTimestamp()) :
+                null
         );
+    }
+
+    public function getLastActivity(): string
+    {
+        return $this->last_activity ?
+            jalalian()->forge($this->last_activity)->ago() :
+            __('unknown');
     }
 
     public function pagesVisitCount(): Attribute
@@ -98,6 +104,13 @@ class UserTrack extends Model
         return Attribute::make(
             get: fn() => $this->requestTracks()->count(),
         );
+    }
+
+
+    public function isOnline(): bool
+    {
+        $lastActivityThreshold = now()->subMinutes(5);
+        return $this->last_activity && $this->last_activity >= $lastActivityThreshold;
     }
 
     public static function getVisitorCounts(): array

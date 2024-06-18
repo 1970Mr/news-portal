@@ -183,6 +183,39 @@ return [
                 ],
             ]
         ],
+        'user_activity' => [
+            'title' => 'فعالیت‌های کاربران',
+            'icon' => 'icon-chart',
+            'active_routes' => [
+                config('app.panel_prefix', 'panel') . '.users-track.index',
+                config('app.panel_prefix', 'panel') . '.requests-track.index',
+                config('app.panel_prefix', 'panel') . '.requests-track.visits-stats',
+            ],
+            'permissions' => [
+                config('permissions_list.USER_TRACK_INDEX', false),
+                config('permissions_list.REQUEST_TRACK_INDEX', false),
+            ],
+            'children' => [
+                [
+                    'title' => 'ردیابی کاربران',
+                    'icon' => 'fas fa-users-viewfinder',
+                    'url' => route(config('app.panel_prefix', 'panel') . '.users-track.index'),
+                    'permissions' => config('permissions_list.USER_TRACK_INDEX', false),
+                ],
+                [
+                    'title' => 'ردیابی بازدیدها',
+                    'icon' => 'fas fa-arrows-to-eye',
+                    'url' => route(config('app.panel_prefix', 'panel') . '.requests-track.index'),
+                    'permissions' => config('permissions_list.REQUEST_TRACK_INDEX', false),
+                ],
+                [
+                    'title' => 'آمار بازدیدها',
+                    'icon' => 'icon-eye',
+                    'url' => route(config('app.panel_prefix', 'panel') . '.requests-track.visits-stats'),
+                    'permissions' => config('permissions_list.REQUEST_TRACK_INDEX', false),
+                ],
+            ]
+        ],
         'setting' => [
             'title' => 'تنظیمات سایت',
             'icon' => 'icon-settings',

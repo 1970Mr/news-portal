@@ -50,5 +50,7 @@
     "unknown": "مجهول",
     "type": "نوع",
     "user_track": "ردیابی کاربر",
-    "request_track": "ردیابی بازدید"
+    "request_track": "ردیابی بازدید",
+    "online": "آنلاین",
+    "offline": "آفلاین"
 }

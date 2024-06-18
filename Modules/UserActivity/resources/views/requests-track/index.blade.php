@@ -12,7 +12,7 @@
                 <div class="portlet-heading">
                     <div class="portlet-title d-flex gap-3">
                         <h3 class="title m-0">
-                            <i class="icon-eye"></i>
+                            <i class="fas fa-arrows-to-eye"></i>
                             لیست بازدیدها
                         </h3>
                         <form class="d-inline-block search-form">

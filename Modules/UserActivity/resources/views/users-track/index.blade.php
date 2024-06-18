@@ -1,9 +1,9 @@
-@extends('panel::layouts.master', ['title' => 'لیست فعالیت‌های کاربران'])
+@extends('panel::layouts.master', ['title' => 'لیست ردیابی کاربران'])
 
 @section('content')
 
     <x-common-breadcrumbs>
-        <li><a>لیست فعالیت‌های کاربران</a></li>
+        <li><a>لیست ردیابی کاربران</a></li>
     </x-common-breadcrumbs>
 
     <div class="row pe-0">
@@ -12,8 +12,8 @@
                 <div class="portlet-heading">
                     <div class="portlet-title d-flex gap-3">
                         <h3 class="title m-0">
-                            <i class="icon-users"></i>
-                            لیست فعالیت‌های کاربران
+                            <i class="fas fa-users-viewfinder"></i>
+                            لیست ردیابی کاربران
                         </h3>
                         <form class="d-inline-block search-form">
                             <div class="input-group">
@@ -50,6 +50,7 @@
                                 <th>مرورگر</th>
                                 <th>تعداد بازدید صفحات</th>
                                 <th>آخرین فعالیت</th>
+                                <th>آنلاین/آفلاین</th>
                                 @can('permissions_list.USER_TRACKS_DESTROY')
                                     <th>عملیات</th>
                                 @endcan
@@ -67,7 +68,8 @@
                                     <td>{{ $userTrack->os }}</td>
                                     <td>{{ $userTrack->browser }}</td>
                                     <td>{{ $userTrack->pages_visit_count > 0 ? $userTrack->pages_visit_count : __('unknown') }}</td>
-                                    <td class="rtl text-right">{{ $userTrack->last_activity }}</td>
+                                    <td class="rtl text-right">{{ $userTrack->getLastActivity() }}</td>
+                                    <td>{{ $userTrack->isOnline() ? __('online') : __('offline') }}</td>
                                     @can('permissions_list.USER_TRACKS_DESTROY')
                                     <td>
                                             <div class="d-flex gap-2">
