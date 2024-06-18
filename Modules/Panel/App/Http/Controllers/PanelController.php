@@ -10,6 +10,8 @@ use Modules\Comment\App\Models\Comment;
 use Modules\FileManager\App\Models\Image;
 use Modules\Panel\App\Services\PanelService;
 use Modules\Tag\App\Models\Tag;
+use Modules\UserActivity\App\Models\RequestTrack;
+use Modules\UserActivity\App\Models\UserTrack;
 
 class PanelController extends Controller
 {
@@ -24,8 +26,11 @@ class PanelController extends Controller
         $images = $this->panelService->getLimitedData(Image::class);
         $imageClassName = Image::class;
         $comments = $this->panelService->getLimitedData(Comment::class);
-        $visitorsCount = $this->panelService->getVisitorsCount();
+        $articlesVisitsCount = $this->panelService->getArticlesVisitsCount();
+        $visitsCount = RequestTrack::getVisitCounts();
+        $visitorsCount = UserTrack::getVisitorCounts();
 
-        return view('panel::index', compact(['dataCounts', 'articles', 'categories', 'tags', 'images', 'imageClassName', 'comments', 'visitorsCount']));
+        return view('panel::index', compact(['dataCounts', 'articles', 'categories', 'tags', 'images', 'imageClassName',
+            'comments', 'articlesVisitsCount', 'visitsCount', 'visitorsCount']));
     }
 }

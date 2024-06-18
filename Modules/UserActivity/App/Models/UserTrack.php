@@ -26,7 +26,7 @@ class UserTrack extends Model
         'city',
         'timezone',
         'last_activity',
-        'page_views_count',
+        'pages_visit_count',
     ];
 
     public function user(): BelongsTo
@@ -76,10 +76,21 @@ class UserTrack extends Model
         );
     }
 
-    public function pageViewsCount(): Attribute
+    public function pagesVisitCount(): Attribute
     {
         return Attribute::make(
             get: fn() => $this->requestTracks()->count(),
         );
+    }
+
+    public static function getVisitorCounts(): array
+    {
+        $guestVisitors = self::query()->groupBy('ip')->whereNull('user_id')->count();
+        $memberVisitors = self::query()->groupBy('user_id')->whereNotNull('user_id')->count();
+        return [
+            'guest' => $guestVisitors,
+            'member' => $memberVisitors,
+            'all' => $guestVisitors + $memberVisitors
+        ];
     }
 }

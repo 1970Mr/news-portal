@@ -1,3 +1,4 @@
+{{-- Articles Visits --}}
 @can(config('permissions_list.VIEW_AVERAGE_VISITORS', false))
     <div class="col-12 col-md-6">
         <div class="portlet box shadow min-height-500">
@@ -5,7 +6,7 @@
                 <div class="portlet-title">
                     <h3 class="title">
                         <i class="icon-pie-chart"></i>
-                        میانگین بازدیدکنندگان (سالانه)
+                        آمار بازدیدهای اخبار (سالانه)
                     </h3>
                 </div><!-- /.portlet-title -->
                 <div class="buttons-box">
@@ -28,7 +29,7 @@
                 </div><!-- /.buttons-box -->
             </div><!-- /.portlet-heading -->
             <div class="portlet-body">
-                <div id="donut" class="morris-chart"></div>
+                <div id="articles-visits-yearly" class="morris-chart"></div>
             </div><!-- /.portlet-body -->
         </div><!-- /.portlet -->
     </div>
@@ -38,7 +39,7 @@
                 <div class="portlet-title">
                     <h3 class="title">
                         <i class="icon-pie-chart"></i>
-                        میانگین بازدیدکنندگان (روزانه)
+                        آمار بازدیدهای اخبار (روزانه)
                     </h3>
                 </div><!-- /.portlet-title -->
                 <div class="buttons-box">
@@ -61,7 +62,7 @@
                 </div><!-- /.buttons-box -->
             </div><!-- /.portlet-heading -->
             <div class="portlet-body">
-                <div id="donut2" class="morris-chart"></div>
+                <div id="articles-visits-daily" class="morris-chart"></div>
             </div><!-- /.portlet-body -->
         </div><!-- /.portlet -->
     </div>

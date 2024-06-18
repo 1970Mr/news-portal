@@ -9,8 +9,11 @@
     @include('panel::content-sections/header-stats')
 
     <div class="row m-0 p-0">
-        {{-- Articles Visitors --}}
-        @include('panel::content-sections/articles-visitors')
+        {{-- Site Visitors --}}
+        @include('panel::content-sections.site-visitors')
+
+        {{-- Articles Visits --}}
+        @include('panel::content-sections.articles-visits')
 
         {{-- Articles --}}
         @include('panel::content-sections/articles')
@@ -39,7 +42,44 @@
     </script>
     <script>
         Morris.Donut({
-            element: 'donut',
+            element: 'site-visits-yearly',
+            data: [
+                {value: {{ $visitsCount['yearly'] }}, label: 'سال', formatted: '{{ $visitsCount['yearly'] }} نفر'},
+                {value: {{ $visitsCount['monthly'] }}, label: 'ماه', formatted: '{{ $visitsCount['monthly'] }} نفر'},
+                {value: {{ $visitsCount['weekly'] }}, label: 'هفته', formatted: '{{ $visitsCount['weekly'] }} نفر'},
+            ],
+            colors: [
+                '#1e4572',
+                '#597bbd',
+                '#6da1f1',
+            ],
+            formatter: function (x, data) {
+                return data.formatted;
+            },
+            resize: true
+        });
+
+        Morris.Donut({
+            element: 'site-visits-daily',
+            data: [
+                {value: {{ $visitsCount['daily'] }}, label: 'روز', formatted: '{{ $visitsCount['daily'] }} نفر'},
+                {value: {{ $visitsCount['ten_hours'] }}, label: 'ده ساعت', formatted: '{{ $visitsCount['ten_hours'] }} نفر'},
+                {value: {{ $visitsCount['hourly'] }}, label: 'یک ساعت', formatted: '{{ $visitsCount['hourly'] }} نفر'},
+            ],
+            colors: [
+                '#ffc107',
+                '#e36100',
+                '#d50000',
+            ],
+            formatter: function (x, data) {
+                return data.formatted;
+            },
+            resize: true
+        });
+    </script>
+    <script>
+        Morris.Donut({
+            element: 'articles-visits-yearly',
             data: [
                 {value: {{ $articlesVisitsCount['year'] }}, label: 'سال', formatted: '{{ $articlesVisitsCount['year'] }} نفر'},
                 {value: {{ $articlesVisitsCount['month'] }}, label: 'ماه', formatted: '{{ $articlesVisitsCount['month'] }} نفر'},
@@ -57,7 +97,7 @@
         });
 
         Morris.Donut({
-            element: 'donut2',
+            element: 'articles-visits-daily',
             data: [
                 {value: {{ $articlesVisitsCount['day'] }}, label: 'روز', formatted: '{{ $articlesVisitsCount['day'] }} نفر'},
                 {value: {{ $articlesVisitsCount['10hours'] }}, label: 'ده ساعت', formatted: '{{ $articlesVisitsCount['10hours'] }} نفر'},

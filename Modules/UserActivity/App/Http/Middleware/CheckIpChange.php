@@ -5,7 +5,6 @@ namespace Modules\UserActivity\App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Modules\UserActivity\App\Services\TrackUserRequestService;
 
 class CheckIpChange
 {

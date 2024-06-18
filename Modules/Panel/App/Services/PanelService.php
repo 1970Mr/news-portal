@@ -23,15 +23,15 @@ class PanelService
         ];
     }
 
-    public function getVisitorsCount(): array
+    public function getArticlesVisitsCount(): array
     {
-        $visitorsCount['all'] = visits(Article::class)->count();
-        $visitorsCount['year'] = visits(Article::class)->period('year')->count();
-        $visitorsCount['month'] = visits(Article::class)->period('month')->count();
-        $visitorsCount['week'] = visits(Article::class)->period('week')->count();
-        $visitorsCount['day'] = visits(Article::class)->period('day')->count();
-        $visitorsCount['10hours'] = visits(Article::class)->period('10hours')->count();
-        $visitorsCount['hour'] = visits(Article::class)->period('hour')->count();
-        return $visitorsCount;
+        $articlesVisitsCount['all'] = visits(Article::class)->count();
+        $articlesVisitsCount['year'] = visits(Article::class)->period('year')->count();
+        $articlesVisitsCount['month'] = visits(Article::class)->period('month')->count();
+        $articlesVisitsCount['week'] = visits(Article::class)->period('week')->count();
+        $articlesVisitsCount['day'] = visits(Article::class)->period('day')->count();
+        $articlesVisitsCount['10hours'] = visits(Article::class)->period('10hours')->count();
+        $articlesVisitsCount['hour'] = visits(Article::class)->period('hour')->count();
+        return $articlesVisitsCount;
     }
 }

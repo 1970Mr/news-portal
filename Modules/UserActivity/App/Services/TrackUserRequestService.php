@@ -8,7 +8,6 @@ use DeviceDetector\Parser\Device\AbstractDeviceParser;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Modules\User\App\Models\User;
 use Modules\UserActivity\App\Models\RequestTrack;
 use Modules\UserActivity\App\Models\UserTrack;
 
