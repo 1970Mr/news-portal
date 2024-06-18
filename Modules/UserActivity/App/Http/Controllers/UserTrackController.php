@@ -17,8 +17,8 @@ class UserTrackController extends Controller
 
     public function index(): View
     {
-        $userTracks = UserTrack::with('user')->latest()->paginate(10);
-        return view('user-activity::user-tracks.index', compact('userTracks'));
+        $usersTrack = UserTrack::with('user')->latest()->paginate(10);
+        return view('user-activity::users-track.index', compact('usersTrack'));
     }
 
     public function destroy(UserTrack $userTrack): RedirectResponse

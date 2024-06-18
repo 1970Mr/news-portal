@@ -49,5 +49,6 @@
     "categories": "دسته\u200Cبندی\u200Cها",
     "unknown": "مجهول",
     "type": "نوع",
-    "user_track": "ردیابی کاربر"
+    "user_track": "ردیابی کاربر",
+    "request_track": "ردیابی بازدید"
 }

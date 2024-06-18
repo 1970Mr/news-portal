@@ -1,9 +1,9 @@
-@extends('panel::layouts.master', ['title' => 'لیست فعالیت‌های کاربران'])
+@extends('panel::layouts.master', ['title' => 'لیست ردیابی بازدیدها'])
 
 @section('content')
 
     <x-common-breadcrumbs>
-        <li><a>لیست فعالیت‌های کاربران</a></li>
+        <li><a>لیست بازدیدها</a></li>
     </x-common-breadcrumbs>
 
     <div class="row pe-0">
@@ -12,8 +12,8 @@
                 <div class="portlet-heading">
                     <div class="portlet-title d-flex gap-3">
                         <h3 class="title m-0">
-                            <i class="icon-users"></i>
-                            لیست فعالیت‌های کاربران
+                            <i class="icon-eye"></i>
+                            لیست بازدیدها
                         </h3>
                         <form class="d-inline-block search-form">
                             <div class="input-group">
@@ -42,36 +42,28 @@
                             <tr>
                                 <th>#</th>
                                 <th>کاربر</th>
-                                <th>IP</th>
-                                <th>کشور</th>
-                                <th>شهر</th>
-                                <th>دستگاه</th>
-                                <th>سیستم عامل</th>
-                                <th>مرورگر</th>
-                                <th>تعداد بازدید صفحات</th>
-                                <th>آخرین فعالیت</th>
-                                @can('permissions_list.USER_TRACKS_DESTROY')
+                                <th>URL</th>
+                                <th>ارجاع‌دهنده</th>
+                                <th>برچسب</th>
+                                <th>تاریخ بازدید</th>
+                                @can('permissions_list.REQUEST_TRACKS_DESTROY')
                                     <th>عملیات</th>
                                 @endcan
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($userTracks as $userTrack)
+                            @foreach($requestsTrack as $requestTrack)
                                 <tr>
-                                    <td>{{ $userTrack->id }}</td>
-                                    <td>{{ $userTrack->user->full_name ?? 'مهمان' }}</td>
-                                    <td>{{ $userTrack->ip }}</td>
-                                    <td>{{ $userTrack->country }}</td>
-                                    <td>{{ $userTrack->city }}</td>
-                                    <td>{{ $userTrack->device }}</td>
-                                    <td>{{ $userTrack->os }}</td>
-                                    <td>{{ $userTrack->browser }}</td>
-                                    <td>{{ $userTrack->pages_visit_count > 0 ? $userTrack->pages_visit_count : __('unknown') }}</td>
-                                    <td class="rtl text-right">{{ $userTrack->last_activity }}</td>
-                                    @can('permissions_list.USER_TRACKS_DESTROY')
-                                    <td>
+                                    <td>{{ $requestTrack->id }}</td>
+                                    <td>{{ $requestTrack->userTrack->user->full_name ?? 'مهمان' }}</td>
+                                    <td>{{ $requestTrack->url }}</td>
+                                    <td>{{ nullable_value($requestTrack->referer) }}</td>
+                                    <td>{{ nullable_value($requestTrack->tag) }}</td>
+                                    <td class="ltr text-right">{{ jalalian()->forge($requestTrack->created_at)->format(config('common.datetime_format')) }}</td>
+                                    @can('permissions_list.REQUEST_TRACKS_DESTROY')
+                                        <td>
                                             <div class="d-flex gap-2">
-                                                <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.user-tracks.destroy', $userTrack->id)" />
+                                                <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.requests-track.destroy', $requestTrack->id)" />
                                             </div>
                                         </td>
                                     @endcan
@@ -82,8 +74,7 @@
                     </div>
 
                     <!-- Display pagination links -->
-                    {{ $userTracks->links() }}
-
+                    {{ $requestsTrack->links() }}
                 </div><!-- /.portlet-body -->
             </div><!-- /.portlet -->
         </div>
