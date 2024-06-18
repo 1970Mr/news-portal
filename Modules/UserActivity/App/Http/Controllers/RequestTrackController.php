@@ -8,18 +8,19 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
 use Modules\UserActivity\App\Models\RequestTrack;
+use Modules\UserActivity\App\Services\RequestTrackService;
 
 class RequestTrackController extends Controller
 {
-    public function __construct()
+    public function __construct(private readonly RequestTrackService $requestTrackService)
     {
         $this->middleware('can:' . config('permissions_list.REQUEST_TRACK_INDEX', false))->only(['index', 'visitsStats']);
         $this->middleware('can:' . config('permissions_list.REQUEST_TRACK_DESTROY', false))->only('destroy');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $requestsTrack = RequestTrack::with('userTrack.user')->latest()->paginate(10);
+        $requestsTrack = $this->requestTrackService->index($request);
         return view('user-activity::requests-track.index', compact('requestsTrack'));
     }
 

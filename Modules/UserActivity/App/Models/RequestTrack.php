@@ -5,15 +5,29 @@ namespace Modules\UserActivity\App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
+use Laravel\Scout\Searchable;
 
 class RequestTrack extends Model
 {
+    use Searchable;
+
     protected $fillable = [
         'user_track_id',
         'url',
         'referer',
         'tag',
     ];
+
+    public function toSearchableArray(): array
+    {
+        return [
+            'id' => (int)$this->id,
+            'user_track_id' => (int)$this->user_track_id,
+            'url' => $this->url,
+            'referer' => $this->referer,
+            'tag' => $this->tag,
+        ];
+    }
 
     public function userTrack(): BelongsTo
     {
