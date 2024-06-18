@@ -4,20 +4,22 @@ namespace Modules\UserActivity\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Modules\UserActivity\App\Models\UserTrack;
+use Modules\UserActivity\App\Services\UserTrackService;
 
 class UserTrackController extends Controller
 {
-    public function __construct()
+    public function __construct(private readonly UserTrackService $userTrackService)
     {
         $this->middleware('can:' . config('permissions_list.USER_TRACK_INDEX', false))->only('index');
         $this->middleware('can:' . config('permissions_list.USER_TRACK_DESTROY', false))->only('destroy');
     }
 
-    public function index(): View
+    public function index(Request $request): View
     {
-        $usersTrack = UserTrack::with('user')->latest()->paginate(10);
+        $usersTrack = $this->userTrackService->index($request);
         return view('user-activity::users-track.index', compact('usersTrack'));
     }
 

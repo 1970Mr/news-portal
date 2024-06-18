@@ -6,11 +6,14 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Laravel\Scout\Searchable;
 use Modules\User\App\Models\User;
 use Torann\GeoIP\GeoIP;
 
 class UserTrack extends Model
 {
+    use Searchable;
+
     protected $fillable = [
         'user_id',
         'ip',
@@ -28,6 +31,20 @@ class UserTrack extends Model
         'last_activity',
         'pages_visit_count',
     ];
+
+    public function toSearchableArray(): array
+    {
+        return [
+            'id' => (int)$this->id,
+            'user_id' => (int)$this->user_id,
+            'ip' => $this->ip,
+            'device' => $this->device,
+            'os' => $this->os,
+            'browser' => $this->browser,
+            'user_agent' => $this->user_agent,
+            'referer' => $this->referer,
+        ];
+    }
 
     public function user(): BelongsTo
     {
