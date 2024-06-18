@@ -47,6 +47,7 @@
     "position": "مکان قرارگیری",
     "menu": "منو",
     "categories": "دسته\u200Cبندی\u200Cها",
-    "unknown": "ناشناس",
-    "type": "نوع"
+    "unknown": "مجهول",
+    "type": "نوع",
+    "user_track": "ردیابی کاربر"
 }
