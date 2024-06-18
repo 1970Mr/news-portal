@@ -1,5 +1,5 @@
 {{-- Articles Visits --}}
-@can(config('permissions_list.VIEW_AVERAGE_VISITORS', false))
+@can(config('permissions_list.STATS_CONTENT', false))
     <div class="col-12 col-md-6">
         <div class="portlet box shadow min-height-500">
             <div class="portlet-heading">

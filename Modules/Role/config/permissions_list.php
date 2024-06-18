@@ -2,7 +2,8 @@
 
 return [
     'SUPER_ADMIN' => 'admin::full_access',
-    'VIEW_AVERAGE_VISITORS' => 'admin::view_average_visitors',
+    'STATS_HEADER' => 'admin::stats_header',
+    'STATS_CONTENT' => 'admin::stats_content',
     'CONTACT_INFO' => 'admin::contact_info',
     'CONTACT_USER_MESSAGES' => 'admin::contact_user_messages',
     'SEO_MANAGEMENT' => 'admin::seo_management',
@@ -17,6 +18,12 @@ return [
     'CACHE_CLEAR_VIEW' => 'cache::clear_view',
     'CACHE_CLEAR_CONFIG' => 'cache::clear_config',
     'CACHE_CLEAR_ROUTE' => 'cache::clear_route',
+
+    'USER_TRACK_INDEX' => 'user_track::index',
+    'USER_TRACK_DESTROY' => 'user_track::destroy',
+
+    'REQUEST_TRACK_INDEX' => 'request_track::index',
+    'REQUEST_TRACK_DESTROY' => 'request_track::destroy',
 
     'MENU_INDEX' => 'menu::index',
     'MENU_STORE' => 'menu::store',

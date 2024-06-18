@@ -44,6 +44,8 @@ return [
             config('permissions_list.SETTING_ABOUT_US'),
             config('permissions_list.SETTING_SITE_DETAILS'),
             config('permissions_list.SEO_MANAGEMENT'),
+            config('permissions_list.STATS_HEADER'),
+            config('permissions_list.STATS_CONTENT'),
         ]
     ],
     [
@@ -61,6 +63,8 @@ return [
             config('permissions_list.IMAGE_INDEX_OWN'),
             config('permissions_list.IMAGE_UPDATE_OWN'),
             config('permissions_list.IMAGE_DESTROY_OWN'),
+            config('permissions_list.STATS_HEADER'),
+            config('permissions_list.STATS_CONTENT'),
         ]
     ],
     [
@@ -71,7 +75,8 @@ return [
             config('permissions_list.PROFILE_CHANGE_PASSWORD'),
             config('permissions_list.PROFILE_CHANGE_EMAIL'),
             config('permissions_list.PROFILE_SOCIAL_NETWORKS'),
-            config('permissions_list.VIEW_AVERAGE_VISITORS'),
+            config('permissions_list.STATS_HEADER'),
+            config('permissions_list.STATS_CONTENT'),
         ]
     ]
 ];

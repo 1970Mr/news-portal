@@ -1,6 +1,7 @@
 {
     "admin::full_access": "دسترسی کامل",
-    "admin::view_average_visitors": "مشاهده میانگین بازدیدکنندگان",
+    "admin::stats_header": "مشاهده آمار درون هدر",
+    "admin::stats_content": "مشاهده آمار درون محتوا",
     "admin::contact_info": "ثبت اطلاعات تماس با ما",
     "admin::contact_user_messages": "مشاهده پیام\u200Cهای کاربران",
     "admin::seo_management": "مدیریت بخش\u200Cهای مربوط به سئو",
@@ -15,6 +16,12 @@
     "cache::clear_view": "حذف حافظه پنهان قالب\u200Cها",
     "cache::clear_config": "حذف حافظه پنهان کانفیگ\u200Cها",
     "cache::clear_route": "حذف حافظه پنهان مسیرها",
+
+    "user_track::index": "مشاهده ردیابی کاربران",
+    "user_track::destroy": "حذف ردیابی کاربر",
+
+    "request_track::index": "مشاهده ردیابی بازدیدها",
+    "request_track::destroy": "حذف ردیابی بازدید",
 
     "newsletter::index": "مشاهده اعضای خبرنامه",
     "newsletter::destroy": "حذف عضو از خبرنامه",
