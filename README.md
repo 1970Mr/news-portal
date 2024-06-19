@@ -28,6 +28,7 @@ Welcome to the News Portal, a comprehensive and modular news website built with 
     - [ContactUs](#contactus)
     - [Hotness](#hotness)
     - [Seen](#seen)
+    - [UserActivity](#useractivity)
     - [Setting](#setting)
     - [Panel](#panel)
     - [Common](#common)
@@ -53,6 +54,7 @@ Welcome to the News Portal, a comprehensive and modular news website built with 
 - **Administrative Panel:** Dashboard with site statistics and management tools for all modules.
 - **Hot Content Tracking:** Mark articles and tags as "hot" to highlight trending content.
 - **Contact Form Management:** Manage incoming messages from users through the contact form.
+- **User Activity Tracking:** Track user interactions, requests, and activities for comprehensive insights into user engagement and site traffic patterns.
 
 ## Requirements
 
@@ -294,10 +296,12 @@ The SEOManager module handles SEO-related settings and optimizations.
     - Manage meta tags for the contact us page
     - Manage meta tags for the about us page
     - Manage meta tags for search pages
-    - Optimize site for
-
-search engines
-- Track SEO performance
+    - Optimize site for search engines
+    - Track SEO performance
+    - Create a sitemap for the site using the command:
+      ```sh
+      php artisan sitemap:generate
+      ```
 
 ### FileManager
 
@@ -352,7 +356,7 @@ The Seen module tracks the views or interactions with various entities in the sy
     - Associate seen status with different models.
     - Manage and update seen/unseen status of entities.
 
-### UserActivity Module
+### UserActivity
 
 The UserActivity module meticulously tracks user interactions, requests, and activities within the News Portal, providing comprehensive insights into user engagement and site traffic patterns.
 
