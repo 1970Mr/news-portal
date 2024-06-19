@@ -9,7 +9,7 @@ class RedirectManagerServiceProvider extends ServiceProvider
 {
     protected string $moduleName = 'RedirectManager';
 
-    protected string $moduleNameLower = 'redirectmanager';
+    protected string $moduleNameLower = 'redirect-manager';
 
     /**
      * Boot the application events.
