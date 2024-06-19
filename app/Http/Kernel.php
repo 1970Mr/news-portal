@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Modules\RedirectManager\App\Http\Middleware\RedirectRequests;
 use Modules\UserActivity\App\Http\Middleware\CheckIpChange;
 use Modules\UserActivity\App\Http\Middleware\TrackUserRequests;
 
@@ -23,6 +24,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        RedirectRequests::class,
     ];
 
     /**

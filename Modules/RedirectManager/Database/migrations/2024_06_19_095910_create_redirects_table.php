@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('destination_url');
             $table->integer('status_code')->default(301);
             $table->boolean('status')->default(1);
-            $table->softDeletes();
             $table->timestamps();
         });
     }

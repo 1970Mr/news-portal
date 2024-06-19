@@ -15,7 +15,7 @@ class RedirectRequest extends FormRequest
         $rules = [
             'source_url' => 'required|url|unique:redirects',
             'destination_url' => 'required|url|different:source_url',
-            'status_code' => 'required|integer',
+            'status_code' => 'required|integer|between:300,399',
             'status' => 'required|boolean',
         ];
 
@@ -39,6 +39,8 @@ class RedirectRequest extends FormRequest
     {
         $this->merge([
             'status' => (bool)$this->status,
+            'source_url' => trim($this->source_url, '/'),
+            'destination_url' => trim($this->destination_url, '/'),
         ]);
     }
 
