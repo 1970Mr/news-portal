@@ -2,6 +2,7 @@
 
 namespace Modules\User\App\Helpers;
 
+use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
@@ -23,7 +24,7 @@ class UserHelper
             $admin_role = Role::query()->where('name', Role::ADMIN)->first();
             $admin_user->syncRoles($admin_role);
             DB::commit();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             DB::rollBack();
             throw new UserCreationFailedException($e->getMessage());
         }

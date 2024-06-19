@@ -63,7 +63,7 @@
                                     @can('permissions_list.REQUEST_TRACKS_DESTROY')
                                         <td>
                                             <div class="d-flex gap-2">
-                                                <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.requests-track.destroy', $requestTrack->id)" />
+                                                <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.requests-track.destroy', $requestTrack->id)"/>
                                             </div>
                                         </td>
                                     @endcan

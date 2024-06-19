@@ -2,7 +2,6 @@
 
 namespace Modules\SEOManager\App\Services\Front;
 
-use Artesaos\SEOTools\Facades\SEOTools;
 use Modules\Category\App\Models\Category;
 use Modules\Setting\App\Models\SiteDetail;
 
@@ -13,7 +12,7 @@ class CategoriesPageSEOService extends BaseSEOService
         $cacheKey = 'category_seo_' . $category->id;
         $cacheTTL = now()->addHours(self::CACHE_TTL);
 
-        $seoData = cache()->remember($cacheKey, $cacheTTL, function() use ($category) {
+        $seoData = cache()->remember($cacheKey, $cacheTTL, function () use ($category) {
             $seoSettings = $category->seoSettings;
             $title = $seoSettings?->meta_title ?? $category->name;
             $description = $seoSettings?->meta_description;
@@ -44,7 +43,7 @@ class CategoriesPageSEOService extends BaseSEOService
         $cacheKey = 'categories_page_seo';
         $cacheTTL = now()->addHours(self::CACHE_TTL);
 
-        $seoData = cache()->remember($cacheKey, $cacheTTL, function() {
+        $seoData = cache()->remember($cacheKey, $cacheTTL, function () {
             $siteDetails = SiteDetail::first();
             $title = __('categories');
             $description = __('Browse all categories available on our website.');

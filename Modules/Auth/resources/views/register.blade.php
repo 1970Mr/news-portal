@@ -6,7 +6,7 @@
     </p>
     <h2 class="text-center m-b-20">ثبت نام </h2>
 
-    <x-common-error-messages />
+    <x-common-error-messages/>
 
     <hr>
 
@@ -73,7 +73,7 @@
     <hr class="m-b-30">
     <a href="{{ route('password.request') }}" class="btn btn-default btn-block m-b-10">
         <i class="icon-refresh font-lg"></i>
-        بازیابی رمز  عبور
+        بازیابی رمز عبور
     </a>
     <a href="{{ route('login') }}" class="btn btn-default btn-block">
         <i class="icon-user-following font-lg"></i>

@@ -14,48 +14,32 @@ class StaticContentService
 {
     private const CACHE_TTL = 60 * 60 * 3;
 
-    public function getLatestTags(): Collection
+    public function composeViewData(): array
     {
-        return Cache::remember('latest_tags', self::CACHE_TTL, function () {
-            return Tag::query()->latest()->limit(30)->get();
-        });
-    }
+        $trending_bar = [
+            'hot_articles' => $this->getHotArticles(),
+        ];
 
-    public function getArticlesWithMostVisit(): array
-    {
-        return Cache::remember('articles_with_most_visits', self::CACHE_TTL, function () {
-            $mostVisits = visits(Article::class)->top(4);
-            if ($mostVisits->count() === 0) {
-                $mostVisits = $this->baseQuery()->limit(4)->get();
-            }
-            $firstArticle = $mostVisits->shift();
-            return [
-                'first' => $firstArticle,
-                'others' => $mostVisits,
-            ];
-        });
-    }
+        $main_nav = [
+            'menus' => $this->getMenus(),
+            'categories' => $this->getCategories(),
+        ];
 
-    public function getEditorChoices(): Collection
-    {
-        return Cache::remember('editor_choices', self::CACHE_TTL, function () {
-            return $this->baseQuery()->editorChoice()->limit(3)->get();
-        });
-    }
+        $first_sidebar = [
+            'articles_with_most_visits' => $this->getArticlesWithMostVisit(),
+        ];
 
-    public function getHotTopics(): Collection
-    {
-        return Cache::remember('hot_topics', self::CACHE_TTL, function () {
-            return Tag::with('hotness')
-                ->whereHas('hotness', function ($query) {
-                    $query->where('is_hot', true);
-                })
-                ->withCount('articles')
-                ->whereHas('articles')
-                ->latest()
-                ->limit(7)
-                ->get();
-        });
+        $second_sidebar = [
+            'latest_tags' => $this->getLatestTags(),
+        ];
+
+        $footer = [
+            'editor_choices' => $this->getEditorChoices(),
+            'hot_topics' => $this->getHotTopics(),
+            'articles_with_most_comments' => $this->getArticleWithMostComments(),
+        ];
+
+        return compact(['trending_bar', 'main_nav', 'second_sidebar', 'first_sidebar', 'footer']);
     }
 
     public function getHotArticles(): Collection
@@ -76,15 +60,9 @@ class StaticContentService
         });
     }
 
-    public function getArticleWithMostComments(): Collection
+    private function baseQuery(): Builder
     {
-        return Cache::remember('articles_with_most_comments', self::CACHE_TTL, function () {
-            return Article::with(['hotness', 'image', 'category', 'tags', 'user'])->active()->published()
-                ->withCount('approvedComments')
-                ->orderBy('approved_comments_count', 'desc')
-                ->limit(3)
-                ->get();
-        });
+        return Article::with(['hotness', 'image', 'category', 'tags', 'user'])->latest()->active()->published();
     }
 
     public function getMenus(): Collection
@@ -132,36 +110,58 @@ class StaticContentService
         });
     }
 
-    public function composeViewData(): array
+    public function getArticlesWithMostVisit(): array
     {
-        $trending_bar = [
-            'hot_articles' => $this->getHotArticles(),
-        ];
-
-        $main_nav = [
-            'menus' => $this->getMenus(),
-            'categories' => $this->getCategories(),
-        ];
-
-        $first_sidebar = [
-            'articles_with_most_visits' => $this->getArticlesWithMostVisit(),
-        ];
-
-        $second_sidebar = [
-            'latest_tags' => $this->getLatestTags(),
-        ];
-
-        $footer = [
-            'editor_choices' => $this->getEditorChoices(),
-            'hot_topics' => $this->getHotTopics(),
-            'articles_with_most_comments' => $this->getArticleWithMostComments(),
-        ];
-
-        return compact(['trending_bar', 'main_nav', 'second_sidebar', 'first_sidebar', 'footer']);
+        return Cache::remember('articles_with_most_visits', self::CACHE_TTL, function () {
+            $mostVisits = visits(Article::class)->top(4);
+            if ($mostVisits->count() === 0) {
+                $mostVisits = $this->baseQuery()->limit(4)->get();
+            }
+            $firstArticle = $mostVisits->shift();
+            return [
+                'first' => $firstArticle,
+                'others' => $mostVisits,
+            ];
+        });
     }
 
-    private function baseQuery(): Builder
+    public function getLatestTags(): Collection
     {
-        return Article::with(['hotness', 'image', 'category', 'tags', 'user'])->latest()->active()->published();
+        return Cache::remember('latest_tags', self::CACHE_TTL, function () {
+            return Tag::query()->latest()->limit(30)->get();
+        });
+    }
+
+    public function getEditorChoices(): Collection
+    {
+        return Cache::remember('editor_choices', self::CACHE_TTL, function () {
+            return $this->baseQuery()->editorChoice()->limit(3)->get();
+        });
+    }
+
+    public function getHotTopics(): Collection
+    {
+        return Cache::remember('hot_topics', self::CACHE_TTL, function () {
+            return Tag::with('hotness')
+                ->whereHas('hotness', function ($query) {
+                    $query->where('is_hot', true);
+                })
+                ->withCount('articles')
+                ->whereHas('articles')
+                ->latest()
+                ->limit(7)
+                ->get();
+        });
+    }
+
+    public function getArticleWithMostComments(): Collection
+    {
+        return Cache::remember('articles_with_most_comments', self::CACHE_TTL, function () {
+            return Article::with(['hotness', 'image', 'category', 'tags', 'user'])->active()->published()
+                ->withCount('approvedComments')
+                ->orderBy('approved_comments_count', 'desc')
+                ->limit(3)
+                ->get();
+        });
     }
 }

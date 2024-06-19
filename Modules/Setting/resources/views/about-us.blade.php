@@ -38,7 +38,7 @@
                     <form id="main-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.settings.about-us.edit') }}" method="post">
                         @csrf
                         @method('PUT')
-                        <x-common-error-messages />
+                        <x-common-error-messages/>
 
                         <fieldset class="row justify-content-center">
                             <div class="form-group col-lg-6">
@@ -74,8 +74,8 @@
     <script src="{{ asset('admin/assets/plugins/ckeditor5-document-editor/translations/fa.js') }}"></script>
     <script src="{{ asset('admin/assets/js/pages/UploadAdapter.js') }}"></script>
     <script>
-        function CustomUploadAdapterPlugin( editor ) {
-            editor.plugins.get( 'FileRepository' ).createUploadAdapter = ( loader ) => {
+        function CustomUploadAdapterPlugin(editor) {
+            editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
                 return new UploadAdapter(
                     loader,
                     '{{ route(config('app.panel_prefix', 'panel') . '.images.upload', ['alt_text' => 'About Us']) }}',
@@ -86,38 +86,38 @@
 
         $(document).ready(function () {
             DecoupledEditor
-                .create( document.querySelector( '#editor' ), {
-                    extraPlugins: [ CustomUploadAdapterPlugin ],
+                .create(document.querySelector('#editor'), {
+                    extraPlugins: [CustomUploadAdapterPlugin],
                     language: 'fa',
                     direction: 'rtl',
                     fontFamily: {
                         'default': 'IranSans, Arial, sans-serif',
                     },
                 })
-                .then( editor => {
+                .then(editor => {
                     editor.setData('{!! old('content', trim(json_encode($about?->content), '"')) !!}');
                     editor.model.document.on('change:data', () => {
                         document.querySelector('input[name="content"]').value = editor.getData();
                     });
-                    const toolbarContainer = document.querySelector( '#toolbar-container' );
-                    toolbarContainer.appendChild( editor.ui.view.toolbar.element );
-                } )
-                .catch( error => {
-                    console.error( error );
-                } );
+                    const toolbarContainer = document.querySelector('#toolbar-container');
+                    toolbarContainer.appendChild(editor.ui.view.toolbar.element);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
         });
 
         $.validator.setDefaults({
-            highlight: function(element) {
+            highlight: function (element) {
                 $(element).closest('.form-group').addClass('has-error').removeClass("has-success");
             },
-            unhighlight: function(element) {
+            unhighlight: function (element) {
                 $(element).closest('.form-group').removeClass('has-error').addClass("has-success");
             },
             errorElement: 'span',
             errorClass: 'help-block',
-            errorPlacement: function(error, element) {
-                if(element.parent('.input-group').length) {
+            errorPlacement: function (error, element) {
+                if (element.parent('.input-group').length) {
                     error.insertAfter(element.parent());
                 } else {
                     error.insertAfter(element);

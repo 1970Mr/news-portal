@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="{{ $site_details->faviconLink() }}" type="image/x-icon">
     <link rel="icon" href="{{ $site_details->faviconLink() }}" type="image/x-icon">
 
-    <x-feed-links />
+    <x-feed-links/>
 
     {!! SEO::generate() !!}
 

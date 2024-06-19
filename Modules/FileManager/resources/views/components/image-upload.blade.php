@@ -2,7 +2,7 @@
 
 <div>
     <!-- Button to open image upload modal -->
-    <x-file-manager-image-upload-btn :hideBtn="$hideBtn" />
+    <x-file-manager-image-upload-btn :hideBtn="$hideBtn"/>
 
     <!-- Image Upload Modal -->
     <div class="modal fade" id="imageUploadModal" tabindex="-1" aria-labelledby="imageUploadModalLabel" aria-hidden="true">
@@ -107,7 +107,7 @@
                         $('.has-error').removeClass("has-error")
                         $('.has-success').removeClass("has-success")
                     },
-                    error: function(xhr, status, error) {
+                    error: function (xhr, status, error) {
                         let errorMessages = xhr.responseJSON.errors;
                         $('#errorAlert').show();
                         let errorContainer = $('#errorMessages');

@@ -32,7 +32,7 @@
                           enctype="multipart/form-data">
                         @csrf
                         @method('put')
-                        <x-common-error-messages />
+                        <x-common-error-messages/>
 
                         <fieldset class="row justify-content-center">
                             <div class="form-group col-12 text-center">
@@ -77,16 +77,16 @@
 @push('scripts')
     <script>
         $.validator.setDefaults({
-            highlight: function(element) {
+            highlight: function (element) {
                 $(element).closest('.form-group').addClass('has-error').removeClass("has-success");
             },
-            unhighlight: function(element) {
+            unhighlight: function (element) {
                 $(element).closest('.form-group').removeClass('has-error').addClass("has-success");
             },
             errorElement: 'span',
             errorClass: 'help-block',
-            errorPlacement: function(error, element) {
-                if(element.parent('.input-group').length) {
+            errorPlacement: function (error, element) {
+                if (element.parent('.input-group').length) {
                     error.insertAfter(element.parent());
                 } else {
                     error.insertAfter(element);

@@ -12,7 +12,7 @@ class TagFactory extends Factory
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\Tag\App\Models\Tag::class;
+    protected $model = Tag::class;
 
     /**
      * Define the model's default state.

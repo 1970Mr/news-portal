@@ -9,11 +9,6 @@ use Modules\Category\App\Models\Category;
 
 class HomeService
 {
-    public function baseQuery(): Builder
-    {
-        return Article::with(['hotness', 'image', 'category', 'tags'])->latest()->active()->published();
-    }
-
     public function getTrendingPosts(): array
     {
         $editorChoices = $this->baseQuery()->editorChoice()->limit(3)->get();
@@ -22,6 +17,11 @@ class HomeService
         }
 
         return ['editor_choices' => $editorChoices];
+    }
+
+    public function baseQuery(): Builder
+    {
+        return Article::with(['hotness', 'image', 'category', 'tags'])->latest()->active()->published();
     }
 
     public function getLatestArticles($articlesIdsIgnore): Collection

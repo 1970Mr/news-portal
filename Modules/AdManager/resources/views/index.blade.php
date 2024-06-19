@@ -96,7 +96,7 @@
                                                 @endcan
 
                                                 @can(config('permissions_list.ADS_DESTROY', false))
-                                                    <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.ads.destroy', $ad->id)" />
+                                                    <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.ads.destroy', $ad->id)"/>
                                                 @endcan
                                             </div>
                                         </td>

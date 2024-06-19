@@ -6,10 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Modules\Setting\App\Http\Requests\AboutUsRequest;
-use Modules\Setting\App\Http\Requests\SocialNetworkRequest;
 use Modules\Setting\App\Models\AboutUs;
 use Modules\Setting\App\Services\AboutUsService;
-use Modules\Setting\App\Services\SocialNetworkService;
 
 class AboutUsController extends Controller
 {

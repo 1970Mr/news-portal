@@ -41,17 +41,17 @@
 
 @push('scripts')
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             @if($article->liked())
-                submitLikeRequest('.post-unlike', '.unlike-form')
+            submitLikeRequest('.post-unlike', '.unlike-form')
             @else
-                submitLikeRequest('.post-like', '.like-form')
+            submitLikeRequest('.post-like', '.like-form')
             @endif
 
             function submitLikeRequest(clickableClass, formClass) {
                 const clickable = document.querySelector(clickableClass);
                 const form = document.querySelector(formClass);
-                clickable.addEventListener('click', function(event) {
+                clickable.addEventListener('click', function (event) {
                     event.preventDefault();
                     form.submit()
                 })

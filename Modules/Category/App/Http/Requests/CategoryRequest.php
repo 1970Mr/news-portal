@@ -21,19 +21,12 @@ class CategoryRequest extends FormRequest
         ];
 
         if (strtolower($this->method()) === 'put') {
-            $rules['name'] .= ',' .  $this->route('category')->id;
-            $rules['slug'] .= ',' .  $this->route('category')->id;
+            $rules['name'] .= ',' . $this->route('category')->id;
+            $rules['slug'] .= ',' . $this->route('category')->id;
             $rules['image'] = 'nullable' . $imageRules;
         }
 
         return $rules;
-    }
-
-    protected function prepareForValidation(): void
-    {
-        $this->merge([
-            'status' => (bool) $this->status,
-        ]);
     }
 
     /**
@@ -42,5 +35,12 @@ class CategoryRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'status' => (bool)$this->status,
+        ]);
     }
 }

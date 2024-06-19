@@ -19,13 +19,6 @@ class ImageRequest extends FormRequest
         return $rules;
     }
 
-    protected function prepareForValidation(): void
-    {
-        $this->merge([
-            'alt_text' => $this->altText,
-        ]);
-    }
-
     public function attributes(): array
     {
         return [
@@ -36,5 +29,12 @@ class ImageRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'alt_text' => $this->altText,
+        ]);
     }
 }

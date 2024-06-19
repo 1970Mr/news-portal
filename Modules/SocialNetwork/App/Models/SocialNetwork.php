@@ -17,13 +17,13 @@ class SocialNetwork extends Model
         'tag',
     ];
 
-    public function owner(): MorphTo
-    {
-        return $this->morphTo();
-    }
-
     protected static function newFactory(): SocialNetworkFactory
     {
         return SocialNetworkFactory::new();
+    }
+
+    public function owner(): MorphTo
+    {
+        return $this->morphTo();
     }
 }

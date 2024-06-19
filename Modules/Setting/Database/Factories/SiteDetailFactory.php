@@ -4,13 +4,14 @@ namespace Modules\Setting\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\FileManager\App\Helpers\ImageHelper;
+use Modules\Setting\App\Models\SiteDetail;
 
 class SiteDetailFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\Setting\App\Models\SiteDetail::class;
+    protected $model = SiteDetail::class;
 
     /**
      * Define the model's default state.

@@ -27,6 +27,11 @@ class Category extends Model
         'parent_id',
     ];
 
+    protected static function newFactory(): CategoryFactory
+    {
+        return CategoryFactory::new();
+    }
+
     public function toSearchableArray(): array
     {
         return [
@@ -34,25 +39,6 @@ class Category extends Model
             'name' => $this->name,
             'slug' => $this->slug,
         ];
-    }
-
-    protected function slug(): Attribute
-    {
-        return Attribute::make(
-            set: static fn(string $value) => Str::slug($value),
-        );
-    }
-
-    public function category(): BelongsTo
-    {
-        return $this->belongsTo(__CLASS__, 'parent_id');
-    }
-
-    public function parentCategory(): BelongsTo|null
-    {
-        return ($this->parent_id === null)
-            ? null
-            : $this->category();
     }
 
     public function categories(): HasMany
@@ -65,6 +51,18 @@ class Category extends Model
         return ($this->parentCategory() === null)
             ? __('have_not')
             : $this->parentCategory()->first()->name;
+    }
+
+    public function parentCategory(): BelongsTo|null
+    {
+        return ($this->parent_id === null)
+            ? null
+            : $this->category();
+    }
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(__CLASS__, 'parent_id');
     }
 
     public function articles(): HasMany
@@ -82,8 +80,10 @@ class Category extends Model
         return $query->whereNull('parent_id');
     }
 
-    protected static function newFactory(): CategoryFactory
+    protected function slug(): Attribute
     {
-        return CategoryFactory::new();
+        return Attribute::make(
+            set: static fn(string $value) => Str::slug($value),
+        );
     }
 }

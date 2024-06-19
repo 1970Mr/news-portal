@@ -27,7 +27,7 @@ class CategoryFactory extends Factory
 
     public function withParent(int $parentId): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn(array $attributes) => [
             'parent_id' => $parentId,
         ]);
     }

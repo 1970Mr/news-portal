@@ -10,7 +10,9 @@ class Breadcrumbs extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public bool $noprefix = false) {}
+    public function __construct(public bool $noprefix = false)
+    {
+    }
 
     /**
      * Get the views/contents that represent the component.

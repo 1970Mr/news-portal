@@ -9,13 +9,23 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Scout\Searchable;
-use Modules\Menu\Database\Factories\MenuFactory;
 use Modules\Category\App\Models\Category;
+use Modules\Menu\Database\Factories\MenuFactory;
 
 class Menu extends Model
 {
     use HasFactory, SoftDeletes, Searchable;
 
+    public const MAIN_TYPE = 'main';
+    public const SUBMENU_TYPE = 'submenu';
+    public const CATEGORY_TYPE = 'category';
+    public const PARENT_CATEGORY_TYPE = 'parent_category';
+    public const TYPES = [
+        self::MAIN_TYPE,
+        self::SUBMENU_TYPE,
+        self::CATEGORY_TYPE,
+        self::PARENT_CATEGORY_TYPE,
+    ];
     protected $fillable = [
         'name',
         'url',
@@ -26,17 +36,10 @@ class Menu extends Model
         'category_id',
     ];
 
-    public const MAIN_TYPE = 'main';
-    public const SUBMENU_TYPE = 'submenu';
-    public const CATEGORY_TYPE = 'category';
-    public const PARENT_CATEGORY_TYPE = 'parent_category';
-
-    public const TYPES = [
-        self::MAIN_TYPE,
-        self::SUBMENU_TYPE,
-        self::CATEGORY_TYPE,
-        self::PARENT_CATEGORY_TYPE,
-    ];
+    protected static function newFactory(): MenuFactory
+    {
+        return MenuFactory::new();
+    }
 
     public function toSearchableArray(): array
     {
@@ -45,18 +48,6 @@ class Menu extends Model
             'name' => $this->name,
             'url' => $this->url,
         ];
-    }
-
-    public function parent(): BelongsTo
-    {
-        return $this->belongsTo(__CLASS__, 'parent_id');
-    }
-
-    public function parentMenu(): BelongsTo|null
-    {
-        return ($this->parent_id === null)
-            ? null
-            : $this->parent();
     }
 
     public function children(): HasMany
@@ -71,6 +62,23 @@ class Menu extends Model
             : $this->parentMenu()->first()->getName();
     }
 
+    public function parentMenu(): BelongsTo|null
+    {
+        return ($this->parent_id === null)
+            ? null
+            : $this->parent();
+    }
+
+    public function parent(): BelongsTo
+    {
+        return $this->belongsTo(__CLASS__, 'parent_id');
+    }
+
+    public function getName(): string
+    {
+        return $this->name ?? $this->category->name;
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'category_id');
@@ -79,11 +87,6 @@ class Menu extends Model
     public function scopeActive(Builder $query): void
     {
         $query->where('status', 1);
-    }
-
-    public function getName(): string
-    {
-        return $this->name ?? $this->category->name;
     }
 
     public function getUrl(): string
@@ -147,10 +150,5 @@ class Menu extends Model
     public function isParentCategoryMenu(): bool
     {
         return $this->type === self::PARENT_CATEGORY_TYPE;
-    }
-
-    protected static function newFactory(): MenuFactory
-    {
-        return MenuFactory::new();
     }
 }

@@ -4,7 +4,6 @@ namespace Modules\Menu\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Collection;
-use Modules\Category\App\Models\Category;
 use Modules\Menu\App\Models\Menu;
 
 class MenuFactory extends Factory
@@ -12,7 +11,7 @@ class MenuFactory extends Factory
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\Menu\App\Models\Menu::class;
+    protected $model = Menu::class;
     protected int $position;
 
     public function __construct($count = null, ?Collection $states = null, ?Collection $has = null, ?Collection $for = null, ?Collection $afterMaking = null, ?Collection $afterCreating = null, $connection = null, ?Collection $recycle = null)

@@ -11,7 +11,9 @@ use Modules\FileManager\App\Services\ImageService;
 
 class AdService
 {
-    public function __construct(private readonly ImageService $imageService) {}
+    public function __construct(private readonly ImageService $imageService)
+    {
+    }
 
     public function index(Request $request): Paginator
     {

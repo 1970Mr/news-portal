@@ -16,7 +16,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="imageUploadModalLabel">آپلود تصویر</h5>
-                    <x-file-manager-image-upload-btn />
+                    <x-file-manager-image-upload-btn/>
                     <button type="button" class="btn-close ms-2" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
@@ -134,7 +134,7 @@
             $('#testtest').click();
         }
 
-        $('#nextModalButton').on('click', function() {
+        $('#nextModalButton').on('click', function () {
             // $('#imageModal').modal('hide');
             // $('#imageModal').on('hidden.bs.modal', function (e) {
             //     $(this).removeData('bs.modal');

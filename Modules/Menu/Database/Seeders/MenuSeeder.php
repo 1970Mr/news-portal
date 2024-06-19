@@ -21,11 +21,10 @@ class MenuSeeder extends Seeder
 
             Menu::factory(10)->create()->each(function (Menu $menu) {
                 $data = [];
-                if ($menu->type === Menu::SUBMENU_TYPE ) {
+                if ($menu->type === Menu::SUBMENU_TYPE) {
                     if (Menu::mainMenus()->count() > 0) {
                         $data['parent_id'] = Menu::mainMenus()->inRandomOrder()->first()->id;
-                    }
-                    else {
+                    } else {
                         $data['type'] = Menu::MAIN_TYPE;
                     }
                 } elseif ($menu->type === Menu::CATEGORY_TYPE || $menu->type === Menu::PARENT_CATEGORY_TYPE) {

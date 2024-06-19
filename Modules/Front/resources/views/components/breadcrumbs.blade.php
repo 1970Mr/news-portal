@@ -6,7 +6,7 @@
                     @if(!$noprefix)
                         <li><a href="{{ route('home.index') }}">خانه</a></li>
                     @endif
-                        {{ $slot }}
+                    {{ $slot }}
                 </ol>
             </div><!-- Col end -->
         </div><!-- Row end -->

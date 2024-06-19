@@ -27,7 +27,7 @@ class SEOSetting extends Model
     protected function robots(): Attribute
     {
         return Attribute::make(
-            set: static fn (?string $value) => $value ?? 'index, follow',
+            set: static fn(?string $value) => $value ?? 'index, follow',
         );
     }
 }

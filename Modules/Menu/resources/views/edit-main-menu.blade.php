@@ -54,7 +54,8 @@
                                 <select id="parent_id" class="form-control select2" name="parent_id">
                                     <option value="">انتخاب منوی والد</option>
                                     @foreach($parentMenus as $parentMenu)
-                                        <option value="{{ $parentMenu->id }}" @if((int) old('parent_id', $menu->parent_id) === $parentMenu->id) selected @endif>{{ $parentMenu->name }}</option>
+                                        <option value="{{ $parentMenu->id }}"
+                                                @if((int) old('parent_id', $menu->parent_id) === $parentMenu->id) selected @endif>{{ $parentMenu->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

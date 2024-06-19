@@ -36,17 +36,17 @@
                                 <div class="paper-ripple__waves"></div>
                             </div>
                         </a>
-{{--                        @can('store', $imageClassName)--}}
-{{--                            <a class="btn btn-sm btn-default btn-round bg-green text-white" rel="tooltip"--}}
-{{--                               href="{{ route(config('app.panel_prefix', 'panel') . '.images.create') }}"--}}
-{{--                               aria-label="ایجاد تصویر‌ جدید" data-bs-original-title="ایجاد تصویر‌ جدید">--}}
-{{--                                <i class="icon-plus d-flex justify-content-center align-items-center"></i>--}}
-{{--                                <div class="paper-ripple">--}}
-{{--                                    <div class="paper-ripple__background"></div>--}}
-{{--                                    <div class="paper-ripple__waves"></div>--}}
-{{--                                </div>--}}
-{{--                            </a>--}}
-{{--                        @endcan--}}
+                        {{--                        @can('store', $imageClassName)--}}
+                        {{--                            <a class="btn btn-sm btn-default btn-round bg-green text-white" rel="tooltip"--}}
+                        {{--                               href="{{ route(config('app.panel_prefix', 'panel') . '.images.create') }}"--}}
+                        {{--                               aria-label="ایجاد تصویر‌ جدید" data-bs-original-title="ایجاد تصویر‌ جدید">--}}
+                        {{--                                <i class="icon-plus d-flex justify-content-center align-items-center"></i>--}}
+                        {{--                                <div class="paper-ripple">--}}
+                        {{--                                    <div class="paper-ripple__background"></div>--}}
+                        {{--                                    <div class="paper-ripple__waves"></div>--}}
+                        {{--                                </div>--}}
+                        {{--                            </a>--}}
+                        {{--                        @endcan--}}
 
                         <!-- Filter box -->
                         <div class="btn-group" rel="tooltip"
@@ -103,7 +103,8 @@
                                                 <div class="d-flex gap-2">
                                                     @can('update', $image)
                                                         <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                           rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route(config('app.panel_prefix', 'panel') . '.images.edit', $image->id) }}">
+                                                           rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش"
+                                                           href="{{ route(config('app.panel_prefix', 'panel') . '.images.edit', $image->id) }}">
                                                             <i class="icon-pencil fa-flip-horizontal"></i>
                                                         </a>
                                                     @endcan

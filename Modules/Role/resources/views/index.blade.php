@@ -54,33 +54,34 @@
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach($roles as $role)
-                                    <tr>
-                                        <td>{{ $role->id }}</td>
-                                        <td>{{ $role->name }}</td>
-                                        <td>{{ $role->local_name }}</td>
-                                        <td class="nowrap" title="{{ $role->getPermissionLocalNames()->implode('، ') }}">
-                                            {{ str($role->getPermissionLocalNames()->implode('، '))->limit() }}
-                                        </td>
-                                        <td class="ltr text-right nowrap">{{ jalalian()->forge($role->created_at)->format(config('common.datetime_format')) }}</td>
-                                        @canany([config('permissions_list.ROLE_UPDATE'), config('permissions_list.ROLE_DESTROY')])
-                                            <td>
-                                                <div class="d-flex gap-2">
-                                                    @can(config('permissions_list.ROLE_UPDATE', false))
-                                                        <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
-                                                           rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route(config('app.panel_prefix', 'panel') . '.roles.edit', $role->id) }}">
-                                                            <i class="icon-pencil fa-flip-horizontal"></i>
-                                                        </a>
-                                                    @endcan
+                            @foreach($roles as $role)
+                                <tr>
+                                    <td>{{ $role->id }}</td>
+                                    <td>{{ $role->name }}</td>
+                                    <td>{{ $role->local_name }}</td>
+                                    <td class="nowrap" title="{{ $role->getPermissionLocalNames()->implode('، ') }}">
+                                        {{ str($role->getPermissionLocalNames()->implode('، '))->limit() }}
+                                    </td>
+                                    <td class="ltr text-right nowrap">{{ jalalian()->forge($role->created_at)->format(config('common.datetime_format')) }}</td>
+                                    @canany([config('permissions_list.ROLE_UPDATE'), config('permissions_list.ROLE_DESTROY')])
+                                        <td>
+                                            <div class="d-flex gap-2">
+                                                @can(config('permissions_list.ROLE_UPDATE', false))
+                                                    <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
+                                                       rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش"
+                                                       href="{{ route(config('app.panel_prefix', 'panel') . '.roles.edit', $role->id) }}">
+                                                        <i class="icon-pencil fa-flip-horizontal"></i>
+                                                    </a>
+                                                @endcan
 
-                                                    @can(config('permissions_list.ROLE_DESTROY', false))
-                                                        <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.roles.destroy', $role->id)" />
-                                                    @endcan
-                                                </div>
-                                            </td>
-                                        @endcanany
-                                    </tr>
-                                @endforeach
+                                                @can(config('permissions_list.ROLE_DESTROY', false))
+                                                    <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.roles.destroy', $role->id)"/>
+                                                @endcan
+                                            </div>
+                                        </td>
+                                    @endcanany
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>

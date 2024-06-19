@@ -34,15 +34,6 @@ class ArticleRequest extends FormRequest
         return $rules;
     }
 
-    protected function prepareForValidation(): void
-    {
-        $this->merge([
-            'editor_choice' => (bool) $this->editor_choice,
-            'status' => (bool) $this->status,
-            'hotness' => (bool) $this->hotness,
-        ]);
-    }
-
     public function attributes(): array
     {
         return [
@@ -56,5 +47,14 @@ class ArticleRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'editor_choice' => (bool)$this->editor_choice,
+            'status' => (bool)$this->status,
+            'hotness' => (bool)$this->hotness,
+        ]);
     }
 }

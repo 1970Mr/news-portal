@@ -1,7 +1,7 @@
 @csrf
 @honeypot
-<input type="hidden" name="commentable_type" value="{{ get_class($article) }}" />
-<input type="hidden" name="commentable_id" value="{{ $article->getKey() }}" />
+<input type="hidden" name="commentable_type" value="{{ get_class($article) }}"/>
+<input type="hidden" name="commentable_id" value="{{ $article->getKey() }}"/>
 
 <div class="row">
     <div class="col-md-12">

@@ -2,7 +2,6 @@
 
 namespace Modules\SEOManager\App;
 
-use Illuminate\Database\Eloquent\Model;
 use Modules\SEOManager\App\Http\Requests\SEOSettingRequest;
 
 class SEOService

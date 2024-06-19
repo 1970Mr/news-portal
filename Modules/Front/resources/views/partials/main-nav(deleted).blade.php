@@ -77,7 +77,8 @@
                                                     <div class="col-md-3">
                                                         <div class="post-block-style clearfix">
                                                             <div class="post-thumb">
-                                                                <img class="img-responsive nav-cat-post-img" src="{{ asset('storage/' . $article->image->file_path) }}" alt="{{ $article->image->alt_text }}">
+                                                                <img class="img-responsive nav-cat-post-img" src="{{ asset('storage/' . $article->image->file_path) }}"
+                                                                     alt="{{ $article->image->alt_text }}">
                                                             </div><!-- Post thumb end -->
                                                             <div class="post-content">
                                                                 <h2 class="post-title title-small">

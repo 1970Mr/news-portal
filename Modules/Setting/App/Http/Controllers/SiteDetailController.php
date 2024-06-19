@@ -4,7 +4,6 @@ namespace Modules\Setting\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Modules\Setting\App\Http\Requests\SiteDetailRequest;
 use Modules\Setting\App\Models\SiteDetail;

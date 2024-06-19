@@ -3,8 +3,6 @@
 namespace Modules\User\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 use Modules\Common\App\Helpers\TransactionHelper;
 use Modules\Role\App\Models\Role;
 use Modules\Role\Database\Seeders\PermissionSeeder;
@@ -16,7 +14,7 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
-        TransactionHelper::beginTransaction('Failed to seed users: ', function() {
+        TransactionHelper::beginTransaction('Failed to seed users: ', function () {
             $admin_role = Role::query()->where('name', Role::ADMIN)->first();
             if (!$admin_role) {
                 $this->call([

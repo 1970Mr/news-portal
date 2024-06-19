@@ -24,13 +24,6 @@ class CategoryMenuRequest extends FormRequest
         return $rules;
     }
 
-    protected function prepareForValidation(): void
-    {
-        $this->merge([
-            'status' => (bool) $this->status,
-        ]);
-    }
-
     public function attributes(): array
     {
         return [
@@ -42,5 +35,12 @@ class CategoryMenuRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'status' => (bool)$this->status,
+        ]);
     }
 }

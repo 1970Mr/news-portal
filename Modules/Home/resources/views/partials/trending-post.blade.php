@@ -34,7 +34,8 @@
                                 </a>
                             </div>
                             <div class="post-content">
-                                <a class="post-cat" href="{{ route('categories.show', $trending_posts['first_editor_choice']->category->slug) }}">{{ $trending_posts['first_editor_choice']->category->name }}</a>
+                                <a class="post-cat"
+                                   href="{{ route('categories.show', $trending_posts['first_editor_choice']->category->slug) }}">{{ $trending_posts['first_editor_choice']->category->name }}</a>
                                 <h2 class="post-title title-large">
                                     <a href="{{ $trending_posts['first_editor_choice']->getUrl() }}">{{ $trending_posts['first_editor_choice']->title }}</a>
                                 </h2>

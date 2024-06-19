@@ -11,7 +11,7 @@ class TagPageSEOService extends BaseSEOService
         $cacheKey = 'tag_seo_' . $tag->id;
         $cacheTTL = now()->addHours(self::CACHE_TTL);
 
-        $seoData = cache()->remember($cacheKey, $cacheTTL, function() use ($tag) {
+        $seoData = cache()->remember($cacheKey, $cacheTTL, function () use ($tag) {
             $seoSettings = $tag->seoSettings;
             $title = $seoSettings?->meta_title ?? $tag->name;
             $description = $seoSettings?->meta_description;

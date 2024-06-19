@@ -3,7 +3,7 @@
         <h3 class="block-title"><span>خبرهای بیشتر</span></h3>
 
         <div id="more-news-slide" class="owl-carousel owl-theme more-news-slide">
-        @foreach($fourth_content['latest_articles']->chunk(4) as $articles)
+            @foreach($fourth_content['latest_articles']->chunk(4) as $articles)
                 <div class="item">
                     @foreach($articles as $article)
                         <div class="post-block-style post-float-half clearfix">
@@ -30,7 +30,7 @@
                         @endif
                     @endforeach
                 </div><!-- Item 1 end -->
-        @endforeach
+            @endforeach
         </div><!-- More news carousel end -->
     </div><!--More news block end -->
 </div><!-- Content Col end -->

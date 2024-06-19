@@ -14,6 +14,6 @@ trait HasHotness
 
     public function isHot(): bool
     {
-        return (bool) $this->hotness?->is_hot;
+        return (bool)$this->hotness?->is_hot;
     }
 }

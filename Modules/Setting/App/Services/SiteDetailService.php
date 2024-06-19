@@ -3,13 +3,16 @@
 namespace Modules\Setting\App\Services;
 
 use Illuminate\Database\Eloquent\Model;
+use InvalidArgumentException;
 use Modules\FileManager\App\Services\ImageService;
 use Modules\Setting\App\Http\Requests\SiteDetailRequest;
 use Modules\Setting\App\Models\SiteDetail;
 
 class SiteDetailService
 {
-    public function __construct(private readonly ImageService $imageService) {}
+    public function __construct(private readonly ImageService $imageService)
+    {
+    }
 
     public function update(SiteDetailRequest $request): void
     {
@@ -42,23 +45,23 @@ class SiteDetailService
         return null;
     }
 
-    private function getRelationName(string $fieldName): string
-    {
-        return match($fieldName) {
-            'main_logo' => 'mainLogo',
-            'second_logo' => 'secondLogo',
-            'favicon' => 'favicon',
-            default => throw new \InvalidArgumentException("Invalid field name: $fieldName"),
-        };
-    }
-
     private function getAltText(string $fieldName): string
     {
-        return match($fieldName) {
+        return match ($fieldName) {
             'main_logo' => 'Main Logo',
             'second_logo' => 'Second Logo',
             'favicon' => 'Favicon',
             default => 'Image',
+        };
+    }
+
+    private function getRelationName(string $fieldName): string
+    {
+        return match ($fieldName) {
+            'main_logo' => 'mainLogo',
+            'second_logo' => 'secondLogo',
+            'favicon' => 'favicon',
+            default => throw new InvalidArgumentException("Invalid field name: $fieldName"),
         };
     }
 }

@@ -32,7 +32,7 @@
                           enctype="multipart/form-data">
                         @csrf
                         @method('put')
-                        <x-common-error-messages />
+                        <x-common-error-messages/>
 
                         <fieldset class="row justify-content-center">
                             <div class="form-group col-lg-6">
@@ -107,7 +107,8 @@
                                 @can(config('permissions_list.ARTICLE_EDITOR_CHOICE', false))
                                     <div class="text-center col-4">
                                         {{-- Using title because editor_choice is not always --}}
-                                        <input id="editor_choice" class="form-control" name="editor_choice" type="checkbox" @if(old('editor_choice') || (!old('title') && $article->editor_choice) ) checked @endif>
+                                        <input id="editor_choice" class="form-control" name="editor_choice" type="checkbox"
+                                               @if(old('editor_choice') || (!old('title') && $article->editor_choice) ) checked @endif>
                                         <label for="editor_choice">انتخاب سردبیر</label>
                                     </div>
                                 @endcan
@@ -149,33 +150,33 @@
     <script src="{{ asset('admin/assets/plugins/ckeditor5-document-editor/translations/fa.js') }}"></script>
     <script src="{{ asset('admin/assets/js/pages/UploadAdapter.js') }}"></script>
     <script>
-        function CustomUploadAdapterPlugin( editor ) {
-            editor.plugins.get( 'FileRepository' ).createUploadAdapter = ( loader ) => {
-                return new UploadAdapter( loader, '{{ route(config('app.panel_prefix', 'panel') . '.images.upload') }}', '{{ csrf_token() }}' );
+        function CustomUploadAdapterPlugin(editor) {
+            editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+                return new UploadAdapter(loader, '{{ route(config('app.panel_prefix', 'panel') . '.images.upload') }}', '{{ csrf_token() }}');
             };
         }
 
         $(document).ready(function () {
             DecoupledEditor
-                .create( document.querySelector( '#editor' ), {
-                    extraPlugins: [ CustomUploadAdapterPlugin ],
+                .create(document.querySelector('#editor'), {
+                    extraPlugins: [CustomUploadAdapterPlugin],
                     language: 'fa',
                     direction: 'rtl',
                     fontFamily: {
                         'default': 'IranSans, Arial, sans-serif',
                     },
                 })
-                .then( editor => {
+                .then(editor => {
                     editor.setData('{!! old('body', trim(json_encode($article->body), '"')) !!}');
                     editor.model.document.on('change:data', () => {
                         document.querySelector('input[name="body"]').value = editor.getData();
                     });
-                    const toolbarContainer = document.querySelector( '#toolbar-container' );
-                    toolbarContainer.appendChild( editor.ui.view.toolbar.element );
-                } )
-                .catch( error => {
-                    console.error( error );
-                } );
+                    const toolbarContainer = document.querySelector('#toolbar-container');
+                    toolbarContainer.appendChild(editor.ui.view.toolbar.element);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
         });
 
         const dtp1Instance = new mds.MdsPersianDateTimePicker(document.getElementById('dtp1'), {
@@ -186,16 +187,16 @@
         dtp1Instance.setDate(new Date('{{ old('published_at', $article->published_at) }}'));
 
         $.validator.setDefaults({
-            highlight: function(element) {
+            highlight: function (element) {
                 $(element).closest('.form-group').addClass('has-error').removeClass("has-success");
             },
-            unhighlight: function(element) {
+            unhighlight: function (element) {
                 $(element).closest('.form-group').removeClass('has-error').addClass("has-success");
             },
             errorElement: 'span',
             errorClass: 'help-block',
-            errorPlacement: function(error, element) {
-                if(element.parent('.input-group').length) {
+            errorPlacement: function (error, element) {
+                if (element.parent('.input-group').length) {
                     error.insertAfter(element.parent());
                 } else {
                     error.insertAfter(element);

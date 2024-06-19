@@ -19,6 +19,11 @@ class SiteDetail extends Model
         'footer_text',
     ];
 
+    protected static function newFactory(): SiteDetailFactory
+    {
+        return SiteDetailFactory::new();
+    }
+
     public function mainLogo(): BelongsTo
     {
         return $this->belongsTo(Image::class, 'main_logo_id');
@@ -34,16 +39,16 @@ class SiteDetail extends Model
         return $this->belongsTo(Image::class, 'favicon_id');
     }
 
+    public function mainLogoLink(): string
+    {
+        return $this->getLogo($this->mainLogo);
+    }
+
     public function getLogo($relation): string
     {
         return $relation ?
             asset('storage/' . $relation->file_path) :
             config('common.default_logo.file_link');
-    }
-
-    public function mainLogoLink(): string
-    {
-        return $this->getLogo($this->mainLogo);
     }
 
     public function secondLogoLink(): string
@@ -54,10 +59,5 @@ class SiteDetail extends Model
     public function faviconLink(): string
     {
         return $this->getLogo($this->favicon);
-    }
-
-    protected static function newFactory(): SiteDetailFactory
-    {
-        return SiteDetailFactory::new();
     }
 }

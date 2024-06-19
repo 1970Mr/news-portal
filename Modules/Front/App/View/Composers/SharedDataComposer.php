@@ -5,8 +5,8 @@ namespace Modules\Front\App\View\Composers;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 use Modules\AdManager\App\Models\Ad;
-use Modules\Front\App\Services\StaticContentService;
 use Modules\ContactUs\App\Models\ContactInfo;
+use Modules\Front\App\Services\StaticContentService;
 use Modules\Setting\App\Models\SiteDetail;
 use Modules\Setting\App\Services\SocialNetworkService;
 
@@ -15,7 +15,9 @@ class SharedDataComposer
     public function __construct(
         private readonly StaticContentService $staticContentService,
         private readonly SocialNetworkService $socialNetworkService
-    ) {}
+    )
+    {
+    }
 
     public function compose(View $view): void
     {

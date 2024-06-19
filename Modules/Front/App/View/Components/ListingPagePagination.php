@@ -10,7 +10,9 @@ class ListingPagePagination extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public $paginator) {}
+    public function __construct(public $paginator)
+    {
+    }
 
     /**
      * Get the views/contents that represent the component.

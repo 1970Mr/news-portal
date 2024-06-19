@@ -3,8 +3,8 @@
 namespace Modules\Auth\Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Mail\Mailable;
 use Illuminate\Support\Facades\Mail;
+use Mockery;
 use Mockery\MockInterface;
 use Modules\Auth\App\Services\RegisterService;
 use Tests\TestCase;
@@ -27,7 +27,7 @@ class RegisterControllerTest extends TestCase
     {
         $this->instance(
             RegisterService::class,
-            \Mockery::mock(RegisterService::class, static function (MockInterface $mock) {
+            Mockery::mock(RegisterService::class, static function (MockInterface $mock) {
                 $mock->shouldReceive('register')
                     ->once()
                     ->andReturn(true);

@@ -3,6 +3,7 @@
 namespace Modules\Common\App\Helpers;
 
 use Closure;
+use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -26,7 +27,7 @@ class TransactionHelper
             DB::commit();
 
             return $result;
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             DB::rollBack();
             Log::error($prefixMessage . $e->getMessage());
             echo "Error: " . $e->getMessage() . "\n";

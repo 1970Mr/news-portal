@@ -4,14 +4,13 @@ namespace Modules\SocialNetwork\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\SocialNetwork\App\Models\SocialNetwork;
-use Modules\User\App\Models\User;
 
 class SocialNetworkFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\SocialNetwork\App\Models\SocialNetwork::class;
+    protected $model = SocialNetwork::class;
 
     /**
      * Define the model's default state.

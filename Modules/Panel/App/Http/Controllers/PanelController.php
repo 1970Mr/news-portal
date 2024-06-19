@@ -15,7 +15,9 @@ use Modules\UserActivity\App\Models\UserTrack;
 
 class PanelController extends Controller
 {
-    public function __construct(private readonly PanelService $panelService) {}
+    public function __construct(private readonly PanelService $panelService)
+    {
+    }
 
     public function __invoke(): View
     {

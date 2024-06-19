@@ -18,7 +18,9 @@ class SEOService
         protected CategoriesPageSEOService $categoriesPageSEOService,
         protected TagPageSEOService        $tagPageSEOService,
         protected SearchPageSEOService     $searchPageSEOService,
-    ) {}
+    )
+    {
+    }
 
     public function setHomePageSEO(): void
     {

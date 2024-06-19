@@ -9,7 +9,9 @@ use Modules\User\App\Models\User;
 
 class AuthorController extends Controller
 {
-    public function __construct(private readonly SEOService $SEOService) {}
+    public function __construct(private readonly SEOService $SEOService)
+    {
+    }
 
     public function __invoke(User $user): View
     {

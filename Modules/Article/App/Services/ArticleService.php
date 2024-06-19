@@ -15,7 +15,9 @@ class ArticleService
 {
     public function __construct(
         private readonly ImageService $imageService
-    ) {}
+    )
+    {
+    }
 
     public function index(Request $request): Paginator
     {
@@ -26,6 +28,31 @@ class ArticleService
             $articles = Article::query()->latest()->paginate(10);
         }
         return $articles;
+    }
+
+    private function search(mixed $searchText): Paginator
+    {
+        return Article::search($searchText)->query(static function (Builder $query) use ($searchText) {
+            // Search in categories
+            $query->orWhereHas('category', function ($q) use ($searchText) {
+                $q->where('name', 'like', "%{$searchText}%");
+            });
+            // Search in tags
+            $query->orWhereHas('tags', function ($q) use ($searchText) {
+                $q->where('name', 'like', "%{$searchText}%");
+            });
+            // Search in users
+            $query->orWhereHas('user', function ($q) use ($searchText) {
+                $q->where('full_name', 'like', "%{$searchText}%")
+                    ->orWhere('email', 'like', "%{$searchText}%");
+            });
+
+            // If local not en
+            if (app()->getLocale() !== 'en') {
+                $enSearchText = __('article::types.' . $searchText);
+                $query->orWhere('type', $enSearchText);
+            }
+        })->latest()->paginate(10);
     }
 
     public function store(ArticleRequest $request): Model
@@ -52,21 +79,6 @@ class ArticleService
         return $result;
     }
 
-    public function destroy(Article $article): bool|null
-    {
-        $this->imageService->destroyWithoutKeyConstraints($article->image);
-        $article->tags()->detach();
-        $article->hotness()->delete();
-        return $article->delete();
-    }
-
-    private function setHotness(Article $article, ArticleRequest $request, string $method): void
-    {
-        if (Auth::user()->can(config('permissions_list.ARTICLE_HOTNESS', false))) {
-            $article->hotness()->{$method}(['is_hot' => $request->hotness]);
-        }
-    }
-
     private function setEditorChoice(array $data): array
     {
         if (!Auth::user()->can(config('permissions_list.ARTICLE_HOTNESS', false))) {
@@ -76,28 +88,18 @@ class ArticleService
         return $data;
     }
 
-    private function search(mixed $searchText): Paginator
+    private function setHotness(Article $article, ArticleRequest $request, string $method): void
     {
-        return Article::search($searchText)->query(static function (Builder $query) use ($searchText) {
-            // Search in categories
-            $query->orWhereHas('category', function ($q) use ($searchText) {
-                $q->where('name', 'like', "%{$searchText}%");
-            });
-            // Search in tags
-            $query->orWhereHas('tags', function ($q) use ($searchText) {
-                $q->where('name', 'like', "%{$searchText}%");
-            });
-            // Search in users
-            $query->orWhereHas('user', function ($q) use ($searchText) {
-                $q->where('full_name', 'like', "%{$searchText}%")
-                    ->orWhere('email', 'like', "%{$searchText}%");
-            });
+        if (Auth::user()->can(config('permissions_list.ARTICLE_HOTNESS', false))) {
+            $article->hotness()->{$method}(['is_hot' => $request->hotness]);
+        }
+    }
 
-            // If local not en
-            if (app()->getLocale() !== 'en') {
-                $enSearchText = __('article::types.' . $searchText);
-                $query->orWhere('type', $enSearchText);
-            }
-        })->latest()->paginate(10);
+    public function destroy(Article $article): bool|null
+    {
+        $this->imageService->destroyWithoutKeyConstraints($article->image);
+        $article->tags()->detach();
+        $article->hotness()->delete();
+        return $article->delete();
     }
 }

@@ -26,6 +26,11 @@ class Tag extends Model
         'status',
     ];
 
+    protected static function newFactory(): TagFactory
+    {
+        return TagFactory::new();
+    }
+
     public function toSearchableArray(): array
     {
         return [
@@ -34,13 +39,6 @@ class Tag extends Model
             'slug' => $this->slug,
             'description' => $this->description,
         ];
-    }
-
-    protected function slug(): Attribute
-    {
-        return Attribute::make(
-            set: static fn (string $value) => Str::slug($value),
-        );
     }
 
     public function scopeActive(Builder $query): void
@@ -53,8 +51,10 @@ class Tag extends Model
         return $this->morphedByMany(Article::class, 'taggable');
     }
 
-    protected static function newFactory(): TagFactory
+    protected function slug(): Attribute
     {
-        return TagFactory::new();
+        return Attribute::make(
+            set: static fn(string $value) => Str::slug($value),
+        );
     }
 }

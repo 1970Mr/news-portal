@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Common\App\Console;
+namespace Modules\SEOManager\App\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
@@ -11,8 +11,8 @@ use Modules\User\App\Models\User;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\SitemapIndex;
 use Spatie\Sitemap\Tags\Url;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
 
 class GenerateSitemap extends Command
 {

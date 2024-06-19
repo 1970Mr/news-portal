@@ -12,7 +12,9 @@ class DeleteButton extends Component
      */
     public function __construct(
         public string $route
-    ) {}
+    )
+    {
+    }
 
     /**
      * Get the views/contents that represent the component.

@@ -5,14 +5,16 @@ namespace Modules\ContactUs\App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
-use Modules\SEOManager\App\Services\Front\SEOService;
 use Modules\ContactUs\App\Http\Requests\UserMessageRequest;
 use Modules\ContactUs\App\Models\ContactInfo;
 use Modules\ContactUs\App\Models\UserMessage;
+use Modules\SEOManager\App\Services\Front\SEOService;
 
 class ContactUsController extends Controller
 {
-    public function __construct(private readonly SEOService $SEOService) {}
+    public function __construct(private readonly SEOService $SEOService)
+    {
+    }
 
     public function index(): View
     {

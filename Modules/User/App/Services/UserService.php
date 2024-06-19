@@ -15,7 +15,9 @@ class UserService
 {
     public function __construct(
         private readonly ImageService $imageService
-    ) {}
+    )
+    {
+    }
 
     public function index(Request $request): Paginator
     {
@@ -26,6 +28,17 @@ class UserService
             $users = User::query()->latest()->paginate(10);
         }
         return $users;
+    }
+
+    private function search(mixed $searchText): Paginator
+    {
+        return User::search($searchText)->query(static function (Builder $query) use ($searchText) {
+            // Search in roles
+            $query->orWhereHas('roles', function ($q) use ($searchText) {
+                $q->where('name', 'like', "%{$searchText}%")
+                    ->orWhere('local_name', 'like', "%{$searchText}%");
+            });
+        })->latest()->paginate(10);
     }
 
     public function store(UserStoreRequest $request): void
@@ -48,13 +61,6 @@ class UserService
         $this->checkEmailAsVerified($request, $user);
     }
 
-    public function delete(User $user): void
-    {
-        Gate::authorize('delete', $user);
-        $this->imageService->destroyWithoutKeyConstraints($user->image);
-        $user->delete();
-    }
-
     private function checkEmailAsVerified(UserUpdateRequest $request, User $user): void
     {
         ($request->email_verification) ?
@@ -62,14 +68,10 @@ class UserService
             $user->unmarkEmailAsVerified();
     }
 
-    private function search(mixed $searchText): Paginator
+    public function delete(User $user): void
     {
-        return User::search($searchText)->query(static function (Builder $query) use ($searchText) {
-            // Search in roles
-            $query->orWhereHas('roles', function ($q) use ($searchText) {
-                $q->where('name', 'like', "%{$searchText}%")
-                    ->orWhere('local_name', 'like', "%{$searchText}%");
-            });
-        })->latest()->paginate(10);
+        Gate::authorize('delete', $user);
+        $this->imageService->destroyWithoutKeyConstraints($user->image);
+        $user->delete();
     }
 }

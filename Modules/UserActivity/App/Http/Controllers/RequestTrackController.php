@@ -5,7 +5,6 @@ namespace Modules\UserActivity\App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\View\View;
 use Modules\UserActivity\App\Models\RequestTrack;
 use Modules\UserActivity\App\Services\RequestTrackService;

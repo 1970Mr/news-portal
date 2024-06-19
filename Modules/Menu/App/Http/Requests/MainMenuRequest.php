@@ -27,10 +27,15 @@ class MainMenuRequest extends FormRequest
         return $rules;
     }
 
+    public function authorize(): bool
+    {
+        return true;
+    }
+
     protected function prepareForValidation(): void
     {
         $fields = [
-            'status' => (bool) $this->status,
+            'status' => (bool)$this->status,
         ];
 
         if ($this->parent_id) {
@@ -40,10 +45,5 @@ class MainMenuRequest extends FormRequest
         }
 
         $this->merge($fields);
-    }
-
-    public function authorize(): bool
-    {
-        return true;
     }
 }

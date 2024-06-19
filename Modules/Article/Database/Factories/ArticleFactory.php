@@ -15,7 +15,7 @@ class ArticleFactory extends Factory
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\Article\App\Models\Article::class;
+    protected $model = Article::class;
 
     /**
      * Define the model's default state.

@@ -66,6 +66,37 @@ class User extends Authenticatable implements MustVerifyEmail
         'verified_email_status'
     ];
 
+    protected static function boot(): void
+    {
+        parent::boot();
+
+        static::deleting(static function ($user) {
+            DB::transaction(static function () use ($user) {
+                $user->articles()->each(function (Article $article) {
+                    $admin = User::getFirstAdmin() ?? User::first();
+                    $article->update(['user_id' => $admin->id]);
+                });
+            });
+        });
+    }
+
+    public function Articles(): HasMany
+    {
+        return $this->hasMany(Article::class, 'user_id')->active()->published();
+    }
+
+    public static function getFirstAdmin(): ?Model
+    {
+        return self::query()->whereHas('roles', function ($query) {
+            $query->where('name', Role::ADMIN);
+        })->first();
+    }
+
+    protected static function newFactory(): UserFactory
+    {
+        return UserFactory::new();
+    }
+
     public function toSearchableArray(): array
     {
         return [
@@ -84,13 +115,6 @@ class User extends Authenticatable implements MustVerifyEmail
         ])->save();
     }
 
-    protected function verifiedEmailStatus(): Attribute
-    {
-        return Attribute::make(
-            get: fn() => $this->email_verified_at ? __('confirmed') : __('not_confirmed'),
-        );
-    }
-
     public function getRoleLocalNames(): Collection
     {
         return $this->roles()->latest()->get()->pluck('local_name');
@@ -107,9 +131,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->roles()->first();
     }
 
-    public function Articles(): HasMany
+    public function isOnline(): bool
     {
-        return $this->hasMany(Article::class, 'user_id')->active()->published();
+        return (bool)$this->userTracks()->latest()->first()?->isOnline();
     }
 
     public function userTracks(): HasMany
@@ -117,34 +141,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(UserTrack::class, 'user_id');
     }
 
-    public function isOnline(): bool
+    protected function verifiedEmailStatus(): Attribute
     {
-        return (bool)$this->userTracks()->latest()->first()?->isOnline();
-    }
-
-    protected static function boot(): void
-    {
-        parent::boot();
-
-        static::deleting(static function ($user) {
-            DB::transaction(static function () use ($user) {
-                $user->articles()->each(function (Article $article) {
-                    $admin = User::getFirstAdmin() ?? User::first();
-                    $article->update(['user_id' => $admin->id]);
-                });
-            });
-        });
-    }
-
-    public static function getFirstAdmin(): ?Model
-    {
-        return self::query()->whereHas('roles', function ($query) {
-            $query->where('name', Role::ADMIN);
-        })->first();
-    }
-
-    protected static function newFactory(): UserFactory
-    {
-        return UserFactory::new();
+        return Attribute::make(
+            get: fn() => $this->email_verified_at ? __('confirmed') : __('not_confirmed'),
+        );
     }
 }

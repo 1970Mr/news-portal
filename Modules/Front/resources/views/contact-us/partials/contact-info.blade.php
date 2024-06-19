@@ -9,21 +9,21 @@
         </div>
     @endif
 
-        @if($contact->email)
-            <div class="contact-info-box">
-                <div class="contact-info-box-content">
-                    <h4>به ما ایمیل بزنید</h4>
-                    <p>{{ $contact->email }}</p>
-                </div>
+    @if($contact->email)
+        <div class="contact-info-box">
+            <div class="contact-info-box-content">
+                <h4>به ما ایمیل بزنید</h4>
+                <p>{{ $contact->email }}</p>
             </div>
-        @endif
+        </div>
+    @endif
 
     @if($contact->phone)
-            <div class="contact-info-box">
-                <div class="contact-info-box-content">
-                    <h4>با ما تماس بگیرید</h4>
-                    <p><span class="ltr_text">{{ $contact->phone }}</span></p>
-                </div>
+        <div class="contact-info-box">
+            <div class="contact-info-box-content">
+                <h4>با ما تماس بگیرید</h4>
+                <p><span class="ltr_text">{{ $contact->phone }}</span></p>
             </div>
+        </div>
     @endif
 </div><!-- Widget end -->

@@ -18,22 +18,6 @@ class RequestTrack extends Model
         'tag',
     ];
 
-    public function toSearchableArray(): array
-    {
-        return [
-            'id' => (int)$this->id,
-            'user_track_id' => (int)$this->user_track_id,
-            'url' => $this->url,
-            'referer' => $this->referer,
-            'tag' => $this->tag,
-        ];
-    }
-
-    public function userTrack(): BelongsTo
-    {
-        return $this->belongsTo(UserTrack::class);
-    }
-
     public static function getVisitCounts(): array
     {
         $now = Carbon::now();
@@ -57,5 +41,21 @@ class RequestTrack extends Model
             'yearly' => $yearCount,
             'all' => $allCount,
         ];
+    }
+
+    public function toSearchableArray(): array
+    {
+        return [
+            'id' => (int)$this->id,
+            'user_track_id' => (int)$this->user_track_id,
+            'url' => $this->url,
+            'referer' => $this->referer,
+            'tag' => $this->tag,
+        ];
+    }
+
+    public function userTrack(): BelongsTo
+    {
+        return $this->belongsTo(UserTrack::class);
     }
 }

@@ -7,7 +7,7 @@ function active_menu($menu, $class = 'current'): string
 {
     if (isset($menu['url']) && url()->current() === $menu['url'])
         return $class;
-    if (! array_key_exists('active_routes', $menu))
+    if (!array_key_exists('active_routes', $menu))
         return '';
     foreach ($menu['active_routes'] as $url) {
         if (Route::currentRouteName() === $url)

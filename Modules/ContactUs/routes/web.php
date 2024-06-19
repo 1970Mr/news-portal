@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Modules\ContactUs\App\Http\Controllers\ContactInfoController;
-use Modules\ContactUs\App\Http\Controllers\UserMessageController;
 use Modules\ContactUs\App\Http\Controllers\Front\ContactUsController as FrontUserMessageController;
+use Modules\ContactUs\App\Http\Controllers\UserMessageController;
 use Spatie\Honeypot\ProtectAgainstSpam;
 
 Route::prefix(config('app.panel_prefix', 'panel') . '/contact-us')

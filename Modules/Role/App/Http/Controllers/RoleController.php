@@ -33,15 +33,15 @@ class RoleController extends Controller
         return view('role::index', compact('roles'));
     }
 
-    public function create(): View
-    {
-        return view('role::create', ['groupedPermissions' => $this->groupedPermissions]);
-    }
-
     public function store(RoleRequest $request): RedirectResponse
     {
         Role::create($request->only('name', 'local_name'));
         return to_route(config('app.panel_prefix', 'panel') . '.roles.index')->with('success', __('entity_created', ['entity' => __('role')]));
+    }
+
+    public function create(): View
+    {
+        return view('role::create', ['groupedPermissions' => $this->groupedPermissions]);
     }
 
     public function edit(Role $role, PermissionService $permissionService): View

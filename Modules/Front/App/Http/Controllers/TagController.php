@@ -9,7 +9,9 @@ use Modules\Tag\App\Models\Tag;
 
 class TagController extends Controller
 {
-    public function __construct(private readonly SEOService $SEOService) {}
+    public function __construct(private readonly SEOService $SEOService)
+    {
+    }
 
     public function show(Tag $tag): View
     {

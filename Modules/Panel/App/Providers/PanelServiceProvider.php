@@ -36,14 +36,6 @@ class PanelServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register the service provider.
-     */
-    public function register(): void
-    {
-        $this->app->register(RouteServiceProvider::class);
-    }
-
-    /**
      * Register commands in the format of Command::class
      */
     protected function registerCommands(): void
@@ -103,14 +95,6 @@ class PanelServiceProvider extends ServiceProvider
 
         $componentNamespace = str_replace('/', '\\', config('modules.namespace') . '\\' . $this->moduleName . '\\' . config('modules.paths.generator.component-class.path'));
         Blade::componentNamespace($componentNamespace, $this->moduleNameLower);
-    }
-
-    /**
-     * Get the services provided by the provider.
-     */
-    public function provides(): array
-    {
-        return [];
     }
 
     private function getPublishableViewPaths(): array
@@ -181,5 +165,21 @@ class PanelServiceProvider extends ServiceProvider
     {
         $siteDetails = SiteDetail::with('mainLogo', 'secondLogo', 'favicon')->latest()->first();
         View::share('siteDetails', $siteDetails);
+    }
+
+    /**
+     * Register the service provider.
+     */
+    public function register(): void
+    {
+        $this->app->register(RouteServiceProvider::class);
+    }
+
+    /**
+     * Get the services provided by the provider.
+     */
+    public function provides(): array
+    {
+        return [];
     }
 }

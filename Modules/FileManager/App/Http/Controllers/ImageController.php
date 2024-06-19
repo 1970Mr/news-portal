@@ -16,7 +16,9 @@ class ImageController extends Controller
 {
     public function __construct(
         private readonly ImageService $imageService,
-    ) {}
+    )
+    {
+    }
 
     public function index(Request $request): View
     {
@@ -29,12 +31,6 @@ class ImageController extends Controller
     public function create(): View
     {
         return view('file-manager::images.create');
-    }
-
-    public function store(ImageRequest $request): RedirectResponse
-    {
-        $this->imageService->store($request);
-        return to_route(config('app.panel_prefix', 'panel') . '.images.index')->with('success', __('entity_created', ['entity' => __('image')]));
     }
 
     public function edit(Image $image): View
@@ -80,5 +76,11 @@ class ImageController extends Controller
             'url' => $image->getUri(),
         ];
         return response()->json($response, 200);
+    }
+
+    public function store(ImageRequest $request): RedirectResponse
+    {
+        $this->imageService->store($request);
+        return to_route(config('app.panel_prefix', 'panel') . '.images.index')->with('success', __('entity_created', ['entity' => __('image')]));
     }
 }

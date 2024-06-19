@@ -12,7 +12,7 @@ class Permission extends SpatiePermission
     protected function localName(): Attribute
     {
         return Attribute::make(
-            get: fn () => __($this->name),
+            get: fn() => __($this->name),
         );
     }
 }

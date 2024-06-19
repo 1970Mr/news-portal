@@ -28,14 +28,6 @@ class AdRequest extends FormRequest
         return $rules;
     }
 
-    protected function prepareForValidation(): void
-    {
-        $this->merge([
-            'status' => (bool) $this->status,
-            'expired_at' => $this->expired_at ?? null,
-        ]);
-    }
-
     public function attributes(): array
     {
         return [
@@ -49,5 +41,13 @@ class AdRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'status' => (bool)$this->status,
+            'expired_at' => $this->expired_at ?? null,
+        ]);
     }
 }

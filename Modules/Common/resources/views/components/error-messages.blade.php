@@ -6,7 +6,7 @@
         <i class="icon-close"></i>
         <strong>خطا!</strong>
         @foreach($errors->all() as $error)
-                <p>{{ $error }}</p>
+            <p>{{ $error }}</p>
         @endforeach
     </div>
 @endif

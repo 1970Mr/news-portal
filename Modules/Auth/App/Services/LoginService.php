@@ -16,7 +16,7 @@ class LoginService
     {
         $credentials = $request->only('email', 'password');
         $rememberMe = $request->has('remember-me');
-        if (auth()->attempt($credentials, $rememberMe) ) {
+        if (auth()->attempt($credentials, $rememberMe)) {
             $this->checkUserIsEnable();
             $this->setUserTracking($request);
             return true;

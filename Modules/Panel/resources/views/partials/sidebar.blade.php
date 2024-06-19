@@ -4,7 +4,7 @@
         <div class="user-box">
             <a href="{{ route(config('app.panel_prefix', 'panel') . '.profile.edit') }}">
                 <img src="{{ asset('storage/' . $currentUser->image->file_path) }}" alt="{{ $currentUser->image->alt_text }}"
-                      class="object-fit-cover img-circle" style="width: 70px; height: 70px">
+                     class="object-fit-cover img-circle" style="width: 70px; height: 70px">
             </a>
             <div class="user-details">
                 <h4>{{ $currentUser->full_name }}</h4>
@@ -45,13 +45,13 @@
                     @endif
                 @endif
             @endforeach
-                <li>
-                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); $('#sideBarLogout').submit()">
-                        <i class="icon-power"></i>
-                        <span>خروج</span>
-                        <form id="sideBarLogout" action="{{ route('logout') }}" method="post">@csrf</form>
-                    </a>
-                </li>
+            <li>
+                <a href="{{ route('logout') }}" onclick="event.preventDefault(); $('#sideBarLogout').submit()">
+                    <i class="icon-power"></i>
+                    <span>خروج</span>
+                    <form id="sideBarLogout" action="{{ route('logout') }}" method="post">@csrf</form>
+                </a>
+            </li>
         </ul><!-- /#side-menu -->
     </div><!-- /.side-menu-container -->
 </div><!-- /#sidebar -->

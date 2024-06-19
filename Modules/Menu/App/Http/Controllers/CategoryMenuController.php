@@ -17,6 +17,13 @@ class CategoryMenuController extends Controller
         $this->middleware('can:' . config('permissions_list.MENU_UPDATE', false))->only('update');
     }
 
+    public function store(CategoryMenuRequest $request): RedirectResponse
+    {
+        Menu::query()->create($request->validated());
+        return to_route(config('app.panel_prefix', 'panel') . '.menus.index')
+            ->with('success', __('entity_created', ['entity' => __('menu')]));
+    }
+
     public function create(): View
     {
         $types = [Menu::CATEGORY_TYPE, Menu::PARENT_CATEGORY_TYPE];
@@ -27,15 +34,8 @@ class CategoryMenuController extends Controller
             ->active()
             ->get();
 //        $latestPosition = Menu::query()->latest('position')->first()?->position ?? 0;
-        $latestPosition = (int) Menu::query()->max('position');
+        $latestPosition = (int)Menu::query()->max('position');
         return view('menu::create-category-menu', compact(['categories', 'latestPosition', 'types']));
-    }
-
-    public function store(CategoryMenuRequest $request): RedirectResponse
-    {
-        Menu::query()->create($request->validated());
-        return to_route(config('app.panel_prefix', 'panel') . '.menus.index')
-            ->with('success', __('entity_created', ['entity' => __('menu')]));
     }
 
     public function edit(Menu $menu): View
@@ -48,7 +48,7 @@ class CategoryMenuController extends Controller
             ->latest()
             ->active()
             ->get();
-        $latestPosition = (int) Menu::query()->max('position');
+        $latestPosition = (int)Menu::query()->max('position');
         return view('menu::edit-category-menu', compact(['categories', 'latestPosition', 'types', 'menu']));
     }
 

@@ -21,6 +21,21 @@ class Role extends SpatieRole
         'guard_name',
     ];
 
+    public static function getDefaultRoles(): Collection
+    {
+        return collect([
+            self::ADMIN,
+            self::EDITOR,
+            self::AUTHOR,
+            self::SUBSCRIBER,
+        ]);
+    }
+
+    public function getPermissionLocalNames(): Collection
+    {
+        return $this->permissions()->latest()->get()->pluck('local_name');
+    }
+
     public function permissions(): BelongsToMany
     {
         return $this->belongsToMany(
@@ -31,26 +46,11 @@ class Role extends SpatieRole
         );
     }
 
-    public function getPermissionLocalNames(): Collection
-    {
-        return $this->permissions()->latest()->get()->pluck('local_name');
-    }
-
     public function update(array $attributes = [], array $options = []): bool
     {
         // Touch method can be used instead of the following, but an additional request is sent to the database
         $updatedAtName = $this->getUpdatedAtColumn();
         $attributes[$updatedAtName] = $this->updateTimestamps()->{$updatedAtName};
         return parent::update($attributes, $options);
-    }
-
-    public static function getDefaultRoles(): Collection
-    {
-        return collect([
-            self::ADMIN,
-            self::EDITOR,
-            self::AUTHOR,
-            self::SUBSCRIBER,
-        ]);
     }
 }

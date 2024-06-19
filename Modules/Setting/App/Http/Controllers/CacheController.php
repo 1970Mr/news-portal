@@ -4,10 +4,6 @@ namespace Modules\Setting\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 use Modules\Setting\App\Services\CacheClearService;
 use Modules\Setting\App\Services\CacheService;

@@ -12,7 +12,7 @@
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     @include('front::search.partials.category-listing')
 
-                    <x-front-listing-page-pagination :paginator="$articles" />
+                    <x-front-listing-page-pagination :paginator="$articles"/>
                 </div><!-- Content Col end -->
 
                 @include('front::partials.pages-sidebars')

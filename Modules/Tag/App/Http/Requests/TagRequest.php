@@ -24,14 +24,6 @@ class TagRequest extends FormRequest
         return $rules;
     }
 
-    protected function prepareForValidation(): void
-    {
-        $this->merge([
-            'status' => (bool) $this->status,
-            'hotness' => (bool) $this->hotness,
-        ]);
-    }
-
     public function attributes(): array
     {
         return [
@@ -42,5 +34,13 @@ class TagRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'status' => (bool)$this->status,
+            'hotness' => (bool)$this->hotness,
+        ]);
     }
 }

@@ -61,7 +61,7 @@ class UserController extends Controller
 
     public function SEOSettings(User $user): view
     {
-        $nextUrl  = config('app.panel_prefix', 'panel') . '.users.index';
+        $nextUrl = config('app.panel_prefix', 'panel') . '.users.index';
         $title = $user->full_name;
         $pageTitle = __('user') . ' ' . $title;
         // Optional placeholders

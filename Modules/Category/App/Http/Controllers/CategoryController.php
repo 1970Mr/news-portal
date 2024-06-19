@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Modules\Category\App\Http\Requests\CategoryRequest;
 use Modules\Category\App\Models\Category;
 use Modules\Category\App\Services\CategoryService;
-use Modules\FileManager\App\Services\ImageService;
 
 class CategoryController extends Controller
 {

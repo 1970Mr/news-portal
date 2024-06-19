@@ -15,7 +15,7 @@ class AuthorPageSEOService extends BaseSEOService
         $cacheKey = 'author_seo_' . $author->id;
         $cacheTTL = now()->addHours(self::CACHE_TTL);
 
-        $seoData = cache()->remember($cacheKey, $cacheTTL, function() use ($author) {
+        $seoData = cache()->remember($cacheKey, $cacheTTL, function () use ($author) {
             $seoSettings = $author->seoSettings;
             $authorName = $seoSettings?->meta_author ?? $author->full_name;
             $title = $seoSettings?->meta_title ?? $authorName;

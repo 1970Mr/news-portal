@@ -21,17 +21,11 @@ class MenuController extends Controller
         $this->middleware('can:' . config('permissions_list.MENU_UPDATE', false))->only('update');
         $this->middleware('can:' . config('permissions_list.MENU_DESTROY', false))->only('destroy');
     }
+
     public function index(Request $request): View
     {
         $menus = $this->menuService->index($request);
         return view('menu::index', compact('menus'));
-    }
-
-    public function create(): View
-    {
-        $parentMenus = Menu::query()->where('parent_id', null)->where('category_id', null)->get();
-        $latestPosition = (int) Menu::query()->max('position');
-        return view('menu::create-main-menu', compact(['parentMenus', 'latestPosition']));
     }
 
     public function store(MainMenuRequest $request): RedirectResponse
@@ -41,10 +35,17 @@ class MenuController extends Controller
             ->with('success', __('entity_created', ['entity' => __('menu')]));
     }
 
+    public function create(): View
+    {
+        $parentMenus = Menu::query()->where('parent_id', null)->where('category_id', null)->get();
+        $latestPosition = (int)Menu::query()->max('position');
+        return view('menu::create-main-menu', compact(['parentMenus', 'latestPosition']));
+    }
+
     public function edit(Menu $menu): View
     {
         $parentMenus = Menu::query()->where('parent_id', null)->where('category_id', null)->get();
-        $latestPosition = (int) Menu::query()->max('position');
+        $latestPosition = (int)Menu::query()->max('position');
         return view('menu::edit-main-menu', compact(['parentMenus', 'latestPosition', 'menu']));
     }
 

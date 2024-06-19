@@ -22,11 +22,25 @@ class TagService
         return $articles;
     }
 
+    private function search(mixed $searchText): Paginator
+    {
+        return Tag::search($searchText)->query(static function (Builder $query) {
+            $query->with('hotness');
+        })->latest()->paginate(10);
+    }
+
     public function store(TagRequest $request): Tag
     {
         $tag = Tag::create($request->validated());
         $this->setHotness($tag, $request);
         return $tag;
+    }
+
+    private function setHotness(Tag $tag, TagRequest $request): void
+    {
+        if (Auth::user()->can(config('permissions_list.TAG_HOTNESS', false))) {
+            $tag->hotness()->updateOrCreate([], ['is_hot' => $request->hotness]);
+        }
     }
 
     public function update(TagRequest $request, Tag $tag): Tag
@@ -40,19 +54,5 @@ class TagService
     {
         $tag->hotness()->delete();
         $tag->delete();
-    }
-
-    private function setHotness(Tag $tag, TagRequest $request): void
-    {
-        if (Auth::user()->can(config('permissions_list.TAG_HOTNESS', false))) {
-            $tag->hotness()->updateOrCreate([], ['is_hot' => $request->hotness]);
-        }
-    }
-
-    private function search(mixed $searchText): Paginator
-    {
-        return Tag::search($searchText)->query(static function (Builder $query) {
-            $query->with('hotness');
-        })->latest()->paginate(10);
     }
 }

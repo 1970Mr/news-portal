@@ -28,6 +28,12 @@ class Article extends Model implements Feedable
 {
     use HasFactory, HasImage, HasHotness, HasComments, Searchable, Likeable, SEOAble;
 
+    public const ARTICLE = 'article';
+    public const NEWS = 'news';
+    public const TYPES = [
+        self::NEWS,
+        self::ARTICLE,
+    ];
     protected $fillable = [
         'title',
         'slug',
@@ -39,19 +45,19 @@ class Article extends Model implements Feedable
         'category_id',
         'user_id',
     ];
-
     protected $casts = [
         'published_at' => 'datetime',
     ];
 
-    public const ARTICLE = 'article';
+    public static function getFeedItems(): Collection
+    {
+        return Article::latest()->limit(50)->get();
+    }
 
-    public const NEWS = 'news';
-
-    public const TYPES = [
-        self::NEWS,
-        self::ARTICLE,
-    ];
+    protected static function newFactory(): ArticleFactory
+    {
+        return ArticleFactory::new();
+    }
 
     public function toFeedItem(): FeedItem
     {
@@ -66,9 +72,22 @@ class Article extends Model implements Feedable
             ->authorEmail($this->user->email);
     }
 
-    public static function getFeedItems(): Collection
+    public function bodyText(int $limit = 120): Stringable
     {
-        return Article::latest()->limit(50)->get();
+        $cleanedBody = str_replace('&nbsp;', ' ', $this->body);
+        $strippedBody = strip_tags($cleanedBody);
+        return str($strippedBody)->limit($limit);
+    }
+
+    public function getUrl(): string
+    {
+        if ($this->type === self::NEWS) {
+            return route('news.show', [
+                'date' => $this->published_at->format('Y/m/d'),
+                'article' => $this->slug,
+            ]);
+        }
+        return route('articles.show', ['article' => $this->slug]);
     }
 
     public function toSearchableArray(): array
@@ -80,13 +99,6 @@ class Article extends Model implements Feedable
             'body' => $this->body,
             'type' => $this->type,
         ];
-    }
-
-    protected function slug(): Attribute
-    {
-        return Attribute::make(
-            set: static fn(string $value) => Str::slug($value),
-        );
     }
 
     public function scopeActive(Builder $query): void
@@ -131,13 +143,6 @@ class Article extends Model implements Feedable
         $query->where('editor_choice', true);
     }
 
-    public function bodyText(int $limit = 120): Stringable
-    {
-        $cleanedBody = str_replace('&nbsp;', ' ', $this->body);
-        $strippedBody = strip_tags($cleanedBody);
-        return str($strippedBody)->limit($limit);
-    }
-
     public function previousArticle()
     {
         return $this->where('created_at', '<', $this->created_at)
@@ -171,19 +176,10 @@ class Article extends Model implements Feedable
         return $relatedArticles;
     }
 
-    public function getUrl(): string
+    protected function slug(): Attribute
     {
-        if ($this->type === self::NEWS){
-            return route('news.show', [
-                'date' => $this->published_at->format('Y/m/d'),
-                'article' => $this->slug,
-            ]);
-        }
-        return route('articles.show', ['article' => $this->slug]);
-    }
-
-    protected static function newFactory(): ArticleFactory
-    {
-        return ArticleFactory::new();
+        return Attribute::make(
+            set: static fn(string $value) => Str::slug($value),
+        );
     }
 }

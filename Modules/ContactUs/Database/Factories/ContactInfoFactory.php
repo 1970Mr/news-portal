@@ -3,13 +3,14 @@
 namespace Modules\ContactUs\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\ContactUs\App\Models\ContactInfo;
 
 class ContactInfoFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\ContactUs\App\Models\ContactInfo::class;
+    protected $model = ContactInfo::class;
 
     /**
      * Define the model's default state.

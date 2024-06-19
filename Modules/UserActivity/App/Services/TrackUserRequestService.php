@@ -16,8 +16,34 @@ class TrackUserRequestService
     public function __construct(
         private readonly Request $request,
         private ?Authenticatable $user = null,
-        public ?Model $userTrack = null
-    ) {}
+        public ?Model            $userTrack = null
+    )
+    {
+    }
+
+    /**
+     * Create a new request track record.
+     */
+    public function createRequestTrack(Request $request): void
+    {
+        RequestTrack::create([
+            'user_track_id' => $this->getUserTracking()->id,
+            'url' => $request->fullUrl(),
+            'referer' => $request->header('referer'),
+            'tag' => $this->getTag($request),
+        ]);
+    }
+
+    /**
+     * Get The User Track.
+     */
+    public function getUserTracking(): Model
+    {
+        if (!$this->userTrack) {
+            $this->setUserTracking();
+        }
+        return $this->userTrack;
+    }
 
     /**
      * Track the user.
@@ -30,17 +56,6 @@ class TrackUserRequestService
         $deviceInfo['referer'] = $this->request->header('referer');
 
         $this->userTrack = $this->getOrCreateUserTrack($userId, $currentIp, $deviceInfo);
-    }
-
-    /**
-     * Get The User Track.
-     */
-    public function getUserTracking(): Model
-    {
-        if (!$this->userTrack) {
-            $this->setUserTracking();
-        }
-        return $this->userTrack;
     }
 
     /**
@@ -70,19 +85,6 @@ class TrackUserRequestService
             ['user_id' => $userId, 'ip' => $currentIp],
             $deviceInfo
         );
-    }
-
-    /**
-     * Create a new request track record.
-     */
-    public function createRequestTrack(Request $request): void
-    {
-        RequestTrack::create([
-            'user_track_id' => $this->getUserTracking()->id,
-            'url' => $request->fullUrl(),
-            'referer' => $request->header('referer'),
-            'tag' => $this->getTag($request),
-        ]);
     }
 
     /**

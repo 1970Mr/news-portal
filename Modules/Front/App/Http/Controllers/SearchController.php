@@ -11,7 +11,9 @@ use Modules\SEOManager\App\Services\Front\SEOService;
 
 class SearchController extends Controller
 {
-    public function __construct(private readonly SEOService $SEOService) {}
+    public function __construct(private readonly SEOService $SEOService)
+    {
+    }
 
     public function __invoke(Request $request): View
     {

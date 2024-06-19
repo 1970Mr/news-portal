@@ -10,7 +10,7 @@ class PermissionSeeder extends Seeder
 {
     public function run(): void
     {
-        TransactionHelper::beginTransaction('Failed to seed permissions: ', static function() {
+        TransactionHelper::beginTransaction('Failed to seed permissions: ', static function () {
             foreach (config('permissions_list') as $permission) {
                 Permission::findOrCreate($permission);
             }

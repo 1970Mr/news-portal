@@ -23,7 +23,7 @@
                 <div class="col-xs-12 col-sm-9 col-md-9 header-right">
                     <div class="ad-banner pull-right">
                         <a href="{{ $ads['header']->link }}"><img src="{{ asset('storage/' . $ads['header']->image->file_path) }}" class="img-responsive"
-                                         alt="{{ $ads['header']->image->alt_text }}"></a>
+                                                                  alt="{{ $ads['header']->image->alt_text }}"></a>
                     </div>
                 </div><!-- header right end -->
             @endif

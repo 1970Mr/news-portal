@@ -9,7 +9,9 @@ use Modules\SEOManager\App\Services\Front\SEOService;
 
 class CategoryController extends Controller
 {
-    public function __construct(private readonly SEOService $SEOService) {}
+    public function __construct(private readonly SEOService $SEOService)
+    {
+    }
 
     public function index(): View
     {

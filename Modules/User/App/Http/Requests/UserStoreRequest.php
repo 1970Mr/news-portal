@@ -23,13 +23,6 @@ class UserStoreRequest extends FormRequest
         ];
     }
 
-    protected function prepareForValidation(): void
-    {
-        $this->merge([
-            'status' => (bool) $this->status,
-        ]);
-    }
-
     public function attributes(): array
     {
         return [
@@ -43,5 +36,12 @@ class UserStoreRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'status' => (bool)$this->status,
+        ]);
     }
 }

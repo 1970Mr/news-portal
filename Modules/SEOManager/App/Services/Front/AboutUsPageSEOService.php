@@ -12,7 +12,7 @@ class AboutUsPageSEOService extends BaseSEOService
         $cacheKey = 'aboutus_seo';
         $cacheTTL = now()->addHours(self::CACHE_TTL);
 
-        $seoData = cache()->remember($cacheKey, $cacheTTL, function() {
+        $seoData = cache()->remember($cacheKey, $cacheTTL, function () {
             $siteDetails = SiteDetail::first();
             $title = __('about_us');
             $description = __('about_us_description', ['siteName' => config('app.name')]);

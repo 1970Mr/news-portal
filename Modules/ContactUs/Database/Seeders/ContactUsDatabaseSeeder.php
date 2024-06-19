@@ -11,8 +11,8 @@ class ContactUsDatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-         $this->call([
-             ContactInfoSeeder::class
-         ]);
+        $this->call([
+            ContactInfoSeeder::class
+        ]);
     }
 }

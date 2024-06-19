@@ -40,6 +40,18 @@ class Comment extends Model
         'guest_data' => 'array',
     ];
 
+    public static function getAllDescendants(Comment $comment): Collection
+    {
+        $descendants = collect();
+
+        foreach ($comment->approvedChildren as $child) {
+            $descendants->push($child);
+            $descendants = $descendants->merge(self::getAllDescendants($child));
+        }
+
+        return $descendants->sortBy('created_at');
+    }
+
     public function toSearchableArray(): array
     {
         return [
@@ -92,21 +104,19 @@ class Comment extends Model
         return $this->hasMany(__CLASS__, 'parent_id')->approved();
     }
 
-    public static function getAllDescendants(Comment $comment): Collection
-    {
-        $descendants = collect();
-
-        foreach ($comment->approvedChildren as $child) {
-            $descendants->push($child);
-            $descendants = $descendants->merge(self::getAllDescendants($child));
-        }
-
-        return $descendants->sortBy('created_at');
-    }
-
     public function commenterName(): string
     {
         return $this->isGuest() ? $this->getGuestName() : $this->commenter->full_name;
+    }
+
+    public function isGuest(): bool
+    {
+        return (bool)$this->guest_data;
+    }
+
+    public function getGuestName(): string
+    {
+        return $this->guest_data['name'];
     }
 
     public function commenterImageLink(): string
@@ -114,16 +124,6 @@ class Comment extends Model
         return $this->isGuest() ?
             config('user.default_profile_picture.file_link') :
             asset('storage/' . $this->commenter->image->file_path);
-    }
-
-    public function isGuest(): bool
-    {
-        return (bool) $this->guest_data;
-    }
-
-    public function getGuestName(): string
-    {
-        return $this->guest_data['name'];
     }
 
     public function getStatus(): string

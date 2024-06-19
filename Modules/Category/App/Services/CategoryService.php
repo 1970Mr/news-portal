@@ -12,7 +12,9 @@ use Modules\FileManager\App\Services\ImageService;
 
 class CategoryService
 {
-    public function __construct(private readonly ImageService $imageService) {}
+    public function __construct(private readonly ImageService $imageService)
+    {
+    }
 
     public function index(Request $request): Paginator
     {
@@ -23,6 +25,17 @@ class CategoryService
             $categories = Category::with('image')->latest()->paginate(10);
         }
         return $categories;
+    }
+
+    private function search(mixed $searchText): Paginator
+    {
+        return Category::search($searchText)->query(static function (Builder $query) use ($searchText) {
+            $query->with('image');
+            // Search in parent categories
+            $query->orWhereHas('category', function ($q) use ($searchText) {
+                $q->where('name', 'like', "%{$searchText}%");
+            });
+        })->latest()->paginate(10);
     }
 
     public function store(CategoryRequest $request): Model
@@ -38,16 +51,5 @@ class CategoryService
         $result = $category->update($request->validated());
         $this->imageService->uploadImageDuringUpdate($request, $category);
         return $result;
-    }
-
-    private function search(mixed $searchText): Paginator
-    {
-        return Category::search($searchText)->query(static function (Builder $query) use ($searchText) {
-            $query->with('image');
-            // Search in parent categories
-            $query->orWhereHas('category', function ($q) use ($searchText) {
-                $q->where('name', 'like', "%{$searchText}%");
-            });
-        })->latest()->paginate(10);
     }
 }

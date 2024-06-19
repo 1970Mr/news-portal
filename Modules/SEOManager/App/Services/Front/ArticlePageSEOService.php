@@ -12,7 +12,7 @@ class ArticlePageSEOService extends BaseSEOService
         $cacheKey = 'article_seo_' . $article->id;
         $cacheTTL = now()->addHours(self::CACHE_TTL);
 
-        $seoData = cache()->remember($cacheKey, $cacheTTL, function() use ($article) {
+        $seoData = cache()->remember($cacheKey, $cacheTTL, function () use ($article) {
             $seoSettings = $article->seoSettings;
             $user = $article->user;
             $category = $article->category;

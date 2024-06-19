@@ -3,23 +3,14 @@
 namespace Modules\AdManager\App\Models;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
 use Modules\FileManager\App\Traits\HasImage;
 
 class Ad extends Model
 {
     use HasImage, Searchable;
-
-    protected $fillable = [
-        'title',
-        'link',
-        'section',
-        'published_at',
-        'expired_at',
-        'status',
-    ];
 
     public const HEADER = "header";
     public const FIRST_SIDEBAR = "first_sidebar";
@@ -28,7 +19,6 @@ class Ad extends Model
     public const SECOND_SECTION = "second_section";
     public const THIRD_SECTION = "third_section";
     public const FOURTH_SECTION = "fourth_section";
-
     public const SECTIONS = [
         self::HEADER,
         self::FIRST_SIDEBAR,
@@ -37,6 +27,14 @@ class Ad extends Model
         self::SECOND_SECTION,
         self::THIRD_SECTION,
         self::FOURTH_SECTION,
+    ];
+    protected $fillable = [
+        'title',
+        'link',
+        'section',
+        'published_at',
+        'expired_at',
+        'status',
     ];
 
     public function toSearchableArray(): array
@@ -53,17 +51,17 @@ class Ad extends Model
         return self::SECTIONS[$this->section] ?? null;
     }
 
-    public function getNumberSection(string $section): int
-    {
-        return array_search($section, self::SECTIONS, true);
-    }
-
     public function scopeBySection(Builder $query, int|string $section): Builder
     {
         if (is_string($section)) {
             $section = $this->getNumberSection($section);
         }
         return $query->where('section', $section);
+    }
+
+    public function getNumberSection(string $section): int
+    {
+        return array_search($section, self::SECTIONS, true);
     }
 
     public function scopeActive(Builder $query): Builder

@@ -10,7 +10,7 @@ class TagSeeder extends Seeder
 {
     public function run(): void
     {
-        TransactionHelper::beginTransaction('Failed to seed tags: ', static function() {
+        TransactionHelper::beginTransaction('Failed to seed tags: ', static function () {
             $tags = Tag::factory(10)->create();
             foreach ($tags as $tag) {
                 if (random_int(0, 1)) {

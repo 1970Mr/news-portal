@@ -4,7 +4,7 @@ namespace Modules\SocialNetwork\App\Traits;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Collection;
-use \Modules\SocialNetwork\App\Models\SocialNetwork as SocialNetworkModel;
+use Modules\SocialNetwork\App\Models\SocialNetwork as SocialNetworkModel;
 
 trait SocialNetwork
 {

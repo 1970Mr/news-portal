@@ -36,7 +36,7 @@ class AdController extends Controller
     {
         $this->adService->store($request);
         return to_route(config('app.panel_prefix', 'panel') . '.ads.index')->
-            with('success', __('entity_created', ['entity' => __('ad')]));
+        with('success', __('entity_created', ['entity' => __('ad')]));
     }
 
     public function edit(Ad $ad): View
@@ -49,7 +49,7 @@ class AdController extends Controller
     {
         $this->adService->update($request, $ad);
         return to_route(config('app.panel_prefix', 'panel') . '.ads.index')->
-            with('success', __('entity_edited', ['entity' => __('ad')]));
+        with('success', __('entity_edited', ['entity' => __('ad')]));
     }
 
     public function destroy(Ad $ad): RedirectResponse

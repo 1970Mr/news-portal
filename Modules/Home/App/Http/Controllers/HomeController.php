@@ -4,12 +4,14 @@ namespace Modules\Home\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\View\View;
-use Modules\SEOManager\App\Services\Front\SEOService;
 use Modules\Home\App\Services\HomeService;
+use Modules\SEOManager\App\Services\Front\SEOService;
 
 class HomeController extends Controller
 {
-    public function __construct(private readonly HomeService $homeService, private readonly SEOService $seoService) {}
+    public function __construct(private readonly HomeService $homeService, private readonly SEOService $seoService)
+    {
+    }
 
     public function __invoke(): View
     {

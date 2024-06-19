@@ -1,7 +1,7 @@
-    <section class="block-wrapper">
-        <div class="container">
-            <div class="row second-content-row" style="">
-                @foreach($second_content['parent_categories'] as $parent_category)
+<section class="block-wrapper">
+    <div class="container">
+        <div class="row second-content-row" style="">
+            @foreach($second_content['parent_categories'] as $parent_category)
 
                 <!--- Featured Tab starter -->
                 <div class="featured-tab color-default col-xl-12 col-md-5">
@@ -28,7 +28,7 @@
                                             <div class="post-thumb">
                                                 <a href="{{ $first_article->getUrl() }}">
                                                     <img class="img-responsive" src="{{ asset('storage/' . $first_article->image->file_path) }}" alt="{{ $first_article->image->alt_text }}"
-                                                    style="max-height: 20rem; object-fit: cover">
+                                                         style="max-height: 20rem; object-fit: cover">
                                                 </a>
                                             </div>
                                             <a class="post-cat" href="{{ route('categories.show', $first_article->category->slug) }}">{{ $first_article->category->name }}</a>
@@ -78,7 +78,7 @@
                         @endforeach
                     </div><!-- tab content -->
                 </div><!-- Technology Tab end -->
-                @endforeach
-            </div>
+            @endforeach
         </div>
-    </section><!-- Second block end -->
+    </div>
+</section><!-- Second block end -->

@@ -12,7 +12,7 @@ class ContactUsPageSEOService extends BaseSEOService
         $cacheKey = 'contactus_seo';
         $cacheTTL = now()->addHours(self::CACHE_TTL);
 
-        $seoData = cache()->remember($cacheKey, $cacheTTL, function() {
+        $seoData = cache()->remember($cacheKey, $cacheTTL, function () {
             $siteDetails = SiteDetail::first();
             $title = __('contact_us');
             $description = __('Get in touch with us for any inquiries or support.');

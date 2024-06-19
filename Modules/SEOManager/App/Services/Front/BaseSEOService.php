@@ -11,10 +11,10 @@ class BaseSEOService
     protected const CACHE_TTL = 1;
 
     protected function setBasicSEO(
-        ?string $title = null,
-        ?string $description = null,
-        ?string $canonicalUrl = null,
-        string $robots = 'index, follow',
+        ?string          $title = null,
+        ?string          $description = null,
+        ?string          $canonicalUrl = null,
+        string           $robots = 'index, follow',
         array|Collection $keywords = []
     ): void
     {

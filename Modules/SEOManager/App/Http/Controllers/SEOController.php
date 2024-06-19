@@ -4,8 +4,6 @@ namespace Modules\SEOManager\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Modules\SEOManager\App\Http\Requests\SEOSettingRequest;
 use Modules\SEOManager\App\SEOService;
 

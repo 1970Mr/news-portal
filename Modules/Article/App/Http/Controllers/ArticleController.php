@@ -65,7 +65,7 @@ class ArticleController extends Controller
 
     public function SEOSettings(Article $article): view
     {
-        $nextUrl  = config('app.panel_prefix', 'panel') . '.articles.index';
+        $nextUrl = config('app.panel_prefix', 'panel') . '.articles.index';
         $title = $article->title;
         $pageTitle = __('article') . ' ' . $title;
         // Optional placeholder

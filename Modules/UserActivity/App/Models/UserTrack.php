@@ -32,6 +32,17 @@ class UserTrack extends Model
         'pages_visit_count',
     ];
 
+    public static function getVisitorCounts(): array
+    {
+        $guestVisitors = self::query()->whereNull('user_id')->distinct('ip')->count('ip');
+        $memberVisitors = self::query()->whereNotNull('user_id')->distinct('user_id')->count('user_id');
+        return [
+            'guest' => $guestVisitors,
+            'member' => $memberVisitors,
+            'all' => $guestVisitors + $memberVisitors
+        ];
+    }
+
     public function toSearchableArray(): array
     {
         return [
@@ -49,11 +60,6 @@ class UserTrack extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function requestTracks(): HasMany
-    {
-        return $this->hasMany(RequestTrack::class);
     }
 
     public function country(): Attribute
@@ -92,6 +98,11 @@ class UserTrack extends Model
         );
     }
 
+    public function requestTracks(): HasMany
+    {
+        return $this->hasMany(RequestTrack::class);
+    }
+
     public function getLastActivity(): string
     {
         return $this->last_activity ?
@@ -106,21 +117,9 @@ class UserTrack extends Model
         );
     }
 
-
     public function isOnline(): bool
     {
         $lastActivityThreshold = now()->subMinutes(5);
         return $this->last_activity && $this->last_activity >= $lastActivityThreshold;
-    }
-
-    public static function getVisitorCounts(): array
-    {
-        $guestVisitors = self::query()->groupBy('ip')->whereNull('user_id')->count();
-        $memberVisitors = self::query()->groupBy('user_id')->whereNotNull('user_id')->count();
-        return [
-            'guest' => $guestVisitors,
-            'member' => $memberVisitors,
-            'all' => $guestVisitors + $memberVisitors
-        ];
     }
 }

@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Modules\SEOManager\App\SEOService;
 use Modules\Tag\App\Http\Requests\TagRequest;
 use Modules\Tag\App\Models\Tag;
 use Modules\Tag\App\Services\TagService;
@@ -59,7 +58,7 @@ class TagController extends Controller
 
     public function SEOSettings(Tag $tag): view
     {
-        $nextUrl  = config('app.panel_prefix', 'panel') . '.tags.index';
+        $nextUrl = config('app.panel_prefix', 'panel') . '.tags.index';
         $title = $tag->name;
         $pageTitle = __('tag') . ' ' . $title;
         // Optional placeholders

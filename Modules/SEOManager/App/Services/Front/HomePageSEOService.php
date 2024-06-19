@@ -12,7 +12,7 @@ class HomePageSEOService extends BaseSEOService
         $cacheKey = 'homepage_seo';
         $cacheTTL = now()->addHours(self::CACHE_TTL);
 
-        $seoData = cache()->remember($cacheKey, $cacheTTL, function() {
+        $seoData = cache()->remember($cacheKey, $cacheTTL, function () {
             $siteDetails = SiteDetail::with('mainLogo')->latest()->first();
             $siteUrl = route('home.index');
             $title = $siteDetails->title;

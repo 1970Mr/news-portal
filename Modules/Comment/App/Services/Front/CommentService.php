@@ -12,22 +12,11 @@ class CommentService
     public function store(CommentRequest $request): Model
     {
         $model = $request->commentable_type::findOrFail($request->commentable_id);
-        $comment = Comment::make([ 'comment' => $request->comment ]);
+        $comment = Comment::make(['comment' => $request->comment]);
         $this->setCommenter($request, $comment);
         $comment->commentable()->associate($model);
         $comment->save();
         return $comment;
-    }
-
-    public function reply(CommentRequest $request, Comment $comment): Model
-    {
-        $model = $request->commentable_type::findOrFail($request->commentable_id);
-        $child_comment = Comment::make([ 'comment' => $request->comment]);
-        $child_comment->parent()->associate($comment);
-        $this->setCommenter($request, $child_comment);
-        $child_comment->commentable()->associate($model);
-        $child_comment->save();
-        return $child_comment;
     }
 
     public function setCommenter(CommentRequest $request, Comment $comment): Model
@@ -38,5 +27,16 @@ class CommentService
             $comment->commenter()->associate(Auth::user());
         }
         return $comment;
+    }
+
+    public function reply(CommentRequest $request, Comment $comment): Model
+    {
+        $model = $request->commentable_type::findOrFail($request->commentable_id);
+        $child_comment = Comment::make(['comment' => $request->comment]);
+        $child_comment->parent()->associate($comment);
+        $this->setCommenter($request, $child_comment);
+        $child_comment->commentable()->associate($model);
+        $child_comment->save();
+        return $child_comment;
     }
 }

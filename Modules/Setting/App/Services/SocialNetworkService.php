@@ -3,8 +3,8 @@
 namespace Modules\Setting\App\Services;
 
 use Modules\Setting\App\Http\Requests\SocialNetworkRequest;
-use Modules\SocialNetwork\App\Traits\SocialNetwork;
 use Modules\SocialNetwork\App\Models\SocialNetwork as SocialNetworkModel;
+use Modules\SocialNetwork\App\Traits\SocialNetwork;
 
 class SocialNetworkService
 {

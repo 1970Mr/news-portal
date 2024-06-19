@@ -5,61 +5,49 @@
     "admin::contact_info": "ثبت اطلاعات تماس با ما",
     "admin::contact_user_messages": "مشاهده پیام\u200Cهای کاربران",
     "admin::seo_management": "مدیریت بخش\u200Cهای مربوط به سئو",
-
     "setting::social_networks": "ثبت شبکه\u200Cهای اجتماعی سایت",
     "setting::about_us": "ثبت اطلاعات درباره ما",
     "setting::site_details": "ثبت جزئیات سایت",
-
     "cache::index": "نمایش مدیریت حافظه پنهان",
     "cache::clear_all": "حذف تمام حافظه\u200Cهای پنهان",
     "cache::clear_application": "حذف حافظه پنهان داده\u200Cهای برنامه",
     "cache::clear_view": "حذف حافظه پنهان قالب\u200Cها",
     "cache::clear_config": "حذف حافظه پنهان کانفیگ\u200Cها",
     "cache::clear_route": "حذف حافظه پنهان مسیرها",
-
     "user_track::index": "مشاهده ردیابی کاربران",
     "user_track::destroy": "حذف ردیابی کاربر",
-
     "request_track::index": "مشاهده ردیابی بازدیدها",
     "request_track::destroy": "حذف ردیابی بازدید",
-
     "newsletter::index": "مشاهده اعضای خبرنامه",
     "newsletter::destroy": "حذف عضو از خبرنامه",
-
     "user::index": "مشاهده کاربران",
     "user::store": "ایجاد کاربر",
     "user::update": "ویرایش کاربر",
     "user::destroy": "حذف کاربر",
     "user::role_assignment": "اختصاص نقش",
-
     "role::index": "مشاهده نقش‌ها",
     "role::store": "ایجاد نقش",
     "role::update": "ویرایش نقش",
     "role::destroy": "حذف نقش",
-
     "category::index": "مشاهده دسته‌بندی‌ها",
     "category::store": "ایجاد دسته‌بندی",
     "category::update": "ویرایش دسته‌بندی",
     "category::destroy": "حذف دسته‌بندی",
-
     "tag::index": "مشاهده تگ‌ها",
     "tag::store": "ایجاد تگ",
     "tag::update": "ویرایش تگ",
     "tag::destroy": "حذف تگ",
     "tag::hotness": "تعیین موضوع داغ",
-
     "article::index": "مشاهده اخبار",
     "article::store": "ایجاد خبر",
     "article::update": "ویرایش خبر",
     "article::destroy": "حذف خبر",
     "article::editor_choice": "انتخاب سردبیر",
     "article::hotness": "تعیین خبر داغ",
-
     "menu::index": "مشاهده منوها",
     "menu::store": "ایجاد منو",
     "menu::update": "ویرایش منو",
     "menu::destroy": "حذف منو",
-
     "image::index_all": "مشاهده تمام تصاویر",
     "image::index_own": "مشاهده تصاویر خود",
     "image::store": "ایجاد تصویر",
@@ -67,18 +55,15 @@
     "image::update_own": "ویرایش تصاویر خود",
     "image::destroy_all": "حذف تمام تصاویر",
     "image::destroy_own": "حذف تصاویر خود",
-
     "comment::index": "مشاهده نظرات",
     "comment::show": "مشاهده نظر",
     "comment::approve": "تایید نظر",
     "comment::reject": "رد نظر",
     "comment::destroy": "حذف نظر",
-
     "profile::edit": "ویرایش پروفایل",
     "profile::change_password": "تغییر رمز عبور",
     "profile::change_email": "تغییر ایمیل",
     "profile::social_networks": "ثبت شبکه\u200Cهای اجتماعی کاربر",
-
     "ads::index": "مشاهده تبلیغات",
     "ads::store": "ایجاد تبلیغ",
     "ads::update": "ویرایش تبلیغ",

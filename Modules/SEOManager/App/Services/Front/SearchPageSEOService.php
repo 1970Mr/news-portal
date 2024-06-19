@@ -12,7 +12,7 @@ class SearchPageSEOService extends BaseSEOService
         $cacheKey = 'search_seo_' . md5($searchText);
         $cacheTTL = now()->addHours(self::CACHE_TTL);
 
-        $seoData = cache()->remember($cacheKey, $cacheTTL, function() use ($searchText) {
+        $seoData = cache()->remember($cacheKey, $cacheTTL, function () use ($searchText) {
             $description = __('search_description', ['searchText' => $searchText]);
             $canonicalUrl = route('search.index', ['text' => $searchText]);
 

@@ -30,7 +30,7 @@
                 <div class="portlet-body">
                     <form id="main-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.users.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
-                        <x-common-error-messages />
+                        <x-common-error-messages/>
 
                         <fieldset class="row justify-content-center">
                             <div class="form-group col-lg-6">
@@ -64,7 +64,8 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="password_confirmation">تکرار رمز عبور <small>(ضروری، حداقل 8 کاراکتر)</small></label>
-                                <input id="password_confirmation" class="form-control" name="password_confirmation" minlength="8" type="password" required value="{{ old('password_confirmation') }}">
+                                <input id="password_confirmation" class="form-control" name="password_confirmation" minlength="8" type="password" required
+                                       value="{{ old('password_confirmation') }}">
                             </div>
                             <div class="form-group col-12 row justify-content-center">
                                 <div class="col-md-6">
@@ -105,16 +106,16 @@
 @push('scripts')
     <script>
         $.validator.setDefaults({
-            highlight: function(element) {
+            highlight: function (element) {
                 $(element).closest('.form-group').addClass('has-error').removeClass("has-success");
             },
-            unhighlight: function(element) {
+            unhighlight: function (element) {
                 $(element).closest('.form-group').removeClass('has-error').addClass("has-success");
             },
             errorElement: 'span',
             errorClass: 'help-block',
-            errorPlacement: function(error, element) {
-                if(element.parent('.input-group').length) {
+            errorPlacement: function (error, element) {
+                if (element.parent('.input-group').length) {
                     error.insertAfter(element.parent());
                 } else {
                     error.insertAfter(element);

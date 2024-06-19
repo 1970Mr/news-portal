@@ -10,13 +10,13 @@ Route::prefix(config('app.panel_prefix', 'panel') . '/comments')
     ->controller(CommentController::class)
     ->middleware(['web', 'auth', 'verified'])
     ->group(function () {
-    Route::get('/', 'index')->name('index');
-    Route::patch('/approve/{comment}', 'approve')->name('approve');
-    Route::post('/approve-all', 'approveAll')->name('approve-all');
-    Route::patch('/reject/{comment}', 'reject')->name('reject');
-    Route::get('/{comment}', 'show')->name('show');
-    Route::delete('/{comment}', 'destroy')->name('destroy');
-});
+        Route::get('/', 'index')->name('index');
+        Route::patch('/approve/{comment}', 'approve')->name('approve');
+        Route::post('/approve-all', 'approveAll')->name('approve-all');
+        Route::patch('/reject/{comment}', 'reject')->name('reject');
+        Route::get('/{comment}', 'show')->name('show');
+        Route::delete('/{comment}', 'destroy')->name('destroy');
+    });
 
 Route::prefix('comments')
     ->name('comments.')

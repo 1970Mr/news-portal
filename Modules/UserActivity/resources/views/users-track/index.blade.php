@@ -71,9 +71,9 @@
                                     <td class="rtl text-right">{{ $userTrack->getLastActivity() }}</td>
                                     <td>{{ $userTrack->isOnline() ? __('online') : __('offline') }}</td>
                                     @can('permissions_list.USER_TRACKS_DESTROY')
-                                    <td>
+                                        <td>
                                             <div class="d-flex gap-2">
-                                                <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.users-track.destroy', $userTrack->id)" />
+                                                <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.users-track.destroy', $userTrack->id)"/>
                                             </div>
                                         </td>
                                     @endcan

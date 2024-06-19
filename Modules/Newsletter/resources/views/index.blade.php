@@ -57,7 +57,7 @@
                                     @can(config('permissions_list.NEWSLETTER_DESTROY'))
                                         <td>
                                             <div class="d-flex gap-2">
-                                                <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.newsletters.destroy', $newsletter->id)" />
+                                                <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.newsletters.destroy', $newsletter->id)"/>
                                             </div>
                                         </td>
                                     @endcan
