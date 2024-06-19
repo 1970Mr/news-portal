@@ -22,6 +22,7 @@ Welcome to the News Portal, a comprehensive and modular news website built with 
     - [Menu](#menu)
     - [Home](#home)
     - [SEOManager](#seomanager)
+    - [RedirectManager](#redirectmanager)
     - [FileManager](#filemanager)
     - [Newsletter](#newsletter)
     - [SocialNetwork](#socialnetwork)
@@ -48,6 +49,7 @@ Welcome to the News Portal, a comprehensive and modular news website built with 
 - **Social Network Integration:** Share articles on social media, manage user and site social media links.
 - **Customizable Settings:** Site-wide settings, third-party integrations, cache management, and social network management.
 - **SEO Management:** Manage meta tags for various pages (articles, authors, categories, tags, homepage, etc.), optimize site for search engines, and track SEO performance.
+- **Redirect Management:** Create and manage URL redirects to handle outdated or moved content efficiently.
 - **Menu Builder:** Create and manage different types of menus (main, submenu, category, parent category), add and arrange menu items.
 - **Homepage Management:** Configurable sections for featured articles, latest news, and more; customizable layout.
 - **Detailed Analytics:** Track article views, user interactions, and content performance.
@@ -303,6 +305,19 @@ The SEOManager module handles SEO-related settings and optimizations.
       php artisan sitemap:generate
       ```
 
+### RedirectManager
+
+The RedirectManager module manages URL redirections within the site. It provides functionality to handle redirects efficiently, ensuring smooth user navigation and SEO benefits.
+
+- **Features:**
+    - Create and manage URL redirects.
+    - Define status codes for each redirect (e.g., 301, 302).
+    - Toggle the status of redirects (active/inactive).
+    - Cache redirects for optimized performance, with two caching methods:
+        - **Full List Cache:** Cache all redirects in a single cache entry and search within this cached list.
+        - **Individual Cache:** Cache each redirect individually, with searches performed against the specific cache entry for the requested URL.
+    - Middleware to handle incoming requests and apply redirects based on the cached data.
+
 ### FileManager
 
 The FileManager module handles the upload and management of files.
@@ -364,7 +379,7 @@ The UserActivity module meticulously tracks user interactions, requests, and act
     - **Session Management:** Tracks user sessions, including IP addresses, device information, and geographic locations.
     - **Request Logging:** Logs each HTTP request made by users, recording URLs and referral sources for analytics.
     - **Analytics:** Provides insights into user engagement and site traffic patterns.
-    - **Security Enhancement:** Middleware ensures IP address consistency for authenticated users.
+    - **Security Enhancement:** Middleware ensures that the IP address of authenticated users remains consistent throughout their session.
 
 ### Setting
 
