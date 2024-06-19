@@ -25,6 +25,11 @@ return [
     'REQUEST_TRACK_INDEX' => 'request_track::index',
     'REQUEST_TRACK_DESTROY' => 'request_track::destroy',
 
+    'REDIRECT_INDEX' => 'redirect::index',
+    'REDIRECT_STORE' => 'redirect::store',
+    'REDIRECT_UPDATE' => 'redirect::update',
+    'REDIRECT_DESTROY' => 'redirect::destroy',
+
     'MENU_INDEX' => 'menu::index',
     'MENU_STORE' => 'menu::store',
     'MENU_UPDATE' => 'menu::update',

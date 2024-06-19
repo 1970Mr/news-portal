@@ -112,6 +112,16 @@ return [
             'url' => route(config('app.panel_prefix', 'panel') . '.newsletters.index'),
             'permissions' => config('permissions_list.NEWSLETTER_INDEX', false),
         ],
+        'redirect' => [
+            'title' => 'ریدایرکت‌ها',
+            'icon' => 'fas fa-link',
+            'url' => route(config('app.panel_prefix', 'panel') . '.redirects.index'),
+            'permissions' => config('permissions_list.REDIRECT_INDEX', false),
+            'active_routes' => [
+                config('app.panel_prefix', 'panel') . '.redirects.create',
+                config('app.panel_prefix', 'panel') . '.redirects.edit',
+            ]
+        ],
         'profile' => [
             'title' => 'پروفایل',
             'icon' => 'icon-user',

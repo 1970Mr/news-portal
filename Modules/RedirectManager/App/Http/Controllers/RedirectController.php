@@ -14,6 +14,10 @@ class RedirectController extends Controller
 {
     public function __construct(private readonly RedirectService $redirectService)
     {
+        $this->middleware('can:' . config('permissions_list.REDIRECT_INDEX', false))->only('index');
+        $this->middleware('can:' . config('permissions_list.REDIRECT_STORE', false))->only('store');
+        $this->middleware('can:' . config('permissions_list.REDIRECT_UPDATE', false))->only('update');
+        $this->middleware('can:' . config('permissions_list.REDIRECT_DESTROY', false))->only('destroy');
     }
 
     public function index(Request $request): View
