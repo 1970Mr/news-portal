@@ -1,0 +1,31 @@
+{
+    "name": "nwidart/redirectmanager",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\RedirectManager\\": "",
+            "Modules\\RedirectManager\\App\\": "app/",
+            "Modules\\RedirectManager\\Database\\Factories\\": "database/factories/",
+            "Modules\\RedirectManager\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\RedirectManager\\Tests\\": "tests/"
+        }
+    }
+}

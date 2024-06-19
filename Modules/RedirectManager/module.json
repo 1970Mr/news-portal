@@ -1,0 +1,11 @@
+{
+    "name": "RedirectManager",
+    "alias": "redirectmanager",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\RedirectManager\\App\\Providers\\RedirectManagerServiceProvider"
+    ],
+    "files": []
+}

@@ -21,5 +21,6 @@
     "AdManager": true,
     "SEOManager": true,
     "Menu": true,
-    "UserActivity": true
+    "UserActivity": true,
+    "RedirectManager": true
 }
