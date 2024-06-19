@@ -8,12 +8,17 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Modules\RedirectManager\App\Http\Requests\RedirectRequest;
 use Modules\RedirectManager\App\Models\Redirect;
+use Modules\RedirectManager\App\Services\RedirectService;
 
 class RedirectController extends Controller
 {
-    public function index(): View
+    public function __construct(private readonly RedirectService $redirectService)
     {
-        $redirects = Redirect::query()->latest()->paginate(10);
+    }
+
+    public function index(Request $request): View
+    {
+        $redirects = $this->redirectService->index($request);
         return view('redirect-manager::index', compact('redirects'));
     }
 
