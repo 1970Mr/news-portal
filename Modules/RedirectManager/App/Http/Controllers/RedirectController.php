@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Modules\RedirectManager\App\Http\Requests\RedirectRequest;
 use Modules\RedirectManager\App\Models\Redirect;
 
 class RedirectController extends Controller
@@ -21,16 +22,11 @@ class RedirectController extends Controller
         return view('redirect-manager::create');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(RedirectRequest $request): RedirectResponse
     {
-        $request->validate([
-            'source_url' => 'required|url|unique:redirects',
-            'destination_url' => 'required|url',
-            'status_code' => 'required|integer',
-        ]);
-
-        Redirect::create($request->all());
-        return redirect()->route('redirects.index')->with('success', 'Redirect created successfully.');
+        Redirect::create($request->validated());
+        return to_route(config('app.panel_prefix', 'panel') . '.redirects.index')
+            ->with('success', __('entity_created', ['entity' => __('redirect')]));
     }
 
     public function edit(Redirect $redirect): View
@@ -38,14 +34,8 @@ class RedirectController extends Controller
         return view('redirect-manager::edit', compact('redirect'));
     }
 
-    public function update(Request $request, Redirect $redirect): RedirectResponse
+    public function update(RedirectRequest $request, Redirect $redirect): RedirectResponse
     {
-        $request->validate([
-            'source_url' => 'required|url|unique:redirects,source_url,' . $redirect->id,
-            'destination_url' => 'required|url',
-            'status_code' => 'required|integer',
-        ]);
-
         $redirect->update($request->all());
         return redirect()->route('redirects.index')->with('success', 'Redirect updated successfully.');
     }
@@ -53,6 +43,6 @@ class RedirectController extends Controller
     public function destroy(Redirect $redirect): RedirectResponse
     {
         $redirect->delete();
-        return redirect()->route('redirects.index')->with('success', 'Redirect deleted successfully.');
+        return back()->with('success', __('entity_deleted', ['entity' => __('redirect')]));
     }
 }

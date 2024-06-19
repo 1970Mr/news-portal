@@ -52,5 +52,9 @@
     "user_track": "ردیابی کاربر",
     "request_track": "ردیابی بازدید",
     "online": "آنلاین",
-    "offline": "آفلاین"
+    "offline": "آفلاین",
+    "redirect": "ریدایرکت",
+    "source_url": "URL مبدا",
+    "destination_url": "URL مقصد",
+    "status_code": "کد وضعیت"
 }

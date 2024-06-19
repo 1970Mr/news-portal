@@ -12,7 +12,7 @@
                 <div class="portlet-heading">
                     <div class="portlet-title d-flex gap-3">
                         <h3 class="title m-0">
-                            <i class="icon-link"></i>
+                            <i class="fas fa-link"></i>
                             لیست ریدایرکت‌ها
                         </h3>
                         <form class="d-inline-block search-form">

@@ -35,7 +35,8 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request): RedirectResponse
     {
         $this->categoryService->store($request);
-        return to_route(config('app.panel_prefix', 'panel') . '.categories.index')->with('success', __('entity_created', ['entity' => __('category')]));
+        return to_route(config('app.panel_prefix', 'panel') . '.categories.index')
+            ->with('success', __('entity_created', ['entity' => __('category')]));
     }
 
     public function edit(Category $category): View
@@ -47,7 +48,8 @@ class CategoryController extends Controller
     public function update(CategoryRequest $request, Category $category): RedirectResponse
     {
         $this->categoryService->update($request, $category);
-        return to_route(config('app.panel_prefix', 'panel') . '.categories.index')->with('success', __('entity_edited', ['entity' => __('category')]));
+        return to_route(config('app.panel_prefix', 'panel') . '.categories.index')
+            ->with('success', __('entity_edited', ['entity' => __('category')]));
     }
 
     public function destroy(Category $category): RedirectResponse
