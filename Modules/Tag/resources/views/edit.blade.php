@@ -28,7 +28,7 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="tag-create-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.tags.update', $tag->id) }}" method="post">
+                    <form id="main-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.tags.update', $tag->id) }}" method="post">
                         @csrf
                         @method('PUT')
                         <x-common-error-messages/>
@@ -36,11 +36,11 @@
                         <fieldset class="row justify-content-center">
                             <div class="form-group col-lg-6">
                                 <label for="name">نام <small>(ضروری)</small></label>
-                                <input id="name" class="form-control" name="name" type="text" required value="{{ old('name') ?? $tag->name }}">
+                                <input id="name" class="form-control" name="name" type="text" required value="{{ old('name', $tag->name) }}">
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="slug">slug <small>(ضروری)</small> </label>
-                                <input id="slug" class="form-control" name="slug" type="text" required value="{{ old('slug') ?? $tag->slug }}">
+                                <input id="slug" class="form-control" name="slug" type="text" required value="{{ old('slug', $tag->slug) }}">
                             </div>
                             <div class="col-12 row form-group justify-content-center">
                                 <div class="col-md-6 row">
@@ -91,6 +91,6 @@
                 }
             }
         });
-        $("#tag-create-form").validate();
+        $("#main-form").validate();
     </script>
 @endpush

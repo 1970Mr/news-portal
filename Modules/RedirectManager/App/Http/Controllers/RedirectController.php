@@ -36,8 +36,9 @@ class RedirectController extends Controller
 
     public function update(RedirectRequest $request, Redirect $redirect): RedirectResponse
     {
-        $redirect->update($request->all());
-        return redirect()->route('redirects.index')->with('success', 'Redirect updated successfully.');
+        $redirect->update($request->validated());
+        return to_route(config('app.panel_prefix', 'panel') . '.redirects.index')
+            ->with('success', __('entity_edited', ['entity' => __('redirect')]));
     }
 
     public function destroy(Redirect $redirect): RedirectResponse

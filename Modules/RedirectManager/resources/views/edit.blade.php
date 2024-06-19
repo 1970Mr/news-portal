@@ -1,9 +1,9 @@
-@extends('panel::layouts.master', ['title' => 'ایجاد تگ جدید'])
+@extends('panel::layouts.master', ['title' => 'ویرایش ریدایرکت'])
 
 @section('content')
     <x-common-breadcrumbs>
-        <li><a href="{{ route(config('app.panel_prefix', 'panel') . '.tags.index') }}">لیست تگ‌ها</a></li>
-        <li><a>ایجاد تگ جدید</a></li>
+        <li><a href="{{ route(config('app.panel_prefix', 'panel') . '.redirects.index') }}">لیست ریدایرکت‌ها</a></li>
+        <li><a>ویرایش ریدایرکت</a></li>
     </x-common-breadcrumbs>
 
     <div class="row pe-0">
@@ -12,8 +12,8 @@
                 <div class="portlet-heading">
                     <div class="portlet-title">
                         <h3 class="title">
-                            <i class="icon-user-follow"></i>
-                            ایجاد تگ جدید
+                            <i class="fas fa-link"></i>
+                            ویرایش ریدایرکت
                         </h3>
                     </div><!-- /.portlet-title -->
                     <div class="buttons-box">
@@ -28,38 +28,39 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="main-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.tags.store') }}" method="post">
+                    <form id="main-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.redirects.update', $redirect->id) }}" method="post">
                         @csrf
+                        @method('PUT')
                         <x-common-error-messages/>
 
                         <fieldset class="row justify-content-center">
                             <div class="form-group col-lg-6">
-                                <label for="name">نام <small>(ضروری)</small></label>
-                                <input id="name" class="form-control" name="name" type="text" required value="{{ old('name') }}">
+                                <label for="source_url">URL مبدا <small>(ضروری)</small></label>
+                                <input id="source_url" class="form-control" name="source_url" type="text" required value="{{ old('source_url', $redirect->source_url) }}">
                             </div>
                             <div class="form-group col-lg-6">
-                                <label for="slug">slug <small>(ضروری)</small> </label>
-                                <input id="slug" class="form-control" name="slug" type="text" required value="{{ old('slug') }}">
+                                <label for="destination_url">URL مقصد <small>(ضروری)</small> </label>
+                                <input id="destination_url" class="form-control" name="destination_url" type="text" required value="{{ old('destination_url', $redirect->destination_url) }}">
                             </div>
                             <div class="col-12 row form-group justify-content-center">
                                 <div class="col-md-6 row justify-content-center">
-                                    @can(config('permissions_list.TAG_HOTNESS', false))
-                                        <div class="text-center col-6">
-                                            <input id="hotness" class="form-control" name="hotness" type="checkbox" @if(old('hotness')) checked @endif>
-                                            <label for="hotness">موضوع داغ</label>
-                                        </div>
-                                    @endcan
-                                    <div class="text-center col-6">
-                                        <input id="status" class="form-control" name="status" type="checkbox" @if(old('status')) checked @endif>
-                                        <label for="status">وضعیت</label>
+                                    <div class="col-6">
+                                        <label for="status_code">کد وضعیت</label>
+                                        <input id="status_code" class="form-control" name="status_code" type="text" value="{{ old('status_code', $redirect->status_code) }}">
                                     </div>
+                                </div>
+                            </div>
+                            <div class="col-12 row form-group justify-content-center">
+                                <div class="text-center col-6">
+                                    <input id="status" class="form-control" name="status" type="checkbox" @if(old('status') || (!old('source_url') && $redirect->status) ) checked @endif>
+                                    <label for="status">وضعیت</label>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-6 col-sm-offset-4 mx-auto">
                                     <button class="btn btn-success btn-block">
                                         <i class="icon-check"></i>
-                                        ایجاد تگ جدید
+                                        ویرایش ریدایرکت
                                     </button>
                                 </div>
                             </div>

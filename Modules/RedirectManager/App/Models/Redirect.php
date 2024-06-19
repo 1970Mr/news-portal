@@ -13,5 +13,6 @@ class Redirect extends Model
         'source_url',
         'destination_url',
         'status_code',
+        'status',
     ];
 }

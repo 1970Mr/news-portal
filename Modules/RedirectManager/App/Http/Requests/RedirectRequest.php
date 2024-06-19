@@ -20,7 +20,7 @@ class RedirectRequest extends FormRequest
         ];
 
         if (strtolower($this->method()) === 'put') {
-            $rules['source_url'] .= ',' . $this->route('redirect')->id;
+            $rules['source_url'] .= ',source_url,' . $this->route('redirect')->id;
         }
 
         return $rules;
