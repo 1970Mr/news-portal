@@ -117,6 +117,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(UserTrack::class, 'user_id');
     }
 
+    public function isOnline(): bool
+    {
+        return (bool)$this->userTracks()->latest()->first()?->isOnline();
+    }
+
     protected static function boot(): void
     {
         parent::boot();

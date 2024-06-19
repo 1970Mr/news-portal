@@ -345,11 +345,22 @@ The Hotness module tracks and displays trending content, including articles and 
 
 ### Seen
 
-The Seen module tracks article views and user interactions.
+The Seen module tracks the views or interactions with various entities in the system. It provides a way to mark items as seen or unseen and track their visibility status.
 
 - **Features:**
-    - View analytics for article performance
-    - Track user engagement
+    - Track views or interactions with various entities.
+    - Associate seen status with different models.
+    - Manage and update seen/unseen status of entities.
+
+### UserActivity Module
+
+The UserActivity module meticulously tracks user interactions, requests, and activities within the News Portal, providing comprehensive insights into user engagement and site traffic patterns.
+
+- **Features:**
+    - **Session Management:** Tracks user sessions, including IP addresses, device information, and geographic locations.
+    - **Request Logging:** Logs each HTTP request made by users, recording URLs and referral sources for analytics.
+    - **Analytics:** Provides insights into user engagement and site traffic patterns.
+    - **Security Enhancement:** Middleware ensures IP address consistency for authenticated users.
 
 ### Setting
 
@@ -385,7 +396,7 @@ The News Portal project is open-source software licensed under the MIT license. 
 
 ---
 
-> **Note**: All modules in this project were developed by [Mr1970](https://github.com/1970Mr), except for the frontend template, which uses a pre-built template.
+> **Note**: All modules in this project were developed by [Mr1970](https://github.com/1970Mr), except for the frontend template, which utilizes a pre-built template that has been customized.
 
 > **Note:** The frontend template is in Persian, but all messages and sections in the backend code are read from translation files.
 
