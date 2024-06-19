@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\RedirectManager\App\Http\Controllers\RedirectManagerController;
+use Modules\RedirectManager\App\Http\Controllers\RedirectController;
 
-Route::group([], function () {
-    Route::resource('redirectmanager', RedirectManagerController::class)->names('redirectmanager');
-});
+Route::prefix(config('app.panel_prefix', 'panel'))
+    ->name(config('app.panel_prefix', 'panel') . '.')
+    ->group(function () {
+        Route::resource('redirects', RedirectController::class)->names('redirects')->except(['show']);
+    });
