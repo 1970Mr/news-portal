@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use Laravel\Scout\Searchable;
 use Modules\Article\App\Models\Article;
@@ -18,7 +17,7 @@ use Modules\SEOManager\App\Traits\SEOAble;
 
 class Category extends Model
 {
-    use HasFactory, SoftDeletes, HasImage, Searchable, SEOAble;
+    use HasFactory, HasImage, Searchable, SEOAble;
 
     protected $fillable = [
         'name',

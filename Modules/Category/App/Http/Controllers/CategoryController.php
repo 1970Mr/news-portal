@@ -54,7 +54,7 @@ class CategoryController extends Controller
 
     public function destroy(Category $category): RedirectResponse
     {
-        $category->delete();
+        $this->categoryService->destroy($category);
         return back()->with('success', __('entity_deleted', ['entity' => __('category')]));
     }
 

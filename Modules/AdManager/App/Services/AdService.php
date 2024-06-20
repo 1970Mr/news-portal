@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Modules\AdManager\App\Http\Requests\AdRequest;
 use Modules\AdManager\App\Models\Ad;
-use Modules\FileManager\App\Services\ImageService;
+use Modules\FileManager\App\Services\Image\ImageService;
 
 class AdService
 {

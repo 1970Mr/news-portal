@@ -2,7 +2,7 @@
 
 namespace Modules\Profile\App\Services;
 
-use Modules\FileManager\App\Services\ImageService;
+use Modules\FileManager\App\Services\Image\ImageService;
 use Modules\Profile\App\Http\Requests\ProfileRequest;
 use Modules\User\App\Models\User;
 

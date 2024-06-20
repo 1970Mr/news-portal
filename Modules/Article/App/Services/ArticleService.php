@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Modules\Article\App\Http\Requests\ArticleRequest;
 use Modules\Article\App\Models\Article;
-use Modules\FileManager\App\Services\ImageService;
+use Modules\FileManager\App\Services\Image\ImageService;
 
 class ArticleService
 {

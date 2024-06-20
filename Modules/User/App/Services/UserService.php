@@ -6,7 +6,7 @@ use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
-use Modules\FileManager\App\Services\ImageService;
+use Modules\FileManager\App\Services\Image\ImageService;
 use Modules\User\App\Http\Requests\UserStoreRequest;
 use Modules\User\App\Http\Requests\UserUpdateRequest;
 use Modules\User\App\Models\User;

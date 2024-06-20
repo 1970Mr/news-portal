@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\FileManager\App\Services;
+namespace Modules\FileManager\App\Services\Image;
 
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Builder;
@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Schema;
 use Modules\FileManager\App\Exceptions\ImageDeleteException;
 use Modules\FileManager\App\Http\Requests\ImageRequest;
 use Modules\FileManager\App\Models\Image;
+use Modules\FileManager\App\Services\FileManagerService;
 
 class ImageService
 {

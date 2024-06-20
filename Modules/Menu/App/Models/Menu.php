@@ -7,14 +7,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Scout\Searchable;
 use Modules\Category\App\Models\Category;
 use Modules\Menu\Database\Factories\MenuFactory;
 
 class Menu extends Model
 {
-    use HasFactory, SoftDeletes, Searchable;
+    use HasFactory, Searchable;
 
     public const MAIN_TYPE = 'main';
     public const SUBMENU_TYPE = 'submenu';

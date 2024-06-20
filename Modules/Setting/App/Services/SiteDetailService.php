@@ -4,7 +4,7 @@ namespace Modules\Setting\App\Services;
 
 use Illuminate\Database\Eloquent\Model;
 use InvalidArgumentException;
-use Modules\FileManager\App\Services\ImageService;
+use Modules\FileManager\App\Services\Image\ImageService;
 use Modules\Setting\App\Http\Requests\SiteDetailRequest;
 use Modules\Setting\App\Models\SiteDetail;
 

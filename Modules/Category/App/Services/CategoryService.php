@@ -6,9 +6,11 @@ use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Modules\Article\App\Models\Article;
 use Modules\Category\App\Http\Requests\CategoryRequest;
 use Modules\Category\App\Models\Category;
-use Modules\FileManager\App\Services\ImageService;
+use Modules\FileManager\App\Services\Image\ImageService;
 
 class CategoryService
 {
@@ -51,5 +53,22 @@ class CategoryService
         $result = $category->update($request->validated());
         $this->imageService->uploadImageDuringUpdate($request, $category);
         return $result;
+    }
+
+    public function destroy(Category $category): void
+    {
+        $this->reassignArticles($category);
+        $this->imageService->destroyWithoutKeyConstraints($category->image);
+        $category->delete();
+    }
+
+    private function reassignArticles(Category $category): void
+    {
+        if ($category->articles && $category->articles->count() > 0) {
+            $firstCategory = Category::query()->firstOrFail();
+            $category->articles->each(function (Article $article) use ($firstCategory) {
+                $article->update(['category_id' => $firstCategory->id]);
+            });
+        }
     }
 }

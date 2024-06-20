@@ -10,7 +10,7 @@ use Illuminate\View\View;
 use Modules\FileManager\App\Exceptions\ImageDeleteException;
 use Modules\FileManager\App\Http\Requests\ImageRequest;
 use Modules\FileManager\App\Models\Image;
-use Modules\FileManager\App\Services\ImageService;
+use Modules\FileManager\App\Services\Image\ImageService;
 
 class ImageController extends Controller
 {
