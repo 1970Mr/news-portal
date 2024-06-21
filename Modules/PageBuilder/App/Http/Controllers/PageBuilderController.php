@@ -6,15 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\View\View;
+use Modules\PageBuilder\App\Models\Page;
 
 class PageBuilderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(): View
     {
-        return view('pagebuilder::index');
+        $pages = Page::query()->latest()->paginate(10);
+        return view('page-builder::index', compact('pages'));
     }
 
     /**
