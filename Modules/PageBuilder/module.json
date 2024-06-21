@@ -1,0 +1,11 @@
+{
+    "name": "PageBuilder",
+    "alias": "pagebuilder",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\PageBuilder\\App\\Providers\\PageBuilderServiceProvider"
+    ],
+    "files": []
+}

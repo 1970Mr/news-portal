@@ -22,5 +22,6 @@
     "SEOManager": true,
     "Menu": true,
     "UserActivity": true,
-    "RedirectManager": true
+    "RedirectManager": true,
+    "PageBuilder": true
 }
