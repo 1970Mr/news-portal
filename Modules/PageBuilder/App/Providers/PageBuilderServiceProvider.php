@@ -9,7 +9,7 @@ class PageBuilderServiceProvider extends ServiceProvider
 {
     protected string $moduleName = 'PageBuilder';
 
-    protected string $moduleNameLower = 'pagebuilder';
+    protected string $moduleNameLower = 'page-builder';
 
     /**
      * Boot the application events.
