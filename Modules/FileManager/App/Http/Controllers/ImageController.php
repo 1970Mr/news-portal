@@ -73,7 +73,7 @@ class ImageController extends Controller
         $image = $this->imageService->store($request, altText: 'News Image');
         $response = [
             'message' => __('entity_created', ['entity' => __('image')]),
-            'url' => $image->getUri(),
+            'url' => $image->url(),
         ];
         return response()->json($response, 200);
     }

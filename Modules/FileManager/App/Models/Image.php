@@ -58,9 +58,14 @@ class Image extends Model
         );
     }
 
-    public function getUri(): string
+    public function uri(): string
     {
         return '/storage/' . $this->file_path;
+    }
+
+    public function url(): string
+    {
+        return asset( $this->uri() );
     }
 
     public function imageable(): MorphTo

@@ -17,12 +17,9 @@ class PageBuilderController extends Controller
         return view('page-builder::index', compact('pages'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function create(): View
     {
-        return view('pagebuilder::create');
+        return view('page-builder::create');
     }
 
     /**

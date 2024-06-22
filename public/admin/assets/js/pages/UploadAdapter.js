@@ -32,7 +32,7 @@ class UploadAdapter {
         // a POST request with JSON as a data structure but your configuration
         // could be different.
         xhr.open( 'POST', this.url, true );
-        xhr.responseType = 'json';
+        // xhr.responseType = 'json';
         xhr.setRequestHeader('X-CSRF-TOKEN', this.csrfToken);
     }
 
