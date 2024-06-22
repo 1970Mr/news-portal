@@ -17,7 +17,9 @@ class ImageService
 {
     public function __construct(
         private readonly ImageQueryService $imageQueryService,
-    ) {}
+    )
+    {
+    }
 
     public function index(Request $request): Paginator
     {

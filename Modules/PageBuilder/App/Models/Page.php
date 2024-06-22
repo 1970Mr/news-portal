@@ -38,13 +38,6 @@ class Page extends Model
         $query->where('status', true);
     }
 
-    protected function slug(): Attribute
-    {
-        return Attribute::make(
-            set: static fn(string $value) => Str::slug($value),
-        );
-    }
-
     public function summary(int $limit = 120): Stringable
     {
         $cleanedContent = str_replace('&nbsp;', ' ', $this->content);
@@ -60,5 +53,12 @@ class Page extends Model
     public function featured_image(): MorphOne
     {
         return $this->image();
+    }
+
+    protected function slug(): Attribute
+    {
+        return Attribute::make(
+            set: static fn(string $value) => Str::slug($value),
+        );
     }
 }

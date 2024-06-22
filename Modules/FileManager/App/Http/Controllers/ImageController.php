@@ -75,7 +75,7 @@ class ImageController extends Controller
             'message' => __('entity_created', ['entity' => __('image')]),
             'url' => $image->url(),
         ];
-        return response()->json($response, 200);
+        return response()->json($response);
     }
 
     public function store(ImageRequest $request): RedirectResponse

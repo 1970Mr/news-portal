@@ -51,6 +51,11 @@ class Redirect extends Model
         ];
     }
 
+    public function scopeActive(Builder $query): void
+    {
+        $query->where('status', 1);
+    }
+
     protected function source_url(): Attribute
     {
         return Attribute::make(
@@ -63,10 +68,5 @@ class Redirect extends Model
         return Attribute::make(
             set: static fn(string $value) => trim($value, '/'),
         );
-    }
-
-    public function scopeActive(Builder $query): void
-    {
-        $query->where('status', 1);
     }
 }

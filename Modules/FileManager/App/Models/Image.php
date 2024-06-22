@@ -17,6 +17,7 @@ class Image extends Model
     public const ALL = 'all';
 
     use HasFactory;
+
     public const MY_IMAGE = 'my_images';
     public const OTHER_USERS_IMAGE = 'other_users_images';
     protected $fillable = [
@@ -58,14 +59,14 @@ class Image extends Model
         );
     }
 
+    public function url(): string
+    {
+        return asset($this->uri());
+    }
+
     public function uri(): string
     {
         return '/storage/' . $this->file_path;
-    }
-
-    public function url(): string
-    {
-        return asset( $this->uri() );
     }
 
     public function imageable(): MorphTo

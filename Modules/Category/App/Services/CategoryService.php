@@ -6,7 +6,6 @@ use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Modules\Article\App\Models\Article;
 use Modules\Category\App\Http\Requests\CategoryRequest;
 use Modules\Category\App\Models\Category;
@@ -48,13 +47,6 @@ class CategoryService
         return $category;
     }
 
-    public function update(CategoryRequest $request, Category $category): bool
-    {
-        $result = $category->update($request->validated());
-        $this->imageService->uploadImageDuringUpdate($request, $category);
-        return $result;
-    }
-
     public function destroy(Category $category): void
     {
         $this->reassignArticles($category);
@@ -70,5 +62,12 @@ class CategoryService
                 $article->update(['category_id' => $firstCategory->id]);
             });
         }
+    }
+
+    public function update(CategoryRequest $request, Category $category): bool
+    {
+        $result = $category->update($request->validated());
+        $this->imageService->uploadImageDuringUpdate($request, $category);
+        return $result;
     }
 }

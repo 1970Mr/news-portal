@@ -3,7 +3,6 @@
 namespace Modules\RedirectManager\App\Services;
 
 use Illuminate\Contracts\Pagination\Paginator;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Modules\RedirectManager\App\Models\Redirect;
 

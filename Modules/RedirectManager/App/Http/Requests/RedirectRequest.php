@@ -3,7 +3,6 @@
 namespace Modules\RedirectManager\App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class RedirectRequest extends FormRequest
 {
@@ -35,6 +34,14 @@ class RedirectRequest extends FormRequest
         ];
     }
 
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
     protected function prepareForValidation(): void
     {
         $this->merge([
@@ -42,13 +49,5 @@ class RedirectRequest extends FormRequest
             'source_url' => trim($this->source_url, '/'),
             'destination_url' => trim($this->destination_url, '/'),
         ]);
-    }
-
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
-    {
-        return true;
     }
 }

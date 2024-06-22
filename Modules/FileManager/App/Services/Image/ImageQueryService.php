@@ -10,7 +10,9 @@ use Modules\FileManager\App\Models\Image;
 
 class ImageQueryService
 {
-    public function __construct(private readonly ImagePermissionService $imagePermissionService) {}
+    public function __construct(private readonly ImagePermissionService $imagePermissionService)
+    {
+    }
 
     public function getAllImages(Request $request): Builder
     {

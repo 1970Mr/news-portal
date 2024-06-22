@@ -68,7 +68,8 @@
                                 <tr>
                                     <td>{{ $page->id }}</td>
                                     <td>
-                                        <img src="{{ asset('storage/' . $page->featured_image?->file_path) }}" alt="{{ $page->featured_image?->alt_text }}" width="100px" style="max-height: 90px">
+                                        <img src="{{ asset('storage/' . $page->featured_image?->file_path) }}" alt="{{ $page->featured_image?->alt_text }}" width="100px"
+                                             style="max-height: 90px">
                                     </td>
                                     <td>{{ $page->title }}</td>
                                     <td>{{ $page->slug }}</td>

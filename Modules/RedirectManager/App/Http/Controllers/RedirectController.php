@@ -26,16 +26,16 @@ class RedirectController extends Controller
         return view('redirect-manager::index', compact('redirects'));
     }
 
-    public function create(): View
-    {
-        return view('redirect-manager::create');
-    }
-
     public function store(RedirectRequest $request): RedirectResponse
     {
         Redirect::create($request->validated());
         return to_route(config('app.panel_prefix', 'panel') . '.redirects.index')
             ->with('success', __('entity_created', ['entity' => __('redirect')]));
+    }
+
+    public function create(): View
+    {
+        return view('redirect-manager::create');
     }
 
     public function edit(Redirect $redirect): View
