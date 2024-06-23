@@ -41,7 +41,8 @@ class ArticleController extends Controller
     public function store(ArticleRequest $request): RedirectResponse
     {
         $this->articleService->store($request);
-        return to_route(config('app.panel_prefix', 'panel') . '.articles.index')->with('success', __('entity_created', ['entity' => __('article')]));
+        return to_route(config('app.panel_prefix', 'panel') . '.articles.index')
+            ->with('success', __('entity_created', ['entity' => __('article')]));
     }
 
     public function edit(Article $article): View
@@ -54,7 +55,8 @@ class ArticleController extends Controller
     public function update(ArticleRequest $request, Article $article): RedirectResponse
     {
         $this->articleService->update($request, $article);
-        return to_route(config('app.panel_prefix', 'panel') . '.articles.index')->with('success', __('entity_edited', ['entity' => __('article')]));
+        return to_route(config('app.panel_prefix', 'panel') . '.articles.index')
+            ->with('success', __('entity_edited', ['entity' => __('article')]));
     }
 
     public function destroy(Article $article): RedirectResponse

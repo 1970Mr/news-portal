@@ -68,15 +68,16 @@ class StaticContentService
     public function getMenus(): Collection
     {
         return Cache::remember('menus', self::CACHE_TTL, static function () {
-            $mainMenus = Menu::mainMenus()->get()->pluck('id')->toArray();
-            $mainMenusWithChildren = Menu::mainMenusWithChildren()->get()->pluck('id')->toArray();
-            $categoryMenus = Menu::categoryMenus()->get()->pluck('id')->toArray();
-            $parentCategoryMenus = Menu::parentCategoryMenus()->get()->pluck('id')->toArray();
+            $mainMenus = Menu::mainMenus()->active()->get()->pluck('id')->toArray();
+            $mainMenusWithChildren = Menu::mainMenusWithChildren()->active()->get()->pluck('id')->toArray();
+            $categoryMenus = Menu::categoryMenus()->active()->get()->pluck('id')->toArray();
+            $parentCategoryMenus = Menu::parentCategoryMenus()->active()->get()->pluck('id')->toArray();
             $ignoreIds = array_merge($mainMenus, $mainMenusWithChildren, $categoryMenus, $parentCategoryMenus);
 
             $menus = Menu::with(['parent', 'children', 'category'])
                 ->whereIn('id', $ignoreIds)
                 ->latest('position')
+                ->active()
                 ->get();
 
             // Set limit for each category articles

@@ -20,8 +20,8 @@ class ArticleRequest extends FormRequest
             'tag_ids' => 'nullable|array',
             'tag_ids.*' => 'nullable|exists:tags,id',
             'editor_choice' => 'required|boolean',
-            'status' => 'required|boolean',
             'hotness' => 'required|bool',
+            'status' => 'required|boolean',
         ];
 
         if (strtolower($this->method()) === 'put') {
@@ -53,8 +53,8 @@ class ArticleRequest extends FormRequest
     {
         $this->merge([
             'editor_choice' => (bool)$this->editor_choice,
-            'status' => (bool)$this->status,
             'hotness' => (bool)$this->hotness,
+            'status' => (bool)$this->status,
         ]);
     }
 }

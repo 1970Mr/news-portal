@@ -43,7 +43,7 @@
                             </div>
                             <div class="form-group col-12">
                                 <label>محتوا <small>(ضروری)</small></label>
-                                <textarea id="tinymce-editor" name="content">{{ old('content') }}</textarea>
+                                <textarea id="tinymce-editor" name="content" required>{{ old('content') }}</textarea>
                             </div>
                             <div class="form-group relative col-lg-6">
                                 <label>تصویر شاخص <small>(ضروری)</small></label>

@@ -7,7 +7,7 @@
     tinymce.init({
         selector: '#tinymce-editor',
         plugins: 'lists advlist autolink link image charmap preview anchor searchreplace visualblocks visualchars code fullscreen insertdatetime media table code help wordcount accordion ' +
-            'emoticons directionality pagebreak',
+            'emoticons directionality pagebreak autoresize',
         toolbar: 'undo redo | formatselect | bold italic underline strikethrough | forecolor backcolor removeformat | alignleft aligncenter alignright alignjustify | ltr rtl | bullist numlist outdent indent | link image media | code preview',
         language: 'fa',
         license_key: 'gpl',

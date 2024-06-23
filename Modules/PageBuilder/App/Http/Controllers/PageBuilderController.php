@@ -6,10 +6,18 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Modules\PageBuilder\App\Http\Requests\PageBuilderRequest;
 use Modules\PageBuilder\App\Models\Page;
+use Modules\PageBuilder\App\Services\PageBuilderService;
 
 class PageBuilderController extends Controller
 {
+    public function __construct(
+        private readonly PageBuilderService $pageBuilderService
+    )
+    {
+    }
+
     public function index(): View
     {
         $pages = Page::query()->latest()->paginate(10);
@@ -21,12 +29,11 @@ class PageBuilderController extends Controller
         return view('page-builder::create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request): RedirectResponse
+    public function store(PageBuilderRequest $request): RedirectResponse
     {
-        //
+        $this->pageBuilderService->store($request);
+        return to_route(config('app.panel_prefix', 'panel') . '.pages.index')
+            ->with('success', __('entity_created', ['entity' => __('page')]));
     }
 
     /**
