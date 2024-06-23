@@ -19,7 +19,7 @@ class PageBuilderRequest extends FormRequest
 
         if (strtolower($this->method()) === 'put') {
             $rules['image'] = 'nullable' . $imageRules;
-            $rules['slug'] .= ',' . $this->route('article')->id;
+            $rules['slug'] .= ',' . $this->route('page')->id;
         }
 
         return $rules;

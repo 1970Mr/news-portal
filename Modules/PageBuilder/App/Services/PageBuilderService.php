@@ -25,4 +25,13 @@ class PageBuilderService
         $page->featured_image()->save($image);
         return $page;
     }
+
+    public function update(PageBuilderRequest $request, Page $page): Model
+    {
+        $data = $request->validated();
+        $data['user_id'] = Auth::id();
+        $page->update($data);
+        $this->imageService->uploadImageDuringUpdate($request, $page, $page->title);
+        return $page;
+    }
 }

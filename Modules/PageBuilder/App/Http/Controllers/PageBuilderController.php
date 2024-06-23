@@ -36,28 +36,16 @@ class PageBuilderController extends Controller
             ->with('success', __('entity_created', ['entity' => __('page')]));
     }
 
-    /**
-     * Show the specified resource.
-     */
-    public function show($id)
+    public function edit(Page $page): View
     {
-        return view('pagebuilder::show');
+        return view('page-builder::edit', compact('page'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($id)
+    public function update(PageBuilderRequest $request, Page $page): RedirectResponse
     {
-        return view('pagebuilder::edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, $id): RedirectResponse
-    {
-        //
+        $this->pageBuilderService->update($request, $page);
+        return to_route(config('app.panel_prefix', 'panel') . '.pages.index')
+            ->with('success', __('entity_edited', ['entity' => __('page')]));
     }
 
     /**
