@@ -59,4 +59,10 @@ class PageBuilderService
         $this->imageService->uploadImageDuringUpdate($request, $page, $page->title);
         return $page;
     }
+
+    public function destroy(Page $page): void
+    {
+        $this->imageService->destroyWithoutKeyConstraints($page->featured_image);
+        $page->delete();
+    }
 }

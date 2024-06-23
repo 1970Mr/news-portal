@@ -48,11 +48,10 @@ class PageBuilderController extends Controller
             ->with('success', __('entity_edited', ['entity' => __('page')]));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy($id)
+    public function destroy(Page $page): RedirectResponse
     {
-        //
+        $this->pageBuilderService->destroy($page);
+        return back()
+            ->with('success', __('entity_deleted', ['entity' => __('page')]));
     }
 }
