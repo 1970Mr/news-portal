@@ -18,9 +18,9 @@ class PageBuilderController extends Controller
     {
     }
 
-    public function index(): View
+    public function index(Request $request): View
     {
-        $pages = Page::query()->latest()->paginate(10);
+        $pages = $this->pageBuilderService->index($request);
         return view('page-builder::index', compact('pages'));
     }
 

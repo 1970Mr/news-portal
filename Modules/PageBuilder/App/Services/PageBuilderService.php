@@ -2,7 +2,10 @@
 
 namespace Modules\PageBuilder\App\Services;
 
+use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Modules\FileManager\App\Services\Image\ImageService;
 use Modules\PageBuilder\App\Http\Requests\PageBuilderRequest;
@@ -14,6 +17,28 @@ class PageBuilderService
         private readonly ImageService $imageService
     )
     {
+    }
+
+    public function index(Request $request): Paginator
+    {
+        $searchText = $request->get('query');
+        if ($searchText) {
+            $pages = $this->search($searchText);
+        } else {
+            $pages = Page::query()->latest()->paginate(10);
+        }
+        return $pages;
+    }
+
+    private function search(mixed $searchText): Paginator
+    {
+        return Page::search($searchText)->query(static function (Builder $query) use ($searchText) {
+            // Search in users
+            $query->orWhereHas('user', function ($q) use ($searchText) {
+                $q->where('full_name', 'like', "%{$searchText}%")
+                    ->orWhere('email', 'like', "%{$searchText}%");
+            });
+        })->latest()->paginate(10);
     }
 
     public function store(PageBuilderRequest $request): Model

@@ -9,12 +9,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
+use Laravel\Scout\Searchable;
 use Modules\FileManager\App\Traits\HasImage;
 use Modules\User\App\Models\User;
 
 class Page extends Model
 {
-    use HasImage;
+    use HasImage, Searchable;
 
     protected $fillable = [
         'title',
@@ -28,7 +29,17 @@ class Page extends Model
         'status' => 'boolean',
     ];
 
-    public function getUrl(): string
+    public function toSearchableArray(): array
+    {
+        return [
+            'id' => (int)$this->id,
+            'title' => $this->title,
+            'slug' => $this->slug,
+            'content' => $this->content,
+        ];
+    }
+
+    public function url(): string
     {
         return route('pages.show', ['slug' => $this->slug]);
     }
