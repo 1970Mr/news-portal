@@ -35,6 +35,11 @@ return [
     'MENU_UPDATE' => 'menu::update',
     'MENU_DESTROY' => 'menu::destroy',
 
+    'PAGE_INDEX' => 'page::index',
+    'PAGE_STORE' => 'page::store',
+    'PAGE_UPDATE' => 'page::update',
+    'PAGE_DESTROY' => 'page::destroy',
+
     'NEWSLETTER_INDEX' => 'newsletter::index',
     'NEWSLETTER_DESTROY' => 'newsletter::destroy',
 

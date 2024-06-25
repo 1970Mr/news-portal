@@ -4,7 +4,6 @@ namespace Modules\PageBuilder\App\Services;
 
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Modules\FileManager\App\Services\Image\ImageService;
@@ -41,23 +40,21 @@ class PageBuilderService
         })->latest()->paginate(10);
     }
 
-    public function store(PageBuilderRequest $request): Model
+    public function store(PageBuilderRequest $request): void
     {
         $data = $request->validated();
         $data['user_id'] = Auth::id();
         $page = Page::query()->create($data);
         $image = $this->imageService->store($request, altText: $page->title);
         $page->featured_image()->save($image);
-        return $page;
     }
 
-    public function update(PageBuilderRequest $request, Page $page): Model
+    public function update(PageBuilderRequest $request, Page $page): void
     {
         $data = $request->validated();
         $data['user_id'] = Auth::id();
         $page->update($data);
         $this->imageService->uploadImageDuringUpdate($request, $page, $page->title);
-        return $page;
     }
 
     public function destroy(Page $page): void

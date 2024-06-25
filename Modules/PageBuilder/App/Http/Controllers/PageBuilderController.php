@@ -16,6 +16,10 @@ class PageBuilderController extends Controller
         private readonly PageBuilderService $pageBuilderService
     )
     {
+        $this->middleware('can:' . config('permissions_list.PAGE_INDEX', false))->only('index');
+        $this->middleware('can:' . config('permissions_list.PAGE_STORE', false))->only('store');
+        $this->middleware('can:' . config('permissions_list.PAGE_UPDATE', false))->only('update');
+        $this->middleware('can:' . config('permissions_list.PAGE_DESTROY', false))->only('destroy');
     }
 
     public function index(Request $request): View
