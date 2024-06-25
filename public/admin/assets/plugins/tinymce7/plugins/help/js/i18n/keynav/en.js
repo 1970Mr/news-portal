@@ -2,7 +2,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.en',
 '<h1>Begin keyboard navigation</h1>\n' +
   '\n' +
   '<dl>\n' +
-  '  <dt>Focus the Menu bar</dt>\n' +
+  '  <dt>Focus the MenuBuilder bar</dt>\n' +
   '  <dd>Windows or Linux: Alt+F9</dd>\n' +
   '  <dd>macOS: &#x2325;F9</dd>\n' +
   '  <dt>Focus the Toolbar</dt>\n' +
@@ -30,7 +30,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.en',
   '<p>The <strong>Tab</strong> order of these UI sections is:</p>\n' +
   '\n' +
   '<ol>\n' +
-  '  <li>Menu bar</li>\n' +
+  '  <li>MenuBuilder bar</li>\n' +
   '  <li>Each toolbar group</li>\n' +
   '  <li>Sidebar</li>\n' +
   '  <li>Element path in the footer</li>\n' +

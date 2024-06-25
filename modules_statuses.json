@@ -20,7 +20,7 @@
     "Newsletter": true,
     "AdManager": true,
     "SEOManager": true,
-    "Menu": true,
+    "MenuBuilder": true,
     "UserActivity": true,
     "RedirectManager": true,
     "PageBuilder": true

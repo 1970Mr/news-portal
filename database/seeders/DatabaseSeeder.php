@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use Modules\Article\Database\Seeders\ArticleSeeder;
 use Modules\Category\Database\Seeders\CategorySeeder;
 use Modules\ContactUs\Database\Seeders\ContactInfoSeeder;
-use Modules\Menu\Database\Seeders\MenuSeeder;
+use Modules\MenuBuilder\Database\Seeders\MenuSeeder;
 use Modules\Role\Database\Seeders\PermissionSeeder;
 use Modules\Role\Database\Seeders\RoleSeeder;
 use Modules\Setting\Database\Seeders\AboutUsSeeder;

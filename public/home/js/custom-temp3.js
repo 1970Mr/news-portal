@@ -12,7 +12,7 @@
 	5. Video popup
 	6. Contact form
 	7. Back to top
-  
+
 */
 
 
@@ -22,14 +22,14 @@ jQuery(function($) {
 
 	/* ----------------------------------------------------------- */
 	/*  Fixed header
-	/* ----------------------------------------------------------- 
+	/* -----------------------------------------------------------
 
 
 	/* ----------------------------------------------------------- */
-	/*  Mobile Menu
+	/*  Mobile MenuBuilder
 	/* ----------------------------------------------------------- */
 
-	jQuery(".nav.navbar-nav li a").on("click", function() { 
+	jQuery(".nav.navbar-nav li a").on("click", function() {
 		jQuery(this).parent("li").find(".dropdown-menu").slideToggle();
 		jQuery(this).find("li i").toggleClass("fa-angle-down fa-angle-up");
 	});
@@ -193,7 +193,7 @@ jQuery(function($) {
 
 		});
 
-		
+
 
 	/* ----------------------------------------------------------- */
 	/*  Popup
@@ -206,7 +206,7 @@ jQuery(function($) {
 
 	  });
 
-	
+
 	/* ----------------------------------------------------------- */
 	/*  Contact form
 	/* ----------------------------------------------------------- */
@@ -271,7 +271,7 @@ jQuery(function($) {
 			 }, 800);
 			 return false;
 		});
-		
+
 		$('#back-to-top').tooltip('hide');
 
 

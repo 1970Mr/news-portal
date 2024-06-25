@@ -88,12 +88,22 @@ return [
             'title' => 'منو ساز',
             'icon' => 'icon-menu',
             'url' => route(config('app.panel_prefix', 'panel') . '.menus.index'),
-            'permissions' => config('permissions_list.TAG_INDEX', false),
+            'permissions' => config('permissions_list.MENU_INDEX', false),
             'active_routes' => [
                 config('app.panel_prefix', 'panel') . '.menus.create',
                 config('app.panel_prefix', 'panel') . '.menus.edit',
                 config('app.panel_prefix', 'panel') . '.menus.category-menu.create',
                 config('app.panel_prefix', 'panel') . '.menus.category-menu.edit',
+            ]
+        ],
+        'page' => [
+            'title' => 'صفحه ساز',
+            'icon' => 'icon-menu',
+            'url' => route(config('app.panel_prefix', 'panel') . '.pages.index'),
+            'permissions' => config('permissions_list.PAGE_INDEX', false),
+            'active_routes' => [
+                config('app.panel_prefix', 'panel') . '.pages.create',
+                config('app.panel_prefix', 'panel') . '.pages.edit',
             ]
         ],
         'ads' => [

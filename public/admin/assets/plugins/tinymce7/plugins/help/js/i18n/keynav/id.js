@@ -2,7 +2,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.id',
 '<h1>Memulai navigasi keyboard</h1>\n' +
   '\n' +
   '<dl>\n' +
-  '  <dt>Fokus pada bilah Menu</dt>\n' +
+  '  <dt>Fokus pada bilah MenuBuilder</dt>\n' +
   '  <dd>Windows atau Linux: Alt+F9</dd>\n' +
   '  <dd>macOS: &#x2325;F9</dd>\n' +
   '  <dt>Fokus pada Bilah Alat</dt>\n' +

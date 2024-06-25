@@ -19,7 +19,7 @@ Welcome to the News Portal, a comprehensive and modular news website built with 
     - [Profile](#profile)
     - [Auth](#auth)
     - [Role](#role)
-    - [Menu](#menu)
+    - [MenuBuilder](#menubuilder)
     - [Home](#home)
     - [SEOManager](#seomanager)
     - [RedirectManager](#redirectmanager)
@@ -263,9 +263,9 @@ The Role module manages user roles and permissions.
     - All site sections and operations are permission-based
     - Assign permissions to roles for comprehensive access control
 
-### Menu
+### MenuBuilder
 
-The Menu module manages the creation and organization of site menus.
+The MenuBuilder module manages the creation and organization of site menus.
 
 - **Features:**
     - Create and manage menus

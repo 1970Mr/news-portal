@@ -2,7 +2,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.ms',
 '<h1>Mulakan navigasi papan kekunci</h1>\n' +
   '\n' +
   '<dl>\n' +
-  '  <dt>Fokus bar Menu</dt>\n' +
+  '  <dt>Fokus bar MenuBuilder</dt>\n' +
   '  <dd>Windows atau Linux: Alt+F9</dd>\n' +
   '  <dd>macOS: &#x2325;F9</dd>\n' +
   '  <dt>Fokus Bar Alat</dt>\n' +

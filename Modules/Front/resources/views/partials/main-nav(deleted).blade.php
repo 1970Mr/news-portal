@@ -60,7 +60,7 @@
                                                     </div><!-- Tab pane 1 end -->
                                                 @endforeach
                                             </div><!-- tab content -->
-                                        </div><!-- Menu tab end -->
+                                        </div><!-- MenuBuilder tab end -->
                                     </div><!-- Mega menu end -->
                                 </li><!-- Tab menu end -->
                             @endforeach
@@ -162,4 +162,4 @@
         </div><!--/ Row end -->
     </div><!--/ Container end -->
 
-</div><!-- Menu wrapper end -->
+</div><!-- MenuBuilder wrapper end -->

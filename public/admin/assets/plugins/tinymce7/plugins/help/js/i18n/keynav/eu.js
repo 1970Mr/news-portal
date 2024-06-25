@@ -30,7 +30,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.eu',
   '<p>EIko atal hauen <strong>Tabuladorea</strong> da:</p>\n' +
   '\n' +
   '<ol>\n' +
-  '  <li>Menu-barra</li>\n' +
+  '  <li>MenuBuilder-barra</li>\n' +
   '  <li>Tresna-barraren talde bakoitza</li>\n' +
   '  <li>Alboko barra</li>\n' +
   '  <li>Orri-oineko elementuaren bidea</li>\n' +
