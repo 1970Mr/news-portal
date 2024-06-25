@@ -58,7 +58,11 @@
                                 <th>کاربر</th>
                                 <th>وضعیت</th>
                                 <th>تاریخ ایجاد</th>
-                                @canany([config('permissions_list.PAGE_UPDATE'), config('permissions_list.PAGE_DESTROY')])
+                                @canany([
+                                    config('permissions_list.PAGE_UPDATE'),
+                                    config('permissions_list.PAGE_DESTROY'),
+                                    config('permissions_list.SEO_MANAGEMENT', false)
+                                ])
                                     <th>عملیات</th>
                                 @endcanany
                             </tr>
@@ -78,10 +82,18 @@
                                     <td class="ltr text-right nowrap">{{ jalalian()->forge($page->created_at)->format(config('common.datetime_format')) }}</td>
                                     @canany([
                                         config('permissions_list.PAGE_UPDATE'),
-                                        config('permissions_list.PAGE_DESTROY')
+                                        config('permissions_list.PAGE_DESTROY'),
+                                        config('permissions_list.SEO_MANAGEMENT', false)
                                     ])
                                         <td>
                                             <div class="d-flex gap-2">
+                                                <!-- Copy Link Button -->
+                                                <button class="btn btn-sm btn-secondary btn-icon round d-flex justify-content-center align-items-center copy-link-button"
+                                                        data-url="{{ $page->url() }}"
+                                                        rel="tooltip" aria-label="کپی لینک" data-bs-original-title="کپی لینک">
+                                                    <i class="far fa-copy"></i>
+                                                </button>
+
                                                 @can(config('permissions_list.PAGE_UPDATE', false))
                                                     <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
                                                        rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش" href="{{ route(config('app.panel_prefix', 'panel') . '.pages.edit',
@@ -94,12 +106,9 @@
                                                     <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.pages.destroy', $page->id)"/>
                                                 @endcan
 
-                                                    <!-- Copy Link Button -->
-                                                    <button class="btn btn-sm btn-secondary btn-icon round d-flex justify-content-center align-items-center copy-link-button"
-                                                            data-url="{{ $page->url() }}"
-                                                            rel="tooltip" aria-label="کپی لینک" data-bs-original-title="کپی لینک">
-                                                        <i class="far fa-copy"></i>
-                                                    </button>
+                                                @can(config('permissions_list.SEO_MANAGEMENT', false))
+                                                    <x-seo-manager-seo-settings-button :route="route(config('app.panel_prefix', 'panel') . '.pages.seo-settings', $page->id)"/>
+                                                @endcan
                                             </div>
                                         </td>
                                     @endcanany

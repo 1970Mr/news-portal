@@ -11,11 +11,12 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
 use Laravel\Scout\Searchable;
 use Modules\FileManager\App\Traits\HasImage;
+use Modules\SEOManager\App\Traits\SEOAble;
 use Modules\User\App\Models\User;
 
 class Page extends Model
 {
-    use HasImage, Searchable;
+    use HasImage, Searchable, SEOAble;
 
     protected $fillable = [
         'title',

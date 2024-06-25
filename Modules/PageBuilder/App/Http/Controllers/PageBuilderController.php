@@ -58,4 +58,14 @@ class PageBuilderController extends Controller
         return back()
             ->with('success', __('entity_deleted', ['entity' => __('page')]));
     }
+
+    public function SEOSettings(Page $page): view
+    {
+        $nextUrl = config('app.panel_prefix', 'panel') . '.pages.index';
+        $title = $page->title;
+        $pageTitle = __('page') . ' ' . $title;
+        // Optional placeholder
+        $canonicalUrl = $page->url();
+        return view('seo-manager::seo-settings', compact(['nextUrl', 'title', 'canonicalUrl', 'pageTitle']) + ['model' => $page]);
+    }
 }
