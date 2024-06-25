@@ -4,6 +4,7 @@ namespace Modules\SEOManager\App\Services\Front;
 
 use Modules\Article\App\Models\Article;
 use Modules\Category\App\Models\Category;
+use Modules\PageBuilder\App\Models\Page;
 use Modules\Tag\App\Models\Tag;
 use Modules\User\App\Models\User;
 
@@ -18,6 +19,7 @@ class SEOService
         protected CategoriesPageSEOService $categoriesPageSEOService,
         protected TagPageSEOService        $tagPageSEOService,
         protected SearchPageSEOService     $searchPageSEOService,
+        protected PageSEOService           $pageSEOService,
     )
     {
     }
@@ -65,5 +67,10 @@ class SEOService
     public function setSearchPageSEO(string $searchText): void
     {
         $this->searchPageSEOService->setSearchPageSEO($searchText);
+    }
+
+    public function setPageSEO(Page $page): void
+    {
+        $this->pageSEOService->setPageSEO($page);
     }
 }
