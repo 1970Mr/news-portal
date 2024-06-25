@@ -31,6 +31,10 @@ th, .reply, .status, .subscribed-at {
     white-space: nowrap;
 }
 
+.swal2-container * {
+    font-family: 'IranSans', Arial, sans-serif;
+}
+
 @media (max-width: 768px) {
     .suggest-default-value {
         font-size: .8rem;

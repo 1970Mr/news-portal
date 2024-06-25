@@ -41,7 +41,7 @@ class Page extends Model
 
     public function url(): string
     {
-        return route('pages.show', ['slug' => $this->slug]);
+        return route('pages.show', ['page' => $this->slug]);
     }
 
     public function scopeActive(Builder $query): void
