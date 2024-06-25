@@ -49,6 +49,11 @@ class Page extends Model
         $query->where('status', true);
     }
 
+    public function isActive(): bool
+    {
+        return $this->status === true;
+    }
+
     public function summary(int $limit = 120): Stringable
     {
         $cleanedContent = str_replace('&nbsp;', ' ', $this->content);

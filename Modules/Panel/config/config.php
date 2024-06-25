@@ -98,7 +98,7 @@ return [
         ],
         'page' => [
             'title' => 'صفحه ساز',
-            'icon' => 'icon-menu',
+            'icon' => 'fas fa-laptop-file',
             'url' => route(config('app.panel_prefix', 'panel') . '.pages.index'),
             'permissions' => config('permissions_list.PAGE_INDEX', false),
             'active_routes' => [

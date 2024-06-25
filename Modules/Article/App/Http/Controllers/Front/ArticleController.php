@@ -16,15 +16,13 @@ class ArticleController extends Controller
     {
     }
 
-    // For article
-
+    // For news
     public function showNews(Request $request, string $date, Article $article): View
     {
         return $this->show($article, $request);
     }
 
-    // For news
-
+    // For article
     public function show(Article $article, Request $request): View
     {
         $this->seoService->setArticlePageSEO($article);
