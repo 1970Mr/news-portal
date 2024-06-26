@@ -20,6 +20,7 @@ Welcome to the News Portal, a comprehensive and modular news website built with 
     - [Auth](#auth)
     - [Role](#role)
     - [MenuBuilder](#menubuilder)
+    - [PageBuilder](#pagebuilder)
     - [Home](#home)
     - [SEOManager](#seomanager)
     - [RedirectManager](#redirectmanager)
@@ -57,13 +58,16 @@ Welcome to the News Portal, a comprehensive and modular news website built with 
 - **Hot Content Tracking:** Mark articles and tags as "hot" to highlight trending content.
 - **Contact Form Management:** Manage incoming messages from users through the contact form.
 - **User Activity Tracking:** Track user interactions, requests, and activities for comprehensive insights into user engagement and site traffic patterns.
+- **Page Builder:** Create and manage custom pages with ease using a flexible and intuitive interface.
+
+Here is the updated section for the requirements with Laravel 11 and the necessary PHP version:
 
 ## Requirements
 
-- PHP >= 8.1
+- PHP >= 8.2
 - Composer
 - MySQL
-- Laravel >= 10.x
+- Laravel >= 11.x
 
 ## Installation
 
@@ -277,6 +281,17 @@ The MenuBuilder module manages the creation and organization of site menus.
         - `category`: Menu items for specific categories
         - `parent_category`: Menu items for parent categories
 
+### PageBuilder
+
+The PageBuilder module enables the creation and management of custom pages with an intuitive and flexible interface.
+
+- **Features:**
+    - Create custom pages
+    - Manage the layout and content of pages
+    - Support for various content blocks (text, images, videos, etc.)
+    - Preview pages before publishing
+    - SEO-friendly page settings
+
 ### Home
 
 The Home module manages the homepage content.
@@ -285,7 +300,9 @@ The Home module manages the homepage content.
     - Configurable sections for featured articles, latest news, and more
     - Customizable layout
 
-### SEOManager
+### SEO
+
+Manager
 
 The SEOManager module handles SEO-related settings and optimizations.
 
