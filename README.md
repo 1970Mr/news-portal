@@ -60,14 +60,12 @@ Welcome to the News Portal, a comprehensive and modular news website built with 
 - **User Activity Tracking:** Track user interactions, requests, and activities for comprehensive insights into user engagement and site traffic patterns.
 - **Page Builder:** Create and manage custom pages with ease using a flexible and intuitive interface.
 
-Here is the updated section for the requirements with Laravel 11 and the necessary PHP version:
-
 ## Requirements
 
-- PHP >= 8.2
+- PHP >= 8.1
 - Composer
 - MySQL
-- Laravel >= 11.x
+- Laravel >= 10.x
 
 ## Installation
 
