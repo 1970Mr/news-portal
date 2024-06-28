@@ -3,7 +3,6 @@
 namespace Modules\FileManager\App\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
@@ -15,9 +14,6 @@ class Image extends Model
     use Searchable;
 
     public const ALL = 'all';
-
-    use HasFactory;
-
     public const MY_IMAGE = 'my_images';
     public const OTHER_USERS_IMAGE = 'other_users_images';
     protected $fillable = [
@@ -27,6 +23,7 @@ class Image extends Model
         'imageable_id',
         'imageable_type',
     ];
+
     protected $appends = ['user_full_name'];
 
     public static function filters(): array

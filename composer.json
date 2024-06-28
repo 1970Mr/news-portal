@@ -22,6 +22,7 @@
         "spatie/laravel-feed": "^4.4",
         "spatie/laravel-honeypot": "^4.5",
         "spatie/laravel-markdown": "^2.5",
+        "spatie/laravel-medialibrary": "^11.7",
         "spatie/laravel-permission": "^6.4",
         "spatie/laravel-sitemap": "^7.2",
         "torann/geoip": "^3.0"
