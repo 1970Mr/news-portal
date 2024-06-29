@@ -59,10 +59,6 @@
                                 </div><!-- /.input-group -->
                                 <div class="help-block"></div>
                             </div>
-                            <div class="form-group col-lg-6">
-                                <label for="name">نام ویدئو <small>(ضروری)</small></label>
-                                <input id="name" class="form-control" name="name" type="text" required value="{{ old('name') }}">
-                            </div>
                             <div class="form-group">
                                 <div class="col-sm-6 col-sm-offset-4 mx-auto">
                                     <button class="btn btn-success btn-block">

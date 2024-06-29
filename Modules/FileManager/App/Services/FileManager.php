@@ -4,15 +4,13 @@ namespace Modules\FileManager\App\Services;
 
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
-use Modules\FileManager\App\Traits\FileManager;
+use Illuminate\Support\Str;
 
 class FileManagerService
 {
-    use FileManager;
-
-    public static function upload(UploadedFile $file): false|string
+    public static function upload(UploadedFile $file, string $disk = 'public'): false|string
     {
-        return Storage::disk('public')->putFileAs(
+        return Storage::disk($disk)->putFileAs(
             self::generateFilePath(),
             $file,
             self::generateFilename($file)
@@ -33,14 +31,14 @@ class FileManagerService
         );
     }
 
-    public static function delete($filePath): bool
+    public static function delete(string $filePath): bool
     {
         if (Storage::disk('public')->exists($filePath))
             return Storage::disk('public')->delete($filePath);
         return false;
     }
 
-    public static function replaceFile(UploadedFile $newFile, $filePath): false|string
+    public static function replaceFile(UploadedFile $newFile, string $filePath): false|string
     {
         $filePathWithoutName = pathinfo($filePath, PATHINFO_DIRNAME);
         $fileBaseName = pathinfo($filePath, PATHINFO_BASENAME);
@@ -49,6 +47,22 @@ class FileManagerService
             $newFile,
             $fileBaseName
         );
+    }
+
+    public static function generateFilename(UploadedFile $file): string
+    {
+        $filename = $file->getClientOriginalName();
+        if (strlen($filename) > 170) {
+            $extension = $file->getClientOriginalExtension();
+            $basename = substr($filename, 0, 150);
+            return $basename . '.' . $extension;
+        }
+        return $filename;
+    }
+
+    public static function generateFilePath($prefix = 'images'): string
+    {
+        return "$prefix/" . now()->format('Y/m/d') . Str::uuid();
     }
 
     public static function getReadableSize(?int $size): string

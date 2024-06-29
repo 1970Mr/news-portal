@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->integer('duration')->nullable()->comment('Duration in seconds');
             $table->nullableMorphs('videoable');
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
