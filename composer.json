@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.8",
         "matomo/device-detector": "^6.3",
         "morilog/jalali": "3.*",
+        "pbmedia/laravel-ffmpeg": "^8.5",
         "realrashid/sweet-alert": "^7.1",
         "rtconner/laravel-likeable": "^3.2",
         "spatie/laravel-feed": "^4.4",

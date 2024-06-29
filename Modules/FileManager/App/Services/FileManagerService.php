@@ -50,4 +50,18 @@ class FileManagerService
             $fileBaseName
         );
     }
+
+    public static function getReadableSize(?int $size): string
+    {
+        if (is_null($size)) {
+            return __('unknown');
+        }
+
+        $units = ['B', 'KB', 'MB', 'GB', 'TB'];
+        $base = 1024;
+        $i = floor(log($size, $base));
+        $readableSize = round($size / ($base ** $i), 2);
+
+        return $readableSize . ' ' . $units[$i];
+    }
 }

@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('duration')->nullable()->comment('Duration in seconds');
-            $table->string('format')->nullable();
-            $table->string('thumbnail')->nullable();
             $table->nullableMorphs('videoable');
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
             $table->timestamps();
