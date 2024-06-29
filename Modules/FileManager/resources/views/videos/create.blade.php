@@ -46,18 +46,23 @@
                                 </div><!-- /.input-group -->
                                 <div class="help-block"></div>
                             </div>
+                            <div class="form-group relative col-lg-6">
+                                <input type="file" class="form-control" name="thumbnail">
+                                <label>تصویر بندانگشتی</label>
+                                <div class="input-group round">
+                                    <input type="text" class="form-control file-input" placeholder="برای آپلود کلیک کنید">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-success">
+                                            <i class="icon-picture"></i>
+                                            آپلود تصویر</button>
+                                    </span>
+                                </div><!-- /.input-group -->
+                                <div class="help-block"></div>
+                            </div>
                             <div class="form-group col-lg-6">
                                 <label for="name">نام ویدئو <small>(ضروری)</small></label>
                                 <input id="name" class="form-control" name="name" type="text" required value="{{ old('name') }}">
                             </div>
-{{--                            <div class="form-group col-lg-6">--}}
-{{--                                <label for="format">فرمت</label>--}}
-{{--                                <input id="format" class="form-control" name="format" type="text" value="{{ old('format') }}">--}}
-{{--                            </div>--}}
-{{--                            <div class="form-group col-lg-6">--}}
-{{--                                <label for="thumbnail">تصویر بندانگشتی</label>--}}
-{{--                                <input type="file" class="form-control" name="thumbnail" accept="image/*">--}}
-{{--                            </div>--}}
                             <div class="form-group">
                                 <div class="col-sm-6 col-sm-offset-4 mx-auto">
                                     <button class="btn btn-success btn-block">

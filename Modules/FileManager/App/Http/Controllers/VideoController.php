@@ -6,11 +6,16 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Modules\FileManager\App\Http\Requests\VideoRequest;
 use Modules\FileManager\App\Models\Video;
 use Modules\FileManager\App\Services\Video\VideoService;
 
 class VideoController extends Controller
 {
+    public function __construct(private readonly VideoService $videoService)
+    {
+    }
+
     public function index(): View
     {
         $videos = Video::query()->latest()->paginate(10);
@@ -22,10 +27,11 @@ class VideoController extends Controller
         return view('file-manager::videos.create');
     }
 
-    public function store(Request $request, VideoService $videoService): RedirectResponse
+    public function store(VideoRequest $request): RedirectResponse
     {
-        $videoService->storeVideo($request);
-        return redirect()->route(config('app.panel_prefix', 'panel') . '.videos.index')->with('success', 'ویدئو با موفقیت ایجاد شد.');
+        $this->videoService->storeVideo($request);
+        return redirect()->route(config('app.panel_prefix', 'panel') . '.videos.index')
+            ->with('success', __('entity_created', ['entity' => __('video')]));
     }
 
     /**

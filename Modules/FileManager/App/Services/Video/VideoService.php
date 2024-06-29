@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Modules\FileManager\App\Http\Requests\VideoRequest;
 use Modules\FileManager\App\Models\Video;
 use ProtoneMedia\LaravelFFMpeg\Support\FFMpeg;
 
@@ -57,21 +58,11 @@ class VideoService
         $model->videos()->find($video->id)->delete();
     }
 
-    public function storeVideo(Request $request): Model
+    public function storeVideo(VideoRequest $request): Model
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'format' => 'nullable|string|max:255',
-            'video' => 'required|file|mimes:mp4,mov,ogg,qt|max:20000',
-            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
+        $video = Video::query()->create($request->validated());
 
-        $video = new Video();
-        $video->name = $request->get('name');
-        $video->user_id = Auth::id();
-        $video->save();
-
-        $video->addMediaFromRequest('video')
+        $media = $video->addMediaFromRequest('video')
             ->toMediaCollection('videos');
 
         if ($request->hasFile('thumbnail')) {
@@ -79,6 +70,13 @@ class VideoService
                 ->toMediaCollection('thumbnails');
         }
 
+        // Calculate video duration
+        $videoPath = $media->id . '/' . $media->file_name;
+        $ffmpeg = FFMpeg::fromDisk('media_videos')->open($videoPath);
+        $durationInSeconds = $ffmpeg->getDurationInSeconds();
+
+        // Save the duration in the video model
+        $video->update(['duration' => $durationInSeconds]);
         return $video;
     }
 }
