@@ -58,5 +58,6 @@
     "destination_url": "URL مقصد",
     "status_code": "کد وضعیت",
     "page": "صفحه",
-    "video": "ویدئو"
+    "video": "ویدئو",
+    "thumbnail": "تصویر بندانگشتی"
 }

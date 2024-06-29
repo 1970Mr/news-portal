@@ -51,4 +51,13 @@ class VideoController extends Controller
         $this->videoService->destroy($video);
         return back()->with('success', __('entity_deleted', ['entity' => __('video')]));
     }
+
+    public function deleteThumbnail(Video $video): RedirectResponse
+    {
+        if ($video->hasMedia('thumbnails')) {
+            $video->clearMediaCollection('thumbnails');
+            return back()->with('success', __('entity_deleted', ['entity' => __('thumbnail')]));
+        }
+        return back()->with('info', __('file-manager::messages.There is no personal thumbnail!'));
+    }
 }
