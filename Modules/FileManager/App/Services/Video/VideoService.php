@@ -58,7 +58,7 @@ class VideoService
         $model->videos()->find($video->id)->delete();
     }
 
-    public function storeVideo(VideoRequest $request): Model
+    public function store(VideoRequest $request): Model
     {
         $video = Video::query()->create($request->validated());
 
@@ -78,5 +78,12 @@ class VideoService
         // Save the duration in the video model
         $video->update(['duration' => $durationInSeconds]);
         return $video;
+    }
+
+    public function destroy(Video $video): void
+    {
+        $video->clearMediaCollection('videos');
+        $video->clearMediaCollection('thumbnails');
+        $video->delete();
     }
 }

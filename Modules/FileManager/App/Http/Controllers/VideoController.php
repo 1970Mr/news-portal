@@ -29,7 +29,7 @@ class VideoController extends Controller
 
     public function store(VideoRequest $request): RedirectResponse
     {
-        $this->videoService->storeVideo($request);
+        $this->videoService->store($request);
         return redirect()->route(config('app.panel_prefix', 'panel') . '.videos.index')
             ->with('success', __('entity_created', ['entity' => __('video')]));
     }
@@ -58,11 +58,9 @@ class VideoController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy($id)
+    public function destroy(Video $video): RedirectResponse
     {
-        //
+        $this->videoService->destroy($video);
+        return back()->with('success', __('entity_deleted', ['entity' => __('video')]));
     }
 }
