@@ -8,7 +8,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Modules\FileManager\App\Models\Image;
-use Modules\FileManager\App\Services\FileManagerService;
+use Modules\FileManager\App\Services\FileManager;
 use Modules\Role\App\Models\Role;
 use Modules\User\App\Exceptions\UserCreationFailedException;
 use Modules\User\App\Models\User;
@@ -53,7 +53,7 @@ class UserHelper
         $defaultImagePath = config('user.default_profile_picture.file_path');
         $uploadedFile = new UploadedFile($defaultImagePath, basename($defaultImagePath));
         $defaultAltText = 'Default Profile Picture';
-        $uploadedFilePath = FileManagerService::uploadFromFile($uploadedFile);
+        $uploadedFilePath = FileManager::uploadFromFile($uploadedFile);
         return Image::query()->create([
             'file_path' => $uploadedFilePath,
             'alt_text' => $defaultAltText,

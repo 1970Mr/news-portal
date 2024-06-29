@@ -3,12 +3,12 @@
 namespace Modules\FileManager\App\Observers;
 
 use Modules\FileManager\App\Models\Image;
-use Modules\FileManager\App\Services\FileManagerService;
+use Modules\FileManager\App\Services\FileManager;
 
 class ImageObserver
 {
     public function deleted(Image $image): void
     {
-        FileManagerService::delete($image->file_path);
+        FileManager::delete($image->file_path);
     }
 }

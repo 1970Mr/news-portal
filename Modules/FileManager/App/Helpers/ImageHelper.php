@@ -6,7 +6,7 @@ use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
 use Modules\FileManager\App\Models\Image;
-use Modules\FileManager\App\Services\FileManagerService;
+use Modules\FileManager\App\Services\FileManager;
 
 class ImageHelper
 {
@@ -18,7 +18,7 @@ class ImageHelper
             throw new Exception("Default image file not found: {$defaultImagePath}");
         }
         $uploadedFile = new UploadedFile($defaultImagePath, basename($defaultImagePath));
-        $uploadedFilePath = FileManagerService::uploadFromFile($uploadedFile);
+        $uploadedFilePath = FileManager::uploadFromFile($uploadedFile);
         if (!$uploadedFilePath) {
             throw new Exception("Failed to upload default image.");
         }

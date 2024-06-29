@@ -6,7 +6,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-class FileManagerService
+class FileManager
 {
     public static function upload(UploadedFile $file, string $disk = 'public'): false|string
     {

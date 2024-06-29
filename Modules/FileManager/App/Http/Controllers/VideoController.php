@@ -30,32 +30,20 @@ class VideoController extends Controller
     public function store(VideoRequest $request): RedirectResponse
     {
         $this->videoService->store($request);
-        return redirect()->route(config('app.panel_prefix', 'panel') . '.videos.index')
+        return to_route(config('app.panel_prefix', 'panel') . '.videos.index')
             ->with('success', __('entity_created', ['entity' => __('video')]));
     }
 
-    /**
-     * Show the specified resource.
-     */
-    public function show($id)
+    public function edit(Video $video)
     {
-        return view('filemanager::show');
+        return view('file-manager::videos.edit', compact('video'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($id)
+    public function update(VideoRequest $request, Video $video): RedirectResponse
     {
-        return view('filemanager::edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, $id): RedirectResponse
-    {
-        //
+        $this->videoService->update($request, $video);
+        return to_route(config('app.panel_prefix', 'panel') . '.videos.index')
+            ->with('success', __('entity_edited', ['entity' => __('video')]));
     }
 
     public function destroy(Video $video): RedirectResponse

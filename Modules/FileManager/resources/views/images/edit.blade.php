@@ -28,7 +28,7 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="image-create-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.images.update', $image->id) }}" method="post"
+                    <form id="main-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.images.update', $image->id) }}" method="post"
                           enctype="multipart/form-data">
                         @csrf
                         @method('put')
@@ -93,6 +93,6 @@
                 }
             }
         });
-        $("#image-create-form").validate();
+        $("#main-form").validate();
     </script>
 @endpush

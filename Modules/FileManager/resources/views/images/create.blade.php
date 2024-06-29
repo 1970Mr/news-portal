@@ -28,7 +28,7 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="image-create-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.images.store') }}" method="post" enctype="multipart/form-data">
+                    <form id="main-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.images.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <x-common-error-messages/>
 
@@ -85,6 +85,6 @@
                 }
             }
         });
-        $("#image-create-form").validate();
+        $("#main-form").validate();
     </script>
 @endpush

@@ -5,7 +5,7 @@ namespace Modules\FileManager\App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
-use Modules\FileManager\App\Services\FileManagerService;
+use Modules\FileManager\App\Services\FileManager;
 use Modules\User\App\Models\User;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -17,7 +17,6 @@ class Video extends Model implements HasMedia
     use InteractsWithMedia;
 
     protected $fillable = [
-        'name',
         'duration',
         'user_id',
         'videoable_id',
@@ -100,7 +99,7 @@ class Video extends Model implements HasMedia
     {
         $size = $this->getFirstMedia('videos')?->size;
         return Attribute::make(
-            get: fn() => FileManagerService::getReadableSize($size),
+            get: fn() => FileManager::getReadableSize($size),
         );
     }
 

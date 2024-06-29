@@ -11,7 +11,6 @@ class VideoRequest extends FormRequest
     {
         $video_rule = 'file|mimes:mp4,mov,mkv,ogg,qt|max:20000';
         $rules = [
-            'name' => 'required|string|max:255',
             'video' => "required|$video_rule",
             'thumbnail' => 'nullable|image|max:2048',
             'user_id' => 'required|numeric',
