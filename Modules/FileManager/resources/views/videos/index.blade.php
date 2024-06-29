@@ -77,6 +77,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>تصویر بندانگشتی</th>
+                                <th>نام فایل</th>
                                 <th>مدت زمان</th>
                                 <th>سایز</th>
                                 <th>فرمت</th>
@@ -95,6 +96,7 @@
                                         <td>
                                             <img src="{{ $video->getThumbnailUrl() }}" alt="{{ $video->name }}" width="100px" style="max-height: 90px">
                                         </td>
+                                        <td>{{ $video->name }}</td>
                                         <td>{{ $video->duration }}</td>
                                         <td class="ltr">{{ $video->video_size }}</td>
                                         <td>{{ $video->video_type }}</td>
