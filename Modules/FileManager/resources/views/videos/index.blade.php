@@ -105,6 +105,8 @@
                                         {{--                                        @can('operations', $videoClassName)--}}
                                         <td>
                                             <div class="d-flex gap-2">
+                                                <x-common-copy-link-button :url="$video->url"/>
+
                                                 @can('update', $video)
                                                     <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
                                                        rel="tooltip" aria-label="ویرایش" data-bs-original-title="ویرایش"

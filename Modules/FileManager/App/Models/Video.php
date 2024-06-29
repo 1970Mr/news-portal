@@ -24,6 +24,7 @@ class Video extends Model implements HasMedia
     ];
 
     protected $appends = [
+        'url',
         'name',
         'thumbnail_url',
         'video_size',
@@ -86,6 +87,13 @@ class Video extends Model implements HasMedia
     {
         return Attribute::make(
             get: fn($value) => $this->getFirstMedia('videos')->name,
+        );
+    }
+
+    protected function url(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => $this->getFirstMedia('videos')->getUrl(),
         );
     }
 

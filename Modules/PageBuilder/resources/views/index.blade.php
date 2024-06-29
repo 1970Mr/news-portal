@@ -87,12 +87,7 @@
                                     ])
                                         <td>
                                             <div class="d-flex gap-2">
-                                                <!-- Copy Link Button -->
-                                                <button class="btn btn-sm btn-secondary btn-icon round d-flex justify-content-center align-items-center copy-link-button"
-                                                        data-url="{{ $page->url() }}"
-                                                        rel="tooltip" aria-label="کپی لینک" data-bs-original-title="کپی لینک">
-                                                    <i class="far fa-copy"></i>
-                                                </button>
+                                                <x-common-copy-link-button :url="$page->url()"/>
 
                                                 @can(config('permissions_list.PAGE_UPDATE', false))
                                                     <a class="btn btn-sm btn-info btn-icon round d-flex justify-content-center align-items-center"
@@ -126,32 +121,3 @@
         </div>
     </div>
 @endsection
-
-@push('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            document.querySelectorAll('.copy-link-button').forEach(button => {
-                button.addEventListener('click', function () {
-                    const url = this.getAttribute('data-url');
-                    navigator.clipboard.writeText(url).then(() => {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'کپی شد!',
-                            text: 'لینک صفحه با موفقیت کپی شد.',
-                            confirmButtonText: 'باشه'
-                        });
-                    }).catch(err => {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'خطا!',
-                            text: 'کپی کردن لینک با خطا مواجه شد.',
-                            confirmButtonText: 'باشه'
-                        });
-                    });
-                });
-            });
-        });
-    </script>
-@endpush
-
