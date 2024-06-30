@@ -32,8 +32,7 @@
                                         @method('DELETE')
                                         @csrf
                                     </form>
-                                    <a onclick="event.preventDefault(); document.querySelector('#deleteForm{{ $comment->id }}').submit()" class="comment-delete" style="margin-right: 1rem;
-                                    cursor: pointer">حذف</a>
+                                    <a onclick="event.preventDefault(); document.querySelector('#deleteForm{{ $comment->id }}').submit()" class="comment-delete">حذف</a>
                                 @endcanany
                             </div>
 

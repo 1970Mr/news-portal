@@ -148,6 +148,14 @@ li.rss, .with-color.fa-rss {
     clear: both;
 }
 
+.comment-reply, .comment-edit, .comment-delete {
+    cursor: pointer;
+}
+
+.comment-delete {
+    margin-right: 1rem;
+}
+
 @media (max-width: 768px) {
     .second-content-row {
         padding: 0 2rem;
