@@ -36,38 +36,43 @@
                                 <div class="paper-ripple__waves"></div>
                             </div>
                         </a>
-                        {{--                        @can('store', $videoClassName)--}}
-                        <a class="btn btn-sm btn-default btn-round bg-green text-white" rel="tooltip"
-                           href="{{ route(config('app.panel_prefix', 'panel') . '.videos.create') }}"
-                           aria-label="ایجاد ویدئو جدید" data-bs-original-title="ایجاد ویدئو جدید">
-                            <i class="icon-plus d-flex justify-content-center align-items-center"></i>
-                            <div class="paper-ripple">
-                                <div class="paper-ripple__background"></div>
-                                <div class="paper-ripple__waves"></div>
-                            </div>
-                        </a>
-                        {{--                        @endcan--}}
+                        @can('store', $videoClassName)
+                            <a class="btn btn-sm btn-default btn-round bg-green text-white" rel="tooltip"
+                               href="{{ route(config('app.panel_prefix', 'panel') . '.videos.create') }}"
+                               aria-label="ایجاد ویدئو جدید" data-bs-original-title="ایجاد ویدئو جدید">
+                                <i class="icon-plus d-flex justify-content-center align-items-center"></i>
+                                <div class="paper-ripple">
+                                    <div class="paper-ripple__background"></div>
+                                    <div class="paper-ripple__waves"></div>
+                                </div>
+                            </a>
+                        @endcan
 
                         <!-- Filter box -->
-                        {{--                        <div class="btn-group" rel="tooltip"--}}
-                        {{--                             aria-label="فیلتر ویدئوها" data-bs-original-title="فیلتر ویدئوها">--}}
-                        {{--                            <button type="button" class="btn btn-sm btn-default btn-round btn-info text-white dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="true">--}}
-                        {{--                                <i class=" fas fa-filter d-flex justify-content-center align-items-center"></i>--}}
-                        {{--                                <div class="paper-ripple">--}}
-                        {{--                                    <div class="paper-ripple__background"></div>--}}
-                        {{--                                    <div class="paper-ripple__waves"></div>--}}
-                        {{--                                </div>--}}
-                        {{--                            </button>--}}
-                        {{--                            <ul class="dropdown-menu">--}}
-                        {{--                                @foreach($filters as $key => $value)--}}
-                        {{--                                    <li><a class="dropdown-item"--}}
-                        {{--                                           href="{{ route(--}}
-                        {{--                                                                config('app.panel_prefix', 'panel') . '.videos.index',--}}
-                        {{--                                                                ['filter' => $key] + request()->all()--}}
-                        {{--                                                       ) }}">{{ $value }}</a></li>--}}
-                        {{--                                @endforeach--}}
-                        {{--                            </ul>--}}
-                        {{--                        </div>--}}
+                        @can('all', $videoClassName)
+                            <div class="btn-group" rel="tooltip"
+                                 aria-label="فیلتر ویدئوها" data-bs-original-title="فیلتر ویدئوها">
+                                <button type="button" class="btn btn-sm btn-default btn-round btn-info text-white dropdown-toggle" data-bs-toggle="dropdown"
+                                        aria-expanded="true">
+                                    <i class=" fas fa-filter d-flex justify-content-center align-items-center"></i>
+                                    <div class="paper-ripple">
+                                        <div class="paper-ripple__background"></div>
+                                        <div class="paper-ripple__waves"></div>
+                                    </div>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    @foreach($videoClassName::filters() as $key => $value)
+                                        <li>
+                                            <a class="dropdown-item"
+                                               href="{{ route( config('app.panel_prefix', 'panel') . '.videos.index',
+                                                   ['filter' => $key] + request()->all() ) }}">
+                                                {{ $value }}
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endcan
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
@@ -83,9 +88,9 @@
                                 <th>فرمت</th>
                                 <th>کاربر آپلود کننده</th>
                                 <th>تاریخ ایجاد</th>
-                                {{--                                @can('operations', $videoClassName)--}}
+                                {{--@can('operations', $videoClassName)--}}
                                 <th>عملیات</th>
-                                {{--                                @endcan--}}
+                                {{--@endcan--}}
                             </tr>
                             </thead>
                             <tbody>
@@ -102,7 +107,7 @@
                                         <td>{{ $video->video_type }}</td>
                                         <td>{{ $video->user_full_name }}</td>
                                         <td class="ltr text-right nowrap">{{ jalalian()->forge($video->created_at)->format(config('common.datetime_format')) }}</td>
-                                        {{--                                        @can('operations', $videoClassName)--}}
+                                        {{--@can('operations', $videoClassName)--}}
                                         <td>
                                             <div class="d-flex gap-2">
                                                 <x-common-copy-link-button :url="$video->url"/>
@@ -119,22 +124,24 @@
                                                     <x-common-delete-button :route="route(config('app.panel_prefix', 'panel') . '.videos.destroy', $video->id)"/>
                                                 @endcan
 
-                                                <div>
-                                                    <form action="{{ route(config('app.panel_prefix', 'panel') . '.videos.destroy-thumbnail', $video->id) }}" method="post">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button class="btn btn-sm btn-secondary btn-icon round d-flex justify-content-center align-items-center"
-                                                                rel="tooltip" aria-label="حذف تصویر بندانگشتی شخصی" data-bs-original-title="حذف تصویر بندانگشتی شخصی">
-                                                            <i class="fas fa-trash-arrow-up fa-flip-horizontal"></i>
-                                                        </button>
-                                                    </form>
-                                                </div>
+                                                @can('update', $video)
+                                                    <div>
+                                                        <form action="{{ route(config('app.panel_prefix', 'panel') . '.videos.destroy-thumbnail', $video->id) }}" method="post">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button class="btn btn-sm btn-secondary btn-icon round d-flex justify-content-center align-items-center"
+                                                                    rel="tooltip" aria-label="حذف تصویر بندانگشتی شخصی" data-bs-original-title="حذف تصویر بندانگشتی شخصی">
+                                                                <i class="fas fa-trash-arrow-up fa-flip-horizontal"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                @endcan
                                             </div>
                                         </td>
-                                        {{--                                        @endcan--}}
+                                        @endcan
                                     </tr>
-                                @endcan
-                            @endforeach
+                                    {{--@endcan--}}
+                                    @endforeach
                             </tbody>
                         </table>
                     </div>

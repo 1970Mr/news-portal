@@ -6,8 +6,10 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Modules\FileManager\App\Models\Image;
+use Modules\FileManager\App\Models\Video;
 use Modules\FileManager\App\Observers\ImageObserver;
 use Modules\FileManager\App\Policies\ImagePolicy;
+use Modules\FileManager\App\Policies\VideoPolicy;
 use Modules\FileManager\App\View\Components\ImageSelector;
 use Modules\FileManager\App\View\Components\ImageUpload;
 use Modules\FileManager\App\View\Components\ImageUploadBtn;
@@ -31,6 +33,7 @@ class FileManagerServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/migrations'));
 
         Gate::policy(Image::class, ImagePolicy::class);
+        Gate::policy(Video::class, VideoPolicy::class);
         $this->loadViewComponentsAs($this->moduleNameLower, [ImageSelector::class, ImageUpload::class, ImageUploadBtn::class]);
         Image::observe(ImageObserver::class);
     }

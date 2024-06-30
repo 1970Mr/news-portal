@@ -80,6 +80,14 @@ return [
     'IMAGE_DESTROY_ALL' => 'image::destroy_all',
     'IMAGE_DESTROY_OWN' => 'image::destroy_own',
 
+    'VIDEO_INDEX_ALL' => 'video::index_all',
+    'VIDEO_INDEX_OWN' => 'video::index_own',
+    'VIDEO_STORE' => 'video::store',
+    'VIDEO_UPDATE_ALL' => 'video::update_all',
+    'VIDEO_UPDATE_OWN' => 'video::update_own',
+    'VIDEO_DESTROY_ALL' => 'video::destroy_all',
+    'VIDEO_DESTROY_OWN' => 'video::destroy_own',
+
     'COMMENT_INDEX' => 'comment::index',
     'COMMENT_SHOW' => 'comment::show',
     'COMMENT_APPROVE' => 'comment::approve',

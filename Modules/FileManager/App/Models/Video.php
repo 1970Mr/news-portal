@@ -32,6 +32,19 @@ class Video extends Model implements HasMedia
         'user_full_name'
     ];
 
+    public const ALL = 'all_videos';
+    public const MY_VIDEOS = 'my_videos';
+    public const OTHER_USERS_VIDEOS = 'other_users_videos';
+
+    public static function filters(): array
+    {
+        return [
+            self::ALL => __('file-manager::filters.all_videos'),
+            self::MY_VIDEOS => __('file-manager::filters.my_videos'),
+            self::OTHER_USERS_VIDEOS => __('file-manager::filters.other_users_videos'),
+        ];
+    }
+
     public function videoable(): MorphTo
     {
         return $this->morphTo();

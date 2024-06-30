@@ -21,10 +21,10 @@ class ImageQueryService
         $query = $this->imagePermissionService->setPermissionsFilter($query);
         $searchText = $request->get('query');
         if ($searchText) {
-            $imageIds = $this->search($searchText)->pluck('id');
-            $query->whereIn('id', $imageIds);
+            $imagesIds = $this->search($searchText)->pluck('id');
+            $query->whereIn('id', $imagesIds);
         }
-        return $this->setFilters($request, $query);
+        return $this->setShowItemsFilter($request, $query);
     }
 
     private function search(mixed $searchText): Collection
@@ -38,13 +38,13 @@ class ImageQueryService
         })->get();
     }
 
-    private function setFilters(Request $request, Builder $query): Builder
+    private function setShowItemsFilter(Request $request, Builder $query): Builder
     {
         if ($request->has('filter') && $this->imagePermissionService->canAccessAllImages()) {
             $filter = $request->filter;
-            if ($filter === Image::MY_IMAGE) {
+            if ($filter === Image::MY_IMAGES) {
                 $query->where('user_id', auth()->id());
-            } elseif ($filter === Image::OTHER_USERS_IMAGE) {
+            } elseif ($filter === Image::OTHER_USERS_IMAGES) {
                 $query->where('user_id', '!=', auth()->id());
             }
         }

@@ -8,18 +8,23 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Modules\FileManager\App\Http\Requests\VideoRequest;
 use Modules\FileManager\App\Models\Video;
+use Modules\FileManager\App\Services\Video\VideoQueryService;
 use Modules\FileManager\App\Services\Video\VideoService;
 
 class VideoController extends Controller
 {
-    public function __construct(private readonly VideoService $videoService)
+    public function __construct(
+        private readonly VideoService $videoService,
+        private readonly VideoQueryService $videoQueryService
+    )
     {
     }
 
     public function index(Request $request): View
     {
-        $videos = $this->videoService->index($request);
-        return view('file-manager::videos.index', compact('videos'));
+        $videos = $this->videoQueryService->index($request);
+        $videoClassName = Video::class;
+        return view('file-manager::videos.index', compact('videos', 'videoClassName'));
     }
 
     public function create(): View

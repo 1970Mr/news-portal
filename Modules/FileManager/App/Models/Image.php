@@ -13,9 +13,9 @@ class Image extends Model
 {
     use Searchable;
 
-    public const ALL = 'all';
-    public const MY_IMAGE = 'my_images';
-    public const OTHER_USERS_IMAGE = 'other_users_images';
+    public const ALL = 'all_images';
+    public const MY_IMAGES = 'my_images';
+    public const OTHER_USERS_IMAGES = 'other_users_images';
     protected $fillable = [
         'file_path',
         'alt_text',
@@ -29,9 +29,9 @@ class Image extends Model
     public static function filters(): array
     {
         return [
-            self::ALL => __('file-manager::filters.all'),
-            self::MY_IMAGE => __('file-manager::filters.my_images'),
-            self::OTHER_USERS_IMAGE => __('file-manager::filters.other_users_images'),
+            self::ALL => __('file-manager::filters.all_images'),
+            self::MY_IMAGES => __('file-manager::filters.my_images'),
+            self::OTHER_USERS_IMAGES => __('file-manager::filters.other_users_images'),
         ];
     }
 

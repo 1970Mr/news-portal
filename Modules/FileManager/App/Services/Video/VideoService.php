@@ -2,10 +2,8 @@
 
 namespace Modules\FileManager\App\Services\Video;
 
-use Illuminate\Contracts\Pagination\Paginator;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Modules\FileManager\App\Http\Requests\VideoRequest;
 use Modules\FileManager\App\Models\Video;
 use ProtoneMedia\LaravelFFMpeg\Support\FFMpeg;
@@ -13,37 +11,9 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class VideoService
 {
-    public function index(Request $request): Paginator
-    {
-        $searchText = $request->get('query');
-        if ($searchText) {
-            $videos = $this->search($searchText);
-        } else {
-            $videos = Video::query()->latest()->paginate(10);
-        }
-        return $videos;
-    }
-
-    private function search(mixed $searchText): Paginator
-    {
-        return Video::query()->where(static function (Builder $query) use ($searchText) {
-            $query->with('media');
-            // Search in media
-            $query->whereHas('media', function (Builder $q) use ($searchText) {
-                $q->where('name', 'like', "%{$searchText}%")
-                    ->orWhere('mime_type', 'like', "%{$searchText}%");
-            });
-
-            // Search in users
-            $query->orWhereHas('user', function ($q) use ($searchText) {
-                $q->where('full_name', 'like', "%{$searchText}%")
-                    ->orWhere('email', 'like', "%{$searchText}%");
-            });
-        })->latest()->paginate(10);
-    }
-
     public function store(VideoRequest $request): Model
     {
+        Gate::authorize('store', Video::class);
         $video = Video::query()->create($request->validated());
         $this->handleMedia($video, $request);
 
@@ -52,6 +22,7 @@ class VideoService
 
     public function update(VideoRequest $request, Video $video): Model
     {
+        Gate::authorize('store', $video);
         $video->update($request->validated());
         $this->handleMedia($video, $request);
 
@@ -60,6 +31,7 @@ class VideoService
 
     public function destroy(Video $video): void
     {
+        Gate::authorize('destroy', $video);
         $video->clearMediaCollection('videos');
         $video->clearMediaCollection('thumbnails');
         $video->delete();
