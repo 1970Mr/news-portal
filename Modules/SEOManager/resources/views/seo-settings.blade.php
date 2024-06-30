@@ -52,22 +52,22 @@
                                     <span>عنوان متا</span>
                                     <span>(پیشنهاد: {{ $title }})</span>
                                 </label>
-                                <input id="meta_title" class="form-control" name="meta_title" type="text" value="{{ old('meta_title', $model->seoSettings?->meta_title) }}">
+                                <input id="meta_title" class="form-control" name="meta_title" type="text" value="{{ old('meta_title', $model->seoSetting?->meta_title) }}">
                             </div>
 
                             <div class="form-group col-lg-6">
                                 <label for="meta_author">نویسنده متا</label>
-                                <input id="meta_author" class="form-control" name="meta_author" type="text" value="{{ old('meta_author', $model->seoSettings?->meta_author) }}">
+                                <input id="meta_author" class="form-control" name="meta_author" type="text" value="{{ old('meta_author', $model->seoSetting?->meta_author) }}">
                             </div>
 
                             <div class="form-group col-lg-6">
                                 <label for="meta_description">توضیحات متا</label>
-                                <textarea id="meta_description" class="form-control" name="meta_description">{{ old('meta_description', $model->seoSettings?->meta_description) }}</textarea>
+                                <textarea id="meta_description" class="form-control" name="meta_description">{{ old('meta_description', $model->seoSetting?->meta_description) }}</textarea>
                             </div>
 
                             <div class="form-group col-lg-6">
                                 <label for="meta_keywords">کلمات کلیدی متا</label>
-                                <textarea id="meta_keywords" class="form-control" name="meta_keywords">{{ old('meta_keywords', $model->seoSettings?->meta_keywords) }}</textarea>
+                                <textarea id="meta_keywords" class="form-control" name="meta_keywords">{{ old('meta_keywords', $model->seoSetting?->meta_keywords) }}</textarea>
                             </div>
 
                             <div class="form-group col-lg-6">
@@ -76,7 +76,7 @@
                                     <span class="d-block d-lg-inline suggest-default-value">(پیشنهاد: {{ $canonicalUrl }})</span>
                                 </label>
                                 <input id="canonical_url" class="form-control" name="canonical_url" dir="auto"
-                                       value="{{ old('canonical_url', $model->seoSettings?->canonical_url) }}">
+                                       value="{{ old('canonical_url', $model->seoSetting?->canonical_url) }}">
                             </div>
 
                             <div class="form-group col-lg-6">
@@ -84,7 +84,7 @@
                                     <span>Robots</span>
                                     <span>(پیشنهاد: index, follow)</span>
                                 </label>
-                                <input id="robots" class="form-control" name="robots" type="text" dir="auto" value="{{ old('robots', $model->seoSettings?->robots) }}">
+                                <input id="robots" class="form-control" name="robots" type="text" dir="auto" value="{{ old('robots', $model->seoSetting?->robots) }}">
                             </div>
 
                             <div class="form-group">

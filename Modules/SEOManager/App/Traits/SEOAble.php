@@ -7,7 +7,7 @@ use Modules\SEOManager\App\Models\SEOSetting;
 
 trait SEOAble
 {
-    public function seoSettings(): MorphOne
+    public function seoSetting(): MorphOne
     {
         return $this->morphOne(SEOSetting::class, 'seoable');
     }

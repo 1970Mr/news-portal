@@ -12,6 +12,6 @@ class SEOService
         $modelId = $request->input('model_id');
         $model = $modelType::findOrFail($modelId);
 
-        $model->seoSettings()->updateOrCreate([], $request->validated());
+        $model->seoSetting()->updateOrCreate([], $request->validated());
     }
 }

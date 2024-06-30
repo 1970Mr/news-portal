@@ -61,7 +61,7 @@ class Article extends Model implements Feedable
 
     public function toFeedItem(): FeedItem
     {
-        $summary = $this->seoSettings?->meta_description ?? $this->bodyText();
+        $summary = $this->seoSetting?->meta_description ?? $this->bodyText();
         return FeedItem::create()
             ->id($this->id)
             ->title($this->title)

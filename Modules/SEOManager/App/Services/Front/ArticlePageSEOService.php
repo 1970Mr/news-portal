@@ -13,18 +13,18 @@ class ArticlePageSEOService extends BaseSEOService
         $cacheTTL = now()->addHours(self::CACHE_TTL);
 
         $seoData = cache()->remember($cacheKey, $cacheTTL, function () use ($article) {
-            $seoSettings = $article->seoSettings;
+            $seoSetting = $article->seoSetting;
             $user = $article->user;
             $category = $article->category;
 
-            $title = $seoSettings?->meta_title ?? $article->title;
-            $description = $seoSettings?->meta_description ?? $article->bodyText();
+            $title = $seoSetting?->meta_title ?? $article->title;
+            $description = $seoSetting?->meta_description ?? $article->bodyText();
             $articleUrl = $article->getUrl();
-            $canonicalUrl = $seoSettings?->canonical_url ?? $articleUrl;
-            $robots = $seoSettings?->robots ?? 'index, follow';
+            $canonicalUrl = $seoSetting?->canonical_url ?? $articleUrl;
+            $robots = $seoSetting?->robots ?? 'index, follow';
             $tags = $article->tags->pluck('name');
-            $keywords = !empty($seoSettings?->keywords) ? explode(',', $seoSettings->keywords) : $tags;
-            $authorName = $seoSettings?->meta_author ?? $user->full_name;
+            $keywords = !empty($seoSetting?->keywords) ? explode(',', $seoSetting->keywords) : $tags;
+            $authorName = $seoSetting?->meta_author ?? $user->full_name;
             $authorUrl = route('author.index', $user->username);
             $imageUrl = asset('storage/' . $article->image->file_path);
 

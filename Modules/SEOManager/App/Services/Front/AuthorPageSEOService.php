@@ -16,14 +16,14 @@ class AuthorPageSEOService extends BaseSEOService
         $cacheTTL = now()->addHours(self::CACHE_TTL);
 
         $seoData = cache()->remember($cacheKey, $cacheTTL, function () use ($author) {
-            $seoSettings = $author->seoSettings;
-            $authorName = $seoSettings?->meta_author ?? $author->full_name;
-            $title = $seoSettings?->meta_title ?? $authorName;
-            $description = $seoSettings?->meta_description ?? "Profile of " . $author->full_name;
+            $seoSetting = $author->seoSetting;
+            $authorName = $seoSetting?->meta_author ?? $author->full_name;
+            $title = $seoSetting?->meta_title ?? $authorName;
+            $description = $seoSetting?->meta_description ?? "Profile of " . $author->full_name;
             $authorUrl = route('author.index', $author->username);
-            $canonicalUrl = $seoSettings?->canonical_url ?? $authorUrl;
-            $keywords = !empty($seoSettings?->keywords) ? explode(',', $seoSettings->keywords) : [];
-            $robots = $seoSettings?->robots ?? 'index, follow';
+            $canonicalUrl = $seoSetting?->canonical_url ?? $authorUrl;
+            $keywords = !empty($seoSetting?->keywords) ? explode(',', $seoSetting->keywords) : [];
+            $robots = $seoSetting?->robots ?? 'index, follow';
 
             return compact('title', 'description', 'canonicalUrl', 'keywords', 'robots', 'authorName', 'authorUrl');
         });

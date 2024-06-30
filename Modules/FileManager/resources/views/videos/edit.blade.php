@@ -50,7 +50,14 @@
                                     <div class="help-block"></div>
                                 </div>
                                 <div class="col-12 text-center">
-                                    <video class="mb-2" src="{{ $video->getFirstMediaUrl('videos') }}" controls style="max-width: 300px; max-height: 300px"></video>
+                                    <video controls class="mb-2" itemscope itemtype="https://schema.org/VideoObject" style="max-width: 300px; max-height: 300px">
+                                        <source src="{{ $video->getFirstMediaUrl('videos') }}" type="{{ $video->getFirstMedia('videos')->mime_type }}">
+                                        <meta itemprop="name" content="{{ $video->name }}">
+                                        <meta itemprop="description" content="{{ $video->name }}">
+                                        <meta itemprop="duration" content="{{ $video->duration }}">
+                                        <meta itemprop="thumbnail" content="{{ $video->thumbnail_url }}">
+                                    </video>
+{{--                                    <video controls class="mb-2" src="{{ $video->getFirstMediaUrl('videos') }}" style="max-width: 300px; max-height: 300px"></video>--}}
                                     <div>
                                         {{ $video->getFirstMediaUrl('videos') }}
                                     </div>

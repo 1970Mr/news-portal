@@ -13,13 +13,13 @@ class CategoriesPageSEOService extends BaseSEOService
         $cacheTTL = now()->addHours(self::CACHE_TTL);
 
         $seoData = cache()->remember($cacheKey, $cacheTTL, function () use ($category) {
-            $seoSettings = $category->seoSettings;
-            $title = $seoSettings?->meta_title ?? $category->name;
-            $description = $seoSettings?->meta_description;
+            $seoSetting = $category->seoSetting;
+            $title = $seoSetting?->meta_title ?? $category->name;
+            $description = $seoSetting?->meta_description;
             $categoryUrl = route('categories.show', $category->slug);
-            $canonicalUrl = $seoSettings?->canonical_url ?? $categoryUrl;
-            $keywords = !empty($seoSettings?->keywords) ? explode(',', $seoSettings->keywords) : [];
-            $robots = $seoSettings?->robots ?? 'index, follow';
+            $canonicalUrl = $seoSetting?->canonical_url ?? $categoryUrl;
+            $keywords = !empty($seoSetting?->keywords) ? explode(',', $seoSetting->keywords) : [];
+            $robots = $seoSetting?->robots ?? 'index, follow';
             $imageUrl = asset('storage/' . $category->image->file_path);
 
             return compact('title', 'description', 'categoryUrl', 'canonicalUrl', 'keywords', 'robots', 'imageUrl');

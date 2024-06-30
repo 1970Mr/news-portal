@@ -11,14 +11,14 @@ class PageSEOService extends BaseSEOService
         $cacheTTL = now()->addHours(self::CACHE_TTL);
 
         $seoData = cache()->remember($cacheKey, $cacheTTL, function () use ($page) {
-            $seoSettings = $page->seoSettings;
+            $seoSetting = $page->seoSetting;
 
-            $title = $seoSettings?->meta_title ?? $page->title;
-            $description = $seoSettings?->meta_description ?? $page->summary();
+            $title = $seoSetting?->meta_title ?? $page->title;
+            $description = $seoSetting?->meta_description ?? $page->summary();
             $pageUrl = $page->url();
-            $canonicalUrl = $seoSettings?->canonical_url ?? $pageUrl;
-            $robots = $seoSettings?->robots ?? 'index, follow';
-            $keywords = !empty($seoSettings?->keywords) ? explode(',', $seoSettings->keywords) : [];
+            $canonicalUrl = $seoSetting?->canonical_url ?? $pageUrl;
+            $robots = $seoSetting?->robots ?? 'index, follow';
+            $keywords = !empty($seoSetting?->keywords) ? explode(',', $seoSetting->keywords) : [];
 
             return compact('title', 'description', 'pageUrl', 'canonicalUrl', 'robots', 'keywords');
         });
