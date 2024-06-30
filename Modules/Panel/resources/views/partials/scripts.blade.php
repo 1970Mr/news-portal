@@ -7,6 +7,17 @@
             e.stopPropagation();
         });
     });
+
+    {{--  JavaScript to scroll to the active menu item  --}}
+    $(document).ready(function() {
+        const $activeMenuItem = $('#side-menu .current').first();
+        if ($activeMenuItem.length) {
+            const sidebarHeight = $('#sidebar').height();
+            const itemOffsetTop = $activeMenuItem.offset().top - $('#sidebar').offset().top;
+            const scrollPosition = itemOffsetTop - (sidebarHeight / 2) + ($activeMenuItem.height() / 2);
+            $('#sidebar').scrollTop(scrollPosition);
+        }
+    });
 </script>
 <script src="{{ asset('admin/assets/plugins/bootstrap/bootstrap5/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('admin/assets/plugins/metisMenu/dist/metisMenu.min.js') }}"></script>

@@ -7,6 +7,124 @@ return [
             'icon' => 'icon-home',
             'url' => route(config('app.panel_prefix', 'panel') . '.index'),
         ],
+
+        'article' => [
+            'title' => 'اخبار',
+            'icon' => 'icon-globe',
+            'url' => route(config('app.panel_prefix', 'panel') . '.articles.index'),
+            'permissions' => config('permissions_list.ARTICLE_INDEX', false),
+            'active_routes' => [
+                config('app.panel_prefix', 'panel') . '.articles.create',
+                config('app.panel_prefix', 'panel') . '.articles.edit',
+                config('app.panel_prefix', 'panel') . '.articles.seo-settings',
+            ]
+        ],
+
+        'category' => [
+            'title' => 'دسته‌بندی‌ها',
+            'icon' => 'icon-grid',
+            'url' => route(config('app.panel_prefix', 'panel') . '.categories.index'),
+            'permissions' => config('permissions_list.CATEGORY_INDEX', false),
+            'active_routes' => [
+                config('app.panel_prefix', 'panel') . '.categories.create',
+                config('app.panel_prefix', 'panel') . '.categories.edit',
+                config('app.panel_prefix', 'panel') . '.categories.seo-settings',
+            ]
+        ],
+
+        'tag' => [
+            'title' => 'تگ‌ها',
+            'icon' => 'icon-tag',
+            'url' => route(config('app.panel_prefix', 'panel') . '.tags.index'),
+            'permissions' => config('permissions_list.TAG_INDEX', false),
+            'active_routes' => [
+                config('app.panel_prefix', 'panel') . '.tags.create',
+                config('app.panel_prefix', 'panel') . '.tags.edit',
+                config('app.panel_prefix', 'panel') . '.tags.seo-settings',
+            ]
+        ],
+
+        'comment' => [
+            'title' => 'نظرات',
+            'icon' => 'icon-bubbles',
+            'url' => route(config('app.panel_prefix', 'panel') . '.comments.index'),
+            'permissions' => config('permissions_list.COMMENT_INDEX', false),
+            'active_routes' => [
+                config('app.panel_prefix', 'panel') . '.comments.show',
+            ]
+        ],
+
+        'menu_builder' => [
+            'title' => 'منو ساز',
+            'icon' => 'icon-menu',
+            'url' => route(config('app.panel_prefix', 'panel') . '.menus.index'),
+            'permissions' => config('permissions_list.MENU_INDEX', false),
+            'active_routes' => [
+                config('app.panel_prefix', 'panel') . '.menus.create',
+                config('app.panel_prefix', 'panel') . '.menus.edit',
+                config('app.panel_prefix', 'panel') . '.menus.category-menu.create',
+                config('app.panel_prefix', 'panel') . '.menus.category-menu.edit',
+            ]
+        ],
+
+        'page_builder' => [
+            'title' => 'صفحه ساز',
+            'icon' => 'fas fa-laptop-file',
+            'url' => route(config('app.panel_prefix', 'panel') . '.pages.index'),
+            'permissions' => config('permissions_list.PAGE_INDEX', false),
+            'active_routes' => [
+                config('app.panel_prefix', 'panel') . '.pages.create',
+                config('app.panel_prefix', 'panel') . '.pages.edit',
+            ]
+        ],
+
+        'file_manager' => [
+            'title' => 'مدیریت فایل‌ها',
+            'icon' => 'icon-folder-alt',
+            'active_routes' => [
+                config('app.panel_prefix', 'panel') . '.images.index',
+                config('app.panel_prefix', 'panel') . '.images.create',
+                config('app.panel_prefix', 'panel') . '.images.edit',
+                config('app.panel_prefix', 'panel') . '.videos.index',
+                config('app.panel_prefix', 'panel') . '.videos.create',
+                config('app.panel_prefix', 'panel') . '.videos.edit',
+            ],
+            'permissions' => [
+                config('permissions_list.IMAGE_INDEX_ALL', false),
+                config('permissions_list.IMAGE_INDEX_OWN', false),
+                config('permissions_list.VIDEO_INDEX_ALL', false),
+                config('permissions_list.VIDEO_INDEX_OWN', false),
+            ],
+            'children' => [
+                [
+                    'title' => 'تصاویر',
+                    'icon' => 'icon-picture',
+                    'url' => route(config('app.panel_prefix', 'panel') . '.images.index'),
+                    'permissions' => [
+                        config('permissions_list.IMAGE_INDEX_ALL', false),
+                        config('permissions_list.IMAGE_INDEX_OWN', false)
+                    ],
+                    'active_routes' => [
+                        config('app.panel_prefix', 'panel') . '.images.create',
+                        config('app.panel_prefix', 'panel') . '.images.edit',
+                    ],
+                ],
+                [
+                    'title' => 'ویدئوها',
+                    'icon' => 'icon-film',
+                    'url' => route(config('app.panel_prefix', 'panel') . '.videos.index'),
+                    'permissions' => [
+                        config('permissions_list.VIDEO_INDEX_ALL', false),
+                        config('permissions_list.VIDEO_INDEX_OWN', false)
+                    ],
+                    'active_routes' => [
+                        config('app.panel_prefix', 'panel') . '.videos.create',
+                        config('app.panel_prefix', 'panel') . '.videos.edit',
+                    ],
+                ],
+            ]
+        ],
+
         'user' => [
             'title' => 'کاربران',
             'icon' => ' icon-people',
@@ -19,6 +137,7 @@ return [
                 config('app.panel_prefix', 'panel') . '.users.seo-settings',
             ],
         ],
+
         'role' => [
             'title' => 'نقش‌ها',
             'icon' => 'fas fa-arrow-down-up-lock',
@@ -29,109 +148,7 @@ return [
                 config('app.panel_prefix', 'panel') . '.roles.edit',
             ],
         ],
-        'article' => [
-            'title' => 'اخبار',
-            'icon' => 'icon-globe',
-            'url' => route(config('app.panel_prefix', 'panel') . '.articles.index'),
-            'permissions' => config('permissions_list.ARTICLE_INDEX', false),
-            'active_routes' => [
-                config('app.panel_prefix', 'panel') . '.articles.create',
-                config('app.panel_prefix', 'panel') . '.articles.edit',
-                config('app.panel_prefix', 'panel') . '.articles.seo-settings',
-            ]
-        ],
-        'category' => [
-            'title' => 'دسته‌بندی‌ها',
-            'icon' => 'icon-grid',
-            'url' => route(config('app.panel_prefix', 'panel') . '.categories.index'),
-            'permissions' => config('permissions_list.CATEGORY_INDEX', false),
-            'active_routes' => [
-                config('app.panel_prefix', 'panel') . '.categories.create',
-                config('app.panel_prefix', 'panel') . '.categories.edit',
-                config('app.panel_prefix', 'panel') . '.categories.seo-settings',
-            ]
-        ],
-        'tag' => [
-            'title' => 'تگ‌ها',
-            'icon' => 'icon-tag',
-            'url' => route(config('app.panel_prefix', 'panel') . '.tags.index'),
-            'permissions' => config('permissions_list.TAG_INDEX', false),
-            'active_routes' => [
-                config('app.panel_prefix', 'panel') . '.tags.create',
-                config('app.panel_prefix', 'panel') . '.tags.edit',
-                config('app.panel_prefix', 'panel') . '.tags.seo-settings',
-            ]
-        ],
-        'image' => [
-            'title' => 'تصاویر',
-            'icon' => 'icon-picture',
-            'url' => route(config('app.panel_prefix', 'panel') . '.images.index'),
-            'permissions' => [
-                config('permissions_list.IMAGE_INDEX_ALL', false),
-                config('permissions_list.IMAGE_INDEX_OWN', false)
-            ],
-            'active_routes' => [
-                config('app.panel_prefix', 'panel') . '.images.create',
-                config('app.panel_prefix', 'panel') . '.images.edit',
-            ]
-        ],
-        'comment' => [
-            'title' => 'نظرات',
-            'icon' => 'icon-bubbles',
-            'url' => route(config('app.panel_prefix', 'panel') . '.comments.index'),
-            'permissions' => config('permissions_list.COMMENT_INDEX', false),
-            'active_routes' => [
-                config('app.panel_prefix', 'panel') . '.comments.show',
-            ]
-        ],
-        'menu' => [
-            'title' => 'منو ساز',
-            'icon' => 'icon-menu',
-            'url' => route(config('app.panel_prefix', 'panel') . '.menus.index'),
-            'permissions' => config('permissions_list.MENU_INDEX', false),
-            'active_routes' => [
-                config('app.panel_prefix', 'panel') . '.menus.create',
-                config('app.panel_prefix', 'panel') . '.menus.edit',
-                config('app.panel_prefix', 'panel') . '.menus.category-menu.create',
-                config('app.panel_prefix', 'panel') . '.menus.category-menu.edit',
-            ]
-        ],
-        'page' => [
-            'title' => 'صفحه ساز',
-            'icon' => 'fas fa-laptop-file',
-            'url' => route(config('app.panel_prefix', 'panel') . '.pages.index'),
-            'permissions' => config('permissions_list.PAGE_INDEX', false),
-            'active_routes' => [
-                config('app.panel_prefix', 'panel') . '.pages.create',
-                config('app.panel_prefix', 'panel') . '.pages.edit',
-            ]
-        ],
-        'ads' => [
-            'title' => 'تبلیغات',
-            'icon' => 'fas fa-bullhorn',
-            'url' => route(config('app.panel_prefix', 'panel') . '.ads.index'),
-            'permissions' => config('permissions_list.AD_INDEX', false),
-            'active_routes' => [
-                config('app.panel_prefix', 'panel') . '.ads.create',
-                config('app.panel_prefix', 'panel') . '.ads.edit',
-            ]
-        ],
-        'newsletter' => [
-            'title' => 'خبرنامه',
-            'icon' => 'icon-paper-plane',
-            'url' => route(config('app.panel_prefix', 'panel') . '.newsletters.index'),
-            'permissions' => config('permissions_list.NEWSLETTER_INDEX', false),
-        ],
-        'redirect' => [
-            'title' => 'ریدایرکت‌ها',
-            'icon' => 'fas fa-link',
-            'url' => route(config('app.panel_prefix', 'panel') . '.redirects.index'),
-            'permissions' => config('permissions_list.REDIRECT_INDEX', false),
-            'active_routes' => [
-                config('app.panel_prefix', 'panel') . '.redirects.create',
-                config('app.panel_prefix', 'panel') . '.redirects.edit',
-            ]
-        ],
+
         'profile' => [
             'title' => 'پروفایل',
             'icon' => 'icon-user',
@@ -173,36 +190,7 @@ return [
                 ],
             ]
         ],
-        'contact_us' => [
-            'title' => 'تماس با ما',
-            'icon' => 'icon-earphones-alt',
-            'active_routes' => [
-                config('app.panel_prefix', 'panel') . '.contact-us.info.edit',
-                config('app.panel_prefix', 'panel') . '.contact-us.messages.index',
-                config('app.panel_prefix', 'panel') . '.contact-us.messages.show',
-            ],
-            'permissions' => [
-                config('permissions_list.CONTACT_INFO', false),
-                config('permissions_list.CONTACT_MESSAGES', false),
-            ],
-            'children' => [
-                [
-                    'title' => 'ثبت اطلاعات تماس',
-                    'icon' => 'icon-call-in',
-                    'url' => route(config('app.panel_prefix', 'panel') . '.contact-us.info.edit'),
-                    'permissions' => config('permissions_list.CONTACT_INFO', false),
-                ],
-                [
-                    'title' => 'پیام‌های کاربران',
-                    'icon' => 'icon-envelope',
-                    'url' => route(config('app.panel_prefix', 'panel') . '.contact-us.messages.index'),
-                    'permissions' => config('permissions_list.CONTACT_MESSAGES', false),
-                    'active_routes' => [
-                        config('app.panel_prefix', 'panel') . '.contact-us.messages.show',
-                    ],
-                ],
-            ]
-        ],
+
         'user_activity' => [
             'title' => 'فعالیت‌های کاربران',
             'icon' => 'icon-chart',
@@ -236,6 +224,67 @@ return [
                 ],
             ]
         ],
+
+        'contact_us' => [
+            'title' => 'تماس با ما',
+            'icon' => 'icon-earphones-alt',
+            'active_routes' => [
+                config('app.panel_prefix', 'panel') . '.contact-us.info.edit',
+                config('app.panel_prefix', 'panel') . '.contact-us.messages.index',
+                config('app.panel_prefix', 'panel') . '.contact-us.messages.show',
+            ],
+            'permissions' => [
+                config('permissions_list.CONTACT_INFO', false),
+                config('permissions_list.CONTACT_MESSAGES', false),
+            ],
+            'children' => [
+                [
+                    'title' => 'ثبت اطلاعات تماس',
+                    'icon' => 'icon-call-in',
+                    'url' => route(config('app.panel_prefix', 'panel') . '.contact-us.info.edit'),
+                    'permissions' => config('permissions_list.CONTACT_INFO', false),
+                ],
+                [
+                    'title' => 'پیام‌های کاربران',
+                    'icon' => 'icon-envelope',
+                    'url' => route(config('app.panel_prefix', 'panel') . '.contact-us.messages.index'),
+                    'permissions' => config('permissions_list.CONTACT_MESSAGES', false),
+                    'active_routes' => [
+                        config('app.panel_prefix', 'panel') . '.contact-us.messages.show',
+                    ],
+                ],
+            ]
+        ],
+
+        'ads' => [
+            'title' => 'تبلیغات',
+            'icon' => 'fas fa-bullhorn',
+            'url' => route(config('app.panel_prefix', 'panel') . '.ads.index'),
+            'permissions' => config('permissions_list.AD_INDEX', false),
+            'active_routes' => [
+                config('app.panel_prefix', 'panel') . '.ads.create',
+                config('app.panel_prefix', 'panel') . '.ads.edit',
+            ]
+        ],
+
+        'newsletter' => [
+            'title' => 'خبرنامه',
+            'icon' => 'icon-paper-plane',
+            'url' => route(config('app.panel_prefix', 'panel') . '.newsletters.index'),
+            'permissions' => config('permissions_list.NEWSLETTER_INDEX', false),
+        ],
+
+        'redirect' => [
+            'title' => 'ریدایرکت‌ها',
+            'icon' => 'fas fa-link',
+            'url' => route(config('app.panel_prefix', 'panel') . '.redirects.index'),
+            'permissions' => config('permissions_list.REDIRECT_INDEX', false),
+            'active_routes' => [
+                config('app.panel_prefix', 'panel') . '.redirects.create',
+                config('app.panel_prefix', 'panel') . '.redirects.edit',
+            ]
+        ],
+
         'setting' => [
             'title' => 'تنظیمات سایت',
             'icon' => 'icon-settings',
