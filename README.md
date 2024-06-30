@@ -45,7 +45,7 @@ Welcome to the News Portal, a comprehensive and modular news website built with 
 - **Advertisement Management:** Create and manage ad campaigns, track ad performance, and display ads across the site.
 - **Category and Tag Management:** Create and manage categories and tags, assign them to articles.
 - **Commenting System:** User comments with moderation tools, nested comments, Markdown support, and status management (approved, rejected, pending).
-- **File Management:** Upload, edit, and manage images and files.
+- **File Management:** Upload, edit, and manage images and videos.
 - **Newsletter Management:** Subscription form, send newsletters to subscribers, track email campaign performance.
 - **Social Network Integration:** Share articles on social media, manage user and site social media links.
 - **Customizable Settings:** Site-wide settings, third-party integrations, cache management, and social network management.
@@ -339,9 +339,13 @@ The FileManager module handles the upload and management of files.
 
 - **Features:**
     - Upload and manage images
-        - View all uploaded files on the site
-        - Edit existing files
-        - Create new files
+        - View all uploaded images on the site
+        - Edit existing images
+        - Create new images
+    - Upload and manage videos
+        - Perform CRUD (Create, Read, Update, Delete) operations on videos
+        - Generate and copy link for videos
+        - Create custom and auto thumbnails for videos
 
 ### Newsletter
 
