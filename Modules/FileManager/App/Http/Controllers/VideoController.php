@@ -16,9 +16,9 @@ class VideoController extends Controller
     {
     }
 
-    public function index(): View
+    public function index(Request $request): View
     {
-        $videos = Video::query()->latest()->paginate(10);
+        $videos = $this->videoService->index($request);
         return view('file-manager::videos.index', compact('videos'));
     }
 
