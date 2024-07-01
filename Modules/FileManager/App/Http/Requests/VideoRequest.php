@@ -23,15 +23,15 @@ class VideoRequest extends FormRequest
         return $rules;
     }
 
+    public function authorize(): bool
+    {
+        return true;
+    }
+
     protected function prepareForValidation(): void
     {
         $this->merge([
             'user_id' => Auth::id(),
         ]);
-    }
-
-    public function authorize(): bool
-    {
-        return true;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Modules\FileManager\App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
@@ -10,19 +11,20 @@ use Modules\User\App\Models\User;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Video extends Model implements HasMedia
 {
     use InteractsWithMedia;
 
+    public const ALL = 'all_videos';
+    public const MY_VIDEOS = 'my_videos';
+    public const OTHER_USERS_VIDEOS = 'other_users_videos';
     protected $fillable = [
         'duration',
         'user_id',
         'videoable_id',
         'videoable_type'
     ];
-
     protected $appends = [
         'url',
         'name',
@@ -31,10 +33,6 @@ class Video extends Model implements HasMedia
         'video_type',
         'user_full_name'
     ];
-
-    public const ALL = 'all_videos';
-    public const MY_VIDEOS = 'my_videos';
-    public const OTHER_USERS_VIDEOS = 'other_users_videos';
 
     public static function filters(): array
     {
@@ -74,21 +72,6 @@ class Video extends Model implements HasMedia
             ->singleFile();
     }
 
-    public function getThumbnailUrl(): string
-    {
-        $thumbnail = $this->getFirstMedia('thumbnails');
-        if ($thumbnail) {
-            return $thumbnail->getUrl();
-        }
-
-        $video = $this->getFirstMedia('videos');
-        if ($video) {
-            return $video->getUrl('thumb');
-        }
-
-        return config('common.default_image.file_link');
-    }
-
     protected function duration(): Attribute
     {
         return Attribute::make(
@@ -122,6 +105,21 @@ class Video extends Model implements HasMedia
         return Attribute::make(
             get: fn() => $this->getThumbnailUrl(),
         );
+    }
+
+    public function getThumbnailUrl(): string
+    {
+        $thumbnail = $this->getFirstMedia('thumbnails');
+        if ($thumbnail) {
+            return $thumbnail->getUrl();
+        }
+
+        $video = $this->getFirstMedia('videos');
+        if ($video) {
+            return $video->getUrl('thumb');
+        }
+
+        return config('common.default_image.file_link');
     }
 
     protected function videoSize(): Attribute

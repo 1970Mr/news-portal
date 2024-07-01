@@ -26,15 +26,6 @@ class ImageService
         return $this->imageQueryService->getAllImages($request)->paginate(10)->appends('query', $request->get('query'));
     }
 
-    public function store(Request $request, $fileName = 'image', $altText = 'Default Alt Text'): Model
-    {
-//        Gate::authorize('store', Image::class);
-        $data['file_path'] = FileManager::upload($request->file($fileName));
-        $data['alt_text'] = $request->get('alt_text', $altText);
-        $data['user_id'] = auth()->id();
-        return Image::query()->create($data);
-    }
-
     public function update(ImageRequest $request, image $image): bool
     {
         Gate::authorize('update', $image);
@@ -81,5 +72,14 @@ class ImageService
         $result = $image->delete();
         Schema::enableForeignKeyConstraints();
         return $result;
+    }
+
+    public function store(Request $request, $fileName = 'image', $altText = 'Default Alt Text'): Model
+    {
+//        Gate::authorize('store', Image::class);
+        $data['file_path'] = FileManager::upload($request->file($fileName));
+        $data['alt_text'] = $request->get('alt_text', $altText);
+        $data['user_id'] = auth()->id();
+        return Image::query()->create($data);
     }
 }

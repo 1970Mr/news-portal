@@ -28,7 +28,7 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="video-edit-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.videos.update', $video->id) }}" method="post"
+                    <form id="main-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.videos.update', $video->id) }}" method="post"
                           enctype="multipart/form-data">
                         @csrf
                         @method('put')
@@ -57,7 +57,7 @@
                                         <meta itemprop="duration" content="{{ $video->duration }}">
                                         <meta itemprop="thumbnail" content="{{ $video->thumbnail_url }}">
                                     </video>
-{{--                                    <video controls class="mb-2" src="{{ $video->getFirstMediaUrl('videos') }}" style="max-width: 300px; max-height: 300px"></video>--}}
+                                    {{--                                    <video controls class="mb-2" src="{{ $video->getFirstMediaUrl('videos') }}" style="max-width: 300px; max-height: 300px"></video>--}}
                                     <div>
                                         {{ $video->getFirstMediaUrl('videos') }}
                                     </div>
@@ -121,6 +121,6 @@
                 }
             }
         });
-        $("#video-edit-form").validate();
+        $("#main-form").validate();
     </script>
 @endpush

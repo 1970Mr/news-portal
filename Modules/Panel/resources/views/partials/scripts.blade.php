@@ -9,7 +9,7 @@
     });
 
     {{--  JavaScript to scroll to the active menu item  --}}
-    $(document).ready(function() {
+    $(document).ready(function () {
         const $activeMenuItem = $('#side-menu .current').first();
         if ($activeMenuItem.length) {
             const sidebarHeight = $('#sidebar').height();

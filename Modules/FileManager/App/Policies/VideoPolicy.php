@@ -20,7 +20,7 @@ class VideoPolicy
 
     public function all(User $user): bool
     {
-        return $user->can( config('permissions_list.VIDEO_INDEX_ALL', false) );
+        return $user->can(config('permissions_list.VIDEO_INDEX_ALL', false));
     }
 
     public function show(User $user, Video $video): bool

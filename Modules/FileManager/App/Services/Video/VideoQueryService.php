@@ -21,27 +21,6 @@ class VideoQueryService
         return $query->latest()->paginate(10);
     }
 
-    public function setPermissionsFilter(Builder $query): Builder
-    {
-        if (Gate::denies('all', Video::class)) {
-            $query->where('user_id', auth()->id());
-        }
-        return $query;
-    }
-
-    private function setShowItemsFilter(Request $request, Builder $query): Builder
-    {
-        if (Gate::allows('all', Video::class) && $request->has('filter')) {
-            $filter = $request->filter;
-            if ($filter === Video::MY_VIDEOS) {
-                $query->where('user_id', auth()->id());
-            } elseif ($filter === Video::OTHER_USERS_VIDEOS) {
-                $query->where('user_id', '!=', auth()->id());
-            }
-        }
-        return $query;
-    }
-
     public function setSearchFilter(Request $request, Builder $query): Builder
     {
         $searchText = $request->get('query');
@@ -68,5 +47,26 @@ class VideoQueryService
                     ->orWhere('email', 'like', "%{$searchText}%");
             });
         })->get();
+    }
+
+    public function setPermissionsFilter(Builder $query): Builder
+    {
+        if (Gate::denies('all', Video::class)) {
+            $query->where('user_id', auth()->id());
+        }
+        return $query;
+    }
+
+    private function setShowItemsFilter(Request $request, Builder $query): Builder
+    {
+        if (Gate::allows('all', Video::class) && $request->has('filter')) {
+            $filter = $request->filter;
+            if ($filter === Video::MY_VIDEOS) {
+                $query->where('user_id', auth()->id());
+            } elseif ($filter === Video::OTHER_USERS_VIDEOS) {
+                $query->where('user_id', '!=', auth()->id());
+            }
+        }
+        return $query;
     }
 }

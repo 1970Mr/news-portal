@@ -28,7 +28,7 @@
                     </div><!-- /.buttons-box -->
                 </div><!-- /.portlet-heading -->
                 <div class="portlet-body">
-                    <form id="video-create-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.videos.store') }}" method="post" enctype="multipart/form-data">
+                    <form id="main-form" role="form" action="{{ route(config('app.panel_prefix', 'panel') . '.videos.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <x-common-error-messages/>
 
@@ -95,6 +95,6 @@
                 }
             }
         });
-        $("#video-create-form").validate();
+        $("#main-form").validate();
     </script>
 @endpush

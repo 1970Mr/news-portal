@@ -1,4 +1,5 @@
 <?php
+
 namespace Modules\SEOManager\App\Services\Front;
 
 use Modules\PageBuilder\App\Models\Page;
