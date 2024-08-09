@@ -11,6 +11,7 @@
         toolbar: 'undo redo | formatselect | bold italic underline strikethrough | forecolor backcolor removeformat | alignleft aligncenter alignright alignjustify | ltr rtl | bullist numlist outdent indent | link image media | code preview',
         language: 'fa',
         license_key: 'gpl',
+        convert_urls: false,
         setup: function (editor) {
             editor.on('change', function () {
                 tinymce.triggerSave();

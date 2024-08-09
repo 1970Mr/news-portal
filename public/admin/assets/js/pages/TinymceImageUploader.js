@@ -28,12 +28,12 @@ class TinymceImageUploader {
 
                 const json = JSON.parse(xhr.responseText);
 
-                if (!json || typeof json.url != 'string') {
+                if (!json || typeof json.uri != 'string') {
                     reject('Invalid JSON: ' + xhr.responseText);
                     return;
                 }
 
-                resolve(json.url);
+                resolve(json.uri);
             };
 
             xhr.onerror = () => {

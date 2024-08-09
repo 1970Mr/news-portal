@@ -33,6 +33,12 @@ class ImageController extends Controller
         return view('file-manager::images.create');
     }
 
+    public function store(ImageRequest $request): RedirectResponse
+    {
+        $this->imageService->store($request);
+        return to_route(config('app.panel_prefix', 'panel') . '.images.index')->with('success', __('entity_created', ['entity' => __('image')]));
+    }
+
     public function edit(Image $image): View
     {
         return view('file-manager::images.edit', compact('image'));
@@ -59,14 +65,8 @@ class ImageController extends Controller
         $image = $this->imageService->store($request, altText: 'News Image');
         $response = [
             'message' => __('entity_created', ['entity' => __('image')]),
-            'url' => $image->url(),
+            'uri' => $image->uri(),
         ];
         return response()->json($response);
-    }
-
-    public function store(ImageRequest $request): RedirectResponse
-    {
-        $this->imageService->store($request);
-        return to_route(config('app.panel_prefix', 'panel') . '.images.index')->with('success', __('entity_created', ['entity' => __('image')]));
     }
 }
