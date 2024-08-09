@@ -54,20 +54,6 @@ class ImageController extends Controller
         }
     }
 
-    public function imageSelectorData(Request $request): JsonResponse
-    {
-        $images = $this->imageService->imageSelectorData($request);
-        return response()->json(compact('images'), 200);
-    }
-
-    public function imageSelectorFilters(): JsonResponse
-    {
-        $filters = $this->imageService->canAccessAllImages() ?
-            Image::filters() :
-            null;
-        return response()->json(compact('filters'), 200);
-    }
-
     public function imageUpload(ImageRequest $request): JsonResponse
     {
         $image = $this->imageService->store($request, altText: 'News Image');
