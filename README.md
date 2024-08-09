@@ -430,7 +430,7 @@ We welcome contributions to the News Portal project. If you find a bug or have a
 
 ## License
 
-The News Portal project is open-source software licensed under the MIT license. See the [LICENSE](LICENSE) file for more information.
+The News Portal project is open-source software licensed under the MIT license. See the [LICENSE](LICENSE.md) file for more information.
 
 ---
 
