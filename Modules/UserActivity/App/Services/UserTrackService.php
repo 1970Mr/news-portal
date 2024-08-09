@@ -17,6 +17,7 @@ class UserTrackService
         } else {
             $usersTrack = UserTrack::with('user')->latest()->paginate(10);
         }
+
         return $usersTrack;
     }
 

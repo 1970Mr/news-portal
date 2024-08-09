@@ -15,9 +15,7 @@ class ArticleService
 {
     public function __construct(
         private readonly ImageService $imageService
-    )
-    {
-    }
+    ) {}
 
     public function index(Request $request): Paginator
     {
@@ -27,6 +25,7 @@ class ArticleService
         } else {
             $articles = Article::query()->latest()->paginate(10);
         }
+
         return $articles;
     }
 
@@ -49,7 +48,7 @@ class ArticleService
 
             // If local not en
             if (app()->getLocale() !== 'en') {
-                $enSearchText = __('article::types.' . $searchText);
+                $enSearchText = __('article::types.'.$searchText);
                 $query->orWhere('type', $enSearchText);
             }
         })->latest()->paginate(10);
@@ -64,6 +63,7 @@ class ArticleService
         $image = $this->imageService->store($request, altText: $article->title);
         $article->image()->save($image);
         $article->hotness()->create(['is_hot' => $request->hotness]);
+
         return $article;
     }
 
@@ -76,15 +76,18 @@ class ArticleService
         $this->imageService->uploadImageDuringUpdate($request, $article, $article->title);
         $article->tags()->sync($request->get('tag_ids', []));
         $this->setHotness($article, $request, 'update');
+
         return $result;
     }
 
     private function setEditorChoice(array $data): array
     {
-        if (!Auth::user()->can(config('permissions_list.ARTICLE_HOTNESS', false))) {
+        if (! Auth::user()->can(config('permissions_list.ARTICLE_HOTNESS', false))) {
             unset($data['editor_choice']);
+
             return $data;
         }
+
         return $data;
     }
 
@@ -95,11 +98,12 @@ class ArticleService
         }
     }
 
-    public function destroy(Article $article): bool|null
+    public function destroy(Article $article): ?bool
     {
         $this->imageService->destroyWithoutKeyConstraints($article->image);
         $article->tags()->detach();
         $article->hotness()->delete();
+
         return $article->delete();
     }
 }

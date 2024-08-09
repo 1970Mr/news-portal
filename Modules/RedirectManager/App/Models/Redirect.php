@@ -44,7 +44,7 @@ class Redirect extends Model
     public function toSearchableArray(): array
     {
         return [
-            'id' => (int)$this->id,
+            'id' => (int) $this->id,
             'source_url' => $this->source_url,
             'destination_url' => $this->destination_url,
             'status_code' => $this->status_code,
@@ -59,14 +59,14 @@ class Redirect extends Model
     protected function source_url(): Attribute
     {
         return Attribute::make(
-            set: static fn(string $value) => trim($value, '/'),
+            set: static fn (string $value) => trim($value, '/'),
         );
     }
 
     protected function destination_url(): Attribute
     {
         return Attribute::make(
-            set: static fn(string $value) => trim($value, '/'),
+            set: static fn (string $value) => trim($value, '/'),
         );
     }
 }

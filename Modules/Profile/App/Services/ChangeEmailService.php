@@ -19,7 +19,7 @@ class ChangeEmailService
     public function createChangeEmailUrl(ChangeEmailRequest $request, Authenticatable $user): string
     {
         return URL::temporarySignedRoute(
-            config('app.panel_prefix', 'panel') . '.profile.email.change.verify',
+            config('app.panel_prefix', 'panel').'.profile.email.change.verify',
             now()->addMinutes(60),
             [
                 'email' => $user->email,

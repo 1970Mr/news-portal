@@ -14,9 +14,7 @@ class PageBuilderService
 {
     public function __construct(
         private readonly ImageService $imageService
-    )
-    {
-    }
+    ) {}
 
     public function index(Request $request): Paginator
     {
@@ -26,6 +24,7 @@ class PageBuilderService
         } else {
             $pages = Page::query()->latest()->paginate(10);
         }
+
         return $pages;
     }
 

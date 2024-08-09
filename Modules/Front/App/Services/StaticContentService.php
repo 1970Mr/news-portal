@@ -119,6 +119,7 @@ class StaticContentService
                 $mostVisits = $this->baseQuery()->limit(4)->get();
             }
             $firstArticle = $mostVisits->shift();
+
             return [
                 'first' => $firstArticle,
                 'others' => $mostVisits,

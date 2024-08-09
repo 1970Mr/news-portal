@@ -1,10 +1,10 @@
 {
-    "name": "nwidart/auth",
+    "name": "mr1970/auth",
     "description": "",
     "authors": [
         {
-            "name": "Nicolas Widart",
-            "email": "n.widart@gmail.com"
+            "name": "Mr 1970",
+            "email": "mrepoch1970@gmail.com"
         }
     ],
     "extra": {
@@ -24,7 +24,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Modules\\Auth\\Tests\\": "tests/"
+            "Modules\\Auth\\Tests\\": "tests"
         }
     }
 }

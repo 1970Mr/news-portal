@@ -14,57 +14,64 @@ class CategoryController extends Controller
 {
     public function __construct(private readonly CategoryService $categoryService)
     {
-        $this->middleware('can:' . config('permissions_list.CATEGORY_INDEX', false))->only('index');
-        $this->middleware('can:' . config('permissions_list.CATEGORY_STORE', false))->only('store');
-        $this->middleware('can:' . config('permissions_list.CATEGORY_UPDATE', false))->only('update');
-        $this->middleware('can:' . config('permissions_list.CATEGORY_DESTROY', false))->only('destroy');
+        $this->middleware('can:'.config('permissions_list.CATEGORY_INDEX', false))->only('index');
+        $this->middleware('can:'.config('permissions_list.CATEGORY_STORE', false))->only('store');
+        $this->middleware('can:'.config('permissions_list.CATEGORY_UPDATE', false))->only('update');
+        $this->middleware('can:'.config('permissions_list.CATEGORY_DESTROY', false))->only('destroy');
     }
 
     public function index(Request $request): View
     {
         $categories = $this->categoryService->index($request);
+
         return view('category::index', compact('categories'));
     }
 
     public function create(): View
     {
         $categories = Category::query()->where('parent_id', null)->latest()->active()->get();
+
         return view('category::create', compact('categories'));
     }
 
     public function store(CategoryRequest $request): RedirectResponse
     {
         $this->categoryService->store($request);
-        return to_route(config('app.panel_prefix', 'panel') . '.categories.index')
+
+        return to_route(config('app.panel_prefix', 'panel').'.categories.index')
             ->with('success', __('entity_created', ['entity' => __('category')]));
     }
 
     public function edit(Category $category): View
     {
         $categories = Category::query()->whereNot('id', $category->id)->where('parent_id', null)->latest()->active()->get();
+
         return view('category::edit', compact('category', 'categories'));
     }
 
     public function update(CategoryRequest $request, Category $category): RedirectResponse
     {
         $this->categoryService->update($request, $category);
-        return to_route(config('app.panel_prefix', 'panel') . '.categories.index')
+
+        return to_route(config('app.panel_prefix', 'panel').'.categories.index')
             ->with('success', __('entity_edited', ['entity' => __('category')]));
     }
 
     public function destroy(Category $category): RedirectResponse
     {
         $this->categoryService->destroy($category);
+
         return back()->with('success', __('entity_deleted', ['entity' => __('category')]));
     }
 
     public function SEOSettings(Category $category): view
     {
-        $nextUrl = config('app.panel_prefix', 'panel') . '.categories.index';
+        $nextUrl = config('app.panel_prefix', 'panel').'.categories.index';
         $title = $category->name;
-        $pageTitle = __('category') . ' ' . $title;
+        $pageTitle = __('category').' '.$title;
         // Optional placeholder
         $canonicalUrl = route('categories.show', $category->slug);
+
         return view('seo-manager::seo-settings', compact(['nextUrl', 'title', 'canonicalUrl', 'pageTitle']) + ['model' => $category]);
     }
 }

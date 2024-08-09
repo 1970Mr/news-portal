@@ -5,7 +5,8 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Modules\Comment\App\Models\Comment;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      */
@@ -22,7 +23,7 @@ return new class extends Migration {
             // A model who comments
             $table->string('commenter_id')->nullable();
             $table->string('commenter_type')->nullable();
-            $table->index(["commenter_id", "commenter_type"]);
+            $table->index(['commenter_id', 'commenter_type']);
 
             // The model that is commented on
             $table->morphs('commentable');

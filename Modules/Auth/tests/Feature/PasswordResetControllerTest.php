@@ -13,7 +13,8 @@ use Tests\TestCase;
 
 class PasswordResetControllerTest extends TestCase
 {
-    use RefreshDatabase, WithFaker;
+    use RefreshDatabase;
+    use WithFaker;
 
     /** @test */
     public function user_can_view_reset_forgot_form(): void

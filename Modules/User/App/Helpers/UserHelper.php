@@ -45,15 +45,17 @@ class UserHelper
         );
         $profile_picture = self::createDefaultProfilePicture($user->id);
         $user->image()->save($profile_picture);
+
         return $user;
     }
 
-    public static function createDefaultProfilePicture(int $user_id = null): Model
+    public static function createDefaultProfilePicture(?int $user_id = null): Model
     {
         $defaultImagePath = config('user.default_profile_picture.file_path');
         $uploadedFile = new UploadedFile($defaultImagePath, basename($defaultImagePath));
         $defaultAltText = 'Default Profile Picture';
         $uploadedFilePath = FileManager::uploadFromFile($uploadedFile);
+
         return Image::query()->create([
             'file_path' => $uploadedFilePath,
             'alt_text' => $defaultAltText,
@@ -67,6 +69,7 @@ class UserHelper
         while (User::where('username', $username)->exists()) {
             $username = uniqid('user_', true);
         }
+
         return $username;
     }
 }

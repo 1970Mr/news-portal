@@ -16,8 +16,10 @@ class RegisterService
         $this->createUser($request);
         if (auth()->attempt($request->all(['email', 'password']), true)) {
             event(new Registered(auth()->user()));
+
             return true;
         }
+
         return false;
     }
 
@@ -31,6 +33,7 @@ class RegisterService
         ]);
         $profile_picture = UserHelper::createDefaultProfilePicture($user->id);
         $user->image()->save($profile_picture);
+
         return $user;
     }
 }

@@ -32,6 +32,7 @@ class PanelService
         $articlesVisitsCount['day'] = visits(Article::class)->period('day')->count();
         $articlesVisitsCount['10hours'] = visits(Article::class)->period('10hours')->count();
         $articlesVisitsCount['hour'] = visits(Article::class)->period('hour')->count();
+
         return $articlesVisitsCount;
     }
 }

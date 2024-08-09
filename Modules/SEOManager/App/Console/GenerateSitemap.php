@@ -40,7 +40,7 @@ class GenerateSitemap extends Command
     public function handle(): void
     {
         $sitemapPath = public_path('sitemaps');
-        if (!File::exists($sitemapPath)) {
+        if (! File::exists($sitemapPath)) {
             File::makeDirectory($sitemapPath, 0755, true);
         }
 

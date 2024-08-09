@@ -46,8 +46,8 @@ class RequestTrack extends Model
     public function toSearchableArray(): array
     {
         return [
-            'id' => (int)$this->id,
-            'user_track_id' => (int)$this->user_track_id,
+            'id' => (int) $this->id,
+            'user_track_id' => (int) $this->user_track_id,
             'url' => $this->url,
             'referer' => $this->referer,
             'tag' => $this->tag,

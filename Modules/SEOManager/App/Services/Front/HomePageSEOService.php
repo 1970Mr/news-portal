@@ -31,7 +31,7 @@ class HomePageSEOService extends BaseSEOService
         );
 
         OpenGraph::addProperty('type', 'website');
-        OpenGraph::addProperty('site_name', __('news agency') . ' ' . config('app.name'));
+        OpenGraph::addProperty('site_name', __('news agency').' '.config('app.name'));
         $this->setOpenGraphSEO($seoData['siteUrl'], 'website', $seoData['logoUrl']);
         $this->setJsonLdSEO($seoData['title'], $seoData['description'], 'Website', $seoData['logoUrl']);
         $this->setTwitterSEO($seoData['title'], $seoData['logoUrl']);

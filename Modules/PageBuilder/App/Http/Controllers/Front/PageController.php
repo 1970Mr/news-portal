@@ -8,14 +8,13 @@ use Modules\SEOManager\App\Services\Front\SEOService;
 
 class PageController extends Controller
 {
-    public function __construct(private readonly SEOService $seoService)
-    {
-    }
+    public function __construct(private readonly SEOService $seoService) {}
 
     public function __invoke(Page $page)
     {
         $this->seoService->setPageSEO($page);
-        abort_if(!$page->isActive(), 404);
+        abort_if(! $page->isActive(), 404);
+
         return view('front::page.show', compact(['page']));
     }
 }

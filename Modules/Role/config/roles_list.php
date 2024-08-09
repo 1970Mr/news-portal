@@ -2,16 +2,16 @@
 
 return [
     [
-        "name" => "Admin",
-        "local_name" => "مدیر",
-        "permissions" => [
-            config('permissions_list.SUPER_ADMIN')
-        ]
+        'name' => 'Admin',
+        'local_name' => 'مدیر',
+        'permissions' => [
+            config('permissions_list.SUPER_ADMIN'),
+        ],
     ],
     [
-        "name" => "Editor",
-        "local_name" => "ویرایشگر",
-        "permissions" => [
+        'name' => 'Editor',
+        'local_name' => 'ویرایشگر',
+        'permissions' => [
             config('permissions_list.ARTICLE_INDEX'),
             config('permissions_list.ARTICLE_STORE'),
             config('permissions_list.ARTICLE_UPDATE'),
@@ -53,12 +53,12 @@ return [
             config('permissions_list.SEO_MANAGEMENT'),
             config('permissions_list.STATS_HEADER'),
             config('permissions_list.STATS_CONTENT'),
-        ]
+        ],
     ],
     [
-        "name" => "Author",
-        "local_name" => "نویسنده",
-        "permissions" => [
+        'name' => 'Author',
+        'local_name' => 'نویسنده',
+        'permissions' => [
             config('permissions_list.ARTICLE_INDEX'),
             config('permissions_list.ARTICLE_STORE'),
             config('permissions_list.ARTICLE_UPDATE'),
@@ -72,19 +72,18 @@ return [
             config('permissions_list.IMAGE_DESTROY_OWN'),
             config('permissions_list.STATS_HEADER'),
             config('permissions_list.STATS_CONTENT'),
-        ]
+        ],
     ],
     [
-        "name" => "Subscriber",
-        "local_name" => "عضو ساده",
-        "permissions" => [
+        'name' => 'Subscriber',
+        'local_name' => 'عضو ساده',
+        'permissions' => [
             config('permissions_list.PROFILE_EDIT'),
             config('permissions_list.PROFILE_CHANGE_PASSWORD'),
             config('permissions_list.PROFILE_CHANGE_EMAIL'),
             config('permissions_list.PROFILE_SOCIAL_NETWORKS'),
             config('permissions_list.STATS_HEADER'),
             config('permissions_list.STATS_CONTENT'),
-        ]
-    ]
+        ],
+    ],
 ];
-

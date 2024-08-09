@@ -32,7 +32,7 @@ class ArticleSeeder extends Seeder
             $users = User::all();
             $tags = Tag::all();
             Category::query()->whereDoesntHave('articles')->active()->limit(30)->each(function ($category) use ($users, $tags) {
-//                $articlesCount = random_int(1, 10);
+                //                $articlesCount = random_int(1, 10);
                 Article::factory(10)->create([
                     'category_id' => $category->id,
                     'user_id' => $users->random()->id,

@@ -10,10 +10,9 @@ return [
     | Connection Name: see config/database.php
     |
     */
-//    'engine' => \Awssat\Visits\DataEngines\RedisEngine::class,
+    //    'engine' => \Awssat\Visits\DataEngines\RedisEngine::class,
     'engine' => \Awssat\Visits\DataEngines\EloquentEngine::class,
     'connection' => 'laravel-visits',
-
 
     /*
     |--------------------------------------------------------------------------
@@ -37,7 +36,7 @@ return [
     | Redis prefix
     |--------------------------------------------------------------------------
     */
-    'keys_prefix' =>  'visits',
+    'keys_prefix' => 'visits',
 
     /*
     |--------------------------------------------------------------------------
@@ -47,7 +46,7 @@ return [
     | Will count only one visit of an IP during this specified time.
     |
     */
-//    'remember_ip' => 15 * 60,
+    //    'remember_ip' => 15 * 60,
     'remember_ip' => 60,
 
     /*
@@ -56,7 +55,6 @@ return [
     |--------------------------------------------------------------------------
     */
     'always_fresh' => false,
-
 
     /*
     |--------------------------------------------------------------------------
@@ -79,4 +77,3 @@ return [
     'global_ignore' => ['country'],
 
 ];
-

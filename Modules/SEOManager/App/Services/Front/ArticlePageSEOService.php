@@ -9,7 +9,7 @@ class ArticlePageSEOService extends BaseSEOService
 {
     public function setArticlePageSEO(Article $article): void
     {
-        $cacheKey = 'article_seo_' . $article->id;
+        $cacheKey = 'article_seo_'.$article->id;
         $cacheTTL = now()->addHours(self::CACHE_TTL);
 
         $seoData = cache()->remember($cacheKey, $cacheTTL, function () use ($article) {
@@ -23,10 +23,10 @@ class ArticlePageSEOService extends BaseSEOService
             $canonicalUrl = $seoSetting?->canonical_url ?? $articleUrl;
             $robots = $seoSetting?->robots ?? 'index, follow';
             $tags = $article->tags->pluck('name');
-            $keywords = !empty($seoSetting?->keywords) ? explode(',', $seoSetting->keywords) : $tags;
+            $keywords = ! empty($seoSetting?->keywords) ? explode(',', $seoSetting->keywords) : $tags;
             $authorName = $seoSetting?->meta_author ?? $user->full_name;
             $authorUrl = route('author.index', $user->username);
-            $imageUrl = asset('storage/' . $article->image->file_path);
+            $imageUrl = asset('storage/'.$article->image->file_path);
 
             return compact('title', 'description', 'articleUrl', 'canonicalUrl', 'robots', 'keywords', 'authorName', 'authorUrl', 'imageUrl', 'tags', 'category');
         });

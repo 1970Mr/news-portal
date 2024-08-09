@@ -16,16 +16,18 @@ class CommentService
         $this->setCommenter($request, $comment);
         $comment->commentable()->associate($model);
         $comment->save();
+
         return $comment;
     }
 
     public function setCommenter(CommentRequest $request, Comment $comment): Model
     {
-        if (!Auth::check()) {
+        if (! Auth::check()) {
             $comment->setGuestData($request->guest_name, $request->guest_email);
         } else {
             $comment->commenter()->associate(Auth::user());
         }
+
         return $comment;
     }
 
@@ -37,6 +39,7 @@ class CommentService
         $this->setCommenter($request, $child_comment);
         $child_comment->commentable()->associate($model);
         $child_comment->save();
+
         return $child_comment;
     }
 }

@@ -8,15 +8,14 @@ use Modules\User\App\Models\User;
 
 class ProfileService
 {
-    public function __construct(private readonly ImageService $imageService)
-    {
-    }
+    public function __construct(private readonly ImageService $imageService) {}
 
     public function update(ProfileRequest $request): bool
     {
         $user = User::query()->find(auth()->id());
         $data = $request->validated();
         $this->imageService->uploadImageDuringUpdate($request, $user, $user->full_name);
+
         return $user->update($data);
     }
 }

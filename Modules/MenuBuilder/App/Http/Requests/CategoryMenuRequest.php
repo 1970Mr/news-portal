@@ -12,13 +12,13 @@ class CategoryMenuRequest extends FormRequest
         $types = [Menu::CATEGORY_TYPE, Menu::PARENT_CATEGORY_TYPE];
         $rules = [
             'position' => 'required|numeric|unique:menus,position',
-            'type' => 'required|in:' . implode(',', $types),
+            'type' => 'required|in:'.implode(',', $types),
             'category_id' => 'required|numeric|exists:categories,id',
             'status' => 'required|boolean',
         ];
 
         if (strtolower($this->method()) === 'put') {
-            $rules['position'] .= ',' . $this->route('menu')->id;
+            $rules['position'] .= ','.$this->route('menu')->id;
         }
 
         return $rules;
@@ -40,7 +40,7 @@ class CategoryMenuRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge([
-            'status' => (bool)$this->status,
+            'status' => (bool) $this->status,
         ]);
     }
 }

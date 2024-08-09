@@ -9,14 +9,13 @@ use Modules\Setting\App\Models\AboutUs;
 
 class AboutUsController extends Controller
 {
-    public function __construct(private readonly SEOService $SEOService)
-    {
-    }
+    public function __construct(private readonly SEOService $SEOService) {}
 
     public function __invoke(): View
     {
         $this->SEOService->setAboutUsPageSEO();
         $about = AboutUs::first();
+
         return view('front::about-us.index', compact('about'));
     }
 }

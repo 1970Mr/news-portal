@@ -12,6 +12,7 @@ class NewsletterController extends Controller
     public function subscribe(NewsletterRequest $request): RedirectResponse
     {
         Newsletter::create($request->validated());
+
         return back()->with('success', __('You have successfully subscribed to our newsletter.'));
     }
 }

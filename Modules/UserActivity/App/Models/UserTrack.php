@@ -36,18 +36,19 @@ class UserTrack extends Model
     {
         $guestVisitors = self::query()->whereNull('user_id')->distinct('ip')->count('ip');
         $memberVisitors = self::query()->whereNotNull('user_id')->distinct('user_id')->count('user_id');
+
         return [
             'guest' => $guestVisitors,
             'member' => $memberVisitors,
-            'all' => $guestVisitors + $memberVisitors
+            'all' => $guestVisitors + $memberVisitors,
         ];
     }
 
     public function toSearchableArray(): array
     {
         return [
-            'id' => (int)$this->id,
-            'user_id' => (int)$this->user_id,
+            'id' => (int) $this->id,
+            'user_id' => (int) $this->user_id,
             'ip' => $this->ip,
             'device' => $this->device,
             'os' => $this->os,
@@ -65,21 +66,21 @@ class UserTrack extends Model
     public function country(): Attribute
     {
         return Attribute::make(
-            get: fn() => geoip($this->ip)['country'] ?? __('unknown'),
+            get: fn () => geoip($this->ip)['country'] ?? __('unknown'),
         );
     }
 
     public function city(): Attribute
     {
         return Attribute::make(
-            get: fn() => geoip($this->ip)['city'] ?? __('unknown'),
+            get: fn () => geoip($this->ip)['city'] ?? __('unknown'),
         );
     }
 
     public function timezone(): Attribute
     {
         return Attribute::make(
-            get: fn() => geoip($this->ip)['timezone'] ?? __('unknown'),
+            get: fn () => geoip($this->ip)['timezone'] ?? __('unknown'),
         );
     }
 
@@ -91,8 +92,9 @@ class UserTrack extends Model
     public function lastActivity(): Attribute
     {
         $lastActivity = $this->requestTracks()->latest()->first()?->created_at;
+
         return Attribute::make(
-            get: fn() => $lastActivity ?
+            get: fn () => $lastActivity ?
                 date('Y-m-d H:i:s', $lastActivity->getTimestamp()) :
                 null
         );
@@ -113,13 +115,14 @@ class UserTrack extends Model
     public function pagesVisitCount(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->requestTracks()->count(),
+            get: fn () => $this->requestTracks()->count(),
         );
     }
 
     public function isOnline(): bool
     {
         $lastActivityThreshold = now()->subMinutes(5);
+
         return $this->last_activity && $this->last_activity >= $lastActivityThreshold;
     }
 }

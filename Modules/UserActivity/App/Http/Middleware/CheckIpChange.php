@@ -14,7 +14,7 @@ class CheckIpChange
     public function handle(Request $request, Closure $next)
     {
         $user = Auth::user();
-        if (!$user) {
+        if (! $user) {
             return $next($request);
         }
 
@@ -22,8 +22,10 @@ class CheckIpChange
         $userTrack = $user->userTracks()->latest()->first();
         if ($userTrack?->ip !== $currentIp) {
             Auth::logout();
+
             return to_route('login')->withErrors(__('Your IP address has changed, please login again.'));
         }
+
         return $next($request);
     }
 }

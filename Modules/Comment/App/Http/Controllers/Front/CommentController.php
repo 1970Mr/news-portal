@@ -24,25 +24,29 @@ class CommentController extends Controller
     public function store(CommentRequest $request): RedirectResponse
     {
         $this->commentService->store($request);
-        return redirect(URL::previous() . '#comments')->with(['success' => __('comment::messages.comment_saved_successfully')]);
+
+        return redirect(URL::previous().'#comments')->with(['success' => __('comment::messages.comment_saved_successfully')]);
     }
 
     public function update(CommentRequest $request, Comment $comment): RedirectResponse
     {
-//        $comment->update(['comment' => $request->comment, 'status' => Comment::PENDING]);
+        //        $comment->update(['comment' => $request->comment, 'status' => Comment::PENDING]);
         $comment->update(['comment' => $request->comment]);
-        return redirect(URL::previous() . '#comments')->with(['success' => __('comment::messages.comment_updated_successfully')]);
+
+        return redirect(URL::previous().'#comments')->with(['success' => __('comment::messages.comment_updated_successfully')]);
     }
 
     public function destroy(Comment $comment): RedirectResponse
     {
         $comment->delete();
-        return redirect(URL::previous() . '#comments')->with(['success' => __('comment::messages.comment_deleted_successfully')]);
+
+        return redirect(URL::previous().'#comments')->with(['success' => __('comment::messages.comment_deleted_successfully')]);
     }
 
     public function reply(CommentRequest $request, Comment $comment): RedirectResponse
     {
         $this->commentService->reply($request, $comment);
-        return redirect(URL::previous() . '#comments')->with(['success' => __('comment::messages.comment_saved_successfully')]);
+
+        return redirect(URL::previous().'#comments')->with(['success' => __('comment::messages.comment_saved_successfully')]);
     }
 }

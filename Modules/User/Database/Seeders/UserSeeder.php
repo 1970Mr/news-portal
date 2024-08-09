@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
     {
         TransactionHelper::beginTransaction('Failed to seed users: ', function () {
             $admin_role = Role::query()->where('name', Role::ADMIN)->first();
-            if (!$admin_role) {
+            if (! $admin_role) {
                 $this->call([
                     PermissionSeeder::class,
                     RoleSeeder::class,
@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
 
             User::factory(10)->create();
 
-            if (!User::getFirstAdmin()) {
+            if (! User::getFirstAdmin()) {
                 UserHelper::firstOrCreateAdminUser();
             }
         });

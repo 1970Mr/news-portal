@@ -11,28 +11,27 @@ class BaseSEOService
     protected const CACHE_TTL = 1;
 
     protected function setBasicSEO(
-        ?string          $title = null,
-        ?string          $description = null,
-        ?string          $canonicalUrl = null,
-        string           $robots = 'index, follow',
+        ?string $title = null,
+        ?string $description = null,
+        ?string $canonicalUrl = null,
+        string $robots = 'index, follow',
         array|Collection $keywords = []
-    ): void
-    {
+    ): void {
         SEOTools::setTitle($title);
         SEOTools::setDescription($description);
         SEOTools::setCanonical($canonicalUrl);
         SEOMeta::addMeta('robots', $robots);
-        if (!empty($keywords)) {
+        if (! empty($keywords)) {
             SEOMeta::addKeyword($keywords);
         }
     }
 
     protected function setOpenGraphSEO(
-        string  $url,
-        string  $type,
+        string $url,
+        string $type,
         ?string $imageUrl = null,
-        string  $locale = 'fa-ir'): void
-    {
+        string $locale = 'fa-ir'
+    ): void {
         SEOTools::opengraph()->setUrl($url);
         if ($imageUrl) {
             SEOTools::opengraph()->addImage($imageUrl, ['width' => 300]);
@@ -53,8 +52,8 @@ class BaseSEOService
         ?string $title = null,
         ?string $description = null,
         ?string $type = null,
-        ?string $imageUrl = null): void
-    {
+        ?string $imageUrl = null
+    ): void {
         SEOTools::jsonLd()->setType($type);
         SEOTools::jsonLd()->setTitle($title);
         SEOTools::jsonLd()->setDescription($description);

@@ -41,7 +41,7 @@ class UserStoreRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge([
-            'status' => (bool)$this->status,
+            'status' => (bool) $this->status,
         ]);
     }
 }

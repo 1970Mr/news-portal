@@ -8,9 +8,10 @@ class ImagePermissionService
 {
     public function setPermissionsFilter(Builder $query): Builder
     {
-        if (!$this->canAccessAllImages()) {
+        if (! $this->canAccessAllImages()) {
             $query->where('user_id', auth()->id());
         }
+
         return $query;
     }
 

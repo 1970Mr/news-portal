@@ -13,14 +13,15 @@ class CategoryMenuController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('can:' . config('permissions_list.MENU_STORE', false))->only('store');
-        $this->middleware('can:' . config('permissions_list.MENU_UPDATE', false))->only('update');
+        $this->middleware('can:'.config('permissions_list.MENU_STORE', false))->only('store');
+        $this->middleware('can:'.config('permissions_list.MENU_UPDATE', false))->only('update');
     }
 
     public function store(CategoryMenuRequest $request): RedirectResponse
     {
         Menu::query()->create($request->validated());
-        return to_route(config('app.panel_prefix', 'panel') . '.menus.index')
+
+        return to_route(config('app.panel_prefix', 'panel').'.menus.index')
             ->with('success', __('entity_created', ['entity' => __('menu')]));
     }
 
@@ -33,8 +34,9 @@ class CategoryMenuController extends Controller
             ->latest()
             ->active()
             ->get();
-//        $latestPosition = MenuBuilder::query()->latest('position')->first()?->position ?? 0;
-        $latestPosition = (int)Menu::query()->max('position');
+        //        $latestPosition = MenuBuilder::query()->latest('position')->first()?->position ?? 0;
+        $latestPosition = (int) Menu::query()->max('position');
+
         return view('menu-builder::create-category-menu', compact(['categories', 'latestPosition', 'types']));
     }
 
@@ -48,14 +50,16 @@ class CategoryMenuController extends Controller
             ->latest()
             ->active()
             ->get();
-        $latestPosition = (int)Menu::query()->max('position');
+        $latestPosition = (int) Menu::query()->max('position');
+
         return view('menu-builder::edit-category-menu', compact(['categories', 'latestPosition', 'types', 'menu']));
     }
 
     public function update(CategoryMenuRequest $request, Menu $menu): RedirectResponse
     {
         $menu->update($request->validated());
-        return to_route(config('app.panel_prefix', 'panel') . '.menus.index')
+
+        return to_route(config('app.panel_prefix', 'panel').'.menus.index')
             ->with('success', __('entity_edited', ['entity' => __('menu')]));
     }
 }

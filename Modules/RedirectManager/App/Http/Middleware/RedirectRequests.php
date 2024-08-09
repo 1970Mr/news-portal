@@ -26,6 +26,7 @@ class RedirectRequests
         if ($redirect) {
             return redirect($redirect->destination_url, $redirect->status_code);
         }
+
         return $next($request);
     }
 
@@ -37,6 +38,7 @@ class RedirectRequests
         $redirects = Cache::remember('redirects_list', 60 * 60 * 24, static function () {
             return Redirect::active()->get();
         });
+
         return $redirects->firstWhere('source_url', $currentUrl);
     }
 
@@ -45,7 +47,8 @@ class RedirectRequests
      */
     protected function getRedirectFromIndividualCache($currentUrl)
     {
-        $cacheKey = 'redirect_' . md5($currentUrl);
+        $cacheKey = 'redirect_'.md5($currentUrl);
+
         return Cache::remember($cacheKey, 60 * 60 * 24, static function () use ($currentUrl) {
             return Redirect::where('source_url', $currentUrl)->active()->first();
         });

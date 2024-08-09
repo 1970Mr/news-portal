@@ -12,9 +12,9 @@ class TransactionHelper
     /**
      * Execute a callback within a database transaction.
      *
-     * @param string $prefixMessage The message prefix for logging errors.
-     * @param Closure $callback The callback function to execute within the transaction.
-     * @param array $params Optional parameters to pass to the callback.
+     * @param  string  $prefixMessage  The message prefix for logging errors.
+     * @param  Closure  $callback  The callback function to execute within the transaction.
+     * @param  array  $params  Optional parameters to pass to the callback.
      * @return mixed The result of the callback function.
      */
     public static function beginTransaction(string $prefixMessage, Closure $callback, array $params = []): mixed
@@ -29,8 +29,8 @@ class TransactionHelper
             return $result;
         } catch (Exception $e) {
             DB::rollBack();
-            Log::error($prefixMessage . $e->getMessage());
-            echo "Error: " . $e->getMessage() . "\n";
+            Log::error($prefixMessage.$e->getMessage());
+            echo 'Error: '.$e->getMessage()."\n";
             throw $e;
         }
     }

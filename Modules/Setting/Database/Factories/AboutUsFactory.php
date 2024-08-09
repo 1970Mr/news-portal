@@ -23,4 +23,3 @@ class AboutUsFactory extends Factory
         ];
     }
 }
-

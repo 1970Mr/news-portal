@@ -9,7 +9,7 @@ class CategoriesPageSEOService extends BaseSEOService
 {
     public function setCategoryPageSEO(Category $category): void
     {
-        $cacheKey = 'category_seo_' . $category->id;
+        $cacheKey = 'category_seo_'.$category->id;
         $cacheTTL = now()->addHours(self::CACHE_TTL);
 
         $seoData = cache()->remember($cacheKey, $cacheTTL, function () use ($category) {
@@ -18,9 +18,9 @@ class CategoriesPageSEOService extends BaseSEOService
             $description = $seoSetting?->meta_description;
             $categoryUrl = route('categories.show', $category->slug);
             $canonicalUrl = $seoSetting?->canonical_url ?? $categoryUrl;
-            $keywords = !empty($seoSetting?->keywords) ? explode(',', $seoSetting->keywords) : [];
+            $keywords = ! empty($seoSetting?->keywords) ? explode(',', $seoSetting->keywords) : [];
             $robots = $seoSetting?->robots ?? 'index, follow';
-            $imageUrl = asset('storage/' . $category->image->file_path);
+            $imageUrl = asset('storage/'.$category->image->file_path);
 
             return compact('title', 'description', 'categoryUrl', 'canonicalUrl', 'keywords', 'robots', 'imageUrl');
         });

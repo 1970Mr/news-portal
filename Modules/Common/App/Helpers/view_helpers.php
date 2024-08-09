@@ -5,20 +5,24 @@ use Modules\Common\App\Helpers\JalalianHelper;
 
 function active_menu($menu, $class = 'current'): string
 {
-    if (isset($menu['url']) && url()->current() === $menu['url'])
+    if (isset($menu['url']) && url()->current() === $menu['url']) {
         return $class;
-    if (!array_key_exists('active_routes', $menu))
-        return '';
-    foreach ($menu['active_routes'] as $url) {
-        if (Route::currentRouteName() === $url)
-            return $class;
     }
+    if (! array_key_exists('active_routes', $menu)) {
+        return '';
+    }
+    foreach ($menu['active_routes'] as $url) {
+        if (Route::currentRouteName() === $url) {
+            return $class;
+        }
+    }
+
     return '';
 }
 
 function jalalian(): JalalianHelper
 {
-    return new JalalianHelper();
+    return new JalalianHelper;
 }
 
 function status_class($status): string

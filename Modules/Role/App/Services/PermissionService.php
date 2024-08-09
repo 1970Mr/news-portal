@@ -15,6 +15,7 @@ class PermissionService
             $groupName = $this->getPermissionGroupName($permission->name);
             $groupedPermissions[$groupName][] = $permission;
         }
+
         return $groupedPermissions;
     }
 
@@ -24,6 +25,7 @@ class PermissionService
         if (count($parts) >= 2) {
             return strtolower($parts[0]);
         }
+
         return 'default_group';
     }
 }

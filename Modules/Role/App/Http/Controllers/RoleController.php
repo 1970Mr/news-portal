@@ -18,25 +18,26 @@ class RoleController extends Controller
 
     public function __construct(
         private readonly RoleService $roleService
-    )
-    {
+    ) {
         $this->groupedPermissions = $this->roleService->groupedPermissions();
-        $this->middleware('can:' . config('permissions_list.ROLE_INDEX', false))->only('index');
-        $this->middleware('can:' . config('permissions_list.ROLE_STORE', false))->only('store');
-        $this->middleware('can:' . config('permissions_list.ROLE_UPDATE', false))->only('update');
-        $this->middleware('can:' . config('permissions_list.ROLE_DESTROY', false))->only('destroy');
+        $this->middleware('can:'.config('permissions_list.ROLE_INDEX', false))->only('index');
+        $this->middleware('can:'.config('permissions_list.ROLE_STORE', false))->only('store');
+        $this->middleware('can:'.config('permissions_list.ROLE_UPDATE', false))->only('update');
+        $this->middleware('can:'.config('permissions_list.ROLE_DESTROY', false))->only('destroy');
     }
 
     public function index(): View
     {
         $roles = Role::with('permissions')->latest('id')->paginate(10);
+
         return view('role::index', compact('roles'));
     }
 
     public function store(RoleRequest $request): RedirectResponse
     {
         Role::create($request->only('name', 'local_name'));
-        return to_route(config('app.panel_prefix', 'panel') . '.roles.index')->with('success', __('entity_created', ['entity' => __('role')]));
+
+        return to_route(config('app.panel_prefix', 'panel').'.roles.index')->with('success', __('entity_created', ['entity' => __('role')]));
     }
 
     public function create(): View
@@ -53,7 +54,8 @@ class RoleController extends Controller
     {
         try {
             $this->roleService->update($request, $role);
-            return to_route(config('app.panel_prefix', 'panel') . '.roles.index')->with('success', __('entity_edited', ['entity' => __('role')]));
+
+            return to_route(config('app.panel_prefix', 'panel').'.roles.index')->with('success', __('entity_edited', ['entity' => __('role')]));
         } catch (UnableToRenameDefaultRoleException $e) {
             return back()->with('error', $e->getMessage());
         }
@@ -63,6 +65,7 @@ class RoleController extends Controller
     {
         try {
             $this->roleService->destroy($role);
+
             return back()->with('success', __('entity_deleted', ['entity' => __('role')]));
         } catch (UnableToDeleteDefaultRoleException $e) {
             return back()->with('error', $e->getMessage());

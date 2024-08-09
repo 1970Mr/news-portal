@@ -9,9 +9,7 @@ use Modules\SEOManager\App\Services\Front\SEOService;
 
 class HomeController extends Controller
 {
-    public function __construct(private readonly HomeService $homeService, private readonly SEOService $seoService)
-    {
-    }
+    public function __construct(private readonly HomeService $homeService, private readonly SEOService $seoService) {}
 
     public function __invoke(): View
     {

@@ -16,10 +16,8 @@ class TrackUserRequestService
     public function __construct(
         private readonly Request $request,
         private ?Authenticatable $user = null,
-        public ?Model            $userTrack = null
-    )
-    {
-    }
+        public ?Model $userTrack = null
+    ) {}
 
     /**
      * Create a new request track record.
@@ -39,9 +37,10 @@ class TrackUserRequestService
      */
     public function getUserTracking(): Model
     {
-        if (!$this->userTrack) {
+        if (! $this->userTrack) {
             $this->setUserTracking();
         }
+
         return $this->userTrack;
     }
 
@@ -69,9 +68,9 @@ class TrackUserRequestService
         $dd->parse();
 
         return [
-            'browser' => $dd->getClient('name') . ' ' . $dd->getClient('version'),
+            'browser' => $dd->getClient('name').' '.$dd->getClient('version'),
             'device' => $dd->getDeviceName(),
-            'os' => $dd->getOs('name') . ' ' . $dd->getOs('version') . ' - ' . $dd->getOs('platform'),
+            'os' => $dd->getOs('name').' '.$dd->getOs('version').' - '.$dd->getOs('platform'),
             'user_agent' => $dd->getUserAgent(),
         ];
     }
@@ -93,6 +92,7 @@ class TrackUserRequestService
     private function getTag(Request $request): string
     {
         $panelPrefix = config('app.panel_prefix', 'panel');
+
         return $request->is("{$panelPrefix}*") ? $panelPrefix : 'front';
     }
 }

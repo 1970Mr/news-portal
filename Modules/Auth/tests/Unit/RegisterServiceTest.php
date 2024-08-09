@@ -27,7 +27,7 @@ class RegisterServiceTest extends TestCase
         ];
         $request = new RegisterRequest($requestData);
 
-        $service = new RegisterService();
+        $service = new RegisterService;
         $user = $service->createUser($request);
 
         $this->assertInstanceOf(User::class, $user);
@@ -50,7 +50,7 @@ class RegisterServiceTest extends TestCase
         ];
         $request = new RegisterRequest($requestData);
 
-        $service = new RegisterService();
+        $service = new RegisterService;
         $registered = $service->register($request);
 
         $this->assertTrue($registered);

@@ -21,6 +21,7 @@ class SweetAlert extends Component
     public function render(): View|string
     {
         $types = ['success', 'error', 'info'];
+
         return view('common::components.sweetalert', compact('types'));
     }
 }

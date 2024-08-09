@@ -9,7 +9,7 @@ class SearchPageSEOService extends BaseSEOService
 {
     public function setSearchPageSEO(string $searchText): void
     {
-        $cacheKey = 'search_seo_' . md5($searchText);
+        $cacheKey = 'search_seo_'.md5($searchText);
         $cacheTTL = now()->addHours(self::CACHE_TTL);
 
         $seoData = cache()->remember($cacheKey, $cacheTTL, function () use ($searchText) {

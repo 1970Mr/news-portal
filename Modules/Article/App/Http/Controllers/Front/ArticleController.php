@@ -12,9 +12,7 @@ use Modules\SEOManager\App\Services\Front\SEOService;
 
 class ArticleController extends Controller
 {
-    public function __construct(private readonly SEOService $seoService, private readonly ShareService $shareService)
-    {
-    }
+    public function __construct(private readonly SEOService $seoService, private readonly ShareService $shareService) {}
 
     // For news
     public function showNews(Request $request, string $date, Article $article): View
@@ -31,18 +29,21 @@ class ArticleController extends Controller
         $next_article = $article->nextArticle();
         $related_articles = $article->relatedArticles();
         visits($article)->increment();
+
         return view('front::single-article.show', compact(['article', 'shared_links', 'previous_article', 'next_article', 'related_articles']));
     }
 
     public function like(Article $article): RedirectResponse
     {
         $article->like();
+
         return redirect()->back()->with('success', __('article::messages.liked'));
     }
 
     public function unlike(Article $article): RedirectResponse
     {
         $article->unlike();
+
         return redirect()->back()->with('success', __('article::messages.unliked'));
     }
 }

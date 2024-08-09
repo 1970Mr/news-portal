@@ -14,11 +14,11 @@ class PasswordResetService
     public function passwordReset(PasswordResetRequest $request): string
     {
         return Password::reset(
-//            $request->validated(),
+            //            $request->validated(),
             $request->validate($request->rules()),
             static function (User $user, string $password) {
                 $user->forceFill([
-                    'password' => Hash::make($password)
+                    'password' => Hash::make($password),
                 ])->setRememberToken(Str::random(60));
                 $user->save();
 

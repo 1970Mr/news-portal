@@ -12,6 +12,7 @@ class MenuFactory extends Factory
      * The name of the factory's corresponding model.
      */
     protected $model = Menu::class;
+
     protected int $position;
 
     public function __construct($count = null, ?Collection $states = null, ?Collection $has = null, ?Collection $for = null, ?Collection $afterMaking = null, ?Collection $afterCreating = null, $connection = null, ?Collection $recycle = null)
@@ -39,4 +40,3 @@ class MenuFactory extends Factory
         ];
     }
 }
-

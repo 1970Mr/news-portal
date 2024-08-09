@@ -13,8 +13,8 @@ class UserUpdateRequest extends FormRequest
     {
         return [
             'full_name' => 'required|string|min:2',
-            'username' => 'required|string|min:2|unique:users,username,' . $this->route('user')->id,
-            'email' => 'required|email|unique:users,email,' . $this->route('user')->id,
+            'username' => 'required|string|min:2|unique:users,username,'.$this->route('user')->id,
+            'email' => 'required|email|unique:users,email,'.$this->route('user')->id,
             'bio' => 'nullable|string|max:600',
             'password' => 'exclude_if:password,null|min:8|confirmed',
             'picture' => 'nullable|image|max:5000',
@@ -41,7 +41,7 @@ class UserUpdateRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge([
-            'status' => (bool)$this->status,
+            'status' => (bool) $this->status,
         ]);
     }
 }

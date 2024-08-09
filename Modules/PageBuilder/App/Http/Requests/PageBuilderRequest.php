@@ -13,13 +13,13 @@ class PageBuilderRequest extends FormRequest
             'title' => 'required|string|max:255',
             'slug' => 'required|string|max:255|unique:pages,slug',
             'content' => 'required|string',
-            'image' => 'required' . $imageRules,
+            'image' => 'required'.$imageRules,
             'status' => 'required|boolean',
         ];
 
         if (strtolower($this->method()) === 'put') {
-            $rules['image'] = 'nullable' . $imageRules;
-            $rules['slug'] .= ',' . $this->route('page')->id;
+            $rules['image'] = 'nullable'.$imageRules;
+            $rules['slug'] .= ','.$this->route('page')->id;
         }
 
         return $rules;
@@ -33,7 +33,7 @@ class PageBuilderRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge([
-            'status' => (bool)$this->status,
+            'status' => (bool) $this->status,
         ]);
     }
 }

@@ -12,7 +12,7 @@ class CommentRequest extends FormRequest
      */
     public function rules(): array
     {
-        if (!Auth::check()) {
+        if (! Auth::check()) {
             $guest_rules = [
                 'guest_name' => 'required|string|max:255',
                 'guest_email' => 'required|string|email|max:255',
@@ -22,7 +22,7 @@ class CommentRequest extends FormRequest
         $rules = [
             'commentable_type' => 'required|string',
             'commentable_id' => 'required|string|min:1',
-            'comment' => 'required|string|max:700'
+            'comment' => 'required|string|max:700',
         ];
 
         return array_merge($guest_rules ?? [], $rules);

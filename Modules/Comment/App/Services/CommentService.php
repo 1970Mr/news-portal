@@ -18,14 +18,17 @@ class CommentService
         if ($searchText) {
             $commentIds = $this->search($searchText)->pluck('id');
             $query->whereIn('id', $commentIds);
+
             return $query->paginate(10)->appends('query', $searchText);
         }
+
         return $query->paginate(10);
     }
 
     private function setFilters(Request $request, Builder $query): Builder
     {
         $filter = $request->filter;
+
         return match ($filter) {
             Comment::PENDING => $query->pending(),
             Comment::APPROVED => $query->approved(),

@@ -16,6 +16,7 @@ class RoleService
     public function groupedPermissions(): array
     {
         $permissions = Permission::all();
+
         return (new PermissionService)->groupedPermissions($permissions);
     }
 
@@ -28,18 +29,20 @@ class RoleService
         if ($defaultRoles->contains($role->name) && $role->name !== $request->get('name')) {
             throw new UnableToRenameDefaultRoleException(__('role::messages.unable_to_rename'));
         }
+
         return $role->update($request->only('name', 'local_name'));
     }
 
     /**
      * @throws UnableToDeleteDefaultRoleException
      */
-    public function destroy(Role $role): bool|null
+    public function destroy(Role $role): ?bool
     {
         $defaultRoles = Role::getDefaultRoles();
         if ($defaultRoles->contains($role->name)) {
             throw new UnableToDeleteDefaultRoleException(__('role::messages.unable_to_delete'));
         }
+
         return $role->delete();
     }
 }

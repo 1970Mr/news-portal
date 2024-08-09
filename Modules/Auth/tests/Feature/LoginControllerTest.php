@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Auth\Tests\Feature;
+namespace Modules\Auth\tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Modules\User\App\Models\User;
@@ -23,7 +23,7 @@ class LoginControllerTest extends TestCase
     public function user_can_login_with_valid_credentials(): void
     {
         $user = User::factory()->active()->create([
-            'password' => 'password'
+            'password' => 'password',
         ]);
 
         $response = $this->post(route('login'), [
@@ -41,7 +41,7 @@ class LoginControllerTest extends TestCase
     public function user_cannot_login_with_invalid_credentials(): void
     {
         $user = User::factory()->active()->create([
-            'password' => 'password'
+            'password' => 'password',
         ]);
 
         $response = $this->post(route('login'), [

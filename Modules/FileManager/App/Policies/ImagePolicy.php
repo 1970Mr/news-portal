@@ -14,7 +14,7 @@ class ImagePolicy
     {
         return $user->canAny([
             config('permissions_list.IMAGE_INDEX_ALL'),
-            config('permissions_list.IMAGE_INDEX_OWN')
+            config('permissions_list.IMAGE_INDEX_OWN'),
         ]);
     }
 
@@ -24,7 +24,7 @@ class ImagePolicy
         $canShowOwn = $user->can(config('permissions_list.IMAGE_INDEX_OWN', false));
 
         // If the user can't see any image but can see own image and the image being showed is not their own, return false
-        if ((!$canShowAll && $canShowOwn) && $image->user_id !== $user->id) {
+        if ((! $canShowAll && $canShowOwn) && $image->user_id !== $user->id) {
             return false;
         }
 
@@ -42,7 +42,7 @@ class ImagePolicy
         $canUpdateOwn = $user->can(config('permissions_list.IMAGE_UPDATE_OWN', false));
 
         // If the user can't update any image but can update own image and the image being updated is not their own, return false
-        if ((!$canUpdateAll && $canUpdateOwn) && $image->user_id !== $user->id) {
+        if ((! $canUpdateAll && $canUpdateOwn) && $image->user_id !== $user->id) {
             return false;
         }
 
@@ -55,7 +55,7 @@ class ImagePolicy
         $canDestroyOwn = $user->can(config('permissions_list.IMAGE_DESTROY_OWN', false));
 
         // If the user can't destroy any image but can destroy own image and the image being destroyed is not their own, return false
-        if ((!$canDestroyAll && $canDestroyOwn) && $image->user_id !== $user->id) {
+        if ((! $canDestroyAll && $canDestroyOwn) && $image->user_id !== $user->id) {
             return false;
         }
 
@@ -66,11 +66,11 @@ class ImagePolicy
     {
         $canAnyUpdate = $user->canAny([
             config('permissions_list.IMAGE_UPDATE_ALL'),
-            config('permissions_list.IMAGE_UPDATE_OWN')
+            config('permissions_list.IMAGE_UPDATE_OWN'),
         ]);
         $canAnyDestroy = $user->canAny([
             config('permissions_list.IMAGE_DESTROY_ALL'),
-            config('permissions_list.IMAGE_DESTROY_OWN')
+            config('permissions_list.IMAGE_DESTROY_OWN'),
         ]);
 
         return $canAnyUpdate || $canAnyDestroy;

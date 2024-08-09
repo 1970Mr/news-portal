@@ -40,7 +40,7 @@ class VideoService
 
     private function updateVideoDuration(Video $video, Media $media): void
     {
-        $videoPath = $media->id . '/' . $media->file_name;
+        $videoPath = $media->id.'/'.$media->file_name;
         $ffmpeg = FFMpeg::fromDisk('media_videos')->open($videoPath);
         $durationInSeconds = $ffmpeg->getDurationInSeconds();
         $video->update(['duration' => $durationInSeconds]);

@@ -19,6 +19,7 @@ class TagService
         } else {
             $articles = Tag::with('hotness')->latest()->paginate(10);
         }
+
         return $articles;
     }
 
@@ -33,6 +34,7 @@ class TagService
     {
         $tag = Tag::create($request->validated());
         $this->setHotness($tag, $request);
+
         return $tag;
     }
 
@@ -47,6 +49,7 @@ class TagService
     {
         $tag->update($request->validated());
         $this->setHotness($tag, $request);
+
         return $tag;
     }
 

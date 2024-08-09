@@ -6,7 +6,7 @@ use Modules\Profile\App\Http\Controllers\ChangePasswordController;
 use Modules\Profile\App\Http\Controllers\ProfileController;
 use Modules\Profile\App\Http\Controllers\SocialNetworkController;
 
-Route::prefix(config('app.panel_prefix', 'panel') . '/profile')->name(config('app.panel_prefix', 'panel') . '.profile.')->group(function () {
+Route::prefix(config('app.panel_prefix', 'panel').'/profile')->name(config('app.panel_prefix', 'panel').'.profile.')->group(function () {
 
     Route::prefix('')->name('edit')->controller(ProfileController::class)->group(function () {
         Route::get('/', 'edit');

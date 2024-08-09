@@ -11,9 +11,7 @@ use Modules\FileManager\App\Services\Image\ImageService;
 
 class AdService
 {
-    public function __construct(private readonly ImageService $imageService)
-    {
-    }
+    public function __construct(private readonly ImageService $imageService) {}
 
     public function index(Request $request): Paginator
     {
@@ -23,6 +21,7 @@ class AdService
         } else {
             $ads = Ad::query()->latest()->paginate(10);
         }
+
         return $ads;
     }
 
@@ -31,6 +30,7 @@ class AdService
         $ad = Ad::query()->create($request->validated());
         $image = $this->imageService->store($request, altText: $ad->title);
         $ad->image()->save($image);
+
         return $ad;
     }
 

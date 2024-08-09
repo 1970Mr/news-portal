@@ -16,7 +16,10 @@ use Modules\Tag\Database\Factories\TagFactory;
 
 class Tag extends Model
 {
-    use HasFactory, HasHotness, Searchable, SEOAble;
+    use HasFactory;
+    use HasHotness;
+    use Searchable;
+    use SEOAble;
 
     protected $fillable = [
         'name',
@@ -33,7 +36,7 @@ class Tag extends Model
     public function toSearchableArray(): array
     {
         return [
-            'id' => (int)$this->id,
+            'id' => (int) $this->id,
             'name' => $this->name,
             'slug' => $this->slug,
             'description' => $this->description,
@@ -53,7 +56,7 @@ class Tag extends Model
     protected function slug(): Attribute
     {
         return Attribute::make(
-            set: static fn(string $value) => Str::slug($value),
+            set: static fn (string $value) => Str::slug($value),
         );
     }
 }

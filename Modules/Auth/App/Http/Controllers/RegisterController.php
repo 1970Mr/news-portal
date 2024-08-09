@@ -21,6 +21,7 @@ class RegisterController extends Controller
         if ($success) {
             return to_route('home.index')->with('success', __('auth::messages.user_created'));
         }
+
         return back()->withErrors(__('auth::messages.user_not_created'));
     }
 }

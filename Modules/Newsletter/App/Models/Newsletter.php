@@ -11,13 +11,13 @@ class Newsletter extends Model
 
     protected $fillable = [
         'email',
-        'subscribed_at'
+        'subscribed_at',
     ];
 
     public function toSearchableArray(): array
     {
         return [
-            'id' => (int)$this->id,
+            'id' => (int) $this->id,
             'email' => $this->email,
         ];
     }

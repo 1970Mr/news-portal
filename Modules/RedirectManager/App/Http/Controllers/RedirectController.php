@@ -14,22 +14,24 @@ class RedirectController extends Controller
 {
     public function __construct(private readonly RedirectService $redirectService)
     {
-        $this->middleware('can:' . config('permissions_list.REDIRECT_INDEX', false))->only('index');
-        $this->middleware('can:' . config('permissions_list.REDIRECT_STORE', false))->only('store');
-        $this->middleware('can:' . config('permissions_list.REDIRECT_UPDATE', false))->only('update');
-        $this->middleware('can:' . config('permissions_list.REDIRECT_DESTROY', false))->only('destroy');
+        $this->middleware('can:'.config('permissions_list.REDIRECT_INDEX', false))->only('index');
+        $this->middleware('can:'.config('permissions_list.REDIRECT_STORE', false))->only('store');
+        $this->middleware('can:'.config('permissions_list.REDIRECT_UPDATE', false))->only('update');
+        $this->middleware('can:'.config('permissions_list.REDIRECT_DESTROY', false))->only('destroy');
     }
 
     public function index(Request $request): View
     {
         $redirects = $this->redirectService->index($request);
+
         return view('redirect-manager::index', compact('redirects'));
     }
 
     public function store(RedirectRequest $request): RedirectResponse
     {
         Redirect::create($request->validated());
-        return to_route(config('app.panel_prefix', 'panel') . '.redirects.index')
+
+        return to_route(config('app.panel_prefix', 'panel').'.redirects.index')
             ->with('success', __('entity_created', ['entity' => __('redirect')]));
     }
 
@@ -46,13 +48,15 @@ class RedirectController extends Controller
     public function update(RedirectRequest $request, Redirect $redirect): RedirectResponse
     {
         $redirect->update($request->validated());
-        return to_route(config('app.panel_prefix', 'panel') . '.redirects.index')
+
+        return to_route(config('app.panel_prefix', 'panel').'.redirects.index')
             ->with('success', __('entity_edited', ['entity' => __('redirect')]));
     }
 
     public function destroy(Redirect $redirect): RedirectResponse
     {
         $redirect->delete();
+
         return back()->with('success', __('entity_deleted', ['entity' => __('redirect')]));
     }
 }

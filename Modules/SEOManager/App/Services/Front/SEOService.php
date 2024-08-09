@@ -11,18 +11,16 @@ use Modules\User\App\Models\User;
 class SEOService
 {
     public function __construct(
-        protected HomePageSEOService       $homePageSEOService,
-        protected ArticlePageSEOService    $articlePageSEOService,
-        protected AuthorPageSEOService     $authorPageSEOService,
-        protected AboutUsPageSEOService    $aboutUsPageSEOService,
-        protected ContactUsPageSEOService  $contactUsPageSEOService,
+        protected HomePageSEOService $homePageSEOService,
+        protected ArticlePageSEOService $articlePageSEOService,
+        protected AuthorPageSEOService $authorPageSEOService,
+        protected AboutUsPageSEOService $aboutUsPageSEOService,
+        protected ContactUsPageSEOService $contactUsPageSEOService,
         protected CategoriesPageSEOService $categoriesPageSEOService,
-        protected TagPageSEOService        $tagPageSEOService,
-        protected SearchPageSEOService     $searchPageSEOService,
-        protected PageSEOService           $pageSEOService,
-    )
-    {
-    }
+        protected TagPageSEOService $tagPageSEOService,
+        protected SearchPageSEOService $searchPageSEOService,
+        protected PageSEOService $pageSEOService,
+    ) {}
 
     public function setHomePageSEO(): void
     {

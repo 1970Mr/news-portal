@@ -16,6 +16,7 @@ class ImageRequest extends FormRequest
         if (strtolower($this->method()) === 'put') {
             $rules['image'] = "nullable|$image_rule";
         }
+
         return $rules;
     }
 

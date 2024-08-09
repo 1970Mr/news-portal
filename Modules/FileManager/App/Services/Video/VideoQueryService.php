@@ -18,6 +18,7 @@ class VideoQueryService
         $this->setSearchFilter($request, $query);
         $this->setPermissionsFilter($query);
         $this->setShowItemsFilter($request, $query);
+
         return $query->latest()->paginate(10);
     }
 
@@ -28,6 +29,7 @@ class VideoQueryService
             $videosIds = $this->search($searchText)->pluck('id');
             $query->whereIn('id', $videosIds);
         }
+
         return $query;
     }
 
@@ -54,6 +56,7 @@ class VideoQueryService
         if (Gate::denies('all', Video::class)) {
             $query->where('user_id', auth()->id());
         }
+
         return $query;
     }
 
@@ -67,6 +70,7 @@ class VideoQueryService
                 $query->where('user_id', '!=', auth()->id());
             }
         }
+
         return $query;
     }
 }

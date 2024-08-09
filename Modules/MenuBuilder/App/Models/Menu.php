@@ -13,18 +13,24 @@ use Modules\MenuBuilder\Database\Factories\MenuFactory;
 
 class Menu extends Model
 {
-    use HasFactory, Searchable;
+    use HasFactory;
+    use Searchable;
 
     public const MAIN_TYPE = 'main';
+
     public const SUBMENU_TYPE = 'submenu';
+
     public const CATEGORY_TYPE = 'category';
+
     public const PARENT_CATEGORY_TYPE = 'parent_category';
+
     public const TYPES = [
         self::MAIN_TYPE,
         self::SUBMENU_TYPE,
         self::CATEGORY_TYPE,
         self::PARENT_CATEGORY_TYPE,
     ];
+
     protected $fillable = [
         'name',
         'url',
@@ -43,7 +49,7 @@ class Menu extends Model
     public function toSearchableArray(): array
     {
         return [
-            'id' => (int)$this->id,
+            'id' => (int) $this->id,
             'name' => $this->name,
             'url' => $this->url,
         ];
@@ -61,7 +67,7 @@ class Menu extends Model
             : $this->parentMenu()->first()->getName();
     }
 
-    public function parentMenu(): BelongsTo|null
+    public function parentMenu(): ?BelongsTo
     {
         return ($this->parent_id === null)
             ? null
@@ -133,7 +139,7 @@ class Menu extends Model
 
     public function isMainMenu(): bool
     {
-        return $this->type === self::MAIN_TYPE && $this->parent_id === null && !$this->children->isNotEmpty();
+        return $this->type === self::MAIN_TYPE && $this->parent_id === null && ! $this->children->isNotEmpty();
     }
 
     public function isMainMenuWithChildren(): bool

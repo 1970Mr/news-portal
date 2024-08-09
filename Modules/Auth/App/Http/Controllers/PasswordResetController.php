@@ -21,6 +21,7 @@ class PasswordResetController extends Controller
     public function sendResetLink(SendEmailRequest $request): RedirectResponse
     {
         $reset_link_sent = Password::sendResetLink($request->only('email'));
+
         return $reset_link_sent === Password::RESET_LINK_SENT ?
             back()->with('success', __('auth::messages.password_link_sent_success')) :
             back()->withErrors(__('auth::messages.password_link_sent_failed'));

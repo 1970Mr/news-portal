@@ -19,7 +19,7 @@ class FileManager
 
     public static function generateFilePath($prefix = 'images'): string
     {
-        return "$prefix/" . now()->format('Y/m/d') . Str::uuid();
+        return "$prefix/".now()->format('Y/m/d').Str::uuid();
     }
 
     public static function generateFilename(UploadedFile $file): string
@@ -28,18 +28,21 @@ class FileManager
         if (strlen($filename) > 170) {
             $extension = $file->getClientOriginalExtension();
             $basename = substr($filename, 0, 150);
-            return $basename . '.' . $extension;
+
+            return $basename.'.'.$extension;
         }
+
         return $filename;
     }
 
     public static function uploadFromFile(string $filePath): false|string
     {
-        if (!file_exists($filePath)) {
+        if (! file_exists($filePath)) {
             return false;
         }
         $filename = pathinfo($filePath, PATHINFO_BASENAME);
         $destinationPath = self::generateFilePath();
+
         return Storage::disk('public')->putFileAs(
             $destinationPath,
             $filePath,
@@ -49,8 +52,10 @@ class FileManager
 
     public static function delete(string $filePath): bool
     {
-        if (Storage::disk('public')->exists($filePath))
+        if (Storage::disk('public')->exists($filePath)) {
             return Storage::disk('public')->delete($filePath);
+        }
+
         return false;
     }
 
@@ -58,6 +63,7 @@ class FileManager
     {
         $filePathWithoutName = pathinfo($filePath, PATHINFO_DIRNAME);
         $fileBaseName = pathinfo($filePath, PATHINFO_BASENAME);
+
         return Storage::disk('public')->putFileAs(
             $filePathWithoutName,
             $newFile,
@@ -76,6 +82,6 @@ class FileManager
         $i = floor(log($size, $base));
         $readableSize = round($size / ($base ** $i), 2);
 
-        return $readableSize . ' ' . $units[$i];
+        return $readableSize.' '.$units[$i];
     }
 }

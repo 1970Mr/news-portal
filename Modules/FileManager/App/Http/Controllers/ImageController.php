@@ -16,15 +16,14 @@ class ImageController extends Controller
 {
     public function __construct(
         private readonly ImageService $imageService,
-    )
-    {
-    }
+    ) {}
 
     public function index(Request $request): View
     {
         $filters = Image::filters();
-        $imageClassName = Image::Class; // Use for policy
+        $imageClassName = Image::class; // Use for policy
         $images = $this->imageService->index($request);
+
         return view('file-manager::images.index', compact('images', 'filters', 'imageClassName'));
     }
 
@@ -36,7 +35,8 @@ class ImageController extends Controller
     public function store(ImageRequest $request): RedirectResponse
     {
         $this->imageService->store($request);
-        return to_route(config('app.panel_prefix', 'panel') . '.images.index')->with('success', __('entity_created', ['entity' => __('image')]));
+
+        return to_route(config('app.panel_prefix', 'panel').'.images.index')->with('success', __('entity_created', ['entity' => __('image')]));
     }
 
     public function edit(Image $image): View
@@ -47,13 +47,15 @@ class ImageController extends Controller
     public function update(ImageRequest $request, image $image): RedirectResponse
     {
         $this->imageService->update($request, $image);
-        return to_route(config('app.panel_prefix', 'panel') . '.images.index')->with('success', __('entity_edited', ['entity' => __('image')]));
+
+        return to_route(config('app.panel_prefix', 'panel').'.images.index')->with('success', __('entity_edited', ['entity' => __('image')]));
     }
 
     public function destroy(Image $image): RedirectResponse
     {
         try {
             $this->imageService->destroy($image);
+
             return back()->with('success', __('entity_deleted', ['entity' => __('image')]));
         } catch (ImageDeleteException $e) {
             return back()->with('error', $e->getMessage());
@@ -67,6 +69,7 @@ class ImageController extends Controller
             'message' => __('entity_created', ['entity' => __('image')]),
             'uri' => $image->uri(),
         ];
+
         return response()->json($response);
     }
 }

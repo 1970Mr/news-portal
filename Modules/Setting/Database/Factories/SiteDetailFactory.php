@@ -29,4 +29,3 @@ class SiteDetailFactory extends Factory
         ];
     }
 }
-

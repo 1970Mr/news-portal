@@ -31,7 +31,7 @@ class PasswordResetServiceTest extends TestCase
         ];
         $request = new PasswordResetRequest($requestData);
 
-        $passwordResetService = new PasswordResetService();
+        $passwordResetService = new PasswordResetService;
         $status = $passwordResetService->passwordReset($request);
 
         $this->assertEquals(Password::PASSWORD_RESET, $status);

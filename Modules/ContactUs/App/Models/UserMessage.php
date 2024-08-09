@@ -8,10 +8,13 @@ use Modules\Seen\App\Traits\HasSeen;
 
 class UserMessage extends Model
 {
-    use HasSeen, Searchable;
+    use HasSeen;
+    use Searchable;
 
     public const SEEN = 'seen';
+
     public const UNSEEN = 'unseen';
+
     public const USER_MESSAGE_STATUS = [
         self::SEEN,
         self::UNSEEN,
@@ -28,7 +31,7 @@ class UserMessage extends Model
     public function toSearchableArray(): array
     {
         return [
-            'id' => (int)$this->id,
+            'id' => (int) $this->id,
             'name' => $this->name,
             'email' => $this->email,
             'phone' => $this->phone,

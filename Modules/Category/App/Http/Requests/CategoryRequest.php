@@ -16,14 +16,14 @@ class CategoryRequest extends FormRequest
             'name' => 'required|min:2|max:100|unique:categories,name',
             'slug' => 'required|unique:categories,slug',
             'parent_id' => 'nullable|numeric',
-            'image' => 'required' . $imageRules,
+            'image' => 'required'.$imageRules,
             'status' => 'required|boolean',
         ];
 
         if (strtolower($this->method()) === 'put') {
-            $rules['name'] .= ',' . $this->route('category')->id;
-            $rules['slug'] .= ',' . $this->route('category')->id;
-            $rules['image'] = 'nullable' . $imageRules;
+            $rules['name'] .= ','.$this->route('category')->id;
+            $rules['slug'] .= ','.$this->route('category')->id;
+            $rules['image'] = 'nullable'.$imageRules;
         }
 
         return $rules;
@@ -40,7 +40,7 @@ class CategoryRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge([
-            'status' => (bool)$this->status,
+            'status' => (bool) $this->status,
         ]);
     }
 }

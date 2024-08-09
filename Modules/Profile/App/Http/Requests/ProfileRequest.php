@@ -11,7 +11,7 @@ class ProfileRequest extends FormRequest
     {
         return [
             'full_name' => 'required|string|min:2',
-            'username' => 'required|string|min:2|unique:users,username,' . Auth::id(),
+            'username' => 'required|string|min:2|unique:users,username,'.Auth::id(),
             'bio' => 'nullable|string|max:600',
             'picture' => 'nullable|image|max:5000',
         ];

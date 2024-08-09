@@ -16,6 +16,7 @@ class RedirectService
         } else {
             $redirects = Redirect::query()->latest()->paginate(10);
         }
+
         return $redirects;
     }
 

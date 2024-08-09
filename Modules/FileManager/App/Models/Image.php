@@ -14,8 +14,11 @@ class Image extends Model
     use Searchable;
 
     public const ALL = 'all_images';
+
     public const MY_IMAGES = 'my_images';
+
     public const OTHER_USERS_IMAGES = 'other_users_images';
+
     protected $fillable = [
         'file_path',
         'alt_text',
@@ -38,7 +41,7 @@ class Image extends Model
     public function toSearchableArray(): array
     {
         return [
-            'id' => (int)$this->id,
+            'id' => (int) $this->id,
             'file_path' => $this->file_path,
             'alt_text' => $this->alt_text,
         ];
@@ -52,7 +55,7 @@ class Image extends Model
     public function userFullName(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->user?->full_name ?? __('unknown'),
+            get: fn () => $this->user?->full_name ?? __('unknown'),
         );
     }
 
@@ -63,7 +66,7 @@ class Image extends Model
 
     public function uri(): string
     {
-        return '/storage/' . $this->file_path;
+        return '/storage/'.$this->file_path;
     }
 
     public function imageable(): MorphTo

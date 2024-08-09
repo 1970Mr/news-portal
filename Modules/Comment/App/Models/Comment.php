@@ -13,10 +13,13 @@ use Laravel\Scout\Searchable;
 
 class Comment extends Model
 {
-    use SoftDeletes, Searchable;
+    use Searchable;
+    use SoftDeletes;
 
     public const PENDING = 'pending';
+
     public const APPROVED = 'approved';
+
     public const REJECTED = 'rejected';
 
     public const COMMENT_STATUS = [
@@ -26,7 +29,7 @@ class Comment extends Model
     ];
 
     protected $with = [
-        'commenter'
+        'commenter',
     ];
 
     protected $fillable = [
@@ -55,7 +58,7 @@ class Comment extends Model
     public function toSearchableArray(): array
     {
         return [
-            'id' => (int)$this->id,
+            'id' => (int) $this->id,
             'comment' => $this->comment,
         ];
     }
@@ -76,11 +79,12 @@ class Comment extends Model
         return $this->morphTo();
     }
 
-    public function delete(): bool|null
+    public function delete(): ?bool
     {
         foreach ($this->children as $comment) {
             $comment->delete();
         }
+
         return parent::delete();
     }
 
@@ -111,7 +115,7 @@ class Comment extends Model
 
     public function isGuest(): bool
     {
-        return (bool)$this->guest_data;
+        return (bool) $this->guest_data;
     }
 
     public function getGuestName(): string
@@ -123,7 +127,7 @@ class Comment extends Model
     {
         return $this->isGuest() ?
             config('user.default_profile_picture.file_link') :
-            asset('storage/' . $this->commenter->image->file_path);
+            asset('storage/'.$this->commenter->image->file_path);
     }
 
     public function getStatus(): string
@@ -153,6 +157,7 @@ class Comment extends Model
             'name' => $name,
             'email' => $email,
         ];
+
         return $this;
     }
 

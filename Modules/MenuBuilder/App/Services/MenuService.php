@@ -17,6 +17,7 @@ class MenuService
         } else {
             $menus = Menu::with(['parent', 'category'])->latest('position')->paginate(10);
         }
+
         return $menus;
     }
 

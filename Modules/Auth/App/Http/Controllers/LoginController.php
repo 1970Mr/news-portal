@@ -20,6 +20,7 @@ class LoginController extends Controller
     {
         try {
             $loginService->login($request);
+
             return to_route('home.index')->with('success', __('auth::messages.login_success'));
         } catch (FailedLoginException $e) {
             return back()->withErrors($e->getMessage());

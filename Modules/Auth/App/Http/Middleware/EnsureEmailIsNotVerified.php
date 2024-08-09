@@ -15,25 +15,24 @@ class EnsureEmailIsNotVerified
     /**
      * Specify the redirect route for the middleware.
      *
-     * @param string $route
+     * @param  string  $route
      * @return string
      */
     public static function redirectTo($route)
     {
-        return static::class . ':' . $route;
+        return static::class.':'.$route;
     }
 
     /**
      * Handle an incoming request.
      *
-     * @param Request $request
-     * @param Closure $next
-     * @param string|null $redirectToRoute
+     * @param  Request  $request
+     * @param  string|null  $redirectToRoute
      * @return Response|RedirectResponse|null
      */
     public function handle($request, Closure $next, $redirectToRoute = null)
     {
-        if (!$request->user() ||
+        if (! $request->user() ||
             ($request->user() instanceof MustVerifyEmail &&
                 $request->user()->hasVerifiedEmail())) {
             return $request->expectsJson()

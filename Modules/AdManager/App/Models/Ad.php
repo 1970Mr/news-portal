@@ -10,15 +10,23 @@ use Modules\FileManager\App\Traits\HasImage;
 
 class Ad extends Model
 {
-    use HasImage, Searchable;
+    use HasImage;
+    use Searchable;
 
-    public const HEADER = "header";
-    public const FIRST_SIDEBAR = "first_sidebar";
-    public const SECOND_SIDEBAR = "second_sidebar";
-    public const FIRST_SECTION = "first_section";
-    public const SECOND_SECTION = "second_section";
-    public const THIRD_SECTION = "third_section";
-    public const FOURTH_SECTION = "fourth_section";
+    public const HEADER = 'header';
+
+    public const FIRST_SIDEBAR = 'first_sidebar';
+
+    public const SECOND_SIDEBAR = 'second_sidebar';
+
+    public const FIRST_SECTION = 'first_section';
+
+    public const SECOND_SECTION = 'second_section';
+
+    public const THIRD_SECTION = 'third_section';
+
+    public const FOURTH_SECTION = 'fourth_section';
+
     public const SECTIONS = [
         self::HEADER,
         self::FIRST_SIDEBAR,
@@ -28,6 +36,7 @@ class Ad extends Model
         self::THIRD_SECTION,
         self::FOURTH_SECTION,
     ];
+
     protected $fillable = [
         'title',
         'link',
@@ -40,7 +49,7 @@ class Ad extends Model
     public function toSearchableArray(): array
     {
         return [
-            'id' => (int)$this->id,
+            'id' => (int) $this->id,
             'title' => $this->title,
             'link' => $this->link,
         ];
@@ -56,6 +65,7 @@ class Ad extends Model
         if (is_string($section)) {
             $section = $this->getNumberSection($section);
         }
+
         return $query->where('section', $section);
     }
 
@@ -67,6 +77,7 @@ class Ad extends Model
     public function scopeActive(Builder $query): Builder
     {
         $now = Carbon::now();
+
         return $query->where('status', true)
             ->where('published_at', '<=', $now)
             ->where(function (Builder $query) use ($now) {

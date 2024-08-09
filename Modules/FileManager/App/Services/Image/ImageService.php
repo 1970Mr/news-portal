@@ -17,9 +17,7 @@ class ImageService
 {
     public function __construct(
         private readonly ImageQueryService $imageQueryService,
-    )
-    {
-    }
+    ) {}
 
     public function index(Request $request): Paginator
     {
@@ -34,18 +32,20 @@ class ImageService
             $data['file_path'] = FileManager::replaceFile($file, $image->file_path);
         }
         $data['alt_text'] = $request->alt_text;
+
         return $image->update($data);
     }
 
     /**
      * @throws ImageDeleteException
      */
-    public function destroy(Image $image): bool|null
+    public function destroy(Image $image): ?bool
     {
         Gate::authorize('destroy', $image);
         if ($image->imageable) {
             throw new ImageDeleteException(__('This image cannot be deleted! Because it has been used elsewhere.'));
         }
+
         return $image->delete();
     }
 
@@ -63,23 +63,25 @@ class ImageService
         }
     }
 
-    public function destroyWithoutKeyConstraints(?Image $image): bool|null
+    public function destroyWithoutKeyConstraints(?Image $image): ?bool
     {
-        if (!$image) {
+        if (! $image) {
             return null;
         }
         Schema::disableForeignKeyConstraints();
         $result = $image->delete();
         Schema::enableForeignKeyConstraints();
+
         return $result;
     }
 
     public function store(Request $request, $fileName = 'image', $altText = 'Default Alt Text'): Model
     {
-//        Gate::authorize('store', Image::class);
+        //        Gate::authorize('store', Image::class);
         $data['file_path'] = FileManager::upload($request->file($fileName));
         $data['alt_text'] = $request->get('alt_text', $altText);
         $data['user_id'] = auth()->id();
+
         return Image::query()->create($data);
     }
 }

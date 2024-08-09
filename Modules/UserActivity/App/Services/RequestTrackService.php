@@ -17,6 +17,7 @@ class RequestTrackService
         } else {
             $requestsTrack = RequestTrack::with('userTrack.user')->latest()->paginate(10);
         }
+
         return $requestsTrack;
     }
 

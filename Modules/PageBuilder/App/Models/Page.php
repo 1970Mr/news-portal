@@ -16,7 +16,9 @@ use Modules\User\App\Models\User;
 
 class Page extends Model
 {
-    use HasImage, Searchable, SEOAble;
+    use HasImage;
+    use Searchable;
+    use SEOAble;
 
     protected $fillable = [
         'title',
@@ -33,7 +35,7 @@ class Page extends Model
     public function toSearchableArray(): array
     {
         return [
-            'id' => (int)$this->id,
+            'id' => (int) $this->id,
             'title' => $this->title,
             'slug' => $this->slug,
             'content' => $this->content,
@@ -59,6 +61,7 @@ class Page extends Model
     {
         $cleanedContent = str_replace('&nbsp;', ' ', $this->content);
         $strippedContent = strip_tags($cleanedContent);
+
         return str($strippedContent)->limit($limit);
     }
 
@@ -75,7 +78,7 @@ class Page extends Model
     protected function slug(): Attribute
     {
         return Attribute::make(
-            set: static fn(string $value) => Str::slug($value),
+            set: static fn (string $value) => Str::slug($value),
         );
     }
 }

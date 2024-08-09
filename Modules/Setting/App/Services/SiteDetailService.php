@@ -10,9 +10,7 @@ use Modules\Setting\App\Models\SiteDetail;
 
 class SiteDetailService
 {
-    public function __construct(private readonly ImageService $imageService)
-    {
-    }
+    public function __construct(private readonly ImageService $imageService) {}
 
     public function update(SiteDetailRequest $request): void
     {
@@ -32,16 +30,18 @@ class SiteDetailService
             if ($siteDetails->{$relation}) {
                 $this->imageService->destroyWithoutKeyConstraints($siteDetails->{$relation});
             }
-            $siteDetails->{$fieldName . '_id'} = $image->id;
+            $siteDetails->{$fieldName.'_id'} = $image->id;
         }
     }
 
     private function storeImage(SiteDetailRequest $request, string $fieldName): ?Model
     {
         if ($request->hasFile($fieldName)) {
-            $altText = $this->getAltText($fieldName) . config('seotools.meta.defaults.separator') . config('app.name');
+            $altText = $this->getAltText($fieldName).config('seotools.meta.defaults.separator').config('app.name');
+
             return $this->imageService->store($request, $fieldName, $altText);
         }
+
         return null;
     }
 

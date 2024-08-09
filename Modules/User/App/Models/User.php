@@ -25,7 +25,15 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles, HasImage, Commenter, HasSocialNetwork, Searchable, SEOAble;
+    use Commenter;
+    use HasApiTokens;
+    use HasFactory;
+    use HasImage;
+    use HasRoles;
+    use HasSocialNetwork;
+    use Notifiable;
+    use Searchable;
+    use SEOAble;
 
     /**
      * The attributes that are mass assignable.
@@ -62,7 +70,7 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     protected $appends = [
-        'verified_email_status'
+        'verified_email_status',
     ];
 
     protected static function boot(): void
@@ -99,7 +107,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function toSearchableArray(): array
     {
         return [
-            'id' => (int)$this->id,
+            'id' => (int) $this->id,
             'full_name' => $this->full_name,
             'username' => $this->username,
             'email' => $this->email,
@@ -132,7 +140,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function isOnline(): bool
     {
-        return (bool)$this->userTracks()->latest()->first()?->isOnline();
+        return (bool) $this->userTracks()->latest()->first()?->isOnline();
     }
 
     public function userTracks(): HasMany
@@ -143,7 +151,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected function verifiedEmailStatus(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->email_verified_at ? __('confirmed') : __('not_confirmed'),
+            get: fn () => $this->email_verified_at ? __('confirmed') : __('not_confirmed'),
         );
     }
 }

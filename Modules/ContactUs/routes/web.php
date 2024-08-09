@@ -6,8 +6,8 @@ use Modules\ContactUs\App\Http\Controllers\Front\ContactUsController as FrontUse
 use Modules\ContactUs\App\Http\Controllers\UserMessageController;
 use Spatie\Honeypot\ProtectAgainstSpam;
 
-Route::prefix(config('app.panel_prefix', 'panel') . '/contact-us')
-    ->name(config('app.panel_prefix', 'panel') . '.contact-us.')
+Route::prefix(config('app.panel_prefix', 'panel').'/contact-us')
+    ->name(config('app.panel_prefix', 'panel').'.contact-us.')
     ->middleware(['web', 'auth', 'verified'])
     ->group(function () {
         Route::prefix('info')

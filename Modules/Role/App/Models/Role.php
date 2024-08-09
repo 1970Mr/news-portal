@@ -11,8 +11,11 @@ class Role extends SpatieRole
 {
     // Default roles
     public const ADMIN = 'Admin';
+
     public const EDITOR = 'Editor';
+
     public const AUTHOR = 'Author';
+
     public const SUBSCRIBER = 'Subscriber';
 
     protected $fillable = [
@@ -51,6 +54,7 @@ class Role extends SpatieRole
         // Touch method can be used instead of the following, but an additional request is sent to the database
         $updatedAtName = $this->getUpdatedAtColumn();
         $attributes[$updatedAtName] = $this->updateTimestamps()->{$updatedAtName};
+
         return parent::update($attributes, $options);
     }
 }

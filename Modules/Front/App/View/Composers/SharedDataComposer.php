@@ -15,9 +15,7 @@ class SharedDataComposer
     public function __construct(
         private readonly StaticContentService $staticContentService,
         private readonly SocialNetworkService $socialNetworkService
-    )
-    {
-    }
+    ) {}
 
     public function compose(View $view): void
     {

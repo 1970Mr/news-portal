@@ -10,9 +10,7 @@ use Modules\FileManager\App\Models\Image;
 
 class ImageQueryService
 {
-    public function __construct(private readonly ImagePermissionService $imagePermissionService)
-    {
-    }
+    public function __construct(private readonly ImagePermissionService $imagePermissionService) {}
 
     public function getAllImages(Request $request): Builder
     {
@@ -24,6 +22,7 @@ class ImageQueryService
             $imagesIds = $this->search($searchText)->pluck('id');
             $query->whereIn('id', $imagesIds);
         }
+
         return $this->setShowItemsFilter($request, $query);
     }
 
@@ -48,6 +47,7 @@ class ImageQueryService
                 $query->where('user_id', '!=', auth()->id());
             }
         }
+
         return $query;
     }
 }

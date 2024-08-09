@@ -17,14 +17,17 @@ class UserMessageService
         if ($searchText) {
             $userMessagesIds = UserMessage::search($searchText)->get()->pluck('id');
             $query->whereIn('id', $userMessagesIds);
+
             return $query->paginate(10);
         }
+
         return $query->paginate(10);
     }
 
     private function setFilters(Request $request, Builder $query): Builder
     {
         $filter = $request->filter;
+
         return match ($filter) {
             UserMessage::SEEN => $query->seen(),
             UserMessage::UNSEEN => $query->unseen(),

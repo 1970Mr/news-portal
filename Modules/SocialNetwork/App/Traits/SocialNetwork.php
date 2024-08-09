@@ -15,6 +15,7 @@ trait SocialNetwork
         foreach ($userSocialNetworks as $socialNetwork) {
             $socialNetworks[$socialNetwork->name] = $socialNetwork->url;
         }
+
         return $socialNetworks;
     }
 
@@ -25,6 +26,7 @@ trait SocialNetwork
         foreach ($socialNetworkWithTag as $socialNetwork) {
             $socialNetworks[$socialNetwork->name] = $socialNetwork->url;
         }
+
         return $socialNetworks;
     }
 
@@ -34,6 +36,7 @@ trait SocialNetwork
         foreach (self::SOCIAL_NETWORKS as $key => $urlPattern) {
             $rules[$key] = 'nullable|url';
         }
+
         return $rules;
     }
 }

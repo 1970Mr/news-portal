@@ -14,14 +14,14 @@ class SiteDetailRequest extends FormRequest
             'description' => 'required|string',
             'keywords' => 'required|string',
             'footer_text' => 'required|string',
-            'main_logo' => 'required' . $imageRules,
-            'second_logo' => 'required' . $imageRules,
+            'main_logo' => 'required'.$imageRules,
+            'second_logo' => 'required'.$imageRules,
             'favicon' => 'nullable|mimes:jpg,jpeg,png,bmp,gif,svg,ico|max:5000',
         ];
 
         if (strtolower($this->method()) === 'put') {
-            $rules['main_logo'] = 'nullable' . $imageRules;
-            $rules['second_logo'] = 'nullable' . $imageRules;
+            $rules['main_logo'] = 'nullable'.$imageRules;
+            $rules['second_logo'] = 'nullable'.$imageRules;
         }
 
         return $rules;

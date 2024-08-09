@@ -13,9 +13,7 @@ use Modules\FileManager\App\Services\Image\ImageService;
 
 class CategoryService
 {
-    public function __construct(private readonly ImageService $imageService)
-    {
-    }
+    public function __construct(private readonly ImageService $imageService) {}
 
     public function index(Request $request): Paginator
     {
@@ -25,6 +23,7 @@ class CategoryService
         } else {
             $categories = Category::with('image')->latest()->paginate(10);
         }
+
         return $categories;
     }
 
@@ -44,6 +43,7 @@ class CategoryService
         $category = Category::query()->create($request->validated());
         $image = $this->imageService->store($request, altText: $category->name);
         $category->image()->save($image);
+
         return $category;
     }
 
@@ -68,6 +68,7 @@ class CategoryService
     {
         $result = $category->update($request->validated());
         $this->imageService->uploadImageDuringUpdate($request, $category);
+
         return $result;
     }
 }

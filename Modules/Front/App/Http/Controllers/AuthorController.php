@@ -9,9 +9,7 @@ use Modules\User\App\Models\User;
 
 class AuthorController extends Controller
 {
-    public function __construct(private readonly SEOService $SEOService)
-    {
-    }
+    public function __construct(private readonly SEOService $SEOService) {}
 
     public function __invoke(User $user): View
     {
@@ -19,7 +17,10 @@ class AuthorController extends Controller
         $articlesCount = $user->articles()->count();
         $articles = $user->articles()->with(['category', 'image', 'approvedComments'])->paginate(10);
         $commentsCount = $user->approvedComments()->count();
-        return view('front::author.index',
-            compact(['articlesCount', 'articles', 'commentsCount']) + ['author' => $user]);
+
+        return view(
+            'front::author.index',
+            compact(['articlesCount', 'articles', 'commentsCount']) + ['author' => $user]
+        );
     }
 }

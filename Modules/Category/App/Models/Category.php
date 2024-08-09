@@ -17,7 +17,10 @@ use Modules\SEOManager\App\Traits\SEOAble;
 
 class Category extends Model
 {
-    use HasFactory, HasImage, Searchable, SEOAble;
+    use HasFactory;
+    use HasImage;
+    use Searchable;
+    use SEOAble;
 
     protected $fillable = [
         'name',
@@ -34,7 +37,7 @@ class Category extends Model
     public function toSearchableArray(): array
     {
         return [
-            'id' => (int)$this->id,
+            'id' => (int) $this->id,
             'name' => $this->name,
             'slug' => $this->slug,
         ];
@@ -52,7 +55,7 @@ class Category extends Model
             : $this->parentCategory()->first()->name;
     }
 
-    public function parentCategory(): BelongsTo|null
+    public function parentCategory(): ?BelongsTo
     {
         return ($this->parent_id === null)
             ? null
@@ -82,7 +85,7 @@ class Category extends Model
     protected function slug(): Attribute
     {
         return Attribute::make(
-            set: static fn(string $value) => Str::slug($value),
+            set: static fn (string $value) => Str::slug($value),
         );
     }
 }

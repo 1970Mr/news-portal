@@ -5,7 +5,7 @@ use Modules\MenuBuilder\App\Http\Controllers\CategoryMenuController;
 use Modules\MenuBuilder\App\Http\Controllers\MenuController;
 
 Route::prefix(config('app.panel_prefix', 'panel'))
-    ->name(config('app.panel_prefix', 'panel') . '.')
+    ->name(config('app.panel_prefix', 'panel').'.')
     ->group(function () {
         Route::resource('menus', MenuController::class)->names('menus')
             ->except('show');

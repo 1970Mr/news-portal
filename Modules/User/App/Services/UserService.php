@@ -15,9 +15,7 @@ class UserService
 {
     public function __construct(
         private readonly ImageService $imageService
-    )
-    {
-    }
+    ) {}
 
     public function index(Request $request): Paginator
     {
@@ -27,6 +25,7 @@ class UserService
         } else {
             $users = User::query()->latest()->paginate(10);
         }
+
         return $users;
     }
 

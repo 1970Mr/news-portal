@@ -15,7 +15,7 @@ class ArticleRequest extends FormRequest
             'slug' => 'required|string|max:255|unique:articles,slug',
             'body' => 'required|string',
             'published_at' => 'required|date',
-            'image' => 'required' . $imageRules,
+            'image' => 'required'.$imageRules,
             'category_id' => 'required|exists:categories,id',
             'tag_ids' => 'nullable|array',
             'tag_ids.*' => 'nullable|exists:tags,id',
@@ -25,10 +25,10 @@ class ArticleRequest extends FormRequest
         ];
 
         if (strtolower($this->method()) === 'put') {
-            $rules['image'] = 'nullable' . $imageRules;
-            $rules['slug'] .= ',' . $this->route('article')->id;
+            $rules['image'] = 'nullable'.$imageRules;
+            $rules['slug'] .= ','.$this->route('article')->id;
         } else {
-            $rules['type'] = 'required|in:' . implode(',', Article::TYPES);
+            $rules['type'] = 'required|in:'.implode(',', Article::TYPES);
         }
 
         return $rules;
@@ -52,9 +52,9 @@ class ArticleRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge([
-            'editor_choice' => (bool)$this->editor_choice,
-            'hotness' => (bool)$this->hotness,
-            'status' => (bool)$this->status,
+            'editor_choice' => (bool) $this->editor_choice,
+            'hotness' => (bool) $this->hotness,
+            'status' => (bool) $this->status,
         ]);
     }
 }

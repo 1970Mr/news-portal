@@ -6,8 +6,8 @@ use Modules\Setting\App\Http\Controllers\CacheController;
 use Modules\Setting\App\Http\Controllers\SiteDetailController;
 use Modules\Setting\App\Http\Controllers\SocialNetworkController;
 
-Route::prefix(config('app.panel_prefix', 'panel') . '/settings')
-    ->name(config('app.panel_prefix', 'panel') . '.settings.')
+Route::prefix(config('app.panel_prefix', 'panel').'/settings')
+    ->name(config('app.panel_prefix', 'panel').'.settings.')
     ->group(function () {
         Route::prefix('/social-networks')
             ->name('social-networks.')

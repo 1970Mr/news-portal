@@ -5,7 +5,7 @@ use Modules\UserActivity\App\Http\Controllers\RequestTrackController;
 use Modules\UserActivity\App\Http\Controllers\UserTrackController;
 
 Route::prefix(config('app.panel_prefix', 'panel'))
-    ->name(config('app.panel_prefix', 'panel') . '.')
+    ->name(config('app.panel_prefix', 'panel').'.')
     ->group(function () {
         Route::resource('users-track', UserTrackController::class)->names('users-track')->only(['index', 'destroy']);
 

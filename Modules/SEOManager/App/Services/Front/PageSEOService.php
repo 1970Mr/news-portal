@@ -8,7 +8,7 @@ class PageSEOService extends BaseSEOService
 {
     public function setPageSEO(Page $page): void
     {
-        $cacheKey = 'page_seo_' . $page->id;
+        $cacheKey = 'page_seo_'.$page->id;
         $cacheTTL = now()->addHours(self::CACHE_TTL);
 
         $seoData = cache()->remember($cacheKey, $cacheTTL, function () use ($page) {
@@ -19,7 +19,7 @@ class PageSEOService extends BaseSEOService
             $pageUrl = $page->url();
             $canonicalUrl = $seoSetting?->canonical_url ?? $pageUrl;
             $robots = $seoSetting?->robots ?? 'index, follow';
-            $keywords = !empty($seoSetting?->keywords) ? explode(',', $seoSetting->keywords) : [];
+            $keywords = ! empty($seoSetting?->keywords) ? explode(',', $seoSetting->keywords) : [];
 
             return compact('title', 'description', 'pageUrl', 'canonicalUrl', 'robots', 'keywords');
         });

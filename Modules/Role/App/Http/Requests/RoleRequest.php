@@ -17,9 +17,10 @@ class RoleRequest extends FormRequest
             'permissions' => 'nullable',
         ];
         if ($this->method() === 'PUT') {
-            $rules['name'] .= ',' . $this->route('role')->id;
-            $rules['local_name'] .= ',' . $this->route('role')->id;
+            $rules['name'] .= ','.$this->route('role')->id;
+            $rules['local_name'] .= ','.$this->route('role')->id;
         }
+
         return $rules;
     }
 

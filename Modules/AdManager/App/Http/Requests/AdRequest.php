@@ -13,16 +13,16 @@ class AdRequest extends FormRequest
         $imageRules = '|image|max:5000';
         $rules = [
             'title' => 'required|string',
-            'image' => 'required' . $imageRules,
+            'image' => 'required'.$imageRules,
             'link' => 'required|url',
-            'section' => 'nullable|integer|in:' . $sectionNumbers,
+            'section' => 'nullable|integer|in:'.$sectionNumbers,
             'published_at' => 'required|date',
             'expired_at' => 'nullable|date|after:published_at',
             'status' => 'nullable|boolean',
         ];
 
         if (strtolower($this->method()) === 'put') {
-            $rules['image'] = 'nullable' . $imageRules;
+            $rules['image'] = 'nullable'.$imageRules;
         }
 
         return $rules;
@@ -46,7 +46,7 @@ class AdRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge([
-            'status' => (bool)$this->status,
+            'status' => (bool) $this->status,
             'expired_at' => $this->expired_at ?? null,
         ]);
     }

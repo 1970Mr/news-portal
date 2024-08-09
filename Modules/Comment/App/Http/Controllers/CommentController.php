@@ -13,11 +13,11 @@ class CommentController extends Controller
 {
     public function __construct(private readonly CommentService $commentService)
     {
-        $this->middleware('can:' . config('permissions_list.COMMENT_INDEX', false))->only('index');
-        $this->middleware('can:' . config('permissions_list.COMMENT_SHOW', false))->only('show');
-        $this->middleware('can:' . config('permissions_list.COMMENT_APPROVE', false))->only('approve');
-        $this->middleware('can:' . config('permissions_list.COMMENT_REJECT', false))->only('reject');
-        $this->middleware('can:' . config('permissions_list.COMMENT_DESTROY', false))->only('destroy');
+        $this->middleware('can:'.config('permissions_list.COMMENT_INDEX', false))->only('index');
+        $this->middleware('can:'.config('permissions_list.COMMENT_SHOW', false))->only('show');
+        $this->middleware('can:'.config('permissions_list.COMMENT_APPROVE', false))->only('approve');
+        $this->middleware('can:'.config('permissions_list.COMMENT_REJECT', false))->only('reject');
+        $this->middleware('can:'.config('permissions_list.COMMENT_DESTROY', false))->only('destroy');
     }
 
     public function index(Request $request): View
@@ -25,6 +25,7 @@ class CommentController extends Controller
         $comments = $this->commentService->getComments($request);
         $filters = Comment::COMMENT_STATUS;
         $filters[] = 'all';
+
         return view('comment::index', compact(['comments', 'filters']));
     }
 
@@ -36,24 +37,28 @@ class CommentController extends Controller
     public function approve(Comment $comment): RedirectResponse
     {
         $comment->setStatus(Comment::APPROVED);
+
         return back()->with(['success' => __('comment::messages.comment_approved')]);
     }
 
     public function approveAll(): RedirectResponse
     {
         Comment::query()->where('status', Comment::PENDING)->update(['status' => Comment::APPROVED]);
+
         return back()->with(['success' => __('comment::messages.comment_approved_all')]);
     }
 
     public function reject(Comment $comment): RedirectResponse
     {
         $comment->setStatus(Comment::REJECTED);
+
         return back()->with(['success' => __('comment::messages.comment_rejected')]);
     }
 
     public function destroy(Comment $comment): RedirectResponse
     {
         $comment->delete();
-        return to_route(config('app.panel_prefix', 'panel') . '.comments.index')->with('success', __('entity_deleted', ['entity' => __('comment')]));
+
+        return to_route(config('app.panel_prefix', 'panel').'.comments.index')->with('success', __('entity_deleted', ['entity' => __('comment')]));
     }
 }

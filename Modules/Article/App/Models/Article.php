@@ -26,14 +26,23 @@ use Spatie\Feed\FeedItem;
 
 class Article extends Model implements Feedable
 {
-    use HasFactory, HasImage, HasHotness, HasComments, Searchable, Likeable, SEOAble;
+    use HasComments;
+    use HasFactory;
+    use HasHotness;
+    use HasImage;
+    use Likeable;
+    use Searchable;
+    use SEOAble;
 
     public const ARTICLE = 'article';
+
     public const NEWS = 'news';
+
     public const TYPES = [
         self::NEWS,
         self::ARTICLE,
     ];
+
     protected $fillable = [
         'title',
         'slug',
@@ -45,6 +54,7 @@ class Article extends Model implements Feedable
         'category_id',
         'user_id',
     ];
+
     protected $casts = [
         'published_at' => 'datetime',
     ];
@@ -62,6 +72,7 @@ class Article extends Model implements Feedable
     public function toFeedItem(): FeedItem
     {
         $summary = $this->seoSetting?->meta_description ?? $this->bodyText();
+
         return FeedItem::create()
             ->id($this->id)
             ->title($this->title)
@@ -76,6 +87,7 @@ class Article extends Model implements Feedable
     {
         $cleanedBody = str_replace('&nbsp;', ' ', $this->body);
         $strippedBody = strip_tags($cleanedBody);
+
         return str($strippedBody)->limit($limit);
     }
 
@@ -87,13 +99,14 @@ class Article extends Model implements Feedable
                 'article' => $this->slug,
             ]);
         }
+
         return route('articles.show', ['article' => $this->slug]);
     }
 
     public function toSearchableArray(): array
     {
         return [
-            'id' => (int)$this->id,
+            'id' => (int) $this->id,
             'title' => $this->title,
             'slug' => $this->slug,
             'body' => $this->body,
@@ -173,13 +186,14 @@ class Article extends Model implements Feedable
                 ->get()
                 ->shuffle();
         }
+
         return $relatedArticles;
     }
 
     protected function slug(): Attribute
     {
         return Attribute::make(
-            set: static fn(string $value) => Str::slug($value),
+            set: static fn (string $value) => Str::slug($value),
         );
     }
 }

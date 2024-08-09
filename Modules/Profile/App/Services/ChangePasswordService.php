@@ -12,7 +12,7 @@ class ChangePasswordService
         $user = auth()->user();
         if (password_verify($request->password, $user->password)) {
             return $user->update([
-                'password' => $request->new_password
+                'password' => $request->new_password,
             ]);
         }
         throw new IncorrectPasswordException(__('Password incorrect.'));

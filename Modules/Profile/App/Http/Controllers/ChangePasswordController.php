@@ -13,12 +13,13 @@ class ChangePasswordController extends Controller
 {
     public function __construct(private readonly ChangePasswordService $changePasswordService)
     {
-        $this->middleware('can:' . config('permissions_list.PROFILE_CHANGE_PASSWORD', false));
+        $this->middleware('can:'.config('permissions_list.PROFILE_CHANGE_PASSWORD', false));
     }
 
     public function changePasswordView(): View
     {
         $user = auth()->user();
+
         return view('profile::change-password', compact('user'));
     }
 
@@ -26,9 +27,10 @@ class ChangePasswordController extends Controller
     {
         try {
             $this->changePasswordService->changePassword($request);
-            return to_route(config('app.panel_prefix', 'panel') . '.profile.password.change')->with('success', __('entity_edited', ['entity' => __('password')]));
+
+            return to_route(config('app.panel_prefix', 'panel').'.profile.password.change')->with('success', __('entity_edited', ['entity' => __('password')]));
         } catch (IncorrectPasswordException $e) {
-            return to_route(config('app.panel_prefix', 'panel') . '.profile.password.change')->with('error', $e->getMessage());
+            return to_route(config('app.panel_prefix', 'panel').'.profile.password.change')->with('error', $e->getMessage());
         }
     }
 }

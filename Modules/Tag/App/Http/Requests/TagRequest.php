@@ -17,8 +17,8 @@ class TagRequest extends FormRequest
         ];
 
         if (strtolower($this->method()) === 'put') {
-            $rules['name'] .= ',' . $this->route('tag')->id;
-            $rules['slug'] .= ',' . $this->route('tag')->id;
+            $rules['name'] .= ','.$this->route('tag')->id;
+            $rules['slug'] .= ','.$this->route('tag')->id;
         }
 
         return $rules;
@@ -39,8 +39,8 @@ class TagRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge([
-            'status' => (bool)$this->status,
-            'hotness' => (bool)$this->hotness,
+            'status' => (bool) $this->status,
+            'hotness' => (bool) $this->hotness,
         ]);
     }
 }

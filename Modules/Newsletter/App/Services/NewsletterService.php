@@ -15,6 +15,7 @@ class NewsletterService
         } else {
             $newsletters = Newsletter::query()->latest()->paginate(10);
         }
+
         return $newsletters;
     }
 }

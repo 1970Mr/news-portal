@@ -13,18 +13,20 @@ class ContactInfoController extends Controller
 {
     public function __construct(private readonly ContactService $contactService)
     {
-        $this->middleware('can:' . config('permissions_list.CONTACT_INFO', false));
+        $this->middleware('can:'.config('permissions_list.CONTACT_INFO', false));
     }
 
     public function edit(): View
     {
         $contact = ContactInfo::first();
+
         return view('contact-us::contact-info', compact(['contact']));
     }
 
     public function update(ContactInfoRequest $request): RedirectResponse
     {
         $this->contactService->update($request);
+
         return back()->with(['success' => __('entity_edited', ['entity' => __('contact_us')])]);
     }
 }

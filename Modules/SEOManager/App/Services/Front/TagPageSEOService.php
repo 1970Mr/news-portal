@@ -8,7 +8,7 @@ class TagPageSEOService extends BaseSEOService
 {
     public function setTagPageSEO(Tag $tag): void
     {
-        $cacheKey = 'tag_seo_' . $tag->id;
+        $cacheKey = 'tag_seo_'.$tag->id;
         $cacheTTL = now()->addHours(self::CACHE_TTL);
 
         $seoData = cache()->remember($cacheKey, $cacheTTL, function () use ($tag) {
@@ -17,7 +17,7 @@ class TagPageSEOService extends BaseSEOService
             $description = $seoSetting?->meta_description;
             $tagUrl = route('tags.show', $tag->slug);
             $canonicalUrl = $seoSetting?->canonical_url ?? $tagUrl;
-            $keywords = !empty($seoSetting?->keywords) ? explode(',', $seoSetting->keywords) : [];
+            $keywords = ! empty($seoSetting?->keywords) ? explode(',', $seoSetting->keywords) : [];
             $robots = $seoSetting?->robots ?? 'index, follow';
 
             return compact('title', 'description', 'tagUrl', 'canonicalUrl', 'keywords', 'robots');

@@ -174,7 +174,7 @@ return [
     */
 
     'button_text' => [
-//        'confirm' => env('SWEET_ALERT_CONFIRM_BUTTON_TEXT', 'OK'),
+        //        'confirm' => env('SWEET_ALERT_CONFIRM_BUTTON_TEXT', 'OK'),
         'confirm' => env('SWEET_ALERT_CONFIRM_BUTTON_TEXT', 'باشه'),
         'cancel' => env('SWEET_ALERT_CANCEL_BUTTON_TEXT', 'Cancel'),
     ],
@@ -265,6 +265,5 @@ return [
     'confirm_delete_show_close_button' => env('SWEET_ALERT_CONFIRM_DELETE_SHOW_CLOSE_BUTTON', false),
     'confirm_delete_icon' => env('SWEET_ALERT_CONFIRM_DELETE_ICON', 'warning'),
     'confirm_delete_show_loader_on_confirm' => env('SWEET_ALERT_CONFIRM_DELETE_SHOW_LOADER_ON_CONFIRM', true),
-
 
 ];

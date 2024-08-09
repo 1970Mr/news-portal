@@ -14,7 +14,7 @@ class VideoPolicy
     {
         return $user->canAny([
             config('permissions_list.VIDEO_INDEX_ALL'),
-            config('permissions_list.VIDEO_INDEX_OWN')
+            config('permissions_list.VIDEO_INDEX_OWN'),
         ]);
     }
 
@@ -29,7 +29,7 @@ class VideoPolicy
         $canShowOwn = $user->can(config('permissions_list.VIDEO_INDEX_OWN', false));
 
         // If the user can't see any video but can see own video and the video being showed is not their own, return false
-        if ((!$canShowAll && $canShowOwn) && $video->user_id !== $user->id) {
+        if ((! $canShowAll && $canShowOwn) && $video->user_id !== $user->id) {
             return false;
         }
 
@@ -47,7 +47,7 @@ class VideoPolicy
         $canUpdateOwn = $user->can(config('permissions_list.VIDEO_UPDATE_OWN', false));
 
         // If the user can't update any video but can update own video and the video being updated is not their own, return false
-        if ((!$canUpdateAll && $canUpdateOwn) && $video->user_id !== $user->id) {
+        if ((! $canUpdateAll && $canUpdateOwn) && $video->user_id !== $user->id) {
             return false;
         }
 
@@ -60,7 +60,7 @@ class VideoPolicy
         $canDestroyOwn = $user->can(config('permissions_list.VIDEO_DESTROY_OWN', false));
 
         // If the user can't destroy any video but can destroy own video and the video being destroyed is not their own, return false
-        if ((!$canDestroyAll && $canDestroyOwn) && $video->user_id !== $user->id) {
+        if ((! $canDestroyAll && $canDestroyOwn) && $video->user_id !== $user->id) {
             return false;
         }
 
@@ -71,11 +71,11 @@ class VideoPolicy
     {
         $canAnyUpdate = $user->canAny([
             config('permissions_list.VIDEO_UPDATE_ALL'),
-            config('permissions_list.VIDEO_UPDATE_OWN')
+            config('permissions_list.VIDEO_UPDATE_OWN'),
         ]);
         $canAnyDestroy = $user->canAny([
             config('permissions_list.VIDEO_DESTROY_ALL'),
-            config('permissions_list.VIDEO_DESTROY_OWN')
+            config('permissions_list.VIDEO_DESTROY_OWN'),
         ]);
 
         return $canAnyUpdate || $canAnyDestroy;

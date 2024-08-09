@@ -13,19 +13,21 @@ class SocialNetworkController extends Controller
 {
     public function __construct(private readonly SocialNetworkService $socialNetworkService)
     {
-        $this->middleware('can:' . config('permissions_list.PROFILE_SOCIAL_NETWORKS', false));
+        $this->middleware('can:'.config('permissions_list.PROFILE_SOCIAL_NETWORKS', false));
     }
 
     public function edit(): View
     {
         $userSocialNetworks = $this->socialNetworkService->getUserSocialNetworks(Auth::user());
         $socialNetworksList = SocialNetworkService::SOCIAL_NETWORKS;
+
         return view('profile::social-networks-address', compact(['userSocialNetworks', 'socialNetworksList']));
     }
 
     public function update(SocialNetworkRequest $request): RedirectResponse
     {
         $this->socialNetworkService->update($request);
+
         return back()->with(['success' => __('Social network addresses have been registered successfully.')]);
     }
 }

@@ -9,7 +9,7 @@ class TagDatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            TagSeeder::class
+            TagSeeder::class,
         ]);
     }
 }

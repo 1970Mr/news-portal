@@ -12,7 +12,7 @@ class FactoryHelper
         $count = 1;
 
         while (self::isDuplicate($model, $column, $value)) {
-            $value = $originalValue . '-' . $count;
+            $value = $originalValue.'-'.$count;
             $count++;
         }
 
