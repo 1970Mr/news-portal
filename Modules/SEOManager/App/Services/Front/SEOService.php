@@ -62,9 +62,9 @@ class SEOService
         $this->tagPageSEOService->setTagPageSEO($tag);
     }
 
-    public function setSearchPageSEO(string $searchText): void
+    public function setSearchPageSEO(?string $searchText): void
     {
-        $this->searchPageSEOService->setSearchPageSEO($searchText);
+        $this->searchPageSEOService->setSearchPageSEO($searchText ?? '');
     }
 
     public function setPageSEO(Page $page): void
