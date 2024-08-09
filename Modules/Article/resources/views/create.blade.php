@@ -92,10 +92,8 @@
                                 </div>
                             </div>
                             <div class="form-group col-12">
-                                <label>متن خبر <small>(ضروری)</small></label>
-                                <div id="toolbar-container"></div>
-                                <div id="editor"></div>
-                                <input type="hidden" id="body" name="body" value="{{ old('body') }}">
+                                <label for="tinymce-editor">متن خبر <small>(ضروری)</small></label>
+                                <textarea id="tinymce-editor" name="body" required>{{ old('body') }}</textarea>
                             </div>
                             <div class="col-12 col-md-6 row form-group justify-content-center">
                                 @can(config('permissions_list.ARTICLE_EDITOR_CHOICE', false))
@@ -138,39 +136,9 @@
 
     <script src="{{ asset('admin/assets/plugins/mdsPersianDatetimepicker/dist/js/mds.bs.datetimepicker.js') }}"></script>
 
-    <script src="{{ asset('admin/assets/plugins/ckeditor5-document-editor/ckeditor.js') }}"></script>
-    <script src="{{ asset('admin/assets/plugins/ckeditor5-document-editor/translations/fa.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/pages/UploadAdapter.js') }}"></script>
+    @include('common::partials.tinymce-scripts')
+
     <script>
-        function CustomUploadAdapterPlugin(editor) {
-            editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
-                return new UploadAdapter(loader, '{{ route(config('app.panel_prefix', 'panel') . '.images.upload') }}', '{{ csrf_token() }}');
-            };
-        }
-
-        $(document).ready(function () {
-            DecoupledEditor
-                .create(document.querySelector('#editor'), {
-                    extraPlugins: [CustomUploadAdapterPlugin],
-                    language: 'fa',
-                    direction: 'rtl',
-                    fontFamily: {
-                        'default': 'IranSans, Arial, sans-serif',
-                    },
-                })
-                .then(editor => {
-                    editor.setData('{!! old('body') !!}');
-                    editor.model.document.on('change:data', () => {
-                        document.querySelector('input[name="body"]').value = editor.getData();
-                    });
-                    const toolbarContainer = document.querySelector('#toolbar-container');
-                    toolbarContainer.appendChild(editor.ui.view.toolbar.element);
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-        });
-
         const dtp1Instance = new mds.MdsPersianDateTimePicker(document.getElementById('dtp1'), {
             targetTextSelector: '[data-name="dtp1-text"]',
             targetDateSelector: '[data-name="dtp1-date"]',
@@ -204,31 +172,5 @@
 @push('styles')
     <link rel="stylesheet" href="{{ asset('admin/assets/plugins/select2/dist/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/plugins/mdsPersianDatetimepicker/dist/css/mds.bs.datetimepicker.style.css') }}">
-
-    <style>
-        .ck-powered-by-balloon {
-            display: none !important;
-        }
-
-        #toolbar-container * {
-            font-family: 'IranSans';
-        }
-
-        #editor {
-            border-bottom-left-radius: 5px;
-            border-bottom-right-radius: 5px;
-            border: #dee2e6 solid 1px;
-            border-top: none;
-        }
-
-        #editor:focus {
-            border-radius: 5px;
-            border: gray solid 1px;
-            box-shadow: 1px 1px #dee2e6;
-        }
-
-        label {
-            white-space: nowrap;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('admin/assets/css/tinymce.css') }}">
 @endpush

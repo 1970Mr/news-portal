@@ -43,7 +43,7 @@
                                 <input id="slug" class="form-control" name="slug" type="text" required value="{{ old('slug', $page->slug) }}">
                             </div>
                             <div class="form-group col-12">
-                                <label>محتوا <small>(ضروری)</small></label>
+                                <label for="tinymce-editor">محتوا <small>(ضروری)</small></label>
                                 <textarea id="tinymce-editor" name="content" required>{{ old('content', $page->content) }}</textarea>
                             </div>
                             <div class="form-group relative col-lg-6">
@@ -118,23 +118,5 @@
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('admin/assets/plugins/select2/dist/css/select2.min.css') }}">
-
-    <style>
-        .tox-promotion, .tox-statusbar__branding {
-            display: none !important;
-        }
-
-        .tox {
-            font-family: 'IranSans', Arial, sans-serif !important;
-        }
-
-        .tox-textarea {
-            text-align: left !important;
-            direction: ltr !important;
-        }
-
-        .tox-edit-area__iframe {
-            padding: 1rem !important;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('admin/assets/css/tinymce.css') }}">
 @endpush

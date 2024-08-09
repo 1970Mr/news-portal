@@ -1,0 +1,16 @@
+.tox-promotion, .tox-statusbar__branding {
+    display: none !important;
+}
+
+.tox {
+    font-family: 'IranSans', Arial, sans-serif !important;
+}
+
+.tox-textarea {
+    text-align: left !important;
+    direction: ltr !important;
+}
+
+.tox-edit-area__iframe {
+    padding: 1rem !important;
+}

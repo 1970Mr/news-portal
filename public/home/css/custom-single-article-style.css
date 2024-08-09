@@ -63,3 +63,9 @@
 .like-count {
     display: inline;
 }
+
+.category-listing img {
+    max-width: 100%;
+    overflow-x: hidden;
+    word-break: break-word;
+}
